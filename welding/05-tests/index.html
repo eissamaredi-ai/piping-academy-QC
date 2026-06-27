@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آزمایش‌های جوش — آکادمی پایپینگ و جوشکاری</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
+  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
+  .back-link { color:#94a3b8; font-size:13px; }
+  .back-link:hover { color:#F97316; }
+
+  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
+  .breadcrumb span { color:#F97316; font-weight:bold; }
+
+  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
+  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
+  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
+  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
+  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+
+  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
+  .callout-def { background:#eff6ff; border-color:#2563EB; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
+  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
+  .callout-def .callout-label { color:#2563EB; }
+  .callout-warn .callout-label { color:#F97316; }
+  .callout-tip .callout-label { color:#06B6D4; }
+
+  .test-item { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px; margin-bottom:8px; }
+  .test-name { font-weight:bold; font-size:13px; color:#0F172A; }
+  .test-measure { font-size:10px; color:#94a3b8; float:left; }
+  .test-desc { font-size:12px; color:#64748b; margin-top:4px; line-height:1.6; clear:both; }
+
+  .ndt-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:16px 0; }
+  .ndt-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:12px; text-align:center; }
+  .ndt-name { font-weight:bold; font-size:14px; color:#2563EB; margin-bottom:4px; }
+  .ndt-full { font-size:10px; color:#94a3b8; margin-bottom:6px; }
+  .ndt-detect { font-size:11px; color:#475569; line-height:1.5; }
+
+  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
+  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
+  .nav-prev { color:#64748b; }
+  .nav-next { background:#F97316; color:white; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۵ — آزمایش‌های جوش</span></div>
+
+<div class="content">
+  <h1>آزمایش‌های جوش</h1>
+  <div class="subtitle">تست‌های مخرب برای تأیید PQR و تست‌های غیرمخرب برای بازرسی فیلد</div>
+
+  <p class="lead">آزمایش‌های جوش به دو دسته‌ی اصلی تقسیم می‌شوند: تست‌های مخرب که نمونه را از بین می‌برند و معمولاً فقط برای تأیید PQR استفاده می‌شوند، و تست‌های غیرمخرب که بدون آسیب به قطعه‌ی واقعی پروژه، کیفیت جوش را ارزیابی می‌کنند.</p>
+
+  <div class="callout callout-def">
+    <span class="callout-label">تعریف</span>
+    تست‌های مخرب فقط روی <strong>Test Coupon</strong> (نمونه‌ی جوش آزمایشی، نه خط واقعی پروژه) برای صدور PQR انجام می‌شوند — هرگز روی جوش واقعی نصب‌شده در فیلد اجرا نمی‌شوند.
+  </div>
+
+  <h2>تست‌های مخرب</h2>
+  <div class="test-item"><span class="test-measure">استحکام کششی</span><div class="test-name">Tensile Test</div><div class="test-desc">کشش نمونه تا پارگی برای تعیین استحکام کششی نهایی</div></div>
+  <div class="test-item"><span class="test-measure">انعطاف‌پذیری</span><div class="test-name">Bend Test</div><div class="test-desc">خم کردن نمونه برای کشف ترک یا عیوب سطحی پنهان در ریشه/رویه</div></div>
+  <div class="test-item"><span class="test-measure">چقرمگی</span><div class="test-name">Impact Test</div><div class="test-desc">ضربه به نمونه شیاردار (Charpy) برای سنجش چقرمگی در دمای پایین</div></div>
+  <div class="test-item"><span class="test-measure">سختی</span><div class="test-name">Hardness Test</div><div class="test-desc">اندازه‌گیری سختی در نواحی مختلف جوش (Weld, HAZ, Base Metal)</div></div>
+  <div class="test-item"><span class="test-measure">ماکرو ساختار</span><div class="test-name">Etch Test</div><div class="test-desc">اچ کردن سطح مقطع برای نمایان‌سازی مرز ذوب و عیوب ماکروسکوپی</div></div>
+
+  <h2>تست‌های غیرمخرب (NDT)</h2>
+  <div class="ndt-grid">
+    <div class="ndt-card"><div class="ndt-name">VT</div><div class="ndt-full">Visual Testing</div><div class="ndt-detect">عیوب سطحی</div></div>
+    <div class="ndt-card"><div class="ndt-name">PT</div><div class="ndt-full">Penetrant Testing</div><div class="ndt-detect">ترک سطحی</div></div>
+    <div class="ndt-card"><div class="ndt-name">MT</div><div class="ndt-full">Magnetic Particle</div><div class="ndt-detect">عیوب نزدیک‌سطح</div></div>
+    <div class="ndt-card"><div class="ndt-name">UT</div><div class="ndt-full">Ultrasonic Testing</div><div class="ndt-detect">عیوب داخلی عمیق</div></div>
+    <div class="ndt-card"><div class="ndt-name">RT</div><div class="ndt-full">Radiographic Testing</div><div class="ndt-detect">ثبت دائمی عیوب داخلی</div></div>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">هشدار</span>
+    انتخاب نوع NDT صرفاً بر اساس دسترسی به دستگاه نباید باشد — مثلاً MT روی استیل ضدزنگ آستنیتی (غیرفرومغناطیس) اصلاً کاربردی ندارد و باید PT یا UT جایگزین شود.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">نکته</span>
+    درصد پوشش NDE (مثلاً ۱۰٪ یا ۱۰۰٪ RT) همیشه باید از ITP پروژه استخراج شود، نه یک قاعده‌ی ثابت برای همه‌ی خطوط — این درصد معمولاً بر اساس Service Class، سایز خط و کلاس فشار متغیر است.
+  </div>
+
+  <div class="nav-footer">
+    <a href="../04-defects/" class="nav-btn nav-prev">→ فصل قبل: عیوب جوشکاری</a>
+    <a href="../06-inspection/" class="nav-btn nav-next">فصل بعد: اصول بازرسی فنی جوش ←</a>
+  </div>
+</div>
+
+</body>
+</html>
