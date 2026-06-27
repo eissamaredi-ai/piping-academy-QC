@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اصول بازرسی پایپینگ — آکادمی پایپینگ و جوشکاری</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
+  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; }
+  .back-link { color:#94a3b8; font-size:13px; }
+  .back-link:hover { color:#06B6D4; }
+
+  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
+  .breadcrumb span { color:#2563EB; font-weight:bold; }
+
+  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
+  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
+  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
+  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
+  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+
+  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
+  .callout-def { background:#eff6ff; border-color:#2563EB; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
+  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
+  .callout-def .callout-label { color:#2563EB; }
+  .callout-warn .callout-label { color:#F97316; }
+  .callout-tip .callout-label { color:#06B6D4; }
+
+  .hp-item { display:flex; align-items:flex-start; gap:10px; background:white; border:1px solid #e2e8f0; border-radius:10px; padding:12px; margin-bottom:8px; }
+  .hp-badge { font-size:10px; font-weight:bold; padding:4px 8px; border-radius:999px; white-space:nowrap; flex-shrink:0; }
+  .hp-hold { background:#fef2f2; color:#dc2626; }
+  .hp-witness { background:#eff6ff; color:#2563EB; }
+  .hp-title { font-weight:bold; font-size:13px; color:#0F172A; }
+  .hp-desc { font-size:12px; color:#64748b; margin-top:2px; }
+
+  .checklist { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:16px; margin:16px 0; }
+  .check-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #f1f5f9; font-size:13px; color:#334155; }
+  .check-item:last-child { border-bottom:none; }
+  .check-box { width:16px; height:16px; border:2px solid #cbd5e1; border-radius:4px; flex-shrink:0; }
+
+  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
+  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
+  .nav-prev { color:#64748b; }
+  .nav-next { background:#2563EB; color:white; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۶ — اصول بازرسی</span></div>
+
+<div class="content">
+  <h1>اصول بازرسی پایپینگ</h1>
+  <div class="subtitle">وظایف بازرس، نقاط توقف کار، تست هیدرواستاتیک و فهرست نواقص</div>
+
+  <p class="lead">بازرس فنی مسئول تطبیق آنچه در فیلد اجرا می‌شود با آنچه در مدارک طراحی، استاندارد، و مشخصات فنی پروژه تعریف شده است — نه صرفاً امضا کردن چک‌لیست. این تطبیق در نقاط مشخصی از فرآیند اجرا، که Hold Point و Witness Point نام دارند، اجباری می‌شود.</p>
+
+  <div class="callout callout-def">
+    <span class="callout-label">تعریف</span>
+    <strong>Hold Point</strong> نقطه‌ای است که کار بدون حضور و تأیید کتبی بازرس متوقف می‌ماند. <strong>Witness Point</strong> نقطه‌ای است که بازرس می‌تواند ناظر باشد، اما عدم حضورش مانع ادامه‌ی کار نمی‌شود.
+  </div>
+
+  <h2>نقاط بازرسی در طول پروژه</h2>
+
+  <div class="hp-item">
+    <span class="hp-badge hp-hold">Hold Point</span>
+    <div><div class="hp-title">قبل از پوشش/خاکریزی</div><div class="hp-desc">بازرسی باید حضور داشته باشد و تأیید کتبی بدهد، در غیر این صورت کار متوقف می‌ماند</div></div>
+  </div>
+  <div class="hp-item">
+    <span class="hp-badge hp-hold">Hold Point</span>
+    <div><div class="hp-title">قبل از Hydrotest</div><div class="hp-desc">تأیید Fit-Up، NDE، و آماده‌بودن سیستم قبل از پر کردن آب</div></div>
+  </div>
+  <div class="hp-item">
+    <span class="hp-badge hp-witness">Witness Point</span>
+    <div><div class="hp-title">حین جوشکاری روزانه</div><div class="hp-desc">بازرس می‌تواند حضور داشته باشد اما عدم حضور مانع ادامه‌ی کار نمی‌شود</div></div>
+  </div>
+  <div class="hp-item">
+    <span class="hp-badge hp-hold">Hold Point</span>
+    <div><div class="hp-title">Final Walkdown</div><div class="hp-desc">بازرسی نهایی قبل از Mechanical Completion و صدور گواهی تکمیل</div></div>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">هشدار</span>
+    در حین Hold Time هیدروتست، حتی کاهش فشار به‌اندازه‌ی ۰.۵ بار می‌تواند نشانه‌ی نشتی پنهان باشد — قبل از رد یا قبول تست، همیشه دمای سیال و محیط را هم ثبت کن، چون افت فشار می‌تواند ناشی از افت دما باشد نه نشتی واقعی.
+  </div>
+
+  <h2>چک‌لیست نمونه Punch List</h2>
+  <div class="checklist">
+    <div class="check-item"><span class="check-box"></span> تطبیق شماره خط با نقشه ایزومتریک</div>
+    <div class="check-item"><span class="check-box"></span> بررسی Heat Number روی تمام فیتینگ‌ها</div>
+    <div class="check-item"><span class="check-box"></span> کنترل تورک پیچ‌های فلنج</div>
+    <div class="check-item"><span class="check-box"></span> بازرسی بصری تمام نقاط جوش</div>
+    <div class="check-item"><span class="check-box"></span> تأیید نصب صحیح ساپورت‌ها</div>
+    <div class="check-item"><span class="check-box"></span> بررسی وجود گزارش NDE برای تمام جوش‌های مشمول</div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">نکته</span>
+    هر آیتم در Punch List باید با یک دسته‌بندی (Category A: قبل از Commissioning الزامی / Category B: قابل تعویق) علامت‌گذاری شود — بدون این دسته‌بندی، تیم پروژه نمی‌تواند اولویت‌بندی درستی برای بستن نواقص داشته باشد.
+  </div>
+
+  <div class="nav-footer">
+    <a href="../05-fabrication/" class="nav-btn nav-prev">→ فصل قبل: ساخت و مونتاژ</a>
+    <a href="../07-valves/" class="nav-btn nav-next">فصل بعد: شیرآلات ←</a>
+  </div>
+</div>
+
+</body>
+</html>
