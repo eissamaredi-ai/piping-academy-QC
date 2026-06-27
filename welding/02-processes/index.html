@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فرآیندهای جوشکاری — آکادمی پایپینگ و جوشکاری</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
+  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
+  .back-link { color:#94a3b8; font-size:13px; }
+  .back-link:hover { color:#F97316; }
+
+  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
+  .breadcrumb span { color:#F97316; font-weight:bold; }
+
+  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
+  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
+  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
+  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
+  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+
+  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
+  .callout-def { background:#eff6ff; border-color:#2563EB; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
+  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
+  .callout-def .callout-label { color:#2563EB; }
+  .callout-warn .callout-label { color:#F97316; }
+  .callout-tip .callout-label { color:#06B6D4; }
+
+  .process-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:10px; }
+  .process-name { font-weight:bold; font-size:14px; margin-bottom:2px; }
+  .process-full { font-size:11px; color:#94a3b8; margin-bottom:8px; }
+  .process-desc { font-size:12px; color:#475569; line-height:1.7; }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
+  th { background:#0F172A; color:white; padding:10px 12px; text-align:right; }
+  td { padding:10px 12px; border-top:1px solid #f1f5f9; }
+  tr:nth-child(even) td { background:#f8fafc; }
+
+  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
+  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
+  .nav-prev { color:#64748b; }
+  .nav-next { background:#F97316; color:white; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۲ — فرآیندهای جوشکاری</span></div>
+
+<div class="content">
+  <h1>فرآیندهای جوشکاری</h1>
+  <div class="subtitle">پنج روش رایج صنعتی و معیار انتخاب هرکدام در پروژه‌های نفت و گاز</div>
+
+  <p class="lead">انتخاب فرآیند جوشکاری معمولاً ترکیبی از سه عامل است: کیفیت مورد نیاز جوش، سرعت اجرای مدنظر پروژه، و محل کار (کارگاه ثابت یا فیلد باز). در بسیاری از پروژه‌های پایپینگ صنعتی، ترکیبی از چند فرآیند برای یک خط واحد استفاده می‌شود.</p>
+
+  <div class="callout callout-def">
+    <span class="callout-label">تعریف</span>
+    رایج‌ترین ترکیب در خطوط فولادی پروژه‌های نفت و گاز: <strong>GTAW برای Root Pass</strong> (کیفیت بالا، بدون اسپاتر داخل لوله) و <strong>SMAW یا FCAW برای Fill/Cap Pass</strong> (سرعت بیشتر برای تکمیل حجم جوش).
+  </div>
+
+  <h2>فرآیندهای اصلی</h2>
+
+  <div class="process-card">
+    <div class="process-name" style="color:#dc2626;">SMAW</div>
+    <div class="process-full">Shielded Metal Arc Welding</div>
+    <div class="process-desc">جوشکاری با الکترود روپوش‌دار — رایج‌ترین و قابل‌حمل‌ترین روش، مناسب کارهای فیلد و موقعیت‌های دشوار.</div>
+  </div>
+  <div class="process-card">
+    <div class="process-name" style="color:#0891b2;">GTAW (TIG)</div>
+    <div class="process-full">Gas Tungsten Arc Welding</div>
+    <div class="process-desc">جوشکاری با الکترود تنگستن غیرمصرفی — بالاترین کیفیت و تمیزی، مناسب Root Pass خطوط حساس.</div>
+  </div>
+  <div class="process-card">
+    <div class="process-name" style="color:#2563EB;">GMAW (MIG)</div>
+    <div class="process-full">Gas Metal Arc Welding</div>
+    <div class="process-desc">جوشکاری نیمه‌اتوماتیک با سیم مصرفی پیوسته — سرعت اجرای بالا، مناسب تولید حجم زیاد.</div>
+  </div>
+  <div class="process-card">
+    <div class="process-name" style="color:#F97316;">FCAW</div>
+    <div class="process-full">Flux-Cored Arc Welding</div>
+    <div class="process-desc">مشابه GMAW اما با سیم پودر-مغزی — نفوذ بالاتر، مناسب ضخامت‌های زیاد و کار در فضای باز.</div>
+  </div>
+  <div class="process-card">
+    <div class="process-name" style="color:#7c3aed;">SAW</div>
+    <div class="process-full">Submerged Arc Welding</div>
+    <div class="process-desc">جوشکاری زیرپودری، کاملاً مکانیزه — برای جوش‌های طولانی مستقیم با نرخ رسوب بسیار بالا.</div>
+  </div>
+
+  <h2>جدول مقایسه‌ای</h2>
+  <table>
+    <tr><th>فرآیند</th><th>محافظت قوس</th><th>مهارت لازم</th></tr>
+    <tr><td>SMAW</td><td>پوشش الکترود</td><td>بالا</td></tr>
+    <tr><td>GTAW</td><td>گاز آرگون</td><td>بسیار بالا</td></tr>
+    <tr><td>GMAW</td><td>گاز CO2/آرگون</td><td>متوسط</td></tr>
+    <tr><td>FCAW</td><td>پودر مغزی سیم</td><td>متوسط تا بالا</td></tr>
+    <tr><td>SAW</td><td>پودر گرانول</td><td>پایین (مکانیزه)</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">هشدار</span>
+    تغییر فرآیند جوشکاری (مثلاً جایگزینی FCAW به‌جای SMAW در یک پاس) یک Essential Variable است و بدون پشتوانه‌ی PQR جدید یا الحاقیه مجاز نیست — این یکی از رایج‌ترین تخلفات کشف‌شده در بازرسی فیلد است.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">نکته</span>
+    هنگام بازرسی WPS، همیشه چک کن که فرآیند ثبت‌شده در WPS دقیقاً با چیزی که جوشکار در فیلد واقعاً استفاده می‌کند یکی باشد — گاهی فیتر/جوشکار به‌دلیل سرعت، بدون اطلاع رسمی فرآیند را تغییر می‌دهد.
+  </div>
+
+  <div class="nav-footer">
+    <a href="../01-documents/" class="nav-btn nav-prev">→ فصل قبل: مدارک فنی</a>
+    <a href="../03-stages/" class="nav-btn nav-next">فصل بعد: مراحل جوشکاری ←</a>
+  </div>
+</div>
+
+</body>
+</html>
