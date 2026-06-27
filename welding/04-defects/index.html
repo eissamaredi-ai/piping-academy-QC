@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عیوب جوشکاری — آکادمی پایپینگ و جوشکاری</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
+  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
+  .back-link { color:#94a3b8; font-size:13px; }
+  .back-link:hover { color:#F97316; }
+
+  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
+  .breadcrumb span { color:#F97316; font-weight:bold; }
+
+  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
+  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
+  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
+  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
+  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+
+  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
+  .callout-def { background:#eff6ff; border-color:#2563EB; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
+  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
+  .callout-def .callout-label { color:#2563EB; }
+  .callout-warn .callout-label { color:#F97316; }
+  .callout-tip .callout-label { color:#06B6D4; }
+
+  .defect-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:10px; }
+  .defect-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .defect-name { font-weight:bold; font-size:14px; color:#0F172A; }
+  .severity-badge { font-size:10px; font-weight:bold; padding:3px 10px; border-radius:999px; color:white; white-space:nowrap; }
+  .defect-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+  .defect-box { flex:1; min-width:130px; border-radius:8px; padding:8px 10px; font-size:11px; line-height:1.6; }
+  .box-cause { background:#fef2f2; color:#991b1b; }
+  .box-prevent { background:#f0fdf4; color:#166534; }
+  .box-fix { background:#eff6ff; color:#1e40af; }
+  .box-label { font-weight:bold; display:block; margin-bottom:2px; }
+
+  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
+  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
+  .nav-prev { color:#64748b; }
+  .nav-next { background:#F97316; color:white; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۴ — عیوب جوشکاری</span></div>
+
+<div class="content">
+  <h1>عیوب جوشکاری</h1>
+  <div class="subtitle">شناخت بصری، علت ایجاد، پیشگیری و روش اصلاح هر عیب رایج</div>
+
+  <p class="lead">تشخیص صحیح نوع عیب جوش، اولین قدم بازرس قبل از تصمیم‌گیری درباره‌ی قبول یا رد یک جوش است. برخی عیوب صرفاً ظاهری و قابل‌قبول‌اند، در حالی که برخی دیگر همیشه باید رد و اصلاح شوند، فارغ از اندازه.</p>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">هشدار</span>
+    هیچ‌گاه نباید بر اساس فقط ظاهر بیرونی درباره‌ی پذیرش یا رد یک جوش قضاوت کرد — برخی عیوب بحرانی فقط با NDE حجمی (RT یا UT) قابل کشف‌اند و در بازرسی بصری دیده نمی‌شوند.
+  </div>
+
+  <h2>عیوب رایج</h2>
+
+  <div class="defect-card">
+    <div class="defect-head"><span class="defect-name">Crack</span><span class="severity-badge" style="background:#dc2626;">بحرانی</span></div>
+    <div class="defect-row">
+      <div class="defect-box box-cause"><span class="box-label">علت</span>هیدروژن جذب‌شده، تنش انقباضی بالا</div>
+      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>پیش‌گرم صحیح و کنترل سرعت خنک‌شدن</div>
+      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>برش کامل و جوشکاری مجدد طبق WPS</div>
+    </div>
+  </div>
+
+  <div class="defect-card">
+    <div class="defect-head"><span class="defect-name">Porosity</span><span class="severity-badge" style="background:#ea580c;">متوسط تا بحرانی</span></div>
+    <div class="defect-row">
+      <div class="defect-box box-cause"><span class="box-label">علت</span>گاز محبوس‌شده، رطوبت یا آلودگی سطحی</div>
+      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>خشک نگه‌داشتن الکترود و تمیزکاری سطح</div>
+      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>سنگ‌زنی و جوشکاری مجدد ناحیه آلوده</div>
+    </div>
+  </div>
+
+  <div class="defect-card">
+    <div class="defect-head"><span class="defect-name">Undercut</span><span class="severity-badge" style="background:#d97706;">متوسط</span></div>
+    <div class="defect-row">
+      <div class="defect-box box-cause"><span class="box-label">علت</span>آمپراژ بیش‌ازحد یا زاویه نادرست الکترود</div>
+      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>تنظیم صحیح پارامترها طبق WPS</div>
+      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>پر کردن با پاس ترمیمی نازک</div>
+    </div>
+  </div>
+
+  <div class="defect-card">
+    <div class="defect-head"><span class="defect-name">Lack of Fusion</span><span class="severity-badge" style="background:#dc2626;">بحرانی</span></div>
+    <div class="defect-row">
+      <div class="defect-box box-cause"><span class="box-label">علت</span>عدم ذوب کامل بین پاس‌ها یا متال پایه</div>
+      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>تمیزکاری بین‌پاسی و آمپراژ کافی</div>
+      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>برش و جوشکاری مجدد ناحیه</div>
+    </div>
+  </div>
+
+  <div class="defect-card">
+    <div class="defect-head"><span class="defect-name">Lack of Penetration</span><span class="severity-badge" style="background:#dc2626;">بحرانی</span></div>
+    <div class="defect-row">
+      <div class="defect-box box-cause"><span class="box-label">علت</span>Root Gap ناکافی یا آمپراژ پایین در Root</div>
+      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>کنترل دقیق Fit-Up و پارامترهای WPS</div>
+      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>برش کامل Root و جوشکاری مجدد</div>
+    </div>
+  </div>
+
+  <div class="defect-card">
+    <div class="defect-head"><span class="defect-name">Spatter</span><span class="severity-badge" style="background:#65a30d;">کم (ظاهری)</span></div>
+    <div class="defect-row">
+      <div class="defect-box box-cause"><span class="box-label">علت</span>آمپراژ بیش‌ازحد یا طول قوس نامناسب</div>
+      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>تنظیم صحیح پارامترها</div>
+      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>تمیزکاری سطحی، بدون نیاز به جوش مجدد</div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">نکته</span>
+    معیار پذیرش هر عیب (مثلاً حداکثر طول مجاز Undercut) همیشه باید از Acceptance Criteria پروژه (مثلاً ASME B31.3 یا مشخصات پروژه) گرفته شود — این اعداد بین کدها و حتی Service Class مختلف یک پروژه متفاوت‌اند.
+  </div>
+
+  <div class="nav-footer">
+    <a href="../03-stages/" class="nav-btn nav-prev">→ فصل قبل: مراحل جوشکاری</a>
+    <a href="../05-tests/" class="nav-btn nav-next">فصل بعد: آزمایش‌های جوش ←</a>
+  </div>
+</div>
+
+</body>
+</html>
