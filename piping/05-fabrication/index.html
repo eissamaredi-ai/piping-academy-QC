@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ساخت و مونتاژ پایپینگ — آکادمی پایپینگ و جوشکاری</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
+  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; }
+  .back-link { color:#94a3b8; font-size:13px; }
+  .back-link:hover { color:#06B6D4; }
+
+  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
+  .breadcrumb span { color:#2563EB; font-weight:bold; }
+
+  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
+  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
+  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
+  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
+  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+
+  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
+  .callout-def { background:#eff6ff; border-color:#2563EB; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
+  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
+  .callout-def .callout-label { color:#2563EB; }
+  .callout-warn .callout-label { color:#F97316; }
+  .callout-tip .callout-label { color:#06B6D4; }
+
+  .stage-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:16px 0; }
+  .stage-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; }
+  .stage-name { font-weight:bold; font-size:13px; margin-bottom:4px; color:#0F172A; }
+  .stage-desc { font-size:12px; color:#64748b; line-height:1.6; }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
+  th { background:#0F172A; color:white; padding:10px 12px; text-align:right; }
+  td { padding:10px 12px; border-top:1px solid #f1f5f9; }
+  tr:nth-child(even) td { background:#f8fafc; }
+
+  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
+  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
+  .nav-prev { color:#64748b; }
+  .nav-next { background:#2563EB; color:white; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۵ — ساخت و مونتاژ</span></div>
+
+<div class="content">
+  <h1>ساخت و مونتاژ پایپینگ</h1>
+  <div class="subtitle">از برش اولیه تا نصب نهایی — مراحل کنترل کیفیت در هر گام</div>
+
+  <p class="lead">فرآیند ساخت یک خط لوله صنعتی شامل چندین مرحله‌ی متوالی است که هرکدام نقاط بازرسی (Hold Point یا Witness Point) مشخص خود را دارند. خطای کنترل‌نشده در هر مرحله — حتی یک میلی‌متر انحراف در Fit-Up — می‌تواند در مراحل بعدی تشدید شده و منجر به رد قطعه شود.</p>
+
+  <div class="callout callout-def">
+    <span class="callout-label">تعریف</span>
+    <strong>Spool</strong> به یک قطعه‌ی پیش‌ساخته (معمولاً در کارگاه یا یارد) گفته می‌شود که از چند لوله و فیتینگ تشکیل شده و به‌صورت یک واحد به محل نصب در فیلد منتقل می‌شود.
+  </div>
+
+  <h2>مراحل اصلی</h2>
+  <div class="stage-grid">
+    <div class="stage-card">
+      <div class="stage-name">Fabrication</div>
+      <div class="stage-desc">برش، پخ‌زنی و آماده‌سازی قطعات لوله طبق نقشه‌ی اسپول، قبل از هرگونه جوشکاری</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">Fit-Up</div>
+      <div class="stage-desc">قرارگیری دقیق دو قطعه کنار هم با Root Gap صحیح، قبل از جوشکاری نهایی</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">Alignment</div>
+      <div class="stage-desc">هم‌راستاسازی محور دو لوله با ابزار Cambridge Gauge برای جلوگیری از High-Low</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">Spool Assembly</div>
+      <div class="stage-desc">مونتاژ کامل یک قطعه‌ی پیش‌ساخته شامل چند فیتینگ، آماده برای انتقال به فیلد</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">Installation</div>
+      <div class="stage-desc">نصب اسپول نهایی در محل واقعی پروژه طبق مسیر نقشه‌ی ایزومتریک</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-name">Dimensional Control</div>
+      <div class="stage-desc">کنترل ابعاد نهایی (طول، زاویه، Elevation) در مقابل تلرانس مجاز نقشه</div>
+    </div>
+  </div>
+
+  <h2>کنترل ابعاد و هم‌راستایی</h2>
+  <p class="lead">پس از Fit-Up، بازرس باید با Cambridge Gauge انحراف محوری (High-Low) را اندازه‌گیری کند. این انحراف اگر از حد مجاز فراتر رود، باعث تمرکز تنش در ناحیه‌ی جوش و کاهش عمر سرویس خط می‌شود.</p>
+
+  <table>
+    <tr><th>ضخامت دیواره (mm)</th><th>حداکثر High-Low مجاز</th></tr>
+    <tr><td>تا ۱۲.۷</td><td>۱.۵ mm</td></tr>
+    <tr><td>۱۲.۷ تا ۲۵</td><td>۲.۰ mm</td></tr>
+    <tr><td>بیشتر از ۲۵</td><td>طبق WPS پروژه</td></tr>
+  </table>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">هشدار</span>
+    Root Gap نامناسب یکی از رایج‌ترین علل رد جوش در بازرسی RT است. مقدار مجاز معمولاً بین ۱.۵ تا ۳.۲ میلی‌متر است، اما باید همیشه طبق WPS پروژه مشخص خاص تأیید شود — این عدد ثابت و یکسان برای همه‌ی پروژه‌ها نیست.
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">نکته</span>
+    همیشه قبل از تأیید Fit-Up، شماره Heat متریال دو طرف اتصال را با مدارک MTC چک کن — اشتباه در ترکیب دو متریال متفاوت در این مرحله، قابل اصلاح است؛ بعد از جوشکاری، اصلاحش بسیار پرهزینه‌تر می‌شود.
+  </div>
+
+  <div class="nav-footer">
+    <a href="../04-isometric/" class="nav-btn nav-prev">→ فصل قبل: نقشه‌خوانی ایزومتریک</a>
+    <a href="../06-inspection/" class="nav-btn nav-next">فصل بعد: اصول بازرسی ←</a>
+  </div>
+</div>
+
+</body>
+</html>
