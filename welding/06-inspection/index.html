@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اصول بازرسی فنی جوش — آکادمی پایپینگ و جوشکاری</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
+  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
+  .back-link { color:#94a3b8; font-size:13px; }
+  .back-link:hover { color:#F97316; }
+
+  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
+  .breadcrumb span { color:#F97316; font-weight:bold; }
+
+  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
+  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
+  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
+  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
+  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+
+  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
+  .callout-def { background:#eff6ff; border-color:#2563EB; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
+  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
+  .callout-def .callout-label { color:#2563EB; }
+  .callout-warn .callout-label { color:#F97316; }
+  .callout-tip .callout-label { color:#06B6D4; }
+
+  .trait-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin:16px 0; }
+  .trait-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; }
+  .trait-title { font-weight:bold; font-size:13px; margin-bottom:8px; }
+  .trait-list { font-size:11px; color:#64748b; line-height:1.8; padding-right:14px; }
+
+  .step-list { display:flex; flex-direction:column; gap:8px; margin:16px 0; }
+  .step-item { display:flex; gap:10px; align-items:flex-start; background:white; border:1px solid #e2e8f0; border-radius:10px; padding:12px; }
+  .step-num { width:26px; height:26px; border-radius:50%; background:#0F172A; color:white; font-size:12px; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-title { font-weight:bold; font-size:13px; color:#0F172A; }
+  .step-desc { font-size:11px; color:#64748b; margin-top:2px; }
+
+  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
+  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
+  .nav-prev { color:#64748b; }
+  .nav-next { background:#16a34a; color:white; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۶ — اصول بازرسی فنی جوش (پایان بخش)</span></div>
+
+<div class="content">
+  <h1>اصول بازرسی فنی جوش</h1>
+  <div class="subtitle">بازرس جوش کیست، چه ویژگی‌هایی لازم دارد و مراحل بازرسی او چیست</div>
+
+  <p class="lead">بازرسی جوش صرفاً یک فعالیت فنی نیست — ترکیبی از دانش تخصصی، استقلال قضاوت، و توانایی مستندسازی دقیق است. یک بازرس ضعیف در هر یک از این سه بُعد می‌تواند مستقیماً ایمنی و کیفیت بلندمدت پروژه را تهدید کند.</p>
+
+  <div class="callout callout-def">
+    <span class="callout-label">تعریف</span>
+    بازرس جوش (Welding Inspector) فردی است که مسئولیت تأیید انطباق اجرای جوشکاری با WPS، استاندارد مرجع، و ITP پروژه را دارد — نه صرفاً ناظر حضور در محل کار.
+  </div>
+
+  <h2>سه بُعد یک بازرس کامل</h2>
+  <div class="trait-grid">
+    <div class="trait-card">
+      <div class="trait-title" style="color:#2563EB;">ویژگی‌های فنی</div>
+      <ul class="trait-list">
+        <li>تسلط بر استانداردهای مرتبط</li>
+        <li>توانایی خوانش نقشه و WPS</li>
+        <li>آشنایی با متالورژی جوش</li>
+        <li>تجربه‌ی تفسیر نتایج NDE</li>
+      </ul>
+    </div>
+    <div class="trait-card">
+      <div class="trait-title" style="color:#F97316;">ویژگی‌های اخلاقی</div>
+      <ul class="trait-list">
+        <li>استقلال در قضاوت</li>
+        <li>صداقت در ثبت گزارش</li>
+        <li>مسئولیت‌پذیری در برابر ایمنی</li>
+        <li>بی‌طرفی نسبت به پیمانکار/کارفرما</li>
+      </ul>
+    </div>
+    <div class="trait-card">
+      <div class="trait-title" style="color:#0891b2;">ویژگی‌های جسمانی</div>
+      <ul class="trait-list">
+        <li>بینایی کافی برای تشخیص دقیق</li>
+        <li>توانایی کار در ارتفاع/فضای محدود</li>
+        <li>تحمل شرایط دما و رطوبت سخت</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">هشدار</span>
+    استقلال قضاوت بازرس از نظر اهمیت کمتر از دانش فنی او نیست — یک بازرس با دانش فنی عالی اما تحت فشار برای تأیید عجولانه‌ی کار، می‌تواند به همان اندازه‌ی یک بازرس کم‌تجربه خطرناک باشد.
+  </div>
+
+  <h2>مراحل بازرسی — به‌ترتیب زمانی</h2>
+  <div class="step-list">
+    <div class="step-item"><span class="step-num">1</span><div><div class="step-title">بررسی مدارک قبل از شروع</div><div class="step-desc">تطبیق WPS، WPQ جوشکار، و مدارک متریال</div></div></div>
+    <div class="step-item"><span class="step-num">2</span><div><div class="step-title">بازرسی Fit-Up</div><div class="step-desc">کنترل Root Gap، Alignment و تمیزی سطح</div></div></div>
+    <div class="step-item"><span class="step-num">3</span><div><div class="step-title">نظارت حین اجرا</div><div class="step-desc">کنترل پارامترهای واقعی در مقابل محدوده‌ی WPS</div></div></div>
+    <div class="step-item"><span class="step-num">4</span><div><div class="step-title">بازرسی بصری پس از اتمام</div><div class="step-desc">بررسی ظاهری برای عیوب سطحی قابل‌مشاهده</div></div></div>
+    <div class="step-item"><span class="step-num">5</span><div><div class="step-title">درخواست/بررسی NDE</div><div class="step-desc">صدور درخواست تست طبق ITP و دریافت گزارش</div></div></div>
+    <div class="step-item"><span class="step-num">6</span><div><div class="step-title">ثبت در گزارش نهایی</div><div class="step-desc">مستندسازی کامل شامل پذیرش/رد و یافته‌ها</div></div></div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">نکته</span>
+    هنگام ثبت یک یافته (Finding)، همیشه آن را با اشاره به بند مشخص استاندارد یا مشخصات پروژه مستند کن — نوشتن «جوش غیراستاندارد است» بدون رفرنس دقیق، در دفاع از گزارش در جلسات Technical Query بسیار ضعیف عمل می‌کند.
+  </div>
+
+  <div class="nav-footer">
+    <a href="../05-tests/" class="nav-btn nav-prev">→ فصل قبل: آزمایش‌های جوش</a>
+    <a href="../../" class="nav-btn nav-next">پایان بخش جوشکاری 🎉 بازگشت به صفحه اصلی</a>
+  </div>
+</div>
+
+</body>
+</html>
