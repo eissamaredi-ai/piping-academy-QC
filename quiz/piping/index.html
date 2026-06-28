@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آزمون پایپینگ — آکادمی پایپینگ و جوشکاری</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:600px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:13px; }
+  .logo-icon { width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:13px; }
+  .back-link { color:#94a3b8; font-size:12px; }
+  .wrap { max-width:560px; margin:0 auto; padding:30px 20px 60px; }
+  .quiz-meta { display:flex; justify-content:space-between; font-size:12px; color:#64748b; margin-bottom:10px; }
+  .dots { display:flex; justify-content:center; gap:6px; margin-bottom:20px; }
+  .dot { width:10px; height:10px; border-radius:50%; background:#e2e8f0; }
+  .dot.current { background:#2563EB; transform:scale(1.3); }
+  .dot.correct { background:#16a34a; }
+  .dot.wrong { background:#dc2626; }
+  .qcard { background:white; border:1px solid #e2e8f0; border-radius:16px; padding:24px; box-shadow:0 1px 6px rgba(0,0,0,0.05); }
+  .qtext { font-size:15px; font-weight:bold; line-height:1.7; margin-bottom:20px; }
+  .opt { display:block; width:100%; text-align:right; border:2px solid #e2e8f0; border-radius:12px; padding:13px 14px; font-size:13px; margin-bottom:10px; background:white; cursor:pointer; color:#334155; }
+  .opt.correct { border-color:#16a34a; background:#f0fdf4; }
+  .opt.wrong { border-color:#dc2626; background:#fef2f2; }
+  .explain { background:#eff6ff; border-right:4px solid #2563EB; border-radius:8px; padding:12px; font-size:12px; line-height:1.7; margin-top:14px; color:#334155; display:none; }
+  .explain.show { display:block; }
+  .nav-row { display:flex; justify-content:space-between; margin-top:20px; }
+  .btn { font-size:13px; font-weight:bold; padding:10px 22px; border-radius:10px; border:none; cursor:pointer; }
+  .btn-prev { background:transparent; color:#64748b; }
+  .btn-next { background:#2563EB; color:white; }
+  .btn-next:disabled { opacity:0.4; cursor:not-allowed; }
+  .result { text-align:center; }
+  .result-icon { font-size:50px; margin-bottom:10px; }
+  .score { font-size:42px; font-weight:bold; margin:10px 0; }
+  .restart { background:#2563EB; color:white; font-size:13px; font-weight:bold; padding:12px 24px; border-radius:10px; border:none; cursor:pointer; margin-top:16px; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <a href="../" class="back-link">← بازگشت به آزمون‌ها</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="quiz-meta">
+    <span>آزمون پایپینگ — عمومی</span>
+    <span id="counter">سوال ۱ از ۵</span>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="qcard" id="quizCard"></div>
+  <div class="nav-row" id="navRow" style="display:none;">
+    <button class="btn btn-prev" id="prevBtn">→ قبلی</button>
+    <button class="btn btn-next" id="nextBtn" disabled>بعدی</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  { q: "تفاوت اصلی بین زانویی Long Radius (LR) و Short Radius (SR) در چیست؟", options: ["نوع متریال ساخت", "شعاع خم نسبت به قطر اسمی لوله", "فشار مجاز کاری", "روش اتصال به خط"], correct: 1, explain: "زانویی LR شعاع خم برابر با ۱.۵ برابر قطر اسمی دارد، در حالی که SR شعاع خم برابر با قطر اسمی است — این تفاوت مستقیماً روی افت فشار جریان عبوری اثر می‌گذارد." },
+  { q: "کدام جزء برای انشعاب‌گیری از یک خط اصلی استفاده می‌شود؟", options: ["Flange", "Tee", "Gasket", "Support"], correct: 1, explain: "Tee (سه‌راهی) دقیقاً برای این منظور طراحی شده — در دو نوع Equal Tee و Reducing Tee موجود است." },
+  { q: "Hold Point در بازرسی پایپینگ به چه معناست؟", options: ["نقطه‌ای که کار بدون تأیید بازرس متوقف می‌ماند", "نقطه‌ای که فقط برای ثبت آماری است", "محل نصب شیر اطمینان", "نوع خاصی از جوش"], correct: 0, explain: "Hold Point نقطه‌ای است که کار حتماً باید متوقف بماند تا بازرس حضور یابد و تأیید کتبی بدهد، بر خلاف Witness Point که عدم حضور بازرس مانع کار نمی‌شود." },
+  { q: "فشار تست هیدرواستاتیک معمولاً چه نسبتی با فشار طراحی دارد (قاعده‌ی رایج ASME B31.3)؟", options: ["برابر با فشار طراحی", "حدود ۱.۵ برابر فشار طراحی", "همیشه ثابت ۱۰ بار", "نصف فشار طراحی"], correct: 1, explain: "قاعده‌ی رایج طبق ASME B31.3 فشار تست را حدود ۱.۵ برابر فشار طراحی تعیین می‌کند، اما عدد دقیق باید همیشه از مشخصات پروژه تأیید شود." },
+  { q: "Spool در پایپینگ به چه معناست؟", options: ["نوع خاصی از شیر", "قطعه‌ی پیش‌ساخته از چند لوله/فیتینگ که به فیلد منتقل می‌شود", "نام یک استاندارد", "نوع آزمون غیرمخرب"], correct: 1, explain: "Spool یک قطعه‌ی پیش‌ساخته (معمولاً در کارگاه) است که از چند لوله و فیتینگ تشکیل شده و به‌صورت یک واحد کامل به محل نصب در فیلد منتقل می‌شود." }
+];
+let current = 0;
+let answers = {};
+function renderDots() {
+  const dotsEl = document.getElementById('dots');
+  dotsEl.innerHTML = '';
+  questions.forEach((q, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    if (i === current) d.classList.add('current');
+    else if (answers[i] !== undefined) d.classList.add(answers[i] === questions[i].correct ? 'correct' : 'wrong');
+    dotsEl.appendChild(d);
+  });
+}
+function renderQuestion() {
+  document.getElementById('counter').textContent = `سوال ${current + 1} از ${questions.length}`;
+  const q = questions[current];
+  const card = document.getElementById('quizCard');
+  const answered = answers[current] !== undefined;
+  let html = `<div class="qtext">${q.q}</div>`;
+  q.options.forEach((opt, i) => {
+    let cls = 'opt';
+    if (answered) { if (i === q.correct) cls += ' correct'; else if (i === answers[current]) cls += ' wrong'; }
+    html += `<button class="${cls}" onclick="selectAnswer(${i})" ${answered ? 'disabled' : ''}>${opt}</button>`;
+  });
+  if (answered) html += `<div class="explain show"><strong>توضیح:</strong> ${q.explain}</div>`;
+  card.innerHTML = html;
+  document.getElementById('navRow').style.display = 'flex';
+  document.getElementById('prevBtn').style.visibility = current === 0 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn').disabled = !answered;
+  document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'پایان آزمون' : 'بعدی';
+  renderDots();
+}
+function selectAnswer(i) { if (answers[current] !== undefined) return; answers[current] = i; renderQuestion(); }
+document.getElementById('prevBtn').addEventListener('click', () => { if (current > 0) { current--; renderQuestion(); } });
+document.getElementById('nextBtn').addEventListener('click', () => { if (current === questions.length - 1) showResult(); else { current++; renderQuestion(); } });
+function showResult() {
+  const score = Object.entries(answers).filter(([i, a]) => a === questions[i].correct).length;
+  const pct = Math.round((score / questions.length) * 100);
+  const passed = pct >= 70;
+  document.getElementById('navRow').style.display = 'none';
+  document.getElementById('dots').style.display = 'none';
+  document.getElementById('quizCard').innerHTML = `<div class="result"><div class="result-icon">${passed ? '🏆' : '📋'}</div><div style="font-weight:bold;font-size:16px;">${passed ? 'تبریک! آزمون پایپینگ را قبول شدی' : 'نمره کافی نبود'}</div><div class="score" style="color:${passed ? '#16a34a' : '#dc2626'}">${pct}٪</div><div style="font-size:12px;color:#64748b;">${score} پاسخ صحیح از ${questions.length} سوال</div><button class="restart" onclick="location.reload()">تلاش دوباره</button></div>`;
+}
+renderQuestion();
+</script>
+
+</body>
+</html>
