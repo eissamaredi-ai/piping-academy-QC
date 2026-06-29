@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>درباره من — Piping Studio</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  a { text-decoration:none; color:inherit; }
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:820px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
+  .back-link { color:#94a3b8; font-size:13px; }
+
+  .hero { background:linear-gradient(135deg,#0F172A,#1e3a5f); padding:50px 20px 40px; text-align:center; }
+  .avatar { width:84px; height:84px; border-radius:50%; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:32px; font-weight:bold; margin:0 auto 16px; }
+  .hero h1 { color:white; font-size:24px; font-weight:bold; margin-bottom:4px; }
+  .hero .role { color:#94a3b8; font-size:14px; margin-bottom:16px; }
+  .badges { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .badge { background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.3); color:#06B6D4; font-size:11px; padding:5px 12px; border-radius:999px; }
+
+  .content { max-width:760px; margin:0 auto; padding:36px 20px 60px; }
+  h2 { font-size:18px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+  p.lead { line-height:1.9; font-size:14px; color:#334155; margin-bottom:16px; }
+
+  .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:8px; }
+  .skill-item { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:11px 14px; font-size:12.5px; color:#334155; display:flex; gap:8px; align-items:center; }
+  .skill-dot { width:6px; height:6px; border-radius:50%; background:#2563EB; flex-shrink:0; }
+
+  .timeline { border-right:2px solid #e2e8f0; padding-right:20px; margin-top:8px; }
+  .tl-item { position:relative; margin-bottom:20px; }
+  .tl-item::before { content:''; position:absolute; right:-26px; top:4px; width:10px; height:10px; border-radius:50%; background:#2563EB; }
+  .tl-period { font-size:11px; color:#94a3b8; font-weight:bold; }
+  .tl-company { font-weight:bold; font-size:14px; margin-top:2px; }
+  .tl-role { font-size:12px; color:#64748b; margin-top:2px; }
+  .tl-project { font-size:12px; color:#475569; margin-top:4px; line-height:1.6; }
+
+  .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px; }
+  .cert-item { background:#eff6ff; border-radius:10px; padding:10px 14px; font-size:12px; color:#1e40af; font-weight:bold; text-align:center; }
+
+  .social-row { display:flex; gap:10px; justify-content:center; margin-top:30px; flex-wrap:wrap; }
+  .social-btn { display:flex; align-items:center; gap:6px; background:white; border:1px solid #e2e8f0; border-radius:10px; padding:10px 18px; font-size:13px; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo">⬡ Piping Studio</div>
+    <a href="../" class="back-link">← بازگشت به صفحه اصلی</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="avatar">عم</div>
+  <h1>عیسی مردی</h1>
+  <div class="role">QC Manager — Piping, Welding & NDT Inspection</div>
+  <div class="badges">
+    <span class="badge">+۱۵ سال تجربه</span>
+    <span class="badge">South Pars Veteran</span>
+    <span class="badge">MT · PT · RT · VT Level II</span>
+  </div>
+</div>
+
+<div class="content">
+  <h2>درباره من</h2>
+  <p class="lead">
+    من عیسی ماردی هستم، کارشناس کنترل کیفیت و بازرسی فنی با بیش از ۱۵ سال تجربه‌ی اجرایی در پروژه‌های بزرگ نفت، گاز و پتروشیمی ایران — از فازهای مختلف South Pars تا پروژه‌های Topside و پتروشیمی ماهشهر. مسیر کاری‌ام را از بازرسی پایپینگ و رنگ شروع کردم و به مدیریت کنترل کیفیت (QC Manager) رسیدم. این سایت (Piping Studio) را برای انتقال همان دانش عملی که در فیلد یاد گرفته‌ام به نسل جدید بازرسان و QC ساختم.
+  </p>
+
+  <h2>مهارت‌های کلیدی</h2>
+  <div class="skills-grid">
+    <div class="skill-item"><span class="skill-dot"></span>WPS/PQR Writing & WPQT Performance</div>
+    <div class="skill-item"><span class="skill-dot"></span>NDT: MT, PT, RT Interpretation, VT</div>
+    <div class="skill-item"><span class="skill-dot"></span>Hydro, Pressure & Air Testing</div>
+    <div class="skill-item"><span class="skill-dot"></span>Painting & Coating Inspection</div>
+    <div class="skill-item"><span class="skill-dot"></span>Material Inspection</div>
+    <div class="skill-item"><span class="skill-dot"></span>Jacket & Topside Installation</div>
+    <div class="skill-item"><span class="skill-dot"></span>PWHT Familiarity</div>
+    <div class="skill-item"><span class="skill-dot"></span>AWS D1.1, ASME Sec. IX/II/V/VIII</div>
+  </div>
+
+  <h2>دوره‌های تخصصی</h2>
+  <div class="cert-grid">
+    <div class="cert-item">MT Level II</div>
+    <div class="cert-item">RTI Level II</div>
+    <div class="cert-item">PT Level II</div>
+    <div class="cert-item">VT Level II</div>
+    <div class="cert-item">Painting Inspection L1</div>
+  </div>
+
+  <h2>سابقه‌ی پروژه‌ای</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-period">۲۰۲۴ — اکنون</div>
+      <div class="tl-company">TIV Energy</div>
+      <div class="tl-role">QC Mechanical & Piping</div>
+      <div class="tl-project">پروژه‌ی پتروشیمی SADRA (SPC) ماهشهر — واحد تولید بنزن و گازولین از پیرولیز گازولین</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">۲۰۲۳ — ۲۰۲۴</div>
+      <div class="tl-company">LOICO</div>
+      <div class="tl-role">QC Manager</div>
+      <div class="tl-project">پروژه‌ی توسعه‌ی میدان نفتی South Pars — Reshadat، احداث Topside</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">۲۰۲۲ — ۲۰۲۳</div>
+      <div class="tl-company">Petro Sanat Arvand</div>
+      <div class="tl-role">QC Manager</div>
+      <div class="tl-project">فاز ۱۱ توسعه‌ی میدان گازی South Pars — نصب/حذف Topside، ترمینال JASK</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">۲۰۲۱</div>
+      <div class="tl-company">Arya Sanat Arvand</div>
+      <div class="tl-role">QC Manager</div>
+      <div class="tl-project">فاز ۱۱B خط لوله دریایی South Pars</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">۲۰۱۹ — ۲۰۲۱</div>
+      <div class="tl-company">Pars Sanat Malmir</div>
+      <div class="tl-role">QC Manager</div>
+      <div class="tl-project">میدان نفتی Froozan، ساخت مخازن LPG فازهای ۲۲/۲۴</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">۲۰۱۵ — ۲۰۱۹</div>
+      <div class="tl-company">Talash Gostar</div>
+      <div class="tl-role">Painting Inspector</div>
+      <div class="tl-project">فازهای ۱۳ و ۲۲/۲۴ South Pars — احداث Topside</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">۲۰۰۹ — ۲۰۱۴</div>
+      <div class="tl-company">Sanat Sazeh Samin / Pars Sanat Malmir / Torgheh Energy</div>
+      <div class="tl-role">Piping & QC Inspector</div>
+      <div class="tl-project">فازهای ۱۲، ۱۷/۱۸، ۱۹ South Pars — شروع مسیر حرفه‌ای در احداث Topside</div>
+    </div>
+  </div>
+
+  <div class="social-row">
+    <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank" rel="noopener noreferrer" class="social-btn">💼 لینکدین</a>
+    <a href="https://instagram.com/piping_studio" target="_blank" rel="noopener noreferrer" class="social-btn">📷 اینستاگرام</a>
+    <a href="mailto:eissa.maredi@gmail.com" class="social-btn">✉️ ایمیل</a>
+  </div>
+</div>
+
+</body>
+</html>
