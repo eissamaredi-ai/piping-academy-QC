@@ -6,18 +6,13 @@
 <title>ورود — Piping Studio</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F1F5F9; color:#0F172A; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; transition:0.3s; }
-  body.dark { background:#0F172A; color:#f1f5f9; }
+  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F1F5F9; color:#0F172A; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
   a { text-decoration:none; }
 
   .top-bar { position:fixed; top:16px; left:16px; right:16px; display:flex; justify-content:space-between; align-items:center; }
   .back-link { color:#64748b; font-size:13px; }
-  body.dark .back-link { color:#94a3b8; }
-  .theme-toggle { background:white; border:1px solid #e2e8f0; border-radius:999px; width:38px; height:38px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; }
-  body.dark .theme-toggle { background:#1e293b; border-color:#334155; }
 
   .card { background:white; border-radius:24px; box-shadow:0 10px 40px rgba(0,0,0,0.08); max-width:380px; width:100%; padding:36px 28px; animation:fadeIn 0.4s ease; }
-  body.dark .card { background:#1e293b; box-shadow:0 10px 40px rgba(0,0,0,0.3); }
   @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
 
   .logo-row { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:22px; }
@@ -28,53 +23,34 @@
   .subtitle { text-align:center; font-size:12.5px; color:#94a3b8; margin-bottom:26px; }
 
   .tabs { display:flex; gap:4px; background:#f1f5f9; border-radius:12px; padding:4px; margin-bottom:24px; }
-  body.dark .tabs { background:#0F172A; }
   .tab { flex:1; text-align:center; padding:9px; border-radius:9px; font-size:13px; font-weight:bold; cursor:pointer; color:#94a3b8; border:none; background:transparent; }
   .tab.active { background:white; color:#2563EB; box-shadow:0 1px 4px rgba(0,0,0,0.08); }
-  body.dark .tab.active { background:#1e293b; color:#06B6D4; }
 
   .field { margin-bottom:16px; }
   .field label { display:block; font-size:12.5px; font-weight:bold; margin-bottom:6px; color:#475569; }
-  body.dark .field label { color:#cbd5e1; }
-  .field input { width:100%; border:1.5px solid #e2e8f0; border-radius:11px; padding:12px 14px; font-size:13.5px; outline:none; transition:0.2s; background:transparent; color:inherit; }
+  .field input { width:100%; border:1.5px solid #e2e8f0; border-radius:11px; padding:12px 14px; font-size:13.5px; outline:none; }
   .field input:focus { border-color:#2563EB; box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
-  body.dark .field input { border-color:#334155; }
   .field-error { font-size:11px; color:#dc2626; margin-top:5px; display:none; }
   .field-error.show { display:block; }
 
   .pw-wrap { position:relative; }
   .pw-toggle { position:absolute; left:12px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:13px; color:#94a3b8; background:none; border:none; }
 
-  .pw-strength { height:4px; border-radius:4px; background:#e2e8f0; margin-top:6px; overflow:hidden; }
-  .pw-strength-bar { height:100%; width:0%; background:#dc2626; transition:0.3s; border-radius:4px; }
-
-  .remember-row { display:flex; align-items:center; gap:8px; font-size:12.5px; color:#64748b; margin-bottom:16px; }
-  body.dark .remember-row { color:#94a3b8; }
-
   .terms-row { display:flex; align-items:flex-start; gap:8px; font-size:12px; color:#64748b; margin-bottom:16px; line-height:1.6; }
-  body.dark .terms-row { color:#94a3b8; }
 
-  .captcha-box { background:#f8fafc; border:1.5px dashed #cbd5e1; border-radius:11px; padding:14px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
-  body.dark .captcha-box { background:#0F172A; border-color:#334155; }
-  .captcha-q { font-weight:bold; font-size:14px; }
-  .captcha-box input { width:70px; text-align:center; border:1.5px solid #e2e8f0; border-radius:8px; padding:8px; font-size:13px; outline:none; background:transparent; color:inherit; }
-  .captcha-refresh { background:none; border:none; cursor:pointer; font-size:15px; color:#2563EB; }
-
-  .btn-primary { width:100%; background:linear-gradient(135deg,#2563EB,#1e40af); color:white; border:none; border-radius:12px; padding:13px; font-size:14px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:0.2s; }
-  .btn-primary:hover { opacity:0.92; }
-  .btn-otp { width:100%; background:transparent; border:1.5px solid #e2e8f0; color:#475569; border-radius:12px; padding:12px; font-size:13px; font-weight:bold; cursor:pointer; margin-top:10px; }
-  body.dark .btn-otp { border-color:#334155; color:#cbd5e1; }
+  .btn-primary { width:100%; background:linear-gradient(135deg,#2563EB,#1e40af); color:white; border:none; border-radius:12px; padding:13px; font-size:14px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .btn-primary:disabled { opacity:0.6; cursor:not-allowed; }
 
   .spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:white; border-radius:50%; animation:spin 0.6s linear infinite; display:none; }
   @keyframes spin { to{transform:rotate(360deg);} }
 
   .bottom-link { text-align:center; font-size:12.5px; color:#64748b; margin-top:18px; }
-  body.dark .bottom-link { color:#94a3b8; }
   .bottom-link a { color:#2563EB; font-weight:bold; }
-  .forgot-link { text-align:center; font-size:12px; color:#94a3b8; margin-top:14px; display:block; }
 
-  .success-toast { position:fixed; top:20px; left:50%; transform:translateX(-50%) translateY(-100px); background:#16a34a; color:white; padding:13px 22px; border-radius:12px; font-size:13px; font-weight:bold; box-shadow:0 6px 20px rgba(0,0,0,0.15); transition:0.4s; z-index:100; }
-  .success-toast.show { transform:translateX(-50%) translateY(0); }
+  .alert-box { border-radius:10px; padding:12px 14px; font-size:12.5px; margin-bottom:16px; display:none; }
+  .alert-box.show { display:block; }
+  .alert-error { background:#fef2f2; color:#991b1b; }
+  .alert-success { background:#f0fdf4; color:#166534; }
 
   .form-page { display:none; }
   .form-page.active { display:block; }
@@ -84,10 +60,7 @@
 
 <div class="top-bar">
   <a href="../" class="back-link">← بازگشت به سایت</a>
-  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
 </div>
-
-<div class="success-toast" id="toast">✓ ثبت‌نام با موفقیت انجام شد</div>
 
 <div class="card">
   <div class="logo-row">
@@ -100,15 +73,16 @@
     <button class="tab" id="tabRegister" onclick="showPage('register')">ثبت‌نام</button>
   </div>
 
+  <div class="alert-box" id="alertBox"></div>
+
   <!-- LOGIN PAGE -->
   <div class="form-page active" id="pageLogin">
     <h1>ورود</h1>
-    <div class="subtitle">با شماره موبایل خودت وارد شو</div>
+    <div class="subtitle">با ایمیل خودت وارد شو</div>
 
     <div class="field">
-      <label>شماره موبایل</label>
-      <input type="tel" placeholder="0912 345 6789" id="loginMobile" maxlength="11" autofocus>
-      <div class="field-error" id="loginMobileErr">شماره موبایل معتبر نیست</div>
+      <label>ایمیل</label>
+      <input type="email" placeholder="example@email.com" id="loginEmail" autofocus>
     </div>
 
     <div class="field">
@@ -119,27 +93,11 @@
       </div>
     </div>
 
-    <div class="captcha-box">
-      <div>
-        <div style="font-size:10px; color:#94a3b8; margin-bottom:3px;">لطفاً پاسخ را به عدد انگلیسی وارد کنید</div>
-        <div class="captcha-q" id="captchaQLogin">12 + هشت = ؟</div>
-      </div>
-      <input type="text" id="captchaAnsLogin" placeholder="?">
-      <button class="captcha-refresh" onclick="refreshCaptcha('Login')">🔄</button>
-    </div>
-
-    <div class="remember-row">
-      <input type="checkbox" id="rememberMe">
-      <label for="rememberMe">مرا به خاطر بسپار</label>
-    </div>
-
-    <button class="btn-primary" onclick="submitForm('login')">
+    <button class="btn-primary" id="btnLogin" onclick="doLogin()">
       <span class="spinner" id="spinnerLogin"></span>
-      <span id="btnTextLogin">ادامه</span>
+      <span id="btnTextLogin">ورود</span>
     </button>
-    <button class="btn-otp">ورود با کد یکبار مصرف (OTP)</button>
 
-    <a href="#" class="forgot-link">رمز عبور را فراموش کرده‌اید؟</a>
     <div class="bottom-link">آیا هنوز عضو نیستید؟ <a href="#" onclick="showPage('register')">اکنون عضو شوید</a></div>
   </div>
 
@@ -154,41 +112,16 @@
     </div>
 
     <div class="field">
-      <label>شماره موبایل</label>
-      <input type="tel" placeholder="0912 345 6789" id="regMobile" maxlength="11">
-      <div class="field-error" id="regMobileErr">شماره موبایل معتبر نیست</div>
-    </div>
-
-    <div class="field">
-      <label>ایمیل (اختیاری)</label>
+      <label>ایمیل</label>
       <input type="email" placeholder="example@email.com" id="regEmail">
     </div>
 
     <div class="field">
-      <label>رمز عبور</label>
+      <label>رمز عبور (حداقل ۶ کاراکتر)</label>
       <div class="pw-wrap">
-        <input type="password" placeholder="••••••••" id="regPass" oninput="checkStrength()">
+        <input type="password" placeholder="••••••••" id="regPass">
         <button class="pw-toggle" onclick="togglePw('regPass', this)">👁️</button>
       </div>
-      <div class="pw-strength"><div class="pw-strength-bar" id="strengthBar"></div></div>
-    </div>
-
-    <div class="field">
-      <label>تکرار رمز عبور</label>
-      <div class="pw-wrap">
-        <input type="password" placeholder="••••••••" id="regPass2">
-        <button class="pw-toggle" onclick="togglePw('regPass2', this)">👁️</button>
-      </div>
-      <div class="field-error" id="regPassErr">رمزهای عبور یکسان نیستند</div>
-    </div>
-
-    <div class="captcha-box">
-      <div>
-        <div style="font-size:10px; color:#94a3b8; margin-bottom:3px;">لطفاً پاسخ را به عدد انگلیسی وارد کنید</div>
-        <div class="captcha-q" id="captchaQReg">12 + هشت = ؟</div>
-      </div>
-      <input type="text" id="captchaAnsReg" placeholder="?">
-      <button class="captcha-refresh" onclick="refreshCaptcha('Reg')">🔄</button>
     </div>
 
     <div class="terms-row">
@@ -196,7 +129,7 @@
       <label for="termsCheck">قوانین و شرایط استفاده را می‌پذیرم.</label>
     </div>
 
-    <button class="btn-primary" onclick="submitForm('register')">
+    <button class="btn-primary" id="btnReg" onclick="doRegister()">
       <span class="spinner" id="spinnerReg"></span>
       <span id="btnTextReg">ثبت نام</span>
     </button>
@@ -205,12 +138,46 @@
   </div>
 </div>
 
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import {
+    getFirestore, doc, setDoc
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCtBH1hokpEapFxCZn93Vj_TAPbO9ZsP7s",
+    authDomain: "piping-academy-qc.firebaseapp.com",
+    projectId: "piping-academy-qc",
+    storageBucket: "piping-academy-qc.firebasestorage.app",
+    messagingSenderId: "169266591577",
+    appId: "1:169266591577:web:55cc9e5131c0c3fbc13e48"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  window.firebaseAuth = auth;
+  window.firebaseDb = db;
+  window.fb_createUser = createUserWithEmailAndPassword;
+  window.fb_signIn = signInWithEmailAndPassword;
+  window.fb_updateProfile = updateProfile;
+  window.fb_doc = doc;
+  window.fb_setDoc = setDoc;
+  window.firebaseReady = true;
+</script>
+
 <script>
 function showPage(page) {
   document.getElementById('pageLogin').classList.toggle('active', page === 'login');
   document.getElementById('pageRegister').classList.toggle('active', page === 'register');
   document.getElementById('tabLogin').classList.toggle('active', page === 'login');
   document.getElementById('tabRegister').classList.toggle('active', page === 'register');
+  hideAlert();
 }
 
 function togglePw(id, btn) {
@@ -219,85 +186,77 @@ function togglePw(id, btn) {
   btn.textContent = inp.type === 'password' ? '👁️' : '🙈';
 }
 
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-  document.getElementById('themeBtn').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+function showAlert(msg, type) {
+  const box = document.getElementById('alertBox');
+  box.textContent = msg;
+  box.className = 'alert-box show ' + (type === 'error' ? 'alert-error' : 'alert-success');
+}
+function hideAlert() {
+  document.getElementById('alertBox').className = 'alert-box';
 }
 
-const persianDigits = ['صفر','یک','دو','سه','چهار','پنج','شش','هفت','هشت','نه','ده'];
-let captchaAnswers = {};
-
-function genCaptcha(key) {
-  const a = Math.floor(Math.random() * 15) + 1;
-  const b = Math.floor(Math.random() * 10) + 1;
-  captchaAnswers[key] = a + b;
-  document.getElementById('captchaQ' + key).textContent = `${a} + ${persianDigits[b] || b} = ؟`;
-}
-function refreshCaptcha(key) { genCaptcha(key); }
-genCaptcha('Login');
-genCaptcha('Reg');
-
-function validateMobile(num) {
-  return /^09\d{9}$/.test(num);
+function setLoading(btnId, spinnerId, textId, loading, loadingText, normalText) {
+  document.getElementById(btnId).disabled = loading;
+  document.getElementById(spinnerId).style.display = loading ? 'inline-block' : 'none';
+  document.getElementById(textId).textContent = loading ? loadingText : normalText;
 }
 
-function checkStrength() {
-  const pw = document.getElementById('regPass').value;
-  let score = 0;
-  if (pw.length >= 6) score += 30;
-  if (pw.length >= 10) score += 20;
-  if (/[A-Z]/.test(pw)) score += 20;
-  if (/[0-9]/.test(pw)) score += 15;
-  if (/[^A-Za-z0-9]/.test(pw)) score += 15;
-  const bar = document.getElementById('strengthBar');
-  bar.style.width = Math.min(score, 100) + '%';
-  bar.style.background = score < 40 ? '#dc2626' : score < 70 ? '#f59e0b' : '#16a34a';
+function translateError(code) {
+  const map = {
+    'auth/email-already-in-use': 'این ایمیل قبلاً ثبت‌نام شده است',
+    'auth/invalid-email': 'ایمیل معتبر نیست',
+    'auth/weak-password': 'رمز عبور باید حداقل ۶ کاراکتر باشد',
+    'auth/user-not-found': 'حسابی با این ایمیل یافت نشد',
+    'auth/wrong-password': 'رمز عبور اشتباه است',
+    'auth/invalid-credential': 'ایمیل یا رمز عبور اشتباه است',
+    'auth/too-many-requests': 'تعداد تلاش‌ها زیاد بود، کمی صبر کنید'
+  };
+  return map[code] || 'خطایی رخ داد، دوباره تلاش کنید';
 }
 
-function submitForm(type) {
-  if (type === 'login') {
-    const mobile = document.getElementById('loginMobile').value;
-    const err = document.getElementById('loginMobileErr');
-    if (!validateMobile(mobile)) { err.classList.add('show'); return; }
-    err.classList.remove('show');
-    const ans = document.getElementById('captchaAnsLogin').value;
-    if (parseInt(ans) !== captchaAnswers['Login']) { alert('پاسخ کپچا اشتباه است'); return; }
+async function doRegister() {
+  hideAlert();
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const pass = document.getElementById('regPass').value;
+  const terms = document.getElementById('termsCheck').checked;
 
-    const spinner = document.getElementById('spinnerLogin');
-    const btnText = document.getElementById('btnTextLogin');
-    spinner.style.display = 'inline-block'; btnText.textContent = 'در حال ورود...';
-    setTimeout(() => {
-      spinner.style.display = 'none'; btnText.textContent = 'ادامه';
-      alert('این یک نمونه‌ی نمایشی است — سیستم لاگین واقعی هنوز متصل نشده.');
-    }, 1200);
+  if (!name) { showAlert('لطفاً نام خود را وارد کنید', 'error'); return; }
+  if (!email) { showAlert('لطفاً ایمیل را وارد کنید', 'error'); return; }
+  if (pass.length < 6) { showAlert('رمز عبور باید حداقل ۶ کاراکتر باشد', 'error'); return; }
+  if (!terms) { showAlert('باید قوانین و شرایط را بپذیرید', 'error'); return; }
 
-  } else {
-    const mobile = document.getElementById('regMobile').value;
-    const err = document.getElementById('regMobileErr');
-    if (!validateMobile(mobile)) { err.classList.add('show'); return; }
-    err.classList.remove('show');
-
-    const p1 = document.getElementById('regPass').value;
-    const p2 = document.getElementById('regPass2').value;
-    const perr = document.getElementById('regPassErr');
-    if (p1 !== p2 || p1.length < 6) { perr.classList.add('show'); return; }
-    perr.classList.remove('show');
-
-    if (!document.getElementById('termsCheck').checked) { alert('باید قوانین و شرایط را بپذیرید'); return; }
-
-    const ans = document.getElementById('captchaAnsReg').value;
-    if (parseInt(ans) !== captchaAnswers['Reg']) { alert('پاسخ کپچا اشتباه است'); return; }
-
-    const spinner = document.getElementById('spinnerReg');
-    const btnText = document.getElementById('btnTextReg');
-    spinner.style.display = 'inline-block'; btnText.textContent = 'در حال ثبت‌نام...';
-    setTimeout(() => {
-      spinner.style.display = 'none'; btnText.textContent = 'ثبت نام';
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3000);
-    }, 1200);
+  setLoading('btnReg', 'spinnerReg', 'btnTextReg', true, 'در حال ثبت‌نام...', 'ثبت نام');
+  try {
+    const cred = await window.fb_createUser(window.firebaseAuth, email, pass);
+    await window.fb_updateProfile(cred.user, { displayName: name });
+    await window.fb_setDoc(window.fb_doc(window.firebaseDb, 'users', cred.user.uid), {
+      name: name, email: email, createdAt: new Date().toISOString()
+    });
+    showAlert('✓ ثبت‌نام با موفقیت انجام شد', 'success');
+    setTimeout(() => { window.location.href = '../'; }, 1500);
+  } catch (e) {
+    showAlert(translateError(e.code), 'error');
   }
+  setLoading('btnReg', 'spinnerReg', 'btnTextReg', false, '', 'ثبت نام');
+}
+
+async function doLogin() {
+  hideAlert();
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+
+  if (!email || !pass) { showAlert('لطفاً ایمیل و رمز عبور را وارد کنید', 'error'); return; }
+
+  setLoading('btnLogin', 'spinnerLogin', 'btnTextLogin', true, 'در حال ورود...', 'ورود');
+  try {
+    await window.fb_signIn(window.firebaseAuth, email, pass);
+    showAlert('✓ ورود موفقیت‌آمیز بود', 'success');
+    setTimeout(() => { window.location.href = '../'; }, 1200);
+  } catch (e) {
+    showAlert(translateError(e.code), 'error');
+  }
+  setLoading('btnLogin', 'spinnerLogin', 'btnTextLogin', false, '', 'ورود');
 }
 </script>
 
