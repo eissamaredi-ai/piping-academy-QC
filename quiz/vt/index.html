@@ -4,100 +4,149 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>آزمون VT — آکادمی پایپینگ و جوشکاری</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  body { font-family:"Vazirmatn","Inter",sans-serif; background:#F8FAFC; color:#0F172A; }
   a { text-decoration:none; color:inherit; }
+
   .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
   .navbar-inner { max-width:600px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:13px; }
-  .logo-icon { width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:13px; }
-  .back-link { color:#94a3b8; font-size:12px; }
+  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:700; font-size:13px; }
+  .logo-icon { width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:800; }
+  .back-link { color:#94a3b8; font-size:12px; font-family:"Vazirmatn","Inter",sans-serif; }
+  .back-link:hover { color:#06B6D4; }
 
   .wrap { max-width:560px; margin:0 auto; padding:30px 20px 60px; }
-  .quiz-meta { display:flex; justify-content:space-between; font-size:12px; color:#64748b; margin-bottom:10px; }
+  .quiz-meta { display:flex; justify-content:space-between; font-size:12px; color:#64748b; margin-bottom:10px; font-family:"Vazirmatn","Inter",sans-serif; }
+  .quiz-badge { display:inline-flex; align-items:center; gap:6px; background:#ecfeff; border:1px solid #a5f3fc; color:#0891B2; font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; margin-bottom:14px; font-family:"Inter","Vazirmatn",sans-serif; }
+
   .dots { display:flex; justify-content:center; gap:6px; margin-bottom:20px; }
-  .dot { width:10px; height:10px; border-radius:50%; background:#e2e8f0; }
+  .dot { width:10px; height:10px; border-radius:50%; background:#e2e8f0; transition:0.2s; }
   .dot.current { background:#2563EB; transform:scale(1.3); }
   .dot.correct { background:#16a34a; }
   .dot.wrong { background:#dc2626; }
 
   .qcard { background:white; border:1px solid #e2e8f0; border-radius:16px; padding:24px; box-shadow:0 1px 6px rgba(0,0,0,0.05); }
-  .qtext { font-size:15px; font-weight:bold; line-height:1.7; margin-bottom:20px; }
-  .opt { display:block; width:100%; text-align:right; border:2px solid #e2e8f0; border-radius:12px; padding:13px 14px; font-size:13px; margin-bottom:10px; background:white; cursor:pointer; color:#334155; }
-  .opt.selected { border-color:#2563EB; background:#eff6ff; }
+  .qref { font-family:"Inter","Vazirmatn",sans-serif; font-size:10px; color:#94a3b8; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; }
+  .qtext { font-family:"Vazirmatn","Inter",sans-serif; font-size:15px; font-weight:700; line-height:1.75; margin-bottom:20px; color:#0F172A; }
+
+  .opt { display:flex; align-items:center; gap:10px; width:100%; text-align:right; border:2px solid #e2e8f0; border-radius:12px; padding:13px 14px; font-size:13px; margin-bottom:10px; background:white; cursor:pointer; color:#334155; font-family:"Vazirmatn","Inter",sans-serif; transition:0.15s; }
+  .opt:hover:not(:disabled) { border-color:#93c5fd; background:#f8faff; }
+  .opt .opt-label { width:26px; height:26px; border-radius:6px; background:#f1f5f9; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#64748b; flex-shrink:0; font-family:"Inter",sans-serif; }
+  .opt.selected .opt-label { background:#2563EB; color:white; }
   .opt.correct { border-color:#16a34a; background:#f0fdf4; }
+  .opt.correct .opt-label { background:#16a34a; color:white; }
   .opt.wrong { border-color:#dc2626; background:#fef2f2; }
-  .explain { background:#eff6ff; border-right:4px solid #2563EB; border-radius:8px; padding:12px; font-size:12px; line-height:1.7; margin-top:14px; color:#334155; display:none; }
+  .opt.wrong .opt-label { background:#dc2626; color:white; }
+
+  .explain { background:#eff6ff; border-right:4px solid #2563EB; border-radius:8px; padding:14px; font-size:12px; line-height:1.8; margin-top:14px; color:#1e3a5f; display:none; font-family:"Vazirmatn","Inter",sans-serif; }
   .explain.show { display:block; }
+  .explain strong { font-family:"Inter","Vazirmatn",sans-serif; color:#2563EB; }
 
   .nav-row { display:flex; justify-content:space-between; margin-top:20px; }
-  .btn { font-size:13px; font-weight:bold; padding:10px 22px; border-radius:10px; border:none; cursor:pointer; }
-  .btn-prev { background:transparent; color:#64748b; }
-  .btn-next { background:#2563EB; color:white; }
+  .btn { font-size:13px; font-weight:700; padding:10px 22px; border-radius:10px; border:none; cursor:pointer; font-family:"Vazirmatn","Inter",sans-serif; }
+  .btn-prev { background:transparent; color:#64748b; border:1px solid #e2e8f0; }
+  .btn-next { background:#2563EB; color:white; transition:0.2s; }
+  .btn-next:hover:not(:disabled) { background:#1d4ed8; }
   .btn-next:disabled { opacity:0.4; cursor:not-allowed; }
 
-  .result { text-align:center; }
-  .result-icon { font-size:50px; margin-bottom:10px; }
-  .score { font-size:42px; font-weight:bold; margin:10px 0; }
-  .restart { background:#2563EB; color:white; font-size:13px; font-weight:bold; padding:12px 24px; border-radius:10px; border:none; cursor:pointer; margin-top:16px; }
+  .result { text-align:center; padding:10px 0; }
+  .result-emoji { font-size:48px; margin-bottom:12px; }
+  .result-title { font-family:"Vazirmatn","Inter",sans-serif; font-weight:800; font-size:17px; margin-bottom:6px; }
+  .score { font-size:44px; font-weight:800; margin:8px 0; font-family:"Inter","Vazirmatn",sans-serif; }
+  .score-sub { font-size:12px; color:#64748b; font-family:"Vazirmatn","Inter",sans-serif; }
+  .restart { background:#2563EB; color:white; font-size:13px; font-weight:700; padding:12px 28px; border-radius:10px; border:none; cursor:pointer; margin-top:20px; font-family:"Vazirmatn","Inter",sans-serif; }
+  .restart:hover { background:#1d4ed8; }
 </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
+    <div class="logo">
+      <div class="logo-icon">PS</div>
+      آکادمی پایپینگ و جوشکاری
+    </div>
     <a href="../" class="back-link">← بازگشت به آزمون‌ها</a>
   </div>
 </nav>
 
 <div class="wrap">
+  <div class="quiz-badge">VT — Visual Testing</div>
   <div class="quiz-meta">
-    <span>آزمون VT — بازرسی بصری</span>
+    <span>بازرسی چشمی جوش</span>
     <span id="counter">سوال ۱ از ۵</span>
   </div>
   <div class="dots" id="dots"></div>
-
   <div class="qcard" id="quizCard"></div>
-
   <div class="nav-row" id="navRow" style="display:none;">
     <button class="btn btn-prev" id="prevBtn">→ قبلی</button>
-    <button class="btn btn-next" id="nextBtn" disabled>بعدی</button>
+    <button class="btn btn-next" id="nextBtn" disabled>بعدی ←</button>
   </div>
 </div>
 
 <script>
 const questions = [
   {
-    q: "بازرسی بصری (VT) معمولاً اولین مرحله از کدام دسته تست‌هاست؟",
-    options: ["تست‌های مخرب", "تست‌های غیرمخرب (NDT)", "تست‌های شیمیایی", "تست‌های فشار"],
-    correct: 1,
-    explain: "VT جزو تست‌های غیرمخرب (NDT) است و معمولاً ساده‌ترین و اولین سطح بازرسی روی هر جوش یا قطعه است."
-  },
-  {
-    q: "کدام عیب جوش معمولاً با VT به‌تنهایی به‌خوبی قابل تشخیص است؟",
-    options: ["Lack of Fusion داخلی", "Undercut سطحی", "Lack of Penetration عمیق", "Porosity داخلی"],
-    correct: 1,
-    explain: "Undercut یک عیب سطحی و قابل‌مشاهده است. عیوب داخلی مثل Lack of Fusion یا Porosity داخلی نیاز به تست‌های حجمی مثل UT یا RT دارند."
-  },
-  {
-    q: "برای بازرسی بصری دقیق در فضای کم‌نور، کدام ابزار معمولاً استفاده می‌شود؟",
-    options: ["میکرومتر", "چراغ قوه یا منبع نور کمکی + ذره‌بین", "دستگاه XRF", "ترموکوپل"],
-    correct: 1,
-    explain: "نور کافی و ذره‌بین (Magnifying Glass) برای دیدن جزئیات سطحی جوش از ابزارهای پایه‌ی VT هستند."
-  },
-  {
-    q: "کدام مورد جزو موارد بررسی رایج در VT نیست؟",
-    options: ["Spatter", "Undercut", "ترکیب شیمیایی فلز پایه", "Overlap"],
+    ref: "ASME Section V — Article 9, T-952",
+    q: "حداقل شدت روشنایی توصیه‌شده برای انجام Direct Visual Examination طبق ASME Section V چقدر است؟",
+    options: ["100 Lux (10 fc)", "250 Lux (25 fc)", "500 Lux (50 fc)", "1000 Lux (100 fc)"],
+    labels: ["A", "B", "C", "D"],
     correct: 2,
-    explain: "ترکیب شیمیایی فلز پایه نیاز به تست متالورژیکی یا PMI دارد، نه بازرسی بصری ساده."
+    explain: "<strong>ASME Section V, Article 9, T-952:</strong> حداقل شدت نور برای Direct VT برابر ۱۰۰۰ Lux (یا ۱۰۰ foot-candles) است — نه ۵۰۰. گزینه C (500 Lux) اشتباه رایجی است که در میدان زیاد می‌شنوی. مقدار درست را حفظ کن."
   },
   {
-    q: "اگر در بازرسی بصری یک ترک سطحی مشاهده شود، قدم بعدی منطقی چیست؟",
-    options: ["نادیده گرفتن و ادامه‌ی کار", "ثبت یافته و توقف برای بررسی بیشتر/اصلاح", "فقط گزارش شفاهی بدون مستندسازی", "افزایش آمپراژ دستگاه جوش"],
+    ref: "ASME Section V — Article 9, T-952.1",
+    q: "در Remote Visual Examination (RVE)، رزولوشن سیستم تصویربرداری باید چه توانایی حداقلی داشته باشد؟",
+    options: [
+      "تشخیص خط ۰.۸ mm روی هدف کالیبراسیون",
+      "تشخیص خط ۱.۵ mm روی هدف کالیبراسیون",
+      "معادل دید مستقیم چشم — تشخیص الگوی ۴:۱ بر روی IQI",
+      "هیچ الزام رزولوشن مشخصی ندارد"
+    ],
+    labels: ["A", "B", "C", "D"],
+    correct: 0,
+    explain: "<strong>ASME Section V, T-952.1:</strong> سیستم RVE باید حداقل توانایی تشخیص خط ۰.۸ mm (۱/۳۲ inch) روی یک هدف کالیبراسیون را داشته باشد تا با Direct VT معادل تلقی شود."
+  },
+  {
+    ref: "AWS D1.1:2020 — Clause 8.9 / API RP 577",
+    q: "طبق AWS D1.1، بازرس VT باید جوش را از فاصله حداکثر چقدر و با زاویه حداقل چقدر بررسی کند؟",
+    options: [
+      "فاصله ۶۰۰ mm — زاویه حداقل ۱۵ درجه نسبت به سطح",
+      "فاصله ۶۰۰ mm — زاویه حداقل ۳۰ درجه نسبت به سطح",
+      "فاصله ۱۰۰۰ mm — زاویه حداقل ۴۵ درجه نسبت به سطح",
+      "هیچ محدودیت فاصله یا زاویه‌ای تعریف نشده"
+    ],
+    labels: ["A", "B", "C", "D"],
     correct: 1,
-    explain: "هر ترک مشاهده‌شده باید فوراً مستند و متوقف شود تا علت بررسی و رفع شود — ادامه‌ی کار روی یک عیب بحرانی مثل ترک قابل قبول نیست."
+    explain: "<strong>AWS D1.1, Clause 8.9:</strong> بازرسی چشمی باید از فاصله حداکثر ۶۰۰ mm (24 inch) و با زاویه حداقل ۳۰ درجه نسبت به سطح مورد بررسی انجام شود. نقض این دو پارامتر نتیجه VT را بی‌اعتبار می‌کند."
+  },
+  {
+    ref: "ASME B31.3 — Table 341.3.2 / AWS D1.1",
+    q: "Undercut روی جوش لوله با سرویس Normal Fluid طبق ASME B31.3 در چه شرایطی قابل قبول است؟",
+    options: [
+      "عمق ≤ ۱ mm و طول نامحدود",
+      "عمق ≤ ۰.۸ mm و طول ≤ ۵۰ mm در هر ۳۰۰ mm جوش",
+      "عمق ≤ ۱۰٪ ضخامت جداره یا ۰.۸ mm (هر کدام کمتر) — طول ≤ ۵۰ mm در هر ۳۰۰ mm",
+      "هر عمقی قابل قبول است مشروط به اینکه گرد و تدریجی باشد"
+    ],
+    labels: ["A", "B", "C", "D"],
+    correct: 2,
+    explain: "<strong>ASME B31.3, Table 341.3.2:</strong> Undercut قابل قبول: عمق ≤ ۱۰٪ ضخامت جداره یا ≤ ۰.۸ mm (کوچکتر ملاک است) و طول تجمعی ≤ ۵۰ mm در هر ۳۰۰ mm طول جوش. توجه: برای Severe Cyclic Conditions معیار سخت‌تر است."
+  },
+  {
+    ref: "API RP 577 — Section 7.3",
+    q: "طبق API RP 577، کدام عیب جوش به‌صورت مطلق (Absolute — صرف‌نظر از اندازه) در VT رد می‌شود؟",
+    options: [
+      "Porosity سطحی با قطر < ۱.۵ mm",
+      "Undercut با عمق < ۰.۵ mm",
+      "ترک (Crack) در هر اندازه‌ای",
+      "Overlap با طول < ۵ mm"
+    ],
+    labels: ["A", "B", "C", "D"],
+    correct: 2,
+    explain: "<strong>API RP 577, Section 7.3:</strong> ترک (Crack) در هر نوع، هر اندازه و هر موقعیتی — سطحی یا داخلی — به‌صورت مطلق رد است و هیچ Acceptance Criteria اندازه‌محور برای آن وجود ندارد. این قانون در ASME B31.3, AWS D1.1 و اکثر کدهای فشار نیز یکسان است."
   }
 ];
 
@@ -124,24 +173,27 @@ function renderQuestion() {
   const card = document.getElementById('quizCard');
   const answered = answers[current] !== undefined;
 
-  let html = `<div class="qtext">${q.q}</div>`;
+  let html = `<div class="qref">${q.ref}</div><div class="qtext">${q.q}</div>`;
   q.options.forEach((opt, i) => {
     let cls = 'opt';
     if (answered) {
       if (i === q.correct) cls += ' correct';
-      else if (i === answers[current]) cls += ' wrong';
+      else if (i === answers[current] && i !== q.correct) cls += ' wrong';
     }
-    html += `<button class="${cls}" onclick="selectAnswer(${i})" ${answered ? 'disabled' : ''}>${opt}</button>`;
+    html += `<button class="${cls}" onclick="selectAnswer(${i})" ${answered ? 'disabled' : ''}>
+      <span class="opt-label">${q.labels[i]}</span>
+      <span>${opt}</span>
+    </button>`;
   });
   if (answered) {
-    html += `<div class="explain show"><strong>توضیح:</strong> ${q.explain}</div>`;
+    html += `<div class="explain show">${q.explain}</div>`;
   }
   card.innerHTML = html;
 
   document.getElementById('navRow').style.display = 'flex';
   document.getElementById('prevBtn').style.visibility = current === 0 ? 'hidden' : 'visible';
   document.getElementById('nextBtn').disabled = !answered;
-  document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'پایان آزمون' : 'بعدی';
+  document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'پایان آزمون' : 'بعدی ←';
   renderDots();
 }
 
@@ -156,25 +208,22 @@ document.getElementById('prevBtn').addEventListener('click', () => {
 });
 
 document.getElementById('nextBtn').addEventListener('click', () => {
-  if (current === questions.length - 1) {
-    showResult();
-  } else {
-    current++; renderQuestion();
-  }
+  if (current === questions.length - 1) showResult();
+  else { current++; renderQuestion(); }
 });
 
 function showResult() {
-  const score = Object.entries(answers).filter(([i, a]) => a === questions[i].correct).length;
+  const score = Object.entries(answers).filter(([i, a]) => parseInt(a) === questions[i].correct).length;
   const pct = Math.round((score / questions.length) * 100);
-  const passed = pct >= 70;
+  const passed = pct >= 80;
   document.getElementById('navRow').style.display = 'none';
   document.getElementById('dots').style.display = 'none';
   document.getElementById('quizCard').innerHTML = `
     <div class="result">
-      <div class="result-icon">${passed ? '🏆' : '📋'}</div>
-      <div style="font-weight:bold;font-size:16px;">${passed ? 'تبریک! آزمون VT را قبول شدی' : 'نمره کافی نبود'}</div>
+      <div class="result-emoji">${passed ? '🏆' : '📋'}</div>
+      <div class="result-title">${passed ? 'آزمون VT با موفقیت پاس شد' : 'نمره کافی نبود — مرور کن و دوباره تلاش کن'}</div>
       <div class="score" style="color:${passed ? '#16a34a' : '#dc2626'}">${pct}٪</div>
-      <div style="font-size:12px;color:#64748b;">${score} پاسخ صحیح از ${questions.length} سوال</div>
+      <div class="score-sub">${score} پاسخ صحیح از ${questions.length} سوال</div>
       <button class="restart" onclick="location.reload()">تلاش دوباره</button>
     </div>
   `;
@@ -182,6 +231,5 @@ function showResult() {
 
 renderQuestion();
 </script>
-
 </body>
 </html>
