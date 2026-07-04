@@ -4,126 +4,1315 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ساخت و مونتاژ پایپینگ — آکادمی پایپینگ و جوشکاری</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
-  a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#06B6D4; }
+  :root {
+    --bg: #0a0e1a;
+    --bg-soft: #111827;
+    --bg-card: #171f34;
+    --border: #2a3350;
+    --text: #e8ecf5;
+    --text-muted: #8b94ad;
+    --primary: #10b981;
+    --primary-dark: #059669;
+    --accent: #f59e0b;
+    --danger: #ef4444;
+    --purple: #a855f7;
+    --indigo: #6366f1;
+    --blue: #3b82f6;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  [data-theme="light"] {
+    --bg: #f8fafc;
+    --bg-soft: #ffffff;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.05);
+  }
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#2563EB; font-weight:bold; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
-  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+  body {
+    font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
+  a { text-decoration: none; color: inherit; }
 
-  .stage-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:16px 0; }
-  .stage-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; }
-  .stage-name { font-weight:bold; font-size:13px; margin-bottom:4px; color:#0F172A; }
-  .stage-desc { font-size:12px; color:#64748b; line-height:1.6; }
+  .en, code, .num {
+    font-family: 'Inter', monospace;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+  }
 
-  table { width:100%; border-collapse:collapse; margin:16px 0; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
-  th { background:#0F172A; color:white; padding:10px 12px; text-align:right; }
-  td { padding:10px 12px; border-top:1px solid #f1f5f9; }
-  tr:nth-child(even) td { background:#f8fafc; }
+  /* ===== Navbar ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 14, 26, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-theme="light"] .navbar { background: rgba(248, 250, 252, 0.92); }
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#2563EB; color:white; }
+  .navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 4px 14px rgba(16,185,129,0.35);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .back-link {
+    color: var(--text-muted);
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .theme-toggle {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+  .theme-toggle:hover { transform: rotate(15deg); }
+
+  /* ===== Breadcrumb ===== */
+  .breadcrumb {
+    max-width: 960px;
+    margin: 24px auto 0;
+    padding: 0 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .breadcrumb span {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* ===== Content ===== */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 24px 80px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    margin-bottom: 32px;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    background: #0a0e1a;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,26,0.2) 0%, rgba(10,14,26,0.95) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.4);
+    color: #34d399;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .hero .subtitle {
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+  }
+
+  /* ===== Section Title ===== */
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 36px 0 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: '';
+    width: 5px;
+    height: 26px;
+    background: linear-gradient(180deg, #10b981, #06b6d4);
+    border-radius: 3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 18px 0 10px;
+    color: var(--text);
+  }
+
+  p.lead {
+    line-height: 2;
+    margin-bottom: 18px;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  /* ===== Callouts ===== */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 13.5px;
+    line-height: 1.9;
+    border-right: 4px solid;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .callout-def { border-right-color: var(--primary); }
+  .callout-warn { border-right-color: var(--accent); }
+  .callout-tip { border-right-color: var(--cyan); }
+  .callout-danger { border-right-color: var(--danger); }
+
+  .callout-label {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .callout-def .callout-label { color: var(--primary); }
+  .callout-warn .callout-label { color: var(--accent); }
+  .callout-tip .callout-label { color: var(--cyan); }
+  .callout-danger .callout-label { color: var(--danger); }
+
+  /* ===== Stage Grid (مراحل) ===== */
+  .stage-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+    position: relative;
+  }
+  .stage-timeline::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(180deg, #10b981, #06b6d4, #a855f7);
+    opacity: 0.3;
+  }
+
+  .stage-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px 20px 22px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .stage-card:hover {
+    transform: translateX(-4px);
+    border-color: var(--stage-color, var(--primary));
+  }
+
+  .stage-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--stage-color, var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: white;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .stage-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--text);
+  }
+  .stage-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    color: var(--primary);
+    margin-bottom: 10px;
+    direction: ltr;
+    text-align: right;
+    display: block;
+  }
+  .stage-desc {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  .stage-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stage-items li {
+    padding: 3px 0;
+    padding-right: 16px;
+    position: relative;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .stage-items li::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 11px;
+    width: 5px;
+    height: 5px;
+    background: var(--stage-color, var(--primary));
+    border-radius: 50%;
+  }
+  .stage-items li strong { color: var(--text); }
+
+  /* ===== Table ===== */
+  .table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: 18px 0;
+  }
+  .table-scroll { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+  }
+  thead { background: var(--bg-soft); }
+  th {
+    padding: 14px 16px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+    text-align: right;
+    color: var(--text);
+  }
+  tbody tr { transition: background 0.2s; }
+  tbody tr:hover { background: var(--bg-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .td-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .td-warn {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ===== Fit-Up Visual ===== */
+  .fitup-visual {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 26px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fitup-visual::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(16,185,129,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+  .fitup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .fitup-item {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .fitup-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    background: var(--item-color, var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin: 0 auto 10px;
+  }
+  .fitup-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  .fitup-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--primary);
+    direction: ltr;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .fitup-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--item-color, var(--primary));
+    margin-bottom: 4px;
+  }
+  .fitup-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ===== Key Concepts ===== */
+  .concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .concept-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .concept-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-color, var(--primary));
+  }
+  .concept-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--card-color, var(--primary));
+  }
+  .concept-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--card-color, var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+  .concept-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .concept-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    color: var(--primary);
+    margin-bottom: 10px;
+    direction: ltr;
+    text-align: right;
+    display: block;
+  }
+  .concept-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ===== Welding Methods ===== */
+  .weld-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .weld-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .weld-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-color, var(--primary));
+  }
+  .weld-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--card-color, var(--primary));
+  }
+  .weld-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .weld-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--card-color, var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+  .weld-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .weld-code {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    color: var(--primary);
+    direction: ltr;
+    text-align: right;
+  }
+  .weld-list {
+    list-style: none;
+  }
+  .weld-list li {
+    padding: 4px 0;
+    padding-right: 16px;
+    position: relative;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .weld-list li::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 5px;
+    height: 5px;
+    background: var(--card-color, var(--primary));
+    border-radius: 50%;
+  }
+  .weld-list li strong { color: var(--text); }
+
+  /* ===== Testing Box ===== */
+  .test-box {
+    background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(245,158,11,0.04));
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 18px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .test-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .test-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #ef4444, #f59e0b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 6px 18px rgba(239,68,68,0.35);
+  }
+  .test-header h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .test-header p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .test-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .test-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .test-item-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .test-item p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .test-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    padding: 2px 7px;
+    background: rgba(245,158,11,0.15);
+    border-radius: 5px;
+  }
+
+  /* ===== Nav Footer ===== */
+  .nav-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-prev { color: var(--text-muted); }
+  .nav-prev:hover { color: var(--text); border-color: var(--primary); }
+  .nav-next {
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 6px 18px rgba(16,185,129,0.3);
+  }
+  .nav-next:hover { transform: translateY(-2px); }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 0;
+  }
+  footer p {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    margin-bottom: 4px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 22px; }
+    h2 { font-size: 18px; }
+    .navbar-inner { padding: 12px 16px; }
+    .content { padding: 16px 16px 60px; }
+    .stage-timeline::before { display: none; }
+    .stage-card { grid-template-columns: 1fr; }
+    .stage-num { width: 42px; height: 42px; font-size: 16px; }
+  }
+
+  /* ===== Animations ===== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .callout, .stage-card, .concept-card, .weld-card, .fitup-item {
+    animation: fadeInUp 0.5s ease-out backwards;
+  }
+  .stage-card:nth-child(1) { animation-delay: 0.05s; }
+  .stage-card:nth-child(2) { animation-delay: 0.1s; }
+  .stage-card:nth-child(3) { animation-delay: 0.15s; }
+  .stage-card:nth-child(4) { animation-delay: 0.2s; }
+  .stage-card:nth-child(5) { animation-delay: 0.25s; }
+  .stage-card:nth-child(6) { animation-delay: 0.3s; }
+  .stage-card:nth-child(7) { animation-delay: 0.35s; }
+  .stage-card:nth-child(8) { animation-delay: 0.4s; }
+  .stage-card:nth-child(9) { animation-delay: 0.45s; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+    <div class="logo">
+      <div class="logo-icon">⬡</div>
+      <span>آکادمی پایپینگ و جوشکاری</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#planning">برنامه‌ریزی</a></li>
+      <li><a href="#cutting">برش و آماده‌سازی</a></li>
+      <li><a href="#fitup">Fit-Up</a></li>
+      <li><a href="#welding">جوشکاری</a></li>
+      <li><a href="#installation">نصب نهایی</a></li>
+      <li><a href="#testing">تست و بازرسی</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="../04-isometric/" class="back-link">← فصل قبل</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="تغییر تم">🌙</button>
+    </div>
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۵ — ساخت و مونتاژ</span></div>
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  آموزش پایپینگ ← <span>فصل ۵ — ساخت و مونتاژ پایپینگ</span>
+</div>
 
+<!-- Content -->
 <div class="content">
-  <h1>ساخت و مونتاژ پایپینگ</h1>
-  <div class="subtitle">از برش اولیه تا نصب نهایی — مراحل کنترل کیفیت در هر گام</div>
 
-  <p class="lead">فرآیند ساخت یک خط لوله صنعتی شامل چندین مرحله‌ی متوالی است که هرکدام نقاط بازرسی (Hold Point یا Witness Point) مشخص خود را دارند. خطای کنترل‌نشده در هر مرحله — حتی یک میلی‌متر انحراف در Fit-Up — می‌تواند در مراحل بعدی تشدید شده و منجر به رد قطعه شود.</p>
+  <!-- Hero -->
+  <div class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Piping Fabrication">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🔧 فصل پنجم — جزوه بازرسی فنی پایپینگ</div>
+      <h1>ساخت و مونتاژ پایپینگ</h1>
+      <div class="subtitle">از طراحی اولیه و برش تا جوشکاری، نصب نهایی و تست — مراحل کنترل کیفیت در هر گام</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">9</div>
+          <div class="hero-stat-label">مرحله کلیدی</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">37.5°</div>
+          <div class="hero-stat-label">زاویه Bevel</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1.5-3</div>
+          <div class="hero-stat-label">Root Gap (mm)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">بازرسی WPS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <p class="lead">فرآیند ساخت یک خط لوله صنعتی شامل چندین مرحله‌ی متوالی است که هرکدام نقاط بازرسی (<span class="en">Hold Point</span> یا <span class="en">Witness Point</span>) مشخص خود را دارند. خطای کنترل‌نشده در هر مرحله — حتی یک میلی‌متر انحراف در <span class="en">Fit-Up</span> — می‌تواند در مراحل بعدی تشدید شده و منجر به رد قطعه شود.</p>
 
   <div class="callout callout-def">
-    <span class="callout-label">تعریف</span>
+    <span class="callout-label">📘 تعریف</span>
     <strong>Spool</strong> به یک قطعه‌ی پیش‌ساخته (معمولاً در کارگاه یا یارد) گفته می‌شود که از چند لوله و فیتینگ تشکیل شده و به‌صورت یک واحد به محل نصب در فیلد منتقل می‌شود.
   </div>
 
-  <h2>مراحل اصلی</h2>
-  <div class="stage-grid">
-    <div class="stage-card">
-      <div class="stage-name">Fabrication</div>
-      <div class="stage-desc">برش، پخ‌زنی و آماده‌سازی قطعات لوله طبق نقشه‌ی اسپول، قبل از هرگونه جوشکاری</div>
+  <!-- Key Concepts -->
+  <h2>مفاهیم کلیدی در ساخت پایپینگ</h2>
+  <p class="lead">چهار اصل اساسی که در تمام مراحل ساخت و مونتاژ باید رعایت شوند.</p>
+
+  <div class="concepts-grid">
+    <div class="concept-card" style="--card-color: #10b981;">
+      <div class="concept-icon">📏</div>
+      <div class="concept-title">دقت ابعادی</div>
+      <div class="concept-en">Dimensional Accuracy</div>
+      <div class="concept-desc">برش، مونتاژ و جوشکاری باید با دقت بالا انجام شود تا از نشتی و مشکلات عملکردی جلوگیری شود.</div>
     </div>
-    <div class="stage-card">
-      <div class="stage-name">Fit-Up</div>
-      <div class="stage-desc">قرارگیری دقیق دو قطعه کنار هم با Root Gap صحیح، قبل از جوشکاری نهایی</div>
+
+    <div class="concept-card" style="--card-color: #f59e0b;">
+      <div class="concept-icon">⚡</div>
+      <div class="concept-title">کیفیت جوش</div>
+      <div class="concept-en">Weld Quality</div>
+      <div class="concept-desc">جوش‌ها باید طبق <span class="en">WPS</span> و استانداردها انجام شود تا استحکام و دوام سیستم تضمین گردد.</div>
     </div>
-    <div class="stage-card">
-      <div class="stage-name">Alignment</div>
-      <div class="stage-desc">هم‌راستاسازی محور دو لوله با ابزار Cambridge Gauge برای جلوگیری از High-Low</div>
+
+    <div class="concept-card" style="--card-color: #06b6d4;">
+      <div class="concept-icon">📜</div>
+      <div class="concept-title">رعایت استانداردها</div>
+      <div class="concept-en">Standards Compliance</div>
+      <div class="concept-desc">تمام مراحل باید با <span class="en">ASME, API, ASTM, IPS</span> مطابقت داشته باشد.</div>
     </div>
-    <div class="stage-card">
-      <div class="stage-name">Spool Assembly</div>
-      <div class="stage-desc">مونتاژ کامل یک قطعه‌ی پیش‌ساخته شامل چند فیتینگ، آماده برای انتقال به فیلد</div>
-    </div>
-    <div class="stage-card">
-      <div class="stage-name">Installation</div>
-      <div class="stage-desc">نصب اسپول نهایی در محل واقعی پروژه طبق مسیر نقشه‌ی ایزومتریک</div>
-    </div>
-    <div class="stage-card">
-      <div class="stage-name">Dimensional Control</div>
-      <div class="stage-desc">کنترل ابعاد نهایی (طول، زاویه، Elevation) در مقابل تلرانس مجاز نقشه</div>
+
+    <div class="concept-card" style="--card-color: #a855f7;">
+      <div class="concept-icon">🔍</div>
+      <div class="concept-title">کنترل کیفیت</div>
+      <div class="concept-en">Quality Control</div>
+      <div class="concept-desc">بازرسی دقیق در هر مرحله برای اطمینان از کیفیت نهایی سیستم الزامی است.</div>
     </div>
   </div>
 
-  <h2>کنترل ابعاد و هم‌راستایی</h2>
-  <p class="lead">پس از Fit-Up، بازرس باید با Cambridge Gauge انحراف محوری (High-Low) را اندازه‌گیری کند. این انحراف اگر از حد مجاز فراتر رود، باعث تمرکز تنش در ناحیه‌ی جوش و کاهش عمر سرویس خط می‌شود.</p>
+  <!-- Stages -->
+  <h2>مراحل ساخت و مونتاژ پایپینگ</h2>
+  <p class="lead">از طراحی اولیه تا راه‌اندازی نهایی — ۹ مرحله اصلی فرآیند ساخت.</p>
 
-  <table>
-    <tr><th>ضخامت دیواره (mm)</th><th>حداکثر High-Low مجاز</th></tr>
-    <tr><td>تا ۱۲.۷</td><td>۱.۵ mm</td></tr>
-    <tr><td>۱۲.۷ تا ۲۵</td><td>۲.۰ mm</td></tr>
-    <tr><td>بیشتر از ۲۵</td><td>طبق WPS پروژه</td></tr>
-  </table>
+  <div class="stage-timeline">
+
+    <!-- Stage 1 -->
+    <div class="stage-card" style="--stage-color: #10b981;" id="planning">
+      <div class="stage-num">1</div>
+      <div class="stage-content">
+        <h3>طراحی و برنامه‌ریزی</h3>
+        <span class="stage-en">Design & Planning</span>
+        <div class="stage-desc">نقشه‌های پایپینگ بر اساس نیازهای پروژه طراحی می‌شوند. این نقشه‌ها شامل مشخصات لوله‌ها، شیرآلات، فلنج‌ها، اتصالات و سایر تجهیزات هستند.</div>
+        <ul class="stage-items">
+          <li>انتخاب مواد بر اساس شرایط عملیاتی (<strong>فشار، دما، نوع سیال</strong>)</li>
+          <li>استفاده از لوله‌های فولادی برای شرایط فشار بالا</li>
+          <li>استفاده از لوله‌های <span class="en">PVC</span> برای سیالات خورنده</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="stage-card" style="--stage-color: #06b6d4;" id="cutting">
+      <div class="stage-num">2</div>
+      <div class="stage-content">
+        <h3>برش و آماده‌سازی لوله‌ها</h3>
+        <span class="stage-en">Pipe Cutting & Preparation</span>
+        <div class="stage-desc">لوله‌ها بر اساس ابعاد مشخص‌شده در نقشه‌ها برش داده می‌شوند.</div>
+        <ul class="stage-items">
+          <li><strong>برش دستی:</strong> برای پروژه‌های کوچک</li>
+          <li><strong>دستگاه‌های CNC:</strong> برای دقت بالا</li>
+          <li><strong>برش پلاسما:</strong> برای ضخامت‌های زیاد</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="stage-card" style="--stage-color: #f59e0b;">
+      <div class="stage-num">3</div>
+      <div class="stage-content">
+        <h3>آماده‌سازی لبه‌ها (Bevel)</h3>
+        <span class="stage-en">Edge Beveling</span>
+        <div class="stage-desc">ایجاد شیار (<span class="en">Bevel</span>) با زوایای مشخص (معمولاً <span class="num">37.5°</span>) برای آماده‌سازی لبه‌های لوله جهت جوشکاری.</div>
+        <ul class="stage-items">
+          <li>تمیزکاری سطوح از هرگونه آلودگی مانند <strong>روغن، زنگ‌زدگی و پوسته‌های اکسیدی</strong></li>
+          <li>کنترل زاویه Bevel با استفاده از <span class="en">Bevel Gauge</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="stage-card" style="--stage-color: #a855f7;" id="fitup">
+      <div class="stage-num">4</div>
+      <div class="stage-content">
+        <h3>مونتاژ اولیه (Fit-Up)</h3>
+        <span class="stage-en">Initial Fit-Up</span>
+        <div class="stage-desc">لوله‌ها و اتصالات (مانند زانوها، سه‌راهی‌ها و فلنج‌ها) در موقعیت مناسب قرار می‌گیرند.</div>
+        <ul class="stage-items">
+          <li>استفاده از ابزارهایی مانند <strong>اسپیسرها و براکت‌ها</strong> برای حفظ فاصله و هم‌محوری</li>
+          <li><strong>Tack Welding:</strong> جوش‌های موقت برای ثابت نگه‌داشتن قطعات در جای خود</li>
+          <li>مطابقت جوش‌ها با <span class="en">WPS</span> و استانداردها</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 5 -->
+    <div class="stage-card" style="--stage-color: #ef4444;" id="welding">
+      <div class="stage-num">5</div>
+      <div class="stage-content">
+        <h3>جوشکاری نهایی</h3>
+        <span class="stage-en">Final Welding</span>
+        <div class="stage-desc">پس از Fit-Up موفق، جوشکاری نهایی با روش‌های استاندارد انجام می‌شود.</div>
+        <ul class="stage-items">
+          <li><strong>GTAW (TIG):</strong> برای لوله‌های کوچک و جوش‌های ریشه</li>
+          <li><strong>SMAW:</strong> برای لوله‌های بزرگ‌تر و جوش‌های پرکننده</li>
+          <li>بازرسی چشمی و تست‌های غیرمخرب (RT, UT)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 6 -->
+    <div class="stage-card" style="--stage-color: #ec4899;" id="installation">
+      <div class="stage-num">6</div>
+      <div class="stage-content">
+        <h3>نصب نهایی</h3>
+        <span class="stage-en">Final Installation</span>
+        <div class="stage-desc">نصب لوله‌ها و اتصالات در محل نهایی و اتصال به تجهیزات (مانند پمپ‌ها، شیرآلات و مخازن).</div>
+        <ul class="stage-items">
+          <li>تنظیم دقیق موقعیت‌ها و <strong>اتصال فلنجی</strong> با استفاده از پیچ و مهره</li>
+          <li>استفاده از <span class="en">Gaskets</span> مناسب برای آب‌بندی</li>
+          <li>اتصالات رزوه‌ای برای لوله‌های کوچک و فشار پایین</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 7 -->
+    <div class="stage-card" style="--stage-color: #6366f1;">
+      <div class="stage-num">7</div>
+      <div class="stage-content">
+        <h3>بازرسی و تست‌های نهایی</h3>
+        <span class="stage-en">Final Inspection & Testing</span>
+        <div class="stage-desc">بررسی انطباق ابعاد، تست فشار و تست‌های غیرمخرب برای تضمین کیفیت.</div>
+        <ul class="stage-items">
+          <li><strong>بازرسی ابعادی:</strong> تطابق با نقشه‌ها و استانداردها</li>
+          <li><strong>Hydrostatic Testing:</strong> تست فشار با آب یا گاز</li>
+          <li><strong>NDT:</strong> رادیوگرافی، اولتراسونیک، مایع نافذ</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 8 -->
+    <div class="stage-card" style="--stage-color: #14b8a6;">
+      <div class="stage-num">8</div>
+      <div class="stage-content">
+        <h3>عایق‌کاری و رنگ‌آمیزی</h3>
+        <span class="stage-en">Insulation & Painting</span>
+        <div class="stage-desc">محافظت از لوله‌ها در برابر شرایط محیطی و خوردگی.</div>
+        <ul class="stage-items">
+          <li><strong>عایق‌کاری:</strong> پشم سنگ یا فوم برای جلوگیری از اتلاف حرارت</li>
+          <li><strong>رنگ‌آمیزی:</strong> رنگ‌های ضدزنگ و پوشش‌های محافظ</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Stage 9 -->
+    <div class="stage-card" style="--stage-color: #f97316;">
+      <div class="stage-num">9</div>
+      <div class="stage-content">
+        <h3>راه‌اندازی و تحویل</h3>
+        <span class="stage-en">Commissioning & Handover</span>
+        <div class="stage-desc">پس از اتمام ساخت و تمام بازرسی‌ها، سیستم پایپینگ راه‌اندازی و تحویل می‌شود.</div>
+        <ul class="stage-items">
+          <li><strong>راه‌اندازی:</strong> بررسی عملکرد در شرایط واقعی</li>
+          <li><strong>تحویل:</strong> ارائه مدارک کامل فنی و As-Built به کارفرما</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Fit-Up Parameters -->
+  <h2>پارامترهای کلیدی در Fit-Up</h2>
+  <p class="lead">پارامترهایی که بازرس باید قبل از شروع جوشکاری نهایی کنترل کند.</p>
+
+  <div class="fitup-visual">
+    <div class="fitup-grid">
+      <div class="fitup-item" style="--item-color: #10b981;">
+        <div class="fitup-icon" style="background: #10b981;">📐</div>
+        <div class="fitup-title">زاویه Bevel</div>
+        <div class="fitup-en">Bevel Angle</div>
+        <div class="fitup-value">37.5°</div>
+        <div class="fitup-desc">زاویه استاندارد برای جوشکاری نفوذی کامل</div>
+      </div>
+
+      <div class="fitup-item" style="--item-color: #f59e0b;">
+        <div class="fitup-icon" style="background: #f59e0b;">↔️</div>
+        <div class="fitup-title">فاصله ریشه</div>
+        <div class="fitup-en">Root Gap</div>
+        <div class="fitup-value">1.5 - 3 mm</div>
+        <div class="fitup-desc">طبق WPS پروژه متغیر است</div>
+      </div>
+
+      <div class="fitup-item" style="--item-color: #06b6d4;">
+        <div class="fitup-icon" style="background: #06b6d4;">⬆️</div>
+        <div class="fitup-title">پاشنه ریشه</div>
+        <div class="fitup-en">Root Face (Land)</div>
+        <div class="fitup-value">0.8 - 1.6 mm</div>
+        <div class="fitup-desc">ضخامت قسمت صاف لبه لوله</div>
+      </div>
+
+      <div class="fitup-item" style="--item-color: #a855f7;">
+        <div class="fitup-icon" style="background: #a855f7;">⚖️</div>
+        <div class="fitup-title">انحراف محوری</div>
+        <div class="fitup-en">High-Low</div>
+        <div class="fitup-value">≤ 1.5 mm</div>
+        <div class="fitup-desc">حداکثر اختلاف سطح دو لوله</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-Low Table -->
+  <h2>جدول حداکثر High-Low مجاز</h2>
+  <p class="lead">پس از Fit-Up، بازرس باید با <span class="en">Cambridge Gauge</span> انحراف محوری را اندازه‌گیری کند. این انحراف اگر از حد مجاز فراتر رود، باعث تمرکز تنش در ناحیه‌ی جوش و کاهش عمر سرویس خط می‌شود.</p>
+
+  <div class="table-wrapper">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ضخامت دیواره (mm)</th>
+            <th>حداکثر High-Low مجاز</th>
+            <th>ابزار اندازه‌گیری</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>تا <span class="td-num">12.7</span></td>
+            <td><span class="td-num">1.5 mm</span></td>
+            <td><span class="en">Cambridge Gauge</span></td>
+          </tr>
+          <tr>
+            <td><span class="td-num">12.7</span> تا <span class="td-num">25</span></td>
+            <td><span class="td-num">2.0 mm</span></td>
+            <td><span class="en">Cambridge Gauge</span></td>
+          </tr>
+          <tr>
+            <td>بیشتر از <span class="td-num">25</span></td>
+            <td class="td-warn">طبق WPS پروژه</td>
+            <td><span class="en">Cambridge Gauge</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <div class="callout callout-warn">
-    <span class="callout-label">هشدار</span>
-    Root Gap نامناسب یکی از رایج‌ترین علل رد جوش در بازرسی RT است. مقدار مجاز معمولاً بین ۱.۵ تا ۳.۲ میلی‌متر است، اما باید همیشه طبق WPS پروژه مشخص خاص تأیید شود — این عدد ثابت و یکسان برای همه‌ی پروژه‌ها نیست.
+    <span class="callout-label">⚠️ هشدار</span>
+    <span class="en">Root Gap</span> نامناسب یکی از رایج‌ترین علل رد جوش در بازرسی <span class="en">RT</span> است. مقدار مجاز معمولاً بین <span class="num">1.5</span> تا <span class="num">3.2</span> میلی‌متر است، اما باید همیشه طبق <span class="en">WPS</span> پروژه خاص تأیید شود — این عدد ثابت و یکسان برای همه‌ی پروژه‌ها نیست.
   </div>
 
   <div class="callout callout-tip">
-    <span class="callout-label">نکته</span>
-    همیشه قبل از تأیید Fit-Up، شماره Heat متریال دو طرف اتصال را با مدارک MTC چک کن — اشتباه در ترکیب دو متریال متفاوت در این مرحله، قابل اصلاح است؛ بعد از جوشکاری، اصلاحش بسیار پرهزینه‌تر می‌شود.
+    <span class="callout-label">💡 نکته بازرسی</span>
+    همیشه قبل از تأیید <span class="en">Fit-Up</span>، شماره <span class="en">Heat</span> متریال دو طرف اتصال را با مدارک <span class="en">MTC</span> چک کن — اشتباه در ترکیب دو متریال متفاوت در این مرحله، قابل اصلاح است؛ بعد از جوشکاری، اصلاحش بسیار پرهزینه‌تر می‌شود.
   </div>
 
-  <div class="nav-footer">
-    <a href="../04-isometric/" class="nav-btn nav-prev">→ فصل قبل: نقشه‌خوانی ایزومتریک</a>
-    <a href="../06-inspection/" class="nav-btn nav-next">فصل بعد: اصول بازرسی ←</a>
+  <!-- Welding Methods -->
+  <h2>روش‌های رایج جوشکاری در پایپینگ</h2>
+  <p class="lead">انتخاب روش جوشکاری بستگی به قطر لوله، ضخامت، متریال و شرایط پروژه دارد.</p>
+
+  <div class="weld-grid">
+    <div class="weld-card" style="--card-color: #10b981;">
+      <div class="weld-header">
+        <div class="weld-icon" style="background: #10b981;">⚡</div>
+        <div>
+          <div class="weld-title">جوشکاری TIG</div>
+          <div class="weld-code">GTAW</div>
+        </div>
+      </div>
+      <ul class="weld-list">
+        <li><strong>کاربرد:</strong> لوله‌های کوچک (تا ۴ اینچ) و جوش ریشه</li>
+        <li><strong>مزایا:</strong> کیفیت بالا، کنترل دقیق</li>
+        <li><strong>گاز محافظ:</strong> آرگون</li>
+      </ul>
+    </div>
+
+    <div class="weld-card" style="--card-color: #f59e0b;">
+      <div class="weld-header">
+        <div class="weld-icon" style="background: #f59e0b;">🔥</div>
+        <div>
+          <div class="weld-title">جوشکاری دستی</div>
+          <div class="weld-code">SMAW</div>
+        </div>
+      </div>
+      <ul class="weld-list">
+        <li><strong>کاربرد:</strong> لوله‌های بزرگ‌تر و پاس‌های پرکننده</li>
+        <li><strong>مزایا:</strong> انعطاف‌پذیری، سرعت بالا</li>
+        <li><strong>الکترود:</strong> E7018, E6010</li>
+      </ul>
+    </div>
+
+    <div class="weld-card" style="--card-color: #06b6d4;">
+      <div class="weld-header">
+        <div class="weld-icon" style="background: #06b6d4;">🌀</div>
+        <div>
+          <div class="weld-title">جوش MIG/MAG</div>
+          <div class="weld-code">GMAW</div>
+        </div>
+      </div>
+      <ul class="weld-list">
+        <li><strong>کاربرد:</strong> پروژه‌های صنعتی با تکرار بالا</li>
+        <li><strong>مزایا:</strong> سرعت بالا، پاشش کم</li>
+        <li><strong>گاز محافظ:</strong> CO₂ یا Ar+CO₂</li>
+      </ul>
+    </div>
+
+    <div class="weld-card" style="--card-color: #a855f7;">
+      <div class="weld-header">
+        <div class="weld-icon" style="background: #a855f7;">🤖</div>
+        <div>
+          <div class="weld-title">جوش زیرپودری</div>
+          <div class="weld-code">SAW</div>
+        </div>
+      </div>
+      <ul class="weld-list">
+        <li><strong>کاربرد:</strong> لوله‌های با ضخامت زیاد و خطوط طولانی</li>
+        <li><strong>مزایا:</strong> نفوذ عمیق، کیفیت بالا</li>
+        <li><strong>ویژگی:</strong> اتوماتیک با پودر محافظ</li>
+      </ul>
+    </div>
   </div>
+
+  <!-- Testing Box -->
+  <div class="test-box" id="testing">
+    <div class="test-header">
+      <div class="test-icon">🧪</div>
+      <div>
+        <h3>تست‌ها و بازرسی‌های نهایی</h3>
+        <p>آخرین مرحله قبل از راه‌اندازی سیستم پایپینگ</p>
+      </div>
+    </div>
+    <div class="test-content">
+      <div class="test-item">
+        <div class="test-item-title">📏 بازرسی ابعادی</div>
+        <p>ابعاد لوله‌ها و اتصالات باید با نقشه‌ها و استانداردها مطابقت داشته باشد. کنترل طول، زاویه و <span class="en">Elevation</span>.</p>
+      </div>
+      <div class="test-item">
+        <div class="test-item-title">💧 تست هیدروستاتیک</div>
+        <p>سیستم تحت فشار با آب یا گاز قرار می‌گیرد تا از مقاومت در برابر فشار و عدم نشتی اطمینان حاصل شود. معمولاً <span class="test-num">1.5</span> برابر فشار طراحی.</p>
+      </div>
+      <div class="test-item">
+        <div class="test-item-title">🔬 تست غیرمخرب (NDT)</div>
+        <p>شامل <strong>رادیوگرافی (RT)</strong>، <strong>اولتراسونیک (UT)</strong>، <strong>مایع نافذ (PT)</strong> و <strong>ذرات مغناطیسی (MT)</strong> برای تشخیص عیوب داخلی و سطحی.</p>
+      </div>
+      <div class="test-item">
+        <div class="test-item-title">👁️ بازرسی چشمی (VT)</div>
+        <p>بررسی یکنواختی، ابعاد و کیفیت ظاهری جوش‌ها. اولین و مهم‌ترین مرحله بازرسی که توسط بازرس <span class="en">CW</span> انجام می‌شود.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-danger">
+    <span class="callout-label">🚨 نکته حیاتی</span>
+    هرگز قبل از تکمیل بازرسی چشمی و تایید <span class="en">Fit-Up</span>، جوشکاری نهایی را شروع نکنید. خطاهای شناسایی‌نشده در این مرحله می‌تواند منجر به <strong>شکست جوش در سرویس</strong>، نشتی خطرناک و هزینه‌های بسیار سنگین تعمیرات شود.
+  </div>
+
+  <!-- Nav Footer -->
+  <div class="nav-footer">
+    <a href="../04-isometric/" class="nav-btn nav-prev">
+      → فصل قبل: نقشه‌خوانی ایزومتریک
+    </a>
+    <a href="../06-inspection/" class="nav-btn nav-next">
+      فصل بعد: اصول بازرسی ←
+    </a>
+  </div>
+
 </div>
+
+<!-- Footer -->
+<footer>
+  <p>🔧 برگرفته از جزوه «اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش» — فصل پنجم</p>
+  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio</p>
+  <p style="margin-top: 10px; font-size: 11px; opacity: 0.6;">© <span class="num">2026</span> Piping Fabrication Guide — Open Source</p>
+</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.querySelector('.theme-toggle');
+  if (body.getAttribute('data-theme') === 'light') {
+    body.removeAttribute('data-theme');
+    btn.textContent = '🌙';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.setAttribute('data-theme', 'light');
+    btn.textContent = '☀️';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+const saved = localStorage.getItem('theme');
+if (saved === 'light') {
+  document.body.setAttribute('data-theme', 'light');
+  document.querySelector('.theme-toggle').textContent = '☀️';
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const offset = 80;
+      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: pos, behavior: 'smooth' });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
