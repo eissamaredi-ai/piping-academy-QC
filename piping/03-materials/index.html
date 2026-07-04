@@ -3,112 +3,1219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متریال‌شناسی پایپینگ — آکادمی پایپینگ و جوشکاری</title>
+<title>متریال شناسی پایپینگ | Piping Material Guide</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
-  a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#06B6D4; }
+:root {
+  --bg: #0f172a;
+  --bg-soft: #1e293b;
+  --bg-card: #1e293b;
+  --border: #334155;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --purple: #8b5cf6;
+  --pink: #ec4899;
+  --teal: #14b8a6;
+  --orange: #f97316;
+  --gradient-1: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-2: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  --gradient-3: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.25);
+}
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#2563EB; font-weight:bold; }
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-soft: #ffffff;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.05);
+}
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
-  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
+html { scroll-behavior: smooth; }
 
-  table { width:100%; border-collapse:collapse; margin:16px 0; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
-  th { background:#0F172A; color:white; padding:10px 12px; text-align:right; }
-  td { padding:10px 12px; border-top:1px solid #f1f5f9; }
-  tr:nth-child(even) td { background:#f8fafc; }
+body {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
 
-  .material-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:8px; margin:16px 0; }
-  .material-card { border-radius:10px; padding:14px; color:white; font-weight:bold; font-size:13px; text-align:center; }
+.en, code, .num {
+  font-family: 'Inter', 'Vazirmatn', sans-serif;
+  direction: ltr;
+  unicode-bidi: embed;
+}
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#2563EB; color:white; }
+/* ===== Navbar ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(248, 250, 252, 0.85);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.theme-toggle {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+}
+
+.theme-toggle:hover { transform: rotate(15deg); }
+
+/* ===== Hero ===== */
+.hero {
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.3);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #c084fc 50%, #f0abfc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.3;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ===== Sections ===== */
+section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title::before {
+  content: '';
+  width: 6px;
+  height: 32px;
+  background: var(--gradient-1);
+  border-radius: 3px;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+/* ===== Material Cards ===== */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 1.75rem;
+}
+
+.material-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.material-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background: var(--card-color, var(--primary));
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--card-color, var(--primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.card-subtitle {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-family: 'Inter', sans-serif;
+  direction: ltr;
+  text-align: right;
+}
+
+.card-body {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.card-section {
+  margin-bottom: 1.25rem;
+}
+
+.card-section-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+}
+
+.card-list li {
+  padding: 0.35rem 0;
+  padding-right: 1.4rem;
+  position: relative;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.card-list li::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0.85rem;
+  width: 6px;
+  height: 6px;
+  background: var(--card-color, var(--primary));
+  border-radius: 50%;
+}
+
+.card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.chip {
+  background: rgba(59,130,246,0.12);
+  color: var(--primary);
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(59,130,246,0.2);
+  font-family: 'Inter', sans-serif;
+}
+
+.grade-tag {
+  display: inline-block;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  margin: 0.2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== Standards Table ===== */
+.table-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: 1.5rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+thead {
+  background: var(--bg-soft);
+}
+
+th {
+  padding: 1.1rem 1.25rem;
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+td {
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+tbody tr {
+  transition: background 0.2s;
+}
+
+tbody tr:hover {
+  background: var(--bg-soft);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.std-code {
+  font-family: 'Inter', monospace;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(59,130,246,0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+/* ===== Selection Guide ===== */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.guide-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.guide-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-color, var(--primary));
+}
+
+.guide-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--card-color, var(--primary));
+}
+
+.guide-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.guide-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.guide-items {
+  list-style: none;
+}
+
+.guide-items li {
+  padding: 0.4rem 0;
+  padding-right: 1.3rem;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.guide-items li::before {
+  content: '▸';
+  position: absolute;
+  right: 0;
+  color: var(--card-color, var(--primary));
+  font-weight: bold;
+}
+
+.guide-items strong {
+  color: var(--text);
+}
+
+/* ===== Temperature Range Visual ===== */
+.temp-chart {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+}
+
+.temp-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 100px;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.temp-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.temp-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.temp-bar-wrap {
+  position: relative;
+  height: 28px;
+  background: var(--bg-soft);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.temp-bar {
+  height: 100%;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: width 1s ease-out;
+}
+
+.temp-range {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: left;
+  direction: ltr;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: opacity 0.2s;
+}
+
+.footer-links a:hover { opacity: 0.75; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero { padding: 3rem 1rem; }
+  section { padding: 2rem 1rem; }
+  .materials-grid { grid-template-columns: 1fr; }
+  .temp-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .section-title { font-size: 1.5rem; }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.material-card, .guide-card, .stat-card {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.material-card:nth-child(1) { animation-delay: 0.05s; }
+.material-card:nth-child(2) { animation-delay: 0.1s; }
+.material-card:nth-child(3) { animation-delay: 0.15s; }
+.material-card:nth-child(4) { animation-delay: 0.2s; }
+.material-card:nth-child(5) { animation-delay: 0.25s; }
+.material-card:nth-child(6) { animation-delay: 0.3s; }
+.material-card:nth-child(7) { animation-delay: 0.35s; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
-  <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  <div class="nav-container">
+    <div class="logo">
+      <div class="logo-icon">⚙️</div>
+      <span>Piping Material Guide</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#materials">متریال‌ها</a></li>
+      <li><a href="#standards">استانداردها</a></li>
+      <li><a href="#temperature">بازه دمایی</a></li>
+      <li><a href="#selection">راهنمای انتخاب</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="تغییر تم">🌙</button>
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۳ — متریال‌شناسی</span></div>
-
-<div class="content">
-  <h1>متریال‌شناسی پایپینگ</h1>
-  <div class="subtitle">آلیاژهای رایج در صنعت نفت، گاز و پتروشیمی و معیار انتخاب هرکدام</div>
-
-  <p class="lead">انتخاب متریال خط لوله بر اساس سه عامل اصلی انجام می‌شود: دمای طراحی، نوع سیال (خاصیت خورندگی)، و فشار سرویس. هزینه‌ی متریال‌های مقاوم به خوردگی به‌شدت بالاتر از فولاد کربنی است، به همین دلیل انتخاب نادرست هم می‌تواند منجر به خرابی زودرس شود و هم می‌تواند هزینه‌ی پروژه را بی‌دلیل افزایش دهد.</p>
-
-  <div class="callout callout-def">
-    <span class="callout-label">تعریف</span>
-    <strong>PMI (Positive Material Identification)</strong> تستی است که در بازرسی برای تأیید این‌که متریال نصب‌شده واقعاً با متریال مشخص‌شده در اسپک مطابقت دارد انجام می‌شود — معمولاً با دستگاه XRF در محل.
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="badge">📘 فصل سوم - جزوه بازرسی فنی پایپینگ</div>
+    <h1>متریال شناسی در پایپینگ</h1>
+    <p>راهنمای جامع انتخاب مواد در سیستم‌های لوله‌کشی صنعتی، شامل فولاد کربنی، استنلس استیل، آلیاژهای نیکل، پلاستیک‌های مهندسی، تیتانیوم، مس و چدن همراه با استانداردهای مرتبط</p>
+    
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num num">7</div>
+        <div class="stat-label">خانواده متریال</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num num">25+</div>
+        <div class="stat-label">استاندارد کلیدی</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num num">1200°C</div>
+        <div class="stat-label">حداکثر دمای کاربرد</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num num">∞</div>
+        <div class="stat-label">کاربرد صنعتی</div>
+      </div>
+    </div>
   </div>
+</header>
 
-  <h2>آلیاژهای رایج</h2>
-  <div class="material-cards">
-    <div class="material-card" style="background:#64748b;">Carbon Steel</div>
-    <div class="material-card" style="background:#475569;">Low Alloy Steel</div>
-    <div class="material-card" style="background:#0891b2;">Stainless Steel</div>
-    <div class="material-card" style="background:#0e7490;">Duplex</div>
-    <div class="material-card" style="background:#155e75;">Super Duplex</div>
-    <div class="material-card" style="background:#b45309;">Inconel</div>
-    <div class="material-card" style="background:#92400e;">Monel</div>
-    <div class="material-card" style="background:#7c2d12;">Hastelloy</div>
+<!-- Materials Section -->
+<section id="materials">
+  <h2 class="section-title">خانواده‌های متریال</h2>
+  <p class="section-subtitle">هفت گروه اصلی مواد مورد استفاده در سیستم‌های پایپینگ صنعتی</p>
+
+  <div class="materials-grid">
+
+    <!-- 1. Carbon Steel -->
+    <article class="material-card" style="--card-color: #3b82f6;">
+      <div class="card-header">
+        <div class="card-icon">🔩</div>
+        <h3 class="card-title">فولادهای کربنی</h3>
+        <p class="card-subtitle">Carbon Steels</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="card-section-title">📋 ترکیب</div>
+          <p style="font-size:0.92rem; color: var(--text-muted);">آهن با <span class="num">0.05</span> تا <span class="num">2.1</span> درصد کربن و عناصر آلیاژی کم (منگنز، سیلیکون)</p>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🎯 کاربردها</div>
+          <ul class="card-list">
+            <li>خطوط لوله آب، بخار کم‌فشار، نفت خام</li>
+            <li>مخازن تحت فشار با دمای متوسط</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">📐 استانداردها</div>
+          <div class="card-chips">
+            <span class="chip">ASTM A106</span>
+            <span class="chip">API 5L</span>
+            <span class="chip">ASME B36.10</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. Stainless Steel -->
+    <article class="material-card" style="--card-color: #8b5cf6;">
+      <div class="card-header">
+        <div class="card-icon">✨</div>
+        <h3 class="card-title">فولادهای ضد زنگ</h3>
+        <p class="card-subtitle">Stainless Steels</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="card-section-title">📋 ترکیب</div>
+          <p style="font-size:0.92rem; color: var(--text-muted);">آهن با حداقل <span class="num">10.5%</span> کروم و عناصر آلیاژی مانند نیکل و مولیبدن</p>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">⭐ ویژگی‌ها</div>
+          <ul class="card-list">
+            <li>مقاومت عالی در برابر خوردگی (اسیدی و کلردار)</li>
+            <li>استحکام در دمای بالا (تا <span class="num">900°C</span>)</li>
+            <li>سطح صیقلی و بهداشتی</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🏷️ گریدهای رایج</div>
+          <div>
+            <span class="grade-tag">304 (A2)</span>
+            <span class="grade-tag">316 (A4)</span>
+            <span class="grade-tag">321</span>
+          </div>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">📐 استانداردها</div>
+          <div class="card-chips">
+            <span class="chip">ASTM A312</span>
+            <span class="chip">ASTM A358</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Nickel Alloys -->
+    <article class="material-card" style="--card-color: #10b981;">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <h3 class="card-title">آلیاژهای نیکل</h3>
+        <p class="card-subtitle">Nickel Alloys</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="card-section-title">📋 ترکیب</div>
+          <p style="font-size:0.92rem; color: var(--text-muted);">نیکل همراه با کروم، مولیبدن، آهن و مس</p>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">⭐ ویژگی‌ها</div>
+          <ul class="card-list">
+            <li>مقاومت بسیار بالا در برابر خوردگی (اسیدی، قلیایی، دماهای شدید)</li>
+            <li>مقاومت به خزش (Creep Resistance) در دمای بالا</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🏷️ گریدهای رایج</div>
+          <div>
+            <span class="grade-tag">Inconel 600</span>
+            <span class="grade-tag">Hastelloy C276</span>
+            <span class="grade-tag">Monel 400</span>
+          </div>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🎯 کاربردها</div>
+          <ul class="card-list">
+            <li>صنایع پتروشیمی، نیروگاه‌های هسته‌ای، سیستم‌های آب دریا</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">📐 استانداردها</div>
+          <div class="card-chips">
+            <span class="chip">ASTM B163</span>
+            <span class="chip">ASTM B622</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. Engineering Plastics -->
+    <article class="material-card" style="--card-color: #f59e0b;">
+      <div class="card-header">
+        <div class="card-icon">🧪</div>
+        <h3 class="card-title">پلاستیک‌های مهندسی</h3>
+        <p class="card-subtitle">Engineering Plastics</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="card-section-title">🏷️ انواع</div>
+          <ul class="card-list">
+            <li><strong>PVC</strong> - مقاومت در برابر خوردگی شیمیایی (فاضلاب، آب، مواد غیرخورنده)</li>
+            <li><strong>CPVC</strong> - مقاومت دمایی بالاتر تا <span class="num">93°C</span> (آب گرم، اسیدهای رقیق)</li>
+            <li><strong>PVDF</strong> - مقاومت در برابر اسیدهای قوی و حلال‌ها (نیمه‌هادی، دارویی)</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">📐 استانداردها</div>
+          <div class="card-chips">
+            <span class="chip">ASTM D1785</span>
+            <span class="chip">ASTM F1673</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. Titanium Alloys -->
+    <article class="material-card" style="--card-color: #14b8a6;">
+      <div class="card-header">
+        <div class="card-icon">🚀</div>
+        <h3 class="card-title">آلیاژهای تیتانیوم</h3>
+        <p class="card-subtitle">Titanium Alloys</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="card-section-title">⭐ ویژگی‌ها</div>
+          <ul class="card-list">
+            <li>نسبت استحکام به وزن بسیار بالا</li>
+            <li>مقاومت در برابر خوردگی در محیط‌های اکسیدکننده (آب دریا، اسید نیتریک)</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🏷️ گریدهای رایج</div>
+          <div>
+            <span class="grade-tag">Grade 2</span>
+            <span class="grade-tag">Grade 5 (Ti-6Al-4V)</span>
+          </div>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🎯 کاربردها</div>
+          <ul class="card-list">
+            <li>صنایع دریایی، پزشکی، هوافضا</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">📐 استانداردها</div>
+          <div class="card-chips">
+            <span class="chip">ASTM B338</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. Copper -->
+    <article class="material-card" style="--card-color: #f97316;">
+      <div class="card-header">
+        <div class="card-icon">🔶</div>
+        <h3 class="card-title">مس و آلیاژهای آن</h3>
+        <p class="card-subtitle">Copper & Alloys</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="card-section-title">⭐ ویژگی‌ها</div>
+          <ul class="card-list">
+            <li>رسانایی حرارتی و الکتریکی عالی</li>
+            <li>مقاومت در برابر خوردگی در آب و هوا</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🏷️ انواع</div>
+          <ul class="card-list">
+            <li><strong>C10100</strong> - مس خالص (خطوط آب و گاز)</li>
+            <li><strong>Brass (برنج)</strong> - ترکیب مس و روی (مقاوم به خوردگی)</li>
+            <li><strong>Bronze (برنز)</strong> - ترکیب مس و قلع (مقاوم به سایش)</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">📐 استانداردها</div>
+          <div class="card-chips">
+            <span class="chip">ASTM B42</span>
+            <span class="chip">ASTM B43</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. Cast Iron -->
+    <article class="material-card" style="--card-color: #64748b;">
+      <div class="card-header">
+        <div class="card-icon">⚫</div>
+        <h3 class="card-title">چدن</h3>
+        <p class="card-subtitle">Cast Iron</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <div class="card-section-title">⭐ ویژگی‌ها</div>
+          <ul class="card-list">
+            <li>مقاومت به سایش و لرزش</li>
+            <li>شکننده و غیرقابل جوشکاری</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">🎯 کاربردها</div>
+          <ul class="card-list">
+            <li>خطوط فاضلاب، سیستم‌های آب شهری</li>
+          </ul>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">📐 استانداردها</div>
+          <div class="card-chips">
+            <span class="chip">ASTM A74</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
   </div>
+</section>
 
-  <h2>جدول مقایسه‌ای</h2>
-  <table>
-    <tr><th>متریال</th><th>حداکثر دما</th><th>مقاومت خوردگی</th><th>هزینه</th></tr>
-    <tr><td>Carbon Steel</td><td>425°C</td><td>کم</td><td>پایین</td></tr>
-    <tr><td>Low Alloy Steel</td><td>550°C</td><td>کم تا متوسط</td><td>متوسط</td></tr>
-    <tr><td>Stainless Steel</td><td>870°C</td><td>خوب</td><td>بالا</td></tr>
-    <tr><td>Duplex</td><td>300°C</td><td>عالی</td><td>بالا</td></tr>
-    <tr><td>Super Duplex</td><td>300°C</td><td>بسیار عالی</td><td>بسیار بالا</td></tr>
-    <tr><td>Inconel</td><td>1000°C</td><td>استثنایی</td><td>بسیار بالا</td></tr>
-    <tr><td>Monel</td><td>480°C</td><td>عالی در اسید فلوریک</td><td>بسیار بالا</td></tr>
-    <tr><td>Hastelloy</td><td>450°C</td><td>استثنایی</td><td>بسیار بالا</td></tr>
-  </table>
+<!-- Temperature Range -->
+<section id="temperature">
+  <h2 class="section-title">بازه دمایی کاربردی</h2>
+  <p class="section-subtitle">مقایسه حداکثر دمای کاربرد هر خانواده متریال</p>
 
-  <div class="callout callout-warn">
-    <span class="callout-label">هشدار</span>
-    استفاده از Duplex یا Super Duplex بدون رعایت کنترل دقیق Heat Treatment می‌تواند منجر به ته‌نشینی فاز سیگما (Sigma Phase) شود که چقرمگی (Toughness) متریال را به‌شدت کاهش می‌دهد — این یکی از نقاط حساس بازرسی NDE روی این آلیاژهاست.
+  <div class="temp-chart">
+    <div class="temp-row">
+      <div class="temp-label">🔩 فولاد کربنی</div>
+      <div class="temp-bar-wrap">
+        <div class="temp-bar" style="width: 37.5%; background: linear-gradient(90deg, #3b82f6, #60a5fa);">تا 450°C</div>
+      </div>
+      <div class="temp-range">450°C</div>
+    </div>
+
+    <div class="temp-row">
+      <div class="temp-label">✨ استنلس استیل</div>
+      <div class="temp-bar-wrap">
+        <div class="temp-bar" style="width: 75%; background: linear-gradient(90deg, #8b5cf6, #c084fc);">تا 900°C</div>
+      </div>
+      <div class="temp-range">900°C</div>
+    </div>
+
+    <div class="temp-row">
+      <div class="temp-label">🛡️ آلیاژ نیکل</div>
+      <div class="temp-bar-wrap">
+        <div class="temp-bar" style="width: 100%; background: linear-gradient(90deg, #10b981, #34d399);">تا 1200°C</div>
+      </div>
+      <div class="temp-range">1200°C</div>
+    </div>
+
+    <div class="temp-row">
+      <div class="temp-label">🧪 CPVC</div>
+      <div class="temp-bar-wrap">
+        <div class="temp-bar" style="width: 7.75%; background: linear-gradient(90deg, #f59e0b, #fbbf24);">93°C</div>
+      </div>
+      <div class="temp-range">93°C</div>
+    </div>
+
+    <div class="temp-row">
+      <div class="temp-label">🔶 مس</div>
+      <div class="temp-bar-wrap">
+        <div class="temp-bar" style="width: 25%; background: linear-gradient(90deg, #f97316, #fb923c);">تا 300°C</div>
+      </div>
+      <div class="temp-range">300°C</div>
+    </div>
   </div>
+</section>
 
-  <div class="callout callout-tip">
-    <span class="callout-label">نکته</span>
-    هنگام بازرسی مدارک MTC (Material Test Certificate)، همیشه درصد عناصر آلیاژی (مثلاً Cr، Mo، Ni) را با محدوده‌ی مجاز استاندارد مربوطه (مثلاً ASTM A790 برای Duplex) مقایسه کن، نه فقط نام تجاری گزارش‌شده در مدرک.
-  </div>
+<!-- Standards -->
+<section id="standards">
+  <h2 class="section-title">استانداردهای کلیدی پایپینگ</h2>
+  <p class="section-subtitle">مهم‌ترین استانداردهای بین‌المللی مورد استفاده در صنعت</p>
 
-  <div class="nav-footer">
-    <a href="../02-components/" class="nav-btn nav-prev">→ فصل قبل: اجزای پایپینگ</a>
-    <a href="../04-isometric/" class="nav-btn nav-next">فصل بعد: نقشه‌خوانی ایزومتریک ←</a>
+  <div class="table-wrapper">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ردیف</th>
+            <th>کد استاندارد</th>
+            <th>عنوان</th>
+            <th>کاربرد</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">1</td>
+            <td><span class="std-code">ASME B31.3</span></td>
+            <td>Process Piping</td>
+            <td>استاندارد پایپینگ فرآیندی</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td><span class="std-code">API 5L</span></td>
+            <td>Line Pipe</td>
+            <td>لوله‌های انتقال نفت و گاز</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td><span class="std-code">ASTM A53</span></td>
+            <td>Steel Pipe</td>
+            <td>لوله‌های فولادی جوشی و بدون درز</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td><span class="std-code">ISO 3183</span></td>
+            <td>Petroleum & Gas</td>
+            <td>استاندارد بین‌المللی لوله‌های نفت و گاز</td>
+          </tr>
+          <tr>
+            <td class="num">5</td>
+            <td><span class="std-code">NACE MR0175</span></td>
+            <td>Sour Service</td>
+            <td>مقاومت به خوردگی در محیط‌های H₂S</td>
+          </tr>
+          <tr>
+            <td class="num">6</td>
+            <td><span class="std-code">ASTM A106</span></td>
+            <td>Seamless Carbon Steel</td>
+            <td>لوله‌های فولاد کربنی بدون درز برای دمای بالا</td>
+          </tr>
+          <tr>
+            <td class="num">7</td>
+            <td><span class="std-code">ASTM A312</span></td>
+            <td>Seamless SS Pipe</td>
+            <td>لوله‌های استنلس استیل با و بدون درز</td>
+          </tr>
+          <tr>
+            <td class="num">8</td>
+            <td><span class="std-code">ASME B36.10</span></td>
+            <td>Welded & Seamless</td>
+            <td>ابعاد لوله‌های فولادی</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+</section>
+
+<!-- Selection Guide -->
+<section id="selection">
+  <h2 class="section-title">راهنمای انتخاب متریال</h2>
+  <p class="section-subtitle">عوامل کلیدی در انتخاب ماده مناسب برای هر پروژه پایپینگ</p>
+
+  <div class="guide-grid">
+    <div class="guide-card" style="--card-color: #ef4444;">
+      <div class="guide-icon">🌡️</div>
+      <h3 class="guide-title">دمای کاری</h3>
+      <ul class="guide-items">
+        <li>فولاد کربنی تا <strong class="num">450°C</strong></li>
+        <li>استنلس استیل تا <strong class="num">900°C</strong></li>
+        <li>آلیاژ نیکل تا <strong class="num">1200°C</strong></li>
+      </ul>
+    </div>
+
+    <div class="guide-card" style="--card-color: #3b82f6;">
+      <div class="guide-icon">⚡</div>
+      <h3 class="guide-title">فشار کاری</h3>
+      <ul class="guide-items">
+        <li>فشار متوسط (تا <strong class="num">100</strong> بار): فولاد کربنی</li>
+        <li>فوق فشار بالا: <strong>آلیاژهای نیکل</strong></li>
+      </ul>
+    </div>
+
+    <div class="guide-card" style="--card-color: #10b981;">
+      <div class="guide-icon">💧</div>
+      <h3 class="guide-title">محیط خورنده</h3>
+      <ul class="guide-items">
+        <li>محیط‌های کلردار: <strong>SS 316</strong></li>
+        <li>آب دریا: <strong>تیتانیوم</strong></li>
+        <li>اسیدهای قوی: <strong>Hastelloy</strong></li>
+      </ul>
+    </div>
+
+    <div class="guide-card" style="--card-color: #f59e0b;">
+      <div class="guide-icon">💰</div>
+      <h3 class="guide-title">هزینه و دسترسی</h3>
+      <ul class="guide-items">
+        <li>اقتصادی‌ترین: <strong>فولاد کربنی</strong></li>
+        <li>گران‌قیمت: <strong>تیتانیوم و نیکل</strong></li>
+        <li>موجود بودن در بازار محلی</li>
+      </ul>
+    </div>
+
+    <div class="guide-card" style="--card-color: #8b5cf6;">
+      <div class="guide-icon">📜</div>
+      <h3 class="guide-title">استانداردها</h3>
+      <ul class="guide-items">
+        <li><strong>ASME</strong> برای طراحی و ساخت</li>
+        <li><strong>API</strong> برای صنعت نفت و گاز</li>
+        <li><strong>ASTM</strong> برای خواص مواد</li>
+      </ul>
+    </div>
+
+    <div class="guide-card" style="--card-color: #14b8a6;">
+      <div class="guide-icon">⏱️</div>
+      <h3 class="guide-title">عمر و تعمیرات</h3>
+      <ul class="guide-items">
+        <li>عمر مورد انتظار سیستم</li>
+        <li>هزینه‌های تعمیر و نگهداری</li>
+        <li>قابلیت جوشکاری و نصب</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>📘 برگرفته از جزوه «اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش» - فصل سوم</p>
+  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong></p>
+  <div class="footer-links">
+    <a href="#materials">متریال‌ها</a>
+    <a href="#standards">استانداردها</a>
+    <a href="#temperature">بازه دمایی</a>
+    <a href="#selection">راهنمای انتخاب</a>
+  </div>
+  <p style="margin-top: 1.5rem; font-size: 0.82rem; opacity: 0.6;">© <span class="num">2026</span> Piping Material Guide — Open Source</p>
+</footer>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const body = document.body;
+  const current = body.getAttribute('data-theme');
+  const btn = document.querySelector('.theme-toggle');
+  
+  if (current === 'light') {
+    body.removeAttribute('data-theme');
+    btn.textContent = '🌙';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.setAttribute('data-theme', 'light');
+    btn.textContent = '☀️';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+  document.body.setAttribute('data-theme', 'light');
+  document.querySelector('.theme-toggle').textContent = '☀️';
+}
+
+// Smooth scroll offset for sticky nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 80;
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
