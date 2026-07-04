@@ -4,107 +4,1347 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>نقشه‌خوانی ایزومتریک — آکادمی پایپینگ و جوشکاری</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
-  a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#06B6D4; }
+  :root {
+    --bg: #0a0e1a;
+    --bg-soft: #111827;
+    --bg-card: #171f34;
+    --border: #2a3350;
+    --text: #e8ecf5;
+    --text-muted: #8b94ad;
+    --primary: #06b6d4;
+    --primary-dark: #0891b2;
+    --accent: #f59e0b;
+    --danger: #ef4444;
+    --purple: #a855f7;
+    --indigo: #6366f1;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  [data-theme="light"] {
+    --bg: #f8fafc;
+    --bg-soft: #ffffff;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.05);
+  }
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#2563EB; font-weight:bold; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
-  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+  body {
+    font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
+  a { text-decoration: none; color: inherit; }
 
-  .symbol-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin:16px 0; }
-  .symbol-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; }
-  .symbol-name { font-weight:bold; font-size:13px; margin-bottom:4px; color:#0F172A; }
-  .symbol-desc { font-size:12px; color:#64748b; line-height:1.6; }
+  .en, code, .num {
+    font-family: 'Inter', monospace;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+  }
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#2563EB; color:white; }
+  /* ===== Navbar ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 14, 26, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-theme="light"] .navbar { background: rgba(248, 250, 252, 0.92); }
+
+  .navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #2563EB, #06B6D4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 4px 14px rgba(6,182,212,0.35);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .back-link {
+    color: var(--text-muted);
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .theme-toggle {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+  .theme-toggle:hover { transform: rotate(15deg); }
+
+  /* ===== Breadcrumb ===== */
+  .breadcrumb {
+    max-width: 960px;
+    margin: 24px auto 0;
+    padding: 0 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .breadcrumb span {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* ===== Content ===== */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 24px 80px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    margin-bottom: 32px;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    align-items: flex-end;
+    background: #0a0e1a;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,26,0.3) 0%, rgba(10,14,26,0.95) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(6,182,212,0.15);
+    border: 1px solid rgba(6,182,212,0.4);
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .hero .subtitle {
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #22d3ee, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+  }
+
+  /* ===== Section Title ===== */
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 36px 0 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: '';
+    width: 5px;
+    height: 26px;
+    background: linear-gradient(180deg, #06b6d4, #6366f1);
+    border-radius: 3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 18px 0 10px;
+    color: var(--text);
+  }
+
+  p.lead {
+    line-height: 2;
+    margin-bottom: 18px;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  /* ===== Callouts ===== */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 13.5px;
+    line-height: 1.9;
+    border-right: 4px solid;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .callout-def { border-right-color: var(--primary); }
+  .callout-warn { border-right-color: var(--accent); }
+  .callout-tip { border-right-color: #10b981; }
+  .callout-danger { border-right-color: var(--danger); }
+
+  .callout-label {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .callout-def .callout-label { color: var(--primary); }
+  .callout-warn .callout-label { color: var(--accent); }
+  .callout-tip .callout-label { color: #10b981; }
+  .callout-danger .callout-label { color: var(--danger); }
+
+  /* ===== Direction Section ===== */
+  .directions-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .directions-wrap::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%);
+    border-radius: 50%;
+  }
+  .directions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .directions-img {
+    width: 100%;
+    border-radius: 14px;
+    background: #0a0e1a;
+    padding: 10px;
+  }
+  .directions-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+  }
+  .directions-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .dir-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: transform 0.2s;
+  }
+  .dir-item:hover { transform: translateX(-4px); }
+  .dir-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .dir-n { background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 4px 12px rgba(6,182,212,0.4); }
+  .dir-e { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 4px 12px rgba(245,158,11,0.4); }
+  .dir-el { background: linear-gradient(135deg, #a855f7, #7c3aed); box-shadow: 0 4px 12px rgba(168,85,247,0.4); }
+  .dir-content strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .dir-content span {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== Table ===== */
+  .table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: 18px 0;
+  }
+  .table-scroll { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+  }
+  thead { background: var(--bg-soft); }
+  th {
+    padding: 14px 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+  }
+  tbody tr { transition: background 0.2s; }
+  tbody tr:hover { background: var(--bg-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .pipe-size {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 14px;
+  }
+  .pipe-od {
+    font-weight: 600;
+    background: rgba(6,182,212,0.1);
+    border-radius: 6px;
+    padding: 3px 8px;
+  }
+  .highlight-sch {
+    background: rgba(6,182,212,0.15);
+    color: var(--primary);
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 3px 8px;
+  }
+
+  /* ===== Symbols ===== */
+  .symbol-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .symbol-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .symbol-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+  }
+  .symbol-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .symbol-name {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: var(--text);
+  }
+  .symbol-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== Symbols Image ===== */
+  .symbols-image {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px;
+    margin: 18px 0;
+  }
+  .symbols-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+  }
+
+  /* ===== Components ===== */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .comp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .comp-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-color);
+  }
+  .comp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--card-color);
+  }
+  .comp-icon {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .comp-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .comp-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    color: var(--primary);
+    margin-bottom: 12px;
+    direction: ltr;
+    text-align: right;
+  }
+  .comp-list {
+    list-style: none;
+  }
+  .comp-list li {
+    padding: 4px 0;
+    padding-right: 16px;
+    position: relative;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .comp-list li::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+    background: var(--card-color);
+    border-radius: 50%;
+  }
+  .comp-list li strong { color: var(--text); }
+
+  /* ===== Steps ===== */
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  .step-card:hover { transform: translateY(-3px); }
+  .step-num {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #06b6d4, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 6px 16px rgba(6,182,212,0.3);
+  }
+  .step-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .step-card p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ===== Engineering Info ===== */
+  .eng-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .eng-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .eng-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--card-color);
+  }
+  .eng-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    background: var(--card-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .eng-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+  }
+  .eng-value {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .eng-example {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    direction: ltr;
+    text-align: right;
+    padding: 6px 10px;
+    background: var(--bg-soft);
+    border-radius: 7px;
+    border: 1px dashed var(--border);
+  }
+
+  /* ===== IPS Box ===== */
+  .ips-box {
+    background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(249,115,22,0.04));
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 18px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .ips-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .ips-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 6px 18px rgba(245,158,11,0.35);
+  }
+  .ips-header h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .ips-header p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .ips-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .ips-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .ips-item-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ips-item p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .ips-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    padding: 2px 7px;
+    background: rgba(245,158,11,0.15);
+    border-radius: 5px;
+  }
+
+  /* ===== BOM Image ===== */
+  .bom-image {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px;
+    margin: 18px 0;
+  }
+  .bom-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+  }
+
+  /* ===== Nav Footer ===== */
+  .nav-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-prev {
+    color: var(--text-muted);
+  }
+  .nav-prev:hover {
+    color: var(--text);
+    border-color: var(--primary);
+  }
+  .nav-next {
+    background: linear-gradient(135deg, #06b6d4, #6366f1);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 6px 18px rgba(6,182,212,0.3);
+  }
+  .nav-next:hover { transform: translateY(-2px); }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 0;
+  }
+  footer p {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    margin-bottom: 4px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 22px; }
+    .directions-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 18px; }
+    .navbar-inner { padding: 12px 16px; }
+    .content { padding: 16px 16px 60px; }
+    .directions-wrap { padding: 20px; }
+  }
+
+  /* ===== Animations ===== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .callout, .symbol-card, .comp-card, .step-card, .eng-card {
+    animation: fadeInUp 0.5s ease-out backwards;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+    <div class="logo">
+      <div class="logo-icon">⬡</div>
+      <span>آکادمی پایپینگ و جوشکاری</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#directions">جهت‌ها</a></li>
+      <li><a href="#dimensions">ابعاد لوله</a></li>
+      <li><a href="#symbols">نمادها</a></li>
+      <li><a href="#components">اجزا</a></li>
+      <li><a href="#steps">مراحل خواندن</a></li>
+      <li><a href="#center">C-to-C</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="../03-materials/" class="back-link">← فصل قبل</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="تغییر تم">🌙</button>
+    </div>
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۴ — نقشه‌خوانی ایزومتریک</span></div>
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  آموزش پایپینگ ← <span>فصل ۴ — نقشه‌خوانی ایزومتریک</span>
+</div>
 
+<!-- Content -->
 <div class="content">
-  <h1>نقشه‌خوانی ایزومتریک پایپینگ</h1>
-  <div class="subtitle">خوانش نمادها، استخراج اطلاعات و کاربرد در بازرسی میدانی</div>
 
+  <!-- Hero -->
+  <div class="hero">
+    <img class="hero-img" src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/170f9d32c-2d66-4b51-b256-f370e12f05c1.png" alt="Isometric Drawing">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">📐 فصل چهارم — جزوه بازرسی فنی پایپینگ</div>
+      <h1>نقشه‌خوانی ایزومتریک پایپینگ</h1>
+      <div class="subtitle">خوانش نمادها، استخراج اطلاعات و کاربرد در بازرسی میدانی</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">3D</div>
+          <div class="hero-stat-label">نمایش سه‌بعدی</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">بخش اصلی نقشه</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6</div>
+          <div class="hero-stat-label">مرحله خواندن</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">30°</div>
+          <div class="hero-stat-label">زاویه ایزومتریک</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro -->
   <p class="lead">نقشه‌ی ایزومتریک (Isometric Drawing) یک نمایش سه‌بعدی ساده‌شده از یک خط لوله است که بدون نیاز به مقیاس دقیق، مسیر کامل خط را از ابتدا تا انتها — همراه با تمام اجزا، نقاط جوش، و اطلاعات نصب — نشان می‌دهد. این مهم‌ترین مدرک مرجع بازرس در حین اجرای فیلد است.</p>
 
   <div class="callout callout-def">
-    <span class="callout-label">تعریف</span>
+    <span class="callout-label">📘 تعریف</span>
     هر نقشه‌ی ایزومتریک معمولاً شامل یک <strong>Bill of Material</strong> (لیست متریال با کد آیتم و تعداد) در کنار خود شکل گرافیکی است — بازرس باید این دو بخش را همیشه با هم تطبیق دهد.
   </div>
 
-  <h2>راهنمای نمادهای رایج</h2>
-  <div class="symbol-grid">
-    <div class="symbol-card">
-      <div class="symbol-name">جوش (Field Weld)</div>
-      <div class="symbol-desc">نقطه‌ی اتصال جوشی بین دو قطعه — معمولاً با شماره داخل دایره مشخص می‌شود</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-name">فلنج</div>
-      <div class="symbol-desc">دو خط موازی عمود بر مسیر لوله، نشان‌دهنده‌ی اتصال فلنجی قابل‌بازشدن</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-name">شیر (Valve)</div>
-      <div class="symbol-desc">نماد پروانه‌ای روی مسیر خط، با کد مشخص‌کننده‌ی نوع شیر</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-name">تکیه‌گاه (Support)</div>
-      <div class="symbol-desc">نماد مثلثی زیر خط، محل قرارگیری ساپورت برای تحمل وزن خط</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-name">ادامه خط (Continuation)</div>
-      <div class="symbol-desc">وقتی خط به نقشه‌ی دیگری ادامه می‌یابد، با کادر "CONT. ON" مشخص می‌شود</div>
+  <!-- Isometric Directions -->
+  <h2 id="directions">جهت‌های ایزومتریک</h2>
+  <p class="lead">در نقشه ایزومتریک، خطوط لوله در سه جهت اصلی نمایش داده می‌شوند تا درک سه‌بعدی سیستم برای پیمانکار و مهندس فراهم شود. زاویه خطوط نسبت به افق معمولاً <span class="num">30°</span> است.</p>
+
+  <div class="directions-wrap">
+    <div class="directions-grid">
+      <div class="directions-img">
+        <img src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/1ba7a2876-8dfc-4555-9e7a-99d7bd49b440.png" alt="Isometric Cube">
+      </div>
+      <ul class="directions-list">
+        <li class="dir-item">
+          <div class="dir-badge dir-n">N</div>
+          <div class="dir-content">
+            <strong>NORTH — شمال</strong>
+            <span>جهت شمال سایت، مطابق با جهت شمال نقشه P&ID و Plot Plan</span>
+          </div>
+        </li>
+        <li class="dir-item">
+          <div class="dir-badge dir-e">E</div>
+          <div class="dir-content">
+            <strong>EAST — شرق</strong>
+            <span>جهت شرق عمود بر شمال. WEST و SOUTH مخالف آن هستند</span>
+          </div>
+        </li>
+        <li class="dir-item">
+          <div class="dir-badge dir-el">EL</div>
+          <div class="dir-content">
+            <strong>ELEVATION — ارتفاع</strong>
+            <span>ارتفاع نسبت به سطح مرجع (معمولاً سطح زمین یا سطح دریا) — واحد: mm یا ft</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
   <div class="callout callout-warn">
-    <span class="callout-label">هشدار</span>
-    مختصات (E/N Coordinates) و Elevation روی نقشه‌ی ایزومتریک باید همیشه با مدارک Plot Plan و Civil Survey تطبیق داده شود — تفاوت در این اعداد می‌تواند نشانه‌ی خطای As-Built نسبت به طراحی باشد.
+    <span class="callout-label">⚠️ هشدار</span>
+    مختصات (<span class="en">E/N Coordinates</span>) و <span class="en">Elevation</span> روی نقشه‌ی ایزومتریک باید همیشه با مدارک <span class="en">Plot Plan</span> و <span class="en">Civil Survey</span> تطبیق داده شود — تفاوت در این اعداد می‌تواند نشانه‌ی خطای <span class="en">As-Built</span> نسبت به طراحی باشد.
+  </div>
+
+  <!-- Pipe Dimensions -->
+  <h2 id="dimensions">جدول ابعاد لوله ANSI</h2>
+  <p class="lead">مشخصات لوله‌های فولادی بر اساس استاندارد ANSI — شامل O.D و ضخامت دیواره برای Schedule‌های مختلف. Schedule بالاتر = ضخامت بیشتر = تحمل فشار و دمای بالاتر.</p>
+
+  <div class="table-wrapper">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Pipe Size</th>
+            <th>O.D (mm)</th>
+            <th>SCH 10</th>
+            <th>SCH 20</th>
+            <th>SCH 40</th>
+            <th>SCH 80</th>
+            <th>SCH 160</th>
+            <th>XXS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="pipe-size">1/2"</td><td class="pipe-od">21.34</td><td>1.65</td><td>-</td><td class="highlight-sch">2.77</td><td>3.73</td><td>4.78</td><td>7.47</td></tr>
+          <tr><td class="pipe-size">3/4"</td><td class="pipe-od">26.67</td><td>1.65</td><td>-</td><td class="highlight-sch">2.87</td><td>3.91</td><td>5.56</td><td>7.82</td></tr>
+          <tr><td class="pipe-size">1"</td><td class="pipe-od">33.40</td><td>1.65</td><td>-</td><td class="highlight-sch">3.38</td><td>4.55</td><td>6.35</td><td>9.09</td></tr>
+          <tr><td class="pipe-size">1 1/4"</td><td class="pipe-od">42.16</td><td>1.65</td><td>-</td><td class="highlight-sch">3.56</td><td>4.85</td><td>6.35</td><td>9.70</td></tr>
+          <tr><td class="pipe-size">1 1/2"</td><td class="pipe-od">48.26</td><td>1.65</td><td>-</td><td class="highlight-sch">3.68</td><td>5.08</td><td>7.14</td><td>10.15</td></tr>
+          <tr><td class="pipe-size">2"</td><td class="pipe-od">60.33</td><td>1.65</td><td>-</td><td class="highlight-sch">3.91</td><td>5.54</td><td>8.74</td><td>11.07</td></tr>
+          <tr><td class="pipe-size">3"</td><td class="pipe-od">88.90</td><td>2.11</td><td>-</td><td class="highlight-sch">5.49</td><td>7.62</td><td>11.13</td><td>15.24</td></tr>
+          <tr><td class="pipe-size">4"</td><td class="pipe-od">114.30</td><td>2.11</td><td>-</td><td class="highlight-sch">6.02</td><td>8.56</td><td>13.49</td><td>17.12</td></tr>
+          <tr><td class="pipe-size">6"</td><td class="pipe-od">168.28</td><td>2.77</td><td>3.40</td><td class="highlight-sch">7.11</td><td>10.97</td><td>18.26</td><td>21.95</td></tr>
+          <tr><td class="pipe-size">8"</td><td class="pipe-od">219.08</td><td>2.77</td><td>3.76</td><td class="highlight-sch">8.18</td><td>12.70</td><td>23.01</td><td>22.23</td></tr>
+          <tr><td class="pipe-size">10"</td><td class="pipe-od">273.05</td><td>3.40</td><td>4.19</td><td class="highlight-sch">9.27</td><td>15.09</td><td>28.58</td><td>25.40</td></tr>
+          <tr><td class="pipe-size">12"</td><td class="pipe-od">323.85</td><td>3.96</td><td>4.57</td><td class="highlight-sch">10.31</td><td>17.48</td><td>33.32</td><td>25.40</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="callout callout-tip">
-    <span class="callout-label">نکته</span>
+    <span class="callout-label">💡 مثال کاربردی</span>
+    برای لوله <span class="num">1/2"</span>: قطر خارجی <span class="ips-num">21.34 mm</span> ثابت است، ولی ضخامت SCH40 برابر <span class="ips-num">2.77 mm</span> و SCH80 برابر <span class="ips-num">3.73 mm</span> می‌شود. طراح بر اساس فشار و دمای کاری، Schedule مناسب را انتخاب می‌کند.
+  </div>
+
+  <!-- Symbols -->
+  <h2 id="symbols">راهنمای نمادهای رایج</h2>
+  <p class="lead">هر نقشه ایزومتریک از مجموعه‌ای از نمادهای استاندارد برای نمایش اجزا استفاده می‌کند. بازرس باید این نمادها را به خوبی بشناسد.</p>
+
+  <div class="symbols-image">
+    <img src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/155bdd1be-8a29-4db5-ac8d-affba317fc2e.png" alt="Isometric Symbols">
+  </div>
+
+  <div class="symbol-grid">
+    <div class="symbol-card">
+      <div class="symbol-icon">🔧</div>
+      <div class="symbol-name">Elbow (زانو)</div>
+      <div class="symbol-desc">تغییر جهت مسیر لوله — در دو نوع <span class="num">90°</span> و <span class="num">45°</span></div>
+    </div>
+    <div class="symbol-card">
+      <div class="symbol-icon">➕</div>
+      <div class="symbol-name">Tee (سه‌راهی)</div>
+      <div class="symbol-desc">ایجاد انشعاب در سیستم به شکل T</div>
+    </div>
+    <div class="symbol-card">
+      <div class="symbol-icon">⭕</div>
+      <div class="symbol-name">فلنج</div>
+      <div class="symbol-desc">دو خط موازی عمود بر مسیر لوله، نشان‌دهنده اتصال فلنجی</div>
+    </div>
+    <div class="symbol-card">
+      <div class="symbol-icon">🦋</div>
+      <div class="symbol-name">شیر (Valve)</div>
+      <div class="symbol-desc">نماد پروانه‌ای روی مسیر خط با کد نوع شیر</div>
+    </div>
+    <div class="symbol-card">
+      <div class="symbol-icon">⚡</div>
+      <div class="symbol-name">جوش (Weld)</div>
+      <div class="symbol-desc">نقطه اتصال جوشی بین دو قطعه با شماره داخل دایره</div>
+    </div>
+    <div class="symbol-card">
+      <div class="symbol-icon">🔻</div>
+      <div class="symbol-name">Reducer (کاهنده)</div>
+      <div class="symbol-desc">کاهش قطر لوله — به صورت هم‌مرکز یا غیرهم‌مرکز</div>
+    </div>
+    <div class="symbol-card">
+      <div class="symbol-icon">📍</div>
+      <div class="symbol-name">Support (تکیه‌گاه)</div>
+      <div class="symbol-desc">نماد مثلثی زیر خط، محل ساپورت برای تحمل وزن</div>
+    </div>
+    <div class="symbol-card">
+      <div class="symbol-icon">➡️</div>
+      <div class="symbol-name">Continuation</div>
+      <div class="symbol-desc">ادامه خط در نقشه دیگر با کادر <span class="en">CONT. ON</span></div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">💡 نکته</span>
     عبارت <strong>"CONT. ON"</strong> روی لبه‌ی نقشه یعنی خط در نقشه‌ی دیگری ادامه دارد — قبل از تأیید کامل بودن یک اسپول، همیشه نقشه‌ی مقصد را هم چک کن تا از قطع‌نشدن خط مطمئن شوی.
   </div>
 
-  <div class="nav-footer">
-    <a href="../03-materials/" class="nav-btn nav-prev">→ فصل قبل: متریال‌شناسی</a>
-    <a href="../05-fabrication/" class="nav-btn nav-next">فصل بعد: ساخت و مونتاژ ←</a>
+  <!-- Components -->
+  <h2 id="components">اجزای اصلی نقشه ایزومتریک</h2>
+  <p class="lead">چهار بخش کلیدی که در هر نقشه ایزومتریک باید تحلیل شوند.</p>
+
+  <div class="bom-image">
+    <img src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/177490460-4cbd-41a4-8cd9-cb7334b4661b.png" alt="BOM Table">
   </div>
+
+  <div class="comp-grid">
+    <div class="comp-card" style="--card-color: #06b6d4;">
+      <div class="comp-icon">📋</div>
+      <h3 class="comp-title">اطلاعات کلی</h3>
+      <p class="comp-en">General Information</p>
+      <ul class="comp-list">
+        <li><strong>Project Title</strong> — عنوان پروژه</li>
+        <li><strong>Drawing No</strong> — شماره نقشه منحصر به فرد</li>
+        <li><strong>Scale</strong> — مقیاس (در ISO معمولاً ذکر نمی‌شود)</li>
+        <li><strong>North Arrow</strong> — جهت شمال سایت</li>
+      </ul>
+    </div>
+
+    <div class="comp-card" style="--card-color: #6366f1;">
+      <div class="comp-icon">🔧</div>
+      <h3 class="comp-title">اجزای سیستم</h3>
+      <p class="comp-en">Piping System Components</p>
+      <ul class="comp-list">
+        <li><strong>Pipes</strong> — خطوط ضخیم نمایش‌دهنده لوله‌ها</li>
+        <li><strong>Fittings</strong> — Elbow, Tee, Reducer</li>
+        <li><strong>Flanges</strong> — نقاط اتصال فلنجی</li>
+        <li><strong>Valves</strong> — شیرآلات به صورت شماتیک</li>
+      </ul>
+    </div>
+
+    <div class="comp-card" style="--card-color: #f59e0b;">
+      <div class="comp-icon">📊</div>
+      <h3 class="comp-title">جدول مشخصات (BOM)</h3>
+      <p class="comp-en">Bill of Materials</p>
+      <ul class="comp-list">
+        <li><strong>Fabrication Materials</strong> — لوله و اتصالات</li>
+        <li><strong>Erection Materials</strong> — فلنج، واشر، پیچ</li>
+        <li>نوع، سایز، Schedule، متریال، کلاس، تعداد</li>
+        <li>دارای <strong>Item Code</strong> برای خرید و کنترل</li>
+      </ul>
+    </div>
+
+    <div class="comp-card" style="--card-color: #10b981;">
+      <div class="comp-icon">📐</div>
+      <h3 class="comp-title">اطلاعات هندسی</h3>
+      <p class="comp-en">Geometric Information</p>
+      <ul class="comp-list">
+        <li><strong>Elevation (EL)</strong> — ارتفاع نقاط کلیدی</li>
+        <li><strong>Offset</strong> — جابجایی افقی لوله‌ها</li>
+        <li><strong>Lengths</strong> — طول قطعات بین اتصالات</li>
+        <li><strong>Slope</strong> — شیب خط لوله</li>
+      </ul>
+    </div>
+
+    <div class="comp-card" style="--card-color: #a855f7;">
+      <div class="comp-icon">⚙️</div>
+      <h3 class="comp-title">اطلاعات مهندسی</h3>
+      <p class="comp-en">Engineering Information</p>
+      <ul class="comp-list">
+        <li><strong>Design & Operating Pressure</strong></li>
+        <li><strong>Design & Operating Temperature</strong></li>
+        <li><strong>Insulation Type</strong> — نوع عایق</li>
+        <li><strong>Test Type</strong> — نوع تست (هیدرو/پنوماتیک)</li>
+      </ul>
+    </div>
+
+    <div class="comp-card" style="--card-color: #ec4899;">
+      <div class="comp-icon">🔖</div>
+      <h3 class="comp-title">شماره‌گذاری قطعات</h3>
+      <p class="comp-en">Part Numbering</p>
+      <ul class="comp-list">
+        <li>هر قطعه دارای <strong>شماره منحصر به فرد</strong></li>
+        <li>ارتباط مستقیم با جدول BOM</li>
+        <li>امکان ردیابی دقیق هر قطعه</li>
+        <li>ضروری برای <strong>ساخت و بازرسی</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Engineering Info -->
+  <h2>بخش اطلاعات مهندسی (Condition)</h2>
+  <p class="lead">پارامترهای طراحی و بهره‌برداری که در قسمت Condition نقشه ثبت می‌شوند.</p>
+
+  <div class="eng-grid">
+    <div class="eng-card" style="--card-color: #ef4444;">
+      <div class="eng-icon" style="background: #ef4444;">🔥</div>
+      <div class="eng-label">PRESS (Pressure)</div>
+      <div class="eng-value">فشار کاری و طراحی</div>
+      <div class="eng-example">Design: 25 bar | Oper: 18 bar</div>
+    </div>
+    <div class="eng-card" style="--card-color: #f59e0b;">
+      <div class="eng-icon" style="background: #f59e0b;">🌡️</div>
+      <div class="eng-label">TEMP (Temperature)</div>
+      <div class="eng-value">دمای کاری و طراحی</div>
+      <div class="eng-example">Design: 250°C | Oper: 180°C</div>
+    </div>
+    <div class="eng-card" style="--card-color: #10b981;">
+      <div class="eng-icon" style="background: #10b981;">🧊</div>
+      <div class="eng-label">INSULATION TYPE</div>
+      <div class="eng-value">نوع عایق</div>
+      <div class="eng-example">Hot Insulation - Mineral Wool</div>
+    </div>
+    <div class="eng-card" style="--card-color: #06b6d4;">
+      <div class="eng-icon" style="background: #06b6d4;">🧪</div>
+      <div class="eng-label">TEST</div>
+      <div class="eng-value">نوع تست و پارامترها</div>
+      <div class="eng-example">Hydro Test @ 37.5 bar</div>
+    </div>
+    <div class="eng-card" style="--card-color: #a855f7;">
+      <div class="eng-icon" style="background: #a855f7;">📏</div>
+      <div class="eng-label">EL (Elevation)</div>
+      <div class="eng-value">ارتفاع از سطح مرجع</div>
+      <div class="eng-example">EL +4500 mm (from grade)</div>
+    </div>
+    <div class="eng-card" style="--card-color: #6366f1;">
+      <div class="eng-icon" style="background: #6366f1;">↔️</div>
+      <div class="eng-label">OFFSET</div>
+      <div class="eng-value">جابجایی افقی لوله</div>
+      <div class="eng-example">OFFSET 350 mm</div>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <h2 id="steps">مراحل خواندن نقشه ایزومتریک</h2>
+  <p class="lead">گام به گام از اطلاعات کلی تا تحلیل کامل سیستم.</p>
+
+  <div class="steps-container">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h4>مطالعه جدول BOM</h4>
+      <p>ابتدا به جدول مشخصات نگاه کنید تا نوع و مقدار هر قطعه (لوله، اتصالات، شیرآلات) را بشناسید.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h4>تطبیق شماره‌گذاری</h4>
+      <p>با استفاده از شماره‌گذاری روی نقشه و جدول، هر جزء را روی نقشه پیدا کنید.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h4>بررسی ارتفاع و ابعاد</h4>
+      <p>از EL و OFFSET‌های ذکر شده برای تعیین موقعیت مکانی هر جزء استفاده کنید.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h4>اندازه‌گیری طول لوله‌ها</h4>
+      <p>طول لوله‌ها را از روی نقشه یا اعداد روی خطوط استخراج و جمع‌بندی کنید.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <h4>درک هندسه سه‌بعدی</h4>
+      <p>با استفاده از اطلاعات هندسی و جهت‌ها، وضعیت سه‌بعدی سیستم را درک کنید.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">6</div>
+      <h4>ارزیابی ایمنی و عملکرد</h4>
+      <p>اطلاعات مهندسی (فشار، دما، عایق، تست) را بررسی و ایمنی سیستم را ارزیابی کنید.</p>
+    </div>
+  </div>
+
+  <!-- C-to-C Tables -->
+  <h2 id="center">جداول مرکز تا مرکز (C-to-C)</h2>
+  <p class="lead">ابعاد استاندارد برای محاسبه دقیق طول لوله‌ها و اتصالات.</p>
+
+  <div class="comp-grid">
+    <div class="table-wrapper">
+      <div style="padding: 16px; background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(99,102,241,0.05)); border-bottom: 1px solid var(--border);">
+        <h3 style="margin: 0; display: flex; align-items: center; gap: 8px;">↗️ Elbow 90° و 45°</h3>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Size (inch)</th><th>90° (mm)</th><th>45° (mm)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="pipe-size">1/2"</td><td>38</td><td>22</td></tr>
+            <tr><td class="pipe-size">3/4"</td><td>38</td><td>22</td></tr>
+            <tr><td class="pipe-size">1"</td><td>44</td><td>25</td></tr>
+            <tr><td class="pipe-size">1 1/2"</td><td>57</td><td>32</td></tr>
+            <tr><td class="pipe-size">2"</td><td>70</td><td>41</td></tr>
+            <tr><td class="pipe-size">3"</td><td>95</td><td>54</td></tr>
+            <tr><td class="pipe-size">4"</td><td>121</td><td>70</td></tr>
+            <tr><td class="pipe-size">6"</td><td>165</td><td>95</td></tr>
+            <tr><td class="pipe-size">8"</td><td>216</td><td>127</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <div style="padding: 16px; background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(236,72,153,0.05)); border-bottom: 1px solid var(--border);">
+        <h3 style="margin: 0; display: flex; align-items: center; gap: 8px;">➕ Cross و Tee</h3>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Size (inch)</th><th>Tee (mm)</th><th>Cross (mm)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="pipe-size">1/2"</td><td>38</td><td>38</td></tr>
+            <tr><td class="pipe-size">3/4"</td><td>44</td><td>44</td></tr>
+            <tr><td class="pipe-size">1"</td><td>51</td><td>51</td></tr>
+            <tr><td class="pipe-size">1 1/2"</td><td>64</td><td>64</td></tr>
+            <tr><td class="pipe-size">2"</td><td>76</td><td>76</td></tr>
+            <tr><td class="pipe-size">3"</td><td>102</td><td>102</td></tr>
+            <tr><td class="pipe-size">4"</td><td>127</td><td>127</td></tr>
+            <tr><td class="pipe-size">6"</td><td>171</td><td>171</td></tr>
+            <tr><td class="pipe-size">8"</td><td>219</td><td>219</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- IPS-240 Standard -->
+  <div class="ips-box">
+    <div class="ips-header">
+      <div class="ips-icon">⚠️</div>
+      <div>
+        <h3>استاندارد IPS-240 — طول دقیق Nipple</h3>
+        <p>تلرانس‌های ابعادی استاندارد نفت ایران برای برش و تولید Nipple</p>
+      </div>
+    </div>
+    <div class="ips-content">
+      <div class="ips-item">
+        <div class="ips-item-title">📌 حداکثر خطای انسانی</div>
+        <p>در برش لوله و تولید Nipple طبق استاندارد IPS-240 حداکثر خطای مجاز <span class="ips-num">1.5 تا 3 mm</span> است.</p>
+      </div>
+      <div class="ips-item">
+        <div class="ips-item-title">📌 اهمیت محاسبه دقیق</div>
+        <p>با توجه به خطای ابزار و خطای انسانی در برش، بازرس پایپینگ باید از محاسبه طول با دقت بیش از حد خودداری کند.</p>
+      </div>
+      <div class="ips-item">
+        <div class="ips-item-title">📌 مرحله Fit-up</div>
+        <p>اگر Nipple تولیدی خارج از محدوده مجاز باشد، باید در مرحله <strong>Fit-up</strong> از اسپول جدا و Nipple دقیق‌تری جایگزین شود.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-danger">
+    <span class="callout-label">🚨 هشدار بازرسی</span>
+    یک بازرس یا کارشناس پایپینگ با علم به خطای انسانی و ابزار، <strong>نباید در بازرسی و محاسبه طول لوله‌های بریده‌شده دقت بیش از حد مشخصی را مطالبه کند</strong> — این موضوع می‌تواند منجر به تأخیر غیرضروری در پروژه شود.
+  </div>
+
+  <!-- Nav Footer -->
+  <div class="nav-footer">
+    <a href="../03-materials/" class="nav-btn nav-prev">
+      → فصل قبل: متریال‌شناسی
+    </a>
+    <a href="../05-fabrication/" class="nav-btn nav-next">
+      فصل بعد: ساخت و مونتاژ ←
+    </a>
+  </div>
+
 </div>
+
+<!-- Footer -->
+<footer>
+  <p>📐 برگرفته از جزوه «اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش» — فصل چهارم</p>
+  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio</p>
+  <p style="margin-top: 10px; font-size: 11px; opacity: 0.6;">© <span class="num">2026</span> Piping Isometric Guide — Open Source</p>
+</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.querySelector('.theme-toggle');
+  if (body.getAttribute('data-theme') === 'light') {
+    body.removeAttribute('data-theme');
+    btn.textContent = '🌙';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.setAttribute('data-theme', 'light');
+    btn.textContent = '☀️';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+const saved = localStorage.getItem('theme');
+if (saved === 'light') {
+  document.body.setAttribute('data-theme', 'light');
+  document.querySelector('.theme-toggle').textContent = '☀️';
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const offset = 80;
+      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: pos, behavior: 'smooth' });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
+
