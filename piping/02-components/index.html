@@ -38,7 +38,6 @@
   .callout-tip .callout-label { color:#06B6D4; }
   .callout-danger .callout-label { color:#dc2626; }
 
-  /* Component card */
   .comp-card { background:white; border:1px solid #e2e8f0; border-radius:14px; padding:22px; margin-bottom:20px; }
   .comp-card-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
   .comp-badge { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; font-size:13px; font-weight:800; flex-shrink:0; font-family:"Inter",sans-serif; }
@@ -97,7 +96,7 @@
 
   <div class="callout callout-warn">
     <span class="callout-label">نکته بحرانی — تطبیق Rating</span>
-    تمام اجزای یک سیستم پایپینگ باید از نظر <strong>Pressure Rating، Temperature Rating و Material Class</strong> با یکدیگر سازگار باشند. طبق <strong>ASME B31.3 Para. 305</strong>، اتصال اجزا با Rating‌های ناسازگار (مثل فلنج Class 150 روی خط Class 300) یک نقص طراحی بحرانی است.
+    تمام اجزای یک سیستم پایپینگ باید از نظر <strong>Pressure Rating، Temperature Rating و Material Class</strong> با یکدیگر سازگار باشند. طبق <strong>ASME B31.3 Para. 305</strong>، اتصال اجزا با Rating‌های ناسازگار یک نقص طراحی بحرانی است.
   </div>
 
   <!-- ══════════════════════════════════════════ -->
@@ -109,18 +108,18 @@
       <div class="comp-title">Pipe <span>عنصر اصلی انتقال سیال</span></div>
     </div>
 
-    <p class="lead" style="margin-bottom:14px;">لوله قطعه اصلی هر سیستم پایپینگ است. اندازه آن با دو پارامتر تعریف می‌شود: <strong class="en">NPS (Nominal Pipe Size)</strong> برای قطر اسمی و <strong class="en">Schedule</strong> برای ضخامت دیواره. این دو پارامتر با هم <strong>Wall Thickness</strong> و در نتیجه <strong>Pressure Rating</strong> خط را تعیین می‌کنند.</p>
+    <p class="lead" style="margin-bottom:14px;">لوله قطعه اصلی هر سیستم پایپینگ است. اندازه آن با دو پارامتر تعریف می‌شود: <strong>NPS (Nominal Pipe Size)</strong> برای قطر اسمی و <strong>Schedule</strong> برای ضخامت دیواره. این دو پارامتر با هم Wall Thickness و در نتیجه Pressure Rating خط را تعیین می‌کنند.</p>
 
     <div class="props-grid">
       <div class="prop-item"><span class="prop-label">تعریف اندازه</span>NPS + Schedule → Wall Thickness (ASME B36.10M)</div>
-      <div class="prop-item"><span class="prop-label">محدوده NPS</span>از NPS ½" تا NPS 80" در استانداردهای ASME</div>
-      <div class="prop-item"><span class="prop-label">Scheduleهای رایج</span>SCH 40، SCH 80، SCH 160، XXS</div>
+      <div class="prop-item"><span class="prop-label">محدوده NPS</span>از NPS ½" تا NPS 80"</div>
+      <div class="prop-item"><span class="prop-label">Schedule‌های رایج</span>SCH 40، SCH 80، SCH 160، XXS</div>
       <div class="prop-item"><span class="prop-label">نوع ساخت</span>Seamless (بدون درز) یا ERW/EFW (درزدار)</div>
     </div>
 
     <div class="callout callout-tip" style="margin:14px 0 0;">
       <span class="callout-label">نکته — Seamless vs Welded</span>
-      طبق <strong>ASME B31.3 Table A-1B</strong>، لوله‌های درزدار (ERW/EFW) دارای <strong>Quality Factor (Ej)</strong> کمتر از ۱.۰ هستند که در محاسبه ضخامت دیواره مؤثر است. برای سرویس‌های بحرانی یا فشار بالا، لوله Seamless الزامی است.
+      طبق <strong>ASME B31.3 Table A-1B</strong>، لوله‌های درزدار (ERW/EFW) دارای <strong>Quality Factor (Ej)</strong> کمتر از ۱.۰ هستند. برای سرویس‌های بحرانی یا فشار بالا، لوله Seamless الزامی است.
     </div>
 
     <h3>جنس و استاندارد لوله بر اساس سرویس</h3>
@@ -128,37 +127,37 @@
       <tr><th>جنس</th><th>گرید رایج</th><th>استاندارد</th><th>محدوده سرویس</th></tr>
       <tr>
         <td>Carbon Steel</td>
-        <td><span class="en">A106 Gr.B / API 5L Gr.B</span></td>
+        <td class="en">A106 Gr.B / API 5L Gr.B</td>
         <td><span class="pill">ASTM A106</span><span class="pill">API 5L</span></td>
         <td>فشار و دمای متوسط — −۲۹ تا +۴۲۵ °C</td>
       </tr>
       <tr>
         <td>Low Temp CS</td>
-        <td><span class="en">A333 Gr.6</span></td>
+        <td class="en">A333 Gr.6</td>
         <td><span class="pill">ASTM A333</span></td>
-        <td>سرویس دمای پایین تا −۴۵ °C — نیاز به CVN Impact Test</td>
+        <td>دمای پایین تا −۴۵ °C — نیاز به CVN Impact Test</td>
       </tr>
       <tr>
         <td>Stainless Steel</td>
-        <td><span class="en">TP304L / TP316L</span></td>
+        <td class="en">TP304L / TP316L</td>
         <td><span class="pill">ASTM A312</span></td>
         <td>محیط‌های خورنده — تا +۸۱۵ °C</td>
       </tr>
       <tr>
         <td>Alloy Steel</td>
-        <td><span class="en">P11 (1¼Cr-½Mo) / P22 (2¼Cr-1Mo)</span></td>
+        <td class="en">P11 (1¼Cr-½Mo) / P22</td>
         <td><span class="pill">ASTM A335</span></td>
         <td>دمای بالا (Creep Range) — نیاز به PWHT</td>
       </tr>
       <tr>
         <td>Nickel Alloy</td>
-        <td><span class="en">Inconel 625 / Hastelloy C-276</span></td>
+        <td class="en">Inconel 625 / Hastelloy C-276</td>
         <td><span class="pill">ASTM B444</span><span class="pill">ASTM B622</span></td>
         <td>محیط‌های تهاجمی شدید — اسیدهای قوی</td>
       </tr>
       <tr>
         <td>Non-Metallic</td>
-        <td><span class="en">PVC / CPVC / GRP</span></td>
+        <td class="en">PVC / CPVC / GRP</td>
         <td><span class="pill">ASTM D1785</span></td>
         <td>سیالات خنثی — دما و فشار پایین</td>
       </tr>
@@ -166,7 +165,7 @@
 
     <div class="std-section">
       <div class="std-section-title">استانداردهای مرجع — لوله</div>
-      <div class="std-row"><span class="std-code">ASME B36.10M</span>ابعاد لوله‌های فولادی جوشکاری‌شده و بدون درز (Wall Thickness جدول)</div>
+      <div class="std-row"><span class="std-code">ASME B36.10M</span>ابعاد لوله‌های فولادی — جدول Wall Thickness</div>
       <div class="std-row"><span class="std-code">ASME B36.19M</span>ابعاد لوله‌های Stainless Steel</div>
       <div class="std-row"><span class="std-code">ASME B31.3 Para. 304</span>محاسبه حداقل ضخامت دیواره (t = PD/2SE+PY)</div>
       <div class="std-row"><span class="std-code">ASTM A106</span>لوله CS بدون درز برای سرویس دما-فشار بالا</div>
@@ -184,7 +183,7 @@
       <div class="comp-title">Fittings <span>تغییر مسیر، انشعاب و تغییر اندازه</span></div>
     </div>
 
-    <p class="lead" style="margin-bottom:14px;">اتصالات (Fittings) قطعاتی هستند که مسیر، اندازه یا انشعاب خط لوله را تغییر می‌دهند. تمام Fittings باید با لوله از نظر Material، Rating و End Connection سازگار باشند. استاندارد ابعادی اصلی <strong class="en">ASME B16.9</strong> برای BW Fittings و <strong class="en">ASME B16.11</strong> برای SW/Threaded Fittings است.</p>
+    <p class="lead" style="margin-bottom:14px;">اتصالات قطعاتی هستند که مسیر، اندازه یا انشعاب خط لوله را تغییر می‌دهند. تمام Fittings باید با لوله از نظر Material، Rating و End Connection سازگار باشند. استاندارد ابعادی اصلی <strong>ASME B16.9</strong> برای BW Fittings و <strong>ASME B16.11</strong> برای SW/Threaded Fittings است.</p>
 
     <h3>زانو (Elbow)</h3>
     <div class="items-grid">
@@ -192,18 +191,18 @@
         <div class="item-name">90° Long Radius Elbow</div>
         <div class="item-name-fa">زانو ۹۰ درجه — شعاع بلند</div>
         <div class="item-desc">شعاع خم = 1.5D — رایج‌ترین نوع. افت فشار کمتر نسبت به SR.</div>
-        <span class="item-std">ASME B16.9 — BW / ASME B16.11 — SW</span>
+        <span class="item-std">ASME B16.9</span>
       </div>
       <div class="item-card">
         <div class="item-name">90° Short Radius Elbow</div>
         <div class="item-name-fa">زانو ۹۰ درجه — شعاع کوتاه</div>
         <div class="item-desc">شعاع خم = 1.0D — فقط وقتی فضا محدود است. افت فشار بالاتر.</div>
-        <span class="item-std">ASME B16.9</span>
+        <span class="item-std">ASME B16.9 / ASME B16.28</span>
       </div>
       <div class="item-card">
         <div class="item-name">45° Elbow</div>
         <div class="item-name-fa">زانو ۴۵ درجه</div>
-        <div class="item-desc">تغییر مسیر ملایم — معمولاً برای اجتناب از تداخل با سازه یا تجهیز.</div>
+        <div class="item-desc">تغییر مسیر ملایم — برای اجتناب از تداخل با سازه یا تجهیز.</div>
         <span class="item-std">ASME B16.9</span>
       </div>
       <div class="item-card">
@@ -253,23 +252,36 @@
       <div class="item-card">
         <div class="item-name">Eccentric Reducer</div>
         <div class="item-name-fa">رده‌کننده خارج‌از‌محور</div>
-        <div class="item-desc">Flat Side بالا (FSU) برای خطوط مایع — جلوگیری از جمع‌شدن گاز. Flat Side پایین (FSD) برای Pump Suction.</div>
+        <div class="item-desc">FSU برای خطوط مایع — جلوگیری از تجمع گاز. FSD برای Pump Suction.</div>
         <span class="item-std">ASME B16.9</span>
+      </div>
+      <div class="item-card">
+        <div class="item-name">Cap</div>
+        <div class="item-name-fa">درپوش انتهای لوله</div>
+        <div class="item-desc">مسدودکردن انتهای خط — جایگزین Blind Flange در خطوط جوشی دائمی.</div>
+        <span class="item-std">ASME B16.9</span>
+      </div>
+      <div class="item-card">
+        <div class="item-name">Coupling / Half Coupling</div>
+        <div class="item-name-fa">کوپلینگ اتصال</div>
+        <div class="item-desc">Half Coupling برای انشعاب کوچک روی هدر بدون Olet — محدود به فشار پایین.</div>
+        <span class="item-std">ASME B16.11</span>
       </div>
     </div>
 
     <div class="callout callout-warn" style="margin-top:14px;">
-      <span class="callout-label">اشتباه رایج در میدان</span>
-      نصب <strong>Concentric Reducer روی Pump Suction</strong> یکی از رایج‌ترین خطاهای اجرایی است. این کار باعث تجمع هوا در مکش پمپ و Cavitation می‌شود. طبق اصول مهندسی و <strong>API 686 (Machinery Installation)</strong>، مکش پمپ باید همیشه با <strong>Eccentric Reducer — Flat Side Down</strong> اجرا شود.
+      <span class="callout-label">اشتباه رایج — Pump Suction</span>
+      نصب <strong>Concentric Reducer روی Pump Suction</strong> یکی از رایج‌ترین خطاهای اجرایی است — تجمع هوا در مکش پمپ و Cavitation. طبق <strong>API 686</strong>، مکش پمپ همیشه با <strong>Eccentric Reducer — Flat Side Down</strong> اجرا می‌شود.
     </div>
 
     <div class="std-section">
       <div class="std-section-title">استانداردهای مرجع — Fittings</div>
-      <div class="std-row"><span class="std-code">ASME B16.9</span>ابعاد و تلرانس Butt Weld Fittings (Elbow، Tee، Reducer، Cap)</div>
+      <div class="std-row"><span class="std-code">ASME B16.9</span>ابعاد Butt Weld Fittings — Elbow، Tee، Reducer، Cap</div>
       <div class="std-row"><span class="std-code">ASME B16.11</span>ابعاد Socket Weld و Threaded Fittings</div>
       <div class="std-row"><span class="std-code">ASME B16.28</span>Short Radius Elbow و Return Bend</div>
       <div class="std-row"><span class="std-code">MSS SP-97</span>Integrally Reinforced Fittings — Weldolet، Sockolet، Threadolet</div>
-      <div class="std-row"><span class="std-code">ASME B31.3 Para. 304.3</span>الزامات تقویت انشعاب (Branch Reinforcement Calculation)</div>
+      <div class="std-row"><span class="std-code">ASME B31.3 Para. 304.3</span>الزامات تقویت انشعاب — Branch Reinforcement Calculation</div>
+      <div class="std-row"><span class="std-code">API 686</span>الزامات نصب مکانیکی — Pump Suction Reducer</div>
     </div>
   </div>
 
@@ -279,28 +291,28 @@
   <div class="comp-card">
     <div class="comp-card-header">
       <div class="comp-badge" style="background:#fff7ed;color:#EA580C;">FL</div>
-      <div class="comp-title">Flanges <span>اتصال جدا‌شدنی — برای تعمیر و نگهداری</span></div>
+      <div class="comp-title">Flanges <span>اتصال جداشدنی — برای تعمیر و نگهداری</span></div>
     </div>
 
-    <p class="lead" style="margin-bottom:14px;">فلنج اتصال Demountable سیستم پایپینگ است — جایی که نیاز به جداسازی برای تعمیر، بازرسی یا تعویض تجهیز وجود دارد. انتخاب نوع فلنج بر اساس <strong>فشار، دما، سیال و نوع جوشکاری مجاز</strong> است. استاندارد اصلی <strong class="en">ASME B16.5</strong> برای NPS ½" تا NPS 24" و <strong class="en">ASME B16.47</strong> برای سایزهای بزرگتر است.</p>
+    <p class="lead" style="margin-bottom:14px;">فلنج اتصال Demountable سیستم پایپینگ است. انتخاب نوع فلنج بر اساس <strong>فشار، دما، سیال و نوع جوشکاری مجاز</strong> است. استاندارد اصلی <strong>ASME B16.5</strong> برای NPS ½" تا NPS 24" و <strong>ASME B16.47</strong> برای سایزهای بزرگتر است.</p>
 
     <div class="items-grid">
       <div class="item-card">
         <div class="item-name">Weld Neck Flange (WN)</div>
         <div class="item-name-fa">فلنج گردن جوشی</div>
-        <div class="item-desc">بهترین انتخاب برای سرویس‌های High Pressure، High Temp و Cyclic. گردن بلند توزیع تنش عالی دارد — جوش BW با لوله.</div>
-        <span class="item-std">ASME B16.5 — پیشنهادی برای Class 600 به بالا</span>
+        <div class="item-desc">بهترین انتخاب برای High Pressure، High Temp و Cyclic. جوش BW با لوله — توزیع تنش عالی.</div>
+        <span class="item-std">ASME B16.5 — پیشنهادی Class 600 به بالا</span>
       </div>
       <div class="item-card">
         <div class="item-name">Slip-On Flange (SO)</div>
         <div class="item-name-fa">فلنج اسلیپ‌اون</div>
-        <div class="item-desc">لوله داخل فلنج می‌رود — دو جوش Fillet داخل و خارج. ارزان‌تر از WN ولی Rating پایین‌تر. مناسب سرویس‌های کم‌فشار.</div>
-        <span class="item-std">ASME B16.5 — محدود به Class 300 و کمتر در سرویس‌های بحرانی</span>
+        <div class="item-desc">دو جوش Fillet داخل و خارج. ارزان‌تر از WN — Rating پایین‌تر. مناسب سرویس‌های کم‌فشار.</div>
+        <span class="item-std">ASME B16.5 — محدود در سرویس‌های بحرانی</span>
       </div>
       <div class="item-card">
         <div class="item-name">Socket Weld Flange (SW)</div>
         <div class="item-name-fa">فلنج سوکت‌ولد</div>
-        <div class="item-desc">برای لوله‌های کوچک NPS ≤ 2". لوله داخل Socket قرار گرفته — Gap 1.6mm قبل از جوش الزامی است (ASME B31.3 Para. 328.5.2).</div>
+        <div class="item-desc">برای NPS ≤ 2". Gap 1.6mm قبل از جوش الزامی — ASME B31.3 Para. 328.5.2.</div>
         <span class="item-std">ASME B16.5 — NPS ≤ 2" فقط</span>
       </div>
       <div class="item-card">
@@ -312,25 +324,25 @@
       <div class="item-card">
         <div class="item-name">Lap Joint Flange</div>
         <div class="item-name-fa">فلنج لپ‌جوینت</div>
-        <div class="item-desc">با Stub End استفاده می‌شود. فلنج Loose روی Stub End می‌چرخد — تنظیم سوراخ‌های Bolt آسان. برای SS و Alloy در کنار CS خط.</div>
+        <div class="item-desc">با Stub End استفاده می‌شود. فلنج Loose می‌چرخد — تنظیم سوراخ‌های Bolt آسان. برای SS در کنار CS.</div>
         <span class="item-std">ASME B16.5 + ASME B16.9 (Stub End)</span>
       </div>
       <div class="item-card">
         <div class="item-name">Threaded Flange</div>
         <div class="item-name-fa">فلنج رزوه‌ای</div>
-        <div class="item-desc">اتصال رزوه‌ای بدون جوش — فقط برای سرویس‌های Non-Hazardous، فشار و دمای پایین. جوشکاری در این نوع ممنوع است.</div>
-        <span class="item-std">ASME B16.5 — محدودیت سرویس در ASME B31.3</span>
+        <div class="item-desc">اتصال بدون جوش — فقط Non-Hazardous، فشار و دمای پایین.</div>
+        <span class="item-std">ASME B16.5 — محدودیت سرویس در B31.3</span>
       </div>
       <div class="item-card">
         <div class="item-name">Orifice Flange</div>
         <div class="item-name-fa">فلنج اریفیس</div>
-        <div class="item-desc">دارای Tapping برای اتصال به دستگاه اندازه‌گیری جریان. معمولاً در جفت (Pair) نصب می‌شود.</div>
+        <div class="item-desc">دارای Tapping برای اندازه‌گیری جریان. معمولاً در جفت (Pair) نصب می‌شود.</div>
         <span class="item-std">ASME B16.36</span>
       </div>
       <div class="item-card">
-        <div class="item-name">Ring Type Joint Flange (RTJ)</div>
-        <div class="item-name-fa">فلنج RTJ — برای فشار بالا</div>
-        <div class="item-desc">Groove روی Face فلنج دارد — Metallic Ring Gasket (Oval یا Octagonal). برای Class 900 به بالا و Subsea.</div>
+        <div class="item-name">Ring Type Joint (RTJ)</div>
+        <div class="item-name-fa">فلنج RTJ — فشار بالا</div>
+        <div class="item-desc">Metallic Ring Gasket (Oval یا Octagonal). برای Class 900 به بالا و Subsea.</div>
         <span class="item-std">ASME B16.5 / ASME B16.20</span>
       </div>
     </div>
@@ -339,45 +351,106 @@
     <table class="main-table">
       <tr><th>نوع Face</th><th>کاربرد</th><th>نوع Gasket</th><th>نکته</th></tr>
       <tr>
-        <td><span class="en">Raised Face (RF)</span></td>
-        <td>رایج‌ترین نوع — اکثر سرویس‌ها</td>
+        <td class="en">Raised Face (RF)</td>
+        <td>رایج‌ترین — اکثر سرویس‌ها</td>
         <td>Spiral Wound / Sheet</td>
         <td>ارتفاع RF: 1.6mm (Class≤600) یا 6.4mm (Class≥900)</td>
       </tr>
       <tr>
-        <td><span class="en">Flat Face (FF)</span></td>
+        <td class="en">Flat Face (FF)</td>
         <td>اتصال به تجهیزات Cast Iron</td>
         <td>Full Face Gasket</td>
         <td>نباید RF با FF جفت شود — خطر شکست Cast Iron</td>
       </tr>
       <tr>
-        <td><span class="en">Ring Type Joint (RTJ)</span></td>
-        <td>Class 900 به بالا — فشار و دما بالا</td>
+        <td class="en">Ring Type Joint (RTJ)</td>
+        <td>Class 900 به بالا</td>
         <td>Metallic Ring (Oval/Octagonal)</td>
         <td>ASME B16.20 — Ring باید نرم‌تر از فلنج باشد</td>
       </tr>
       <tr>
-        <td><span class="en">Tongue & Groove</span></td>
-        <td>سرویس‌های خاص با نیاز به Containment</td>
+        <td class="en">Tongue & Groove</td>
+        <td>سرویس‌های خاص</td>
         <td>Ring Gasket</td>
         <td>یک فلنج Tongue — دیگری Groove — باید جفت باشند</td>
       </tr>
     </table>
 
     <div class="callout callout-danger" style="margin-top:14px;">
-      <span class="callout-label">خطا — اشتباه رایج در Flange Assembly</span>
-      طبق <strong>ASME B16.5 و ASME PCC-1</strong>، جفت‌کردن دو فلنج با <strong>Face Type متفاوت</strong> (RF با FF) مجاز نیست. همچنین Gasket باید دقیقاً با سایز، Rating و نوع Face فلنج مطابقت داشته باشد — استفاده از Gasket نامناسب یکی از رایج‌ترین علل نشتی در Flange Joint است.
+      <span class="callout-label">خطا رایج — Flange Assembly</span>
+      طبق <strong>ASME B16.5 و ASME PCC-1</strong>، جفت‌کردن دو فلنج با Face Type متفاوت (RF با FF) مجاز نیست. Gasket باید دقیقاً با سایز، Rating و Face Type فلنج مطابقت داشته باشد.
     </div>
 
     <div class="std-section">
       <div class="std-section-title">استانداردهای مرجع — Flanges</div>
-      <div class="std-row"><span class="std-code">ASME B16.5</span>ابعاد، Rating و مواد فلنج NPS ½" تا NPS 24" — Class 150 تا 2500</div>
-      <div class="std-row"><span class="std-code">ASME B16.47</span>فلنج‌های بزرگ NPS 26" تا NPS 60" — Series A (MSS SP-44) و Series B (API 605)</div>
-      <div class="std-row"><span class="std-code">ASME B16.20</span>Metallic Gasket برای فلنج‌های RTJ، Spiral Wound و Ring Joint</div>
-      <div class="std-row"><span class="std-code">ASME B16.21</span>ابعاد Gasket برای فلنج‌های Pipe (Non-Metallic)</div>
+      <div class="std-row"><span class="std-code">ASME B16.5</span>ابعاد و Rating فلنج NPS ½" تا NPS 24" — Class 150 تا 2500</div>
+      <div class="std-row"><span class="std-code">ASME B16.47</span>فلنج‌های بزرگ NPS 26" تا NPS 60"</div>
+      <div class="std-row"><span class="std-code">ASME B16.20</span>Metallic Gasket — Spiral Wound و RTJ</div>
+      <div class="std-row"><span class="std-code">ASME B16.21</span>ابعاد Gasket غیرفلزی برای فلنج‌های Pipe</div>
       <div class="std-row"><span class="std-code">ASME B16.36</span>Orifice Flange</div>
-      <div class="std-row"><span class="std-code">ASME PCC-1</span>دستورالعمل Bolted Flange Joint Assembly — Bolt Torque و ترتیب سفت‌کردن</div>
-      <div class="std-row"><span class="std-code">ASME B31.3 Para. 328.5</span>الزامات جوشکاری Socket Weld و Gap اجباری ۱.۶mm</div>
+      <div class="std-row"><span class="std-code">ASME PCC-1</span>دستورالعمل Bolted Flange Joint Assembly — Bolt Torque</div>
+      <div class="std-row"><span class="std-code">ASME B31.3 Para. 328.5</span>Gap اجباری ۱.۶mm در Socket Weld</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <h2>۴. شیرآلات (Valves)</h2>
+
+  <div class="comp-card">
+    <div class="comp-card-header">
+      <div class="comp-badge" style="background:#faf5ff;color:#7C3AED;">V</div>
+      <div class="comp-title">Valves <span>کنترل جریان، ایزولاسیون و تنظیم فشار</span></div>
+    </div>
+
+    <p class="lead" style="margin-bottom:14px;">شیرآلات برای کنترل، ایزولاسیون یا تنظیم جریان سیال در سیستم پایپینگ استفاده می‌شوند. انتخاب نوع شیر بر اساس <strong>عملکرد مورد نیاز (On/Off یا Control)، سیال، فشار، دما و فرکانس عملکرد</strong> است.</p>
+
+    <div class="items-grid">
+      <div class="item-card">
+        <div class="item-name">Gate Valve</div>
+        <div class="item-name-fa">شیر دروازه‌ای</div>
+        <div class="item-desc">فقط برای On/Off — نه Throttling. افت فشار بسیار پایین در حالت کاملاً باز. برای ایزولاسیون خطوط.</div>
+        <span class="item-std">API 600 / API 603 / ASME B16.34</span>
+      </div>
+      <div class="item-card">
+        <div class="item-name">Globe Valve</div>
+        <div class="item-name-fa">شیر کروی</div>
+        <div class="item-desc">برای Throttling و تنظیم جریان. افت فشار بالا. مناسب سرویس‌های Steam و بخار.</div>
+        <span class="item-std">ASME B16.34</span>
+      </div>
+      <div class="item-card">
+        <div class="item-name">Ball Valve</div>
+        <div class="item-name-fa">شیر توپی</div>
+        <div class="item-desc">On/Off سریع با چرخش ۹۰ درجه. Bore کامل (Full Bore) یا کاهش‌یافته (Reduced Bore). رایج در پایپینگ فرآیندی.</div>
+        <span class="item-std">API 6D / ASME B16.34</span>
+      </div>
+      <div class="item-card">
+        <div class="item-name">Butterfly Valve</div>
+        <div class="item-name-fa">شیر پروانه‌ای</div>
+        <div class="item-desc">سبک و ارزان — برای قطرهای بزرگ. Triple Offset برای سرویس‌های بحرانی و High Temp.</div>
+        <span class="item-std">API 609 / ASME B16.34</span>
+      </div>
+      <div class="item-card">
+        <div class="item-name">Check Valve</div>
+        <div class="item-name-fa">شیر یک‌طرفه</div>
+        <div class="item-desc">جلوگیری از برگشت جریان. Swing، Tilting Disc یا Piston نوع — انتخاب بر اساس سرویس.</div>
+        <span class="item-std">API 594 / ASME B16.34</span>
+      </div>
+      <div class="item-card">
+        <div class="item-name">Safety / Relief Valve</div>
+        <div class="item-name-fa">شیر اطمینان</div>
+        <div class="item-desc">حفاظت در برابر فشار بیش از حد. Set Pressure طبق طراحی. تست و تنظیم دوره‌ای الزامی.</div>
+        <span class="item-std">ASME Section VIII / API 520 / API 526</span>
+      </div>
+    </div>
+
+    <div class="std-section">
+      <div class="std-section-title">استانداردهای مرجع — Valves</div>
+      <div class="std-row"><span class="std-code">ASME B16.34</span>Valves — Flanged، Threaded و BW — Rating و ابعاد</div>
+      <div class="std-row"><span class="std-code">API 600</span>Gate Valve فولادی Bolted Bonnet</div>
+      <div class="std-row"><span class="std-code">API 6D</span>Pipeline Valves — Ball، Gate، Check، Plug</div>
+      <div class="std-row"><span class="std-code">API 609</span>Butterfly Valve — Double و Triple Offset</div>
+      <div class="std-row"><span class="std-code">API 594</span>Check Valve — Wafer، Wafer-Lug و Double Flanged</div>
+      <div class="std-row"><span class="std-code">API 520 / API 526</span>Sizing و Selection شیر اطمینان (PSV/PRV)</div>
     </div>
   </div>
 
@@ -388,33 +461,39 @@
     <tr><th>جزء</th><th>استاندارد ابعادی</th><th>استاندارد متریال</th><th>نکته انتخاب</th></tr>
     <tr>
       <td>لوله CS</td>
-      <td><span class="en">ASME B36.10M</span></td>
-      <td><span class="en">ASTM A106 / API 5L</span></td>
+      <td class="en">ASME B36.10M</td>
+      <td class="en">ASTM A106 / API 5L</td>
       <td>NPS و Schedule از Piping Spec پروژه</td>
     </tr>
     <tr>
       <td>BW Fittings</td>
-      <td><span class="en">ASME B16.9</span></td>
-      <td><span class="en">ASTM A234 (CS)</span></td>
+      <td class="en">ASME B16.9</td>
+      <td class="en">ASTM A234 (CS)</td>
       <td>باید هم‌Schedule با لوله باشد</td>
     </tr>
     <tr>
       <td>SW Fittings</td>
-      <td><span class="en">ASME B16.11</span></td>
-      <td><span class="en">ASTM A105 (CS)</span></td>
+      <td class="en">ASME B16.11</td>
+      <td class="en">ASTM A105 (CS)</td>
       <td>فقط NPS ≤ 2" — Gap 1.6mm الزامی</td>
     </tr>
     <tr>
       <td>Flange</td>
-      <td><span class="en">ASME B16.5 / B16.47</span></td>
-      <td><span class="en">ASTM A105 / A182</span></td>
-      <td>Class Rating با Pressure-Temp Table تطبیق شود</td>
+      <td class="en">ASME B16.5 / B16.47</td>
+      <td class="en">ASTM A105 / A182</td>
+      <td>Class Rating با P-T Table تطبیق شود</td>
     </tr>
     <tr>
       <td>Olet Fittings</td>
-      <td><span class="en">MSS SP-97</span></td>
-      <td><span class="en">ASTM A105 / A182</span></td>
-      <td>جایگزین Tee — محاسبه تقویت طبق B31.3</td>
+      <td class="en">MSS SP-97</td>
+      <td class="en">ASTM A105 / A182</td>
+      <td>محاسبه تقویت طبق B31.3 Para. 304.3</td>
+    </tr>
+    <tr>
+      <td>Valve</td>
+      <td class="en">ASME B16.34</td>
+      <td>بر اساس سرویس</td>
+      <td>API بر اساس نوع شیر انتخاب شود</td>
     </tr>
   </table>
 
