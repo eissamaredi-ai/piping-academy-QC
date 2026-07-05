@@ -3,114 +3,1446 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مدارک فنی جوشکاری — آکادمی پایپینگ و جوشکاری</title>
+<title>مدارک فنی جوشکاری — WPS | PQR | WPQ | WQT</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
-  a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#F97316; }
+  :root {
+    --bg: #0a0e1a;
+    --bg-soft: #111827;
+    --bg-card: #171f34;
+    --border: #2a3350;
+    --text: #e8ecf5;
+    --text-muted: #8b94ad;
+    --primary: #06b6d4;
+    --primary-dark: #0891b2;
+    --accent: #f59e0b;
+    --danger: #ef4444;
+    --success: #10b981;
+    --purple: #a855f7;
+    --indigo: #6366f1;
+    --pink: #ec4899;
+    --teal: #14b8a6;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  [data-theme="light"] {
+    --bg: #f8fafc;
+    --bg-soft: #ffffff;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.05);
+  }
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#F97316; font-weight:bold; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
-  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+  body {
+    font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
+  a { text-decoration: none; color: inherit; }
 
-  .doc-chain { display:flex; flex-direction:column; gap:10px; margin:16px 0; }
-  .doc-box { border-radius:12px; padding:16px; color:white; }
-  .doc-name { font-weight:bold; font-size:15px; }
-  .doc-full { font-size:11px; opacity:0.8; margin-bottom:8px; }
-  .doc-desc { font-size:12px; line-height:1.7; opacity:0.95; }
+  .en, code {
+    font-family: 'Inter', 'Vazirmatn', monospace;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+  }
+  .num {
+    font-family: 'Inter', monospace;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+    font-weight: 600;
+  }
 
-  table { width:100%; border-collapse:collapse; margin:16px 0; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
-  th { background:#0F172A; color:white; padding:10px 12px; text-align:right; }
-  td { padding:10px 12px; border-top:1px solid #f1f5f9; }
-  tr:nth-child(even) td { background:#f8fafc; }
+  /* ===== Navbar ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 14, 26, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  [data-theme="light"] .navbar { background: rgba(248, 250, 252, 0.92); }
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#F97316; color:white; }
+  .navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #ef4444, #f59e0b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 4px 14px rgba(239,68,68,0.35);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+  .back-link {
+    color: var(--text-muted);
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .back-link:hover { color: var(--primary); border-color: var(--primary); }
+
+  .theme-toggle {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+  .theme-toggle:hover { transform: rotate(15deg); }
+
+  /* ===== Breadcrumb ===== */
+  .breadcrumb {
+    max-width: 960px;
+    margin: 24px auto 0;
+    padding: 0 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .breadcrumb span { color: var(--primary); font-weight: 700; }
+
+  /* ===== Content ===== */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 24px 80px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    margin-bottom: 32px;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0a0e1a 100%);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(239,68,68,0.25), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(245,158,11,0.2), transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(6,182,212,0.15), transparent 60%);
+  }
+  .hero-sparks {
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    background-image:
+      radial-gradient(circle at 15% 25%, #fbbf24 1px, transparent 2px),
+      radial-gradient(circle at 75% 65%, #fb923c 1px, transparent 2px),
+      radial-gradient(circle at 30% 75%, #fcd34d 1px, transparent 2px),
+      radial-gradient(circle at 85% 20%, #f59e0b 1px, transparent 2px);
+    background-size: 200px 200px;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,26,0.2) 0%, rgba(10,14,26,0.9) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.4);
+    color: #fca5a5;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ef4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .subtitle {
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-stat { display: flex; flex-direction: column; }
+  .hero-stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fbbf24, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+  }
+
+  /* ===== Section Title ===== */
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 36px 0 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: '';
+    width: 5px;
+    height: 26px;
+    background: linear-gradient(180deg, #ef4444, #f59e0b);
+    border-radius: 3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 18px 0 10px;
+    color: var(--text);
+  }
+
+  p.lead {
+    line-height: 2;
+    margin-bottom: 18px;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  /* ===== Callouts ===== */
+  .callout {
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 13.5px;
+    line-height: 1.9;
+    border-right: 4px solid;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .callout-def { border-right-color: var(--primary); }
+  .callout-warn { border-right-color: var(--accent); }
+  .callout-tip { border-right-color: var(--success); }
+  .callout-danger { border-right-color: var(--danger); }
+
+  .callout-label {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .callout-def .callout-label { color: var(--primary); }
+  .callout-warn .callout-label { color: var(--accent); }
+  .callout-tip .callout-label { color: var(--success); }
+  .callout-danger .callout-label { color: var(--danger); }
+
+  /* ===== Flow Diagram ===== */
+  .flow-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-wrap::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(239,68,68,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .flow-step {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .flow-step:hover { transform: translateY(-4px); border-color: var(--step-color); }
+  .flow-step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--step-color);
+    color: white;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  }
+  .flow-step-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .flow-step-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    color: var(--step-color);
+    direction: ltr;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .flow-step-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .flow-arrow {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    color: var(--border-strong, var(--border));
+    font-size: 16px;
+    transform: translateY(-50%);
+  }
+
+  /* ===== Doc Cards ===== */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .doc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .doc-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-color);
+  }
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--card-color);
+  }
+  .doc-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: var(--card-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  }
+  .doc-code {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--card-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    direction: ltr;
+    text-align: right;
+  }
+  .doc-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .doc-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .doc-features {
+    list-style: none;
+    padding: 0;
+  }
+  .doc-features li {
+    padding: 4px 0;
+    padding-right: 18px;
+    position: relative;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    border-top: 1px dashed var(--border);
+    padding-top: 8px;
+  }
+  .doc-features li:first-child { border-top: none; padding-top: 4px; }
+  .doc-features li::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+    background: var(--card-color);
+    border-radius: 50%;
+  }
+  .doc-features li strong { color: var(--text); }
+
+  /* ===== Table ===== */
+  .table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: 18px 0;
+  }
+  .table-scroll { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+  }
+  thead { background: var(--bg-soft); }
+  th {
+    padding: 14px 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+    text-align: center;
+    color: var(--text);
+  }
+  tbody tr { transition: background 0.2s; }
+  tbody tr:hover { background: var(--bg-soft); }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .doc-code-cell {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--primary);
+  }
+
+  /* ===== WPS Parameters ===== */
+  .params-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .param-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .param-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--param-color);
+  }
+  .param-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--param-color);
+  }
+  .param-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .param-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--param-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .param-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .param-en {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    direction: ltr;
+    text-align: right;
+  }
+  .param-list {
+    list-style: none;
+  }
+  .param-list li {
+    padding: 3px 0;
+    padding-right: 14px;
+    position: relative;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  .param-list li::before {
+    content: '›';
+    position: absolute;
+    right: 0;
+    color: var(--param-color);
+    font-weight: 900;
+    font-size: 14px;
+  }
+  .param-list li strong { color: var(--text); }
+
+  /* ===== Qualification Ranges ===== */
+  .qual-box {
+    background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(99,102,241,0.04));
+    border: 1px solid rgba(168,85,247,0.3);
+    border-radius: 18px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .qual-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .qual-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 6px 18px rgba(168,85,247,0.35);
+  }
+  .qual-header h3 { font-size: 17px; font-weight: 700; margin: 0; }
+  .qual-header p { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; }
+  .qual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .qual-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .qual-item-title {
+    font-weight: 700;
+    color: var(--purple);
+    margin-bottom: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .qual-item p { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; }
+  .qual-range {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--purple);
+    padding: 2px 7px;
+    background: rgba(168,85,247,0.15);
+    border-radius: 5px;
+  }
+
+  /* ===== Standards Box ===== */
+  .std-box {
+    background: linear-gradient(135deg, rgba(6,182,212,0.08), rgba(99,102,241,0.04));
+    border: 1px solid rgba(6,182,212,0.3);
+    border-radius: 18px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .std-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .std-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #06b6d4, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 6px 18px rgba(6,182,212,0.35);
+  }
+  .std-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .std-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .std-item-code {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 14px;
+    margin-bottom: 6px;
+    direction: ltr;
+    text-align: right;
+  }
+  .std-item-title {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .std-item p { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; }
+
+  /* ===== Nav Footer ===== */
+  .nav-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-prev { color: var(--text-muted); }
+  .nav-prev:hover { color: var(--text); border-color: var(--primary); }
+  .nav-next {
+    background: linear-gradient(135deg, #ef4444, #f59e0b);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 6px 18px rgba(239,68,68,0.3);
+  }
+  .nav-next:hover { transform: translateY(-2px); }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  footer p {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    margin-bottom: 4px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 22px; }
+    h2 { font-size: 18px; }
+    .navbar-inner { padding: 12px 16px; }
+    .content { padding: 16px 16px 60px; }
+    .flow-steps { grid-template-columns: 1fr 1fr; }
+    .flow-arrow { display: none; }
+  }
+  @media (max-width: 480px) {
+    .flow-steps { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Animations ===== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .callout, .doc-card, .param-card, .flow-step {
+    animation: fadeInUp 0.5s ease-out backwards;
+  }
+  .doc-card:nth-child(1) { animation-delay: 0.05s; }
+  .doc-card:nth-child(2) { animation-delay: 0.1s; }
+  .doc-card:nth-child(3) { animation-delay: 0.15s; }
+  .doc-card:nth-child(4) { animation-delay: 0.2s; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      <span>آکادمی پایپینگ و جوشکاری</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#overview">مرور کلی</a></li>
+      <li><a href="#documents">مدارک چهارگانه</a></li>
+      <li><a href="#wps">پارامترهای WPS</a></li>
+      <li><a href="#pqr">فرآیند PQR</a></li>
+      <li><a href="#wpq">صلاحیت جوشکار</a></li>
+      <li><a href="#standards">استانداردها</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="../05-fabrication/" class="back-link">← فصل قبل</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="تغییر تم">🌙</button>
+    </div>
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۱ — مدارک فنی</span></div>
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  آموزش پایپینگ ← <span>مدارک فنی جوشکاری (WPS | PQR | WPQ | WQT)</span>
+</div>
 
+<!-- Content -->
 <div class="content">
-  <h1>مدارک فنی جوشکاری</h1>
-  <div class="subtitle">رابطه‌ی PQR، WPS و WPQ — پایه‌ی هر کنترل کیفیت جوش صنعتی</div>
 
-  <p class="lead">قبل از شروع هرگونه جوشکاری در یک پروژه‌ی صنعتی، باید زنجیره‌ای از مدارک تأییدشده وجود داشته باشد که نشان دهد روش جوشکاری از نظر متالورژیکی قابل‌اعتماد است و جوشکار اجراکننده صلاحیت لازم را دارد.</p>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-sparks"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⚡ مدارک فنی و صلاحیت جوشکاری</div>
+      <h1>مدارک فنی جوشکاری</h1>
+      <div class="subtitle">WPS، PQR، WPQ و WQT — چهار ستون اصلی تضمین کیفیت جوش در پروژه‌های صنعتی پایپینگ</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">مدرک کلیدی</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Sec. IX</div>
+          <div class="hero-stat-label">استاندارد مرجع ASME</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">15+</div>
+          <div class="hero-stat-label">پارامتر ضروری</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">NDT</div>
+          <div class="hero-stat-label">تست‌های غیرمخرب</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview -->
+  <h2 id="overview">مرور کلی: چرا مدارک جوشکاری حیاتی هستند؟</h2>
+  <p class="lead">در پروژه‌های پایپینگ صنعتی، جوشکاری یکی از حساس‌ترین مراحل اجراست. هر جوش باید طبق یک روش تاییدشده، توسط جوشکار صلاحیت‌دار، با پارامترهای مشخص و قابل ردیابی انجام شود. چهار مدرک کلیدی <span class="en">WPS</span>، <span class="en">PQR</span>، <span class="en">WPQ</span> و <span class="en">WQT</span> زنجیره تضمین کیفیت جوش را تشکیل می‌دهند.</p>
+
+  <div class="callout callout-def">
+    <span class="callout-label">📘 تعریف</span>
+    این مدارک به ترتیب، مشخص می‌کنند که <strong>چگونه</strong> باید جوشکاری شود (WPS)، <strong>آیا روش تایید شده است</strong> (PQR)، <strong>چه کسی</strong> مجاز به جوشکاری است (WPQ) و <strong>چگونه صلاحیت جوشکار تست شده</strong> (WQT). بازرس پایپینگ باید همواره این چهار مدرک را قبل از شروع هر جوش در دسترس داشته باشد.
+  </div>
+
+  <!-- Flow Diagram -->
+  <div class="flow-wrap">
+    <h3 style="margin-top: 0;">چرخه حیات مدارک جوشکاری</h3>
+    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">ترتیب منطقی تهیه و استفاده از مدارک در پروژه:</p>
+    <div class="flow-steps">
+      <div class="flow-step" style="--step-color: #06b6d4;">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-title">تهیه PQR</div>
+        <div class="flow-step-en">Procedure Qualification</div>
+        <div class="flow-step-desc">انجام تست عملی و اثبات صحت روش جوشکاری</div>
+      </div>
+      <div class="flow-step" style="--step-color: #f59e0b;">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-title">صدور WPS</div>
+        <div class="flow-step-en">Welding Procedure Spec.</div>
+        <div class="flow-step-desc">تدوین دستورالعمل اجرایی بر اساس PQR</div>
+      </div>
+      <div class="flow-step" style="--step-color: #a855f7;">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-title">اجرای WQT</div>
+        <div class="flow-step-en">Welder Qualification Test</div>
+        <div class="flow-step-desc">آزمون عملی صلاحیت جوشکار</div>
+      </div>
+      <div class="flow-step" style="--step-color: #10b981;">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-title">صدور WPQ</div>
+        <div class="flow-step-en">Welder Performance Qual.</div>
+        <div class="flow-step-desc">گواهی صلاحیت جوشکار برای پروژه</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Four Documents -->
+  <h2 id="documents">چهار مدرک کلیدی جوشکاری</h2>
+  <p class="lead">هر مدرک نقش مشخصی در زنجیره تضمین کیفیت ایفا می‌کند. شناخت تفاوت و ارتباط این مدارک برای بازرس جوش حیاتی است.</p>
+
+  <div class="doc-grid">
+    <!-- WPS -->
+    <div class="doc-card" style="--card-color: #06b6d4;">
+      <div class="doc-icon">📋</div>
+      <div class="doc-code">WPS</div>
+      <div class="doc-title">مشخصات روش جوشکاری</div>
+      <div class="doc-desc">دستورالعمل مکتوب که متغیرهای ضروری جوشکاری را برای یک اتصال مشخص می‌کند.</div>
+      <ul class="doc-features">
+        <li><strong>Welding Procedure Specification</strong></li>
+        <li>تهیه بر اساس <strong>PQR تایید شده</strong></li>
+        <li>شامل متغیرهای <span class="en">Essential</span> و <span class="en">Non-Essential</span></li>
+        <li>مرجع اجرایی جوشکار در حین کار</li>
+      </ul>
+    </div>
+
+    <!-- PQR -->
+    <div class="doc-card" style="--card-color: #f59e0b;">
+      <div class="doc-icon">🧪</div>
+      <div class="doc-code">PQR</div>
+      <div class="doc-title">سوابق صلاحیت روش</div>
+      <div class="doc-desc">سند ثبت نتایج تست‌های عملی و مکانیکی بر روی نمونه جوش تست.</div>
+      <ul class="doc-features">
+        <li><strong>Procedure Qualification Record</strong></li>
+        <li>اثبات <strong>عملی</strong> صحت روش پیشنهادی</li>
+        <li>شامل تست‌های کشش، خم، ضربه، سختی</li>
+        <li>پایه صدور WPS است</li>
+      </ul>
+    </div>
+
+    <!-- WPQ -->
+    <div class="doc-card" style="--card-color: #a855f7;">
+      <div class="doc-icon">👷</div>
+      <div class="doc-code">WPQ</div>
+      <div class="doc-title">صلاحیت عملکرد جوشکار</div>
+      <div class="doc-desc">گواهی رسمی که صلاحیت جوشکار برای انجام فرآیندهای مشخص را تایید می‌کند.</div>
+      <ul class="doc-features">
+        <li><strong>Welder Performance Qualification</strong></li>
+        <li>محدوده صلاحیت: <strong>ضخامت، قطر، پوزیشن</strong></li>
+        <li>تاریخ انقضا (معمولاً <span class="num">6</span> ماه عدم فعالیت)</li>
+        <li>الزامی برای هر جوشکار در پروژه</li>
+      </ul>
+    </div>
+
+    <!-- WQT -->
+    <div class="doc-card" style="--card-color: #10b981;">
+      <div class="doc-icon">🎯</div>
+      <div class="doc-code">WQT</div>
+      <div class="doc-title">آزمون صلاحیت جوشکار</div>
+      <div class="doc-desc">آزمون عملی و مستند که جوشکار برای دریافت WPQ باید با موفقیت پشت سر بگذارد.</div>
+      <ul class="doc-features">
+        <li><strong>Welder Qualification Test</strong></li>
+        <li>انجام طبق <strong>WPS مرجع</strong></li>
+        <li>شامل تست <span class="en">VT</span>، <span class="en">RT</span>/<span class="en">UT</span>، تست خم</li>
+        <li>منجر به صدور WPQ می‌شود</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <h2>مقایسه تطبیقی مدارک چهارگانه</h2>
+  <p class="lead">جدول زیر تفاوت‌های کلیدی این مدارک را از منظر هدف، محتوا، مرجع و اعتبار نشان می‌دهد.</p>
+
+  <div class="table-wrapper">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ویژگی</th>
+            <th>WPS</th>
+            <th>PQR</th>
+            <th>WPQ</th>
+            <th>WQT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: right; font-weight: 600;">هدف اصلی</td>
+            <td>دستورالعمل اجرایی</td>
+            <td>اثبات صحت روش</td>
+            <td>گواهی جوشکار</td>
+            <td>آزمون صلاحیت</td>
+          </tr>
+          <tr>
+            <td style="text-align: right; font-weight: 600;">تهیه‌کننده</td>
+            <td>مهندس جوش</td>
+            <td>آزمایشگاه + مهندس</td>
+            <td>بازرس / ناظر</td>
+            <td>بازرس جوش</td>
+          </tr>
+          <tr>
+            <td style="text-align: right; font-weight: 600;">محتوای کلیدی</td>
+            <td>پارامترهای جوشکاری</td>
+            <td>نتایج تست مکانیکی</td>
+            <td>محدوده صلاحیت</td>
+            <td>گزارش تست</td>
+          </tr>
+          <tr>
+            <td style="text-align: right; font-weight: 600;">اعتبار</td>
+            <td>نامحدود (تا بازنگری)</td>
+            <td>دائمی</td>
+            <td><span class="num">6</span> ماه عدم فعالیت</td>
+            <td>یکبار مصرف</td>
+          </tr>
+          <tr>
+            <td style="text-align: right; font-weight: 600;">مرجع</td>
+            <td>PQR</td>
+            <td>ASME Sec. IX</td>
+            <td>WPS + WQT</td>
+            <td>WPS</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WPS Parameters -->
+  <h2 id="wps">پارامترهای ضروری WPS</h2>
+  <p class="lead">یک WPS کامل باید تمام متغیرهای ضروری (Essential Variables) جوشکاری را مشخص کند. تغییر در هر یک از این پارامترها مستلزم تهیه PQR جدید است.</p>
+
+  <div class="params-grid">
+    <div class="param-card" style="--param-color: #06b6d4;">
+      <div class="param-header">
+        <div class="param-icon">⚡</div>
+        <div>
+          <div class="param-title">فرآیند جوشکاری</div>
+          <div class="param-en">Welding Process</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li><strong>GTAW / TIG</strong> — جوش ریشه</li>
+        <li><strong>SMAW</strong> — جوش دستی</li>
+        <li><strong>GMAW / MIG</strong> — جوش نیمه‌اتومات</li>
+        <li><strong>SAW</strong> — جوش زیرپودری</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #f59e0b;">
+      <div class="param-header">
+        <div class="param-icon">🧬</div>
+        <div>
+          <div class="param-title">فلز پایه</div>
+          <div class="param-en">Base Metal</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>نوع متریال: <strong>P-Number</strong></li>
+        <li>گرید: A106, A312, API 5L</li>
+        <li>ضخامت و قطر لوله</li>
+        <li>گروه متریال (<span class="en">Group No.</span>)</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #a855f7;">
+      <div class="param-header">
+        <div class="param-icon">🔥</div>
+        <div>
+          <div class="param-title">فلز پرکننده</div>
+          <div class="param-en">Filler Metal</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>نوع: <strong>SFA / F-Number</strong></li>
+        <li>الکترود: E7018, ER70S-6</li>
+        <li>قطر: <span class="num">2.5</span> تا <span class="num">5 mm</span></li>
+        <li>گاز محافظ و فلکس</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #ef4444;">
+      <div class="param-header">
+        <div class="param-icon">📐</div>
+        <div>
+          <div class="param-title">طراحی اتصال</div>
+          <div class="param-en">Joint Design</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>نوع اتصال: <strong>Butt, Fillet, Socket</strong></li>
+        <li>زاویه Bevel: <span class="num">37.5°</span></li>
+        <li>Root Gap: <span class="num">1.5 - 3 mm</span></li>
+        <li>Root Face (Land)</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #10b981;">
+      <div class="param-header">
+        <div class="param-icon">🎯</div>
+        <div>
+          <div class="param-title">پوزیشن جوشکاری</div>
+          <div class="param-en">Welding Position</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li><strong>1G</strong> — مسطح / چرخان</li>
+        <li><strong>2G</strong> — افقی</li>
+        <li><strong>5G</strong> — عمودی ثابت</li>
+        <li><strong>6G</strong> — زاویه <span class="num">45°</span></li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #ec4899;">
+      <div class="param-header">
+        <div class="param-icon">⚙️</div>
+        <div>
+          <div class="param-title">پارامترهای الکتریکی</div>
+          <div class="param-en">Electrical Parameters</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>نوع جریان: <strong>AC / DC</strong></li>
+        <li>قطبیت: <strong>DCEP / DCEN</strong></li>
+        <li>آمپر: <span class="num">70-180 A</span></li>
+        <li>ولتاژ: <span class="num">18-32 V</span></li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #14b8a6;">
+      <div class="param-header">
+        <div class="param-icon">🌡️</div>
+        <div>
+          <div class="param-title">عملیات حرارتی</div>
+          <div class="param-en">Heat Treatment</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li><strong>Preheat</strong> — پیش‌گرم (حداقل)</li>
+        <li><strong>Interpass Temp</strong> — بین پاسی</li>
+        <li><strong>PWHT</strong> — پس‌گرم</li>
+        <li>نرخ سردایش کنترل‌شده</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #6366f1;">
+      <div class="param-header">
+        <div class="param-icon">🔄</div>
+        <div>
+          <div class="param-title">تکنیک اجرا</div>
+          <div class="param-en">Technique</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>تعداد پاس‌ها و لایه‌ها</li>
+        <li>جهت جوشکاری: <strong>Stringer/Weave</strong></li>
+        <li>سرعت سفر (<span class="en">Travel Speed</span>)</li>
+        <li>روش پاکسازی بین پاسی</li>
+      </ul>
+    </div>
+  </div>
 
   <div class="callout callout-warn">
-    <span class="callout-label">هشدار</span>
-    ترتیب صحیح همیشه PQR → WPS → WPQ است. هیچ‌گاه نباید WPS بدون پشتوانه‌ی یک PQR معتبر نوشته شود، و هیچ‌گاه جوشکار نباید بدون WPQ منطبق با WPS مربوطه روی پروژه جوشکاری کند.
+    <span class="callout-label">⚠️ هشدار بازرسی</span>
+    <strong>Essential Variables</strong> پارامترهایی هستند که تغییر در آن‌ها خواص مکانیکی جوش را تحت تاثیر قرار می‌دهد. تغییر در هر یک از این متغیرها (مانند نوع الکترود، فرآیند جوشکاری، P-Number فلز پایه) مستلزم تهیه <strong>PQR جدید</strong> و بازنگری WPS است.
   </div>
 
-  <h2>زنجیره‌ی مدارک</h2>
-  <div class="doc-chain">
-    <div class="doc-box" style="background:linear-gradient(135deg,#0891b2,#0891b2cc);">
-      <div class="doc-name">PQR</div>
-      <div class="doc-full">Procedure Qualification Record</div>
-      <div class="doc-desc">سندی که نتایج واقعی یک جوش آزمایشی (Test Coupon) را با تمام پارامترهای واقعی اجرا ثبت می‌کند و با تست مخرب تأیید می‌شود.</div>
-    </div>
-    <div class="doc-box" style="background:linear-gradient(135deg,#2563EB,#2563EBcc);">
-      <div class="doc-name">WPS</div>
-      <div class="doc-full">Welding Procedure Specification</div>
-      <div class="doc-desc">دستورالعمل رسمی که محدوده‌ی مجاز پارامترهای جوشکاری (بر اساس PQR تأییدشده) را برای جوشکاران در فیلد مشخص می‌کند.</div>
-    </div>
-    <div class="doc-box" style="background:linear-gradient(135deg,#F97316,#F97316cc);">
-      <div class="doc-name">WPQ</div>
-      <div class="doc-full">Welder Performance Qualification</div>
-      <div class="doc-desc">گواهی صلاحیت فردی هر جوشکار که نشان می‌دهد او توانایی اجرای جوش طبق یک WPS مشخص را با موفقیت در تست عملی نشان داده است.</div>
+  <!-- PQR Process -->
+  <h2 id="pqr">فرآیند تهیه و تایید PQR</h2>
+  <p class="lead">PQR سند اصلی است که اثبات می‌کند روش جوشکاری پیشنهادی، اتصالی با خواص مکانیکی قابل قبول تولید می‌کند. این فرآیند در ۶ مرحله کلیدی انجام می‌شود.</p>
+
+  <div class="table-wrapper">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>مرحله</th>
+            <th>عنوان</th>
+            <th>شرح فعالیت</th>
+            <th>خروجی</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="doc-code-cell">01</td>
+            <td style="text-align: right;"><strong>آماده‌سازی Test Coupon</strong></td>
+            <td style="text-align: right;">برش و آماده‌سازی نمونه جوش مطابق طرح اولیه</td>
+            <td>نمونه آماده</td>
+          </tr>
+          <tr>
+            <td class="doc-code-cell">02</td>
+            <td style="text-align: right;"><strong>جوشکاری نمونه</strong></td>
+            <td style="text-align: right;">انجام جوش با پارامترهای پیشنهادی و ثبت متغیرها</td>
+            <td>نمونه جوش‌خورده</td>
+          </tr>
+          <tr>
+            <td class="doc-code-cell">03</td>
+            <td style="text-align: right;"><strong>بازرسی چشمی (VT)</strong></td>
+            <td style="text-align: right;">بررسی ظاهری، ابعادی و عیوب سطحی</td>
+            <td>گزارش VT</td>
+          </tr>
+          <tr>
+            <td class="doc-code-cell">04</td>
+            <td style="text-align: right;"><strong>تست‌های غیرمخرب (NDT)</strong></td>
+            <td style="text-align: right;">رادیوگرافی (RT) یا اولتراسونیک (UT) برای بررسی عیوب داخلی</td>
+            <td>گزارش NDT</td>
+          </tr>
+          <tr>
+            <td class="doc-code-cell">05</td>
+            <td style="text-align: right;"><strong>تست‌های مکانیکی</strong></td>
+            <td style="text-align: right;">کشش (Tensile)، خم (Bend)، ضربه (Impact)، سختی (Hardness)</td>
+            <td>گزارش آزمایشگاه</td>
+          </tr>
+          <tr>
+            <td class="doc-code-cell">06</td>
+            <td style="text-align: right;"><strong>صدور PQR</strong></td>
+            <td style="text-align: right;">تایید نهایی و امضای بازرس و مهندس جوش</td>
+            <td><strong>PQR تاییدشده</strong></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-
-  <h2>چرا این ترتیب اهمیت دارد</h2>
-  <p class="lead">اگر WPS بدون پشتوانه‌ی PQR نوشته شود، هیچ مدرک واقعی وجود ندارد که ثابت کند جوش حاصل از آن دستورالعمل، خواص مکانیکی مورد نیاز را دارد. WPQ یک جوشکار فقط برای محدوده‌ی مشخصی از فرآیند، موقعیت، و سایز معتبر است.</p>
-
-  <table>
-    <tr><th>مدرک</th><th>سطح تأیید</th><th>دامنه اعتبار</th></tr>
-    <tr><td>PQR</td><td>تست مخرب + شخص ثالث</td><td>یک‌بار، پایه‌ی WPS</td></tr>
-    <tr><td>WPS</td><td>تأیید مهندسی پروژه</td><td>کل پروژه (در محدوده‌ی متغیرها)</td></tr>
-    <tr><td>WPQ</td><td>تست عملی فردی</td><td>هر جوشکار، با انقضای زمانی</td></tr>
-  </table>
 
   <div class="callout callout-tip">
-    <span class="callout-label">نکته</span>
-    در بازرسی مدارک، همیشه Essential Variables (مثل نوع فلز پایه، فرآیند، موقعیت جوش) ثبت‌شده در WPS را با محدوده‌ی همان متغیرها در PQR پشتیبان مقایسه کن — اگر مقدار اجرا‌شده در فیلد از محدوده‌ی PQR خارج باشد، WPS فاقد پشتوانه است.
+    <span class="callout-label">💡 نکته فنی</span>
+    تعداد و نوع تست‌های مکانیکی بر اساس <strong>ضخامت نمونه</strong> و <strong>نوع متریال</strong> تعیین می‌شود. برای ضخامت‌های بالاتر از <span class="num">13 mm</span> معمولاً تست ضربه (<span class="en">Charpy Impact</span>) نیز الزامی است — به‌ویژه برای کاربردهای دمای پایین.
   </div>
 
-  <div class="nav-footer">
-    <span class="nav-btn nav-prev">→ این اولین فصل است</span>
-    <a href="../02-processes/" class="nav-btn nav-next">فصل بعد: فرآیندهای جوشکاری ←</a>
+  <!-- WPQ Qualification -->
+  <h2 id="wpq">محدوده صلاحیت جوشکار (WPQ)</h2>
+  <p class="lead">WPQ تنها یک گواهی عمومی نیست — محدوده مشخصی از ضخامت، قطر، پوزیشن و فرآیند را پوشش می‌دهد. جوشکار فقط در این محدوده مجاز به جوشکاری است.</p>
+
+  <div class="qual-box">
+    <div class="qual-header">
+      <div class="qual-icon">👷</div>
+      <div>
+        <h3>قوانین صلاحیت طبق ASME Section IX</h3>
+        <p>محدوده‌هایی که با یک آزمون صلاحیت پوشش داده می‌شوند</p>
+      </div>
+    </div>
+    <div class="qual-grid">
+      <div class="qual-item">
+        <div class="qual-item-title">📏 ضخامت فلز پایه</div>
+        <p>اگر ضخامت Test Coupon برابر <span class="qual-range">T</span> باشد، جوشکار برای ضخامت‌های <span class="qual-range">2T</span> تا حداکثر <span class="qual-range">200 mm</span> مجاز است.</p>
+      </div>
+      <div class="qual-item">
+        <div class="qual-item-title">⭕ قطر لوله</div>
+        <p>با آزمون روی قطر <span class="qual-range">D</span>، صلاحیت برای قطرهای <span class="qual-range">≥ D</span> و حداقل <span class="qual-range">25 mm</span> صادر می‌شود.</p>
+      </div>
+      <div class="qual-item">
+        <div class="qual-item-title">🎯 پوزیشن جوشکاری</div>
+        <p>آزمون در <span class="qual-range">6G</span> تمام پوزیشن‌ها (<span class="qual-range">1G-6G</span>) را پوشش می‌دهد — آزمون <span class="qual-range">2G</span> فقط افقی و تخت را شامل است.</p>
+      </div>
+      <div class="qual-item">
+        <div class="qual-item-title">⏱️ اعتبار و تمدید</div>
+        <p>اگر جوشکار <span class="qual-range">6 ماه</span> با فرآیند خاص جوشکاری نکند، WPQ <strong>باطل</strong> می‌شود و نیاز به آزمون مجدد دارد.</p>
+      </div>
+    </div>
   </div>
+
+  <div class="callout callout-danger">
+    <span class="callout-label">🚨 خط قرمز بازرسی</span>
+    هرگز اجازه ندهید جوشکاری خارج از <strong>محدوده WPQ</strong> انجام شود. مثلاً جوشکاری که فقط WPQ پوزیشن <span class="en">1G</span> دارد، <strong>مجاز به جوش در پوزیشن 6G نیست</strong>. این تخلف منجر به رد جوش و باطل شدن گزارش‌های کنترل کیفیت می‌شود.
+  </div>
+
+  <!-- Standards -->
+  <h2 id="standards">استانداردهای مرجع مدارک جوشکاری</h2>
+  <p class="lead">چندین استاندارد بین‌المللی الزامات تهیه و اجرای این مدارک را تعیین می‌کنند. انتخاب استاندارد بر اساس نوع پروژه و صنعت مشخص می‌شود.</p>
+
+  <div class="std-box">
+    <div class="std-header">
+      <div class="std-icon">📚</div>
+      <div>
+        <h3>استانداردهای اصلی مورد استفاده در ایران</h3>
+        <p>در پروژه‌های نفت، گاز و پتروشیمی ایران</p>
+      </div>
+    </div>
+    <div class="std-grid">
+      <div class="std-item">
+        <div class="std-item-code">ASME Section IX</div>
+        <div class="std-item-title">صلاحیت جوشکاری و لحیم‌کاری</div>
+        <p>مرجع اصلی تهیه WPS، PQR و WPQ برای مخازن تحت فشار، بویلرها و پایپینگ فرآیندی.</p>
+      </div>
+      <div class="std-item">
+        <div class="std-item-code">AWS D1.1</div>
+        <div class="std-item-title">جوشکاری سازه‌های فولادی</div>
+        <p>استاندارد مرجع برای سازه‌های فلزی، استراکچرها و اتصالات ساختمانی.</p>
+      </div>
+      <div class="std-item">
+        <div class="std-item-code">API 1104</div>
+        <div class="std-item-title">جوشکاری خطوط لوله نفت و گاز</div>
+        <p>ویژه خطوط انتقال (Pipeline) و اتصالات سر خط. معیار پذیرش متفاوت از ASME.</p>
+      </div>
+      <div class="std-item">
+        <div class="std-item-code">ASME B31.3</div>
+        <div class="std-item-title">پایپینگ فرآیندی</div>
+        <p>استاندارد مرجع طراحی و ساخت پایپینگ در پالایشگاه‌ها و پتروشیمی‌ها — ارجاع به Sec. IX.</p>
+      </div>
+      <div class="std-item">
+        <div class="std-item-code">IPS-G-PI-180</div>
+        <div class="std-item-title">جوشکاری پایپینگ (ایران)</div>
+        <p>استاندارد شرکت نفت ایران برای الزامات جوشکاری در پروژه‌های پایپینگ داخلی.</p>
+      </div>
+      <div class="std-item">
+        <div class="std-item-code">ISO 15614</div>
+        <div class="std-item-title">صلاحیت روش جوشکاری</div>
+        <p>استاندارد بین‌المللی معادل ASME Sec. IX که در پروژه‌های اروپایی کاربرد دارد.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-label">💡 نکته بازرسی</span>
+    در پروژه‌های ایران معمولاً ترکیب <strong>ASME Sec. IX + IPS</strong> استفاده می‌شود. هنگام بازرسی، حتماً چک کنید که <strong>نسخه سال</strong> استاندارد مورد استناد با نسخه تعیین‌شده در قرارداد پروژه مطابقت داشته باشد (مثلاً <span class="en">ASME Sec. IX - 2023 Edition</span>).
+  </div>
+
+  <!-- Checklist -->
+  <h2>چک‌لیست بازرس قبل از شروع جوشکاری</h2>
+  <p class="lead">قبل از تایید شروع هر فعالیت جوشکاری، بازرس باید از وجود و صحت مدارک زیر اطمینان حاصل کند:</p>
+
+  <div class="params-grid">
+    <div class="param-card" style="--param-color: #06b6d4;">
+      <div class="param-header">
+        <div class="param-icon">✓</div>
+        <div>
+          <div class="param-title">بررسی WPS</div>
+          <div class="param-en">Document Check</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>دارای شماره و تاریخ معتبر</li>
+        <li>منطبق با PQR مرجع</li>
+        <li>پارامترهای کامل ذکر شده</li>
+        <li>تایید مهندس جوش پروژه</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #f59e0b;">
+      <div class="param-header">
+        <div class="param-icon">✓</div>
+        <div>
+          <div class="param-title">بررسی PQR</div>
+          <div class="param-en">Qualification Record</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>نتایج تست مکانیکی قابل قبول</li>
+        <li>امضای آزمایشگاه معتبر</li>
+        <li>پوشش متغیرهای WPS</li>
+        <li>مطابقت با استاندارد مرجع</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #a855f7;">
+      <div class="param-header">
+        <div class="param-icon">✓</div>
+        <div>
+          <div class="param-title">بررسی WPQ جوشکار</div>
+          <div class="param-en">Welder Qualification</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>نام جوشکار مطابق با ID</li>
+        <li>محدوده صلاحیت پوشش‌دهنده</li>
+        <li>تاریخ انقضا معتبر</li>
+        <li>فرآیند جوشکاری منطبق</li>
+      </ul>
+    </div>
+
+    <div class="param-card" style="--param-color: #10b981;">
+      <div class="param-header">
+        <div class="param-icon">✓</div>
+        <div>
+          <div class="param-title">بررسی شرایط میدانی</div>
+          <div class="param-en">Field Conditions</div>
+        </div>
+      </div>
+      <ul class="param-list">
+        <li>موجود بودن WPS در محل کار</li>
+        <li>الکترودهای مطابق WPS</li>
+        <li>تجهیزات کالیبره</li>
+        <li>دمای محیط مناسب</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Nav Footer -->
+  <div class="nav-footer">
+    <a href="../05-fabrication/" class="nav-btn nav-prev">
+      → فصل قبل: ساخت و مونتاژ
+    </a>
+    <a href="../08-ndt/" class="nav-btn nav-next">
+      فصل بعد: تست‌های غیرمخرب ←
+    </a>
+  </div>
+
 </div>
+
+<!-- Footer -->
+<footer>
+  <p>⚡ برگرفته از جزوه «اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش» — مدارک فنی جوشکاری</p>
+  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio</p>
+  <p style="margin-top: 10px; font-size: 11px; opacity: 0.6;">© <span class="num">2026</span> Welding Documents Guide — Open Source</p>
+</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.querySelector('.theme-toggle');
+  if (body.getAttribute('data-theme') === 'light') {
+    body.removeAttribute('data-theme');
+    btn.textContent = '🌙';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.setAttribute('data-theme', 'light');
+    btn.textContent = '☀️';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+const saved = localStorage.getItem('theme');
+if (saved === 'light') {
+  document.body.setAttribute('data-theme', 'light');
+  document.querySelector('.theme-toggle').textContent = '☀️';
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const offset = 80;
+      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: pos, behavior: 'smooth' });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
+
