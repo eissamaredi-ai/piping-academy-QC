@@ -3,127 +3,1267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فرآیندهای جوشکاری — آکادمی پایپینگ و جوشکاری</title>
+<title>فرآیندهای جوشکاری — SMAW | GTAW | FCAW | GMAW | SAW</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-soft: #111827;
+    --bg-card: #171f34;
+    --border: #2a3350;
+    --text: #e8ecf5;
+    --text-muted: #8b94ad;
+    --primary: #06b6d4;
+    --primary-dark: #0891b2;
+    --accent: #f59e0b;
+    --danger: #ef4444;
+    --success: #10b981;
+    --purple: #a855f7;
+    --indigo: #6366f1;
+    --pink: #ec4899;
+    --teal: #14b8a6;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  [data-theme="light"] {
+    --bg: #f8fafc; --bg-soft: #ffffff; --bg-card: #ffffff;
+    --border: #e2e8f0; --text: #0f172a; --text-muted: #64748b;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.05);
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.9;
+    transition: background 0.3s, color 0.3s;
+  }
   a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#F97316; }
+  .en, code {
+    font-family: 'Inter', monospace;
+    direction:ltr; unicode-bidi:embed; display:inline-block;
+  }
+  .num { font-family:'Inter',monospace; direction:ltr; unicode-bidi:embed; display:inline-block; font-weight:600; }
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#F97316; font-weight:bold; }
+  /* NAV */
+  .navbar {
+    position:sticky; top:0; z-index:100;
+    background:rgba(10,14,26,0.92);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  [data-theme="light"] .navbar { background:rgba(248,250,252,0.92); }
+  .navbar-inner {
+    max-width:1200px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .logo { display:flex; align-items:center; gap:10px; font-weight:700; font-size:14px; }
+  .logo-icon {
+    width:34px; height:34px; border-radius:9px;
+    background:linear-gradient(135deg,#ef4444,#f59e0b);
+    display:flex; align-items:center; justify-content:center;
+    color:white; font-size:18px;
+    box-shadow:0 4px 14px rgba(239,68,68,0.35);
+  }
+  .nav-links { display:flex; gap:20px; list-style:none; flex-wrap:wrap; }
+  .nav-links a {
+    color:var(--text-muted); font-size:13px; font-weight:500;
+    transition:color 0.2s; position:relative;
+  }
+  .nav-links a:hover { color:var(--primary); }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-6px; right:0;
+    width:0; height:2px; background:var(--primary); transition:width 0.3s;
+  }
+  .nav-links a:hover::after { width:100%; }
+  .nav-actions { display:flex; align-items:center; gap:10px; }
+  .back-link {
+    color:var(--text-muted); font-size:13px;
+    padding:8px 14px; border-radius:8px; border:1px solid var(--border);
+    transition:all 0.2s;
+  }
+  .back-link:hover { color:var(--primary); border-color:var(--primary); }
+  .theme-toggle {
+    background:var(--bg-soft); border:1px solid var(--border);
+    color:var(--text); width:38px; height:38px; border-radius:9px;
+    cursor:pointer; font-size:1rem; transition:transform 0.2s;
+  }
+  .theme-toggle:hover { transform:rotate(15deg); }
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
-  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+  /* BREADCRUMB */
+  .breadcrumb {
+    max-width:960px; margin:24px auto 0; padding:0 24px;
+    font-size:12px; color:var(--text-muted);
+  }
+  .breadcrumb span { color:var(--primary); font-weight:700; }
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
+  /* CONTENT */
+  .content { max-width:960px; margin:0 auto; padding:20px 24px 80px; }
 
-  .process-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:10px; }
-  .process-name { font-weight:bold; font-size:14px; margin-bottom:2px; }
-  .process-full { font-size:11px; color:#94a3b8; margin-bottom:8px; }
-  .process-desc { font-size:12px; color:#475569; line-height:1.7; }
+  /* HERO */
+  .hero {
+    position:relative; margin-bottom:32px; border-radius:20px;
+    overflow:hidden; min-height:340px;
+    display:flex; align-items:flex-end;
+    background:linear-gradient(135deg,#1a0d2e 0%,#0a0e1a 100%);
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 15% 30%,rgba(245,158,11,0.3),transparent 50%),
+      radial-gradient(circle at 80% 60%,rgba(239,68,68,0.2),transparent 50%),
+      radial-gradient(circle at 50% 80%,rgba(6,182,212,0.1),transparent 50%);
+  }
+  .hero-arc {
+    position:absolute; inset:0; opacity:0.5;
+    background-image:
+      radial-gradient(circle at 25% 40%, #fbbf24 2px, transparent 3px),
+      radial-gradient(circle at 60% 20%, #fb923c 1px, transparent 2px),
+      radial-gradient(circle at 80% 75%, #fcd34d 1px, transparent 2px),
+      radial-gradient(circle at 10% 70%, #f59e0b 2px, transparent 3px),
+      radial-gradient(circle at 90% 40%, #fbbf24 1px, transparent 2px);
+    background-size: 300px 300px;
+    animation: sparkle 4s infinite alternate;
+  }
+  @keyframes sparkle {
+    0%  { opacity:0.3; }
+    100%{ opacity:0.7; }
+  }
+  .hero-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(10,14,26,0.1) 0%,rgba(10,14,26,0.88) 100%);
+  }
+  .hero-content { position:relative; z-index:2; padding:30px; width:100%; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4);
+    color:#fcd34d; padding:5px 12px; border-radius:50px;
+    font-size:12px; font-weight:600; margin-bottom:12px;
+  }
+  .hero h1 {
+    font-size:30px; font-weight:800; color:white;
+    margin-bottom:8px; line-height:1.4;
+    background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 40%,#ef4444 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero .subtitle { color:#cbd5e1; font-size:14px; margin-bottom:0; }
+  .hero-stats { display:flex; gap:28px; margin-top:20px; flex-wrap:wrap; }
+  .hero-stat { display:flex; flex-direction:column; }
+  .hero-stat-num {
+    font-size:22px; font-weight:800;
+    background:linear-gradient(135deg,#fbbf24,#ef4444);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    font-family:'Inter',sans-serif;
+  }
+  .hero-stat-label { font-size:11px; color:#94a3b8; }
 
-  table { width:100%; border-collapse:collapse; margin:16px 0; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:13px; }
-  th { background:#0F172A; color:white; padding:10px 12px; text-align:right; }
-  td { padding:10px 12px; border-top:1px solid #f1f5f9; }
-  tr:nth-child(even) td { background:#f8fafc; }
+  /* SECTION TITLE */
+  h2 {
+    font-size:22px; font-weight:700; margin:36px 0 14px;
+    color:var(--text); display:flex; align-items:center; gap:10px;
+  }
+  h2::before {
+    content:''; width:5px; height:26px;
+    background:linear-gradient(180deg,#f59e0b,#ef4444);
+    border-radius:3px;
+  }
+  h3 { font-size:16px; font-weight:700; margin:18px 0 10px; color:var(--text); }
+  p.lead { line-height:2; margin-bottom:18px; color:var(--text-muted); font-size:15px; }
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#F97316; color:white; }
+  /* CALLOUTS */
+  .callout {
+    border-radius:12px; padding:16px 18px; margin:20px 0;
+    font-size:13.5px; line-height:1.9; border-right:4px solid;
+    background:var(--bg-card);
+    border-left:1px solid var(--border); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  }
+  .callout-def  { border-right-color:var(--primary); }
+  .callout-warn { border-right-color:var(--accent); }
+  .callout-tip  { border-right-color:var(--success); }
+  .callout-danger { border-right-color:var(--danger); }
+  .callout-label {
+    font-weight:700; font-size:12px; margin-bottom:5px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .callout-def .callout-label   { color:var(--primary); }
+  .callout-warn .callout-label  { color:var(--accent); }
+  .callout-tip .callout-label   { color:var(--success); }
+  .callout-danger .callout-label{ color:var(--danger); }
+
+  /* PROCESS CARDS */
+  .process-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:20px; overflow:hidden; margin:28px 0;
+    position:relative;
+    transition:border-color 0.3s;
+  }
+  .process-card:hover { border-color:var(--proc-color); }
+  .process-card::before {
+    content:''; position:absolute; top:0; right:0;
+    width:100%; height:5px; background:var(--proc-color);
+  }
+  .proc-header {
+    display:grid; grid-template-columns:auto 1fr auto;
+    align-items:center; gap:20px; padding:24px 26px 20px;
+    border-bottom:1px solid var(--border);
+  }
+  .proc-icon {
+    width:64px; height:64px; border-radius:16px;
+    background:var(--proc-color); display:flex;
+    align-items:center; justify-content:center;
+    font-size:30px; flex-shrink:0;
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+  }
+  .proc-title-block h3 { font-size:20px; font-weight:800; margin:0 0 4px; }
+  .proc-fullname { font-size:13px; color:var(--proc-color); font-family:'Inter',sans-serif; font-weight:600; direction:ltr; }
+  .proc-subtitle { font-size:12.5px; color:var(--text-muted); margin-top:2px; }
+  .proc-badge {
+    background:rgba(0,0,0,0.25); border:1px solid var(--proc-color);
+    color:var(--proc-color); padding:6px 14px;
+    border-radius:30px; font-size:12px; font-weight:700;
+    text-align:center; line-height:1.4; flex-shrink:0;
+  }
+  .proc-body { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; }
+  .proc-col { padding:22px 24px; border-left:1px solid var(--border); }
+  .proc-col:last-child { border-left:none; }
+  .proc-col-title {
+    font-size:11px; font-weight:700; letter-spacing:1px;
+    text-transform:uppercase; color:var(--text-muted);
+    margin-bottom:14px; display:flex; align-items:center; gap:6px;
+  }
+  .proc-col-title::before {
+    content:''; width:14px; height:2px;
+    background:var(--proc-color); border-radius:1px;
+  }
+  .spec-list { list-style:none; }
+  .spec-list li {
+    padding:5px 0; border-bottom:1px dashed var(--border);
+    font-size:13px; color:var(--text-muted);
+    display:flex; justify-content:space-between; gap:8px;
+  }
+  .spec-list li:last-child { border-bottom:none; }
+  .spec-list .k { color:var(--text); font-weight:500; }
+  .spec-list .v { color:var(--proc-color); font-family:'Inter',monospace; font-size:12.5px; }
+  .pro-con-list { list-style:none; }
+  .pro-con-list li {
+    padding:4px 0; padding-right:18px; position:relative;
+    font-size:12.5px; color:var(--text-muted); line-height:1.7;
+  }
+  .pro-con-list li::before {
+    position:absolute; right:0; top:5px;
+    font-size:11px; font-weight:900;
+  }
+  .pro-con-list.pros li::before { content:'✓'; color:var(--success); }
+  .pro-con-list.cons li::before { content:'✗'; color:var(--danger); }
+  .pro-con-list li strong { color:var(--text); }
+  .app-tags { display:flex; flex-wrap:wrap; gap:6px; }
+  .app-tag {
+    background:rgba(0,0,0,0.25); border:1px solid var(--border);
+    color:var(--text-muted); font-size:11px; padding:3px 8px;
+    border-radius:6px; transition:all 0.2s;
+  }
+  .app-tag:hover { border-color:var(--proc-color); color:var(--proc-color); }
+  .proc-footer {
+    padding:14px 24px; background:rgba(0,0,0,0.2);
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:10px;
+    border-top:1px solid var(--border);
+  }
+  .proc-footer-label { font-size:11.5px; color:var(--text-muted); }
+  .proc-footer-val {
+    font-family:'Inter',monospace; font-weight:700;
+    color:var(--proc-color); font-size:13px;
+  }
+  .preheat-chips { display:flex; gap:8px; flex-wrap:wrap; }
+  .chip {
+    padding:4px 10px; border-radius:6px; font-size:11.5px; font-weight:600;
+    font-family:'Inter',sans-serif;
+  }
+  .chip-yes { background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); }
+  .chip-no  { background:rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.25); }
+  .chip-dep { background:rgba(245,158,11,0.12); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); }
+
+  /* COMPARISON TABLE */
+  .table-wrapper {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:16px; overflow:hidden; box-shadow:var(--shadow-md); margin:18px 0;
+  }
+  .table-scroll { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; min-width:750px; }
+  thead { background:var(--bg-soft); }
+  th {
+    padding:14px 16px; text-align:center; font-weight:600;
+    font-size:12px; color:var(--text-muted); border-bottom:1px solid var(--border);
+    text-transform:uppercase; letter-spacing:0.5px; white-space:nowrap;
+  }
+  td {
+    padding:11px 14px; border-bottom:1px solid var(--border);
+    font-size:13px; text-align:center; color:var(--text);
+  }
+  tbody tr { transition:background 0.2s; }
+  tbody tr:hover { background:var(--bg-soft); }
+  tbody tr:last-child td { border-bottom:none; }
+  td.lbl { text-align:right; font-weight:600; color:var(--text); font-size:13px; }
+  .tag-yes { color:var(--success); font-weight:700; }
+  .tag-no  { color:var(--danger); font-weight:700; }
+  .tag-dep { color:var(--accent); font-weight:700; }
+  .proc-head {
+    font-family:'Inter',sans-serif; font-weight:800;
+    font-size:13px; letter-spacing:0.5px;
+  }
+
+  /* PARAM GRID */
+  .params-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px; margin:18px 0;
+  }
+  .param-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:14px; padding:18px; position:relative; overflow:hidden;
+    transition:transform 0.3s, border-color 0.3s;
+  }
+  .param-card:hover { transform:translateY(-3px); border-color:var(--param-color); }
+  .param-card::before {
+    content:''; position:absolute; top:0; right:0;
+    width:100%; height:3px; background:var(--param-color);
+  }
+  .param-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+  .param-icon {
+    width:40px; height:40px; border-radius:10px;
+    background:var(--param-color); display:flex;
+    align-items:center; justify-content:center; font-size:18px; flex-shrink:0;
+  }
+  .param-title { font-size:14px; font-weight:700; margin-bottom:2px; }
+  .param-en { font-family:'Inter',sans-serif; font-size:10.5px; color:var(--text-muted); direction:ltr; }
+  .param-list { list-style:none; }
+  .param-list li {
+    padding:3px 0; padding-right:14px; position:relative;
+    font-size:12.5px; color:var(--text-muted);
+  }
+  .param-list li::before {
+    content:'›'; position:absolute; right:0;
+    color:var(--param-color); font-weight:900; font-size:14px;
+  }
+  .param-list li strong { color:var(--text); }
+
+  /* PREHEAT BOX */
+  .preheat-box {
+    background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(239,68,68,0.04));
+    border:1px solid rgba(245,158,11,0.3); border-radius:18px;
+    padding:24px; margin:24px 0;
+  }
+  .preheat-header { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .preheat-icon {
+    width:52px; height:52px; border-radius:13px;
+    background:linear-gradient(135deg,#f59e0b,#ef4444);
+    display:flex; align-items:center; justify-content:center; font-size:24px;
+  }
+  .preheat-header h3 { font-size:17px; font-weight:700; margin:0; }
+  .preheat-header p { font-size:12.5px; color:var(--text-muted); margin-top:3px; }
+  .preheat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+  .preheat-item {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:12px; padding:16px;
+  }
+  .preheat-item-p { font-family:'Inter',sans-serif; font-weight:800; color:var(--accent); font-size:14px; margin-bottom:4px; }
+  .preheat-item-mat { font-weight:700; font-size:13px; margin-bottom:6px; }
+  .preheat-item p { font-size:12.5px; color:var(--text-muted); line-height:1.8; }
+
+  /* POSITION DIAGRAM */
+  .position-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px; margin:20px 0;
+  }
+  .pos-card {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:14px; padding:18px; text-align:center;
+    transition:border-color 0.2s, transform 0.2s;
+  }
+  .pos-card:hover { border-color:var(--accent); transform:translateY(-3px); }
+  .pos-code {
+    font-family:'Inter',sans-serif; font-size:28px; font-weight:900;
+    background:linear-gradient(135deg,#f59e0b,#ef4444);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    display:block; margin-bottom:6px;
+  }
+  .pos-name { font-weight:700; font-size:13px; margin-bottom:4px; }
+  .pos-desc { font-size:11.5px; color:var(--text-muted); line-height:1.6; }
+  .pos-coverage {
+    margin-top:8px; padding:4px 8px; border-radius:6px;
+    background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.25);
+    font-size:10.5px; color:var(--accent); font-weight:600; font-family:'Inter',sans-serif;
+  }
+
+  /* INSPECTOR BOX */
+  .inspector-box {
+    background:linear-gradient(135deg,rgba(6,182,212,0.08),rgba(99,102,241,0.04));
+    border:1px solid rgba(6,182,212,0.3); border-radius:18px;
+    padding:24px; margin:24px 0;
+  }
+  .inspector-header { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .inspector-icon {
+    width:52px; height:52px; border-radius:13px;
+    background:linear-gradient(135deg,#06b6d4,#6366f1);
+    display:flex; align-items:center; justify-content:center; font-size:24px;
+  }
+  .inspector-header h3 { font-size:17px; font-weight:700; margin:0; }
+  .inspector-header p { font-size:12.5px; color:var(--text-muted); margin-top:3px; }
+  .checklist { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .checklist li {
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:10px; padding:12px 14px;
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:13px; color:var(--text-muted); line-height:1.6;
+  }
+  .checklist li .ci {
+    width:22px; height:22px; border-radius:6px;
+    background:rgba(6,182,212,0.15); border:1px solid rgba(6,182,212,0.3);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; color:var(--primary); flex-shrink:0; margin-top:1px;
+  }
+  .checklist li strong { color:var(--text); }
+
+  /* NAV FOOTER */
+  .nav-footer {
+    display:flex; justify-content:space-between; margin-top:50px;
+    padding-top:28px; border-top:1px solid var(--border); gap:12px; flex-wrap:wrap;
+  }
+  .nav-btn {
+    font-size:13px; font-weight:700; padding:12px 20px;
+    border-radius:11px; border:1px solid var(--border);
+    background:var(--bg-card); transition:all 0.2s;
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav-prev { color:var(--text-muted); }
+  .nav-prev:hover { color:var(--text); border-color:var(--primary); }
+  .nav-next {
+    background:linear-gradient(135deg,#ef4444,#f59e0b);
+    color:white; border-color:transparent;
+    box-shadow:0 6px 18px rgba(239,68,68,0.3);
+  }
+  .nav-next:hover { transform:translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background:var(--bg-soft); border-top:1px solid var(--border);
+    padding:28px 24px; text-align:center;
+  }
+  footer p { color:var(--text-muted); font-size:12.5px; margin-bottom:4px; }
+
+  /* RESPONSIVE */
+  @media(max-width:800px){
+    .nav-links { display:none; }
+    .hero h1 { font-size:22px; }
+    h2 { font-size:18px; }
+    .proc-body { grid-template-columns:1fr; }
+    .proc-col { border-left:none; border-top:1px solid var(--border); }
+    .proc-col:first-child { border-top:none; }
+    .proc-header { grid-template-columns:auto 1fr; }
+    .proc-badge { display:none; }
+    .checklist { grid-template-columns:1fr; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .process-card { animation:fadeInUp 0.5s ease-out backwards; }
+  .process-card:nth-child(1){animation-delay:0.05s}
+  .process-card:nth-child(2){animation-delay:0.1s}
+  .process-card:nth-child(3){animation-delay:0.15s}
+  .process-card:nth-child(4){animation-delay:0.2s}
+  .process-card:nth-child(5){animation-delay:0.25s}
+
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--primary)}
 </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      <span>آکادمی پایپینگ و جوشکاری piping studio</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#overview">مرور کلی</a></li>
+      <li><a href="#smaw">SMAW</a></li>
+      <li><a href="#gtaw">GTAW</a></li>
+      <li><a href="#fcaw">FCAW</a></li>
+      <li><a href="#gmaw">GMAW</a></li>
+      <li><a href="#saw">SAW</a></li>
+      <li><a href="#compare">مقایسه</a></li>
+      <li><a href="#preheat">پیش‌گرم</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="../01-documents/" class="back-link">← فصل ۱: WPS/PQR</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="تم">🌙</button>
+    </div>
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۲ — فرآیندهای جوشکاری</span></div>
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  آموزش جوشکاری ←
+  <span>فصل ۲ — فرآیندهای جوشکاری (SMAW · GTAW · FCAW · GMAW · SAW)</span>
+</div>
 
+<!-- CONTENT -->
 <div class="content">
-  <h1>فرآیندهای جوشکاری</h1>
-  <div class="subtitle">پنج روش رایج صنعتی و معیار انتخاب هرکدام در پروژه‌های نفت و گاز</div>
 
-  <p class="lead">انتخاب فرآیند جوشکاری معمولاً ترکیبی از سه عامل است: کیفیت مورد نیاز جوش، سرعت اجرای مدنظر پروژه، و محل کار (کارگاه ثابت یا فیلد باز). در بسیاری از پروژه‌های پایپینگ صنعتی، ترکیبی از چند فرآیند برای یک خط واحد استفاده می‌شود.</p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-arc"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🔥 فرآیندهای جوشکاری صنعتی</div>
+      <h1>فرآیندهای جوشکاری در پایپینگ نفت، گاز و پتروشیمی</h1>
+      <div class="subtitle">
+        بررسی تخصصی SMAW، GTAW، FCAW، GMAW و SAW — پارامترها، کاربردها، محدودیت‌ها و الزامات بازرسی
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">فرآیند اصلی</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Sec. IX</div>
+          <div class="hero-stat-label">مرجع ASME</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">B31.3</div>
+          <div class="hero-stat-label">استاندارد پایپینگ</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">API RP 577</div>
+          <div class="hero-stat-label">بازرسی جوش</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <h2 id="overview">مرور کلی: انتخاب فرآیند جوشکاری مناسب</h2>
+  <p class="lead">
+    در پروژه‌های پایپینگ صنعتی، انتخاب فرآیند جوشکاری بر اساس نوع متریال، ضخامت، پوزیشن، کیفیت مورد نیاز، محیط اجرا و سرعت تولید تعیین می‌شود. انتخاب نادرست فرآیند — حتی با اجرای صحیح — می‌تواند منجر به عیوب ساختاری، رد NDT و صدور NCR شود.
+  </p>
 
   <div class="callout callout-def">
-    <span class="callout-label">تعریف</span>
-    رایج‌ترین ترکیب در خطوط فولادی پروژه‌های نفت و گاز: <strong>GTAW برای Root Pass</strong> (کیفیت بالا، بدون اسپاتر داخل لوله) و <strong>SMAW یا FCAW برای Fill/Cap Pass</strong> (سرعت بیشتر برای تکمیل حجم جوش).
+    <span class="callout-label">📘 قانون کلیدی — ASME B31.3 Para 328.1</span>
+    تمام جوشکاری‌ها باید توسط <strong>جوشکار دارای WPQ معتبر</strong>، طبق <strong>WPS تایید‌شده توسط PQR</strong>، و با پارامترهایی که در محدوده <strong>Essential Variables</strong> باشند، انجام شود. هر فرآیند جوشکاری F-Number و A-Number مخصوص به خود را در ASME Section IX دارد.
   </div>
 
-  <h2>فرآیندهای اصلی</h2>
+  <!-- ══════════ SMAW ══════════ -->
+  <h2 id="smaw">① SMAW — جوشکاری قوس دستی با الکترود پوشش‌دار</h2>
 
-  <div class="process-card">
-    <div class="process-name" style="color:#dc2626;">SMAW</div>
-    <div class="process-full">Shielded Metal Arc Welding</div>
-    <div class="process-desc">جوشکاری با الکترود روپوش‌دار — رایج‌ترین و قابل‌حمل‌ترین روش، مناسب کارهای فیلد و موقعیت‌های دشوار.</div>
+  <div class="process-card" style="--proc-color:#ef4444;">
+    <div class="proc-header">
+      <div class="proc-icon">🔴</div>
+      <div class="proc-title-block">
+        <h3>SMAW</h3>
+        <div class="proc-fullname">Shielded Metal Arc Welding</div>
+        <div class="proc-subtitle">جوشکاری قوس الکتریکی دستی — رایج‌ترین فرآیند در پایپینگ صنعتی ایران</div>
+      </div>
+      <div class="proc-badge">
+        پرکاربردترین<br>فرآیند میدانی
+      </div>
+    </div>
+    <div class="proc-body">
+      <div class="proc-col">
+        <div class="proc-col-title">📊 پارامترهای اصلی</div>
+        <ul class="spec-list">
+          <li><span class="k">جریان</span><span class="v">DC / AC</span></li>
+          <li><span class="k">قطبیت معمول</span><span class="v">DCEP</span></li>
+          <li><span class="k">آمپر (Ø3.2mm)</span><span class="v">90–130 A</span></li>
+          <li><span class="k">آمپر (Ø4mm)</span><span class="v">130–180 A</span></li>
+          <li><span class="k">ولتاژ قوس</span><span class="v">20–30 V</span></li>
+          <li><span class="k">محافظت قوس</span><span class="v">پوشش الکترود</span></li>
+          <li><span class="k">F-Number</span><span class="v">F1 تا F4</span></li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">✅ مزایا / ✗ معایب</div>
+        <ul class="pro-con-list pros">
+          <li>قابل اجرا در <strong>همه پوزیشن‌ها</strong></li>
+          <li>تجهیزات ارزان و <strong>قابل حمل</strong></li>
+          <li>مقاوم در برابر <strong>باد و شرایط محیطی</strong></li>
+          <li>تنوع بالای متریال قابل جوش</li>
+        </ul>
+        <ul class="pro-con-list cons" style="margin-top:10px;">
+          <li>سرعت <strong>پایین</strong> — نیاز به تعویض مکرر الکترود</li>
+          <li>کیفیت وابسته به <strong>مهارت جوشکار</strong></li>
+          <li>سرباره باید <strong>کاملاً برداشته</strong> شود</li>
+          <li>رطوبت الکترود باعث <strong>Hydrogen Cracking</strong></li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">🏭 کاربردهای اصلی</div>
+        <div class="app-tags">
+          <span class="app-tag">جوش ریشه لوله</span>
+          <span class="app-tag">پوزیشن 5G/6G</span>
+          <span class="app-tag">کربن استیل</span>
+          <span class="app-tag">آلیاژهای کم‌آلیاژ</span>
+          <span class="app-tag">تعمیرات میدانی</span>
+          <span class="app-tag">دمای بالا</span>
+          <span class="app-tag">اسپول‌سازی</span>
+          <span class="app-tag">سرویس Sour</span>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="proc-col-title" style="margin-bottom:8px;">⚡ الکترودهای معمول</div>
+          <ul class="spec-list">
+            <li><span class="k">E6010</span><span class="v">جوش ریشه — DCEP</span></li>
+            <li><span class="k">E7016</span><span class="v">کم‌هیدروژن — AC/DCEP</span></li>
+            <li><span class="k">E7018</span><span class="v">کم‌هیدروژن — رایج‌ترین</span></li>
+            <li><span class="k">E308L-16</span><span class="v">Stainless Steel</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="proc-footer">
+      <div>
+        <span class="proc-footer-label">نگهداری الکترود E7018: </span>
+        <span class="proc-footer-val">خشک‌کن ≥ 300°C / ۱h — نگهداری در quiver ≥ 120°C</span>
+      </div>
+      <div class="preheat-chips">
+        <span class="chip chip-yes">همه پوزیشن</span>
+        <span class="chip chip-dep">Preheat بسته به P-No.</span>
+        <span class="chip chip-no">گاز محافظ ندارد</span>
+      </div>
+    </div>
   </div>
-  <div class="process-card">
-    <div class="process-name" style="color:#0891b2;">GTAW (TIG)</div>
-    <div class="process-full">Gas Tungsten Arc Welding</div>
-    <div class="process-desc">جوشکاری با الکترود تنگستن غیرمصرفی — بالاترین کیفیت و تمیزی، مناسب Root Pass خطوط حساس.</div>
-  </div>
-  <div class="process-card">
-    <div class="process-name" style="color:#2563EB;">GMAW (MIG)</div>
-    <div class="process-full">Gas Metal Arc Welding</div>
-    <div class="process-desc">جوشکاری نیمه‌اتوماتیک با سیم مصرفی پیوسته — سرعت اجرای بالا، مناسب تولید حجم زیاد.</div>
-  </div>
-  <div class="process-card">
-    <div class="process-name" style="color:#F97316;">FCAW</div>
-    <div class="process-full">Flux-Cored Arc Welding</div>
-    <div class="process-desc">مشابه GMAW اما با سیم پودر-مغزی — نفوذ بالاتر، مناسب ضخامت‌های زیاد و کار در فضای باز.</div>
-  </div>
-  <div class="process-card">
-    <div class="process-name" style="color:#7c3aed;">SAW</div>
-    <div class="process-full">Submerged Arc Welding</div>
-    <div class="process-desc">جوشکاری زیرپودری، کاملاً مکانیزه — برای جوش‌های طولانی مستقیم با نرخ رسوب بسیار بالا.</div>
-  </div>
-
-  <h2>جدول مقایسه‌ای</h2>
-  <table>
-    <tr><th>فرآیند</th><th>محافظت قوس</th><th>مهارت لازم</th></tr>
-    <tr><td>SMAW</td><td>پوشش الکترود</td><td>بالا</td></tr>
-    <tr><td>GTAW</td><td>گاز آرگون</td><td>بسیار بالا</td></tr>
-    <tr><td>GMAW</td><td>گاز CO2/آرگون</td><td>متوسط</td></tr>
-    <tr><td>FCAW</td><td>پودر مغزی سیم</td><td>متوسط تا بالا</td></tr>
-    <tr><td>SAW</td><td>پودر گرانول</td><td>پایین (مکانیزه)</td></tr>
-  </table>
 
   <div class="callout callout-warn">
-    <span class="callout-label">هشدار</span>
-    تغییر فرآیند جوشکاری (مثلاً جایگزینی FCAW به‌جای SMAW در یک پاس) یک Essential Variable است و بدون پشتوانه‌ی PQR جدید یا الحاقیه مجاز نیست — این یکی از رایج‌ترین تخلفات کشف‌شده در بازرسی فیلد است.
+    <span class="callout-label">⚠️ هشدار بحرانی — SMAW و رطوبت الکترود</span>
+    الکترودهای Low-Hydrogen (E7016, E7018) در صورت جذب رطوبت، باعث <strong>Hydrogen-Induced Cracking (HIC)</strong> می‌شوند که یک عیب داخلی خطرناک است. طبق <strong>ASME Sec. IX QW-404.5</strong>، الکترودهایی که بیش از <span class="num">4</span> ساعت در معرض هوا بوده‌اند باید <strong>مجدداً خشک</strong> شوند. بازرس باید دمای quiver را در اول هر شیفت چک کند.
+  </div>
+
+  <!-- ══════════ GTAW ══════════ -->
+  <h2 id="gtaw">② GTAW — جوشکاری TIG با گاز محافظ</h2>
+
+  <div class="process-card" style="--proc-color:#06b6d4;">
+    <div class="proc-header">
+      <div class="proc-icon">💎</div>
+      <div class="proc-title-block">
+        <h3>GTAW / TIG</h3>
+        <div class="proc-fullname">Gas Tungsten Arc Welding</div>
+        <div class="proc-subtitle">بالاترین کیفیت جوش — انتخاب اصلی برای جوش ریشه لوله و متریال حساس</div>
+      </div>
+      <div class="proc-badge">
+        کیفیت<br>برتر
+      </div>
+    </div>
+    <div class="proc-body">
+      <div class="proc-col">
+        <div class="proc-col-title">📊 پارامترهای اصلی</div>
+        <ul class="spec-list">
+          <li><span class="k">جریان پایه</span><span class="v">DCEN</span></li>
+          <li><span class="k">جریان برای Al</span><span class="v">AC</span></li>
+          <li><span class="k">آمپر (ریشه)</span><span class="v">60–120 A</span></li>
+          <li><span class="k">گاز محافظ</span><span class="v">Ar 99.99%</span></li>
+          <li><span class="k">Back Purge</span><span class="v">Ar / N₂ برای SS</span></li>
+          <li><span class="k">جریان گاز</span><span class="v">6–15 L/min</span></li>
+          <li><span class="k">F-Number</span><span class="v">F6</span></li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">✅ مزایا / ✗ معایب</div>
+        <ul class="pro-con-list pros">
+          <li>بالاترین <strong>کیفیت جوش</strong> — بدون سرباره</li>
+          <li>کنترل دقیق <strong>Heat Input</strong></li>
+          <li>مناسب متریال حساس: <strong>SS، Ti، Ni-Alloy</strong></li>
+          <li>جوش ریشه بدون <strong>backing ring</strong></li>
+        </ul>
+        <ul class="pro-con-list cons" style="margin-top:10px;">
+          <li>سرعت <strong>بسیار پایین</strong></li>
+          <li>حساس به <strong>باد و آلودگی محیطی</strong></li>
+          <li>هزینه <strong>بالاتر</strong> — نیاز Back Purge</li>
+          <li>نیاز به <strong>مهارت بالا</strong> جوشکار</li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">🏭 کاربردهای اصلی</div>
+        <div class="app-tags">
+          <span class="app-tag">ریشه جوش لوله</span>
+          <span class="app-tag">Stainless Steel</span>
+          <span class="app-tag">Duplex / Super-Duplex</span>
+          <span class="app-tag">Inconel / Hastelloy</span>
+          <span class="app-tag">سرویس Cryogenic</span>
+          <span class="app-tag">High-Purity Systems</span>
+          <span class="app-tag">Titanium</span>
+          <span class="app-tag">Small Bore Piping</span>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="proc-col-title" style="margin-bottom:8px;">🔩 الکترود تنگستن</div>
+          <ul class="spec-list">
+            <li><span class="k">EWTh-2</span><span class="v">2% Thoriated — DC</span></li>
+            <li><span class="k">EWCe-2</span><span class="v">2% Ceriated — DC</span></li>
+            <li><span class="k">EWZr</span><span class="v">Zirconiated — AC</span></li>
+            <li><span class="k">قطر معمول</span><span class="v">1.6 / 2.4 / 3.2 mm</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="proc-footer">
+      <div>
+        <span class="proc-footer-label">Back Purge برای SS: </span>
+        <span class="proc-footer-val">O₂ ≤ 0.1% — اندازه‌گیری با O₂ Meter قبل از شروع جوش ریشه</span>
+      </div>
+      <div class="preheat-chips">
+        <span class="chip chip-yes">همه پوزیشن</span>
+        <span class="chip chip-yes">Back Purge الزامی برای SS</span>
+        <span class="chip chip-dep">Preheat بسته به متریال</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-danger">
+    <span class="callout-label">🚨 نکته بحرانی — Back Purge برای Stainless Steel</span>
+    برای جوشکاری GTAW روی لوله‌های Stainless Steel، نبود Back Purge یا اکسیژن بالاتر از <strong>0.1%</strong> باعث <strong>oxidation</strong> و از دست رفتن خاصیت ضد زنگ جوش می‌شود. بازرس باید قبل از شروع جوش ریشه، سطح O₂ را با <strong>O₂ Analyzer</strong> تأیید کند. این الزام در <strong>API RP 577 Section 7.2</strong> نیز آمده است.
+  </div>
+
+  <!-- ══════════ FCAW ══════════ -->
+  <h2 id="fcaw">③ FCAW — جوشکاری با سیم توپودری</h2>
+
+  <div class="process-card" style="--proc-color:#a855f7;">
+    <div class="proc-header">
+      <div class="proc-icon">🟣</div>
+      <div class="proc-title-block">
+        <h3>FCAW</h3>
+        <div class="proc-fullname">Flux Cored Arc Welding</div>
+        <div class="proc-subtitle">سرعت بالا + کیفیت خوب — ایده‌آل برای پاس‌های پرکن و رویه در اسپول‌سازی</div>
+      </div>
+      <div class="proc-badge">
+        سرعت<br>بالا
+      </div>
+    </div>
+    <div class="proc-body">
+      <div class="proc-col">
+        <div class="proc-col-title">📊 پارامترهای اصلی</div>
+        <ul class="spec-list">
+          <li><span class="k">جریان</span><span class="v">DCEP</span></li>
+          <li><span class="k">ولتاژ</span><span class="v">24–32 V</span></li>
+          <li><span class="k">آمپر معمول</span><span class="v">150–300 A</span></li>
+          <li><span class="k">گاز (FCAW-G)</span><span class="v">75%Ar+25%CO₂</span></li>
+          <li><span class="k">FCAW-S</span><span class="v">بدون گاز</span></li>
+          <li><span class="k">سرعت سیم</span><span class="v">3–8 m/min</span></li>
+          <li><span class="k">قطر سیم</span><span class="v">1.2 / 1.6 mm</span></li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">✅ مزایا / ✗ معایب</div>
+        <ul class="pro-con-list pros">
+          <li>سرعت بالا — <strong>نرخ رسوب زیاد</strong></li>
+          <li>FCAW-S مقاوم در برابر <strong>باد</strong></li>
+          <li>مناسب <strong>ضخامت‌های بالا</strong></li>
+          <li>کیفیت قابل قبول بدون مهارت فوق‌العاده</li>
+        </ul>
+        <ul class="pro-con-list cons" style="margin-top:10px;">
+          <li>باقی‌ماندن <strong>سرباره</strong> بین پاس‌ها</li>
+          <li>FCAW-G حساس به <strong>باد</strong></li>
+          <li>دود و <strong>دمای محیط</strong> موثر است</li>
+          <li><strong>ریشه جوش</strong> معمولاً با GTAW/SMAW</li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">🏭 کاربردهای اصلی</div>
+        <div class="app-tags">
+          <span class="app-tag">پاس پرکن و رویه</span>
+          <span class="app-tag">اسپول‌سازی</span>
+          <span class="app-tag">سازه فولادی</span>
+          <span class="app-tag">ضخامت بالا</span>
+          <span class="app-tag">کربن استیل</span>
+          <span class="app-tag">آلیاژ کم</span>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="proc-col-title" style="margin-bottom:8px;">🔩 مصالح رایج</div>
+          <ul class="spec-list">
+            <li><span class="k">E71T-1C</span><span class="v">گاز CO₂</span></li>
+            <li><span class="k">E71T-1M</span><span class="v">75Ar+25CO₂</span></li>
+            <li><span class="k">E71T-8</span><span class="v">FCAW-S — بدون گاز</span></li>
+            <li><span class="k">E308LT-1</span><span class="v">Stainless Steel</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="proc-footer">
+      <div>
+        <span class="proc-footer-label">الزام سرباره‌برداری: </span>
+        <span class="proc-footer-val">بین هر پاس کاملاً برداشته شود — Slag Inclusion = NCR</span>
+      </div>
+      <div class="preheat-chips">
+        <span class="chip chip-dep">پوزیشن: 1G, 2G, 3G, 4G</span>
+        <span class="chip chip-dep">پرهیت بسته به متریال</span>
+        <span class="chip chip-no">ریشه معمولاً GTAW/SMAW</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ GMAW ══════════ -->
+  <h2 id="gmaw">④ GMAW — جوشکاری MIG با گاز محافظ</h2>
+
+  <div class="process-card" style="--proc-color:#10b981;">
+    <div class="proc-header">
+      <div class="proc-icon">🟢</div>
+      <div class="proc-title-block">
+        <h3>GMAW / MIG</h3>
+        <div class="proc-fullname">Gas Metal Arc Welding</div>
+        <div class="proc-subtitle">نیمه‌اتوماتیک با نرخ رسوب بالا — ایده‌آل برای خطوط تولید اسپول</div>
+      </div>
+      <div class="proc-badge">
+        نیمه‌اتوماتیک<br>پرسرعت
+      </div>
+    </div>
+    <div class="proc-body">
+      <div class="proc-col">
+        <div class="proc-col-title">📊 پارامترهای اصلی</div>
+        <ul class="spec-list">
+          <li><span class="k">جریان</span><span class="v">DCEP</span></li>
+          <li><span class="k">ولتاژ</span><span class="v">18–32 V</span></li>
+          <li><span class="k">آمپر</span><span class="v">100–350 A</span></li>
+          <li><span class="k">گاز برای Carbon</span><span class="v">Ar+CO₂ / CO₂</span></li>
+          <li><span class="k">گاز برای SS</span><span class="v">Ar+2%O₂</span></li>
+          <li><span class="k">قطر سیم</span><span class="v">0.8 / 1.0 / 1.2 mm</span></li>
+          <li><span class="k">حالت انتقال</span><span class="v">Short/Spray/Pulse</span></li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">✅ مزایا / ✗ معایب</div>
+        <ul class="pro-con-list pros">
+          <li>بدون سرباره — <strong>پاکیزه‌تر</strong> از FCAW</li>
+          <li>نرخ رسوب <strong>بالا</strong></li>
+          <li>قابل اتوماسیون — <strong>ربات جوشکاری</strong></li>
+          <li>مناسب طیف گسترده متریال</li>
+        </ul>
+        <ul class="pro-con-list cons" style="margin-top:10px;">
+          <li>بسیار حساس به <strong>باد</strong> — نیاز به محفظه</li>
+          <li>Short Circuit: ریسک <strong>Lack of Fusion</strong></li>
+          <li>تجهیزات <strong>سنگین</�تر</strong> از SMAW</li>
+          <li>کمتر در <strong>پوزیشن overhead</strong> استفاده می‌شود</li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">🏭 کاربردهای اصلی</div>
+        <div class="app-tags">
+          <span class="app-tag">اسپول‌سازی کارخانه</span>
+          <span class="app-tag">Stainless Steel</span>
+          <span class="app-tag">Aluminium</span>
+          <span class="app-tag">ضخامت نازک</span>
+          <span class="app-tag">1G / 2G</span>
+          <span class="app-tag">تولید انبوه</span>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="proc-col-title" style="margin-bottom:8px;">حالت‌های انتقال</div>
+          <ul class="spec-list">
+            <li><span class="k">Short Circuit</span><span class="v">کم آمپر — ریشه</span></li>
+            <li><span class="k">Globular</span><span class="v">متوسط — کمتر استفاده</span></li>
+            <li><span class="k">Spray</span><span class="v">آمپر بالا — پرکن</span></li>
+            <li><span class="k">Pulsed</span><span class="v">کنترل بالا — SS</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="proc-footer">
+      <div>
+        <span class="proc-footer-label">Short Circuit + ضخامت بالا: </span>
+        <span class="proc-footer-val">خطر Lack of Fusion — باید در WPS محدودیت‌ها مشخص باشد</span>
+      </div>
+      <div class="preheat-chips">
+        <span class="chip chip-dep">پوزیشن: 1G, 2G, 3G (Spray)</span>
+        <span class="chip chip-no">حساس به باد</span>
+        <span class="chip chip-yes">بدون سرباره</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SAW ══════════ -->
+  <h2 id="saw">⑤ SAW — جوشکاری زیرپودری</h2>
+
+  <div class="process-card" style="--proc-color:#f59e0b;">
+    <div class="proc-header">
+      <div class="proc-icon">⭐</div>
+      <div class="proc-title-block">
+        <h3>SAW</h3>
+        <div class="proc-fullname">Submerged Arc Welding</div>
+        <div class="proc-subtitle">بالاترین نرخ رسوب — اتوماتیک — مخصوص ضخامت‌های بالا و تولید انبوه</div>
+      </div>
+      <div class="proc-badge">
+        اتوماتیک<br>ضخامت بالا
+      </div>
+    </div>
+    <div class="proc-body">
+      <div class="proc-col">
+        <div class="proc-col-title">📊 پارامترهای اصلی</div>
+        <ul class="spec-list">
+          <li><span class="k">جریان</span><span class="v">DC / AC</span></li>
+          <li><span class="k">قطبیت معمول</span><span class="v">DCEP</span></li>
+          <li><span class="k">آمپر</span><span class="v">300–1500 A</span></li>
+          <li><span class="k">ولتاژ</span><span class="v">26–45 V</span></li>
+          <li><span class="k">محافظت</span><span class="v">پودر فلکس</span></li>
+          <li><span class="k">قطر سیم</span><span class="v">2.4 / 3.2 / 4 mm</span></li>
+          <li><span class="k">E-Number (Flux)</span><span class="v">F7AX-EH14</span></li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">✅ مزایا / ✗ معایب</div>
+        <ul class="pro-con-list pros">
+          <li>بالاترین <strong>نرخ رسوب</strong> — تا ۴۵ kg/hr</li>
+          <li>کیفیت یکنواخت — <strong>اتوماتیک</strong></li>
+          <li>بدون دود و <strong>تابش قوس</strong></li>
+          <li>مناسب ضخامت‌های بالا: <span class="num">≥ 12mm</span></li>
+        </ul>
+        <ul class="pro-con-list cons" style="margin-top:10px;">
+          <li>فقط <strong>پوزیشن 1G</strong> — مسطح</li>
+          <li>نیاز به <strong>Backing Strip</strong> یا پاس ریشه</li>
+          <li>تجهیزات <strong>سنگین و غیرقابل حمل</strong></li>
+          <li>پودر باید <strong>خشک</strong> نگه داشته شود</li>
+        </ul>
+      </div>
+      <div class="proc-col">
+        <div class="proc-col-title">🏭 کاربردهای اصلی</div>
+        <div class="app-tags">
+          <span class="app-tag">مخازن تحت فشار</span>
+          <span class="app-tag">مخازن ذخیره API 650</span>
+          <span class="app-tag">لوله‌های بزرگ NPS≥16</span>
+          <span class="app-tag">درزهای طولی لوله</span>
+          <span class="app-tag">Structural</span>
+          <span class="app-tag">Overlay Cladding</span>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="proc-col-title" style="margin-bottom:8px;">ترکیب‌های سیم-فلکس</div>
+          <ul class="spec-list">
+            <li><span class="k">EM12K + F7A2</span><span class="v">CS — رایج‌ترین</span></li>
+            <li><span class="k">EB2 + F9A2</span><span class="v">Cr-Mo — دمای بالا</span></li>
+            <li><span class="k">ER308L + Flux</span><span class="v">Stainless</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="proc-footer">
+      <div>
+        <span class="proc-footer-label">خشک‌کردن فلکس SAW: </span>
+        <span class="proc-footer-val">250–350°C به مدت 1–2 ساعت — الزام ASME Sec. IX QW-409</span>
+      </div>
+      <div class="preheat-chips">
+        <span class="chip chip-no">فقط پوزیشن 1G</span>
+        <span class="chip chip-dep">Preheat الزامی > 25mm</span>
+        <span class="chip chip-yes">نرخ رسوب بسیار بالا</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <h2 id="compare">مقایسه جامع پنج فرآیند جوشکاری</h2>
+  <p class="lead">جدول زیر مهم‌ترین ویژگی‌های پنج فرآیند اصلی را برای تصمیم‌گیری سریع مقایسه می‌کند.</p>
+
+  <div class="table-wrapper">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>ویژگی</th>
+            <th><span class="proc-head" style="color:#ef4444">SMAW</span></th>
+            <th><span class="proc-head" style="color:#06b6d4">GTAW</span></th>
+            <th><span class="proc-head" style="color:#a855f7">FCAW</span></th>
+            <th><span class="proc-head" style="color:#10b981">GMAW</span></th>
+            <th><span class="proc-head" style="color:#f59e0b">SAW</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="lbl">حالت اجرا</td>
+            <td>دستی</td><td>دستی</td><td>نیمه‌اتوماتیک</td><td>نیمه‌اتوماتیک</td><td>اتوماتیک</td>
+          </tr>
+          <tr>
+            <td class="lbl">نرخ رسوب</td>
+            <td>پایین</td><td>بسیار پایین</td><td>بالا</td><td>بالا</td><td>بسیار بالا</td>
+          </tr>
+          <tr>
+            <td class="lbl">کیفیت جوش</td>
+            <td>خوب</td><td class="tag-yes">عالی</td><td>خوب</td><td>خوب–عالی</td><td>عالی</td>
+          </tr>
+          <tr>
+            <td class="lbl">همه پوزیشن</td>
+            <td class="tag-yes">✓</td><td class="tag-yes">✓</td><td class="tag-dep">محدود</td><td class="tag-dep">محدود</td><td class="tag-no">✗ (1G فقط)</td>
+          </tr>
+          <tr>
+            <td class="lbl">حساسیت به باد</td>
+            <td class="tag-yes">کم</td><td class="tag-no">زیاد</td><td class="tag-dep">FCAW-S: کم<br>FCAW-G: زیاد</td><td class="tag-no">زیاد</td><td class="tag-yes">ندارد</td>
+          </tr>
+          <tr>
+            <td class="lbl">گاز محافظ</td>
+            <td class="tag-no">ندارد</td><td class="tag-yes">Ar 99.99%</td><td class="tag-dep">بستگی دارد</td><td class="tag-yes">Ar+CO₂</td><td class="tag-no">ندارد (فلکس)</td>
+          </tr>
+          <tr>
+            <td class="lbl">سرباره (Slag)</td>
+            <td class="tag-no">دارد</td><td class="tag-yes">ندارد</td><td class="tag-no">دارد</td><td class="tag-yes">ندارد</td><td class="tag-no">دارد</td>
+          </tr>
+          <tr>
+            <td class="lbl">مناسب برای SS</td>
+            <td class="tag-dep">بله (محدود)</td><td class="tag-yes">عالی</td><td class="tag-dep">بله</td><td class="tag-yes">بله</td><td class="tag-dep">با فلکس مناسب</td>
+          </tr>
+          <tr>
+            <td class="lbl">ریشه لوله</td>
+            <td class="tag-yes">E6010/E7016</td><td class="tag-yes">بهترین</td><td class="tag-no">معمولاً نه</td><td class="tag-dep">Short-Circuit</td><td class="tag-no">نیاز Backing</td>
+          </tr>
+          <tr>
+            <td class="lbl">ضخامت مناسب</td>
+            <td>3–50 mm</td><td>0.5–10 mm</td><td>6–100+ mm</td><td>1–25 mm</td><td>12–200+ mm</td>
+          </tr>
+          <tr>
+            <td class="lbl">حمل‌پذیری</td>
+            <td class="tag-yes">عالی</td><td class="tag-yes">خوب</td><td class="tag-dep">متوسط</td><td class="tag-dep">متوسط</td><td class="tag-no">ضعیف</td>
+          </tr>
+          <tr>
+            <td class="lbl">هزینه تجهیزات</td>
+            <td class="tag-yes">کم</td><td class="tag-dep">متوسط</td><td class="tag-dep">متوسط</td><td class="tag-dep">متوسط</td><td class="tag-no">بالا</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PREHEAT -->
+  <h2 id="preheat">الزامات پیش‌گرم (Preheat) — ASME B31.3 Table 330.1.1</h2>
+  <p class="lead">
+    پیش‌گرم یکی از مهم‌ترین متغیرهای کنترل کیفیت جوش است. دمای پیش‌گرم نادرست مستقیماً باعث <strong>Hydrogen Cracking</strong>، <strong>Hard Zone</strong> و <strong>Lamellar Tearing</strong> می‌شود. طبق ASME B31.3 Para 330، الزامات پیش‌گرم بر اساس P-Number و ضخامت تعیین می‌شود.
+  </p>
+
+  <div class="preheat-box">
+    <div class="preheat-header">
+      <div class="preheat-icon">🌡️</div>
+      <div>
+        <h3>الزامات پیش‌گرم بر اساس P-Number — ASME B31.3 Table 330.1.1</h3>
+        <p>دمای حداقل پیش‌گرم قبل از شروع جوشکاری</p>
+      </div>
+    </div>
+    <div class="preheat-grid">
+      <div class="preheat-item">
+        <div class="preheat-item-p">P-No. 1</div>
+        <div class="preheat-item-mat">Carbon Steel (A106 Gr.B, API 5L)</div>
+        <p>
+          ضخامت <span class="num">≤ 25mm</span>: بدون الزام (توصیه ≥ <span class="num">10°C</span>)<br>
+          ضخامت <span class="num">&gt; 25mm</span>: حداقل <span class="num"><strong>79°C</strong></span><br>
+          سرویس Sour (H₂S): حداقل <span class="num"><strong>79°C</strong></span> صرف‌نظر از ضخامت
+        </p>
+      </div>
+      <div class="preheat-item">
+        <div class="preheat-item-p">P-No. 4</div>
+        <div class="preheat-item-mat">Cr-Mo (1¼Cr-½Mo, A335 P11)</div>
+        <p>
+          تمام ضخامت‌ها: حداقل <span class="num"><strong>150°C</strong></span><br>
+          ضخامت <span class="num">&gt; 50mm</span>: حداقل <span class="num"><strong>175°C</strong></span><br>
+          PWHT: الزامی طبق B31.3 Table 331.1.1
+        </p>
+      </div>
+      <div class="preheat-item">
+        <div class="preheat-item-p">P-No. 5A</div>
+        <div class="preheat-item-mat">High Cr-Mo (2¼Cr-1Mo, A335 P22)</div>
+        <p>
+          تمام ضخامت‌ها: حداقل <span class="num"><strong>200°C</strong></span><br>
+          ضخامت <span class="num">&gt; 25mm</span>: حداقل <span class="num"><strong>230°C</strong></span><br>
+          PWHT: الزامی — <span class="num">730–760°C</span>
+        </p>
+      </div>
+      <div class="preheat-item">
+        <div class="preheat-item-p">P-No. 8</div>
+        <div class="preheat-item-mat">Austenitic SS (304, 316, 321)</div>
+        <p>
+          معمولاً بدون پیش‌گرم (≥ <span class="num">10°C</span>)<br>
+          کنترل <strong>Interpass Temp:</strong> حداکثر <span class="num"><strong>175°C</strong></span><br>
+          PWHT: معمولاً <strong>الزامی نیست</strong>
+        </p>
+      </div>
+      <div class="preheat-item">
+        <div class="preheat-item-p">P-No. 10H</div>
+        <div class="preheat-item-mat">Duplex SS (UNS S31803, S32205)</div>
+        <p>
+          معمولاً <span class="num">10–100°C</span> (بسته به WPS)<br>
+          <strong>Interpass:</strong> حداکثر <span class="num"><strong>150°C</strong></span><br>
+          PWHT: <strong>نباید انجام شود</strong> (Solution Anneal)
+        </p>
+      </div>
+      <div class="preheat-item">
+        <div class="preheat-item-p">P-No. 6</div>
+        <div class="preheat-item-mat">Martensitic SS (410, 420)</div>
+        <p>
+          حداقل <span class="num"><strong>200°C</strong></span><br>
+          سردایش آهسته و PWHT ضروری<br>
+          Temper: <span class="num">700–770°C</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-label">⚠️ روش اندازه‌گیری پیش‌گرم</span>
+    دمای پیش‌گرم باید در فاصله حداقل <span class="num"><strong>75mm</strong></span> (یا <span class="num">4t</span> برای ضخامت <span class="num">&lt; 19mm</span>) از لبه جوش و در <strong>هر دو طرف</strong> مفصل اندازه‌گیری شود. ابزار مجاز: <strong>Contact Pyrometer</strong> یا <strong>Temperature Chalk (Tempilstik)</strong> — دماسنج لیزری برای اندازه‌گیری دقیق توصیه نمی‌شود (تابش سطح متفاوت است). مرجع: <strong>ASME B31.3 Para 330.1.2</strong>.
+  </div>
+
+  <!-- WELDING POSITIONS -->
+  <h2>پوزیشن‌های جوشکاری لوله — ASME Section IX QW-461</h2>
+  <p class="lead">پوزیشن جوشکاری یکی از Essential Variables است. جوشکار باید WPQ معتبر برای پوزیشن مورد نیاز داشته باشد.</p>
+
+  <div class="position-grid">
+    <div class="pos-card">
+      <span class="pos-code">1G</span>
+      <div class="pos-name">مسطح / چرخان</div>
+      <div class="pos-desc">لوله چرخان — محور افقی — جوشکاری در موضع flat</div>
+      <div class="pos-coverage">محدوده WPQ: 1G</div>
+    </div>
+    <div class="pos-card">
+      <span class="pos-code">2G</span>
+      <div class="pos-name">افقی — ثابت</div>
+      <div class="pos-desc">محور عمودی — لوله ثابت — جوش در موضع افقی</div>
+      <div class="pos-coverage">محدوده WPQ: 1G, 2G</div>
+    </div>
+    <div class="pos-card">
+      <span class="pos-code">5G</span>
+      <div class="pos-name">عمودی — ثابت</div>
+      <div class="pos-desc">محور افقی — لوله ثابت — تمام موضع‌ها</div>
+      <div class="pos-coverage">محدوده WPQ: 1G, 2G, 5G</div>
+    </div>
+    <div class="pos-card">
+      <span class="pos-code">6G</span>
+      <div class="pos-name">زاویه ۴۵° — ثابت</div>
+      <div class="pos-desc">سخت‌ترین آزمون — پوشش کامل تمام موضع‌ها</div>
+      <div class="pos-coverage">محدوده WPQ: 1G تا 6G</div>
+    </div>
+    <div class="pos-card">
+      <span class="pos-code">6GR</span>
+      <div class="pos-name">6G + Restriction Ring</div>
+      <div class="pos-desc">آزمون اتصال شاخه — با حلقه محدودکننده</div>
+      <div class="pos-coverage">Branch Connections Only</div>
+    </div>
   </div>
 
   <div class="callout callout-tip">
-    <span class="callout-label">نکته</span>
-    هنگام بازرسی WPS، همیشه چک کن که فرآیند ثبت‌شده در WPS دقیقاً با چیزی که جوشکار در فیلد واقعاً استفاده می‌کند یکی باشد — گاهی فیتر/جوشکار به‌دلیل سرعت، بدون اطلاع رسمی فرآیند را تغییر می‌دهد.
+    <span class="callout-label">💡 استراتژی صلاحیت</span>
+    در پروژه‌های پایپینگ، جوشکارانی که آزمون <strong>6G</strong> را با موفقیت بگذرانند، برای <strong>تمام پوزیشن‌ها</strong> صلاحیت دارند. اجرای آزمون 6G به‌عنوان سیاست استاندارد برای پروژه‌های نفت و گاز توصیه می‌شود. مرجع: <strong>ASME Section IX QW-461.9</strong>.
   </div>
 
-  <div class="nav-footer">
-    <a href="../01-documents/" class="nav-btn nav-prev">→ فصل قبل: مدارک فنی</a>
-    <a href="../03-stages/" class="nav-btn nav-next">فصل بعد: مراحل جوشکاری ←</a>
+  <!-- INSPECTOR CHECKLIST -->
+  <h2>چک‌لیست بازرس — کنترل فرآیند جوشکاری در میدان</h2>
+  <p class="lead">بر اساس <strong>API RP 577</strong> و الزامات ASME B31.3، بازرس جوش موظف به کنترل پارامترهای زیر در حین اجراست:</p>
+
+  <div class="inspector-box">
+    <div class="inspector-header">
+      <div class="inspector-icon">🔍</div>
+      <div>
+        <h3>کنترل‌های بازرسی In-Process</h3>
+        <p>قبل، حین و بعد از جوشکاری — مرجع: API RP 577 Section 8</p>
+      </div>
+    </div>
+    <ul class="checklist">
+      <li>
+        <div class="ci">1</div>
+        <div><strong>تأیید WPS:</strong> شماره WPS موجود در محل کار با اتصال در حال جوشکاری منطبق باشد</div>
+      </li>
+      <li>
+        <div class="ci">2</div>
+        <div><strong>شناسه جوشکار:</strong> Stamp یا شماره شناسایی جوشکار بر روی اتصال ثبت شود</div>
+      </li>
+      <li>
+        <div class="ci">3</div>
+        <div><strong>دمای پیش‌گرم:</strong> قبل از شروع پاس اول اندازه‌گیری و ثبت شود — طبق Table 330.1.1</div>
+      </li>
+      <li>
+        <div class="ci">4</div>
+        <div><strong>دمای Interpass:</strong> قبل از هر پاس جدید چک شود — بالاتر از حداکثر WPS نشود</div>
+      </li>
+      <li>
+        <div class="ci">5</div>
+        <div><strong>الکترود / سیم:</strong> نوع، قطر و دسته الکترود با WPS منطبق باشد — بررسی تاریخ انقضا</div>
+      </li>
+      <li>
+        <div class="ci">6</div>
+        <div><strong>Fit-up بازرسی:</strong> Root Gap، Root Face، Alignment و مرکزیت لوله قبل از جوش تأیید شود</div>
+      </li>
+      <li>
+        <div class="ci">7</div>
+        <div><strong>تمیزی:</strong> لبه جوش عاری از زنگ، روغن، رطوبت و آلودگی باشد — ≥ 25mm از هر طرف</div>
+      </li>
+      <li>
+        <div class="ci">8</div>
+        <div><strong>سرباره‌برداری:</strong> بین هر پاس کاملاً برداشته و VT انجام شود — Slag Inclusion = Stop Work</div>
+      </li>
+      <li>
+        <div class="ci">9</div>
+        <div><strong>Back Purge (GTAW/SS):</strong> O₂ ≤ 0.1% قبل از جوش ریشه — اندازه‌گیری با Oxygen Analyzer</div>
+      </li>
+      <li>
+        <div class="ci">10</div>
+        <div><strong>شرایط آب‌وهوایی:</strong> دما ≥ 5°C، عدم وزش باد روی GTAW/GMAW، رطوبت در نظر گرفته شود</div>
+      </li>
+      <li>
+        <div class="ci">11</div>
+        <div><strong>Heat Input:</strong> محاسبه و مقایسه با محدوده WPS: HI = (V × A × 60) / (TS × 1000) kJ/mm</div>
+      </li>
+      <li>
+        <div class="ci">12</div>
+        <div><strong>VT نهایی:</strong> قبل از NDT — طبق معیار پذیرش ASME B31.3 Para 341.4</div>
+      </li>
+    </ul>
   </div>
+
+  <div class="callout callout-danger">
+    <span class="callout-label">🚨 Stop Work — موارد توقف فوری جوشکاری</span>
+    بازرس موظف است جوشکاری را فوراً متوقف کند اگر: <strong>(1)</strong> جوشکار خارج از محدوده WPQ خود جوشکاری می‌کند؛ <strong>(2)</strong> دمای پیش‌گرم کمتر از حداقل WPS است؛ <strong>(3)</strong> الکترود با WPS منطبق نیست؛ <strong>(4)</strong> Back Purge بدون تأیید O₂ برداشته شده؛ <strong>(5)</strong> سرباره بین پاس‌ها برداشته نشده. این موارد در <strong>NCR</strong> مستند و به مهندس QC گزارش می‌شود.
+  </div>
+
+  <!-- NAV FOOTER -->
+  <div class="nav-footer">
+    <a href="../01-documents/" class="nav-btn nav-prev">
+      → فصل ۱: WPS / PQR / WPQ / WQT
+    </a>
+    <a href="../03-stages/" class="nav-btn nav-next">
+      فصل ۳: مراحل جوشکاری و PWHT ←
+    </a>
+  </div>
+
 </div>
 
+<!-- FOOTER -->
+<footer>
+  <p>⚡ برگرفته از جزوه «اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش» — فرآیندهای جوشکاری</p>
+  <p>مراجع: ASME Section IX | ASME B31.3 Para 328, 330 | API RP 577 Section 7-8</p>
+  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio</p>
+  <p style="margin-top:10px;font-size:11px;opacity:0.6;">© 2026 Piping Studio — Welding Processes Guide</p>
+</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.querySelector('.theme-toggle');
+  if (body.getAttribute('data-theme') === 'light') {
+    body.removeAttribute('data-theme'); btn.textContent = '🌙';
+    localStorage.setItem('theme','dark');
+  } else {
+    body.setAttribute('data-theme','light'); btn.textContent = '☀️';
+    localStorage.setItem('theme','light');
+  }
+}
+const saved = localStorage.getItem('theme');
+if (saved === 'light') {
+  document.body.setAttribute('data-theme','light');
+  document.querySelector('.theme-toggle').textContent = '☀️';
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href.length < 2) return;
+    e.preventDefault();
+    const t = document.querySelector(href);
+    if (t) { const pos = t.getBoundingClientRect().top + window.pageYOffset - 80; window.scrollTo({top:pos,behavior:'smooth'}); }
+  });
+});
+</script>
 </body>
 </html>
