@@ -32,24 +32,11 @@
   .back-link { color:#94a3b8; font-size:13px; font-weight:500; transition:color .2s; }
   .back-link:hover { color:#06B6D4; }
 
-  /* Hero Section */
+  /* Hero Section - بدون تصویر */
   .hero {
     position:relative;
-    /* Hero Section */
-.hero {
-    position:relative;
-    min-height:380px;
-    /* به جای تصویر، از گرادیانت استفاده کن */
-    background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(30,58,95,0.90));
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:70px 24px;
-    overflow:hidden;
-}
-    background-position:center;
+    min-height:360px;
+    background: linear-gradient(135deg, #0F172A 0%, #1e3a5f 50%, #0c4a6e 100%);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -59,8 +46,29 @@
   .hero::before {
     content:'';
     position:absolute;
+    top:-50%; right:-20%;
+    width:600px; height:600px;
+    background:radial-gradient(circle, rgba(6,182,212,0.2), transparent 70%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .hero::after {
+    content:'';
+    position:absolute;
+    bottom:-40%; left:-10%;
+    width:500px; height:500px;
+    background:radial-gradient(circle, rgba(37,99,235,0.15), transparent 70%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  /* Pattern overlay */
+  .hero-pattern {
+    position:absolute;
     top:0; left:0; right:0; bottom:0;
-    background:radial-gradient(circle at 30% 50%, rgba(6,182,212,0.15), transparent 60%);
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
     pointer-events:none;
   }
   .hero-content {
@@ -188,7 +196,6 @@
   .ip-title { font-weight:700; font-size:15px; color:#0F172A; }
   .ip-desc { font-size:13px; color:#475569; line-height:1.8; }
 
-  /* Badge + Icon colors */
   .ip-h .ip-icon   { background:#fee2e2; }
   .ip-h .ip-icon svg { color:#b91c1c; }
   .ip-h .ip-badge  { background:#fee2e2; color:#b91c1c; border:1px solid #fecaca; }
@@ -224,7 +231,7 @@
   .ip-m .ip-badge  { background:#f3e8ff; color:#6b21a8; border:1px solid #e9d5ff; }
   .ip-card.ip-m:hover { box-shadow:0 10px 28px rgba(107,33,168,0.15); }
 
-  /* HP Items (Examples) */
+  /* HP Items */
   .hp-list { margin:20px 0; }
   .hp-item {
     display:flex; align-items:flex-start; gap:14px;
@@ -240,69 +247,110 @@
   .hp-title { font-weight:700; font-size:14px; color:#0F172A; margin-bottom:4px; }
   .hp-desc { font-size:13px; color:#64748b; line-height:1.7; }
 
-  /* Image Card */
-  .img-card {
-    position:relative;
+  /* Visual Banner - جایگزین تصویر */
+  .visual-banner {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0c4a6e 50%, #164e63 100%);
     border-radius:16px;
-    overflow:hidden;
+    padding:32px 24px;
     margin:24px 0;
-    box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
   }
-  .img-card img {
-    width:100%;
-    display:block;
-    height:260px;
-    object-fit:cover;
-  }
-  .img-caption {
-    background:linear-gradient(180deg, transparent, rgba(15,23,42,0.95));
-    color:white;
-    padding:30px 20px 18px;
+  .visual-banner::before {
+    content:'';
     position:absolute;
-    bottom:0; left:0; right:0;
-    font-size:13px;
-    line-height:1.8;
+    top:0; left:0; right:0; bottom:0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
   }
-  .img-caption strong { color:#06B6D4; display:block; font-size:15px; margin-bottom:4px; }
+  .visual-banner::after {
+    content:'';
+    position:absolute;
+    top:-50px; right:-50px;
+    width:200px; height:200px;
+    background:radial-gradient(circle, rgba(6,182,212,0.3), transparent 70%);
+    border-radius:50%;
+  }
+  .visual-banner-content { position:relative; z-index:2; color:white; }
+  .visual-banner-title {
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .visual-banner-sub {
+    font-size:14px;
+    opacity:0.9;
+    line-height:1.9;
+  }
+  .visual-banner-stats {
+    display:flex;
+    gap:20px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .visual-stat {
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:10px;
+    padding:10px 14px;
+    flex:1;
+    min-width:120px;
+  }
+  .visual-stat-num {
+    font-size:22px;
+    font-weight:800;
+    color:#06B6D4;
+  }
+  .visual-stat-label {
+    font-size:11px;
+    opacity:0.85;
+    margin-top:2px;
+  }
 
   /* Checklist */
   .checklist-wrapper {
     background:white;
     border:1px solid #e2e8f0;
     border-radius:16px;
-    padding:6px;
+    padding:24px;
     margin:20px 0;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px;
+    position:relative;
     overflow:hidden;
   }
-  .checklist-image {
-    border-radius:12px;
-    overflow:hidden;
-    min-height:240px;
-    background-image:linear-gradient(rgba(15,23,42,0.5), rgba(15,23,42,0.7)), url('inspection-tools.jpg');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:flex-end;
-    padding:20px;
-    color:white;
+  .checklist-wrapper::before {
+    content:'';
+    position:absolute;
+    top:0; right:0;
+    width:120px; height:120px;
+    background:radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%);
   }
-  .checklist-image-title { font-size:18px; font-weight:800; margin-bottom:6px; }
-  .checklist-image-sub { font-size:12px; opacity:0.85; }
-  .checklist {
-    padding:16px 18px;
+  .checklist-title {
+    font-weight:800;
+    font-size:18px;
+    margin-bottom:16px;
+    color:#0F172A;
     display:flex;
-    flex-direction:column;
-    justify-content:center;
+    align-items:center;
+    gap:10px;
   }
-  .checklist-title { font-weight:800; font-size:16px; margin-bottom:12px; color:#0F172A; }
-  .check-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #f1f5f9; font-size:13px; color:#334155; }
+  .check-item {
+    display:flex; align-items:center; gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid #f1f5f9;
+    font-size:14px; color:#334155;
+  }
   .check-item:last-child { border-bottom:none; }
   .check-box {
-    width:18px; height:18px;
-    border:2px solid #2563EB; border-radius:5px;
+    width:22px; height:22px;
+    border:2px solid #2563EB;
+    border-radius:6px;
     flex-shrink:0;
     background:linear-gradient(135deg,#eff6ff,#dbeafe);
     display:inline-flex; align-items:center; justify-content:center;
@@ -310,13 +358,8 @@
   .check-box::after {
     content:'✓';
     color:#2563EB;
-    font-size:11px;
+    font-size:12px;
     font-weight:800;
-    opacity:0.6;
-  }
-  @media (max-width: 640px) {
-    .checklist-wrapper { grid-template-columns:1fr; }
-    .checklist-image { min-height:180px; }
   }
 
   /* Nav Footer */
@@ -350,15 +393,15 @@
     to { opacity:1; transform:translateY(0); }
   }
   .hero-content { animation: fadeInUp 0.8s ease-out; }
-  .ip-card, .hp-item { animation: fadeInUp 0.5s ease-out backwards; }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .hero { min-height:320px; padding:50px 20px; }
+    .hero { min-height:300px; padding:50px 20px; }
     .hero h1 { font-size:30px; }
     .hero-subtitle { font-size:14px; }
     .section-title { font-size:19px; }
-    .img-card img { height:200px; }
+    .visual-banner { padding:24px 18px; }
+    .visual-banner-title { font-size:17px; }
   }
   @media (max-width: 640px) {
     .navbar-inner { padding:14px 16px; }
@@ -387,8 +430,9 @@
 
 <!-- Hero Section -->
 <section class="hero">
+  <div class="hero-pattern"></div>
   <div class="hero-content">
-    <div class="hero-badge">📋 فصل ۶ از ۷ فصل پایپینگ</div>
+    <div class="hero-badge">📋 فصل ۶ از  فصل پایپینگ</div>
     <h1>اصول بازرسی پایپینگ</h1>
     <p class="hero-subtitle">وظایف بازرس فنی، نقاط توقف کار (Hold & Witness)، تست هیدرواستاتیک، چک‌لیست Punch List و راهنمای کامل ITP</p>
   </div>
@@ -513,11 +557,25 @@
   <h2 class="section-title">مثال‌های عملی در پروژه</h2>
   <p class="section-desc">Hold Point و Witness Point در عمل چگونه اجرا می‌شوند</p>
 
-  <div class="img-card">
-    <img src="hydrotest.jpg" alt="تست هیدرواستاتیک روی لوله‌های صنعتی">
-    <div class="img-caption">
-      <strong>🔍 تست هیدرواستاتیک — حساس‌ترین Hold Point پروژه</strong>
-      قبل از پر کردن آب و اعمال فشار، تمام جوش‌ها باید NDE شده و Fit-Up تأیید شده باشد.
+  <!-- Visual Banner جایگزین تصویر -->
+  <div class="visual-banner">
+    <div class="visual-banner-content">
+      <div class="visual-banner-title">🔍 تست هیدرواستاتیک — حساس‌ترین Hold Point پروژه</div>
+      <div class="visual-banner-sub">قبل از پر کردن آب و اعمال فشار، تمام جوش‌ها باید NDE شده و Fit-Up تأیید شده باشد. هرگونه نقص در این مرحله می‌تواند منجر به حوادث جدی شود.</div>
+      <div class="visual-banner-stats">
+        <div class="visual-stat">
+          <div class="visual-stat-num">1.5x</div>
+          <div class="visual-stat-label">فشار تست نسبت به فشار طراحی</div>
+        </div>
+        <div class="visual-stat">
+          <div class="visual-stat-num">30min</div>
+          <div class="visual-stat-label">حداقل زمان Hold</div>
+        </div>
+        <div class="visual-stat">
+          <div class="visual-stat-num">0 Bar</div>
+          <div class="visual-stat-label">افت فشار مجاز</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -565,21 +623,13 @@
   <p class="section-desc">آیتم‌های کلیدی که بازرس قبل از تأیید نهایی باید بررسی کند</p>
 
   <div class="checklist-wrapper">
-    <div class="checklist-image">
-      <div>
-        <div class="checklist-image-title">🛠 ابزار بازرسی حرفه‌ای</div>
-        <div class="checklist-image-sub">چک‌لیست، گیج‌های اندازه‌گیری و تجهیزات NDE</div>
-      </div>
-    </div>
-    <div class="checklist">
-      <div class="checklist-title">آیتم‌های ضروری Punch List</div>
-      <div class="check-item"><span class="check-box"></span> تطبیق شماره خط با نقشه‌ی ایزومتریک</div>
-      <div class="check-item"><span class="check-box"></span> بررسی Heat Number روی فیتینگ‌ها</div>
-      <div class="check-item"><span class="check-box"></span> کنترل تورک پیچ فلنج‌ها</div>
-      <div class="check-item"><span class="check-box"></span> بازرسی بصری (VT) تمام جوش‌ها</div>
-      <div class="check-item"><span class="check-box"></span> تأیید نصب ساپورت‌ها</div>
-      <div class="check-item"><span class="check-box"></span> بررسی گزارش NDE جوش‌های مشمول</div>
-    </div>
+    <div class="checklist-title">🛠 آیتم‌های ضروری Punch List</div>
+    <div class="check-item"><span class="check-box"></span> تطبیق شماره خط با نقشه‌ی ایزومتریک</div>
+    <div class="check-item"><span class="check-box"></span> بررسی Heat Number روی فیتینگ‌ها و لوله‌ها</div>
+    <div class="check-item"><span class="check-box"></span> کنترل تورک پیچ فلنج‌ها طبق Torque Chart</div>
+    <div class="check-item"><span class="check-box"></span> بازرسی بصری (VT) تمام نقاط جوش</div>
+    <div class="check-item"><span class="check-box"></span> تأیید نصب صحیح ساپورت‌ها و Spring Hangerها</div>
+    <div class="check-item"><span class="check-box"></span> بررسی وجود گزارش NDE برای تمام جوش‌های مشمول</div>
   </div>
 
   <div class="callout callout-tip">
