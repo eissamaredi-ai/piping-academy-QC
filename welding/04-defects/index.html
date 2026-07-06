@@ -3,141 +3,1142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>عیوب جوشکاری — آکادمی پایپینگ و جوشکاری</title>
+<title>فصل ۴ — عیوب جوشکاری | شناخت، علت، پیشگیری و اصلاح</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
-  a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#F97316; }
+  :root {
+    --bg:#0a0e1a;--bg-soft:#111827;--bg-card:#171f34;
+    --border:#2a3350;--text:#e8ecf5;--text-muted:#8b94ad;
+    --primary:#06b6d4;--accent:#f59e0b;--danger:#ef4444;
+    --success:#10b981;--purple:#a855f7;--indigo:#6366f1;
+    --shadow-md:0 4px 20px rgba(0,0,0,.3);
+  }
+  [data-theme="light"]{--bg:#f8fafc;--bg-soft:#fff;--bg-card:#fff;--border:#e2e8f0;--text:#0f172a;--text-muted:#64748b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;transition:background .3s,color .3s;}
+  a{text-decoration:none;color:inherit;}
+  .en,code{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;}
+  .num{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;font-weight:600;}
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#F97316; font-weight:bold; }
+  /* NAV */
+  .navbar{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+  [data-theme="light"] .navbar{background:rgba(248,250,252,.94);}
+  .navbar-inner{max-width:1200px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:13.5px;}
+  .logo-icon{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#ef4444,#f59e0b);display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;}
+  .nav-links{display:flex;gap:14px;list-style:none;flex-wrap:wrap;}
+  .nav-links a{color:var(--text-muted);font-size:12px;font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--primary);}
+  .nav-actions{display:flex;align-items:center;gap:8px;}
+  .back-link{color:var(--text-muted);font-size:12.5px;padding:7px 13px;border-radius:8px;border:1px solid var(--border);transition:all .2s;white-space:nowrap;}
+  .back-link:hover{color:var(--primary);border-color:var(--primary);}
+  .theme-toggle{background:var(--bg-soft);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:.9rem;transition:transform .2s;}
+  .theme-toggle:hover{transform:rotate(15deg);}
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
-  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+  .breadcrumb{max-width:960px;margin:22px auto 0;padding:0 24px;font-size:12px;color:var(--text-muted);}
+  .breadcrumb span{color:var(--primary);font-weight:700;}
+  .content{max-width:960px;margin:0 auto;padding:18px 24px 80px;}
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
+  /* HERO */
+  .hero{position:relative;margin-bottom:30px;border-radius:20px;overflow:hidden;min-height:310px;display:flex;align-items:flex-end;background:linear-gradient(135deg,#1a0808 0%,#0a0e1a 100%);}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 20% 35%,rgba(239,68,68,.28),transparent 50%),radial-gradient(circle at 78% 60%,rgba(245,158,11,.15),transparent 50%);}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.1) 0%,rgba(10,14,26,.88) 100%);}
+  .hero-content{position:relative;z-index:2;padding:28px;width:100%;}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#fca5a5;padding:5px 12px;border-radius:50px;font-size:12px;font-weight:600;margin-bottom:12px;}
+  .hero h1{font-size:27px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.4;background:linear-gradient(135deg,#fca5a5 0%,#f59e0b 60%,#fbbf24 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero .subtitle{color:#cbd5e1;font-size:13px;}
+  .hero-stats{display:flex;gap:26px;margin-top:16px;flex-wrap:wrap;}
+  .hero-stat-num{font-size:19px;font-weight:800;background:linear-gradient(135deg,#ef4444,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:'Inter',sans-serif;}
+  .hero-stat-label{font-size:11px;color:#94a3b8;}
 
-  .defect-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:10px; }
-  .defect-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
-  .defect-name { font-weight:bold; font-size:14px; color:#0F172A; }
-  .severity-badge { font-size:10px; font-weight:bold; padding:3px 10px; border-radius:999px; color:white; white-space:nowrap; }
-  .defect-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
-  .defect-box { flex:1; min-width:130px; border-radius:8px; padding:8px 10px; font-size:11px; line-height:1.6; }
-  .box-cause { background:#fef2f2; color:#991b1b; }
-  .box-prevent { background:#f0fdf4; color:#166534; }
-  .box-fix { background:#eff6ff; color:#1e40af; }
-  .box-label { font-weight:bold; display:block; margin-bottom:2px; }
+  h2{font-size:21px;font-weight:700;margin:34px 0 13px;color:var(--text);display:flex;align-items:center;gap:10px;}
+  h2::before{content:'';width:5px;height:24px;background:linear-gradient(180deg,#ef4444,#f59e0b);border-radius:3px;}
+  h3{font-size:15px;font-weight:700;margin:14px 0 8px;}
+  p.lead{line-height:2;margin-bottom:16px;color:var(--text-muted);font-size:14.5px;}
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#F97316; color:white; }
+  /* CALLOUTS */
+  .callout{border-radius:12px;padding:14px 16px;margin:16px 0;font-size:13.5px;line-height:1.9;border-right:4px solid;background:var(--bg-card);border-left:1px solid var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .callout-def{border-right-color:var(--primary);}
+  .callout-warn{border-right-color:var(--accent);}
+  .callout-tip{border-right-color:var(--success);}
+  .callout-danger{border-right-color:var(--danger);}
+  .callout-purple{border-right-color:var(--purple);}
+  .callout-label{font-weight:700;font-size:12px;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+  .callout-def .callout-label{color:var(--primary);}
+  .callout-warn .callout-label{color:var(--accent);}
+  .callout-tip .callout-label{color:var(--success);}
+  .callout-danger .callout-label{color:var(--danger);}
+  .callout-purple .callout-label{color:var(--purple);}
+
+  /* DEFECT CARD - MAIN */
+  .defect-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:28px 0;position:relative;transition:border-color .3s;}
+  .defect-card:hover{border-color:var(--dc-color);}
+  .defect-card::before{content:'';position:absolute;top:0;right:0;width:100%;height:5px;background:var(--dc-color);}
+  .dc-header{display:grid;grid-template-columns:68px 1fr auto;align-items:center;gap:18px;padding:22px 24px 18px;border-bottom:1px solid var(--border);}
+  .dc-icon{width:68px;height:68px;border-radius:16px;background:var(--dc-color);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;box-shadow:0 8px 20px rgba(0,0,0,.35);}
+  .dc-title-block h3{font-size:19px;font-weight:800;margin:0 0 3px;}
+  .dc-en{font-family:'Inter',sans-serif;font-size:13px;color:var(--dc-color);font-weight:700;direction:ltr;}
+  .dc-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
+  .dc-severity{text-align:center;flex-shrink:0;}
+  .sev-label{font-size:10px;color:var(--text-muted);display:block;margin-bottom:4px;}
+  .sev-badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:800;border:1px solid;}
+  .sev-critical{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.4);color:#ef4444;}
+  .sev-high{background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.4);color:#f59e0b;}
+  .sev-medium{background:rgba(168,85,247,.15);border-color:rgba(168,85,247,.4);color:#a855f7;}
+
+  .dc-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+  .dc-col{padding:20px 22px;border-left:1px solid var(--border);}
+  .dc-col:last-child{border-left:none;}
+  .dc-col-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:5px;}
+  .dc-col-title::before{content:'';width:12px;height:2px;background:var(--dc-color);border-radius:1px;}
+
+  .item-list{list-style:none;}
+  .item-list li{padding:4px 0;padding-right:14px;position:relative;font-size:12.5px;color:var(--text-muted);border-bottom:1px dashed var(--border);line-height:1.7;}
+  .item-list li:last-child{border-bottom:none;}
+  .item-list li::before{content:'›';position:absolute;right:0;top:4px;color:var(--dc-color);font-weight:900;font-size:14px;}
+  .item-list li strong{color:var(--text);}
+
+  /* ACCEPTANCE SECTION */
+  .acc-box{margin:16px 22px 20px;padding:14px 16px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--border);}
+  .acc-box-title{font-size:11px;font-weight:700;color:var(--dc-color);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .acc-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .acc-chip{padding:4px 10px;border-radius:7px;font-size:11.5px;font-weight:600;font-family:'Inter',sans-serif;border:1px solid;}
+  .acc-pass{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);color:#10b981;}
+  .acc-fail{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);color:#ef4444;}
+  .acc-cond{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#f59e0b;}
+  .acc-ref{background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);color:#06b6d4;font-family:'Inter',sans-serif;font-size:11px;}
+
+  /* REPAIR SECTION */
+  .repair-box{margin:0 22px 22px;padding:14px 16px;border-radius:12px;border-right:3px solid var(--dc-color);background:rgba(0,0,0,.2);}
+  .repair-title{font-size:11px;font-weight:700;color:var(--dc-color);letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;}
+  .repair-steps{list-style:none;counter-reset:step;}
+  .repair-steps li{counter-increment:step;padding:4px 0 4px 0;padding-right:24px;position:relative;font-size:12.5px;color:var(--text-muted);line-height:1.7;}
+  .repair-steps li::before{content:counter(step);position:absolute;right:0;top:4px;width:16px;height:16px;border-radius:4px;background:var(--dc-color);color:#fff;font-size:9px;font-weight:800;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;line-height:1;}
+  .repair-steps li strong{color:var(--text);}
+
+  /* DETECTION TABLE */
+  .table-wrapper{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);margin:18px 0;}
+  .table-scroll{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;min-width:700px;}
+  thead{background:var(--bg-soft);}
+  th{padding:12px 13px;text-align:center;font-weight:600;font-size:11px;color:var(--text-muted);border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
+  td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:12.5px;text-align:center;color:var(--text);}
+  tbody tr:hover{background:var(--bg-soft);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.lbl{text-align:right;font-weight:600;font-size:12.5px;white-space:nowrap;}
+  .tag-best{color:#10b981;font-weight:700;}
+  .tag-good{color:#06b6d4;font-weight:600;}
+  .tag-lim{color:#f59e0b;font-weight:600;}
+  .tag-no{color:#ef4444;font-weight:700;}
+  .ref-chip{font-family:'Inter',sans-serif;font-size:10px;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);color:var(--primary);padding:2px 7px;border-radius:5px;white-space:nowrap;display:inline-block;}
+
+  /* SUMMARY MATRIX */
+  .matrix-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin:18px 0;}
+  .matrix-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px;border-right:3px solid var(--mc-color);transition:transform .2s;}
+  .matrix-card:hover{transform:translateY(-3px);}
+  .mc-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .mc-dot{width:10px;height:10px;border-radius:50%;background:var(--mc-color);flex-shrink:0;}
+  .mc-name{font-weight:700;font-size:13.5px;}
+  .mc-en{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);}
+  .mc-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--border);font-size:12px;}
+  .mc-row:last-child{border-bottom:none;}
+  .mc-k{color:var(--text-muted);}
+  .mc-v{color:var(--mc-color);font-family:'Inter',sans-serif;font-weight:700;font-size:11.5px;}
+
+  /* REPAIR LIMITATION BOX */
+  .repair-limit{background:linear-gradient(135deg,rgba(239,68,68,.07),rgba(245,158,11,.04));border:1px solid rgba(239,68,68,.3);border-radius:18px;padding:22px;margin:24px 0;}
+  .rl-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .rl-icon{width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,#ef4444,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .rl-header h3{font-size:16px;font-weight:700;margin:0;}
+  .rl-header p{font-size:12px;color:var(--text-muted);margin-top:2px;}
+  .rl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
+  .rl-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px;}
+  .rl-std{font-family:'Inter',sans-serif;font-weight:800;color:var(--danger);font-size:12px;margin-bottom:3px;}
+  .rl-title{font-weight:700;font-size:12.5px;margin-bottom:5px;}
+  .rl-item p{font-size:12px;color:var(--text-muted);line-height:1.8;}
+
+  /* CHECKLIST */
+  .cl-box{background:linear-gradient(135deg,rgba(6,182,212,.07),rgba(99,102,241,.04));border:1px solid rgba(6,182,212,.3);border-radius:18px;padding:22px;margin:24px 0;}
+  .cl-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .cl-icon{width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,#06b6d4,#6366f1);display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .cl-header h3{font-size:16px;font-weight:700;margin:0;}
+  .cl-header p{font-size:12px;color:var(--text-muted);margin-top:2px;}
+  .cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cl-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:11px 13px;display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--text-muted);line-height:1.6;}
+  .cl-num{min-width:21px;height:21px;border-radius:6px;background:rgba(6,182,212,.15);border:1px solid rgba(6,182,212,.3);display:flex;align-items:center;justify-content:center;font-size:9.5px;color:var(--primary);flex-shrink:0;font-family:'Inter',sans-serif;font-weight:700;margin-top:1px;}
+  .cl-item strong{color:var(--text);}
+  .cl-ref{font-family:'Inter',sans-serif;font-size:10px;color:var(--primary);display:block;margin-top:2px;}
+
+  .nav-footer{display:flex;justify-content:space-between;margin-top:50px;padding-top:26px;border-top:1px solid var(--border);gap:12px;flex-wrap:wrap;}
+  .nav-btn{font-size:13px;font-weight:700;padding:11px 18px;border-radius:11px;border:1px solid var(--border);background:var(--bg-card);transition:all .2s;display:flex;align-items:center;gap:8px;}
+  .nav-prev{color:var(--text-muted);}
+  .nav-prev:hover{color:var(--text);border-color:var(--primary);}
+  .nav-next{background:linear-gradient(135deg,#ef4444,#f59e0b);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(239,68,68,.3);}
+  .nav-next:hover{transform:translateY(-2px);}
+
+  footer{background:var(--bg-soft);border-top:1px solid var(--border);padding:24px;text-align:center;}
+  footer p{color:var(--text-muted);font-size:12px;margin-bottom:3px;}
+
+  @media(max-width:800px){
+    .nav-links{display:none;}
+    .hero h1{font-size:20px;}
+    h2{font-size:17px;}
+    .dc-body{grid-template-columns:1fr;}
+    .dc-col{border-left:none;border-top:1px solid var(--border);}
+    .dc-header{grid-template-columns:56px 1fr;gap:12px;}
+    .dc-severity{display:none;}
+    .cl-grid{grid-template-columns:1fr;}
+  }
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .defect-card{animation:fadeInUp .45s ease-out backwards;}
+  .defect-card:nth-child(1){animation-delay:.04s}.defect-card:nth-child(2){animation-delay:.08s}
+  .defect-card:nth-child(3){animation-delay:.12s}.defect-card:nth-child(4){animation-delay:.16s}
+  .defect-card:nth-child(5){animation-delay:.2s}.defect-card:nth-child(6){animation-delay:.24s}
+  .defect-card:nth-child(7){animation-delay:.28s}.defect-card:nth-child(8){animation-delay:.32s}
+  ::-webkit-scrollbar{width:9px;height:9px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--primary)}
 </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      <span>PIPING STUDIO — آکادمی پایپینگ و جوشکاری</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#crack">Crack</a></li>
+      <li><a href="#ip">IP</a></li>
+      <li><a href="#lof">LOF</a></li>
+      <li><a href="#undercut">Undercut</a></li>
+      <li><a href="#porosity">Porosity</a></li>
+      <li><a href="#slag">Slag</a></li>
+      <li><a href="#hic">HIC</a></li>
+      <li><a href="#overlap">Overlap</a></li>
+      <li><a href="#detection">تشخیص NDT</a></li>
+      <li><a href="#repair">محدودیت تعمیر</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="../03-stages/" class="back-link">← فصل ۳: مراحل جوش</a>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۴ — عیوب جوشکاری</span></div>
+<div class="breadcrumb">
+  آموزش جوشکاری ←
+  <span>فصل ۴ — عیوب جوشکاری: شناخت بصری، علت، پیشگیری و اصلاح</span>
+</div>
 
 <div class="content">
-  <h1>عیوب جوشکاری</h1>
-  <div class="subtitle">شناخت بصری، علت ایجاد، پیشگیری و روش اصلاح هر عیب رایج</div>
 
-  <p class="lead">تشخیص صحیح نوع عیب جوش، اولین قدم بازرس قبل از تصمیم‌گیری درباره‌ی قبول یا رد یک جوش است. برخی عیوب صرفاً ظاهری و قابل‌قبول‌اند، در حالی که برخی دیگر همیشه باید رد و اصلاح شوند، فارغ از اندازه.</p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🔬 شناخت، علت، پیشگیری و اصلاح</div>
+      <h1>عیوب جوشکاری در پایپینگ صنعتی<br>— راهنمای کامل بازرس QC</h1>
+      <div class="subtitle">
+        مرجع: ASME B31.3 Table 341.3.2 | ASME Sec. V Art. 1, 2, 6, 7 | API RP 577 Sec. 9 | AWS B1.11 (Visual Examination of Welds)
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">عیب اصلی</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">Table 341.3.2</div><div class="hero-stat-label">معیار پذیرش B31.3</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">API RP 577</div><div class="hero-stat-label">مرجع بازرسی جوش</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">Para 328.6</div><div class="hero-stat-label">محدودیت تعمیر</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>طبقه‌بندی عیوب جوشکاری</h2>
+  <p class="lead">
+    طبق <strong>ISO 6520-1</strong> و <strong>AWS B1.11</strong>، عیوب جوش به شش گروه اصلی تقسیم می‌شوند: ترک‌ها (Group 1)، حفره‌ها (Group 2)، ناخالصی‌های جامد (Group 3)، ذوب‌ناقص (Group 4)، شکل نامناسب (Group 5) و عیوب متفرقه (Group 6). در این فصل هشت عیب بحرانی در پایپینگ ASME B31.3 با رویکرد کاربردی بازرسی بررسی می‌شود.
+  </p>
+
+  <div class="callout callout-def">
+    <span class="callout-label">📘 تمایز مهم — Defect vs Discontinuity</span>
+    <strong>Discontinuity:</strong> هر ناپیوستگی در ساختار جوش — لزوماً reject نیست.<br>
+    <strong>Defect:</strong> ناپیوستگی که از معیار پذیرش استاندارد مربوطه فراتر رفته — الزاماً باید رفع یا تعمیر شود.<br>
+    مرجع: <strong>ASME Sec. V Art. 1 Mandatory Appendix I — T-170</strong>. بازرس هرگز نباید اصطلاح "defect" را قبل از مقایسه با معیار استاندارد به‌کار ببرد.
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 1 — CRACK
+  ══════════════════════════════════════ -->
+  <h2 id="crack">① ترک جوش (Weld Crack)</h2>
+
+  <div class="defect-card" style="--dc-color:#ef4444;">
+    <div class="dc-header">
+      <div class="dc-icon">💥</div>
+      <div class="dc-title-block">
+        <h3>ترک — Crack</h3>
+        <div class="dc-en">Weld Crack — Hot Crack / Cold Crack / Solidification Crack</div>
+        <div class="dc-sub">ISO 6520-1 Group 1 | عیب با شدیدترین پیامد در پایپینگ صنعتی</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-critical">CRITICAL</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری</div>
+        <ul class="item-list">
+          <li>خط باریک با لبه <strong>تیز و نامنظم</strong> روی سطح جوش</li>
+          <li>ممکن است <strong>با چشم غیرمسلح دیده نشود</strong> — نیاز MT/PT</li>
+          <li>Crater Crack: ستاره‌شکل در انتهای جوش</li>
+          <li>Longitudinal: موازی محور جوش</li>
+          <li>Transverse: عمود بر محور جوش — خطرناک‌تر</li>
+          <li>در ناحیه HAZ: کنار خط ذوب</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>Hot Crack:</strong> کربن/گوگرد بالا — سردایش سریع فلز مذاب</li>
+          <li><strong>Cold/HIC:</strong> هیدروژن + تنش + میکروساختار حساس</li>
+          <li><strong>Solidification Crack:</strong> نسبت W/D نامناسب پاس</li>
+          <li><strong>Crater Crack:</strong> قطع ناگهانی قوس بدون Fill</li>
+          <li>Preheat ناکافی — PWHT انجام نشده</li>
+          <li>تنش‌های پسماند بالا — Restraint زیاد</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li>Preheat مطابق <strong>B31.3 Table 330.1.1</strong></li>
+          <li>الکترود کم‌هیدروژن (E7018) — نگهداری در <strong>quiver ≥120°C</strong></li>
+          <li>PWHT طبق <strong>B31.3 Table 331.1.1</strong></li>
+          <li>کنترل حرارت ورودی — HI مطابق WPS</li>
+          <li>Crater Fill فعال یا Back-Step در انتها</li>
+          <li>کنترل Carbon Equivalent (CE) — <span class="num">CE ≤ 0.42</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-fail">VT: صفر — هیچ ترکی قابل قبول نیست</span>
+        <span class="acc-chip acc-fail">RT/UT: صفر — هر اندازه</span>
+        <span class="acc-chip acc-fail">MT/PT: صفر — هر طول</span>
+        <span class="acc-chip acc-ref">B31.3 Table 341.3.2 (A)</span>
+        <span class="acc-chip acc-ref">ASME Sec. IX QW-191 (RT)</span>
+        <span class="acc-chip acc-ref">Severe Cyclic: صفر مطلق</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح — B31.3 Para 328.6</div>
+      <ol class="repair-steps">
+        <li><strong>علت‌یابی اجباری:</strong> قبل از هر اقدام — تعیین نوع ترک (Hot/Cold/Solidification)</li>
+        <li><strong>Excavation کامل:</strong> حذف کامل ترک با Grinding یا Arc Gouging — تا فلز سالم</li>
+        <li><strong>تأیید حذف:</strong> MT یا PT پس از Excavation — اطمینان از عدم ادامه ترک</li>
+        <li><strong>اصلاح شرایط:</strong> Preheat، تغییر WPS یا الکترود در صورت نیاز</li>
+        <li><strong>جوش تعمیری:</strong> طبق Repair WPS تأیید‌شده — ثبت در سیستم مستندات</li>
+        <li><strong>NDT پس از تعمیر:</strong> RT یا UT + PT/MT — همان روش اصلی پروژه</li>
+        <li><strong>محدودیت تعمیر:</strong> حداکثر تعداد تعمیر مجاز طبق WPS — سومین تعمیر معمولاً نیاز موافقت Engineering دارد</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 2 — INCOMPLETE PENETRATION
+  ══════════════════════════════════════ -->
+  <h2 id="ip">② نفوذ ناقص (Incomplete Penetration)</h2>
+
+  <div class="defect-card" style="--dc-color:#f59e0b;">
+    <div class="dc-header">
+      <div class="dc-icon">🕳️</div>
+      <div class="dc-title-block">
+        <h3>نفوذ ناقص — IP</h3>
+        <div class="dc-en">Incomplete Penetration / Lack of Penetration (LOP)</div>
+        <div class="dc-sub">ISO 6520-1 Group 4 | بحرانی در سرویس‌های Cyclic و Cryogenic</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-critical">CRITICAL</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری</div>
+        <ul class="item-list">
+          <li>از <strong>داخل لوله</strong> قابل رویت — شیار باریک در مرکز ریشه</li>
+          <li>سطح ریشه <strong>صاف و بدون ذوب</strong> — اتصال مکانیکی نه متالورژی</li>
+          <li>در RT: <strong>خط تاریک باریک</strong> در مرکز تصویر</li>
+          <li>در VT داخلی: فاصله قابل مشاهده در ریشه</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>Root Gap کم:</strong> کمتر از حداقل WPS (معمولاً <span class="num">&lt;1.6mm</span>)</li>
+          <li><strong>Root Face زیاد:</strong> بیش از <span class="num">1.6mm</span> — مانع ذوب کامل</li>
+          <li><strong>آمپر پایین:</strong> حرارت کافی برای نفوذ نیست</li>
+          <li><strong>سرعت زیاد:</strong> زمان کافی برای نفوذ نیست</li>
+          <li>زاویه الکترود نادرست در پوزیشن 5G/6G</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li>کنترل Fit-up: Root Gap <strong>1.6–3.2mm</strong> طبق WPS</li>
+          <li>Root Face: <strong>0.8–1.6mm</strong> — B31.3 Para 328.4.2</li>
+          <li>کالیبراسیون دستگاه جوش — تأیید آمپر واقعی</li>
+          <li>استفاده از GTAW برای ریشه در SS</li>
+          <li>Hold Point Fit-up قبل از شروع جوش</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش — ASME B31.3 Table 341.3.2 (E)</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-cond">Normal Service: ≤ 1.6mm AND ≤ 0.2t — طول کل ≤ 38mm در هر 150mm</span>
+        <span class="acc-chip acc-fail">Severe Cyclic / Category M: صفر — مجاز نیست</span>
+        <span class="acc-chip acc-ref">B31.3 Table 341.3.2 (E)</span>
+        <span class="acc-chip acc-ref">RT: ASME Sec. IX QW-191.2.1</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح — B31.3 Para 328.6.1</div>
+      <ol class="repair-steps">
+        <li><strong>Back Gouge از خارج:</strong> برداشتن ریشه تا عمق سالم با Grinding</li>
+        <li><strong>VT + PT/MT:</strong> تأیید حذف کامل IP قبل از جوش تعمیری</li>
+        <li><strong>اصلاح Fit-up:</strong> اگر علت Root Gap کم بود — اصلاح و تأیید مجدد</li>
+        <li><strong>جوش تعمیری ریشه:</strong> با GTAW ترجیحاً — طبق Repair WPS</li>
+        <li><strong>RT/UT پس از تعمیر:</strong> الزامی مطابق ITP پروژه</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 3 — LACK OF FUSION
+  ══════════════════════════════════════ -->
+  <h2 id="lof">③ عدم ذوب (Lack of Fusion)</h2>
+
+  <div class="defect-card" style="--dc-color:#a855f7;">
+    <div class="dc-header">
+      <div class="dc-icon">🧊</div>
+      <div class="dc-title-block">
+        <h3>عدم ذوب — LOF</h3>
+        <div class="dc-en">Lack of Fusion / Incomplete Fusion — Sidewall / Interpass / Root</div>
+        <div class="dc-sub">ISO 6520-1 Group 4 | بدترین شناسایی با RT — UT ارجح است</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-critical">CRITICAL</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری</div>
+        <ul class="item-list">
+          <li>در سطح: <strong>شیار باریک</strong> بین جوش و فلز پایه</li>
+          <li>در RT: خط موازی لبه Bevel — <strong>نازک و تیز</strong></li>
+          <li>در UT: بازتاب از سطح صاف در دیواره — TOFD عالی است</li>
+          <li>Sidewall LOF: در دیواره Groove</li>
+          <li>Interpass LOF: بین دو پاس — در Fill معمول</li>
+          <li>Root LOF: در ناحیه ریشه — مشابه IP</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>آمپر پایین:</strong> حرارت کافی برای ذوب دیواره ندارد</li>
+          <li><strong>سرعت زیاد:</strong> زمان تماس کوتاه</li>
+          <li><strong>Weave Width زیاد:</strong> قوس از دیواره فاصله می‌گیرد</li>
+          <li><strong>زاویه الکترود:</strong> قوس به دیواره نمی‌رسد</li>
+          <li>GMAW Short Circuit روی ضخامت بالا</li>
+          <li>سرباره‌برداری ناقص بین پاس‌ها</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li>رعایت آمپر حداقل WPS — کالیبره دستگاه</li>
+          <li>زاویه Work Angle مناسب — <strong>5–15° از عمود</strong></li>
+          <li>Weave Width: <strong>≤ 3× قطر الکترود</strong></li>
+          <li>SMAW/GTAW برای ریشه به‌جای GMAW Short-Circuit</li>
+          <li>سرباره‌برداری کامل + VT بین هر پاس (Hold Point)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-fail">VT: صفر — هر LOF قابل رویت reject است</span>
+        <span class="acc-chip acc-fail">RT: صفر (B31.3 Table 341.3.2)</span>
+        <span class="acc-chip acc-fail">UT: صفر — بازتاب سطح صاف</span>
+        <span class="acc-chip acc-ref">B31.3 Para 341.3.2</span>
+        <span class="acc-chip acc-ref">ASME Sec. IX QW-191.2 (RT)</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح</div>
+      <ol class="repair-steps">
+        <li><strong>تعیین موقعیت:</strong> با UT TOFD یا Phased Array — مختصات دقیق</li>
+        <li><strong>Excavation:</strong> Grinding تا حذف کامل LOF — حداقل 10mm اضافه</li>
+        <li><strong>تأیید با PT/MT:</strong> قبل از جوش تعمیری</li>
+        <li><strong>تعمیر با آمپر مناسب:</strong> اصلاح WPS اگر علت پارامتر بود</li>
+        <li><strong>UT پس از تعمیر:</strong> الزامی — RT ممکن است LOF عمقی را miss کند</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 4 — UNDERCUT
+  ══════════════════════════════════════ -->
+  <h2 id="undercut">④ بریدگی کنار جوش (Undercut)</h2>
+
+  <div class="defect-card" style="--dc-color:#06b6d4;">
+    <div class="dc-header">
+      <div class="dc-icon">🔪</div>
+      <div class="dc-title-block">
+        <h3>بریدگی — Undercut</h3>
+        <div class="dc-en">Undercut — Toe Undercut / Root Undercut</div>
+        <div class="dc-sub">ISO 6520-1 Group 5 | رایج‌ترین عیب Cap Pass — تمرکز تنش در Fatigue</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-high">HIGH</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری</div>
+        <ul class="item-list">
+          <li>شیار در <strong>امتداد لبه Cap Pass</strong> — در فلز پایه</li>
+          <li>عمق با <strong>Pit Gauge یا Filler Gauge</strong> اندازه‌گیری می‌شود</li>
+          <li>Root Undercut: از داخل لوله — کنار ریشه جوش</li>
+          <li>ممکن است پیوسته یا منفرد باشد</li>
+          <li>در پوزیشن Overhead بیشتر رخ می‌دهد</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>آمپر زیاد:</strong> ذوب فلز پایه در لبه جوش</li>
+          <li><strong>ولتاژ زیاد</strong> در GMAW/FCAW</li>
+          <li><strong>سرعت کم:</strong> تجمع حرارت در لبه</li>
+          <li><strong>Weave نامناسب:</strong> توقف کوتاه روی لبه</li>
+          <li>زاویه کار (Work Angle) نادرست</li>
+          <li>Travel Speed ناهموار</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li>رعایت آمپر/ولتاژ مطابق WPS — نه بیشتر</li>
+          <li>Weave: <strong>توقف کوتاه روی لبه</strong> در هر سوئینگ</li>
+          <li>Travel Speed یکنواخت — تمرین جوشکار</li>
+          <li>Work Angle مناسب برای هر پوزیشن</li>
+          <li>VT بلافاصله بعد از Cap — هنوز گرم است</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش — ASME B31.3 Table 341.3.2 (B)</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-cond">Normal Service: ≤ 1mm یا ≤ 1/6 × t — هر کدام کمتر بود</span>
+        <span class="acc-chip acc-cond">Severe Cyclic: ≤ 0.4mm — بدون استثنا</span>
+        <span class="acc-chip acc-fail">طول پیوسته &gt; 50mm در 300mm: reject</span>
+        <span class="acc-chip acc-ref">Table 341.3.2 (B)</span>
+        <span class="acc-chip acc-ref">Pit Gauge الزامی برای اندازه‌گیری</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح</div>
+      <ol class="repair-steps">
+        <li><strong>Grinding کنترل‌شده:</strong> اگر عمق ≤ 0.5mm — Blend Grinding مجاز است مشروط به حفظ t_min</li>
+        <li><strong>جوش پرکن:</strong> برای Undercut عمیق‌تر — با الکترود قطر کوچک (Ø2.5mm)</li>
+        <li><strong>بررسی ضخامت باقیمانده:</strong> UT Thickness پس از Grinding — باید ≥ t_min محاسبه‌شده باشد</li>
+        <li><strong>VT نهایی:</strong> تأیید Blend صاف و بدون تمرکز تنش جدید</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 5 — POROSITY
+  ══════════════════════════════════════ -->
+  <h2 id="porosity">⑤ تخلخل (Porosity)</h2>
+
+  <div class="defect-card" style="--dc-color:#10b981;">
+    <div class="dc-header">
+      <div class="dc-icon">🫧</div>
+      <div class="dc-title-block">
+        <h3>تخلخل — Porosity</h3>
+        <div class="dc-en">Porosity — Scattered / Cluster / Piping (Wormhole)</div>
+        <div class="dc-sub">ISO 6520-1 Group 2 | سطحی: VT | داخلی: RT عالی است</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-high">HIGH</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری و انواع</div>
+        <ul class="item-list">
+          <li><strong>Scattered Porosity:</strong> حباب‌های پراکنده — رایج‌ترین</li>
+          <li><strong>Cluster Porosity:</strong> تجمع موضعی حباب‌ها</li>
+          <li><strong>Piping / Wormhole:</strong> حباب‌های کشیده — خطرناک‌ترین نوع</li>
+          <li><strong>Surface Porosity:</strong> با VT قابل رویت — دهانه گرد روی سطح</li>
+          <li>در RT: نقاط تاریک گرد یا بیضی‌شکل</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>رطوبت الکترود:</strong> بیشترین علت در SMAW</li>
+          <li><strong>آلودگی سطح:</strong> روغن، زنگ، رنگ، رطوبت لبه</li>
+          <li><strong>گاز محافظ ناکافی:</strong> GMAW/GTAW — جریان کم یا باد</li>
+          <li><strong>Back Purge ناکافی:</strong> O₂ بالا در GTAW روی SS</li>
+          <li>Arc Length زیاد — اتمسفر نفوذ می‌کند</li>
+          <li>آلودگی سیم جوش یا فلکس SAW</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li>الکترود خشک — نگهداری در <strong>Quiver ≥120°C</strong></li>
+          <li>تمیزکاری لبه: <strong>≥25mm</strong> هر طرف — Grease/Rust/Paint</li>
+          <li>جریان گاز محافظ: <strong>10–15 L/min</strong> — محافظت از باد</li>
+          <li>Back Purge: <strong>O₂ ≤ 0.1%</strong> با Analyzer</li>
+          <li>Arc Length مطابق WPS — نه بیشتر از قطر الکترود</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش — ASME B31.3 + ASME Sec. IX QW-191.2.2</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-fail">VT سطحی: صفر — B31.3 Table 341.3.2 (F)</span>
+        <span class="acc-chip acc-cond">RT داخلی: مساحت کل ≤ t × 65mm² در هر 150mm طول — QW-191.2.2</span>
+        <span class="acc-chip acc-cond">Wormhole / Piping: صفر — ASME Sec. IX QW-191.2.2(b)</span>
+        <span class="acc-chip acc-ref">Sec. IX QW-191.2.2</span>
+        <span class="acc-chip acc-ref">Table 341.3.2 (F) — VT</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح</div>
+      <ol class="repair-steps">
+        <li><strong>تعیین موقعیت:</strong> با RT یا UT — عمق و طول ناحیه متخلخل</li>
+        <li><strong>Excavation:</strong> Grinding تا حذف کامل حباب‌ها — تأیید با VT</li>
+        <li><strong>اصلاح علت:</strong> الکترود جدید، تمیزکاری، اصلاح گاز — قبل از تعمیر</li>
+        <li><strong>جوش تعمیری:</strong> طبق Repair WPS — ثبت شرایط</li>
+        <li><strong>RT/UT تکرار:</strong> الزامی</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 6 — SLAG INCLUSION
+  ══════════════════════════════════════ -->
+  <h2 id="slag">⑥ سرباره محبوس (Slag Inclusion)</h2>
+
+  <div class="defect-card" style="--dc-color:#f97316;">
+    <div class="dc-header">
+      <div class="dc-icon">🧱</div>
+      <div class="dc-title-block">
+        <h3>سرباره محبوس — Slag Inclusion</h3>
+        <div class="dc-en">Slag Inclusion / Flux Inclusion — Linear / Isolated</div>
+        <div class="dc-sub">ISO 6520-1 Group 3 | SMAW و FCAW — بین پاس‌ها</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-high">HIGH</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری</div>
+        <ul class="item-list">
+          <li>از روی سطح <strong>قابل رویت نیست</strong> — عیب داخلی</li>
+          <li>در RT: <strong>نقاط یا خطوط تاریک</strong> نامنظم</li>
+          <li>Linear Slag: موازی محور جوش — بدتر از Isolated</li>
+          <li>در سطح: گاهی ناهمواری یا رنگ تیره‌تر</li>
+          <li>با Chisel و Hammer بین پاس‌ها قابل بررسی</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>سرباره‌برداری ناقص</strong> بین پاس‌ها — اصلی‌ترین علت</li>
+          <li><strong>زاویه نادرست الکترود:</strong> سرباره جلوتر از قوس می‌رود</li>
+          <li><strong>ولتاژ پایین:</strong> سرباره ذوب نمی‌شود</li>
+          <li>Profile ناهموار پاس قبلی — سرباره در شیار محبوس</li>
+          <li>Weave Width زیاد — سرباره از لبه برنمی‌گردد</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li><strong>سرباره‌برداری کامل</strong> بین هر پاس — Chipping + Wire Brush</li>
+          <li>VT بین پاس — Hold Point در ITP</li>
+          <li>Profile پاس: صاف و بدون شیار عمیق</li>
+          <li>ولتاژ مطابق WPS — ≥ حداقل تعیین‌شده</li>
+          <li>زاویه Travel Angle صحیح — <strong>5–15° Push</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش — ASME Sec. IX QW-191.2.2 (RT)</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-cond">Isolated: مجموع ≤ t/3 و حداکثر 6mm — در هر 150mm</span>
+        <span class="acc-chip acc-fail">Linear (در امتداد جوش): طول ≤ t/3 یا 6mm (هر کدام کمتر) — QW-191.2.2(c)</span>
+        <span class="acc-chip acc-fail">Elongated: هر طول &gt; 3× عرض — Linear محسوب می‌شود</span>
+        <span class="acc-chip acc-ref">QW-191.2.2 (c)</span>
+        <span class="acc-chip acc-ref">B31.3 Table 341.3.2</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح</div>
+      <ol class="repair-steps">
+        <li><strong>موقعیت دقیق با RT:</strong> عمق تخمینی از Radiograph</li>
+        <li><strong>Grinding:</strong> از سطح تا رسیدن به Slag — تأیید حذف کامل با VT</li>
+        <li><strong>Excavation Profile:</strong> شیار U-Shape برای دسترسی خوب الکترود</li>
+        <li><strong>جوش تعمیری:</strong> با الکترود Ø2.5mm — کنترل Slag بلافاصله</li>
+        <li><strong>RT تعمیر:</strong> همان محدوده + 25mm هر طرف</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 7 — HIC
+  ══════════════════════════════════════ -->
+  <h2 id="hic">⑦ ترک هیدروژنی (Hydrogen-Induced Cracking)</h2>
+
+  <div class="defect-card" style="--dc-color:#ec4899;">
+    <div class="dc-header">
+      <div class="dc-icon">💧</div>
+      <div class="dc-title-block">
+        <h3>ترک هیدروژنی — HIC / HIDC</h3>
+        <div class="dc-en">Hydrogen-Induced Cracking / Cold Cracking / Delayed Cracking</div>
+        <div class="dc-sub">ISO 6520-1 Group 1 | ترک تأخیری — تا 72h بعد از جوش | HAZ بیشتر</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-critical">CRITICAL</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری</div>
+        <ul class="item-list">
+          <li><strong>ممکن است هیچ‌وقت با VT دیده نشود</strong> — MT/PT الزامی</li>
+          <li>معمولاً در <strong>HAZ (Heat Affected Zone)</strong></li>
+          <li>موازی یا عمود بر خط ذوب</li>
+          <li>ممکن است <strong>48–72 ساعت پس از جوش</strong> ظاهر شود</li>
+          <li>در سرویس Sour (H₂S): SSC — شکست ترد</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>سه عامل همزمان:</strong> هیدروژن + تنش + میکروساختار حساس</li>
+          <li>الکترود مرطوب (Low-H جذب رطوبت)</li>
+          <li>Carbon Equivalent بالا — <strong>CE &gt; 0.42</strong></li>
+          <li>Preheat ناکافی — Martensite در HAZ</li>
+          <li>سردایش سریع — PWHT انجام نشده</li>
+          <li>Hardness HAZ بیش از حد — <strong>&gt; 248 HV (NACE MR0175)</strong></li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li>الکترود <strong>Low-Hydrogen (H4 یا H8)</strong> — نگهداری در Quiver</li>
+          <li>Preheat مطابق <strong>B31.3 Table 330.1.1</strong> + CET Method</li>
+          <li>PWHT — ویژه سرویس Sour و Cr-Mo</li>
+          <li>Hardness Survey پس از جوش: <strong>NACE MR0175 / ISO 15156</strong></li>
+          <li>Delay before NDT: حداقل <strong>48h</strong> برای متریال حساس</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش و زمان NDT</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-fail">هر ترک: صفر — بدون استثنا — Table 341.3.2 (A)</span>
+        <span class="acc-chip acc-cond">NDT Delay برای CE &gt; 0.41: حداقل 48h پس از PWHT</span>
+        <span class="acc-chip acc-cond">Hardness HAZ: ≤ 248 HV (NACE MR0175) یا ≤ 22 HRC</span>
+        <span class="acc-chip acc-ref">NACE MR0175 / ISO 15156</span>
+        <span class="acc-chip acc-ref">ASME Sec. IX QW-191 + MT/PT</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح — بحرانی‌ترین مورد</div>
+      <ol class="repair-steps">
+        <li><strong>توقف فوری و NCR:</strong> صدور NCR — اطلاع Engineering و Client</li>
+        <li><strong>بررسی Hardness:</strong> Portable Hardness Test روی کل HAZ اتصال</li>
+        <li><strong>Excavation کامل:</strong> کل ناحیه ترک‌دار — MT/PT تأیید کند</li>
+        <li><strong>PWHT پیش از تعمیر:</strong> در صورت نیاز — کاهش Hardness</li>
+        <li><strong>اصلاح WPS:</strong> افزایش Preheat — تغییر الکترود به H4</li>
+        <li><strong>MT/PT پس از 48h:</strong> بررسی Delayed Cracking مجدد</li>
+        <li><strong>گزارش Metallurgical:</strong> در موارد تکراری — Root Cause Analysis</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEFECT 8 — OVERLAP / COLD LAP
+  ══════════════════════════════════════ -->
+  <h2 id="overlap">⑧ انعقاد سرد / همپوشانی (Overlap / Cold Lap)</h2>
+
+  <div class="defect-card" style="--dc-color:#6366f1;">
+    <div class="dc-header">
+      <div class="dc-icon">🌊</div>
+      <div class="dc-title-block">
+        <h3>Overlap / Cold Lap</h3>
+        <div class="dc-en">Overlap / Cold Lap / Rollover — No Fusion at Toe</div>
+        <div class="dc-sub">ISO 6520-1 Group 5 | Cap Pass — بدون ذوب لبه جوش روی فلز پایه</div>
+      </div>
+      <div class="dc-severity">
+        <span class="sev-label">شدت</span>
+        <span class="sev-badge sev-medium">MEDIUM–HIGH</span>
+      </div>
+    </div>
+    <div class="dc-body">
+      <div class="dc-col">
+        <div class="dc-col-title">🔍 شناخت بصری</div>
+        <ul class="item-list">
+          <li>فلز جوش <strong>روی فلز پایه نشسته</strong> اما ذوب نشده</li>
+          <li>لبه جوش <strong>یخ می‌زند</strong> — زاویه تیز بدون ذوب</li>
+          <li>با نور کافی و زاویه مناسب VT قابل رویت</li>
+          <li>پس از سرد شدن — شیار نازک در لبه پاس</li>
+          <li>در MT: نشانه‌دهی موازی لبه Cap</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">⚠️ علل ایجاد</div>
+        <ul class="item-list">
+          <li><strong>آمپر پایین:</strong> فلز مذاب روی سطح سرد گسترش می‌یابد</li>
+          <li><strong>Travel Speed زیاد:</strong> زمان ذوب ناکافی</li>
+          <li><strong>Weave بدون توقف لبه:</strong> فلز Roll می‌کند</li>
+          <li>زاویه Work Angle نامناسب — قوس از لبه فاصله دارد</li>
+          <li>سطح سرد: Preheat ناکافی</li>
+        </ul>
+      </div>
+      <div class="dc-col">
+        <div class="dc-col-title">🛡️ پیشگیری</div>
+        <ul class="item-list">
+          <li>آمپر کافی — Travel Speed مناسب</li>
+          <li>Weave با <strong>توقف 1–2 ثانیه روی لبه</strong></li>
+          <li>زاویه Work Angle: <strong>60–80°</strong> از سطح لوله</li>
+          <li>Preheat مطابق WPS — سطح گرم</li>
+          <li>VT بلافاصله پس از Cap — هنوز دیدن آسان است</li>
+        </ul>
+      </div>
+    </div>
+    <div class="acc-box">
+      <div class="acc-box-title">📋 معیار پذیرش — ASME B31.3 Table 341.3.2 (G)</div>
+      <div class="acc-row">
+        <span class="acc-chip acc-fail">VT: صفر — هر Overlap یا Cold Lap reject است</span>
+        <span class="acc-chip acc-fail">Normal و Severe Cyclic: هر دو — صفر</span>
+        <span class="acc-chip acc-ref">Table 341.3.2 (G)</span>
+        <span class="acc-chip acc-ref">AWS B1.11 Section 5 (VEW)</span>
+      </div>
+    </div>
+    <div class="repair-box">
+      <div class="repair-title">🔧 روش اصلاح</div>
+      <ol class="repair-steps">
+        <li><strong>Grinding لبه Cap:</strong> حذف ناحیه Overlap تا رسیدن به ذوب سالم</li>
+        <li><strong>بررسی ضخامت:</strong> UT Thickness — حفظ t_min الزامی</li>
+        <li><strong>جوش Button Pass:</strong> روی ناحیه Grind‌شده با آمپر مناسب</li>
+        <li><strong>VT نهایی:</strong> اطمینان از لبه ذوب صاف</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- NDT DETECTION TABLE -->
+  <h2 id="detection">جدول تشخیص عیوب با روش‌های NDT</h2>
+  <p class="lead">
+    مرجع: <strong>ASME Sec. V Art. 1 Table T-120</strong> — قابلیت شناسایی هر روش NDT برای عیوب مختلف. انتخاب روش NDT باید در <strong>ITP و Inspection Procedure</strong> پروژه مشخص باشد.
+  </p>
+
+  <div class="table-wrapper">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>عیب</th>
+            <th>VT</th>
+            <th>PT</th>
+            <th>MT</th>
+            <th>RT (X-Ray/γ)</th>
+            <th>UT (Pulse-Echo)</th>
+            <th>UT TOFD / PAUT</th>
+            <th>مرجع NDT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="lbl">Crack (سطحی)</td>
+            <td class="tag-lim">محدود</td><td class="tag-best">عالی</td><td class="tag-best">عالی</td>
+            <td class="tag-lim">محدود</td><td class="tag-lim">محدود</td><td class="tag-good">خوب</td>
+            <td><span class="ref-chip">Sec.V Art.6 (PT) Art.7 (MT)</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">Crack (داخلی)</td>
+            <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+            <td class="tag-lim">بسته به جهت</td><td class="tag-good">خوب</td><td class="tag-best">عالی</td>
+            <td><span class="ref-chip">Sec.V Art.4 (UT)</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">Incomplete Penetration</td>
+            <td class="tag-lim">داخل لوله</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+            <td class="tag-best">عالی</td><td class="tag-good">خوب</td><td class="tag-best">عالی</td>
+            <td><span class="ref-chip">Sec.V Art.2 (RT)</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">Lack of Fusion</td>
+            <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+            <td class="tag-lim">ضعیف (جهت)</td><td class="tag-good">خوب</td><td class="tag-best">عالی</td>
+            <td><span class="ref-chip">TOFD ارجح</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">Undercut</td>
+            <td class="tag-best">عالی</td><td class="tag-good">خوب</td><td class="tag-good">خوب</td>
+            <td class="tag-lim">محدود</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+            <td><span class="ref-chip">Sec.V Art.9 (VT)</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">Porosity (داخلی)</td>
+            <td class="tag-no">فقط سطحی</td><td class="tag-lim">سطحی</td><td class="tag-no">✗</td>
+            <td class="tag-best">عالی</td><td class="tag-good">خوب</td><td class="tag-good">خوب</td>
+            <td><span class="ref-chip">RT بهترین</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">Slag Inclusion</td>
+            <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+            <td class="tag-best">عالی</td><td class="tag-good">خوب</td><td class="tag-good">خوب</td>
+            <td><span class="ref-chip">Sec.V Art.2 (RT)</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">HIC / Cold Crack</td>
+            <td class="tag-no">✗</td><td class="tag-best">عالی (48h+)</td><td class="tag-best">عالی (48h+)</td>
+            <td class="tag-lim">محدود</td><td class="tag-good">خوب</td><td class="tag-best">عالی</td>
+            <td><span class="ref-chip">MT/PT بعد 48h</span></td>
+          </tr>
+          <tr>
+            <td class="lbl">Overlap / Cold Lap</td>
+            <td class="tag-best">عالی</td><td class="tag-good">خوب</td><td class="tag-good">خوب</td>
+            <td class="tag-no">✗</td><td class="tag-no">✗</td><td class="tag-no">✗</td>
+            <td><span class="ref-chip">VT + AWS B1.11</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <div class="callout callout-warn">
-    <span class="callout-label">هشدار</span>
-    هیچ‌گاه نباید بر اساس فقط ظاهر بیرونی درباره‌ی پذیرش یا رد یک جوش قضاوت کرد — برخی عیوب بحرانی فقط با NDE حجمی (RT یا UT) قابل کشف‌اند و در بازرسی بصری دیده نمی‌شوند.
+    <span class="callout-label">⚠️ محدودیت RT در تشخیص LOF و Crack — ASME Sec. V Art. 2 T-285</span>
+    RT برای <strong>Lack of Fusion و Crack موازی با پرتو</strong> قابلیت تشخیص ضعیفی دارد — زیرا این عیوب عمق ناچیزی دارند و اختلاف جذب پرتو ایجاد نمی‌کنند. در پروژه‌هایی که LOF یا Crack HAZ نگران‌کننده است، <strong>UT TOFD یا PAUT</strong> باید در ITP به‌عنوان روش تکمیلی تعریف شود. این انتخاب تکنیکال است و نه ترجیح — هر دو روش در ASME Sec. V معتبرند.
   </div>
 
-  <h2>عیوب رایج</h2>
+  <!-- REPAIR LIMITATIONS -->
+  <h2 id="repair">محدودیت‌های تعمیر — الزامات کد</h2>
 
-  <div class="defect-card">
-    <div class="defect-head"><span class="defect-name">Crack</span><span class="severity-badge" style="background:#dc2626;">بحرانی</span></div>
-    <div class="defect-row">
-      <div class="defect-box box-cause"><span class="box-label">علت</span>هیدروژن جذب‌شده، تنش انقباضی بالا</div>
-      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>پیش‌گرم صحیح و کنترل سرعت خنک‌شدن</div>
-      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>برش کامل و جوشکاری مجدد طبق WPS</div>
+  <div class="repair-limit">
+    <div class="rl-header">
+      <div class="rl-icon">⚠️</div>
+      <div>
+        <h3>محدودیت‌های قانونی تعمیر جوش</h3>
+        <p>مرجع: ASME B31.3 Para 328.6 | ASME Sec. IX QW-202 | API RP 577 Sec. 10</p>
+      </div>
+    </div>
+    <div class="rl-grid">
+      <div class="rl-item">
+        <div class="rl-std">ASME B31.3 Para 328.6.1</div>
+        <div class="rl-title">تعداد تعمیر</div>
+        <p>کد تعداد تعمیر را محدود نمی‌کند اما <strong>هر تعمیر باید طبق Repair WPS</strong> باشد. پروژه معمولاً در ITP حداکثر <strong>2–3 تعمیر</strong> تعریف می‌کند. تعمیر بیشتر نیاز موافقت Engineering دارد.</p>
+      </div>
+      <div class="rl-item">
+        <div class="rl-std">Para 328.6.2</div>
+        <div class="rl-title">Repair WPS جداگانه</div>
+        <p>تعمیر جوش <strong>الزاماً نیاز Repair WPS مجزا ندارد</strong> اگر WPS اصلی پوشش دهد — اما در اغلب پروژه‌های EPC یک Repair WPS جداگانه الزامی است.</p>
+      </div>
+      <div class="rl-item">
+        <div class="rl-std">ASME Sec. IX QW-202.2</div>
+        <div class="rl-title">Partial Penetration Repair</div>
+        <p>تعمیر جزئی (Partial Repair) مجاز است مشروط به اینکه WPS مکمل پوشش دهد. <strong>تعمیر کامل (Full Removal)</strong> برای ترک‌ها الزامی است.</p>
+      </div>
+      <div class="rl-item">
+        <div class="rl-std">API RP 577 Sec. 10.3</div>
+        <div class="rl-title">مستندسازی تعمیر</div>
+        <p>هر تعمیر باید در <strong>Weld Repair Log</strong> ثبت شود: موقعیت، علت، WPS، جوشکار، NDT قبل و بعد. این مدرک باید به ITP و Weld Map اضافه شود.</p>
+      </div>
+      <div class="rl-item">
+        <div class="rl-std">NACE MR0175 / ISO 15156</div>
+        <div class="rl-title">سرویس Sour — Hardness</div>
+        <p>پس از هر تعمیر در سرویس H₂S: <strong>Hardness Survey الزامی</strong>. HAZ ≤ 248 HV10 یا ≤ 22 HRC. تعمیر بدون PWHT در P-No.1 &gt; 19mm در Sour Service: <strong>غیرقابل قبول</strong>.</p>
+      </div>
+      <div class="rl-item">
+        <div class="rl-std">B31.3 Para 328.6.3</div>
+        <div class="rl-title">NDT پس از تعمیر</div>
+        <p>تعمیر باید با <strong>همان روش NDT اولیه</strong> تست شود — به‌علاوه هر روش اضافی که Engineering تعیین کند. گزارش NDT تعمیر باید به پکیج اصلی پیوست شود.</p>
+      </div>
     </div>
   </div>
 
-  <div class="defect-card">
-    <div class="defect-head"><span class="defect-name">Porosity</span><span class="severity-badge" style="background:#ea580c;">متوسط تا بحرانی</span></div>
-    <div class="defect-row">
-      <div class="defect-box box-cause"><span class="box-label">علت</span>گاز محبوس‌شده، رطوبت یا آلودگی سطحی</div>
-      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>خشک نگه‌داشتن الکترود و تمیزکاری سطح</div>
-      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>سنگ‌زنی و جوشکاری مجدد ناحیه آلوده</div>
+  <!-- SUMMARY MATRIX -->
+  <h2>خلاصه سریع — ماتریس عیوب و اولویت کنترل</h2>
+  <p class="lead">برای مرور سریع در میدان — هر عیب با مهم‌ترین مشخصه‌اش:</p>
+
+  <div class="matrix-grid">
+    <div class="matrix-card" style="--mc-color:#ef4444;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">Crack</div><div class="mc-en">All Types</div></div></div>
+      <div class="mc-row"><span class="mc-k">پذیرش VT/RT/UT</span><span class="mc-v">صفر مطلق</span></div>
+      <div class="mc-row"><span class="mc-k">بهترین تشخیص</span><span class="mc-v">MT/PT + TOFD</span></div>
+      <div class="mc-row"><span class="mc-k">اقدام فوری</span><span class="mc-v">Stop Work + NCR</span></div>
+    </div>
+    <div class="matrix-card" style="--mc-color:#f59e0b;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">Incomplete Penetration</div><div class="mc-en">Root Pass</div></div></div>
+      <div class="mc-row"><span class="mc-k">Normal Service</span><span class="mc-v">≤ 1.6mm AND ≤ 0.2t</span></div>
+      <div class="mc-row"><span class="mc-k">Severe Cyclic</span><span class="mc-v">صفر</span></div>
+      <div class="mc-row"><span class="mc-k">بهترین تشخیص</span><span class="mc-v">RT یا TOFD</span></div>
+    </div>
+    <div class="matrix-card" style="--mc-color:#a855f7;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">Lack of Fusion</div><div class="mc-en">Sidewall / Interpass</div></div></div>
+      <div class="mc-row"><span class="mc-k">پذیرش VT/RT/UT</span><span class="mc-v">صفر مطلق</span></div>
+      <div class="mc-row"><span class="mc-k">ضعف RT</span><span class="mc-v">جهت موازی پرتو</span></div>
+      <div class="mc-row"><span class="mc-k">بهترین تشخیص</span><span class="mc-v">UT TOFD / PAUT</span></div>
+    </div>
+    <div class="matrix-card" style="--mc-color:#06b6d4;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">Undercut</div><div class="mc-en">Cap Toe</div></div></div>
+      <div class="mc-row"><span class="mc-k">Normal Service</span><span class="mc-v">≤ 1mm یا ≤ 1/6t</span></div>
+      <div class="mc-row"><span class="mc-k">Severe Cyclic</span><span class="mc-v">≤ 0.4mm</span></div>
+      <div class="mc-row"><span class="mc-k">ابزار اندازه‌گیری</span><span class="mc-v">Pit Gauge الزامی</span></div>
+    </div>
+    <div class="matrix-card" style="--mc-color:#10b981;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">Porosity</div><div class="mc-en">Scattered / Cluster</div></div></div>
+      <div class="mc-row"><span class="mc-k">VT سطحی</span><span class="mc-v">صفر</span></div>
+      <div class="mc-row"><span class="mc-k">RT داخلی</span><span class="mc-v">≤ t × 65mm² / 150mm</span></div>
+      <div class="mc-row"><span class="mc-k">بهترین تشخیص</span><span class="mc-v">RT</span></div>
+    </div>
+    <div class="matrix-card" style="--mc-color:#f97316;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">Slag Inclusion</div><div class="mc-en">Linear / Isolated</div></div></div>
+      <div class="mc-row"><span class="mc-k">Isolated RT</span><span class="mc-v">≤ t/3 یا 6mm</span></div>
+      <div class="mc-row"><span class="mc-k">Linear RT</span><span class="mc-v">سخت‌تر — ≤ t/3</span></div>
+      <div class="mc-row"><span class="mc-k">پیشگیری</span><span class="mc-v">VT بین پاس HP</span></div>
+    </div>
+    <div class="matrix-card" style="--mc-color:#ec4899;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">HIC / Delayed Crack</div><div class="mc-en">HAZ — Cold Crack</div></div></div>
+      <div class="mc-row"><span class="mc-k">پذیرش</span><span class="mc-v">صفر مطلق</span></div>
+      <div class="mc-row"><span class="mc-k">زمان NDT</span><span class="mc-v">MT/PT بعد 48h</span></div>
+      <div class="mc-row"><span class="mc-k">Hardness</span><span class="mc-v">≤ 248 HV (NACE)</span></div>
+    </div>
+    <div class="matrix-card" style="--mc-color:#6366f1;">
+      <div class="mc-header"><div class="mc-dot"></div><div><div class="mc-name">Overlap / Cold Lap</div><div class="mc-en">Cap Toe</div></div></div>
+      <div class="mc-row"><span class="mc-k">پذیرش VT</span><span class="mc-v">صفر</span></div>
+      <div class="mc-row"><span class="mc-k">بهترین تشخیص</span><span class="mc-v">VT با نور مناسب</span></div>
+      <div class="mc-row"><span class="mc-k">اصلاح</span><span class="mc-v">Grinding + Button Pass</span></div>
     </div>
   </div>
 
-  <div class="defect-card">
-    <div class="defect-head"><span class="defect-name">Undercut</span><span class="severity-badge" style="background:#d97706;">متوسط</span></div>
-    <div class="defect-row">
-      <div class="defect-box box-cause"><span class="box-label">علت</span>آمپراژ بیش‌ازحد یا زاویه نادرست الکترود</div>
-      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>تنظیم صحیح پارامترها طبق WPS</div>
-      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>پر کردن با پاس ترمیمی نازک</div>
+  <!-- INSPECTOR CHECKLIST -->
+  <h2>چک‌لیست بازرس — کنترل عیوب در میدان</h2>
+
+  <div class="cl-box">
+    <div class="cl-header">
+      <div class="cl-icon">🔍</div>
+      <div>
+        <h3>چک‌لیست شناسایی عیب و اقدام بازرس</h3>
+        <p>مرجع: API RP 577 Sec. 9 | ASME B31.3 Para 341.4 | AWS B1.11</p>
+      </div>
+    </div>
+    <div class="cl-grid">
+      <div class="cl-item">
+        <div class="cl-num">1</div>
+        <div><strong>روشنایی VT:</strong> حداقل <strong>500 Lux</strong> روی سطح جوش — اندازه‌گیری با Luxmeter<span class="cl-ref">ASME Sec. V Art. 9 T-952</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">2</div>
+        <div><strong>زاویه دید:</strong> حداقل <strong>30°</strong> از سطح — فاصله ≤ 600mm<span class="cl-ref">ASME Sec. V Art. 9 T-952</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">3</div>
+        <div><strong>تمیزی سطح:</strong> سرباره، ترشح جوش (Spatter) و آلودگی قبل از VT برداشته شود<span class="cl-ref">AWS B1.11 Section 4</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">4</div>
+        <div><strong>Pit Gauge:</strong> برای اندازه‌گیری Undercut — نه تخمین بصری<span class="cl-ref">B31.3 Table 341.3.2 (B)</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">5</div>
+        <div><strong>Reinforcement:</strong> با Weld Gauge اندازه‌گیری — نه تخمین<span class="cl-ref">Table 341.3.2 (C)</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">6</div>
+        <div><strong>Crack شک:</strong> اگر خطی مشاهده شد — بلافاصله PT یا MT — هرگز VT به‌تنهایی کافی نیست<span class="cl-ref">Sec. V Art. 6/7</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">7</div>
+        <div><strong>Arc Strike:</strong> هر نقطه سوختگی خارج از Zone جوش باید Grind + PT/MT شود<span class="cl-ref">API RP 577 Sec. 9.5</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">8</div>
+        <div><strong>Spatter:</strong> Spatter شدید علامت مشکل پارامتر است — ثبت و پیگیری WPS<span class="cl-ref">AWS B1.11 Section 5</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">9</div>
+        <div><strong>زمان NDT برای HIC:</strong> برای متریال CE &gt;0.41 و ضخامت &gt;25mm — حداقل <strong>48h</strong> صبر کنید<span class="cl-ref">API RP 577 Sec. 9.8</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">10</div>
+        <div><strong>VT گزارش:</strong> قبل از NDT صادر شود — نه بعد از RT — VT مستقل است<span class="cl-ref">B31.3 Para 341.4.1</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">11</div>
+        <div><strong>عیب یا Discontinuity؟</strong> اول اندازه‌گیری — بعد مقایسه با Table 341.3.2 — سپس تصمیم<span class="cl-ref">ASME Sec. V T-170</span></div>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">12</div>
+        <div><strong>NCR صادر کنید اگر:</strong> هر ترک — Undercut از حد مجاز — IP در Severe Cyclic — Overlap — هر عیب بدون محدودیت<span class="cl-ref">B31.3 Table 341.3.2</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="defect-card">
-    <div class="defect-head"><span class="defect-name">Lack of Fusion</span><span class="severity-badge" style="background:#dc2626;">بحرانی</span></div>
-    <div class="defect-row">
-      <div class="defect-box box-cause"><span class="box-label">علت</span>عدم ذوب کامل بین پاس‌ها یا متال پایه</div>
-      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>تمیزکاری بین‌پاسی و آمپراژ کافی</div>
-      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>برش و جوشکاری مجدد ناحیه</div>
-    </div>
-  </div>
-
-  <div class="defect-card">
-    <div class="defect-head"><span class="defect-name">Lack of Penetration</span><span class="severity-badge" style="background:#dc2626;">بحرانی</span></div>
-    <div class="defect-row">
-      <div class="defect-box box-cause"><span class="box-label">علت</span>Root Gap ناکافی یا آمپراژ پایین در Root</div>
-      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>کنترل دقیق Fit-Up و پارامترهای WPS</div>
-      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>برش کامل Root و جوشکاری مجدد</div>
-    </div>
-  </div>
-
-  <div class="defect-card">
-    <div class="defect-head"><span class="defect-name">Spatter</span><span class="severity-badge" style="background:#65a30d;">کم (ظاهری)</span></div>
-    <div class="defect-row">
-      <div class="defect-box box-cause"><span class="box-label">علت</span>آمپراژ بیش‌ازحد یا طول قوس نامناسب</div>
-      <div class="defect-box box-prevent"><span class="box-label">پیشگیری</span>تنظیم صحیح پارامترها</div>
-      <div class="defect-box box-fix"><span class="box-label">اصلاح</span>تمیزکاری سطحی، بدون نیاز به جوش مجدد</div>
-    </div>
-  </div>
-
-  <div class="callout callout-tip">
-    <span class="callout-label">نکته</span>
-    معیار پذیرش هر عیب (مثلاً حداکثر طول مجاز Undercut) همیشه باید از Acceptance Criteria پروژه (مثلاً ASME B31.3 یا مشخصات پروژه) گرفته شود — این اعداد بین کدها و حتی Service Class مختلف یک پروژه متفاوت‌اند.
+  <div class="callout callout-danger">
+    <span class="callout-label">🚨 خط قرمز بازرس — هرگز این اشتباهات را نکنید</span>
+    <strong>(1)</strong> VT را با چشم غیرمسلح و بدون نور کافی انجام ندهید — نور طبیعی و سایه کافی نیستند.<br>
+    <strong>(2)</strong> Undercut را با چشم تخمین نزنید — Pit Gauge الزامی است.<br>
+    <strong>(3)</strong> هرگز کلمه "Defect" را قبل از مقایسه با معیار استاندارد به‌کار نبرید.<br>
+    <strong>(4)</strong> RT برای LOF و Crack موازی قابل اطمینان نیست — اگر WPS نگران‌کننده است UT TOFD بخواهید.<br>
+    <strong>(5)</strong> تعمیر بدون NCR و Repair WPS انجام ندهید — هر تعمیر باید مستند باشد.<br>
+    <strong>(6)</strong> برای متریال حساس (CE بالا، Sour Service) NDT را بلافاصله پس از جوش انجام ندهید — 48 ساعت صبر کنید.
   </div>
 
   <div class="nav-footer">
-    <a href="../03-stages/" class="nav-btn nav-prev">→ فصل قبل: مراحل جوشکاری</a>
-    <a href="../05-tests/" class="nav-btn nav-next">فصل بعد: آزمایش‌های جوش ←</a>
+    <a href="../03-stages/" class="nav-btn nav-prev">→ فصل ۳: مراحل جوشکاری</a>
+    <a href="../05-tests/" class="nav-btn nav-next">فصل ۵: آزمون‌های NDT — RT, UT, MT, PT ←</a>
   </div>
+
 </div>
 
+<footer>
+  <p>⚡ مراجع: ASME B31.3 Table 341.3.2 | ASME Sec. V Art. 1,2,4,6,7,9 | ASME Sec. IX QW-191 | API RP 577 Sec. 9-10 | AWS B1.11 | NACE MR0175 / ISO 15156</p>
+  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio</p>
+  <p style="margin-top:8px;font-size:11px;opacity:.6;">© 2026 Piping Studio — Weld Defects Guide</p>
+</footer>
+
+<script>
+function toggleTheme(){
+  const b=document.body,btn=document.querySelector('.theme-toggle');
+  if(b.getAttribute('data-theme')==='light'){b.removeAttribute('data-theme');btn.textContent='🌙';localStorage.setItem('theme','dark');}
+  else{b.setAttribute('data-theme','light');btn.textContent='☀️';localStorage.setItem('theme','light');}
+}
+const s=localStorage.getItem('theme');
+if(s==='light'){document.body.setAttribute('data-theme','light');document.querySelector('.theme-toggle').textContent='☀️';}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');if(h.length<2)return;e.preventDefault();
+    const t=document.querySelector(h);
+    if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-76,behavior:'smooth'});
+  });
+});
+</script>
 </body>
 </html>
