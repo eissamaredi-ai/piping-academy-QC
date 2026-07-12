@@ -3,1218 +3,1814 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فصل ۵ — آزمایش‌های جوش | DT برای PQR + NDT برای میدان</title>
+<title>فصل ۵ — آزمایش‌های جوش | DT + NDT</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#0a0e1a;--bg-soft:#111827;--bg-card:#171f34;
-    --border:#2a3350;--text:#e8ecf5;--text-muted:#8b94ad;
-    --primary:#06b6d4;--accent:#f59e0b;--danger:#ef4444;
-    --success:#10b981;--purple:#a855f7;--indigo:#6366f1;
-    --shadow-md:0 4px 20px rgba(0,0,0,.3);
-  }
-  [data-theme="light"]{--bg:#f8fafc;--bg-soft:#fff;--bg-card:#fff;--border:#e2e8f0;--text:#0f172a;--text-muted:#64748b;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Vazirmatn','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;transition:background .3s,color .3s;}
-  a{text-decoration:none;color:inherit;}
-  .en,code{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;}
-  .num{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;font-weight:600;}
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --bg:#070c18;
+  --bg-2:#0d1526;
+  --bg-card:#131d30;
+  --bg-card-2:#192540;
+  --border:#1e2e4a;
+  --border-bright:#2a3f60;
+  --text:#eef1f8;
+  --muted:#7a8baa;
+  --dim:#4a5a78;
 
-  /* NAV */
-  .navbar{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
-  [data-theme="light"] .navbar{background:rgba(248,250,252,.95);}
-  .navbar-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:13px;}
-  .logo-icon{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#ef4444,#f59e0b);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;}
-  .nav-links{display:flex;gap:12px;list-style:none;flex-wrap:wrap;}
-  .nav-links a{color:var(--text-muted);font-size:11.5px;font-weight:500;transition:color .2s;white-space:nowrap;}
-  .nav-links a:hover{color:var(--primary);}
-  .nav-actions{display:flex;align-items:center;gap:8px;}
-  .back-link{color:var(--text-muted);font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);transition:all .2s;white-space:nowrap;}
-  .back-link:hover{color:var(--primary);border-color:var(--primary);}
-  .theme-toggle{background:var(--bg-soft);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:.85rem;transition:transform .2s;}
-  .theme-toggle:hover{transform:rotate(15deg);}
+  --blue:#3b82f6;
+  --cyan:#06b6d4;
+  --teal:#14b8a6;
+  --green:#10b981;
+  --amber:#f59e0b;
+  --orange:#f97316;
+  --red:#ef4444;
+  --purple:#a855f7;
+  --indigo:#6366f1;
+  --pink:#ec4899;
 
-  .breadcrumb{max-width:960px;margin:20px auto 0;padding:0 24px;font-size:12px;color:var(--text-muted);}
-  .breadcrumb span{color:var(--primary);font-weight:700;}
-  .content{max-width:960px;margin:0 auto;padding:16px 24px 80px;}
+  --radius-sm:8px;
+  --radius:12px;
+  --radius-lg:18px;
+  --radius-xl:24px;
 
-  /* HERO */
-  .hero{position:relative;margin-bottom:28px;border-radius:20px;overflow:hidden;min-height:300px;display:flex;align-items:flex-end;background:linear-gradient(135deg,#080d1a 0%,#0a0e1a 100%);}
-  .hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 18% 30%,rgba(99,102,241,.28),transparent 48%),radial-gradient(circle at 80% 60%,rgba(6,182,212,.18),transparent 48%);}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.1) 0%,rgba(10,14,26,.88) 100%);}
-  .hero-content{position:relative;z-index:2;padding:26px;width:100%;}
-  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.4);color:#a5b4fc;padding:4px 12px;border-radius:50px;font-size:11.5px;font-weight:600;margin-bottom:10px;}
-  .hero h1{font-size:26px;font-weight:800;color:#fff;margin-bottom:7px;line-height:1.4;background:linear-gradient(135deg,#a5b4fc 0%,#06b6d4 50%,#f59e0b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .hero .subtitle{color:#cbd5e1;font-size:13px;}
-  .hero-stats{display:flex;gap:22px;margin-top:14px;flex-wrap:wrap;}
-  .hero-stat-num{font-size:18px;font-weight:800;background:linear-gradient(135deg,#6366f1,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:'Inter',sans-serif;}
-  .hero-stat-label{font-size:11px;color:#94a3b8;}
+  --shadow:0 4px 24px rgba(0,0,0,.4);
+  --shadow-lg:0 12px 48px rgba(0,0,0,.5);
+  --glow-blue:0 0 32px rgba(59,130,246,.2);
+  --glow-cyan:0 0 32px rgba(6,182,212,.2);
+}
+[data-theme="light"]{
+  --bg:#f0f4fa;
+  --bg-2:#e8eef8;
+  --bg-card:#ffffff;
+  --bg-card-2:#f8faff;
+  --border:#d1ddf0;
+  --border-bright:#b8cce8;
+  --text:#0f1929;
+  --muted:#5a6888;
+  --dim:#9aabcc;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,.12);
+  --glow-blue:0 0 32px rgba(59,130,246,.08);
+  --glow-cyan:0 0 32px rgba(6,182,212,.08);
+}
 
-  h2{font-size:20px;font-weight:700;margin:32px 0 12px;color:var(--text);display:flex;align-items:center;gap:10px;}
-  h2::before{content:'';width:5px;height:23px;background:linear-gradient(180deg,#6366f1,#06b6d4);border-radius:3px;}
-  h3{font-size:15px;font-weight:700;margin:14px 0 8px;}
-  p.lead{line-height:2;margin-bottom:14px;color:var(--text-muted);font-size:14px;}
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Vazirmatn','Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.85;
+  transition:background .3s,color .3s;
+  min-height:100vh;
+}
+a{text-decoration:none;color:inherit;}
+.en{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;}
+.num{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;font-weight:600;}
 
-  /* CALLOUTS */
-  .callout{border-radius:12px;padding:13px 16px;margin:14px 0;font-size:13px;line-height:1.9;border-right:4px solid;background:var(--bg-card);border-left:1px solid var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-  .callout-def{border-right-color:var(--primary);}
-  .callout-warn{border-right-color:var(--accent);}
-  .callout-tip{border-right-color:var(--success);}
-  .callout-danger{border-right-color:var(--danger);}
-  .callout-purple{border-right-color:var(--purple);}
-  .callout-label{font-weight:700;font-size:11.5px;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
-  .callout-def .callout-label{color:var(--primary);}
-  .callout-warn .callout-label{color:var(--accent);}
-  .callout-tip .callout-label{color:var(--success);}
-  .callout-danger .callout-label{color:var(--danger);}
-  .callout-purple .callout-label{color:var(--purple);}
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════ */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
 
-  /* SECTION DIVIDER */
-  .sec-divider{display:flex;align-items:center;gap:16px;margin:36px 0 20px;padding:16px 20px;border-radius:14px;border:1px solid var(--border);}
-  .sec-divider.dt{background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(245,158,11,.04));}
-  .sec-divider.ndt{background:linear-gradient(135deg,rgba(6,182,212,.08),rgba(99,102,241,.04));}
-  .sec-div-icon{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
-  .sec-div-icon.dt{background:linear-gradient(135deg,#ef4444,#f59e0b);}
-  .sec-div-icon.ndt{background:linear-gradient(135deg,#06b6d4,#6366f1);}
-  .sec-div-text h3{font-size:17px;font-weight:800;margin:0 0 3px;}
-  .sec-div-text p{font-size:12.5px;color:var(--text-muted);}
-  .sec-div-ref{margin-right:auto;flex-shrink:0;font-family:'Inter',sans-serif;font-size:11px;background:rgba(0,0,0,.25);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;text-align:center;line-height:1.5;}
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+.navbar{
+  position:sticky;top:0;z-index:200;
+  background:rgba(7,12,24,.92);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+[data-theme="light"] .navbar{background:rgba(240,244,250,.92);}
+.nav-inner{
+  max-width:1180px;margin:0 auto;
+  padding:0 24px;height:60px;
+  display:flex;align-items:center;gap:16px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-weight:800;font-size:13px;white-space:nowrap;
+  flex-shrink:0;
+}
+.nav-logo-mark{
+  width:32px;height:32px;border-radius:9px;
+  background:linear-gradient(135deg,#ef4444,#f59e0b);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;box-shadow:0 4px 12px rgba(239,68,68,.4);
+}
+.nav-links{
+  display:flex;gap:2px;list-style:none;
+  flex:1;overflow:hidden;
+}
+.nav-links a{
+  color:var(--muted);font-size:11.5px;font-weight:500;
+  padding:5px 9px;border-radius:6px;
+  transition:all .15s;white-space:nowrap;display:block;
+}
+.nav-links a:hover{color:var(--text);background:var(--bg-card-2);}
+.nav-links a.active{color:var(--cyan);background:rgba(6,182,212,.1);}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.nav-back{
+  display:flex;align-items:center;gap:6px;
+  color:var(--muted);font-size:12px;
+  padding:6px 12px;border-radius:8px;
+  border:1px solid var(--border);
+  transition:all .2s;white-space:nowrap;
+}
+.nav-back:hover{color:var(--cyan);border-color:var(--cyan);}
+.nav-theme{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text);cursor:pointer;font-size:.9rem;
+  transition:transform .25s,border-color .2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-theme:hover{transform:rotate(20deg);border-color:var(--amber);}
 
-  /* TEST CARD */
-  .test-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin:20px 0;position:relative;}
-  .test-card::before{content:'';position:absolute;top:0;right:0;width:100%;height:4px;background:var(--tc-color);}
-  .test-card:hover{border-color:var(--tc-color);}
-  .tc-header{display:grid;grid-template-columns:62px 1fr auto;align-items:center;gap:16px;padding:20px 22px 16px;border-bottom:1px solid var(--border);}
-  .tc-icon{width:62px;height:62px;border-radius:14px;background:var(--tc-color);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;box-shadow:0 6px 18px rgba(0,0,0,.3);}
-  .tc-title h3{font-size:17px;font-weight:800;margin:0 0 3px;}
-  .tc-en{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--tc-color);font-weight:700;direction:ltr;}
-  .tc-sub{font-size:11.5px;color:var(--text-muted);margin-top:2px;}
-  .tc-std{text-align:center;flex-shrink:0;}
-  .std-pill{display:block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;font-family:'Inter',sans-serif;border:1px solid var(--tc-color);color:var(--tc-color);background:rgba(0,0,0,.2);margin-bottom:3px;white-space:nowrap;}
+/* ═══════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════ */
+.progress-bar{
+  height:3px;
+  background:linear-gradient(90deg,var(--indigo),var(--cyan),var(--teal));
+  width:0%;
+  transition:width .1s;
+  position:fixed;top:60px;left:0;right:0;z-index:199;
+}
 
-  .tc-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
-  .tc-col{padding:18px 20px;border-left:1px solid var(--border);}
-  .tc-col:last-child{border-left:none;}
-  .tc-col-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-bottom:10px;display:flex;align-items:center;gap:5px;}
-  .tc-col-title::before{content:'';width:12px;height:2px;background:var(--tc-color);border-radius:1px;}
+/* ═══════════════════════════════════════════
+   BREADCRUMB
+═══════════════════════════════════════════ */
+.breadcrumb{
+  max-width:960px;margin:20px auto 0;padding:0 24px;
+  font-size:12px;color:var(--muted);
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+}
+.breadcrumb a{color:var(--muted);transition:color .2s;}
+.breadcrumb a:hover{color:var(--cyan);}
+.breadcrumb .sep{color:var(--dim);}
+.breadcrumb .current{color:var(--cyan);font-weight:600;}
 
-  .spec-list{list-style:none;}
-  .spec-list li{padding:3.5px 0;border-bottom:1px dashed var(--border);font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;gap:6px;line-height:1.6;}
-  .spec-list li:last-child{border-bottom:none;}
-  .spec-list .k{color:var(--text);font-weight:500;white-space:nowrap;}
-  .spec-list .v{color:var(--tc-color);font-family:'Inter',monospace;font-size:11.5px;text-align:left;}
+/* ═══════════════════════════════════════════
+   CONTENT WRAPPER
+═══════════════════════════════════════════ */
+.content{max-width:960px;margin:0 auto;padding:20px 24px 100px;}
 
-  .bullet-list{list-style:none;}
-  .bullet-list li{padding:3px 0 3px 14px;position:relative;font-size:12px;color:var(--text-muted);line-height:1.7;border-bottom:1px dashed var(--border);}
-  .bullet-list li:last-child{border-bottom:none;}
-  .bullet-list li::before{content:'›';position:absolute;right:0;top:3px;color:var(--tc-color);font-weight:900;font-size:13px;}
-  .bullet-list li strong{color:var(--text);}
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{
+  position:relative;border-radius:var(--radius-xl);
+  overflow:hidden;margin-bottom:32px;
+  min-height:340px;display:flex;align-items:flex-end;
+  background:linear-gradient(140deg,#06091a 0%,#0d1a38 50%,#060c1e 100%);
+}
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 40%,rgba(99,102,241,.22),transparent),
+    radial-gradient(ellipse 50% 40% at 80% 65%,rgba(6,182,212,.18),transparent),
+    radial-gradient(ellipse 40% 35% at 50% 20%,rgba(16,185,129,.1),transparent);
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(30,46,74,.4) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,46,74,.4) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.3) 30%,rgba(0,0,0,.6) 70%,transparent 100%);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 30%,rgba(7,12,24,.95) 100%);
+}
+.hero-body{position:relative;z-index:2;padding:36px;width:100%;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(99,102,241,.15);
+  border:1px solid rgba(99,102,241,.35);
+  color:#a5b4fc;padding:5px 14px;border-radius:50px;
+  font-size:11.5px;font-weight:700;margin-bottom:14px;
+  letter-spacing:.5px;
+}
+.hero-eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--indigo);
+  box-shadow:0 0 8px var(--indigo);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+  font-size:28px;font-weight:800;line-height:1.35;
+  margin-bottom:10px;
+  background:linear-gradient(135deg,#c7d2fe 0%,#06b6d4 45%,#6ee7b7 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{color:#8fa8c8;font-size:13px;line-height:1.8;max-width:640px;margin-bottom:20px;}
+.hero-refs{
+  display:flex;flex-wrap:wrap;gap:6px;
+}
+.hero-ref{
+  font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
+  padding:4px 10px;border-radius:6px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  color:#8fa8c8;letter-spacing:.3px;
+}
+.hero-stats{
+  display:flex;gap:28px;margin-top:20px;flex-wrap:wrap;
+}
+.h-stat-num{
+  font-size:22px;font-weight:900;
+  background:linear-gradient(135deg,#6366f1,#06b6d4);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-family:'Inter',sans-serif;display:block;
+}
+.h-stat-lbl{font-size:11px;color:#5a6888;}
 
-  /* ACCEPTANCE BOX */
-  .acc-footer{padding:14px 22px;background:rgba(0,0,0,.2);border-top:1px solid var(--border);}
-  .acc-title{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--tc-color);margin-bottom:8px;}
-  .acc-chips{display:flex;flex-wrap:wrap;gap:6px;}
-  .chip{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid;}
-  .chip-pass{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3);color:#10b981;}
-  .chip-fail{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);color:#ef4444;}
-  .chip-ref{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.25);color:#06b6d4;font-family:'Inter',sans-serif;font-size:10.5px;}
-  .chip-cond{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#f59e0b;}
+/* ═══════════════════════════════════════════
+   SECTION HEADINGS
+═══════════════════════════════════════════ */
+.sec-h{
+  font-size:20px;font-weight:700;
+  margin:36px 0 14px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-h .bar{
+  width:4px;height:22px;border-radius:2px;flex-shrink:0;
+}
+.sec-h.dt .bar{background:linear-gradient(180deg,#ef4444,#f59e0b);}
+.sec-h.ndt .bar{background:linear-gradient(180deg,#6366f1,#06b6d4);}
+.sec-h.mixed .bar{background:linear-gradient(180deg,#10b981,#06b6d4);}
 
-  /* SPECIMEN DIAGRAM BOX */
-  .specimen-box{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:22px;margin:20px 0;}
-  .specimen-box h3{margin-bottom:14px;font-size:15px;}
-  .specimen-caption{font-size:11.5px;color:var(--text-muted);margin-top:10px;}
+/* ═══════════════════════════════════════════
+   PART DIVIDERS
+═══════════════════════════════════════════ */
+.part-divider{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 24px;border-radius:var(--radius-lg);
+  margin:36px 0 20px;border:1px solid;
+  position:relative;overflow:hidden;
+}
+.part-divider::before{
+  content:'';position:absolute;inset:0;opacity:.06;
+  background:var(--pd-bg);
+}
+.part-divider.dt{
+  --pd-bg:linear-gradient(90deg,#ef4444,#f59e0b);
+  border-color:rgba(239,68,68,.3);
+}
+.part-divider.ndt{
+  --pd-bg:linear-gradient(90deg,#6366f1,#06b6d4);
+  border-color:rgba(99,102,241,.3);
+}
+.pd-icon{
+  width:54px;height:54px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;flex-shrink:0;position:relative;z-index:1;
+}
+.part-divider.dt .pd-icon{background:linear-gradient(135deg,#ef4444,#f59e0b);}
+.part-divider.ndt .pd-icon{background:linear-gradient(135deg,#6366f1,#06b6d4);}
+.pd-text{position:relative;z-index:1;flex:1;}
+.pd-text h3{font-size:17px;font-weight:800;margin-bottom:3px;}
+.pd-text p{font-size:12.5px;color:var(--muted);}
+.pd-badge{
+  position:relative;z-index:1;flex-shrink:0;
+  padding:6px 14px;border-radius:8px;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+  border:1px solid;text-align:center;line-height:1.5;
+}
+.part-divider.dt .pd-badge{color:#fca5a5;border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.1);}
+.part-divider.ndt .pd-badge{color:#a5b4fc;border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.1);}
 
-  /* COMPARISON TABLE */
-  .table-wrapper{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);margin:16px 0;}
-  .table-scroll{overflow-x:auto;}
-  table{width:100%;border-collapse:collapse;min-width:660px;}
-  thead{background:var(--bg-soft);}
-  th{padding:11px 12px;text-align:center;font-weight:600;font-size:11px;color:var(--text-muted);border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
-  td{padding:10px 11px;border-bottom:1px solid var(--border);font-size:12px;text-align:center;color:var(--text);}
-  tbody tr:hover{background:var(--bg-soft);}
-  tbody tr:last-child td{border-bottom:none;}
-  td.lbl{text-align:right;font-weight:600;font-size:12px;}
-  .t-best{color:#10b981;font-weight:700;}
-  .t-good{color:#06b6d4;font-weight:600;}
-  .t-lim{color:#f59e0b;font-weight:600;}
-  .t-no{color:#ef4444;font-weight:700;}
-  .ref-chip{font-family:'Inter',sans-serif;font-size:10px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);color:var(--primary);padding:2px 7px;border-radius:5px;white-space:nowrap;display:inline-block;}
+/* ═══════════════════════════════════════════
+   CALLOUT SYSTEM
+═══════════════════════════════════════════ */
+.callout{
+  border-radius:var(--radius);padding:16px 18px;
+  margin:16px 0;font-size:13.5px;line-height:1.9;
+  border-right:4px solid;
+  background:var(--bg-card);
+  border-left:1px solid var(--border);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.callout.info{border-right-color:var(--cyan);}
+.callout.warn{border-right-color:var(--amber);}
+.callout.danger{border-right-color:var(--red);}
+.callout.success{border-right-color:var(--green);}
+.callout.purple{border-right-color:var(--purple);}
+.callout-hd{
+  font-weight:700;font-size:12px;
+  margin-bottom:6px;
+  display:flex;align-items:center;gap:7px;
+}
+.callout.info .callout-hd{color:var(--cyan);}
+.callout.warn .callout-hd{color:var(--amber);}
+.callout.danger .callout-hd{color:var(--red);}
+.callout.success .callout-hd{color:var(--green);}
+.callout.purple .callout-hd{color:var(--purple);}
 
-  /* PQR MATRIX */
-  .pqr-matrix{background:linear-gradient(135deg,rgba(239,68,68,.07),rgba(245,158,11,.04));border:1px solid rgba(239,68,68,.25);border-radius:18px;padding:22px;margin:22px 0;}
-  .pqr-matrix-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-  .pqr-matrix-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#ef4444,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:22px;}
-  .pqr-matrix-header h3{font-size:16px;font-weight:700;margin:0;}
-  .pqr-matrix-header p{font-size:12px;color:var(--text-muted);margin-top:2px;}
-  .pqr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;}
-  .pqr-item{background:var(--bg-card);border:1px solid var(--border);border-radius:11px;padding:14px;}
-  .pqr-std{font-family:'Inter',sans-serif;font-weight:800;color:var(--danger);font-size:11.5px;margin-bottom:3px;}
-  .pqr-test{font-weight:700;font-size:13px;margin-bottom:5px;}
-  .pqr-item p{font-size:11.5px;color:var(--text-muted);line-height:1.8;}
-  .pqr-req{font-family:'Inter',sans-serif;font-weight:700;color:var(--accent);}
+/* ═══════════════════════════════════════════
+   TEST CARDS (main cards)
+═══════════════════════════════════════════ */
+.test-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  overflow:hidden;margin:22px 0;
+  position:relative;
+  transition:border-color .25s, box-shadow .25s;
+}
+.test-card:hover{
+  border-color:var(--tc);
+  box-shadow:0 0 0 1px var(--tc), var(--shadow);
+}
+.test-card::after{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:var(--tc);
+}
 
-  /* NDT PROCEDURE BOX */
-  .ndt-proc{background:linear-gradient(135deg,rgba(6,182,212,.07),rgba(99,102,241,.04));border:1px solid rgba(6,182,212,.25);border-radius:18px;padding:22px;margin:22px 0;}
-  .ndt-proc-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-  .ndt-proc-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#6366f1);display:flex;align-items:center;justify-content:center;font-size:22px;}
-  .ndt-proc-header h3{font-size:16px;font-weight:700;margin:0;}
-  .ndt-proc-header p{font-size:12px;color:var(--text-muted);margin-top:2px;}
-  .ndt-proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
-  .ndt-proc-item{background:var(--bg-card);border:1px solid var(--border);border-radius:11px;padding:14px;}
-  .ndt-proc-art{font-family:'Inter',sans-serif;font-weight:800;color:var(--primary);font-size:11.5px;margin-bottom:3px;}
-  .ndt-proc-name{font-weight:700;font-size:12.5px;margin-bottom:5px;}
-  .ndt-proc-item p{font-size:11.5px;color:var(--text-muted);line-height:1.8;}
+/* CARD HEADER */
+.tc-head{
+  display:grid;
+  grid-template-columns:72px 1fr auto;
+  gap:18px;align-items:center;
+  padding:22px 24px 18px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(135deg,var(--bg-card-2),var(--bg-card));
+}
+.tc-icon{
+  width:72px;height:72px;border-radius:18px;
+  background:var(--tc);
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;flex-shrink:0;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+  position:relative;
+}
+.tc-icon::after{
+  content:'';position:absolute;inset:0;border-radius:18px;
+  background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+}
+.tc-info h3{font-size:18px;font-weight:800;margin:0 0 4px;}
+.tc-en{
+  font-family:'Inter',sans-serif;font-size:12.5px;
+  color:var(--tc);font-weight:700;direction:ltr;
+}
+.tc-sub{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.6;}
+.tc-badges{display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0;}
+.tc-badge{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+  padding:3px 10px;border-radius:6px;white-space:nowrap;
+  border:1px solid var(--tc);color:var(--tc);
+  background:rgba(0,0,0,.2);
+}
 
-  /* CHECKLIST */
-  .cl-box{background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(6,182,212,.04));border:1px solid rgba(16,185,129,.25);border-radius:18px;padding:22px;margin:22px 0;}
-  .cl-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-  .cl-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:22px;}
-  .cl-header h3{font-size:16px;font-weight:700;margin:0;}
-  .cl-header p{font-size:12px;color:var(--text-muted);margin-top:2px;}
-  .cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .cl-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:11px 13px;display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--text-muted);line-height:1.6;}
-  .cl-num{min-width:21px;height:21px;border-radius:5px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);display:flex;align-items:center;justify-content:center;font-size:9.5px;color:var(--success);flex-shrink:0;font-family:'Inter',sans-serif;font-weight:700;margin-top:1px;}
-  .cl-item strong{color:var(--text);}
-  .cl-ref{font-family:'Inter',sans-serif;font-size:10px;color:var(--primary);display:block;margin-top:2px;}
+/* CARD BODY 3-COL */
+.tc-body{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.tc-col{
+  padding:18px 20px;
+  border-left:1px solid var(--border);
+}
+.tc-col:last-child{border-left:none;}
+.tc-col-h{
+  font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.9px;
+  color:var(--muted);margin-bottom:12px;
+  display:flex;align-items:center;gap:6px;
+}
+.tc-col-h::before{
+  content:'';width:14px;height:2px;
+  background:var(--tc);border-radius:1px;flex-shrink:0;
+}
 
-  .nav-footer{display:flex;justify-content:space-between;margin-top:46px;padding-top:24px;border-top:1px solid var(--border);gap:12px;flex-wrap:wrap;}
-  .nav-btn{font-size:13px;font-weight:700;padding:11px 18px;border-radius:11px;border:1px solid var(--border);background:var(--bg-card);transition:all .2s;display:flex;align-items:center;gap:8px;}
-  .nav-prev{color:var(--text-muted);}
-  .nav-prev:hover{color:var(--text);border-color:var(--primary);}
-  .nav-next{background:linear-gradient(135deg,#6366f1,#06b6d4);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(99,102,241,.3);}
-  .nav-next:hover{transform:translateY(-2px);}
+/* SPEC LIST (key:value pairs) */
+.slist{list-style:none;}
+.slist li{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:8px;padding:4.5px 0;
+  border-bottom:1px dashed var(--border);
+  font-size:12px;line-height:1.5;
+}
+.slist li:last-child{border-bottom:none;}
+.slist .k{color:var(--text);font-weight:500;flex-shrink:0;}
+.slist .v{
+  color:var(--tc);font-family:'Inter',monospace;
+  font-size:11.5px;text-align:left;
+}
 
-  footer{background:var(--bg-soft);border-top:1px solid var(--border);padding:22px 24px;text-align:center;}
-  footer p{color:var(--text-muted);font-size:11.5px;margin-bottom:3px;}
+/* BULLET LIST */
+.blist{list-style:none;}
+.blist li{
+  padding:3.5px 0 3.5px 16px;position:relative;
+  font-size:12px;color:var(--muted);line-height:1.7;
+  border-bottom:1px dashed var(--border);
+}
+.blist li:last-child{border-bottom:none;}
+.blist li::before{
+  content:'›';position:absolute;right:0;top:3px;
+  color:var(--tc);font-weight:900;font-size:14px;
+}
+.blist li strong{color:var(--text);}
 
-  @media(max-width:800px){
-    .nav-links{display:none;}
-    .hero h1{font-size:19px;}
-    h2{font-size:17px;}
-    .tc-body{grid-template-columns:1fr;}
-    .tc-col{border-left:none;border-top:1px solid var(--border);}
-    .tc-header{grid-template-columns:50px 1fr;gap:12px;}
-    .tc-std{display:none;}
-    .cl-grid{grid-template-columns:1fr;}
-  }
-  @keyframes fadeInUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-  .test-card{animation:fadeInUp .4s ease-out backwards;}
-  .test-card:nth-child(1){animation-delay:.04s}.test-card:nth-child(2){animation-delay:.08s}
-  .test-card:nth-child(3){animation-delay:.12s}.test-card:nth-child(4){animation-delay:.16s}
-  .test-card:nth-child(5){animation-delay:.2s}.test-card:nth-child(6){animation-delay:.24s}
-  ::-webkit-scrollbar{width:9px;height:9px}
-  ::-webkit-scrollbar-track{background:var(--bg)}
-  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px}
-  ::-webkit-scrollbar-thumb:hover{background:var(--primary)}
+/* CARD FOOTER / ACCEPTANCE */
+.tc-foot{
+  padding:14px 22px;
+  background:rgba(0,0,0,.25);
+  border-top:1px solid var(--border);
+}
+.tf-title{
+  font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.8px;
+  color:var(--tc);margin-bottom:8px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{
+  padding:4px 11px;border-radius:7px;
+  font-size:11px;font-weight:600;border:1px solid;
+}
+.chip-ok{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3);color:#10b981;}
+.chip-no{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);color:#ef4444;}
+.chip-cond{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#f59e0b;}
+.chip-ref{
+  background:rgba(6,182,212,.08);
+  border-color:rgba(6,182,212,.22);
+  color:var(--cyan);
+  font-family:'Inter',sans-serif;font-size:10.5px;
+}
+
+/* ═══════════════════════════════════════════
+   SVG DIAGRAM BOX
+═══════════════════════════════════════════ */
+.diagram-box{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:22px;margin:16px 0 0;
+}
+.diagram-box h4{
+  font-size:14px;font-weight:700;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.diagram-caption{
+  font-size:11.5px;color:var(--muted);
+  margin-top:10px;line-height:1.7;
+  padding-top:10px;border-top:1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════════
+   PQR REQUIREMENTS GRID
+═══════════════════════════════════════════ */
+.pqr-grid-wrap{
+  background:linear-gradient(135deg,rgba(239,68,68,.06),rgba(245,158,11,.03));
+  border:1px solid rgba(239,68,68,.2);
+  border-radius:var(--radius-xl);padding:22px;margin:20px 0;
+}
+.pqr-grid-hd{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.pqr-grid-icon{
+  width:50px;height:50px;border-radius:13px;flex-shrink:0;
+  background:linear-gradient(135deg,#ef4444,#f59e0b);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  box-shadow:0 6px 18px rgba(239,68,68,.35);
+}
+.pqr-grid-hd h3{font-size:16px;font-weight:800;margin:0;}
+.pqr-grid-hd p{font-size:12px;color:var(--muted);margin-top:2px;}
+.pqr-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+}
+.pqr-item{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:15px;
+  border-right:3px solid var(--pi-c,#ef4444);
+  transition:transform .2s;
+}
+.pqr-item:hover{transform:translateY(-2px);}
+.pi-std{
+  font-family:'Inter',sans-serif;font-weight:800;
+  color:var(--pi-c,#ef4444);font-size:11px;margin-bottom:3px;
+}
+.pi-name{font-weight:700;font-size:13px;margin-bottom:6px;}
+.pqr-item p{font-size:12px;color:var(--muted);line-height:1.8;}
+.pi-req{
+  display:inline-block;margin-top:5px;
+  font-family:'Inter',sans-serif;font-weight:700;
+  font-size:11px;color:var(--amber);
+  background:rgba(245,158,11,.12);
+  border:1px solid rgba(245,158,11,.3);
+  padding:2px 8px;border-radius:5px;
+}
+
+/* ═══════════════════════════════════════════
+   NDT PROCEDURE CARDS
+═══════════════════════════════════════════ */
+.ndt-proc-wrap{
+  background:linear-gradient(135deg,rgba(6,182,212,.06),rgba(99,102,241,.03));
+  border:1px solid rgba(6,182,212,.2);
+  border-radius:var(--radius-xl);padding:22px;margin:20px 0;
+}
+.ndt-proc-hd{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.ndt-proc-icon{
+  width:50px;height:50px;border-radius:13px;flex-shrink:0;
+  background:linear-gradient(135deg,#06b6d4,#6366f1);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.ndt-proc-hd h3{font-size:16px;font-weight:800;margin:0;}
+.ndt-proc-hd p{font-size:12px;color:var(--muted);margin-top:2px;}
+.ndt-proc-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+}
+.ndt-proc-item{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:15px;
+  border-right:3px solid var(--cyan);
+}
+.npi-art{
+  font-family:'Inter',sans-serif;font-weight:800;
+  color:var(--cyan);font-size:11px;margin-bottom:3px;
+}
+.npi-name{font-weight:700;font-size:12.5px;margin-bottom:5px;}
+.ndt-proc-item p{font-size:11.5px;color:var(--muted);line-height:1.8;}
+
+/* ═══════════════════════════════════════════
+   COMPARISON TABLE
+═══════════════════════════════════════════ */
+.table-wrap{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow);margin:16px 0;
+}
+.table-scroll{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:680px;}
+thead{background:var(--bg-card-2);}
+th{
+  padding:12px 14px;text-align:center;
+  font-weight:700;font-size:11px;
+  color:var(--muted);border-bottom:1px solid var(--border);
+  text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;
+}
+td{
+  padding:10px 12px;border-bottom:1px solid var(--border);
+  font-size:12px;text-align:center;color:var(--text);
+}
+tbody tr{transition:background .15s;}
+tbody tr:hover{background:var(--bg-card-2);}
+tbody tr:last-child td{border-bottom:none;}
+td.lbl{
+  text-align:right;font-weight:600;font-size:12px;
+  color:var(--text);white-space:nowrap;
+}
+.t-best{color:var(--green);font-weight:700;}
+.t-good{color:var(--cyan);font-weight:600;}
+.t-lim{color:var(--amber);font-weight:600;}
+.t-no{color:var(--red);font-weight:700;}
+.t-ref{
+  font-family:'Inter',sans-serif;font-size:10px;
+  background:rgba(6,182,212,.08);
+  border:1px solid rgba(6,182,212,.2);
+  color:var(--cyan);padding:2px 7px;border-radius:5px;
+  white-space:nowrap;display:inline-block;
+}
+
+/* ═══════════════════════════════════════════
+   PERCENTAGE TABLE SECTION
+═══════════════════════════════════════════ */
+.pct-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;margin:16px 0;
+}
+.pct-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:18px;
+  border-top:3px solid var(--pc-c);
+  position:relative;overflow:hidden;
+  transition:transform .2s,border-color .2s;
+}
+.pct-card:hover{transform:translateY(-3px);}
+.pct-cat{
+  font-family:'Inter',sans-serif;font-weight:800;
+  font-size:12.5px;color:var(--pc-c);margin-bottom:4px;
+}
+.pct-name{font-weight:700;font-size:13.5px;margin-bottom:8px;}
+.pct-vt{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;margin-bottom:6px;color:var(--muted);
+}
+.pct-ndt{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;margin-bottom:8px;color:var(--muted);
+}
+.pct-val{
+  font-family:'Inter',sans-serif;font-weight:800;
+  font-size:22px;color:var(--pc-c);display:block;
+  line-height:1.1;
+}
+.pct-unit{font-size:11px;color:var(--muted);font-weight:500;}
+.pct-ref{
+  font-family:'Inter',sans-serif;font-size:10px;
+  color:var(--cyan);margin-top:6px;
+  border-top:1px solid var(--border);padding-top:6px;
+}
+.pct-desc{font-size:11.5px;color:var(--muted);line-height:1.7;}
+
+/* ═══════════════════════════════════════════
+   CHECKLIST
+═══════════════════════════════════════════ */
+.cl-wrap{
+  background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(6,182,212,.03));
+  border:1px solid rgba(16,185,129,.2);
+  border-radius:var(--radius-xl);padding:22px;margin:22px 0;
+}
+.cl-hd{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.cl-hd-icon{
+  width:50px;height:50px;border-radius:13px;flex-shrink:0;
+  background:linear-gradient(135deg,#10b981,#06b6d4);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.cl-hd h3{font-size:16px;font-weight:800;margin:0;}
+.cl-hd p{font-size:12px;color:var(--muted);margin-top:2px;}
+.cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cl-item{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:12px 14px;
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:12.5px;color:var(--muted);line-height:1.65;
+  transition:border-color .2s;
+}
+.cl-item:hover{border-color:var(--green);}
+.cl-n{
+  min-width:22px;height:22px;border-radius:6px;
+  background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9.5px;color:var(--green);flex-shrink:0;
+  font-family:'Inter',sans-serif;font-weight:800;margin-top:1px;
+}
+.cl-item strong{color:var(--text);}
+.cl-r{
+  font-family:'Inter',sans-serif;font-size:10px;
+  color:var(--cyan);display:block;margin-top:3px;
+}
+
+/* ═══════════════════════════════════════════
+   NAV FOOTER
+═══════════════════════════════════════════ */
+.nav-footer{
+  display:flex;justify-content:space-between;
+  margin-top:52px;padding-top:24px;
+  border-top:1px solid var(--border);
+  gap:12px;flex-wrap:wrap;
+}
+.nf-btn{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;
+  padding:12px 20px;border-radius:var(--radius);
+  border:1px solid var(--border);background:var(--bg-card);
+  transition:all .2s;cursor:pointer;
+}
+.nf-prev{color:var(--muted);}
+.nf-prev:hover{color:var(--text);border-color:var(--cyan);}
+.nf-next{
+  background:linear-gradient(135deg,#6366f1,#06b6d4);
+  color:#fff;border-color:transparent;
+  box-shadow:0 6px 20px rgba(99,102,241,.35);
+}
+.nf-next:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,102,241,.45);}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:var(--bg-2);border-top:1px solid var(--border);
+  padding:24px;text-align:center;
+}
+footer p{color:var(--muted);font-size:12px;margin-bottom:3px;}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:820px){
+  .nav-links{display:none;}
+  .hero h1{font-size:21px;}
+  .tc-head{grid-template-columns:56px 1fr;gap:12px;}
+  .tc-badges{display:none;}
+  .tc-body{grid-template-columns:1fr;}
+  .tc-col{border-left:none;border-top:1px solid var(--border);}
+  .cl-grid{grid-template-columns:1fr;}
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.test-card{animation:fadeUp .45s ease-out backwards;}
+.test-card:nth-child(1){animation-delay:.04s}
+.test-card:nth-child(2){animation-delay:.08s}
+.test-card:nth-child(3){animation-delay:.12s}
+.test-card:nth-child(4){animation-delay:.16s}
+.test-card:nth-child(5){animation-delay:.20s}
+.test-card:nth-child(6){animation-delay:.24s}
+.test-card:nth-child(7){animation-delay:.28s}
+.test-card:nth-child(8){animation-delay:.32s}
+.test-card:nth-child(9){animation-delay:.36s}
 </style>
 </head>
 <body>
 
+<!-- ── PROGRESS BAR ── -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════════ -->
 <nav class="navbar">
-  <div class="navbar-inner">
-    <div class="logo">
-      <div class="logo-icon">⚡</div>
-      <span>PIPING STUDIO — آکادمی پایپینگ و جوشکاری</span>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">⚡</div>
+      <span>PIPING STUDIO</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#dt-intro">آزمایش مخرب</a></li>
+      <li><a href="#dt-part">آزمون مخرب</a></li>
       <li><a href="#tensile">Tensile</a></li>
       <li><a href="#bend">Bend</a></li>
       <li><a href="#impact">Impact</a></li>
       <li><a href="#hardness">Hardness</a></li>
       <li><a href="#macro">Macro</a></li>
-      <li><a href="#ndt-intro">NDT میدان</a></li>
+      <li><a href="#ndt-part">NDT میدان</a></li>
       <li><a href="#rt">RT</a></li>
       <li><a href="#ut">UT</a></li>
       <li><a href="#mt">MT</a></li>
       <li><a href="#pt">PT</a></li>
       <li><a href="#compare">مقایسه</a></li>
+      <li><a href="#pct">درصد NDT</a></li>
     </ul>
-    <div class="nav-actions">
-      <a href="../04-defects/" class="back-link">← فصل ۴: عیوب</a>
-      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <div class="nav-right">
+      <a href="../04-defects/" class="nav-back">← فصل ۴</a>
+      <button class="nav-theme" onclick="toggleTheme()" id="themeBtn">🌙</button>
     </div>
   </div>
 </nav>
 
+<!-- BREADCRUMB -->
 <div class="breadcrumb">
-  آموزش جوشکاری ←
-  <span>فصل ۵ — آزمایش‌های جوش: DT (PQR) + NDT (میدان)</span>
+  <a href="../../">Piping Studio</a>
+  <span class="sep">›</span>
+  <a href="../">جوشکاری</a>
+  <span class="sep">›</span>
+  <span class="current">فصل ۵ — آزمایش‌های جوش</span>
 </div>
 
 <div class="content">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge">🔬 آزمایش مخرب + غیرمخرب</div>
-      <h1>آزمایش‌های جوش — DT برای تأیید PQR<br>و NDT برای بازرسی میدانی</h1>
-      <div class="subtitle">
-        مرجع: ASME Sec. IX QW-140 تا QW-190 (DT) | ASME Sec. V Art. 2,4,6,7,9 (NDT) | API RP 577 Sec. 5–8 | ASME B31.3 Para 341
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">آزمون مخرب PQR</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">روش NDT میدان</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">QW-140</div><div class="hero-stat-label">ASME Sec. IX</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">Sec. V</div><div class="hero-stat-label">ASME NDT Code</div></div>
-      </div>
+<!-- ══════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-eyebrow">
+      <div class="dot"></div>
+      آزمایش مخرب (DT) + آزمایش غیرمخرب (NDT)
+    </div>
+    <h1>آزمایش‌های جوش<br>DT برای تأیید PQR — NDT برای بازرسی میدانی</h1>
+    <p class="hero-sub">
+      دو مسیر کاملاً مستقل و مکمل: آزمایش‌های مخرب روی Test Coupon برای اثبات صحت روش جوشکاری در مرحله PQR، و آزمایش‌های غیرمخرب روی جوش‌های واقعی پروژه برای کنترل کیفیت در میدان.
+    </p>
+    <div class="hero-refs">
+      <span class="hero-ref">ASME Sec. IX QW-140…199</span>
+      <span class="hero-ref">ASME Sec. V Art. 1,2,4,6,7,9</span>
+      <span class="hero-ref">B31.3 Para 341,344</span>
+      <span class="hero-ref">ASTM E8 · E23 · E92 · E165 · E709</span>
+      <span class="hero-ref">NACE MR0175 / ISO 15156</span>
+      <span class="hero-ref">API RP 577</span>
+    </div>
+    <div class="hero-stats">
+      <div><span class="h-stat-num">5</span><span class="h-stat-lbl">آزمون مخرب PQR</span></div>
+      <div><span class="h-stat-num">4</span><span class="h-stat-lbl">روش NDT میدان</span></div>
+      <div><span class="h-stat-num">QW-451</span><span class="h-stat-lbl">جدول تعداد نمونه</span></div>
+      <div><span class="h-stat-num">Para 341</span><span class="h-stat-lbl">الزامات B31.3</span></div>
     </div>
   </div>
+</div>
 
-  <!-- OVERVIEW -->
-  <h2>مرور کلی — دو نوع آزمایش با هدف‌های متفاوت</h2>
-  <p class="lead">
-    آزمایش‌های جوش به دو دسته اصلی تقسیم می‌شوند: <strong>آزمایش‌های مخرب (DT)</strong> که روی نمونه‌های آزمایشی جوش (Test Coupon) انجام می‌شوند و هدفشان تأیید WPS در مرحله PQR است — و <strong>آزمایش‌های غیرمخرب (NDT)</strong> که روی جوش‌های واقعی پروژه در میدان انجام شده و هدفشان یافتن عیوب در اتصالات نهایی است. این دو نقش مکمل هم دارند اما جایگزین یکدیگر نیستند.
+<!-- ══════ OVERVIEW CALLOUT ══════ -->
+<div class="callout info">
+  <div class="callout-hd">📘 قانون بنیادی — ASME B31.3 Para 341.1</div>
+  <p>
+    طبق <strong>B31.3 Para 341.1</strong>، هر جوش باید با <strong>بازرسی چشمی (VT)</strong> و هر روش NDT که در کد یا مشخصات پروژه الزامی شده، بازرسی شود. حجم NDT مورد نیاز بر اساس <strong>دسته سیال (Fluid Service Category)</strong> و <strong>درصد بازرسی (Examination Percentage)</strong> طبق <strong>Para 341.3.2 و Para 341.4</strong> تعیین می‌شود.
   </p>
-
-  <div class="callout callout-def">
-    <span class="callout-label">📘 قانون بنیادی — ASME B31.3 Para 341.1</span>
-    «هر جوش باید با بازرسی چشمی (VT) و هر روش NDT مشخص‌شده در کد یا مشخصات پروژه بازرسی شود.» حجم NDT مورد نیاز بر اساس <strong>دسته سیال (Fluid Category)</strong> طبق <strong>B31.3 Table 341.3.2</strong> و <strong>درصد آزمایش (Examination Percentage)</strong> طبق <strong>Para 341.4</strong> تعیین می‌شود. هیچ NDT‌ای نمی‌تواند PQR را جایگزین کند و هیچ PQR‌ای NDT میدانی را.
-  </div>
-
-  <!-- ══════════════════════════════════
-       PART ONE: DESTRUCTIVE TESTS
-  ══════════════════════════════════ -->
-  <div id="dt-intro" class="sec-divider dt">
-    <div class="sec-div-icon dt">🔴</div>
-    <div class="sec-div-text">
-      <h3>بخش اول — آزمایش‌های مخرب (Destructive Tests)</h3>
-      <p>هدف: تأیید WPS از طریق PQR | روی Test Coupon — نه جوش واقعی پروژه</p>
-    </div>
-    <div class="sec-div-ref">ASME Sec. IX<br>QW-140 to QW-199</div>
-  </div>
-
-  <!-- PQR REQUIREMENTS -->
-  <div class="pqr-matrix">
-    <div class="pqr-matrix-header">
-      <div class="pqr-matrix-icon">📋</div>
-      <div>
-        <h3>الزامات آزمایش مخرب برای تکمیل PQR — ASME Sec. IX QW-140</h3>
-        <p>تعداد و نوع نمونه بر اساس ضخامت Test Coupon و نوع Process تعیین می‌شود — مرجع: QW-451</p>
-      </div>
-    </div>
-    <div class="pqr-grid">
-      <div class="pqr-item">
-        <div class="pqr-std">QW-151 + QW-451</div>
-        <div class="pqr-test">Tensile Test</div>
-        <p>برای Groove Weld: <span class="pqr-req">۲ نمونه</span> — یکی عرضی (Transverse) یکی طولی در صورت لزوم. برای ضخامت ≤ 25mm: ۲ عدد / &gt;25mm: ۴ عدد (دو در بالا دو در پایین)</p>
-      </div>
-      <div class="pqr-item">
-        <div class="pqr-std">QW-160 + QW-451</div>
-        <div class="pqr-test">Bend Test</div>
-        <p>برای ضخامت ≤ 25mm: <span class="pqr-req">۲ Face + ۲ Root</span> یا ۴ Side Bend. ضخامت &gt;25mm: فقط <span class="pqr-req">۴ Side Bend</span> مجاز است</p>
-      </div>
-      <div class="pqr-item">
-        <div class="pqr-std">QW-170 + Supp. Req.</div>
-        <div class="pqr-test">Impact Test (Charpy)</div>
-        <p>الزامی فقط برای متریال‌هایی که <span class="pqr-req">Supplementary Essential Variable</span> هستند یا مشخصات پروژه الزام کنند. معمولاً برای سرویس Cryogenic</p>
-      </div>
-      <div class="pqr-item">
-        <div class="pqr-std">QW-462.1 + QW-451</div>
-        <div class="pqr-test">Macro Examination</div>
-        <p>برای Fillet Weld و برخی Groove: <span class="pqr-req">۲ نمونه ماکرو</span> — بررسی Fusion، Penetration و Profile جوش</p>
-      </div>
-      <div class="pqr-item">
-        <div class="pqr-std">QW-462.5 (Hardness)</div>
-        <div class="pqr-test">Hardness Survey</div>
-        <p>الزامی برای Cr-Mo و Sour Service. <span class="pqr-req">HAZ ≤ 248 HV10</span> طبق NACE MR0175 / ISO 15156. BHN یا Vickers روی مقطع جوش</p>
-      </div>
-      <div class="pqr-item">
-        <div class="pqr-std">QW-191 (RT/UT)</div>
-        <div class="pqr-test">RT یا UT بر Coupon</div>
-        <p>برای Welder Qualification (WQT) به‌جای Bend Test. <span class="pqr-req">RT یا UT</span> می‌تواند جایگزین ۲ Bend شود در شرایط QW-191</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ DT-1: TENSILE ══════ -->
-  <h2 id="tensile">① آزمون کشش (Tensile Test)</h2>
-
-  <div class="test-card" style="--tc-color:#ef4444;">
-    <div class="tc-header">
-      <div class="tc-icon">💪</div>
-      <div class="tc-title">
-        <h3>آزمون کشش عرضی</h3>
-        <div class="tc-en">Reduced-Section Tensile Test — QW-150</div>
-        <div class="tc-sub">هدف: تأیید استحکام کششی جوش ≥ حداقل استحکام فلز پایه</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. IX QW-150</span>
-        <span class="std-pill">QW-451 (تعداد)</span>
-        <span class="std-pill">ASTM E8 (روش)</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">📐 ابعاد نمونه</div>
-        <ul class="spec-list">
-          <li><span class="k">نوع نمونه</span><span class="v">Reduced-Section</span></li>
-          <li><span class="k">عرض بخش باریک</span><span class="v">25mm (±0.2mm)</span></li>
-          <li><span class="k">ضخامت</span><span class="v">برابر t — بدون ماشین‌کاری</span></li>
-          <li><span class="k">Reinforcement</span><span class="v">باید Flush Grind شود</span></li>
-          <li><span class="k">محل جوش</span><span class="v">مرکز نمونه</span></li>
-          <li><span class="k">تعداد — QW-451</span><span class="v">2 (t≤25mm) / 4 (t>25mm)</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔬 روش آزمون</div>
-        <ul class="bullet-list">
-          <li>نمونه در دمای <strong>محیط</strong> کشیده می‌شود</li>
-          <li>نیروی کشش تا <strong>شکست</strong> افزایش می‌یابد</li>
-          <li>محل شکست ثبت می‌شود: <strong>Weld / HAZ / Base Metal</strong></li>
-          <li>UTS محاسبه: <strong>F / A</strong> (نیرو / مساحت باریک)</li>
-          <li>شکست در جوش قابل قبول است <strong>اگر UTS کافی باشد</strong></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📊 معیار پذیرش — QW-153</div>
-        <ul class="spec-list">
-          <li><span class="k">CS — A106 Gr.B</span><span class="v">≥ 415 MPa (60 ksi)</span></li>
-          <li><span class="k">SS — 304L</span><span class="v">≥ 485 MPa (70 ksi)</span></li>
-          <li><span class="k">Duplex 2205</span><span class="v">≥ 620 MPa (90 ksi)</span></li>
-          <li><span class="k">P91 (Grade 91)</span><span class="v">≥ 585 MPa (85 ksi)</span></li>
-          <li><span class="k">محل شکست</span><span class="v">هر جا — اگر UTS ≥ Min</span></li>
-          <li><span class="k">مرجع Min UTS</span><span class="v">ASME Sec. II Part D</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">✅ معیار نهایی قبول / رد — QW-153</div>
-      <div class="acc-chips">
-        <span class="chip chip-pass">UTS ≥ Min Specified → PASS</span>
-        <span class="chip chip-fail">UTS &lt; Min Specified → FAIL — PQR باطل</span>
-        <span class="chip chip-cond">شکست در Base Metal با UTS کمتر: تنها اگر ≥ 95% UTS min پایه</span>
-        <span class="chip chip-ref">QW-153 + ASME Sec. II Part D Table U</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ DT-2: BEND ══════ -->
-  <h2 id="bend">② آزمون خم (Bend Test)</h2>
-
-  <div class="test-card" style="--tc-color:#f59e0b;">
-    <div class="tc-header">
-      <div class="tc-icon">🔄</div>
-      <div class="tc-title">
-        <h3>آزمون خم — Face, Root, Side Bend</h3>
-        <div class="tc-en">Guided Bend Test — QW-160</div>
-        <div class="tc-sub">هدف: ارزیابی انعطاف‌پذیری و کیفیت ذوب جوش — رایج‌ترین آزمون PQR</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. IX QW-160</span>
-        <span class="std-pill">QW-462 (ابعاد)</span>
-        <span class="std-pill">QW-163 (معیار)</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">📐 انواع نمونه Bend</div>
-        <ul class="spec-list">
-          <li><span class="k">Face Bend</span><span class="v">سطح جوش رو به خارج قوس</span></li>
-          <li><span class="k">Root Bend</span><span class="v">ریشه جوش رو به خارج قوس</span></li>
-          <li><span class="k">Side Bend</span><span class="v">مقطع عرضی — برای t≥10mm</span></li>
-          <li><span class="k">عرض نمونه Side</span><span class="v">10mm × t (کل ضخامت)</span></li>
-          <li><span class="k">رادیوس قالب (Die)</span><span class="v">4t برای CS / 6t برای SS</span></li>
-          <li><span class="k">زاویه خم</span><span class="v">180° — QW-160.1</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔬 روش آزمون</div>
-        <ul class="bullet-list">
-          <li>نمونه در <strong>Guided Bend Jig</strong> قرار می‌گیرد</li>
-          <li>خم تا <strong>180° یا حد مشخص</strong> ادامه می‌یابد</li>
-          <li>بعد از خم، سطح کشیده‌شده بررسی می‌شود</li>
-          <li>Reinforcement: <strong>Flush Grind</strong> الزامی قبل از آزمون</li>
-          <li>روش Face vs Root برای ضخامت <span class="num">≤ 10mm</span></li>
-          <li>روش Side Bend برای ضخامت <span class="num">&gt; 10mm</span> ترجیحی</li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📊 معیار پذیرش — QW-163</div>
-        <ul class="spec-list">
-          <li><span class="k">ترک/شکستگی باز</span><span class="v">≤ 3mm در هر جهت</span></li>
-          <li><span class="k">ترک در لبه</span><span class="v">≤ 6mm (اگر از Notch)</span></li>
-          <li><span class="k">LOF روی سطح</span><span class="v">≤ 3mm — محاسبه می‌شود</span></li>
-          <li><span class="k">Porosity</span><span class="v">≤ 3mm هر حباب</span></li>
-          <li><span class="k">Crack کامل</span><span class="v">هر اندازه → FAIL</span></li>
-          <li><span class="k">مرجع</span><span class="v">QW-163 (a) و (b)</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- SVG: Bend Test Diagram -->
-    <div style="padding:0 22px 18px;">
-      <div class="specimen-box" style="margin:0;">
-        <h3>📐 نمای شماتیک انواع Bend Test و قالب</h3>
-        <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
-          <!-- FACE BEND -->
-          <g transform="translate(30,20)">
-            <text x="80" y="15" text-anchor="middle" font-family="Inter" font-size="11" fill="#f59e0b" font-weight="700">FACE BEND</text>
-            <!-- die -->
-            <rect x="20" y="25" width="120" height="30" rx="4" fill="#1e2c3d" stroke="#2a3350" stroke-width="1"/>
-            <!-- specimen flat -->
-            <rect x="30" y="45" width="100" height="8" rx="2" fill="#a855f7" opacity=".8"/>
-            <text x="80" y="68" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="#8b94ad">قبل از خم</text>
-            <!-- bent specimen -->
-            <g transform="translate(0,80)">
-              <!-- die radius block -->
-              <rect x="20" y="10" width="120" height="20" rx="4" fill="#1e2c3d" stroke="#2a3350" stroke-width="1"/>
-              <!-- bent plate -->
-              <path d="M30,30 Q80,55 130,30" stroke="#f59e0b" stroke-width="7" fill="none" stroke-linecap="round"/>
-              <!-- weld zone marker -->
-              <circle cx="80" cy="52" r="5" fill="#10b981"/>
-              <text x="80" y="72" text-anchor="middle" font-family="Inter" font-size="9" fill="#10b981">Weld</text>
-              <text x="80" y="85" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="#8b94ad">بعد از 180°</text>
-            </g>
-          </g>
-
-          <!-- SIDE BEND -->
-          <g transform="translate(230,20)">
-            <text x="80" y="15" text-anchor="middle" font-family="Inter" font-size="11" fill="#06b6d4" font-weight="700">SIDE BEND</text>
-            <rect x="20" y="25" width="120" height="30" rx="4" fill="#1e2c3d" stroke="#2a3350" stroke-width="1"/>
-            <!-- side section (shows layers) -->
-            <rect x="35" y="35" width="90" height="4" rx="1" fill="#10b981" opacity=".7"/>
-            <rect x="35" y="39" width="90" height="4" rx="1" fill="#f59e0b" opacity=".7"/>
-            <rect x="35" y="43" width="90" height="4" rx="1" fill="#a855f7" opacity=".7"/>
-            <text x="80" y="68" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="#8b94ad">مقطع عرضی (t=10mm)</text>
-            <g transform="translate(0,80)">
-              <rect x="20" y="10" width="120" height="20" rx="4" fill="#1e2c3d" stroke="#2a3350" stroke-width="1"/>
-              <path d="M35,30 Q80,62 125,30" stroke="#06b6d4" stroke-width="9" fill="none" stroke-linecap="round"/>
-              <text x="80" y="78" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="#8b94ad">مقطع رو به بیرون</text>
-            </g>
-          </g>
-
-          <!-- ROOT BEND -->
-          <g transform="translate(430,20)">
-            <text x="80" y="15" text-anchor="middle" font-family="Inter" font-size="11" fill="#ef4444" font-weight="700">ROOT BEND</text>
-            <rect x="20" y="25" width="120" height="30" rx="4" fill="#1e2c3d" stroke="#2a3350" stroke-width="1"/>
-            <rect x="30" y="45" width="100" height="8" rx="2" fill="#ef4444" opacity=".7"/>
-            <text x="80" y="68" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="#8b94ad">ریشه رو به پایین</text>
-            <g transform="translate(0,80)">
-              <rect x="20" y="10" width="120" height="20" rx="4" fill="#1e2c3d" stroke="#2a3350" stroke-width="1"/>
-              <path d="M30,30 Q80,55 130,30" stroke="#ef4444" stroke-width="7" fill="none" stroke-linecap="round"/>
-              <circle cx="80" cy="52" r="5" fill="#10b981"/>
-              <text x="80" y="72" text-anchor="middle" font-family="Inter" font-size="9" fill="#10b981">Root</text>
-              <text x="80" y="85" text-anchor="middle" font-family="Vazirmatn" font-size="10" fill="#8b94ad">ریشه رو به بیرون</text>
-            </g>
-          </g>
-
-          <!-- legend -->
-          <g transform="translate(30,190)">
-            <rect x="0" y="0" width="12" height="8" rx="2" fill="#10b981" opacity=".8"/>
-            <text x="16" y="8" font-family="Vazirmatn" font-size="10" fill="#8b94ad">Root Pass</text>
-            <rect x="80" y="0" width="12" height="8" rx="2" fill="#f59e0b" opacity=".8"/>
-            <text x="96" y="8" font-family="Vazirmatn" font-size="10" fill="#8b94ad">Fill Pass</text>
-            <rect x="160" y="0" width="12" height="8" rx="2" fill="#a855f7" opacity=".8"/>
-            <text x="176" y="8" font-family="Vazirmatn" font-size="10" fill="#8b94ad">Cap Pass</text>
-          </g>
-        </svg>
-        <p class="specimen-caption">رادیوس قالب (r): <span class="num">4t</span> برای CS P-No.1 | <span class="num">6t</span> برای SS P-No.8 | <span class="num">8t</span> برای Duplex — طبق <strong>QW-466</strong></p>
-      </div>
-    </div>
-
-    <div class="acc-footer">
-      <div class="acc-title">✅ معیار قبول — QW-163</div>
-      <div class="acc-chips">
-        <span class="chip chip-pass">ترک/باز‌شدگی ≤ 3mm → PASS</span>
-        <span class="chip chip-fail">Crack کامل عرضی هر اندازه → FAIL</span>
-        <span class="chip chip-cond">ترک لبه از Notch: ≤ 6mm مجاز است</span>
-        <span class="chip chip-ref">QW-163 (a)(b) + QW-466 (رادیوس)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ DT-3: IMPACT ══════ -->
-  <h2 id="impact">③ آزمون ضربه (Charpy Impact Test)</h2>
-
-  <div class="test-card" style="--tc-color:#a855f7;">
-    <div class="tc-header">
-      <div class="tc-icon">⚡</div>
-      <div class="tc-title">
-        <h3>آزمون ضربه شارپی</h3>
-        <div class="tc-en">Charpy V-Notch Impact Test — QW-170</div>
-        <div class="tc-sub">هدف: ارزیابی انرژی شکست در دمای سرویس — الزامی برای Cryogenic و Low-Temp</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. IX QW-170</span>
-        <span class="std-pill">ASTM E23 (روش)</span>
-        <span class="std-pill">Supp. Essential Var.</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">📐 مشخصات نمونه</div>
-        <ul class="spec-list">
-          <li><span class="k">ابعاد استاندارد</span><span class="v">10×10×55mm</span></li>
-          <li><span class="k">Sub-size نمونه</span><span class="v">10×7.5mm یا 10×5mm</span></li>
-          <li><span class="k">نوع شیار</span><span class="v">V-Notch — 45° / عمق 2mm</span></li>
-          <li><span class="k">موقعیت Notch</span><span class="v">روی خط ذوب (FL) یا Weld</span></li>
-          <li><span class="k">تعداد — QW-171</span><span class="v">3 نمونه از هر موقعیت</span></li>
-          <li><span class="k">دمای آزمون</span><span class="v">دمای MDMT سرویس یا پایین‌تر</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔬 روش آزمون</div>
-        <ul class="bullet-list">
-          <li>نمونه تا <strong>دمای آزمون</strong> سرد/گرم می‌شود</li>
-          <li>پاندول سنگین از ارتفاع مشخص رها می‌شود</li>
-          <li><strong>انرژی جذب‌شده (Joule/ft-lb)</strong> اندازه‌گیری می‌شود</li>
-          <li>Lateral Expansion و % Shear Fracture هم گزارش می‌شوند</li>
-          <li>هر ۳ نمونه باید شرط را جداگانه برآورده کنند</li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📊 معیار پذیرش — QW-171.1</div>
-        <ul class="spec-list">
-          <li><span class="k">CS @ -29°C (Annex G)</span><span class="v">≥ 27 J (20 ft-lb)</span></li>
-          <li><span class="k">Low-Temp SS</span><span class="v">≥ 27 J @ MDMT</span></li>
-          <li><span class="k">میانگین ۳ نمونه</span><span class="v">≥ مقدار min مشخص‌شده</span></li>
-          <li><span class="k">هر نمونه منفرد</span><span class="v">≥ 2/3 مقدار min</span></li>
-          <li><span class="k">مرجع MDMT</span><span class="v">ASME B31.3 Para 323.2</span></li>
-          <li><span class="k">Sub-size تبدیل</span><span class="v">QW-171.1 Table QW-171.1</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">✅ معیار — QW-171.1 + B31.3 Para 323.2</div>
-      <div class="acc-chips">
-        <span class="chip chip-pass">میانگین ≥ 27J AND هر نمونه ≥ 18J → PASS</span>
-        <span class="chip chip-fail">یک نمونه &lt; 2/3 مقدار min → FAIL — تکرار با 6 نمونه</span>
-        <span class="chip chip-ref">QW-171.1 + ASTM E23 + ASME Sec. II Part D</span>
-        <span class="chip chip-cond">نمونه‌های Sub-size: ضریب تبدیل طبق QW-171.1</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ DT-4: HARDNESS ══════ -->
-  <h2 id="hardness">④ آزمون سختی (Hardness Test)</h2>
-
-  <div class="test-card" style="--tc-color:#06b6d4;">
-    <div class="tc-header">
-      <div class="tc-icon">💎</div>
-      <div class="tc-title">
-        <h3>آزمون سختی — Hardness Survey</h3>
-        <div class="tc-en">Vickers / Brinell Hardness — Weld Metal + HAZ</div>
-        <div class="tc-sub">هدف: کنترل Hardness HAZ برای سرویس Sour و متریال‌های Cr-Mo</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. IX QW-462.5</span>
-        <span class="std-pill">NACE MR0175 / ISO 15156</span>
-        <span class="std-pill">ASTM E92 / E10</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">📐 نقاط اندازه‌گیری</div>
-        <ul class="spec-list">
-          <li><span class="k">Weld Metal (WM)</span><span class="v">مرکز فلز جوش</span></li>
-          <li><span class="k">HAZ — Side 1</span><span class="v">1mm از خط ذوب</span></li>
-          <li><span class="k">HAZ — Side 2</span><span class="v">1mm از خط ذوب (طرف دیگر)</span></li>
-          <li><span class="k">Base Metal (BM)</span><span class="v">بیرون از HAZ</span></li>
-          <li><span class="k">روش معمول</span><span class="v">Vickers HV10</span></li>
-          <li><span class="k">فاصله ضربه‌ها</span><span class="v">≥ 3× قطر ضربه</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🎯 کاربردها</div>
-        <ul class="bullet-list">
-          <li>سرویس <strong>Sour (H₂S)</strong> — NACE MR0175 الزامی</li>
-          <li>متریال <strong>Cr-Mo</strong> بعد از PWHT</li>
-          <li>Duplex SS — بررسی تشکیل Sigma Phase</li>
-          <li>Overlay Cladding — بررسی Dilution</li>
-          <li>هر مورد که پروژه الزام کند</li>
-          <li>میدان: <strong>Portable Hardness Tester</strong></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📊 معیار پذیرش</div>
-        <ul class="spec-list">
-          <li><span class="k">Sour Service CS</span><span class="v">≤ 248 HV10 (22 HRC)</span></li>
-          <li><span class="k">Sour Service CRA</span><span class="v">طبق NACE MR0175</span></li>
-          <li><span class="k">Cr-Mo P91 پس از PWHT</span><span class="v">200–270 HBW</span></li>
-          <li><span class="k">SS 316L</span><span class="v">معمولاً &lt; 200 HV</span></li>
-          <li><span class="k">Duplex</span><span class="v">≤ 310 HV (ISO 15156)</span></li>
-          <li><span class="k">مرجع اصلی</span><span class="v">NACE MR0175 / ISO 15156-2</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">✅ معیار کلیدی سرویس Sour — NACE MR0175 / ISO 15156-1 Section 7</div>
-      <div class="acc-chips">
-        <span class="chip chip-pass">HAZ CS: ≤ 248 HV10 یا ≤ 22 HRC → PASS</span>
-        <span class="chip chip-fail">هر نقطه &gt; 248 HV → FAIL — PWHT مجدد یا reject</span>
-        <span class="chip chip-ref">NACE MR0175 / ISO 15156-2 Table B.1</span>
-        <span class="chip chip-ref">ASME Sec. IX QW-462.5 (نقاط اندازه‌گیری)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ DT-5: MACRO ══════ -->
-  <h2 id="macro">⑤ بررسی ماکروسکوپی (Macro Examination)</h2>
-
-  <div class="test-card" style="--tc-color:#10b981;">
-    <div class="tc-header">
-      <div class="tc-icon">🔬</div>
-      <div class="tc-title">
-        <h3>بررسی ماکروسکوپی مقطع جوش</h3>
-        <div class="tc-en">Macro Examination — Cross-Section — QW-183</div>
-        <div class="tc-sub">هدف: بررسی بصری مقطع جوش — Fusion، Penetration، Profile و عیوب ماکرو</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. IX QW-183</span>
-        <span class="std-pill">QW-462.1 (Fillet)</span>
-        <span class="std-pill">ASTM E340 (روش)</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">📐 آماده‌سازی نمونه</div>
-        <ul class="spec-list">
-          <li><span class="k">برش</span><span class="v">Abrasive Saw — عمود بر جوش</span></li>
-          <li><span class="k">پرداخت</span><span class="v">Sand Paper P120 → P600</span></li>
-          <li><span class="k">اچ (Etch)</span><span class="v">CS: Nital 2–4% | SS: Vilella's</span></li>
-          <li><span class="k">مدت اچ</span><span class="v">10–60 ثانیه بسته به متریال</span></li>
-          <li><span class="k">تعداد — QW-183</span><span class="v">حداقل 2 نمونه از Coupon</span></li>
-          <li><span class="k">بزرگنمایی</span><span class="v">× 1 تا × 10 — ماکروسکوپی</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔍 چه چیزی بررسی می‌شود؟</div>
-        <ul class="bullet-list">
-          <li><strong>Fusion Line:</strong> ذوب کامل دیواره‌ها</li>
-          <li><strong>Root Penetration:</strong> نفوذ کامل ریشه</li>
-          <li><strong>Weld Profile:</strong> شکل پاس‌ها — Concave/Convex</li>
-          <li><strong>HAZ Width:</strong> عرض ناحیه متأثر از حرارت</li>
-          <li><strong>Crack / LOF / Slag:</strong> عیوب ماکرو</li>
-          <li><strong>تعداد و ترتیب پاس‌ها:</strong> انطباق با WPS</li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📊 معیار پذیرش — QW-183</div>
-        <ul class="spec-list">
-          <li><span class="k">Crack</span><span class="v">صفر — هر اندازه</span></li>
-          <li><span class="k">Incomplete Fusion</span><span class="v">صفر</span></li>
-          <li><span class="k">Incomplete Penetration</span><span class="v">صفر</span></li>
-          <li><span class="k">Slag / Porosity</span><span class="v">باید ارزیابی VT شود</span></li>
-          <li><span class="k">Fillet: Leg Size</span><span class="v">≥ اندازه مشخص WPS</span></li>
-          <li><span class="k">گزارش</span><span class="v">عکس رنگی از مقطع</span></div>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">✅ معیار — QW-183 + QW-184 (Fillet)</div>
-      <div class="acc-chips">
-        <span class="chip chip-pass">Fusion کامل + بدون Crack → PASS</span>
-        <span class="chip chip-fail">هر LOF یا Crack در مقطع → FAIL</span>
-        <span class="chip chip-cond">Fillet: Leg ≥ t مشخص‌شده — عدم تقعر بیش از 1.5mm</span>
-        <span class="chip chip-ref">QW-183 + QW-184 + QW-462.1(b)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       PART TWO: NDT
-  ══════════════════════════════════ -->
-  <div id="ndt-intro" class="sec-divider ndt">
-    <div class="sec-div-icon ndt">🔵</div>
-    <div class="sec-div-text">
-      <h3>بخش دوم — آزمایش‌های غیرمخرب (NDT) — بازرسی میدانی</h3>
-      <p>هدف: یافتن عیوب در جوش‌های واقعی پروژه | روی اتصالات نهایی — بدون آسیب</p>
-    </div>
-    <div class="sec-div-ref">ASME Sec. V<br>Art. 1, 2, 4, 6, 7, 9</div>
-  </div>
-
-  <!-- NDT PROCEDURE BOX -->
-  <div class="ndt-proc">
-    <div class="ndt-proc-header">
-      <div class="ndt-proc-icon">📋</div>
-      <div>
-        <h3>الزامات Procedure برای هر روش NDT — ASME Sec. V Art. 1 T-150</h3>
-        <p>هر روش NDT باید طبق Written Procedure تأیید‌شده اجرا شود — مرجع: Art. 1 T-150</p>
-      </div>
-    </div>
-    <div class="ndt-proc-grid">
-      <div class="ndt-proc-item">
-        <div class="ndt-proc-art">Sec. V Art. 2</div>
-        <div class="ndt-proc-name">RT — Radiographic</div>
-        <p>Procedure باید شامل: Source type, IQI type, SFD, Film type, Density range, Technique (Single/Double wall)</p>
-      </div>
-      <div class="ndt-proc-item">
-        <div class="ndt-proc-art">Sec. V Art. 4</div>
-        <div class="ndt-proc-name">UT — Ultrasonic</div>
-        <p>Procedure: Frequency, Transducer type, Calibration block (IIW/V1/V2), Scan coverage, DAC curve, Sensitivity</p>
-      </div>
-      <div class="ndt-proc-item">
-        <div class="ndt-proc-art">Sec. V Art. 7</div>
-        <div class="ndt-proc-name">MT — Magnetic Particle</div>
-        <p>Procedure: AC/DC, Yoke lift test (≥4.5kg), Particle type (Dry/Wet), UV light intensity ≥1000 µW/cm²</p>
-      </div>
-      <div class="ndt-proc-item">
-        <div class="ndt-proc-art">Sec. V Art. 6</div>
-        <div class="ndt-proc-name">PT — Liquid Penetrant</div>
-        <p>Procedure: Penetrant type (I/II/III), Developer type (a/b/c/d), Dwell time, Temperature range, Removal method</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ NDT-1: RT ══════ -->
-  <h2 id="rt">① رادیوگرافی (RT — Radiographic Testing)</h2>
-
-  <div class="test-card" style="--tc-color:#6366f1;">
-    <div class="tc-header">
-      <div class="tc-icon">☢️</div>
-      <div class="tc-title">
-        <h3>آزمون رادیوگرافی</h3>
-        <div class="tc-en">Radiographic Testing — Film / DR / CR</div>
-        <div class="tc-sub">بهترین برای Porosity، Slag، IP — محدودیت در LOF موازی و Crack</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. V Art. 2</span>
-        <span class="std-pill">B31.3 Para 344.5</span>
-        <span class="std-pill">ASME Sec. IX QW-191</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">⚙️ پارامترهای کلیدی</div>
-        <ul class="spec-list">
-          <li><span class="k">منبع پرتو X-Ray</span><span class="v">150–320 kV</span></li>
-          <li><span class="k">منبع گاما (Ir-192)</span><span class="v">CS: 10–70mm</span></li>
-          <li><span class="k">منبع گاما (Se-75)</span><span class="v">CS: 10–40mm</span></li>
-          <li><span class="k">SFD (فاصله تا فیلم)</span><span class="v">≥ 700mm (SWSI)</span></li>
-          <li><span class="k">دانسیته فیلم</span><span class="v">2.0–4.0 (ASME)</span></li>
-          <li><span class="k">حساسیت IQI</span><span class="v">2% مطابق T-282</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔬 تکنیک‌های اصلی</div>
-        <ul class="bullet-list">
-          <li><strong>SWSI:</strong> Single Wall Single Image — لوله بزرگ (NPS ≥ 3.5")</li>
-          <li><strong>DWSI:</strong> Double Wall — لوله کوچک (NPS &lt; 3.5")</li>
-          <li><strong>DWDI:</strong> Double Wall Double Image — Elliptical</li>
-          <li><strong>IQI نوع Wire:</strong> ASME ترجیحی — T-276</li>
-          <li><strong>IQI نوع Plaque:</strong> مجاز — T-277</li>
-          <li>Side IQI روی Source Side ترجیح دارد</li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📋 معیار پذیرش — QW-191.2 / B31.3 Table 341.3.2</div>
-        <ul class="spec-list">
-          <li><span class="k">Crack</span><span class="v">صفر</span></li>
-          <li><span class="k">IP / IF</span><span class="v">صفر (Normal = محدود)</span></li>
-          <li><span class="k">Elongated Slag</span><span class="v">≤ t/3 یا 6mm</span></li>
-          <li><span class="k">Scattered Porosity</span><span class="v">≤ t×65mm² / 150mm</span></li>
-          <li><span class="k">Burn-Through</span><span class="v">صفر</span></li>
-          <li><span class="k">مرجع معیار</span><span class="v">QW-191.2 + Table 341.3.2</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">⚠️ محدودیت‌های RT — ASME Sec. V Art. 2 T-285</div>
-      <div class="acc-chips">
-        <span class="chip chip-ref">LOF موازی با پرتو: ضعیف — UT ارجح است</span>
-        <span class="chip chip-ref">Crack موازی: ممکن است miss شود</span>
-        <span class="chip chip-ref">ضخامت &gt;100mm: X-Ray یا Ir-192 پرانرژی</span>
-        <span class="chip chip-ref">IQI 2% الزامی: اگر نباشد Film باطل است — T-282</span>
-        <span class="chip chip-ref">Film Density &lt;2 یا &gt;4: ارزیابی مجدد — T-261</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ NDT-2: UT ══════ -->
-  <h2 id="ut">② اولتراسونیک (UT — Ultrasonic Testing)</h2>
-
-  <div class="test-card" style="--tc-color:#06b6d4;">
-    <div class="tc-header">
-      <div class="tc-icon">🔊</div>
-      <div class="tc-title">
-        <h3>آزمون اولتراسونیک</h3>
-        <div class="tc-en">UT — Pulse-Echo / TOFD / Phased Array (PAUT)</div>
-        <div class="tc-sub">بهترین برای LOF، Crack عمقی و اندازه‌گیری ضخامت — جایگزین RT در بسیاری موارد</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. V Art. 4</span>
-        <span class="std-pill">B31.3 Para 344.6</span>
-        <span class="std-pill">ASME Sec. IX QW-191.2.2</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">⚙️ پارامترهای کلیدی</div>
-        <ul class="spec-list">
-          <li><span class="k">فرکانس معمول</span><span class="v">2–10 MHz</span></li>
-          <li><span class="k">زاویه Shear Wave</span><span class="v">45° / 60° / 70°</span></li>
-          <li><span class="k">بلوک کالیبراسیون</span><span class="v">IIW (V1) یا V2</span></li>
-          <li><span class="k">DAC Curve</span><span class="v">از Side-Drilled Holes</span></li>
-          <li><span class="k">Scan Coverage</span><span class="v">100% Volume — T-452</span></li>
-          <li><span class="k">Couplant</span><span class="v">Gel / Water / Oil</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔬 روش‌های پیشرفته</div>
-        <ul class="bullet-list">
-          <li><strong>Pulse-Echo:</strong> روش استاندارد — Art. 4</li>
-          <li><strong>TOFD:</strong> Time-of-Flight Diffraction — دقیق‌ترین برای اندازه عیب</li>
-          <li><strong>PAUT:</strong> Phased Array — پوشش بهتر و تصویر S-Scan</li>
-          <li><strong>UT Thickness:</strong> اندازه‌گیری ضخامت باقیمانده — API 570</li>
-          <li>Straight Beam: عیوب موازی سطح (Lamination)</li>
-          <li>Angle Beam: عیوب عمقی جوش</li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📋 معیار پذیرش — Sec. V Art. 4 T-460</div>
-        <ul class="spec-list">
-          <li><span class="k">نشانه &gt; 100% DAC</span><span class="v">ارزیابی الزامی</span></li>
-          <li><span class="k">Crack (هر نشانه)</span><span class="v">صفر — reject</span></li>
-          <li><span class="k">LOF &gt; DAC</span><span class="v">reject</span></li>
-          <li><span class="k">Porosity &gt; 20% DAC</span><span class="v">ثبت و ارزیابی</span></li>
-          <li><span class="k">Recording Level</span><span class="v">≥ 20% FSH — T-461</span></li>
-          <li><span class="k">معیار B31.3</span><span class="v">Para 344.6 + Table 341.3.2</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">✅ مزایای UT نسبت به RT</div>
-      <div class="acc-chips">
-        <span class="chip chip-pass">LOF و Crack: بسیار بهتر از RT</span>
-        <span class="chip chip-pass">اندازه‌گیری عمق عیب: دقیق‌تر</span>
-        <span class="chip chip-pass">بدون پرتوافکنی: ایمن‌تر در کارگاه</span>
-        <span class="chip chip-pass">UT TOFD: جایگزین رسمی RT در ASME Sec. VIII Div.1 — App. 12</span>
-        <span class="chip chip-ref">Porosity: RT بهتر است</span>
-        <span class="chip chip-ref">نیاز سطح صاف برای اسکن</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ NDT-3: MT ══════ -->
-  <h2 id="mt">③ ذرات مغناطیسی (MT — Magnetic Particle Testing)</h2>
-
-  <div class="test-card" style="--tc-color:#f59e0b;">
-    <div class="tc-header">
-      <div class="tc-icon">🧲</div>
-      <div class="tc-title">
-        <h3>آزمون ذرات مغناطیسی</h3>
-        <div class="tc-en">Magnetic Particle Testing — Yoke / Prod / Coil Method</div>
-        <div class="tc-sub">بهترین برای Crack سطحی و زیرسطحی در فولاد فریتی — سریع و حساس</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. V Art. 7</span>
-        <span class="std-pill">B31.3 Para 344.3</span>
-        <span class="std-pill">ASTM E709</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">⚙️ الزامات اصلی — Art. 7</div>
-        <ul class="spec-list">
-          <li><span class="k">Yoke Lift Test</span><span class="v">AC: ≥4.5kg | DC: ≥13.6kg</span></li>
-          <li><span class="k">UV Light شدت</span><span class="v">≥1000 µW/cm² @ 380-400nm</span></li>
-          <li><span class="k">White Light حین Wet Fluor.</span><span class="v">≤2 foot-candle (21 lux)</span></li>
-          <li><span class="k">دو جهت اسکن</span><span class="v">90° نسبت به هم — T-754</span></li>
-          <li><span class="k">Overlap بین اسکن‌ها</span><span class="v">≥ 10% — T-752</span></li>
-          <li><span class="k">دمای سطح</span><span class="v">≤ 316°C (Dry) / ≤ 52°C (Wet)</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔬 انواع روش</div>
-        <ul class="bullet-list">
-          <li><strong>AC Yoke:</strong> سطحی‌ترین — فقط سطحی</li>
-          <li><strong>DC Yoke:</strong> تا <strong>3mm عمق</strong> — زیرسطحی</li>
-          <li><strong>Wet Fluorescent:</strong> حساس‌ترین — UV Light</li>
-          <li><strong>Dry Visible:</strong> در محیط و دمای بالا</li>
-          <li>فقط فولادهای <strong>فریتی/مارتنزیتی</strong> — SS آستنیتی نه</li>
-          <li>بعد از HIC: <strong>48h</strong> صبر — آنگاه MT</li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📋 معیار پذیرش — Art. 7 T-760</div>
-        <ul class="spec-list">
-          <li><span class="k">Relevant Indication چیست؟</span><span class="v">هر نشانه &gt; 1.6mm</span></li>
-          <li><span class="k">Linear Indication</span><span class="v">هر طول → reject</span></li>
-          <li><span class="k">Rounded Indication</span><span class="v">≤ 5mm — Normal Svc</span></li>
-          <li><span class="k">چهار یا بیشتر در خط</span><span class="v">با فاصله ≤ 1.6mm → Linear</span></li>
-          <li><span class="k">مرجع</span><span class="v">Sec. V Art. 7 T-760</span></li>
-          <li><span class="k">معیار B31.3</span><span class="v">Para 344.3 + Table 341.3.2</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">⚠️ محدودیت‌های MT</div>
-      <div class="acc-chips">
-        <span class="chip chip-ref">فقط فولاد فریتی و مارتنزیتی — SS آستنیتی: از PT استفاده کنید</span>
-        <span class="chip chip-ref">عمق ≤ 3mm (DC Yoke) — عمیق‌تر: UT</span>
-        <span class="chip chip-ref">پوشش/رنگ: باید برداشته شود یا ≤ 0.5mm باشد</span>
-        <span class="chip chip-ref">Demagnetization پس از MT الزامی است — T-790</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════ NDT-4: PT ══════ -->
-  <h2 id="pt">④ مایع نافذ (PT — Liquid Penetrant Testing)</h2>
-
-  <div class="test-card" style="--tc-color:#ec4899;">
-    <div class="tc-header">
-      <div class="tc-icon">🔴</div>
-      <div class="tc-title">
-        <h3>آزمون مایع نافذ</h3>
-        <div class="tc-en">Liquid Penetrant Testing — Visible / Fluorescent</div>
-        <div class="tc-sub">تنها گزینه سطحی برای SS آستنیتی و Duplex — جایگزین MT در غیرمغناطیس</div>
-      </div>
-      <div class="tc-std">
-        <span class="std-pill">ASME Sec. V Art. 6</span>
-        <span class="std-pill">B31.3 Para 344.4</span>
-        <span class="std-pill">ASTM E165</span>
-      </div>
-    </div>
-    <div class="tc-body">
-      <div class="tc-col">
-        <div class="tc-col-title">⚙️ مراحل الزامی — Art. 6 T-640</div>
-        <ul class="spec-list">
-          <li><span class="k">① Pre-Cleaning</span><span class="v">حذف آلودگی، زنگ، رنگ</span></li>
-          <li><span class="k">② اعمال Penetrant</span><span class="v">Spray / Brush / Immersion</span></li>
-          <li><span class="k">③ Dwell Time</span><span class="v">≥ 5 min (معمولاً 10–60 min)</span></li>
-          <li><span class="k">④ حذف اضافی</span><span class="v">Solvent Wipe یا Water Rinse</span></li>
-          <li><span class="k">⑤ Developer</span><span class="v">Non-Aqueous اسپری — 10 min</span></li>
-          <li><span class="k">⑥ ارزیابی</span><span class="v">7–60 min بعد از Developer</span></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">🔬 انواع سیستم PT</div>
-        <ul class="bullet-list">
-          <li><strong>Type I Fluorescent:</strong> حساس‌ترین — UV Light</li>
-          <li><strong>Type II Visible (Color Contrast):</strong> عملی‌ترین در میدان</li>
-          <li><strong>Method A (Water Washable):</strong> سریع</li>
-          <li><strong>Method C (Solvent Removable):</strong> رایج‌ترین در میدان</li>
-          <li><strong>Method D (Post-Emulsifiable):</strong> حساس‌ترین</li>
-          <li>برای SS، Ni-alloy، Ti، Al: <strong>PT ارجح است</strong></li>
-        </ul>
-      </div>
-      <div class="tc-col">
-        <div class="tc-col-title">📋 معیار پذیرش — Art. 6 T-676</div>
-        <ul class="spec-list">
-          <li><span class="k">Relevant Indication</span><span class="v">نشانه &gt; 1.6mm</span></li>
-          <li><span class="k">Linear Indication</span><span class="v">هر طول → reject (طول &gt; 3×عرض)</span></li>
-          <li><span class="k">Rounded Indication</span><span class="v">≤ 5mm در Normal Service</span></li>
-          <li><span class="k">چهار در خط</span><span class="v">فاصله ≤ 1.6mm → Linear</span></li>
-          <li><span class="k">مرجع</span><span class="v">Sec. V Art. 6 T-676</span></li>
-          <li><span class="k">B31.3</span><span class="v">Para 344.4 + Table 341.3.2</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="acc-footer">
-      <div class="acc-title">⚠️ نکات حیاتی PT</div>
-      <div class="acc-chips">
-        <span class="chip chip-ref">دمای سطح: 10–52°C — Art. 6 T-641</span>
-        <span class="chip chip-ref">Dwell Time بحرانی: کمتر از 5 min → باطل</span>
-        <span class="chip chip-ref">Developer نباید زیاد باشد — نشانه را می‌پوشاند</span>
-        <span class="chip chip-ref">Post-Cleaning الزامی است برای SS — جلوگیری از Corrosion</span>
-        <span class="chip chip-ref">Halogen-free برای Ni-alloy و Ti — از کلرید پرهیز شود</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- COMPARISON TABLE -->
-  <h2 id="compare">مقایسه جامع روش‌های NDT</h2>
-  <p class="lead">مرجع: <strong>ASME Sec. V Art. 1 Table T-120</strong> + <strong>API RP 577 Sec. 5</strong></p>
-
-  <div class="table-wrapper">
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>معیار مقایسه</th>
-            <th style="color:#6366f1;">RT</th>
-            <th style="color:#06b6d4;">UT</th>
-            <th style="color:#f59e0b;">MT</th>
-            <th style="color:#ec4899;">PT</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="lbl">کد مرجع ASME</td><td><span class="ref-chip">Sec.V Art.2</span></td><td><span class="ref-chip">Sec.V Art.4</span></td><td><span class="ref-chip">Sec.V Art.7</span></td><td><span class="ref-chip">Sec.V Art.6</span></td></tr>
-          <tr><td class="lbl">عمق بررسی</td><td>کل ضخامت</td><td>کل ضخامت</td><td class="t-lim">0–3mm (DC)</td><td class="t-no">سطحی — 0mm</td></tr>
-          <tr><td class="lbl">Porosity داخلی</td><td class="t-best">عالی</td><td class="t-good">خوب</td><td class="t-no">✗</td><td class="t-no">✗</td></tr>
-          <tr><td class="lbl">Slag Inclusion</td><td class="t-best">عالی</td><td class="t-good">خوب</td><td class="t-no">✗</td><td class="t-no">✗</td></tr>
-          <tr><td class="lbl">LOF داخلی</td><td class="t-lim">ضعیف (جهت)</td><td class="t-best">عالی (TOFD)</td><td class="t-no">✗</td><td class="t-no">✗</td></tr>
-          <tr><td class="lbl">Crack سطحی</td><td class="t-lim">محدود</td><td class="t-lim">محدود</td><td class="t-best">عالی (فریتی)</td><td class="t-best">عالی (همه)</td></tr>
-          <tr><td class="lbl">Crack عمقی (HAZ)</td><td class="t-lim">محدود</td><td class="t-best">عالی</td><td class="t-good">زیرسطحی DC</td><td class="t-no">✗</td></tr>
-          <tr><td class="lbl">SS آستنیتی</td><td class="t-best">✓</td><td class="t-good">✓ (مشکل‌تر)</td><td class="t-no">✗ — نمی‌شود</td><td class="t-best">✓ — ارجح</td></tr>
-          <tr><td class="lbl">ایمنی (پرتو)</td><td class="t-no">نیاز Zone بندی</td><td class="t-best">بی‌خطر</td><td class="t-best">بی‌خطر</td><td class="t-best">بی‌خطر</td></tr>
-          <tr><td class="lbl">سرعت بازرسی</td><td class="t-lim">کند (film)</td><td class="t-good">متوسط</td><td class="t-best">سریع</td><td class="t-lim">کند (Dwell)</td></tr>
-          <tr><td class="lbl">اندازه‌گیری عیب</td><td class="t-lim">2D تصویر</td><td class="t-best">دقیق — 3D</td><td class="t-no">اندازه تقریبی</td><td class="t-no">اندازه سطح</td></tr>
-          <tr><td class="lbl">مدرک دائمی</td><td class="t-best">فیلم / DR</td><td class="t-good">A-Scan/B-Scan</td><td class="t-lim">عکس</td><td class="t-lim">عکس</td></tr>
-          <tr><td class="lbl">مرجع B31.3</td><td><span class="ref-chip">Para 344.5</span></td><td><span class="ref-chip">Para 344.6</span></td><td><span class="ref-chip">Para 344.3</span></td><td><span class="ref-chip">Para 344.4</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- NDT PERCENTAGE TABLE -->
-  <h2>درصد آزمایش NDT الزامی — ASME B31.3 Table 341.3.2</h2>
-  <p class="lead">
-    حجم NDT مورد نیاز به <strong>دسته سیال (Fluid Service Category)</strong> و <strong>نوع اتصال</strong> بستگی دارد. طبق <strong>B31.3 Para 341.3.2</strong>:
+  <p style="margin-top:8px;">
+    این دو مسیر کاملاً از هم مستقلند: <strong>هیچ NDT‌ای — حتی ۱۰۰٪ RT — نمی‌تواند جایگزین آزمایش‌های مخرب PQR شود</strong>، زیرا PQR خواص مکانیکی روش جوشکاری را اثبات می‌کند نه وجود عیب در یک اتصال خاص. به همین ترتیب، <strong>نتایج موفق PQR ضامن کیفیت جوش‌های میدانی نیست</strong> — این وظیفه NDT و بازرسی مداوم است.
   </p>
+</div>
 
-  <div class="table-wrapper">
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>دسته سرویس</th>
-            <th>توضیح</th>
-            <th>VT</th>
-            <th>RT یا UT</th>
-            <th>مرجع</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="lbl" style="color:#10b981;">Normal Fluid Service</td>
-            <td style="text-align:right;font-size:12px;">سرویس‌های معمولی — اکثر پروژه‌های پتروشیمی</td>
-            <td class="t-best">100%</td>
-            <td class="t-lim">5% (Random)</td>
-            <td><span class="ref-chip">Para 341.4.1</span></td>
-          </tr>
-          <tr>
-            <td class="lbl" style="color:#f59e0b;">Category D</td>
-            <td style="text-align:right;font-size:12px;">سیالات غیر خطرناک — آب، بخار کم‌فشار</td>
-            <td class="t-best">100%</td>
-            <td class="t-no">لزوماً الزامی نیست</td>
-            <td><span class="ref-chip">Para 341.4.1(d)</span></td>
-          </tr>
-          <tr>
-            <td class="lbl" style="color:#ef4444;">Category M</td>
-            <td style="text-align:right;font-size:12px;">سیالات بسیار خطرناک — Toxic, Lethal</td>
-            <td class="t-best">100%</td>
-            <td class="t-best">100%</td>
-            <td><span class="ref-chip">Para 341.4.1(b)</span></td>
-          </tr>
-          <tr>
-            <td class="lbl" style="color:#ec4899;">Severe Cyclic</td>
-            <td style="text-align:right;font-size:12px;">بیش از 7000 سیکل یا Stress Range بالا</td>
-            <td class="t-best">100%</td>
-            <td class="t-best">100%</td>
-            <td><span class="ref-chip">Para 341.4.1(c)</span></td>
-          </tr>
-          <tr>
-            <td class="lbl" style="color:#a855f7;">Enhanced (20%)</td>
-            <td style="text-align:right;font-size:12px;">Normal Service — اگر پروژه Enhanced الزام کند</td>
-            <td class="t-best">100%</td>
-            <td class="t-lim">20%</td>
-            <td><span class="ref-chip">Para 341.4.1(a)</span></td>
-          </tr>
-        </tbody>
-      </table>
+<!-- ══════════════════════════════════════════════════════
+     PART ONE: DESTRUCTIVE TESTS
+══════════════════════════════════════════════════════ -->
+<div id="dt-part" class="part-divider dt">
+  <div class="pd-icon">🔴</div>
+  <div class="pd-text">
+    <h3>بخش اول — آزمایش‌های مخرب (Destructive Tests)</h3>
+    <p>روی Test Coupon — برای تأیید WPS از طریق PQR — نه روی جوش‌های واقعی پروژه</p>
+  </div>
+  <div class="pd-badge">ASME Sec. IX<br>QW-140 to QW-199</div>
+</div>
+
+<!-- PQR REQUIREMENTS -->
+<div class="pqr-grid-wrap">
+  <div class="pqr-grid-hd">
+    <div class="pqr-grid-icon">📋</div>
+    <div>
+      <h3>الزامات آزمایش مخرب برای تکمیل PQR</h3>
+      <p>تعداد و نوع نمونه بر اساس ضخامت Test Coupon تعیین می‌شود — مرجع: <strong>ASME Sec. IX QW-140 + QW-451</strong></p>
+    </div>
+  </div>
+  <div class="pqr-grid">
+    <div class="pqr-item" style="--pi-c:#ef4444;">
+      <div class="pi-std">QW-151 + QW-451</div>
+      <div class="pi-name">Tensile Test</div>
+      <p>برای Groove Weld: ۲ نمونه برای <span class="num">t ≤ 25mm</span> و ۴ نمونه برای <span class="num">t &gt; 25mm</span></p>
+      <span class="pi-req">ASTM E8</span>
+    </div>
+    <div class="pqr-item" style="--pi-c:#f59e0b;">
+      <div class="pi-std">QW-160 + QW-451</div>
+      <div class="pi-name">Bend Test</div>
+      <p>برای <span class="num">t ≤ 25mm</span>: ۲ Face + ۲ Root. برای <span class="num">t &gt; 25mm</span>: ۴ Side Bend</p>
+      <span class="pi-req">QW-163 — معیار</span>
+    </div>
+    <div class="pqr-item" style="--pi-c:#a855f7;">
+      <div class="pi-std">QW-170 + Supp. Req.</div>
+      <div class="pi-name">Impact Test (Charpy)</div>
+      <p>الزامی فقط هنگامی که Supplementary Essential Variable پروژه یا متریال الزام کند</p>
+      <span class="pi-req">ASTM E23</span>
+    </div>
+    <div class="pqr-item" style="--pi-c:#06b6d4;">
+      <div class="pi-std">QW-462.5</div>
+      <div class="pi-name">Hardness Survey</div>
+      <p>برای Cr-Mo و سرویس Sour الزامی. <span class="num">HAZ ≤ 248 HV10</span> طبق NACE MR0175</p>
+      <span class="pi-req">ASTM E92 / E10</span>
+    </div>
+    <div class="pqr-item" style="--pi-c:#10b981;">
+      <div class="pi-std">QW-183 + QW-462.1</div>
+      <div class="pi-name">Macro Examination</div>
+      <p>برای Fillet Weld: ۲ نمونه — بررسی Fusion، Penetration و Profile جوش روی مقطع</p>
+      <span class="pi-req">ASTM E340 — Etch</span>
+    </div>
+    <div class="pqr-item" style="--pi-c:#6366f1;">
+      <div class="pi-std">QW-191</div>
+      <div class="pi-name">RT / UT روی Coupon</div>
+      <p>برای Welder Qualification (WQT): RT یا UT می‌تواند جایگزین ۲ Bend Test شود</p>
+      <span class="pi-req">QW-191.2 — معیار</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ DT-1: TENSILE ══════ -->
+<div class="sec-h dt" id="tensile"><div class="bar"></div> ① آزمون کشش — Tensile Test</div>
+
+<div class="test-card" style="--tc:#ef4444;">
+  <div class="tc-head">
+    <div class="tc-icon">💪</div>
+    <div class="tc-info">
+      <h3>آزمون کشش عرضی</h3>
+      <div class="tc-en">Reduced-Section Tensile Test — QW-150</div>
+      <div class="tc-sub">هدف: اثبات اینکه استحکام کششی جوش کمتر از حداقل مشخص‌شده برای فلز پایه نیست</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. IX QW-150</span>
+      <span class="tc-badge">QW-451 — تعداد نمونه</span>
+      <span class="tc-badge">ASTM E8 — روش</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">📐 ابعاد نمونه</div>
+      <ul class="slist">
+        <li><span class="k">نوع نمونه</span><span class="v">Reduced-Section</span></li>
+        <li><span class="k">عرض بخش باریک</span><span class="v">25mm (±0.2)</span></li>
+        <li><span class="k">ضخامت نمونه</span><span class="v">برابر t — بدون ماشین‌کاری</span></li>
+        <li><span class="k">Reinforcement</span><span class="v">Flush Grind الزامی</span></li>
+        <li><span class="k">تعداد (t ≤ 25mm)</span><span class="v">۲ نمونه — QW-451</span></li>
+        <li><span class="k">تعداد (t &gt; 25mm)</span><span class="v">۴ نمونه — QW-451</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔬 روش انجام</div>
+      <ul class="blist">
+        <li>نمونه در دمای <strong>اتاق (محیط)</strong> کشیده می‌شود</li>
+        <li>نیروی کشش تا <strong>شکست نهایی</strong> افزایش می‌یابد</li>
+        <li>محل شکست ثبت می‌شود: <strong>Weld / HAZ / BM</strong></li>
+        <li>UTS محاسبه: <strong>F ÷ A</strong> (نیرو / مساحت باریک)</li>
+        <li>شکست در ناحیه جوش قابل قبول است — <strong>اگر UTS کافی باشد</strong></li>
+        <li>گزارش: UTS، محل شکست، نوع شکست</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📊 حداقل UTS — QW-153</div>
+      <ul class="slist">
+        <li><span class="k">CS A106 Gr.B</span><span class="v">≥ 415 MPa</span></li>
+        <li><span class="k">CS A53 Gr.B</span><span class="v">≥ 414 MPa</span></li>
+        <li><span class="k">SS 304L</span><span class="v">≥ 485 MPa</span></li>
+        <li><span class="k">Duplex 2205</span><span class="v">≥ 620 MPa</span></li>
+        <li><span class="k">P91 Grade 91</span><span class="v">≥ 585 MPa</span></li>
+        <li><span class="k">مرجع حداقل UTS</span><span class="v">ASME Sec. II Part D</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-foot">
+    <div class="tf-title">✅ معیار قبول / رد — QW-153</div>
+    <div class="chips">
+      <span class="chip chip-ok">UTS ≥ Min Specified → PASS</span>
+      <span class="chip chip-no">UTS &lt; Min → FAIL — PQR باطل</span>
+      <span class="chip chip-cond">شکست در BM با UTS کمتر: تنها اگر ≥ 95% UTS min پایه مجاز</span>
+      <span class="chip chip-ref">QW-153 + Sec. II Part D Table U</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ DT-2: BEND ══════ -->
+<div class="sec-h dt" id="bend"><div class="bar"></div> ② آزمون خم — Bend Test</div>
+
+<div class="test-card" style="--tc:#f59e0b;">
+  <div class="tc-head">
+    <div class="tc-icon">🔄</div>
+    <div class="tc-info">
+      <h3>آزمون خم هدایت‌شده — Face / Root / Side</h3>
+      <div class="tc-en">Guided Bend Test — QW-160</div>
+      <div class="tc-sub">رایج‌ترین آزمون PQR — ارزیابی انعطاف‌پذیری و کیفیت ذوب در کل مقطع جوش</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. IX QW-160</span>
+      <span class="tc-badge">QW-462 — ابعاد</span>
+      <span class="tc-badge">QW-163 — معیار</span>
+      <span class="tc-badge">QW-466 — رادیوس</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">📐 انواع نمونه</div>
+      <ul class="slist">
+        <li><span class="k">Face Bend</span><span class="v">سطح جوش رو به خارج قوس</span></li>
+        <li><span class="k">Root Bend</span><span class="v">ریشه جوش رو به خارج</span></li>
+        <li><span class="k">Side Bend</span><span class="v">مقطع عرضی — برای t ≥ 10mm</span></li>
+        <li><span class="k">عرض Side Bend</span><span class="v">10mm × کل ضخامت t</span></li>
+        <li><span class="k">رادیوس قالب CS</span><span class="v">4t — QW-466</span></li>
+        <li><span class="k">رادیوس قالب SS</span><span class="v">6t — QW-466</span></li>
+        <li><span class="k">رادیوس قالب Duplex</span><span class="v">8t — QW-466</span></li>
+        <li><span class="k">زاویه خم</span><span class="v">180° — QW-160.1</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔬 روش انجام</div>
+      <ul class="blist">
+        <li>Reinforcement قبل از خم: <strong>Flush Grind</strong> الزامی</li>
+        <li>نمونه در <strong>Guided Bend Jig</strong> قرار می‌گیرد</li>
+        <li>خم تا <strong>180° یا حد قالب</strong> ادامه می‌یابد</li>
+        <li>سطح <strong>کشیده‌شده (Tension Side)</strong> بررسی می‌شود</li>
+        <li>برای <span class="num">t ≤ 10mm</span>: Face + Root ترکیبی</li>
+        <li>برای <span class="num">t &gt; 10mm</span>: Side Bend ترجیحی</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📊 معیار — QW-163</div>
+      <ul class="slist">
+        <li><span class="k">ترک / باز‌شدگی</span><span class="v">≤ 3mm در هر جهت</span></li>
+        <li><span class="k">ترک لبه از Notch</span><span class="v">≤ 6mm مجاز</span></li>
+        <li><span class="k">LOF روی سطح</span><span class="v">≤ 3mm — محاسبه می‌شود</span></li>
+        <li><span class="k">Porosity</span><span class="v">≤ 3mm هر حباب</span></li>
+        <li><span class="k">Crack کامل عرضی</span><span class="v">هر اندازه → FAIL</span></li>
+        <li><span class="k">مرجع</span><span class="v">QW-163 (a) و (b)</span></li>
+      </ul>
     </div>
   </div>
 
-  <div class="callout callout-warn">
-    <span class="callout-label">⚠️ نکته مهم — درصد Random 5% چگونه اعمال می‌شود؟</span>
-    <strong>B31.3 Para 341.4.2:</strong> وقتی درصد Random تعیین می‌شود، انتخاب اتصالات باید <strong>تصادفی و بدون پیش‌آگاهی جوشکار</strong> باشد. همچنین اگر یک اتصال رد شود، باید دو اتصال اضافه از همان جوشکار آزمایش شود. اگر هر دو قبول شدند → ادامه. اگر یکی رد شد → <strong>100% آزمایش تمام جوش‌های آن جوشکار</strong> الزامی می‌شود.
-  </div>
+  <!-- BEND DIAGRAM -->
+  <div style="padding:0 22px 18px;">
+    <div class="diagram-box">
+      <h4>📐 شماتیک سه نوع Bend Test و قالب Guided Bend Jig</h4>
+      <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;display:block;">
+        <defs>
+          <linearGradient id="gbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#131d30"/>
+            <stop offset="100%" stop-color="#0d1526"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
 
-  <!-- INSPECTOR CHECKLIST -->
-  <h2>چک‌لیست بازرس — کنترل آزمایش‌ها در پروژه</h2>
+        <!-- FACE BEND -->
+        <g transform="translate(18,10)">
+          <text x="90" y="14" text-anchor="middle" font-family="Inter" font-size="11.5" fill="#f59e0b" font-weight="800">FACE BEND</text>
+          <!-- die -->
+          <rect x="20" y="22" width="140" height="22" rx="5" fill="#192540" stroke="#2a3f60" stroke-width="1"/>
+          <!-- flat specimen layers -->
+          <rect x="32" y="35" width="116" height="5" rx="1.5" fill="#10b981" opacity=".85"/>
+          <rect x="32" y="40" width="116" height="4" rx="1.5" fill="#f59e0b" opacity=".8"/>
+          <rect x="32" y="44" width="116" height="4" rx="1.5" fill="#a855f7" opacity=".75"/>
+          <text x="90" y="62" text-anchor="middle" font-family="Vazirmatn" font-size="9.5" fill="#4a5a78">قبل از خم — Reinforcement Flush</text>
+          <!-- bent -->
+          <g transform="translate(0,74)">
+            <rect x="10" y="8" width="160" height="16" rx="5" fill="#192540" stroke="#2a3f60" stroke-width="1"/>
+            <path d="M28,24 Q90,62 152,24" stroke="#f59e0b" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#glow)"/>
+            <path d="M28,24 Q90,60 152,24" stroke="#fbbf24" stroke-width="4" fill="none" stroke-linecap="round" opacity=".4"/>
+            <!-- weld marker -->
+            <circle cx="90" cy="58" r="6" fill="#10b981" opacity=".9"/>
+            <text x="90" y="56.5" text-anchor="middle" font-family="Inter" font-size="7" fill="#fff" font-weight="800">W</text>
+            <text x="90" y="76" text-anchor="middle" font-family="Vazirmatn" font-size="9.5" fill="#7a8baa">بعد از 180° — سطح رو به بیرون</text>
+            <text x="90" y="89" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#4a5a78">r = 4t (CS) / 6t (SS)</text>
+          </g>
+        </g>
 
-  <div class="cl-box">
-    <div class="cl-header">
-      <div class="cl-icon">🔍</div>
-      <div>
-        <h3>چک‌لیست یکپارچه آزمایش‌های جوش</h3>
-        <p>مرجع: ASME B31.3 Para 341 | ASME Sec. V Art. 1 T-150 | API RP 577 Sec. 5</p>
-      </div>
+        <!-- SIDE BEND -->
+        <g transform="translate(240,10)">
+          <text x="90" y="14" text-anchor="middle" font-family="Inter" font-size="11.5" fill="#06b6d4" font-weight="800">SIDE BEND</text>
+          <rect x="20" y="22" width="140" height="22" rx="5" fill="#192540" stroke="#2a3f60" stroke-width="1"/>
+          <!-- cross-section showing passes -->
+          <rect x="34" y="27" width="112" height="5" rx="1.5" fill="#10b981" opacity=".85"/>
+          <rect x="34" y="32" width="112" height="5" rx="1.5" fill="#06b6d4" opacity=".8"/>
+          <rect x="34" y="37" width="112" height="5" rx="1.5" fill="#f59e0b" opacity=".75"/>
+          <text x="90" y="55" text-anchor="middle" font-family="Vazirmatn" font-size="9.5" fill="#4a5a78">مقطع عرضی — همه پاس‌ها در کشش</text>
+          <text x="90" y="66" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#4a5a78">10mm × t — برای t ≥ 10mm</text>
+          <g transform="translate(0,74)">
+            <rect x="10" y="8" width="160" height="16" rx="5" fill="#192540" stroke="#2a3f60" stroke-width="1"/>
+            <path d="M28,24 Q90,62 152,24" stroke="#06b6d4" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#glow)"/>
+            <path d="M28,24 Q90,60 152,24" stroke="#22d3ee" stroke-width="4" fill="none" stroke-linecap="round" opacity=".35"/>
+            <text x="90" y="76" text-anchor="middle" font-family="Vazirmatn" font-size="9.5" fill="#7a8baa">مقطع عرضی رو به بیرون</text>
+            <text x="90" y="89" text-anchor="middle" font-family="Vazirmatn" font-size="8.5" fill="#4a5a78">بهترین روش برای ضخامت‌های بالا</text>
+          </g>
+        </g>
+
+        <!-- ROOT BEND -->
+        <g transform="translate(462,10)">
+          <text x="90" y="14" text-anchor="middle" font-family="Inter" font-size="11.5" fill="#ef4444" font-weight="800">ROOT BEND</text>
+          <rect x="20" y="22" width="140" height="22" rx="5" fill="#192540" stroke="#2a3f60" stroke-width="1"/>
+          <rect x="32" y="35" width="116" height="4" rx="1.5" fill="#a855f7" opacity=".8"/>
+          <rect x="32" y="39" width="116" height="4" rx="1.5" fill="#f59e0b" opacity=".75"/>
+          <rect x="32" y="43" width="116" height="5" rx="1.5" fill="#ef4444" opacity=".85"/>
+          <text x="90" y="62" text-anchor="middle" font-family="Vazirmatn" font-size="9.5" fill="#4a5a78">ریشه رو به پایین — آماده برای خم</text>
+          <g transform="translate(0,74)">
+            <rect x="10" y="8" width="160" height="16" rx="5" fill="#192540" stroke="#2a3f60" stroke-width="1"/>
+            <path d="M28,24 Q90,62 152,24" stroke="#ef4444" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#glow)"/>
+            <path d="M28,24 Q90,60 152,24" stroke="#fca5a5" stroke-width="4" fill="none" stroke-linecap="round" opacity=".35"/>
+            <circle cx="90" cy="58" r="6" fill="#10b981" opacity=".9"/>
+            <text x="90" y="56.5" text-anchor="middle" font-family="Inter" font-size="7" fill="#fff" font-weight="800">R</text>
+            <text x="90" y="76" text-anchor="middle" font-family="Vazirmatn" font-size="9.5" fill="#7a8baa">ریشه رو به بیرون — کشش ریشه</text>
+            <text x="90" y="89" text-anchor="middle" font-family="Vazirmatn" font-size="8.5" fill="#4a5a78">بدترین شرایط برای نفوذ ناقص</text>
+          </g>
+        </g>
+
+        <!-- legend -->
+        <g transform="translate(18,196)">
+          <rect x="0" y="0" width="10" height="7" rx="2" fill="#10b981" opacity=".85"/>
+          <text x="14" y="7" font-family="Vazirmatn" font-size="9" fill="#4a5a78">Root Pass</text>
+          <rect x="70" y="0" width="10" height="7" rx="2" fill="#f59e0b" opacity=".8"/>
+          <text x="84" y="7" font-family="Vazirmatn" font-size="9" fill="#4a5a78">Fill Pass</text>
+          <rect x="130" y="0" width="10" height="7" rx="2" fill="#a855f7" opacity=".75"/>
+          <text x="144" y="7" font-family="Vazirmatn" font-size="9" fill="#4a5a78">Cap Pass</text>
+          <text x="200" y="7" font-family="Inter" font-size="9" fill="#4a5a78">W = Weld Center</text>
+          <text x="300" y="7" font-family="Inter" font-size="9" fill="#4a5a78">R = Root Center</text>
+        </g>
+      </svg>
+      <p class="diagram-caption">
+        رادیوس قالب (r): <span class="num">4t</span> برای CS (P-No.1) | <span class="num">6t</span> برای SS آستنیتی (P-No.8) | <span class="num">8t</span> برای Duplex (P-No.10H) — مرجع: <strong>ASME Sec. IX QW-466.1</strong>
+      </p>
     </div>
-    <div class="cl-grid">
-      <div class="cl-item">
-        <div class="cl-num">1</div>
-        <div><strong>Procedure تأیید‌شده:</strong> هر روش NDT باید Written + Approved Procedure داشته باشد قبل از شروع کار<span class="cl-ref">Sec. V Art. 1 T-150</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">2</div>
-        <div><strong>صلاحیت بازرس NDT:</strong> گواهی SNT-TC-1A Level II الزامی — تأیید بخش قبل از شروع<span class="cl-ref">Sec. V T-160 + ASNT SNT-TC-1A</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">3</div>
-        <div><strong>تجهیزات کالیبره:</strong> دستگاه UT، UV Light، Pyrometer، Densitometer — گواهی معتبر<span class="cl-ref">Sec. V Art. 4 T-431 + Art. 7 T-730</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">4</div>
-        <div><strong>VT اول:</strong> VT باید قبل از هر NDT دیگری انجام و گزارش شود — مستقل<span class="cl-ref">B31.3 Para 341.4.1 + Sec. V Art. 9</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">5</div>
-        <div><strong>IQI در RT:</strong> قبل از ارزیابی فیلم — IQI باید روی فیلم قابل رویت باشد<span class="cl-ref">Sec. V Art. 2 T-282</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">6</div>
-        <div><strong>Yoke Lift Test:</strong> هر روز قبل از MT — AC Yoke: ≥4.5 kg / DC: ≥13.6 kg<span class="cl-ref">Sec. V Art. 7 T-730.2</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">7</div>
-        <div><strong>Dwell Time PT:</strong> حداقل 5 min — بیشتر برای Crack ریز — ثبت در گزارش<span class="cl-ref">Sec. V Art. 6 T-672</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">8</div>
-        <div><strong>HIC Delay:</strong> برای CE&gt;0.41 و P-No.4/5A — MT/PT حداقل 48h پس از جوش<span class="cl-ref">API RP 577 Sec. 9.8</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">9</div>
-        <div><strong>Weld Map:</strong> هر اتصال روی نقشه شناسه‌گذاری شده و نتیجه RT/UT ثبت شود<span class="cl-ref">B31.3 Para 328.2.3 + ITP</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">10</div>
-        <div><strong>حجم Random:</strong> انتخاب تصادفی — جوشکار از قبل نباید بداند کدام اتصال آزمایش می‌شود<span class="cl-ref">B31.3 Para 341.4.2</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">11</div>
-        <div><strong>Film Archive:</strong> فیلم‌های RT حداقل 3 سال نگهداری شود — یا مدت پروژه<span class="cl-ref">B31.3 Para 346.2</span></div>
-      </div>
-      <div class="cl-item">
-        <div class="cl-num">12</div>
-        <div><strong>PQR vs NDT:</strong> NDT میدان نمی‌تواند جایگزین DT برای PQR شود — دو مسیر مستقل<span class="cl-ref">B31.3 Para 328.1 + Para 341.1</span></div>
-      </div>
+  </div>
+
+  <div class="tc-foot">
+    <div class="tf-title">✅ معیار قبول — QW-163 (a)(b)</div>
+    <div class="chips">
+      <span class="chip chip-ok">باز‌شدگی / ترک ≤ 3mm → PASS</span>
+      <span class="chip chip-no">Crack کامل هر اندازه → FAIL</span>
+      <span class="chip chip-cond">ترک لبه از Notch ≤ 6mm مجاز</span>
+      <span class="chip chip-ref">QW-163 + QW-466 (رادیوس قالب)</span>
     </div>
   </div>
+</div>
 
-  <div class="callout callout-danger">
-    <span class="callout-label">🚨 اشتباهات رایج در اجرای NDT — هشدار برای بازرس</span>
-    <strong>(1)</strong> ارزیابی فیلم RT در نور اتاق — Densitometer و Light Viewer الزامی است.<br>
-    <strong>(2)</strong> MT روی SS آستنیتی — غیرممکن است؛ از PT استفاده کنید.<br>
-    <strong>(3)</strong> PT بدون Pre-Cleaning کافی — نتیجه قابل اعتماد نیست.<br>
-    <strong>(4)</strong> UT بدون کالیبراسیون روزانه — DAC Curve باید هر شیفت تأیید شود.<br>
-    <strong>(5)</strong> گزارش "No Indication" بدون ذکر روش، Procedure و شماره اتصال — گزارش ناقص است.<br>
-    <strong>(6)</strong> پذیرش نتیجه NDT از شرکتی که Written Procedure معتبر ندارد — طبق Art. 1 T-150 ممنوع است.
+<!-- ══════ DT-3: IMPACT ══════ -->
+<div class="sec-h dt" id="impact"><div class="bar"></div> ③ آزمون ضربه — Charpy Impact Test</div>
+
+<div class="test-card" style="--tc:#a855f7;">
+  <div class="tc-head">
+    <div class="tc-icon">⚡</div>
+    <div class="tc-info">
+      <h3>آزمون ضربه شارپی</h3>
+      <div class="tc-en">Charpy V-Notch Impact Test — QW-170</div>
+      <div class="tc-sub">ارزیابی انرژی جذب‌شده در دمای سرویس — الزامی برای Cryogenic، Low-Temp و Supplementary Essential Variables</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. IX QW-170</span>
+      <span class="tc-badge">QW-171.1 — معیار</span>
+      <span class="tc-badge">ASTM E23 — روش</span>
+    </div>
   </div>
-
-  <div class="nav-footer">
-    <a href="../04-defects/" class="nav-btn nav-prev">→ فصل ۴: عیوب جوشکاری</a>
-    <a href="../06-inspection/" class="nav-btn nav-next">فصل ۶: بازرسی فنی جوش — ITP و NCR ←</a>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">📐 مشخصات نمونه</div>
+      <ul class="slist">
+        <li><span class="k">ابعاد استاندارد</span><span class="v">10 × 10 × 55mm</span></li>
+        <li><span class="k">Sub-size (7.5mm)</span><span class="v">ضریب تبدیل QW-171.1</span></li>
+        <li><span class="k">نوع شیار</span><span class="v">V-Notch — 45° / عمق 2mm</span></li>
+        <li><span class="k">موقعیت Notch</span><span class="v">Weld Center یا روی FL</span></li>
+        <li><span class="k">تعداد هر موقعیت</span><span class="v">۳ نمونه — QW-171</span></li>
+        <li><span class="k">دمای آزمون</span><span class="v">MDMT سرویس یا پایین‌تر</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔬 روش انجام</div>
+      <ul class="blist">
+        <li>نمونه تا <strong>دمای آزمون</strong> سرد یا گرم می‌شود</li>
+        <li>پاندول از ارتفاع مشخص رها می‌شود و نمونه را می‌شکند</li>
+        <li><strong>انرژی جذب‌شده (Joule)</strong> اندازه‌گیری می‌شود</li>
+        <li><strong>Lateral Expansion</strong> و <strong>% Shear Fracture</strong> گزارش می‌شوند</li>
+        <li>هر ۳ نمونه باید <strong>جداگانه</strong> شرط را برآورده کنند</li>
+        <li>دمای نمونه تا انتقال به دستگاه کنترل شود (&lt;10 ثانیه)</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📊 معیار — QW-171.1</div>
+      <ul class="slist">
+        <li><span class="k">CS @ -29°C</span><span class="v">≥ 27 J (20 ft-lb)</span></li>
+        <li><span class="k">SS Cryogenic</span><span class="v">≥ 27 J @ MDMT</span></li>
+        <li><span class="k">میانگین ۳ نمونه</span><span class="v">≥ حداقل مشخص‌شده</span></li>
+        <li><span class="k">هر نمونه منفرد</span><span class="v">≥ 2/3 × حداقل</span></li>
+        <li><span class="k">MDMT مرجع B31.3</span><span class="v">Para 323.2.2</span></li>
+        <li><span class="k">Sub-size تبدیل</span><span class="v">Table QW-171.1</span></li>
+      </ul>
+    </div>
   </div>
+  <div class="tc-foot">
+    <div class="tf-title">✅ معیار — QW-171.1 + B31.3 Para 323.2</div>
+    <div class="chips">
+      <span class="chip chip-ok">میانگین ≥ 27J AND هر نمونه ≥ 18J → PASS</span>
+      <span class="chip chip-no">یک نمونه &lt; 2/3 Min → FAIL (تکرار با ۶ نمونه)</span>
+      <span class="chip chip-ref">QW-171.1 + ASTM E23 + Sec. II Part D</span>
+    </div>
+  </div>
+</div>
 
+<!-- ══════ DT-4: HARDNESS ══════ -->
+<div class="sec-h dt" id="hardness"><div class="bar"></div> ④ آزمون سختی — Hardness Survey</div>
+
+<div class="test-card" style="--tc:#06b6d4;">
+  <div class="tc-head">
+    <div class="tc-icon">💎</div>
+    <div class="tc-info">
+      <h3>بررسی سختی جوش و HAZ</h3>
+      <div class="tc-en">Hardness Survey — Vickers HV10 / Brinell BHN</div>
+      <div class="tc-sub">الزامی برای سرویس Sour (H₂S)، متریال Cr-Mo، و پس از PWHT — کنترل تشکیل Martensite در HAZ</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. IX QW-462.5</span>
+      <span class="tc-badge">NACE MR0175 / ISO 15156</span>
+      <span class="tc-badge">ASTM E92 / E10</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">📐 نقاط اندازه‌گیری</div>
+      <ul class="slist">
+        <li><span class="k">Weld Metal (WM)</span><span class="v">مرکز فلز جوش</span></li>
+        <li><span class="k">HAZ — Side 1</span><span class="v">1mm از خط ذوب (FL)</span></li>
+        <li><span class="k">HAZ — Side 2</span><span class="v">1mm از FL — طرف دیگر</span></li>
+        <li><span class="k">Base Metal (BM)</span><span class="v">خارج از HAZ</span></li>
+        <li><span class="k">روش معمول</span><span class="v">Vickers HV10</span></li>
+        <li><span class="k">فاصله بین ضربه‌ها</span><span class="v">≥ 3× قطر هر ضربه</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🎯 کاربردهای الزامی</div>
+      <ul class="blist">
+        <li>سرویس <strong>Sour (H₂S)</strong> — NACE MR0175 الزامی</li>
+        <li>متریال <strong>Cr-Mo (P-No.4, 5A, 5B)</strong> بعد از PWHT</li>
+        <li><strong>Duplex SS</strong> — بررسی تشکیل Sigma Phase</li>
+        <li>Overlay Cladding — کنترل Dilution</li>
+        <li>پس از <strong>Repair Weld</strong> در Sour Service</li>
+        <li>میدان: <strong>Portable Hardness Tester</strong> (Equotip)</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📊 حداکثر مجاز</div>
+      <ul class="slist">
+        <li><span class="k">CS — Sour Service</span><span class="v">≤ 248 HV10</span></li>
+        <li><span class="k">معادل Rockwell</span><span class="v">≤ 22 HRC</span></li>
+        <li><span class="k">CS — Sour (BHN)</span><span class="v">≤ 237 BHN</span></li>
+        <li><span class="k">Cr-Mo P91 پس از PWHT</span><span class="v">200–270 BHN</span></li>
+        <li><span class="k">Duplex 2205</span><span class="v">≤ 310 HV — ISO 15156</span></li>
+        <li><span class="k">مرجع</span><span class="v">NACE MR0175 / ISO 15156-2</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-foot">
+    <div class="tf-title">✅ معیار Sour Service — NACE MR0175 / ISO 15156-1 Sec. 7</div>
+    <div class="chips">
+      <span class="chip chip-ok">HAZ CS ≤ 248 HV10 (22 HRC) → PASS</span>
+      <span class="chip chip-no">هر نقطه &gt; 248 HV → FAIL — PWHT مجدد یا reject</span>
+      <span class="chip chip-ref">NACE MR0175 / ISO 15156-2 Table B.1</span>
+      <span class="chip chip-ref">QW-462.5 — نقاط اندازه‌گیری روی PQR</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ DT-5: MACRO ══════ -->
+<div class="sec-h dt" id="macro"><div class="bar"></div> ⑤ بررسی ماکروسکوپی — Macro Examination</div>
+
+<div class="test-card" style="--tc:#10b981;">
+  <div class="tc-head">
+    <div class="tc-icon">🔬</div>
+    <div class="tc-info">
+      <h3>بررسی مقطع عرضی جوش</h3>
+      <div class="tc-en">Macro Examination — Cross-Section — QW-183</div>
+      <div class="tc-sub">ارزیابی بصری مقطع اچ‌شده جوش برای تأیید Fusion، Penetration، Profile و عیوب قابل رویت در ماکرو</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. IX QW-183</span>
+      <span class="tc-badge">QW-462.1 — Fillet</span>
+      <span class="tc-badge">ASTM E340 — روش</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">📐 آماده‌سازی نمونه</div>
+      <ul class="slist">
+        <li><span class="k">برش</span><span class="v">Abrasive Saw — عمود بر جوش</span></li>
+        <li><span class="k">پرداخت</span><span class="v">Sand Paper: P120 → P600</span></li>
+        <li><span class="k">اچ CS — Nital</span><span class="v">2–4% HNO₃ در اتانول</span></li>
+        <li><span class="k">اچ SS — Vilella's</span><span class="v">1g Picric + 5ml HCl</span></li>
+        <li><span class="k">مدت اچ</span><span class="v">10–60 ثانیه — بسته به متریال</span></li>
+        <li><span class="k">تعداد — QW-183</span><span class="v">حداقل ۲ نمونه</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔍 موارد بررسی</div>
+      <ul class="blist">
+        <li><strong>Fusion Line:</strong> ذوب کامل دیواره‌های Groove</li>
+        <li><strong>Root Penetration:</strong> نفوذ کامل ریشه</li>
+        <li><strong>Weld Profile:</strong> شکل هر پاس — محدب / مقعر</li>
+        <li><strong>HAZ Width:</strong> عرض ناحیه متأثر از حرارت</li>
+        <li><strong>Crack / LOF / Slag:</strong> عیوب ماکرو</li>
+        <li><strong>تعداد پاس‌ها:</strong> انطباق با WPS الزامی</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📊 معیار — QW-183</div>
+      <ul class="slist">
+        <li><span class="k">Crack</span><span class="v">صفر — هر اندازه</span></li>
+        <li><span class="k">Incomplete Fusion</span><span class="v">صفر</span></li>
+        <li><span class="k">Incomplete Penetration</span><span class="v">صفر</span></li>
+        <li><span class="k">Fillet: Leg Size</span><span class="v">≥ اندازه مشخص WPS</span></li>
+        <li><span class="k">Fillet: Concavity</span><span class="v">≤ 1.5mm — QW-184</span></li>
+        <li><span class="k">گزارش</span><span class="v">عکس رنگی از مقطع اچ</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-foot">
+    <div class="tf-title">✅ معیار — QW-183 + QW-184 (Fillet)</div>
+    <div class="chips">
+      <span class="chip chip-ok">Fusion کامل + بدون Crack → PASS</span>
+      <span class="chip chip-no">هر LOF یا Crack → FAIL</span>
+      <span class="chip chip-cond">Fillet Leg: ≥ t مشخص‌شده در WPS</span>
+      <span class="chip chip-ref">QW-183 + QW-184 + QW-462.1(b)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART TWO: NDT
+══════════════════════════════════════════════════════ -->
+<div id="ndt-part" class="part-divider ndt">
+  <div class="pd-icon">🔵</div>
+  <div class="pd-text">
+    <h3>بخش دوم — آزمایش‌های غیرمخرب (NDT) — بازرسی میدانی</h3>
+    <p>روی جوش‌های واقعی پروژه — بدون آسیب به اتصال — یافتن عیب در میدان</p>
+  </div>
+  <div class="pd-badge">ASME Sec. V<br>Art. 1, 2, 4, 6, 7, 9</div>
+</div>
+
+<!-- NDT PROCEDURE BOX -->
+<div class="ndt-proc-wrap">
+  <div class="ndt-proc-hd">
+    <div class="ndt-proc-icon">📋</div>
+    <div>
+      <h3>الزام Written Procedure برای هر روش NDT</h3>
+      <p>طبق <strong>ASME Sec. V Art. 1 T-150</strong>: هر روش NDT باید پیش از اجرا، Procedure کتبی تأیید‌شده داشته باشد</p>
+    </div>
+  </div>
+  <div class="ndt-proc-grid">
+    <div class="ndt-proc-item">
+      <div class="npi-art">Sec. V Art. 2 — T-271</div>
+      <div class="npi-name">RT — Radiographic</div>
+      <p>Procedure شامل: Source type, kV, IQI type/location, SFD, Film type (D4/D5), Density range (2.0–4.0), Single/Double Wall Technique</p>
+    </div>
+    <div class="ndt-proc-item">
+      <div class="npi-art">Sec. V Art. 4 — T-421</div>
+      <div class="npi-name">UT — Ultrasonic</div>
+      <p>Procedure شامل: Frequency, Transducer size/angle, Cal. block (IIW/V1), DAC Curve, Scan coverage (100%), Recording Level</p>
+    </div>
+    <div class="ndt-proc-item">
+      <div class="npi-art">Sec. V Art. 7 — T-721</div>
+      <div class="npi-name">MT — Magnetic Particle</div>
+      <p>Procedure شامل: AC/DC type, Yoke lift test (≥4.5 kg AC), Particle type (Dry/Wet), UV intensity ≥1000 µW/cm², Overlap ≥10%</p>
+    </div>
+    <div class="ndt-proc-item">
+      <div class="npi-art">Sec. V Art. 6 — T-621</div>
+      <div class="npi-name">PT — Liquid Penetrant</div>
+      <p>Procedure شامل: Penetrant type (I/II/III), Developer type (a–d), Dwell time (≥5 min), Temperature range (10–52°C), Removal method</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ NDT-1: RT ══════ -->
+<div class="sec-h ndt" id="rt"><div class="bar"></div> ① رادیوگرافی — Radiographic Testing (RT)</div>
+
+<div class="test-card" style="--tc:#6366f1;">
+  <div class="tc-head">
+    <div class="tc-icon">☢️</div>
+    <div class="tc-info">
+      <h3>آزمون رادیوگرافی</h3>
+      <div class="tc-en">RT — Film / Digital Radiography (DR) / Computed Radiography (CR)</div>
+      <div class="tc-sub">بهترین برای Porosity، Slag Inclusion و Incomplete Penetration — محدودیت در LOF موازی با پرتو و Crack باریک</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. V Art. 2</span>
+      <span class="tc-badge">B31.3 Para 344.5</span>
+      <span class="tc-badge">QW-191 — PQR</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">⚙️ پارامترهای کلیدی</div>
+      <ul class="slist">
+        <li><span class="k">X-Ray (kV)</span><span class="v">150–320 kV</span></li>
+        <li><span class="k">Ir-192 (ضخامت)</span><span class="v">10–70mm CS</span></li>
+        <li><span class="k">Se-75 (ضخامت)</span><span class="v">10–40mm CS</span></li>
+        <li><span class="k">SFD (فاصله Source-Film)</span><span class="v">≥ 700mm برای SWSI</span></li>
+        <li><span class="k">دانسیته فیلم</span><span class="v">2.0–4.0 — T-261</span></li>
+        <li><span class="k">حساسیت IQI</span><span class="v">2% — T-282 الزامی</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔬 تکنیک‌های اصلی</div>
+      <ul class="blist">
+        <li><strong>SWSI:</strong> Single Wall Single Image — لوله NPS ≥ 3.5"</li>
+        <li><strong>DWSI (Panoramic):</strong> منبع داخل — فیلم خارج</li>
+        <li><strong>DWDI (Elliptical):</strong> لوله کوچک NPS &lt; 3.5"</li>
+        <li><strong>IQI Wire Type:</strong> ترجیح ASME — T-276</li>
+        <li><strong>IQI Plaque Type:</strong> مجاز — T-277</li>
+        <li>IQI روی <strong>Source Side</strong> ترجیح دارد</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📋 معیار — QW-191.2 + B31.3</div>
+      <ul class="slist">
+        <li><span class="k">Crack</span><span class="v">صفر — هر اندازه</span></li>
+        <li><span class="k">IP / IF</span><span class="v">صفر (Normal محدود)</span></li>
+        <li><span class="k">Linear Slag</span><span class="v">≤ t/3 یا 6mm</span></li>
+        <li><span class="k">Scattered Porosity</span><span class="v">≤ t×65mm² / 150mm</span></li>
+        <li><span class="k">Burn-Through</span><span class="v">صفر</span></li>
+        <li><span class="k">مرجع</span><span class="v">QW-191.2 + Table 341.3.2</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-foot">
+    <div class="tf-title">⚠️ محدودیت‌های مهم RT — Sec. V Art. 2 T-285</div>
+    <div class="chips">
+      <span class="chip chip-ref">LOF موازی پرتو: ضعیف — UT TOFD ارجح</span>
+      <span class="chip chip-ref">Crack باریک موازی: ممکن است Miss شود</span>
+      <span class="chip chip-ref">IQI نباشد روی فیلم: فیلم باطل است — T-282</span>
+      <span class="chip chip-ref">Density &lt;2 یا &gt;4: ارزیابی مجدد — T-261</span>
+      <span class="chip chip-ref">Film Archive: حداقل ۳ سال — B31.3 Para 346.2</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ NDT-2: UT ══════ -->
+<div class="sec-h ndt" id="ut"><div class="bar"></div> ② اولتراسونیک — Ultrasonic Testing (UT)</div>
+
+<div class="test-card" style="--tc:#06b6d4;">
+  <div class="tc-head">
+    <div class="tc-icon">🔊</div>
+    <div class="tc-info">
+      <h3>آزمون اولتراسونیک</h3>
+      <div class="tc-en">UT — Pulse-Echo / TOFD / Phased Array (PAUT)</div>
+      <div class="tc-sub">بهترین روش برای LOF، Crack عمقی و اندازه‌گیری دقیق ابعاد عیب — جایگزین RT برای عیوب مسطح</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. V Art. 4</span>
+      <span class="tc-badge">B31.3 Para 344.6</span>
+      <span class="tc-badge">TOFD — Appx. III</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">⚙️ پارامترهای اصلی</div>
+      <ul class="slist">
+        <li><span class="k">فرکانس معمول</span><span class="v">2–10 MHz</span></li>
+        <li><span class="k">زاویه Shear Wave</span><span class="v">45° / 60° / 70°</span></li>
+        <li><span class="k">بلوک کالیبراسیون</span><span class="v">IIW (V1) یا V2 Block</span></li>
+        <li><span class="k">DAC Curve</span><span class="v">از SDH (Side-Drilled Holes)</span></li>
+        <li><span class="k">پوشش اسکن</span><span class="v">100% Volume — T-452</span></li>
+        <li><span class="k">Recording Level</span><span class="v">≥ 20% Full Screen Height</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔬 روش‌های پیشرفته</div>
+      <ul class="blist">
+        <li><strong>Pulse-Echo:</strong> روش استاندارد — Art. 4</li>
+        <li><strong>TOFD:</strong> Time-of-Flight Diffraction — دقیق‌ترین برای اندازه عیب — Appx. III</li>
+        <li><strong>PAUT:</strong> Phased Array — S-Scan و پوشش کامل</li>
+        <li><strong>Straight Beam (0°):</strong> Lamination و ضخامت</li>
+        <li><strong>Angle Beam:</strong> عیوب عمقی جوش</li>
+        <li>TOFD جایگزین رسمی RT در <strong>ASME Sec. VIII Div.1 App.12</strong></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📊 معیار — Art. 4 T-460</div>
+      <ul class="slist">
+        <li><span class="k">نشانه &gt; 100% DAC</span><span class="v">ارزیابی الزامی</span></li>
+        <li><span class="k">Crack (هر نشانه)</span><span class="v">صفر — reject فوری</span></li>
+        <li><span class="k">LOF &gt; DAC</span><span class="v">reject</span></li>
+        <li><span class="k">Porosity &gt; 20% DAC</span><span class="v">ثبت و ارزیابی</span></li>
+        <li><span class="k">کالیبراسیون</span><span class="v">هر شیفت یا ≤ 4h</span></li>
+        <li><span class="k">B31.3 معیار</span><span class="v">Para 344.6 + Table 341.3.2</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-foot">
+    <div class="tf-title">✅ مزیت‌های UT نسبت به RT</div>
+    <div class="chips">
+      <span class="chip chip-ok">LOF و Crack: بسیار بهتر از RT</span>
+      <span class="chip chip-ok">اندازه‌گیری عمق عیب دقیق — TOFD</span>
+      <span class="chip chip-ok">بدون پرتوافکنی — ایمن در کارگاه</span>
+      <span class="chip chip-ref">Porosity: RT هنوز بهتر است</span>
+      <span class="chip chip-ref">سطح صاف برای اسکن الزامی</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ NDT-3: MT ══════ -->
+<div class="sec-h ndt" id="mt"><div class="bar"></div> ③ ذرات مغناطیسی — Magnetic Particle Testing (MT)</div>
+
+<div class="test-card" style="--tc:#f59e0b;">
+  <div class="tc-head">
+    <div class="tc-icon">🧲</div>
+    <div class="tc-info">
+      <h3>آزمون ذرات مغناطیسی</h3>
+      <div class="tc-en">MT — Yoke / Prod / Coil — AC / DC</div>
+      <div class="tc-sub">حساس‌ترین روش برای Crack سطحی و زیرسطحی (تا 3mm) در فولادهای فریتی و مارتنزیتی</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. V Art. 7</span>
+      <span class="tc-badge">B31.3 Para 344.3</span>
+      <span class="tc-badge">ASTM E709</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">⚙️ الزامات اصلی — Art. 7</div>
+      <ul class="slist">
+        <li><span class="k">Yoke Lift Test (AC)</span><span class="v">≥ 4.5 kg — T-730.2</span></li>
+        <li><span class="k">Yoke Lift Test (DC)</span><span class="v">≥ 13.6 kg — T-730.2</span></li>
+        <li><span class="k">UV Light شدت</span><span class="v">≥ 1000 µW/cm² @ 380nm</span></li>
+        <li><span class="k">White Light حین Fluor.</span><span class="v">≤ 21 Lux (2 fc)</span></li>
+        <li><span class="k">دو جهت اسکن</span><span class="v">90° نسبت به هم — T-754</span></li>
+        <li><span class="k">Overlap بین اسکن</span><span class="v">≥ 10% — T-752</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔬 انواع روش</div>
+      <ul class="blist">
+        <li><strong>AC Yoke:</strong> فقط سطحی — حساس‌ترین برای سطح</li>
+        <li><strong>DC Yoke:</strong> تا <strong>3mm زیرسطحی</strong></li>
+        <li><strong>Wet Fluorescent:</strong> حساس‌ترین — UV Light</li>
+        <li><strong>Dry Visible:</strong> محیط / دمای بالا</li>
+        <li>فقط فولادهای <strong>فریتی/مارتنزیتی</strong> — نه SS آستنیتی</li>
+        <li>برای HIC: حداقل <strong>48h</strong> پس از جوش صبر کنید</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📋 معیار — Art. 7 T-760</div>
+      <ul class="slist">
+        <li><span class="k">Relevant Indication</span><span class="v">هر نشانه &gt; 1.6mm</span></li>
+        <li><span class="k">Linear Indication</span><span class="v">هر طول → reject</span></li>
+        <li><span class="k">Rounded Indication</span><span class="v">≤ 5mm — Normal Svc</span></li>
+        <li><span class="k">چهار در خط (فاصله ≤ 1.6mm)</span><span class="v">→ Linear = reject</span></li>
+        <li><span class="k">Demagnetization</span><span class="v">الزامی پس از MT — T-790</span></li>
+        <li><span class="k">مرجع B31.3</span><span class="v">Para 344.3 + Table 341.3.2</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-foot">
+    <div class="tf-title">⚠️ محدودیت‌های MT</div>
+    <div class="chips">
+      <span class="chip chip-ref">فقط فولاد فریتی — SS آستنیتی: PT استفاده شود</span>
+      <span class="chip chip-ref">عمق ≤ 3mm (DC) — عمیق‌تر: UT</span>
+      <span class="chip chip-ref">رنگ/پوشش: ≤ 0.5mm یا باید برداشته شود</span>
+      <span class="chip chip-ref">Demagnetization پس از کار الزامی — T-790</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ NDT-4: PT ══════ -->
+<div class="sec-h ndt" id="pt"><div class="bar"></div> ④ مایع نافذ — Liquid Penetrant Testing (PT)</div>
+
+<div class="test-card" style="--tc:#ec4899;">
+  <div class="tc-head">
+    <div class="tc-icon">🔴</div>
+    <div class="tc-info">
+      <h3>آزمون مایع نافذ</h3>
+      <div class="tc-en">PT — Visible (Type II) / Fluorescent (Type I) — Method C (Solvent Removable)</div>
+      <div class="tc-sub">تنها گزینه معتبر برای بررسی سطحی SS آستنیتی، Duplex، Inconel، Titanium — سریع و بدون نیاز به تجهیزات سنگین</div>
+    </div>
+    <div class="tc-badges">
+      <span class="tc-badge">ASME Sec. V Art. 6</span>
+      <span class="tc-badge">B31.3 Para 344.4</span>
+      <span class="tc-badge">ASTM E165</span>
+    </div>
+  </div>
+  <div class="tc-body">
+    <div class="tc-col">
+      <div class="tc-col-h">⚙️ مراحل اجرا — T-640</div>
+      <ul class="slist">
+        <li><span class="k">① Pre-Cleaning</span><span class="v">حذف آلودگی / Solvent</span></li>
+        <li><span class="k">② Penetrant — Dwell</span><span class="v">≥ 10 min (Crack ریز: 30min)</span></li>
+        <li><span class="k">③ Excess Removal</span><span class="v">Solvent Wipe — نه شستن با آب</span></li>
+        <li><span class="k">④ Developer</span><span class="v">Non-Aqueous Spray — نازک</span></li>
+        <li><span class="k">⑤ Development Time</span><span class="v">7–60 min — T-675</span></li>
+        <li><span class="k">⑥ ارزیابی نشانه</span><span class="v">در 7–60 min پس از Developer</span></li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">🔬 انواع سیستم PT</div>
+      <ul class="blist">
+        <li><strong>Type I Fluorescent:</strong> حساس‌ترین — UV Light الزامی</li>
+        <li><strong>Type II Visible (Color Contrast):</strong> رایج‌ترین در میدان</li>
+        <li><strong>Method C (Solvent Removable):</strong> ترجیح برای میدان</li>
+        <li><strong>Method A (Water Washable):</strong> سریع ولی کم‌حساس‌تر</li>
+        <li>برای SS، Ni-alloy، Ti: <strong>Halogen-Free و Low-Sulfur</strong></li>
+        <li>Post-Cleaning: <strong>الزامی</strong> برای جلوگیری از Corrosion</li>
+      </ul>
+    </div>
+    <div class="tc-col">
+      <div class="tc-col-h">📋 معیار — Art. 6 T-676</div>
+      <ul class="slist">
+        <li><span class="k">Relevant Indication</span><span class="v">نشانه &gt; 1.6mm</span></li>
+        <li><span class="k">Linear (طول &gt; 3× عرض)</span><span class="v">هر طول → reject</span></li>
+        <li><span class="k">Rounded Indication</span><span class="v">≤ 5mm — Normal Service</span></li>
+        <li><span class="k">چهار در خط (≤ 1.6mm)</span><span class="v">→ Linear = reject</span></li>
+        <li><span class="k">دمای سطح</span><span class="v">10–52°C — T-641</span></li>
+        <li><span class="k">مرجع B31.3</span><span class="v">Para 344.4 + Table 341.3.2</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="tc-foot">
+    <div class="tf-title">⚠️ نکات حیاتی اجرای PT</div>
+    <div class="chips">
+      <span class="chip chip-ref">Dwell Time &lt; 5 min → نتیجه باطل است</span>
+      <span class="chip chip-ref">Developer زیاد: نشانه را می‌پوشاند</span>
+      <span class="chip chip-ref">Halogen-Free برای SS و Ni-alloy الزامی</span>
+      <span class="chip chip-ref">Post-Cleaning برای SS — از Corrosion جلوگیری کنید</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ COMPARISON TABLE ══════ -->
+<div class="sec-h mixed" id="compare"><div class="bar"></div> مقایسه جامع چهار روش NDT</div>
+<p class="lead" style="color:var(--muted);">مرجع: <strong>ASME Sec. V Art. 1 Table T-120</strong> + <strong>API RP 577 Sec. 5</strong></p>
+
+<div class="table-wrap">
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>معیار</th>
+          <th style="color:#6366f1;">RT</th>
+          <th style="color:#06b6d4;">UT</th>
+          <th style="color:#f59e0b;">MT</th>
+          <th style="color:#ec4899;">PT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lbl">کد ASME</td><td><span class="t-ref">Art. 2</span></td><td><span class="t-ref">Art. 4</span></td><td><span class="t-ref">Art. 7</span></td><td><span class="t-ref">Art. 6</span></td></tr>
+        <tr><td class="lbl">عمق بررسی</td><td>کل ضخامت</td><td>کل ضخامت</td><td class="t-lim">0–3mm (DC)</td><td class="t-no">سطحی فقط</td></tr>
+        <tr><td class="lbl">Porosity داخلی</td><td class="t-best">عالی ✓</td><td class="t-good">خوب</td><td class="t-no">✗</td><td class="t-no">✗</td></tr>
+        <tr><td class="lbl">Slag Inclusion</td><td class="t-best">عالی ✓</td><td class="t-good">خوب</td><td class="t-no">✗</td><td class="t-no">✗</td></tr>
+        <tr><td class="lbl">LOF داخلی</td><td class="t-lim">ضعیف (جهت)</td><td class="t-best">عالی — TOFD</td><td class="t-no">✗</td><td class="t-no">✗</td></tr>
+        <tr><td class="lbl">Crack سطحی</td><td class="t-lim">محدود</td><td class="t-lim">محدود</td><td class="t-best">عالی (فریتی)</td><td class="t-best">عالی (همه)</td></tr>
+        <tr><td class="lbl">Crack HAZ عمقی</td><td class="t-lim">محدود</td><td class="t-best">عالی ✓</td><td class="t-good">DC — زیرسطح</td><td class="t-no">✗</td></tr>
+        <tr><td class="lbl">SS آستنیتی</td><td class="t-best">✓</td><td class="t-good">✓ (مشکل‌تر)</td><td class="t-no">✗ ممنوع</td><td class="t-best">✓ — ارجح</td></tr>
+        <tr><td class="lbl">ایمنی پرتو</td><td class="t-no">Zone بندی الزامی</td><td class="t-best">بی‌خطر</td><td class="t-best">بی‌خطر</td><td class="t-best">بی‌خطر</td></tr>
+        <tr><td class="lbl">سرعت بازرسی</td><td class="t-lim">کند</td><td class="t-good">متوسط</td><td class="t-best">سریع</td><td class="t-lim">کند (Dwell)</td></tr>
+        <tr><td class="lbl">مدرک دائمی</td><td class="t-best">فیلم / DR</td><td class="t-good">A-Scan / TOFD</td><td class="t-lim">عکس</td><td class="t-lim">عکس</td></tr>
+        <tr><td class="lbl">مرجع B31.3</td><td><span class="t-ref">Para 344.5</span></td><td><span class="t-ref">Para 344.6</span></td><td><span class="t-ref">Para 344.3</span></td><td><span class="t-ref">Para 344.4</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════ NDT PERCENTAGE ══════ -->
+<div class="sec-h mixed" id="pct"><div class="bar"></div> درصد NDT الزامی بر اساس دسته سیال — B31.3 Para 341.3.2</div>
+<p class="lead" style="color:var(--muted);">
+  حجم NDT به <strong>دسته سرویس</strong> بستگی دارد. پروژه می‌تواند درصد بالاتر الزام کند اما نمی‌تواند کمتر از حداقل کد باشد.
+</p>
+
+<div class="pct-grid">
+  <div class="pct-card" style="--pc-c:#10b981;">
+    <div class="pct-cat">NORMAL FLUID SERVICE</div>
+    <div class="pct-name">سرویس معمولی</div>
+    <div class="pct-vt">VT: <span class="pct-val">100%</span></div>
+    <div class="pct-ndt">RT / UT: <span class="pct-val">5%</span><span class="pct-unit">(Random)</span></div>
+    <p class="pct-desc">اکثر پروژه‌های پتروشیمی و نفت — هیدروکربن‌های معمولی</p>
+    <div class="pct-ref">Para 341.4.1(a) + Table 341.3.2</div>
+  </div>
+  <div class="pct-card" style="--pc-c:#06b6d4;">
+    <div class="pct-cat">CATEGORY D</div>
+    <div class="pct-name">سیالات غیرخطرناک</div>
+    <div class="pct-vt">VT: <span class="pct-val">100%</span></div>
+    <div class="pct-ndt">RT / UT: <span class="pct-val">—</span><span class="pct-unit">الزامی نیست</span></div>
+    <p class="pct-desc">آب، بخار کم‌فشار، هوا — ریسک پایین — طراحی ≤ 150 psi</p>
+    <div class="pct-ref">Para 341.4.1(d) + Table 341.3.2</div>
+  </div>
+  <div class="pct-card" style="--pc-c:#a855f7;">
+    <div class="pct-cat">ENHANCED (20%)</div>
+    <div class="pct-name">افزایش‌یافته</div>
+    <div class="pct-vt">VT: <span class="pct-val">100%</span></div>
+    <div class="pct-ndt">RT / UT: <span class="pct-val">20%</span><span class="pct-unit">(Random)</span></div>
+    <p class="pct-desc">Normal Service با الزام پروژه برای کنترل بیشتر</p>
+    <div class="pct-ref">Para 341.4.1(a) — Option 2</div>
+  </div>
+  <div class="pct-card" style="--pc-c:#ef4444;">
+    <div class="pct-cat">CATEGORY M</div>
+    <div class="pct-name">سیالات بسیار خطرناک</div>
+    <div class="pct-vt">VT: <span class="pct-val">100%</span></div>
+    <div class="pct-ndt">RT / UT: <span class="pct-val">100%</span></div>
+    <p class="pct-desc">سیالات Toxic / Lethal — H₂S بالا — گازهای سمی صنعتی</p>
+    <div class="pct-ref">Para 341.4.1(b) + Appx. M</div>
+  </div>
+  <div class="pct-card" style="--pc-c:#f59e0b;">
+    <div class="pct-cat">SEVERE CYCLIC</div>
+    <div class="pct-name">سیکل شدید</div>
+    <div class="pct-vt">VT: <span class="pct-val">100%</span></div>
+    <div class="pct-ndt">RT / UT: <span class="pct-val">100%</span></div>
+    <p class="pct-desc">بیش از 7000 سیکل بارگذاری در عمر — Stress Range بالا</p>
+    <div class="pct-ref">Para 341.4.1(c) + Para 300.2</div>
+  </div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-hd">⚠️ قانون Random 5% — B31.3 Para 341.4.2</div>
+  <p>
+    وقتی درصد Random (5% یا 20%) اعمال می‌شود، انتخاب اتصالات باید <strong>تصادفی و بدون پیش‌آگاهی جوشکار</strong> باشد. اگر یک اتصال رد شود، باید <strong>دو اتصال اضافه</strong> از همان جوشکار آزمایش شود. اگر هر دو قبول شدند — ادامه. اگر حتی یکی رد شد — <strong>100% آزمایش تمام جوش‌های آن جوشکار الزامی می‌شود</strong>. این قانون مکانیزم فشار کیفی روی جوشکار ایجاد می‌کند.
+  </p>
+</div>
+
+<!-- ══════ CHECKLIST ══════ -->
+<div class="sec-h mixed"><div class="bar"></div> چک‌لیست یکپارچه بازرس — DT + NDT</div>
+
+<div class="cl-wrap">
+  <div class="cl-hd">
+    <div class="cl-hd-icon">🔍</div>
+    <div>
+      <h3>کنترل آزمایش‌ها در پروژه</h3>
+      <p>مرجع: ASME B31.3 Para 341 | Sec. V Art. 1 T-150 | API RP 577 Sec. 5</p>
+    </div>
+  </div>
+  <div class="cl-grid">
+    <div class="cl-item">
+      <div class="cl-n">1</div>
+      <div><strong>Written Procedure:</strong> هر روش NDT باید پیش از اجرا Procedure کتبی تأیید‌شده داشته باشد<span class="cl-r">Sec. V Art. 1 T-150</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">2</div>
+      <div><strong>صلاحیت بازرس NDT:</strong> SNT-TC-1A Level II الزامی — گواهی معتبر تأیید شود<span class="cl-r">Sec. V T-160 + ASNT SNT-TC-1A</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">3</div>
+      <div><strong>تجهیزات کالیبره:</strong> دستگاه UT، UV Light، Densitometer — گواهی معتبر و در‌تاریخ<span class="cl-r">Art. 4 T-431 + Art. 7 T-730</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">4</div>
+      <div><strong>VT اول:</strong> بازرسی چشمی باید قبل از هر NDT دیگری مستقلاً انجام و گزارش شود<span class="cl-r">B31.3 Para 341.4.1 + Sec. V Art. 9</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">5</div>
+      <div><strong>IQI روی فیلم RT:</strong> قبل از ارزیابی — IQI باید روی فیلم قابل رویت و قابل قبول باشد<span class="cl-r">Sec. V Art. 2 T-282</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">6</div>
+      <div><strong>Yoke Lift Test MT:</strong> هر روز قبل از کار — AC: ≥4.5 kg / DC: ≥13.6 kg<span class="cl-r">Sec. V Art. 7 T-730.2</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">7</div>
+      <div><strong>Dwell Time PT:</strong> حداقل 10 min برای جوش — ثبت در گزارش الزامی<span class="cl-r">Sec. V Art. 6 T-672</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">8</div>
+      <div><strong>HIC Delay:</strong> برای CS با CE &gt;0.41 و P-No.4/5A — MT/PT حداقل 48h پس از جوش<span class="cl-r">API RP 577 Sec. 9.8</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">9</div>
+      <div><strong>Weld Map:</strong> هر اتصال شناسه‌گذاری شود و نتیجه RT/UT روی نقشه ثبت گردد<span class="cl-r">B31.3 Para 328.2.3 + ITP</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">10</div>
+      <div><strong>انتخاب Random:</strong> تصادفی — جوشکار از پیش نباید بداند کدام اتصال آزمایش می‌شود<span class="cl-r">B31.3 Para 341.4.2</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">11</div>
+      <div><strong>Film Archive:</strong> فیلم‌های RT حداقل ۳ سال یا مدت پروژه نگهداری شوند<span class="cl-r">B31.3 Para 346.2</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">12</div>
+      <div><strong>DT ≠ NDT:</strong> NDT میدان نمی‌تواند جایگزین آزمون‌های مخرب PQR شود — دو مسیر مستقل<span class="cl-r">B31.3 Para 328.1 + Para 341.1</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="callout danger">
+  <div class="callout-hd">🚨 اشتباهات بحرانی در اجرای NDT — هشدار بازرس</div>
+  <p>
+    <strong>(1)</strong> ارزیابی فیلم RT در نور اتاق بدون Densitometer و Light Viewer — نتیجه باطل است.<br>
+    <strong>(2)</strong> اجرای MT روی SS آستنیتی — فیزیکاً غیرممکن است؛ از PT استفاده کنید.<br>
+    <strong>(3)</strong> PT بدون Pre-Cleaning کافی — آلودگی سطحی جلوی ورود Penetrant را می‌گیرد.<br>
+    <strong>(4)</strong> UT بدون کالیبراسیون روزانه — DAC Curve باید هر شیفت یا هر ۴ ساعت تأیید شود.<br>
+    <strong>(5)</strong> گزارش NDT بدون ذکر شماره Procedure، شماره اتصال، روش و تاریخ — گزارش ناقص و غیرقابل قبول است.<br>
+    <strong>(6)</strong> استناد به RT برای رد/قبول LOF موازی — RT این عیب را miss می‌کند؛ UT TOFD الزامی است.
+  </p>
+</div>
+
+<div class="nav-footer">
+  <a href="../04-defects/" class="nf-btn nf-prev">→ فصل ۴: عیوب جوشکاری</a>
+  <a href="../06-inspection/" class="nf-btn nf-next">فصل ۶: بازرسی فنی — ITP و NCR ←</a>
+</div>
 </div>
 
 <footer>
-  <p>⚡ مراجع: ASME Sec. IX QW-140 تا QW-199 | ASME Sec. V Art. 1,2,4,6,7,9 | ASME B31.3 Para 341,344 | ASTM E8, E23, E92, E165, E709 | NACE MR0175 / ISO 15156 | API RP 577</p>
+  <p>⚡ مراجع: ASME Sec. IX QW-140…199 | ASME Sec. V Art. 1,2,4,6,7,9 | B31.3 Para 341,344,346 | ASTM E8,E23,E92,E165,E709 | NACE MR0175/ISO 15156 | API RP 577</p>
   <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio</p>
-  <p style="margin-top:8px;font-size:10.5px;opacity:.6;">© 2026 Piping Studio — Weld Testing: DT + NDT Guide</p>
+  <p style="margin-top:8px;font-size:11px;opacity:.5;">© 2026 Piping Studio — Welding Tests: DT + NDT</p>
 </footer>
 
 <script>
+/* theme */
 function toggleTheme(){
-  const b=document.body,btn=document.querySelector('.theme-toggle');
-  if(b.getAttribute('data-theme')==='light'){b.removeAttribute('data-theme');btn.textContent='🌙';localStorage.setItem('theme','dark');}
-  else{b.setAttribute('data-theme','light');btn.textContent='☀️';localStorage.setItem('theme','light');}
+  const b=document.body,btn=document.getElementById('themeBtn');
+  if(b.getAttribute('data-theme')==='light'){
+    b.removeAttribute('data-theme');btn.textContent='🌙';
+    localStorage.setItem('pst','dark');
+  }else{
+    b.setAttribute('data-theme','light');btn.textContent='☀️';
+    localStorage.setItem('pst','light');
+  }
 }
-const s=localStorage.getItem('theme');
-if(s==='light'){document.body.setAttribute('data-theme','light');document.querySelector('.theme-toggle').textContent='☀️';}
+if(localStorage.getItem('pst')==='light'){
+  document.body.setAttribute('data-theme','light');
+  document.getElementById('themeBtn').textContent='☀️';
+}
+
+/* scroll progress */
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  const pct=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
+  document.getElementById('progressBar').style.width=pct+'%';
+});
+
+/* nav active link */
+const sections=[...document.querySelectorAll('[id]')];
+const links=[...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(s.getBoundingClientRect().top<90)cur=s.id;});
+  links.forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  });
+},{passive:true});
+
+/* smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
-    const h=a.getAttribute('href');if(h.length<2)return;e.preventDefault();
+    const h=a.getAttribute('href');if(h.length<2)return;
+    e.preventDefault();
     const t=document.querySelector(h);
     if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-72,behavior:'smooth'});
   });
@@ -1222,4 +1818,5 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 </script>
 </body>
 </html>
-
+HTMLEOF
+echo "done: $(wc -l < /home/claude/welding-ch05/index.html) lines"
