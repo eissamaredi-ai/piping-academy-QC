@@ -3,130 +3,1740 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اصول بازرسی فنی جوش — آکادمی پایپینگ و جوشکاری</title>
+<title>فصل ۶ — اصول بازرسی فنی جوش | ITP · NCR · Weld Map · گزارش‌نویسی</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
-  a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#F97316,#dc2626); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#F97316; }
+/* ══════════════════════════════════════════════
+   DESIGN TOKENS — فلز صنعتی + آبی فنی
+══════════════════════════════════════════════ */
+:root{
+  /* backgrounds — لایه‌بندی عمیق */
+  --bg:       #05080f;
+  --bg-2:     #090e1a;
+  --bg-3:     #0d1424;
+  --bg-card:  #111b2e;
+  --bg-card2: #162035;
+  --bg-lift:  #1a2740;
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#F97316; font-weight:bold; }
+  /* borders */
+  --b0: #1a2540;
+  --b1: #243352;
+  --b2: #2e4068;
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:bold; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; }
-  h2 { font-size:19px; font-weight:bold; margin:30px 0 14px; color:#0F172A; }
+  /* text */
+  --t0: #eef2fa;   /* primary */
+  --t1: #8fa4c4;   /* muted */
+  --t2: #4a6080;   /* dim */
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-label { font-weight:bold; font-size:12px; margin-bottom:4px; display:block; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
+  /* brand palette — آبی فنی + کهربایی خطر */
+  --blue:   #2563eb;
+  --blue-l: #3b82f6;
+  --cyan:   #06b6d4;
+  --teal:   #0d9488;
+  --steel:  #64748b;
+  --amber:  #f59e0b;
+  --orange: #ea580c;
+  --red:    #dc2626;
+  --red-l:  #ef4444;
+  --green:  #059669;
+  --green-l:#10b981;
+  --purple: #7c3aed;
+  --purple-l:#a855f7;
+  --indigo: #4f46e5;
 
-  .trait-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin:16px 0; }
-  .trait-card { background:white; border:1px solid #e2e8f0; border-radius:10px; padding:14px; }
-  .trait-title { font-weight:bold; font-size:13px; margin-bottom:8px; }
-  .trait-list { font-size:11px; color:#64748b; line-height:1.8; padding-right:14px; }
+  /* signature element — گراید خط تکنیکال */
+  --sig: linear-gradient(90deg, #2563eb 0%, #06b6d4 50%, #0d9488 100%);
 
-  .step-list { display:flex; flex-direction:column; gap:8px; margin:16px 0; }
-  .step-item { display:flex; gap:10px; align-items:flex-start; background:white; border:1px solid #e2e8f0; border-radius:10px; padding:12px; }
-  .step-num { width:26px; height:26px; border-radius:50%; background:#0F172A; color:white; font-size:12px; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .step-title { font-weight:bold; font-size:13px; color:#0F172A; }
-  .step-desc { font-size:11px; color:#64748b; margin-top:2px; }
+  /* radii */
+  --r:   10px;
+  --r-l: 16px;
+  --r-xl:22px;
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:bold; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#16a34a; color:white; }
+  /* shadows */
+  --sh:   0 4px 20px rgba(0,0,0,.5);
+  --sh-l: 0 12px 40px rgba(0,0,0,.6);
+}
+[data-theme="light"]{
+  --bg:#f1f5fc; --bg-2:#e8eef8; --bg-3:#dde5f3;
+  --bg-card:#ffffff; --bg-card2:#f8faff; --bg-lift:#eef2fb;
+  --b0:#d1dbe8; --b1:#c0cfe0; --b2:#a8bed4;
+  --t0:#0b1628; --t1:#4a6080; --t2:#8fa4c4;
+  --sh:0 4px 20px rgba(0,0,0,.08); --sh-l:0 12px 40px rgba(0,0,0,.12);
+}
+
+/* ══════ RESET ══════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Vazirmatn','Segoe UI',sans-serif;
+  background:var(--bg);color:var(--t0);
+  line-height:1.85;min-height:100vh;
+  transition:background .3s,color .3s;
+}
+a{text-decoration:none;color:inherit;}
+.en{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;}
+.num{font-family:'Inter',monospace;direction:ltr;unicode-bidi:embed;display:inline-block;font-weight:700;}
+
+/* ══════ SCROLLBAR ══════ */
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--b1);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
+
+/* ══════════════════════════════════════════════
+   TOP PROGRESS LINE (signature)
+══════════════════════════════════════════════ */
+.progress-track{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:3px;background:transparent;
+}
+.progress-fill{
+  height:100%;width:0%;
+  background:var(--sig);
+  transition:width .08s linear;
+  border-radius:0 2px 2px 0;
+}
+
+/* ══════════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════════ */
+.navbar{
+  position:sticky;top:3px;z-index:200;
+  background:rgba(5,8,15,.93);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--b0);
+}
+[data-theme="light"] .navbar{background:rgba(241,245,252,.94);}
+.nav-inner{
+  max-width:1160px;margin:0 auto;
+  padding:0 22px;height:58px;
+  display:flex;align-items:center;gap:14px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:9px;
+  font-weight:800;font-size:12.5px;
+  color:var(--t0);white-space:nowrap;flex-shrink:0;
+}
+.nav-logo-mark{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--sig);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;
+}
+.chapter-pill{
+  background:rgba(37,99,235,.15);
+  border:1px solid rgba(37,99,235,.35);
+  color:var(--blue-l);
+  font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
+  padding:3px 10px;border-radius:20px;flex-shrink:0;
+}
+.nav-links{display:flex;gap:1px;list-style:none;flex:1;overflow:hidden;}
+.nav-links a{
+  color:var(--t1);font-size:11px;font-weight:500;
+  padding:4px 8px;border-radius:6px;
+  transition:all .15s;white-space:nowrap;display:block;
+}
+.nav-links a:hover{color:var(--t0);background:var(--bg-lift);}
+.nav-links a.on{color:var(--cyan);background:rgba(6,182,212,.1);}
+.nav-right{display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.nav-back{
+  color:var(--t1);font-size:11.5px;
+  padding:5px 11px;border-radius:7px;
+  border:1px solid var(--b0);
+  transition:all .2s;white-space:nowrap;
+}
+.nav-back:hover{color:var(--cyan);border-color:var(--cyan);}
+.nav-theme{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--bg-card);border:1px solid var(--b0);
+  color:var(--t0);cursor:pointer;font-size:.85rem;
+  transition:transform .25s;
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-theme:hover{transform:rotate(22deg);}
+
+/* ══════════════════════════════════════════════
+   BREADCRUMB
+══════════════════════════════════════════════ */
+.breadcrumb{
+  max-width:960px;margin:18px auto 0;padding:0 22px;
+  font-size:11.5px;color:var(--t2);
+  display:flex;align-items:center;gap:5px;flex-wrap:wrap;
+}
+.breadcrumb a{transition:color .2s;}
+.breadcrumb a:hover{color:var(--cyan);}
+.breadcrumb .sep{color:var(--b2);}
+.breadcrumb .here{color:var(--cyan);font-weight:600;}
+
+/* ══════════════════════════════════════════════
+   CONTENT
+══════════════════════════════════════════════ */
+.content{max-width:960px;margin:0 auto;padding:18px 22px 100px;}
+
+/* ══════════════════════════════════════════════
+   HERO — الگوی blueprint / نقشه فنی
+══════════════════════════════════════════════ */
+.hero{
+  position:relative;border-radius:var(--r-xl);
+  overflow:hidden;min-height:360px;
+  display:flex;align-items:flex-end;
+  background:#04070e;
+  margin-bottom:28px;
+}
+/* grid شطرنجی مثل نقشه مهندسی */
+.hero-blueprint{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.12) 1px, transparent 1px),
+    linear-gradient(rgba(37,99,235,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.05) 1px, transparent 1px);
+  background-size:60px 60px, 60px 60px, 12px 12px, 12px 12px;
+}
+/* weld cross — صلیب جوشکاری در گوشه */
+.hero-weld-mark{
+  position:absolute;top:24px;left:32px;
+  width:48px;height:48px;opacity:.3;
+}
+.hero-weld-mark::before,
+.hero-weld-mark::after{
+  content:'';position:absolute;
+  background:var(--cyan);border-radius:2px;
+}
+.hero-weld-mark::before{width:100%;height:4px;top:50%;transform:translateY(-50%);}
+.hero-weld-mark::after{width:4px;height:100%;left:50%;transform:translateX(-50%);}
+.hero-glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 70%,rgba(37,99,235,.2),transparent),
+    radial-gradient(ellipse 40% 35% at 75% 30%,rgba(6,182,212,.12),transparent);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(4,7,14,.2) 0%,rgba(4,7,14,.9) 65%,rgba(4,7,14,.98) 100%);
+}
+.hero-body{position:relative;z-index:2;padding:32px;width:100%;}
+/* انگ فنی */
+.hero-stamp{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(37,99,235,.4);
+  background:rgba(37,99,235,.1);
+  color:#93bbfc;
+  font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
+  letter-spacing:.8px;text-transform:uppercase;
+  padding:5px 14px;border-radius:4px;
+  margin-bottom:16px;
+}
+.hero-stamp::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--blue-l);
+  box-shadow:0 0 8px var(--blue-l);
+  animation:blink 1.8s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{
+  font-size:30px;font-weight:800;
+  line-height:1.3;margin-bottom:10px;
+  color:#fff;
+}
+.hero h1 .accent{
+  background:var(--sig);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{
+  color:#8fa4c4;font-size:13.5px;
+  line-height:1.85;max-width:620px;margin-bottom:20px;
+}
+/* ref chips در hero */
+.hero-refs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px;}
+.h-ref{
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:600;
+  padding:3px 9px;border-radius:4px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  color:#7a9ab8;letter-spacing:.2px;
+}
+/* stat row */
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:0;
+  border:1px solid var(--b1);border-radius:var(--r);
+  overflow:hidden;background:rgba(0,0,0,.3);
+  width:fit-content;
+}
+.h-stat{
+  padding:12px 20px;border-left:1px solid var(--b1);
+  min-width:110px;
+}
+.h-stat:last-child{border-left:none;}
+.h-stat-n{
+  font-family:'Inter',sans-serif;font-size:20px;font-weight:800;
+  background:var(--sig);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;line-height:1.1;margin-bottom:2px;
+}
+.h-stat-l{font-size:10.5px;color:var(--t2);}
+
+/* ══════════════════════════════════════════════
+   SECTION HEADERS
+══════════════════════════════════════════════ */
+.sh{
+  font-size:19px;font-weight:700;
+  margin:34px 0 13px;
+  display:flex;align-items:center;gap:12px;
+}
+.sh-bar{
+  flex-shrink:0;width:3px;height:20px;border-radius:2px;
+}
+p.lead{
+  color:var(--t1);font-size:14px;
+  line-height:2;margin-bottom:14px;
+}
+
+/* ══════════════════════════════════════════════
+   CALLOUTS
+══════════════════════════════════════════════ */
+.callout{
+  border-radius:var(--r);padding:14px 17px;
+  margin:14px 0;font-size:13.5px;line-height:1.85;
+  border-right:4px solid var(--cl-c);
+  background:var(--bg-card);
+  border-left:1px solid var(--b0);
+  border-top:1px solid var(--b0);
+  border-bottom:1px solid var(--b0);
+}
+.cl-hd{
+  display:flex;align-items:center;gap:7px;
+  font-weight:700;font-size:11.5px;
+  color:var(--cl-c);margin-bottom:5px;
+}
+.callout.info{--cl-c:var(--cyan);}
+.callout.warn{--cl-c:var(--amber);}
+.callout.danger{--cl-c:var(--red-l);}
+.callout.success{--cl-c:var(--green-l);}
+.callout.purple{--cl-c:var(--purple-l);}
+
+/* ══════════════════════════════════════════════
+   INSPECTOR ROLE — کارت بازرس
+   (signature element: خط مرجع مثل کاغذ تکنیکال)
+══════════════════════════════════════════════ */
+.inspector-card{
+  position:relative;
+  background:var(--bg-card);
+  border:1px solid var(--b1);
+  border-radius:var(--r-xl);
+  overflow:hidden;
+  margin:22px 0;
+}
+.inspector-card::before{
+  content:'';
+  position:absolute;top:0;right:0;left:0;height:4px;
+  background:var(--sig);
+}
+/* خط طولی مثل کاغذ خط‌دار */
+.inspector-card::after{
+  content:'';
+  position:absolute;right:56px;top:0;bottom:0;width:1px;
+  background:rgba(37,99,235,.12);
+  pointer-events:none;
+}
+.ic-head{
+  display:grid;grid-template-columns:56px 1fr;
+  gap:16px;align-items:center;
+  padding:20px 22px 16px;
+  border-bottom:1px solid var(--b0);
+}
+.ic-num{
+  width:56px;height:56px;border-radius:14px;
+  background:var(--ic-c,var(--blue));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Inter',sans-serif;font-size:22px;font-weight:900;
+  color:#fff;flex-shrink:0;
+  box-shadow:0 6px 18px rgba(0,0,0,.4);
+}
+.ic-title{font-size:17px;font-weight:800;margin-bottom:3px;}
+.ic-en{font-family:'Inter',sans-serif;font-size:12px;color:var(--ic-c,var(--blue));font-weight:600;direction:ltr;}
+.ic-sub{font-size:12px;color:var(--t1);margin-top:2px;line-height:1.6;}
+
+/* body 3-col */
+.ic-body{display:grid;grid-template-columns:1fr 1fr 1fr;}
+.ic-col{padding:17px 19px;border-left:1px solid var(--b0);}
+.ic-col:last-child{border-left:none;}
+.ic-col-h{
+  font-size:9.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.9px;color:var(--t2);margin-bottom:10px;
+  display:flex;align-items:center;gap:5px;
+}
+.ic-col-h::before{
+  content:'';width:12px;height:2px;
+  background:var(--ic-c,var(--blue));border-radius:1px;flex-shrink:0;
+}
+
+/* spec table inside card */
+.slist{list-style:none;}
+.slist li{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:7px;padding:4px 0;
+  border-bottom:1px dashed var(--b0);
+  font-size:11.5px;line-height:1.55;
+}
+.slist li:last-child{border-bottom:none;}
+.sk{color:var(--t0);font-weight:500;flex-shrink:0;}
+.sv{
+  color:var(--ic-c,var(--blue));
+  font-family:'Inter',monospace;font-size:11px;
+  text-align:left;
+}
+
+/* bullet list */
+.blist{list-style:none;}
+.blist li{
+  padding:3px 0 3px 14px;position:relative;
+  font-size:11.5px;color:var(--t1);line-height:1.7;
+  border-bottom:1px dashed var(--b0);
+}
+.blist li:last-child{border-bottom:none;}
+.blist li::before{
+  content:'›';position:absolute;right:0;top:3px;
+  color:var(--ic-c,var(--blue));font-weight:900;font-size:13px;
+}
+.blist li strong{color:var(--t0);}
+
+/* footer chips */
+.ic-foot{
+  padding:12px 20px;
+  background:rgba(0,0,0,.3);
+  border-top:1px solid var(--b0);
+}
+.if-title{
+  font-size:9.5px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--ic-c,var(--blue));
+  margin-bottom:7px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:5px;}
+.chip{
+  padding:3px 10px;border-radius:6px;
+  font-size:11px;font-weight:600;border:1px solid;
+}
+.ch-ok{background:rgba(5,150,105,.1);border-color:rgba(5,150,105,.3);color:#10b981;}
+.ch-no{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.25);color:#ef4444;}
+.ch-cond{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#f59e0b;}
+.ch-ref{
+  background:rgba(6,182,212,.07);
+  border-color:rgba(6,182,212,.2);
+  color:var(--cyan);
+  font-family:'Inter',sans-serif;font-size:10.5px;
+}
+
+/* ══════════════════════════════════════════════
+   ITP TIMELINE (فرآیند hold point)
+══════════════════════════════════════════════ */
+.itp-timeline{
+  position:relative;padding-right:28px;margin:20px 0;
+}
+.itp-timeline::before{
+  content:'';position:absolute;
+  right:6px;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--blue),var(--cyan),var(--teal));
+  border-radius:2px;
+}
+.itp-item{
+  display:grid;grid-template-columns:1fr auto;
+  gap:14px;margin-bottom:14px;
+  position:relative;
+}
+.itp-item::before{
+  content:'';position:absolute;
+  right:-29px;top:14px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--itp-c,var(--blue));
+  border:2px solid var(--bg);
+  box-shadow:0 0 0 2px var(--itp-c,var(--blue));
+  z-index:2;
+}
+.itp-body{
+  background:var(--bg-card);border:1px solid var(--b0);
+  border-radius:var(--r);padding:14px 16px;
+  border-right:3px solid var(--itp-c,var(--blue));
+  transition:border-color .2s;
+}
+.itp-body:hover{border-color:var(--itp-c,var(--cyan));}
+.itp-title{font-weight:700;font-size:13.5px;margin-bottom:4px;}
+.itp-desc{font-size:12px;color:var(--t1);line-height:1.75;}
+.itp-ref{
+  font-family:'Inter',sans-serif;font-size:10px;
+  color:var(--itp-c,var(--blue));margin-top:5px;
+}
+.itp-badge{
+  align-self:start;flex-shrink:0;
+  padding:4px 10px;border-radius:6px;
+  font-family:'Inter',sans-serif;font-size:10px;font-weight:800;
+  border:1px solid var(--itp-c,var(--blue));
+  color:var(--itp-c,var(--blue));
+  background:rgba(0,0,0,.25);
+  white-space:nowrap;text-align:center;
+  line-height:1.4;
+}
+
+/* ══════════════════════════════════════════════
+   NCR FLOW
+══════════════════════════════════════════════ */
+.ncr-flow{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:10px;margin:16px 0;
+  position:relative;
+}
+.ncr-step{
+  background:var(--bg-card);border:1px solid var(--b0);
+  border-radius:var(--r);padding:14px;
+  text-align:center;position:relative;
+  transition:transform .2s,border-color .2s;
+}
+.ncr-step:hover{transform:translateY(-3px);border-color:var(--red-l);}
+.ncr-step-n{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:800;
+  color:var(--red-l);margin-bottom:5px;
+}
+.ncr-step-icon{font-size:22px;margin-bottom:5px;display:block;}
+.ncr-step-title{font-weight:700;font-size:12.5px;margin-bottom:3px;}
+.ncr-step-desc{font-size:11px;color:var(--t1);line-height:1.6;}
+.ncr-arrow{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--t2);font-size:18px;
+}
+
+/* ══════════════════════════════════════════════
+   WELD MAP SVG
+══════════════════════════════════════════════ */
+.wmap-box{
+  background:var(--bg-card);border:1px solid var(--b1);
+  border-radius:var(--r-l);padding:20px;margin:16px 0;
+}
+.wmap-box h3{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+
+/* ══════════════════════════════════════════════
+   DOCUMENT CARDS
+══════════════════════════════════════════════ */
+.doc-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:12px;margin:16px 0;
+}
+.doc-card{
+  background:var(--bg-card);border:1px solid var(--b0);
+  border-radius:var(--r-l);padding:18px;
+  border-top:3px solid var(--dc-c);
+  transition:transform .2s,box-shadow .2s;
+}
+.doc-card:hover{transform:translateY(-3px);box-shadow:var(--sh);}
+.doc-icon{font-size:26px;display:block;margin-bottom:9px;}
+.doc-code{
+  font-family:'Inter',sans-serif;font-weight:800;
+  font-size:11px;color:var(--dc-c);
+  letter-spacing:.5px;margin-bottom:3px;
+}
+.doc-name{font-weight:700;font-size:13.5px;margin-bottom:6px;}
+.doc-desc{font-size:12px;color:var(--t1);line-height:1.75;margin-bottom:10px;}
+.doc-items{list-style:none;}
+.doc-items li{
+  padding:3px 0 3px 14px;position:relative;
+  font-size:11.5px;color:var(--t1);line-height:1.6;
+  border-top:1px dashed var(--b0);
+}
+.doc-items li:first-child{border-top:none;}
+.doc-items li::before{
+  content:'›';position:absolute;right:0;
+  color:var(--dc-c);font-weight:900;font-size:13px;
+}
+.doc-items li strong{color:var(--t0);}
+
+/* ══════════════════════════════════════════════
+   COMPARISON TABLE
+══════════════════════════════════════════════ */
+.table-wrap{
+  background:var(--bg-card);border:1px solid var(--b0);
+  border-radius:var(--r-l);overflow:hidden;
+  box-shadow:var(--sh);margin:14px 0;
+}
+.table-scroll{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:620px;}
+thead{background:var(--bg-lift);}
+th{
+  padding:11px 13px;text-align:center;
+  font-weight:700;font-size:10.5px;color:var(--t1);
+  border-bottom:1px solid var(--b0);
+  text-transform:uppercase;letter-spacing:.6px;white-space:nowrap;
+}
+td{
+  padding:10px 12px;border-bottom:1px solid var(--b0);
+  font-size:12px;text-align:center;color:var(--t0);
+}
+tbody tr{transition:background .12s;}
+tbody tr:hover{background:var(--bg-lift);}
+tbody tr:last-child td{border-bottom:none;}
+td.lbl{text-align:right;font-weight:600;font-size:12px;white-space:nowrap;}
+.t-y{color:var(--green-l);font-weight:700;}
+.t-n{color:var(--red-l);font-weight:700;}
+.t-m{color:var(--amber);font-weight:600;}
+.t-ref{
+  font-family:'Inter',sans-serif;font-size:10px;
+  background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.18);
+  color:var(--cyan);padding:2px 7px;border-radius:4px;
+  display:inline-block;white-space:nowrap;
+}
+
+/* ══════════════════════════════════════════════
+   CHECKLIST — آخرین بخش
+══════════════════════════════════════════════ */
+.cl-wrap{
+  background:linear-gradient(135deg,rgba(5,150,105,.07),rgba(6,182,212,.03));
+  border:1px solid rgba(5,150,105,.22);
+  border-radius:var(--r-xl);padding:22px;margin:20px 0;
+}
+.cl-hd{display:flex;align-items:center;gap:13px;margin-bottom:16px;}
+.cl-hd-icon{
+  width:48px;height:48px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,#059669,#0d9488);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.cl-hd h3{font-size:15.5px;font-weight:800;margin:0;}
+.cl-hd p{font-size:11.5px;color:var(--t1);margin-top:2px;}
+.cl-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.cl-item{
+  background:var(--bg-card);border:1px solid var(--b0);
+  border-radius:var(--r);padding:11px 13px;
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:12px;color:var(--t1);line-height:1.65;
+  transition:border-color .2s;
+}
+.cl-item:hover{border-color:var(--green-l);}
+.cl-n{
+  min-width:21px;height:21px;border-radius:5px;
+  background:rgba(5,150,105,.15);border:1px solid rgba(5,150,105,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9.5px;color:var(--green-l);flex-shrink:0;
+  font-family:'Inter',sans-serif;font-weight:800;margin-top:1px;
+}
+.cl-item strong{color:var(--t0);}
+.cl-r{
+  font-family:'Inter',sans-serif;font-size:10px;
+  color:var(--cyan);display:block;margin-top:2px;
+}
+
+/* ══════════════════════════════════════════════
+   CLOSING CHAPTER CARD
+══════════════════════════════════════════════ */
+.closing-card{
+  position:relative;
+  background:var(--bg-card);border:1px solid var(--b1);
+  border-radius:var(--r-xl);overflow:hidden;
+  padding:28px 28px 28px;margin:28px 0;
+  text-align:center;
+}
+.closing-card::before{
+  content:'';position:absolute;
+  inset:0;background:var(--sig);opacity:.05;
+}
+.closing-card::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:var(--sig);
+}
+.closing-card h2{
+  font-size:22px;font-weight:800;
+  background:var(--sig);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;position:relative;z-index:1;
+}
+.closing-card p{
+  color:var(--t1);font-size:13px;max-width:580px;
+  margin:0 auto;line-height:1.85;position:relative;z-index:1;
+}
+.ch-complete{
+  display:flex;justify-content:center;gap:8px;margin:16px 0;
+  flex-wrap:wrap;position:relative;z-index:1;
+}
+.ch-tag{
+  padding:4px 12px;border-radius:6px;
+  font-size:11px;font-weight:700;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--b1);color:var(--t1);
+}
+.ch-tag.done{
+  background:rgba(5,150,105,.1);
+  border-color:rgba(5,150,105,.3);color:#10b981;
+}
+
+/* ══════════════════════════════════════════════
+   NAV FOOTER
+══════════════════════════════════════════════ */
+.nav-footer{
+  display:flex;justify-content:space-between;
+  margin-top:44px;padding-top:22px;
+  border-top:1px solid var(--b0);
+  gap:10px;flex-wrap:wrap;
+}
+.nf-btn{
+  display:flex;align-items:center;gap:7px;
+  font-size:12.5px;font-weight:700;
+  padding:11px 18px;border-radius:var(--r);
+  border:1px solid var(--b0);background:var(--bg-card);
+  transition:all .2s;cursor:pointer;
+}
+.nf-prev{color:var(--t1);}
+.nf-prev:hover{color:var(--t0);border-color:var(--cyan);}
+.nf-home{
+  background:var(--sig);
+  color:#fff;border-color:transparent;
+  box-shadow:0 6px 20px rgba(37,99,235,.35);
+}
+.nf-home:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.45);}
+
+/* ══════ FOOTER ══════ */
+footer{
+  background:var(--bg-2);border-top:1px solid var(--b0);
+  padding:22px;text-align:center;
+}
+footer p{color:var(--t2);font-size:11.5px;margin-bottom:3px;}
+footer strong{color:var(--t1);}
+
+/* ══════ RESPONSIVE ══════ */
+@media(max-width:820px){
+  .nav-links{display:none;}
+  .hero h1{font-size:22px;}
+  .ic-body{grid-template-columns:1fr;}
+  .ic-col{border-left:none;border-top:1px solid var(--b0);}
+  .ic-head{grid-template-columns:46px 1fr;gap:12px;}
+  .cl-grid{grid-template-columns:1fr;}
+  .ncr-flow{grid-template-columns:1fr 1fr;}
+}
+
+/* ══════ ANIMATIONS ══════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.inspector-card,.doc-card,.itp-item{animation:fadeUp .4s ease-out backwards;}
+.inspector-card:nth-child(1){animation-delay:.04s}
+.inspector-card:nth-child(2){animation-delay:.08s}
+.inspector-card:nth-child(3){animation-delay:.12s}
+.inspector-card:nth-child(4){animation-delay:.16s}
+.inspector-card:nth-child(5){animation-delay:.20s}
 </style>
 </head>
 <body>
 
+<!-- ══ PROGRESS ══ -->
+<div class="progress-track"><div class="progress-fill" id="pf"></div></div>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════ -->
 <nav class="navbar">
-  <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">⚡</div>
+      <span>PIPING STUDIO</span>
+    </div>
+    <span class="chapter-pill">فصل ۶ از ۶</span>
+    <ul class="nav-links">
+      <li><a href="#role">نقش بازرس</a></li>
+      <li><a href="#itp">ITP</a></li>
+      <li><a href="#weldmap">Weld Map</a></li>
+      <li><a href="#ncr">NCR</a></li>
+      <li><a href="#docs">مستندات</a></li>
+      <li><a href="#vt">VT اصول</a></li>
+      <li><a href="#pwht-ctrl">PWHT کنترل</a></li>
+      <li><a href="#handover">تحویل</a></li>
+      <li><a href="#checklist">چک‌لیست</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="../05-tests/" class="nav-back">← فصل ۵</a>
+      <button class="nav-theme" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    </div>
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش جوشکاری ← <span>فصل ۶ — اصول بازرسی فنی جوش (پایان بخش)</span></div>
+<div class="breadcrumb">
+  <a href="../../">Piping Studio</a><span class="sep">›</span>
+  <a href="../">جوشکاری</a><span class="sep">›</span>
+  <span class="here">فصل ۶ — اصول بازرسی فنی جوش</span>
+</div>
 
 <div class="content">
-  <h1>اصول بازرسی فنی جوش</h1>
-  <div class="subtitle">بازرس جوش کیست، چه ویژگی‌هایی لازم دارد و مراحل بازرسی او چیست</div>
 
-  <p class="lead">بازرسی جوش صرفاً یک فعالیت فنی نیست — ترکیبی از دانش تخصصی، استقلال قضاوت، و توانایی مستندسازی دقیق است. یک بازرس ضعیف در هر یک از این سه بُعد می‌تواند مستقیماً ایمنی و کیفیت بلندمدت پروژه را تهدید کند.</p>
-
-  <div class="callout callout-def">
-    <span class="callout-label">تعریف</span>
-    بازرس جوش (Welding Inspector) فردی است که مسئولیت تأیید انطباق اجرای جوشکاری با WPS، استاندارد مرجع، و ITP پروژه را دارد — نه صرفاً ناظر حضور در محل کار.
-  </div>
-
-  <h2>سه بُعد یک بازرس کامل</h2>
-  <div class="trait-grid">
-    <div class="trait-card">
-      <div class="trait-title" style="color:#2563EB;">ویژگی‌های فنی</div>
-      <ul class="trait-list">
-        <li>تسلط بر استانداردهای مرتبط</li>
-        <li>توانایی خوانش نقشه و WPS</li>
-        <li>آشنایی با متالورژی جوش</li>
-        <li>تجربه‌ی تفسیر نتایج NDE</li>
-      </ul>
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-blueprint"></div>
+  <div class="hero-weld-mark"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-stamp">فصل پایانی — آموزش جوشکاری</div>
+    <h1>اصول <span class="accent">بازرسی فنی جوش</span><br>از ITP تا تحویل پروژه</h1>
+    <p class="hero-desc">
+      وظایف بازرس جوش فراتر از یافتن عیب است. ITP تهیه کردن، Weld Map نگهداشتن، NCR صادر کردن، PWHT پایش کردن، مستندات QC تکمیل کردن و بسته تحویل آماده ساختن — اینها مجموعه‌ای است که یک بازرس حرفه‌ای را از یک ناظر ساده متمایز می‌کند.
+    </p>
+    <div class="hero-refs">
+      <span class="h-ref">ASME B31.3 Para 341</span>
+      <span class="h-ref">API RP 577 Sec. 3–12</span>
+      <span class="h-ref">AWS B1.11</span>
+      <span class="h-ref">ASME Sec. V Art. 9</span>
+      <span class="h-ref">ASME Sec. IX QW-300</span>
+      <span class="h-ref">ISO 3834</span>
     </div>
-    <div class="trait-card">
-      <div class="trait-title" style="color:#F97316;">ویژگی‌های اخلاقی</div>
-      <ul class="trait-list">
-        <li>استقلال در قضاوت</li>
-        <li>صداقت در ثبت گزارش</li>
-        <li>مسئولیت‌پذیری در برابر ایمنی</li>
-        <li>بی‌طرفی نسبت به پیمانکار/کارفرما</li>
-      </ul>
+    <div class="hero-stats">
+      <div class="h-stat"><span class="h-stat-n">ITP</span><span class="h-stat-l">برنامه بازرسی</span></div>
+      <div class="h-stat"><span class="h-stat-n">NCR</span><span class="h-stat-l">گزارش عدم انطباق</span></div>
+      <div class="h-stat"><span class="h-stat-n">8</span><span class="h-stat-l">سند کلیدی تحویل</span></div>
+      <div class="h-stat"><span class="h-stat-n">Para 341</span><span class="h-stat-l">مرجع B31.3</span></div>
     </div>
-    <div class="trait-card">
-      <div class="trait-title" style="color:#0891b2;">ویژگی‌های جسمانی</div>
-      <ul class="trait-list">
-        <li>بینایی کافی برای تشخیص دقیق</li>
-        <li>توانایی کار در ارتفاع/فضای محدود</li>
-        <li>تحمل شرایط دما و رطوبت سخت</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="callout callout-warn">
-    <span class="callout-label">هشدار</span>
-    استقلال قضاوت بازرس از نظر اهمیت کمتر از دانش فنی او نیست — یک بازرس با دانش فنی عالی اما تحت فشار برای تأیید عجولانه‌ی کار، می‌تواند به همان اندازه‌ی یک بازرس کم‌تجربه خطرناک باشد.
-  </div>
-
-  <h2>مراحل بازرسی — به‌ترتیب زمانی</h2>
-  <div class="step-list">
-    <div class="step-item"><span class="step-num">1</span><div><div class="step-title">بررسی مدارک قبل از شروع</div><div class="step-desc">تطبیق WPS، WPQ جوشکار، و مدارک متریال</div></div></div>
-    <div class="step-item"><span class="step-num">2</span><div><div class="step-title">بازرسی Fit-Up</div><div class="step-desc">کنترل Root Gap، Alignment و تمیزی سطح</div></div></div>
-    <div class="step-item"><span class="step-num">3</span><div><div class="step-title">نظارت حین اجرا</div><div class="step-desc">کنترل پارامترهای واقعی در مقابل محدوده‌ی WPS</div></div></div>
-    <div class="step-item"><span class="step-num">4</span><div><div class="step-title">بازرسی بصری پس از اتمام</div><div class="step-desc">بررسی ظاهری برای عیوب سطحی قابل‌مشاهده</div></div></div>
-    <div class="step-item"><span class="step-num">5</span><div><div class="step-title">درخواست/بررسی NDE</div><div class="step-desc">صدور درخواست تست طبق ITP و دریافت گزارش</div></div></div>
-    <div class="step-item"><span class="step-num">6</span><div><div class="step-title">ثبت در گزارش نهایی</div><div class="step-desc">مستندسازی کامل شامل پذیرش/رد و یافته‌ها</div></div></div>
-  </div>
-
-  <div class="callout callout-tip">
-    <span class="callout-label">نکته</span>
-    هنگام ثبت یک یافته (Finding)، همیشه آن را با اشاره به بند مشخص استاندارد یا مشخصات پروژه مستند کن — نوشتن «جوش غیراستاندارد است» بدون رفرنس دقیق، در دفاع از گزارش در جلسات Technical Query بسیار ضعیف عمل می‌کند.
-  </div>
-
-  <div class="nav-footer">
-    <a href="../05-tests/" class="nav-btn nav-prev">→ فصل قبل: آزمایش‌های جوش</a>
-    <a href="../../" class="nav-btn nav-next">پایان بخش جوشکاری 🎉 بازگشت به صفحه اصلی</a>
   </div>
 </div>
 
+<!-- ══════ OVERVIEW CALLOUT ══════ -->
+<div class="callout info">
+  <div class="cl-hd">📘 تعریف بازرسی فنی جوش — API RP 577 Section 3</div>
+  <p>
+    طبق <strong>API RP 577</strong>، بازرسی جوش فرآیندی است که در آن یک متخصص دارای صلاحیت، تمام جنبه‌های جوشکاری شامل <strong>مدارک فنی</strong>، <strong>صلاحیت‌ها</strong>، <strong>پارامترهای اجرا</strong> و <strong>کیفیت نهایی</strong> را در مقابل الزامات مشخص‌شده ارزیابی می‌کند. بازرس جوش باید از <strong>قبل از شروع جوشکاری تا تحویل نهایی پروژه</strong> حضور و کنترل داشته باشد — نه فقط در زمان NDT.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ROLE OF INSPECTOR
+══════════════════════════════════════════════ -->
+<div class="sh" id="role">
+  <div class="sh-bar" style="background:var(--sig);"></div>
+  نقش‌ها و مسئولیت‌های بازرس جوش
+</div>
+<p class="lead">بازرس جوش در پروژه‌های EPC سه نوع مسئولیت موازی دارد: <strong>پیش از جوشکاری</strong>، <strong>حین جوشکاری</strong> و <strong>پس از جوشکاری</strong>. هر مرحله مدارک، نقاط Hold Point و معیارهای مشخص خود را دارد.</p>
+
+<div class="inspector-card" style="--ic-c:var(--blue-l);">
+  <div class="ic-head">
+    <div class="ic-num" style="background:var(--blue);">①</div>
+    <div>
+      <div class="ic-title">پیش از جوشکاری — Pre-Weld Inspection</div>
+      <div class="ic-en">Before First Arc Strike — Document Review + Fit-up Control</div>
+      <div class="ic-sub">همه چیز باید قبل از شروع قوس تأیید شده باشد — تغییر بعد از جوش بسیار گران‌تر است</div>
+    </div>
+  </div>
+  <div class="ic-body">
+    <div class="ic-col">
+      <div class="ic-col-h">📋 مدارک و صلاحیت</div>
+      <ul class="blist">
+        <li>WPS معتبر موجود در محل کار</li>
+        <li>WPQ جوشکار — محدوده صلاحیت پوشش‌دهنده</li>
+        <li>PQR مرتبط با WPS — تأیید شده</li>
+        <li>تأیید <strong>P-Number و F-Number</strong> مطابقت</li>
+        <li>گواهی <strong>Mill Certificate</strong> فلز پایه</li>
+        <li>گواهی الکترود / سیم — <strong>Heat Number</strong></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">🔧 کنترل Fit-up</div>
+      <ul class="slist">
+        <li><span class="sk">Root Gap</span><span class="sv">1.6–3.2mm — WPS</span></li>
+        <li><span class="sk">Root Face (Land)</span><span class="sv">0.8–1.6mm</span></li>
+        <li><span class="sk">Bevel Angle</span><span class="sv">37.5° ±2.5°</span></li>
+        <li><span class="sk">Hi-Lo (Mismatch)</span><span class="sv">≤ 1.6mm — Para 328.4.3</span></li>
+        <li><span class="sk">تراز محوری لوله</span><span class="sv">بدون Angular Mismatch</span></li>
+        <li><span class="sk">تمیزی لبه</span><span class="sv">≥ 25mm هر طرف</span></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">🌡️ کنترل محیطی</div>
+      <ul class="slist">
+        <li><span class="sk">دمای محیط</span><span class="sv">≥ 5°C (برای CS)</span></li>
+        <li><span class="sk">Preheat تأیید</span><span class="sv">Contact Pyrometer</span></li>
+        <li><span class="sk">رطوبت محیط</span><span class="sv">در صورت باران: توقف</span></li>
+        <li><span class="sk">سرعت باد</span><span class="sv">GMAW/GTAW: ≤ 8 km/h</span></li>
+        <li><span class="sk">Back Purge (SS)</span><span class="sv">O₂ ≤ 0.1% تأیید</span></li>
+        <li><span class="sk">Quiver دما</span><span class="sv">≥ 120°C برای E7018</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ic-foot">
+    <div class="if-title">⚠️ مرجع Hold Point پیش از جوش</div>
+    <div class="chips">
+      <span class="chip ch-ref">B31.3 Para 328.4.3 — Fit-up</span>
+      <span class="chip ch-ref">Para 330.1.2 — Preheat</span>
+      <span class="chip ch-ref">API RP 577 Sec. 7.2 — Pre-Weld</span>
+      <span class="chip ch-ref">ASME Sec. IX QW-300 — صلاحیت</span>
+    </div>
+  </div>
+</div>
+
+<div class="inspector-card" style="--ic-c:var(--amber);">
+  <div class="ic-head">
+    <div class="ic-num" style="background:linear-gradient(135deg,#d97706,#ea580c);">②</div>
+    <div>
+      <div class="ic-title">حین جوشکاری — In-Process Inspection</div>
+      <div class="ic-en">During Welding — Parameter Monitoring + Inter-Pass Control</div>
+      <div class="ic-sub">بازرس باید در بازه‌های منظم کنترل و ثبت انجام دهد — نه فقط در شروع و پایان</div>
+    </div>
+  </div>
+  <div class="ic-body">
+    <div class="ic-col">
+      <div class="ic-col-h">⚡ کنترل پارامترها</div>
+      <ul class="slist">
+        <li><span class="sk">آمپر واقعی</span><span class="sv">مطابق WPS ±10%</span></li>
+        <li><span class="sk">ولتاژ واقعی</span><span class="sv">مطابق WPS ±10%</span></li>
+        <li><span class="sk">Travel Speed</span><span class="sv">کنترل هر پاس</span></li>
+        <li><span class="sk">Heat Input</span><span class="sv">(V×A×60)/(TS×1000) kJ/mm</span></li>
+        <li><span class="sk">Weave Width</span><span class="sv">≤ 3× قطر الکترود</span></li>
+        <li><span class="sk">قطبیت</span><span class="sv">DCEP/DCEN — مطابق WPS</span></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">🌡️ کنترل دما بین پاس</div>
+      <ul class="slist">
+        <li><span class="sk">Interpass Min</span><span class="sv">≥ Preheat Min</span></li>
+        <li><span class="sk">Interpass Max CS</span><span class="sv">≤ 250°C (معمول)</span></li>
+        <li><span class="sk">Interpass Max SS</span><span class="sv">≤ 175°C — QW-406.3</span></li>
+        <li><span class="sk">Interpass Max Duplex</span><span class="sv">≤ 150°C</span></li>
+        <li><span class="sk">ابزار</span><span class="sv">Contact Pyrometer</span></li>
+        <li><span class="sk">فرکانس اندازه‌گیری</span><span class="sv">قبل از هر پاس</span></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">🔍 VT بین پاس</div>
+      <ul class="blist">
+        <li>سرباره <strong>کاملاً برداشته</strong> شود — VT تأیید کند</li>
+        <li>هیچ <strong>Slag / Crack / Porosity</strong> سطحی</li>
+        <li>Profile پاس صاف — بدون شیار تیز</li>
+        <li>Back Purge (SS): <strong>O₂ مداوم</strong> کنترل</li>
+        <li>Stamp جوشکار روی <strong>هر اتصال</strong></li>
+        <li>Arc Strike خارج از Zone: <strong>Stop Work</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ic-foot">
+    <div class="if-title">⚠️ Essential Variables حین اجرا</div>
+    <div class="chips">
+      <span class="chip ch-ref">QW-409.1 — Heat Input (Impact)</span>
+      <span class="chip ch-ref">QW-406.3 — Interpass Temp</span>
+      <span class="chip ch-ref">API RP 577 Sec. 8 — In-Process</span>
+    </div>
+  </div>
+</div>
+
+<div class="inspector-card" style="--ic-c:var(--green-l);">
+  <div class="ic-head">
+    <div class="ic-num" style="background:linear-gradient(135deg,#059669,#0d9488);">③</div>
+    <div>
+      <div class="ic-title">پس از جوشکاری — Post-Weld Inspection</div>
+      <div class="ic-en">After Completion — VT + NDT + PWHT + Documentation</div>
+      <div class="ic-sub">جوش کامل شده اما بازرسی پایان نیافته — VT، NDT و مستندسازی هنوز باقی است</div>
+    </div>
+  </div>
+  <div class="ic-body">
+    <div class="ic-col">
+      <div class="ic-col-h">👁️ VT نهایی — Sec. V Art. 9</div>
+      <ul class="slist">
+        <li><span class="sk">روشنایی سطح</span><span class="sv">≥ 500 Lux — T-952</span></li>
+        <li><span class="sk">زاویه دید</span><span class="sv">≥ 30° از سطح</span></li>
+        <li><span class="sk">فاصله چشم</span><span class="sv">≤ 600mm</span></li>
+        <li><span class="sk">Reinforcement</span><span class="sv">Weld Gauge اندازه‌گیری</span></li>
+        <li><span class="sk">Undercut</span><span class="sv">Pit Gauge — نه تخمین</span></li>
+        <li><span class="sk">گزارش VT</span><span class="sv">قبل از NDT صادر شود</span></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">🔬 NDT کنترل</div>
+      <ul class="blist">
+        <li>روش NDT مطابق <strong>ITP و B31.3 Para 341.4</strong></li>
+        <li>Written Procedure تأیید‌شده <strong>قبل از اجرا</strong></li>
+        <li>Operator دارای <strong>SNT-TC-1A Level II</strong></li>
+        <li>گزارش NDT کامل: Procedure شماره + نتیجه</li>
+        <li>فیلم RT: دانسیته ۲–۴ — <strong>IQI قابل رویت</strong></li>
+        <li>HIC: <strong>48h</strong> صبر قبل از MT/PT</li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">📁 مستندسازی</div>
+      <ul class="blist">
+        <li>شماره اتصال روی <strong>Weld Map</strong> ثبت</li>
+        <li>نتایج NDT به Weld Map پیوست</li>
+        <li>PWHT Chart + گزارش — ثبت رسمی</li>
+        <li>هر NCR: شماره رهگیری منحصربه‌فرد</li>
+        <li>گزارش Repair: Weld Log به‌روز شود</li>
+        <li>Data Book قبل از <strong>Pressure Test</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ic-foot">
+    <div class="if-title">✅ مراجع پس از جوش</div>
+    <div class="chips">
+      <span class="chip ch-ref">B31.3 Table 341.3.2 — معیار VT</span>
+      <span class="chip ch-ref">Para 341.4 — درصد NDT</span>
+      <span class="chip ch-ref">Para 331 — PWHT</span>
+      <span class="chip ch-ref">API RP 577 Sec. 9–10</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ITP — INSPECTION & TEST PLAN
+══════════════════════════════════════════════ -->
+<div class="sh" id="itp">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--blue),var(--cyan));"></div>
+  ITP — طرح بازرسی و آزمون (Inspection & Test Plan)
+</div>
+<p class="lead">
+  ITP سند اصلی کنترل کیفیت است که <strong>تمام فعالیت‌های بازرسی</strong>، <strong>نقاط توقف (Hold Point)</strong>، <strong>نقاط گواه (Witness Point)</strong> و <strong>مدارک لازم</strong> را برای هر مرحله پروژه مشخص می‌کند. ITP قراردادی بین Contractor، Client و Third Party Inspector است و باید قبل از شروع کار <strong>تأیید همه طرفین</strong> را داشته باشد.
+</p>
+
+<div class="callout purple">
+  <div class="cl-hd">🎯 سه نوع نقطه کنترل در ITP</div>
+  <p>
+    <strong>Hold Point (HP):</strong> کار نمی‌تواند ادامه یابد مگر با حضور فیزیکی بازرس و صدور تأیید کتبی. مثال: Fit-up قبل از Root Pass، VT نهایی، PWHT، Pressure Test.<br>
+    <strong>Witness Point (WP):</strong> بازرس باید اطلاع داشته باشد. کار می‌تواند با اعلام قبلی ادامه یابد. مثال: کنترل Preheat، NDT غیر از اتصالات اصلی.<br>
+    <strong>Review Point (RP):</strong> بازرس مدارک را بررسی می‌کند — حضور فیزیکی الزامی نیست. مثال: Mill Certificate، گواهی الکترود.
+  </p>
+</div>
+
+<!-- ITP Timeline -->
+<div class="itp-timeline">
+
+  <div class="itp-item" style="--itp-c:var(--blue-l);">
+    <div class="itp-body">
+      <div class="itp-title">① Pre-Construction — مرور مدارک</div>
+      <p class="itp-desc">بررسی و تأیید WPS، PQR، WPQ تمام جوشکاران، Mill Certificate متریال، گواهی الکترود و الزامات خاص پروژه (PWHT، Hardness، NDT%). همه اینها باید <strong>قبل از شروع هر جوشکاری</strong> تأیید شده باشند.</p>
+      <div class="itp-ref">مرجع: B31.3 Para 328 + QW-300 + API RP 577 Sec. 6</div>
+    </div>
+    <div class="itp-badge">RP<br>Review</div>
+  </div>
+
+  <div class="itp-item" style="--itp-c:var(--amber);">
+    <div class="itp-body">
+      <div class="itp-title">② Fit-up & Pre-Weld — قبل از اولین قوس</div>
+      <p class="itp-desc">Hold Point اول: تأیید Fit-up (Root Gap، Hi-Lo، Bevel)، دمای Preheat با Contact Pyrometer، WPS موجود، WPQ جوشکار معتبر، الکترود صحیح در Quiver. بدون تأیید بازرس — شروع جوشکاری ممنوع.</p>
+      <div class="itp-ref">مرجع: Para 328.4.3 + Para 330.1.2 + API RP 577 Sec. 7</div>
+    </div>
+    <div class="itp-badge">HP<br>Hold</div>
+  </div>
+
+  <div class="itp-item" style="--itp-c:var(--orange);">
+    <div class="itp-body">
+      <div class="itp-title">③ In-Process — حین اجرای هر پاس</div>
+      <p class="itp-desc">Witness Point: کنترل پارامتر الکتریکی (آمپر/ولتاژ)، اندازه‌گیری Interpass Temperature، تأیید سرباره‌برداری کامل بین پاس‌ها با VT، بررسی Arc Strike، کنترل Back Purge در SS. نتایج در Welding Log ثبت می‌شوند.</p>
+      <div class="itp-ref">مرجع: QW-406.3 + QW-409.1 + API RP 577 Sec. 8</div>
+    </div>
+    <div class="itp-badge">WP<br>Witness</div>
+  </div>
+
+  <div class="itp-item" style="--itp-c:var(--green-l);">
+    <div class="itp-body">
+      <div class="itp-title">④ Post-Weld VT — بعد از تکمیل Cap Pass</div>
+      <p class="itp-desc">Hold Point دوم: VT کامل با روشنایی ≥500 Lux، اندازه‌گیری Reinforcement و Undercut با Gauge، بررسی Overlap، Arc Strike و Spatter. گزارش VT باید قبل از هر NDT صادر شده باشد.</p>
+      <div class="itp-ref">مرجع: B31.3 Para 341.4.1 + Table 341.3.2 + Sec. V Art. 9</div>
+    </div>
+    <div class="itp-badge">HP<br>Hold</div>
+  </div>
+
+  <div class="itp-item" style="--itp-c:var(--cyan);">
+    <div class="itp-body">
+      <div class="itp-title">⑤ NDT — طبق ITP و B31.3 Para 341.4</div>
+      <p class="itp-desc">Witness Point: حضور بازرس هنگام اجرای NDT (RT، UT، MT، PT). تأیید Written Procedure، صلاحیت Operator (SNT-TC-1A Level II)، کالیبراسیون تجهیزات و IQI روی فیلم RT. برای HIC: حداقل 48 ساعت صبر.</p>
+      <div class="itp-ref">مرجع: Sec. V Art. 1 T-150 + B31.3 Para 344 + API RP 577 Sec. 5</div>
+    </div>
+    <div class="itp-badge">WP<br>Witness</div>
+  </div>
+
+  <div class="itp-item" style="--itp-c:var(--purple-l);">
+    <div class="itp-body">
+      <div class="itp-title">⑥ PWHT — عملیات حرارتی پس از جوش</div>
+      <p class="itp-desc">Hold Point سوم (اگر PWHT الزامی است): تأیید Chart Recorder کالیبره، Thermocouple مستقیم روی قطعه، دمای PWHT مطابق B31.3 Table 331.1.1، نرخ گرمایش/سردایش مطابق Para 331.1.4. گزارش PWHT با امضای بازرس.</p>
+      <div class="itp-ref">مرجع: B31.3 Para 331 + Table 331.1.1 + QW-407</div>
+    </div>
+    <div class="itp-badge">HP<br>Hold</div>
+  </div>
+
+  <div class="itp-item" style="--itp-c:var(--teal);">
+    <div class="itp-body">
+      <div class="itp-title">⑦ Pressure Test — هیدروتست / پنوماتیک</div>
+      <p class="itp-desc">Hold Point نهایی: Data Book کامل (تمام WPS، PQR، NDT، PWHT) قبل از تست ارائه شود. فشار تست مطابق B31.3 Para 345.4.2، دما ≥ 16°C آب برای Hydro، بازرسی حین تست از فاصله ایمن.</p>
+      <div class="itp-ref">مرجع: B31.3 Para 345 + Para 345.4.2 (Hydro) + Para 345.5.4 (Pneumatic)</div>
+    </div>
+    <div class="itp-badge">HP<br>Hold</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     WELD MAP
+══════════════════════════════════════════════ -->
+<div class="sh" id="weldmap">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--cyan),var(--teal));"></div>
+  Weld Map — نقشه شناسایی جوش‌ها
+</div>
+<p class="lead">
+  Weld Map سندی است که هر اتصال جوش را روی نقشه ایزومتریک یا P&ID شناسه‌گذاری می‌کند. بدون Weld Map، ردیابی کیفیت هر اتصال غیرممکن است. طبق <strong>B31.3 Para 328.2.3</strong>، هر جوش باید قابل ردیابی به جوشکار و مدارک کیفی آن باشد.
+</p>
+
+<div class="wmap-box">
+  <h3>📐 نمونه Weld Map — سیستم شناسه‌گذاری استاندارد</h3>
+  <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;display:block;">
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#3b82f6" opacity=".7"/>
+      </marker>
+      <marker id="arr2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#06b6d4" opacity=".7"/>
+      </marker>
+    </defs>
+
+    <!-- background -->
+    <rect width="680" height="320" fill="#090e1a" rx="10"/>
+
+    <!-- grid faint -->
+    <g stroke="#1a2540" stroke-width=".5">
+      <line x1="0" y1="40" x2="680" y2="40"/>
+      <line x1="0" y1="80" x2="680" y2="80"/>
+      <line x1="0" y1="120" x2="680" y2="120"/>
+      <line x1="0" y1="160" x2="680" y2="160"/>
+      <line x1="0" y1="200" x2="680" y2="200"/>
+      <line x1="0" y1="240" x2="680" y2="240"/>
+      <line x1="0" y1="280" x2="680" y2="280"/>
+      <line x1="80" y1="0" x2="80" y2="320"/>
+      <line x1="160" y1="0" x2="160" y2="320"/>
+      <line x1="240" y1="0" x2="240" y2="320"/>
+      <line x1="320" y1="0" x2="320" y2="320"/>
+      <line x1="400" y1="0" x2="400" y2="320"/>
+      <line x1="480" y1="0" x2="480" y2="320"/>
+      <line x1="560" y1="0" x2="560" y2="320"/>
+    </g>
+
+    <!-- title bar -->
+    <rect x="10" y="8" width="660" height="22" rx="4" fill="#0d1424"/>
+    <text x="340" y="23" text-anchor="middle" font-family="Inter" font-size="10" fill="#3b82f6" font-weight="700" letter-spacing="1">WELD MAP — LINE No: 12"-CS-001-A3B — ISO No: P-001</text>
+
+    <!-- MAIN HORIZONTAL PIPE -->
+    <rect x="60" y="148" width="560" height="24" rx="4" fill="#192540" stroke="#2a3f60" stroke-width="1.5"/>
+    <text x="340" y="163.5" text-anchor="middle" font-family="Inter" font-size="9" fill="#4a6080" font-weight="500">12" — A106 Gr.B — SCH 40</text>
+
+    <!-- BRANCH PIPE (vertical) -->
+    <rect x="298" y="68" width="24" height="80" rx="4" fill="#192540" stroke="#2a3f60" stroke-width="1.5"/>
+    <text x="310" y="105" text-anchor="middle" font-family="Inter" font-size="8" fill="#4a6080" transform="rotate(-90,310,105)">6"—CS</text>
+
+    <!-- ELBOW at left -->
+    <path d="M 60,160 Q 44,160 44,144 L 44,110" stroke="#2a3f60" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M 60,160 Q 44,160 44,144 L 44,110" stroke="#192540" stroke-width="16" fill="none" stroke-linecap="round"/>
+
+    <!-- REDUCER at right -->
+    <polygon points="620,148 620,172 650,154 650,166" fill="#192540" stroke="#2a3f60" stroke-width="1.5"/>
+
+    <!-- ── WELD JOINTS ── -->
+    <!-- W-001 -->
+    <line x1="140" y1="142" x2="140" y2="178" stroke="#ef4444" stroke-width="3.5"/>
+    <circle cx="140" cy="160" r="10" fill="#0d1424" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="140" y="164.5" text-anchor="middle" font-family="Inter" font-size="7" fill="#ef4444" font-weight="800">W01</text>
+    <!-- label -->
+    <text x="140" y="194" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#ef4444">W-001</text>
+    <text x="140" y="205" text-anchor="middle" font-family="Vazirmatn" font-size="7.5" fill="#4a6080">رد — RT</text>
+
+    <!-- W-002 -->
+    <line x1="240" y1="142" x2="240" y2="178" stroke="#10b981" stroke-width="3.5"/>
+    <circle cx="240" cy="160" r="10" fill="#0d1424" stroke="#10b981" stroke-width="1.5"/>
+    <text x="240" y="164.5" text-anchor="middle" font-family="Inter" font-size="7" fill="#10b981" font-weight="800">W02</text>
+    <text x="240" y="194" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#10b981">W-002</text>
+    <text x="240" y="205" text-anchor="middle" font-family="Vazirmatn" font-size="7.5" fill="#4a6080">تأیید — RT</text>
+
+    <!-- W-003 (branch weld) -->
+    <line x1="297" y1="140" x2="323" y2="148" stroke="#10b981" stroke-width="3"/>
+    <circle cx="310" cy="148" r="9" fill="#0d1424" stroke="#10b981" stroke-width="1.5"/>
+    <text x="310" y="152" text-anchor="middle" font-family="Inter" font-size="7" fill="#10b981" font-weight="800">W03</text>
+    <text x="350" y="134" font-family="Inter" font-size="8.5" fill="#10b981">W-003 — UT</text>
+
+    <!-- W-004 -->
+    <line x1="420" y1="142" x2="420" y2="178" stroke="#f59e0b" stroke-width="3.5"/>
+    <circle cx="420" cy="160" r="10" fill="#0d1424" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="420" y="164.5" text-anchor="middle" font-family="Inter" font-size="7" fill="#f59e0b" font-weight="800">W04</text>
+    <text x="420" y="194" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#f59e0b">W-004</text>
+    <text x="420" y="205" text-anchor="middle" font-family="Vazirmatn" font-size="7.5" fill="#4a6080">در انتظار NDT</text>
+
+    <!-- W-005 -->
+    <line x1="540" y1="142" x2="540" y2="178" stroke="#10b981" stroke-width="3.5"/>
+    <circle cx="540" cy="160" r="10" fill="#0d1424" stroke="#10b981" stroke-width="1.5"/>
+    <text x="540" y="164.5" text-anchor="middle" font-family="Inter" font-size="7" fill="#10b981" font-weight="800">W05</text>
+    <text x="540" y="194" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#10b981">W-005</text>
+    <text x="540" y="205" text-anchor="middle" font-family="Vazirmatn" font-size="7.5" fill="#4a6080">تأیید — VT+RT</text>
+
+    <!-- flow arrow -->
+    <line x1="80" y1="135" x2="140" y2="135" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+    <text x="110" y="130" text-anchor="middle" font-family="Inter" font-size="8" fill="#3b82f6" opacity=".7">Flow →</text>
+
+    <!-- LEGEND -->
+    <rect x="10" y="222" width="660" height="88" rx="6" fill="#0d1424"/>
+    <text x="20" y="237" font-family="Vazirmatn" font-size="9" fill="#4a6080" font-weight="700">راهنما:</text>
+
+    <line x1="62" y1="250" x2="62" y2="264" stroke="#10b981" stroke-width="3"/>
+    <circle cx="62" cy="257" r="7" fill="#0d1424" stroke="#10b981" stroke-width="1.5"/>
+    <text x="62" y="260" text-anchor="middle" font-family="Inter" font-size="6" fill="#10b981" font-weight="800">W</text>
+    <text x="78" y="259" font-family="Vazirmatn" font-size="9" fill="#8fa4c4">جوش تأیید شده</text>
+
+    <line x1="170" y1="250" x2="170" y2="264" stroke="#ef4444" stroke-width="3"/>
+    <circle cx="170" cy="257" r="7" fill="#0d1424" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="170" y="260" text-anchor="middle" font-family="Inter" font-size="6" fill="#ef4444" font-weight="800">W</text>
+    <text x="186" y="259" font-family="Vazirmatn" font-size="9" fill="#8fa4c4">جوش رد شده / NCR</text>
+
+    <line x1="300" y1="250" x2="300" y2="264" stroke="#f59e0b" stroke-width="3"/>
+    <circle cx="300" cy="257" r="7" fill="#0d1424" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="300" y="260" text-anchor="middle" font-family="Inter" font-size="6" fill="#f59e0b" font-weight="800">W</text>
+    <text x="316" y="259" font-family="Vazirmatn" font-size="9" fill="#8fa4c4">در انتظار NDT / PWHT</text>
+
+    <!-- table summary -->
+    <rect x="10" y="272" width="660" height="30" rx="0" fill="transparent"/>
+    <text x="20" y="287" font-family="Inter" font-size="8.5" fill="#2e4068">Welder ID</text>
+    <text x="100" y="287" font-family="Inter" font-size="8.5" fill="#2e4068">W-001</text>
+    <text x="150" y="287" font-family="Inter" font-size="8.5" fill="#2e4068">W-002</text>
+    <text x="200" y="287" font-family="Inter" font-size="8.5" fill="#2e4068">W-003</text>
+    <text x="250" y="287" font-family="Inter" font-size="8.5" fill="#2e4068">W-004</text>
+    <text x="300" y="287" font-family="Inter" font-size="8.5" fill="#2e4068">W-005</text>
+
+    <text x="20" y="300" font-family="Vazirmatn" font-size="8.5" fill="#4a6080">WPS No.</text>
+    <text x="100" y="300" font-family="Inter" font-size="8" fill="#4a6080">WPS-CS-001</text>
+    <text x="150" y="300" font-family="Inter" font-size="8" fill="#4a6080">WPS-CS-001</text>
+    <text x="200" y="300" font-family="Inter" font-size="8" fill="#4a6080">WPS-CS-002</text>
+    <text x="250" y="300" font-family="Inter" font-size="8" fill="#4a6080">WPS-CS-001</span></text>
+    <text x="300" y="300" font-family="Inter" font-size="8" fill="#4a6080">WPS-CS-001</text>
+
+    <text x="430" y="287" font-family="Vazirmatn" font-size="8.5" fill="#4a6080">کل جوش‌ها:</text>
+    <text x="510" y="287" font-family="Inter" font-size="8.5" fill="#3b82f6" font-weight="700">5 عدد</text>
+    <text x="430" y="300" font-family="Vazirmatn" font-size="8.5" fill="#4a6080">تأیید شده:</text>
+    <text x="510" y="300" font-family="Inter" font-size="8.5" fill="#10b981" font-weight="700">3 عدد (60%)</text>
+    <text x="560" y="287" font-family="Vazirmatn" font-size="8.5" fill="#4a6080">رد شده:</text>
+    <text x="620" y="287" font-family="Inter" font-size="8.5" fill="#ef4444" font-weight="700">1 عدد</text>
+    <text x="560" y="300" font-family="Vazirmatn" font-size="8.5" fill="#4a6080">در انتظار:</text>
+    <text x="620" y="300" font-family="Inter" font-size="8.5" fill="#f59e0b" font-weight="700">1 عدد</text>
+  </svg>
+  <p style="font-size:11.5px;color:var(--t1);margin-top:10px;border-top:1px solid var(--b0);padding-top:10px;">
+    مرجع: <strong>B31.3 Para 328.2.3</strong> — هر اتصال جوش باید قابل ردیابی به جوشکار، WPS، PQR و نتایج NDT باشد. Weld Map باید به صورت Live در طول پروژه به‌روز نگه داشته شود — نه فقط در پایان پروژه.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     NCR
+══════════════════════════════════════════════ -->
+<div class="sh" id="ncr">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--red),var(--orange));"></div>
+  NCR — گزارش عدم انطباق (Non-Conformance Report)
+</div>
+<p class="lead">
+  NCR سند رسمی است که صادر می‌شود هرگاه یک محصول، فرآیند یا سند از الزامات مشخص‌شده انحراف داشته باشد. NCR <strong>اعلام جنگ نیست</strong> — ابزار سیستماتیک بهبود است. صدور به‌موقع NCR از تجمع مشکلات جلوگیری می‌کند.
+</p>
+
+<div class="callout danger">
+  <div class="cl-hd">🚨 موارد صدور فوری NCR — API RP 577 Sec. 10</div>
+  <p>
+    هر ترک در جوش (هر اندازه) | Undercut از حد مجاز بیشتر | Incomplete Penetration در Severe Cyclic | هر LOF در VT | جوشکاری خارج از محدوده WPQ | جوشکاری بدون WPS معتبر | PWHT انجام نشده در P-No.4 و 5A | Hardness از حد NACE بیشتر | هر عیب که از Table 341.3.2 فراتر رود.
+  </p>
+</div>
+
+<!-- NCR Flow -->
+<div class="ncr-flow">
+  <div class="ncr-step">
+    <div class="ncr-step-n">STEP 01</div>
+    <span class="ncr-step-icon">🔍</span>
+    <div class="ncr-step-title">شناسایی عیب</div>
+    <div class="ncr-step-desc">VT، NDT یا بازرسی در حین اجرا — توقف فوری کار روی آن اتصال</div>
+  </div>
+  <div class="ncr-arrow">→</div>
+  <div class="ncr-step">
+    <div class="ncr-step-n">STEP 02</div>
+    <span class="ncr-step-icon">📝</span>
+    <div class="ncr-step-title">صدور NCR</div>
+    <div class="ncr-step-desc">شماره منحصربه‌فرد، تاریخ، موقعیت، استاندارد نقض‌شده، عکس</div>
+  </div>
+  <div class="ncr-arrow">→</div>
+  <div class="ncr-step">
+    <div class="ncr-step-n">STEP 03</div>
+    <span class="ncr-step-icon">🔬</span>
+    <div class="ncr-step-title">Root Cause Analysis</div>
+    <div class="ncr-step-desc">چرا رخ داد؟ پارامتر / مهارت / متریال / Procedure</div>
+  </div>
+  <div class="ncr-arrow">→</div>
+  <div class="ncr-step">
+    <div class="ncr-step-n">STEP 04</div>
+    <span class="ncr-step-icon">🔧</span>
+    <div class="ncr-step-title">اقدام اصلاحی</div>
+    <div class="ncr-step-desc">Repair طبق Repair WPS + PWHT اگر لازم + NDT تکرار</div>
+  </div>
+  <div class="ncr-arrow">→</div>
+  <div class="ncr-step">
+    <div class="ncr-step-n">STEP 05</div>
+    <span class="ncr-step-icon">✅</span>
+    <div class="ncr-step-title">بستن NCR</div>
+    <div class="ncr-step-desc">تأیید بازرس + Client + ثبت در QC Data Book + Weld Map به‌روزرسانی</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     QC DOCUMENTS
+══════════════════════════════════════════════ -->
+<div class="sh" id="docs">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--purple-l),var(--blue-l));"></div>
+  مستندات کیفی — QC Data Book
+</div>
+<p class="lead">
+  <strong>QC Data Book</strong> (یا Dossier) مجموعه‌ای از تمام مستندات کیفی یک سیستم لوله‌کشی است که قبل از <strong>Pressure Test</strong> باید کامل و تأیید شده باشد. بدون Data Book کامل، هیچ Pressure Test قانونی امکان‌پذیر نیست.
+</p>
+
+<div class="doc-grid">
+
+  <div class="doc-card" style="--dc-c:var(--blue-l);">
+    <span class="doc-icon">📋</span>
+    <div class="doc-code">ITP — Rev. Final</div>
+    <div class="doc-name">طرح بازرسی و آزمون</div>
+    <p class="doc-desc">نسخه نهایی ITP با تأیید Contractor، Client و TPI — با تمام Hold Point‌های بسته‌شده</p>
+    <ul class="doc-items">
+      <li>تاریخ تأیید <strong>همه طرفین</strong></li>
+      <li>تمام Hold Point <strong>بسته و امضا شده</strong></li>
+    </ul>
+  </div>
+
+  <div class="doc-card" style="--dc-c:var(--amber);">
+    <span class="doc-icon">📄</span>
+    <div class="doc-code">WPS + PQR</div>
+    <div class="doc-name">مشخصات روش و سابقه صلاحیت</div>
+    <p class="doc-desc">تمام WPS‌های استفاده‌شده در پروژه به همراه PQR مرتبط — تأیید‌شده قبل از شروع</p>
+    <ul class="doc-items">
+      <li><strong>شماره WPS</strong> روی هر اتصال در Weld Map</li>
+      <li>PQR با <strong>نتایج DT</strong> آزمایشگاه</li>
+    </ul>
+  </div>
+
+  <div class="doc-card" style="--dc-c:var(--green-l);">
+    <span class="doc-icon">👷</span>
+    <div class="doc-code">WPQ — Welder List</div>
+    <div class="doc-name">لیست صلاحیت جوشکاران</div>
+    <p class="doc-desc">WPQ معتبر تمام جوشکاران پروژه — با محدوده صلاحیت و تاریخ اعتبار</p>
+    <ul class="doc-items">
+      <li><strong>شناسه جوشکار</strong> قابل ردیابی به Weld Map</li>
+      <li>تاریخ اعتبار <strong>هنوز منقضی نشده</strong></li>
+    </ul>
+  </div>
+
+  <div class="doc-card" style="--dc-c:var(--cyan);">
+    <span class="doc-icon">📊</span>
+    <div class="doc-code">Weld Map + Log</div>
+    <div class="doc-name">نقشه جوش و دفتر ثبت</div>
+    <p class="doc-desc">نقشه ایزومتریک با شماره‌گذاری تمام اتصالات + Welding Log با پارامترهای هر پاس</p>
+    <ul class="doc-items">
+      <li>وضعیت <strong>هر اتصال</strong>: تأیید / رد / در انتظار</li>
+      <li>پارامترها، دمای Preheat و Interpass</li>
+    </ul>
+  </div>
+
+  <div class="doc-card" style="--dc-c:var(--red-l);">
+    <span class="doc-icon">🔬</span>
+    <div class="doc-code">NDT Reports</div>
+    <div class="doc-name">گزارشات آزمایش‌های غیرمخرب</div>
+    <p class="doc-desc">تمام گزارشات RT، UT، MT، PT — به همراه فیلم RT و گزارش تفسیر</p>
+    <ul class="doc-items">
+      <li>فیلم RT: ارشیو <strong>حداقل ۳ سال — Para 346.2</strong></li>
+      <li>Procedure شماره + نام Operator + نتیجه</li>
+    </ul>
+  </div>
+
+  <div class="doc-card" style="--dc-c:var(--purple-l);">
+    <span class="doc-icon">🌡️</span>
+    <div class="doc-code">PWHT Charts</div>
+    <div class="doc-name">نمودارهای عملیات حرارتی</div>
+    <p class="doc-desc">Chart Recorder هر PWHT با زمان، دمای دقیق و نرخ گرمایش/سردایش — امضای بازرس</p>
+    <ul class="doc-items">
+      <li>شماره اتصال روی Chart <strong>مستقیم نوشته</strong> شده</li>
+      <li>Thermocouple کالیبره — <strong>گواهی معتبر</strong></li>
+    </ul>
+  </div>
+
+  <div class="doc-card" style="--dc-c:var(--orange);">
+    <span class="doc-icon">⚠️</span>
+    <div class="doc-code">NCR Register</div>
+    <div class="doc-name">ثبت عدم انطباق‌ها</div>
+    <p class="doc-desc">لیست تمام NCR‌های صادره، وضعیت (Open/Closed)، اقدام اصلاحی و تأیید نهایی</p>
+    <ul class="doc-items">
+      <li>تمام NCR قبل از Pressure Test باید <strong>Close</strong> شده باشند</li>
+      <li>Root Cause و Corrective Action مستند</li>
+    </ul>
+  </div>
+
+  <div class="doc-card" style="--dc-c:var(--teal);">
+    <span class="doc-icon">💧</span>
+    <div class="doc-code">Pressure Test Package</div>
+    <div class="doc-name">پکیج فشار آزمایش</div>
+    <p class="doc-desc">محاسبات فشار تست، دیاگرام سیستم، سیستم بلید، گواهی فشارسنج، گزارش تست</p>
+    <ul class="doc-items">
+      <li>فشار تست: <strong>P_test = 1.5 × MAWP × (St/Sd)</strong></li>
+      <li>گزارش امضا‌شده <strong>Contractor + Client</strong></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VT PRINCIPLES
+══════════════════════════════════════════════ -->
+<div class="sh" id="vt">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--amber),var(--orange));"></div>
+  اصول بازرسی چشمی (VT) — مستقل‌ترین ابزار بازرس
+</div>
+<p class="lead">
+  VT اولین و اساسی‌ترین روش بازرسی است که باید <strong>قبل از هر NDT دیگری</strong> انجام شود. طبق <strong>ASME Sec. V Art. 9 T-952</strong>، VT دارای الزامات دقیق محیطی و فیزیکی است که اگر رعایت نشود، نتیجه آن قابل قبول نیست.
+</p>
+
+<div class="inspector-card" style="--ic-c:var(--amber);">
+  <div class="ic-head">
+    <div class="ic-num" style="background:linear-gradient(135deg,#d97706,#ea580c);font-size:18px;">VT</div>
+    <div>
+      <div class="ic-title">الزامات اجرای VT — ASME Sec. V Art. 9</div>
+      <div class="ic-en">Visual Examination — T-952 Requirements + AWS B1.11</div>
+      <div class="ic-sub">VT مستقل از سایر NDT‌هاست — نتیجه آن در گزارش جداگانه ثبت می‌شود</div>
+    </div>
+  </div>
+  <div class="ic-body">
+    <div class="ic-col">
+      <div class="ic-col-h">💡 شرایط محیطی — T-952</div>
+      <ul class="slist">
+        <li><span class="sk">روشنایی حداقل</span><span class="sv">≥ 500 Lux (50 fc)</span></li>
+        <li><span class="sk">ابزار اندازه‌گیری</span><span class="sv">Luxmeter کالیبره</span></li>
+        <li><span class="sk">زاویه دید</span><span class="sv">≥ 30° از سطح</span></li>
+        <li><span class="sk">فاصله چشم تا سطح</span><span class="sv">≤ 600mm</span></li>
+        <li><span class="sk">Vision Test بازرس</span><span class="sv">Near Vision Acuity — سالانه</span></li>
+        <li><span class="sk">عینک اگر لازم باشد</span><span class="sv">مجاز — T-921</span></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">🔧 ابزار VT</div>
+      <ul class="blist">
+        <li><strong>Weld Gauge (Bridge Cam):</strong> Reinforcement + Undercut</li>
+        <li><strong>Pit Gauge:</strong> عمق Undercut دقیق</li>
+        <li><strong>Fillet Weld Gauge:</strong> اندازه جوش گوشه</li>
+        <li><strong>Magnifying Glass 2–4×:</strong> ترک‌های ریز — T-922</li>
+        <li><strong>Mirror:</strong> نواحی کور</li>
+        <li><strong>Straight Edge:</strong> Straightness لوله</li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">📋 توالی VT صحیح</div>
+      <ul class="blist">
+        <li><strong>تمیزکاری:</strong> Spatter و Slag قبل از VT</li>
+        <li><strong>کنترل هندسی:</strong> Profile، Reinforcement، عرض Cap</li>
+        <li><strong>اندازه‌گیری:</strong> Undercut با Pit Gauge — نه تخمین</li>
+        <li><strong>بررسی سطح:</strong> Crack، Porosity، Arc Strike</li>
+        <li><strong>مقایسه با Table 341.3.2:</strong> سپس تصمیم</li>
+        <li><strong>ثبت فوری:</strong> گزارش قبل از NDT</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ic-foot">
+    <div class="if-title">⚠️ اشتباهات رایج VT</div>
+    <div class="chips">
+      <span class="chip ch-no">Undercut با چشم تخمین زدن — Pit Gauge الزامی</span>
+      <span class="chip ch-no">VT زیر 500 Lux — نتیجه باطل است</span>
+      <span class="chip ch-no">VT بعد از RT — ترتیب اشتباه</span>
+      <span class="chip ch-no">گفتن "Defect" قبل از مقایسه با معیار — اشتباه فنی</span>
+      <span class="chip ch-ref">Sec. V Art. 9 T-952</span>
+      <span class="chip ch-ref">AWS B1.11 Section 4–5</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PWHT CONTROL
+══════════════════════════════════════════════ -->
+<div class="sh" id="pwht-ctrl">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--red),var(--purple-l));"></div>
+  کنترل PWHT در میدان — وظایف بازرس
+</div>
+<p class="lead">
+  بازرس جوش مسئول <strong>نظارت مستقیم بر اجرای PWHT</strong> است — نه فقط دریافت گزارش. هر PWHT باید با حضور بازرس یا نماینده مجاز انجام شود.
+</p>
+
+<div class="inspector-card" style="--ic-c:var(--red-l);">
+  <div class="ic-head">
+    <div class="ic-num" style="background:linear-gradient(135deg,#dc2626,#7c3aed);font-size:14px;">PWHT</div>
+    <div>
+      <div class="ic-title">کنترل PWHT در میدان</div>
+      <div class="ic-en">Post-Weld Heat Treatment — Inspector Duties</div>
+      <div class="ic-sub">گرمایش / نگهداری / سردایش — هر سه باید مطابق B31.3 Table 331.1.1 و Para 331.1.4 باشند</div>
+    </div>
+  </div>
+  <div class="ic-body">
+    <div class="ic-col">
+      <div class="ic-col-h">🌡️ قبل از PWHT</div>
+      <ul class="blist">
+        <li>Thermocouple کالیبره — گواهی معتبر</li>
+        <li>Insulation کافی دور اتصال</li>
+        <li>Heating Element تأیید‌شده — یکنواخت</li>
+        <li>Chart Recorder کالیبره روشن</li>
+        <li>شماره اتصال روی Chart نوشته شده</li>
+        <li>PWHT Procedure تأیید‌شده در دسترس</li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">📊 پارامترهای کنترلی</div>
+      <ul class="slist">
+        <li><span class="sk">نرخ گرمایش CS P1</span><span class="sv">≤ 222°C/hr — Para 331.1.4</span></li>
+        <li><span class="sk">دمای نگهداری P1 (>19mm)</span><span class="sv">595°C — Table 331.1.1</span></li>
+        <li><span class="sk">مدت نگهداری P1</span><span class="sv">1 hr / 25mm ضخامت</span></li>
+        <li><span class="sk">نرخ سردایش CS</span><span class="sv">≤ 222°C/hr تا 315°C</span></li>
+        <li><span class="sk">P-No.4 (Cr-Mo P11)</span><span class="sv">705–750°C</span></li>
+        <li><span class="sk">P-No.5A (P22)</span><span class="sv">730–760°C</span></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">✅ پس از PWHT</div>
+      <ul class="blist">
+        <li>Chart خوانده و تأیید شود — <strong>امضای بازرس</strong></li>
+        <li>Hardness Survey پس از سردایش (Sour / Cr-Mo)</li>
+        <li>نتایج Hardness در Data Book ثبت</li>
+        <li>NDT تکرار اگر Engineering الزام کند</li>
+        <li>Chart اصلی آرشیو — <strong>کپی تحویل Client</strong></li>
+        <li>Weld Map وضعیت "PWHT Done" به‌روزرسانی</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ic-foot">
+    <div class="if-title">🚨 Grade 91 (P-No.5B Gr.1) — بحرانی‌ترین PWHT</div>
+    <div class="chips">
+      <span class="chip ch-no">دمای زیر 730°C → Type IV Cracking در سرویس</span>
+      <span class="chip ch-no">دمای بالای 780°C → کاهش استحکام Creep</span>
+      <span class="chip ch-ok">Thermocouple مستقیم روی قطعه — Pyrometer کافی نیست</span>
+      <span class="chip ch-ref">B31.3 Table 331.1.1 + Para 331.1.4</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MECHANICAL COMPLETION / HANDOVER
+══════════════════════════════════════════════ -->
+<div class="sh" id="handover">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--teal),var(--green-l));"></div>
+  تکمیل مکانیکی و تحویل — Mechanical Completion & Handover
+</div>
+<p class="lead">
+  تکمیل مکانیکی (MC) نقطه رسمی است که Contractor اعلام می‌کند سیستم از نظر نصب و ساخت کامل شده و آماده Pressure Test و راه‌اندازی است. بازرس QC باید Data Book کامل را <strong>قبل از صدور MC Certificate</strong> تأیید کند.
+</p>
+
+<div class="inspector-card" style="--ic-c:var(--teal);">
+  <div class="ic-head">
+    <div class="ic-num" style="background:linear-gradient(135deg,#0d9488,#059669);font-size:13px;">MC</div>
+    <div>
+      <div class="ic-title">چک‌لیست تکمیل مکانیکی — Mechanical Completion</div>
+      <div class="ic-en">Pre-MC Verification — QC Data Book Review</div>
+      <div class="ic-sub">همه موارد زیر باید قبل از امضای MC Certificate توسط بازرس تأیید شده باشند</div>
+    </div>
+  </div>
+  <div class="ic-body">
+    <div class="ic-col">
+      <div class="ic-col-h">📁 Data Book کامل</div>
+      <ul class="blist">
+        <li>ITP نهایی — <strong>تمام HP بسته</strong></li>
+        <li>WPS + PQR — <strong>تمام ردیف‌ها</strong></li>
+        <li>WPQ List — معتبر در زمان کار</li>
+        <li>Weld Map نهایی — <strong>100% اتصالات</strong></li>
+        <li>NDT Reports — <strong>همه تأیید شده</strong></li>
+        <li>PWHT Charts — تمام متریال‌های الزامی</li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">⚠️ NCR و عدم انطباق</div>
+      <ul class="blist">
+        <li>تمام NCR <strong>Status: Closed</strong></li>
+        <li>Repair Log کامل — NDT تعمیر تأیید شده</li>
+        <li>Punch List نهایی تهیه شده</li>
+        <li>هیچ Open Technical Query باقی نمانده</li>
+        <li>هیچ Conditional Approval باز نیست</li>
+        <li>Client Witness Point‌ها <strong>همه امضا شده</strong></li>
+      </ul>
+    </div>
+    <div class="ic-col">
+      <div class="ic-col-h">💧 آمادگی Pressure Test</div>
+      <ul class="blist">
+        <li>Pressure Test Package تأیید‌شده</li>
+        <li>فشارسنج کالیبره — گواهی معتبر</li>
+        <li>Relief Valve تنظیم‌شده روی سیستم</li>
+        <li>Blind و Isolation کامل</li>
+        <li>Test Log تهیه شده</li>
+        <li>بازرس Client یا TPI حضور دارد</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ic-foot">
+    <div class="if-title">✅ ترتیب صحیح تحویل</div>
+    <div class="chips">
+      <span class="chip ch-ok">Data Book کامل → Pressure Test → MC Certificate → Pre-Commissioning</span>
+      <span class="chip ch-ref">B31.3 Para 345 — Pressure Test</span>
+      <span class="chip ch-ref">Para 346 — Records</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FINAL CHECKLIST
+══════════════════════════════════════════════ -->
+<div class="sh" id="checklist">
+  <div class="sh-bar" style="background:linear-gradient(180deg,var(--green),var(--cyan));"></div>
+  چک‌لیست نهایی بازرس جوش — خلاصه کل دوره
+</div>
+<p class="lead">
+  این چک‌لیست خلاصه تمام مهارت‌های عملی است که یک بازرس جوش حرفه‌ای در پروژه‌های ASME B31.3 باید داشته باشد.
+</p>
+
+<div class="cl-wrap">
+  <div class="cl-hd">
+    <div class="cl-hd-icon">🔍</div>
+    <div>
+      <h3>چک‌لیست جامع بازرس جوش — از WPS تا تحویل</h3>
+      <p>مرجع: ASME B31.3 Para 328–346 | API RP 577 Sec. 3–12 | AWS B1.11</p>
+    </div>
+  </div>
+  <div class="cl-grid">
+    <div class="cl-item">
+      <div class="cl-n">1</div>
+      <div><strong>WPS/PQR/WPQ بررسی:</strong> قبل از هر جوش — همه تأیید شده و در محدوده باشند<span class="cl-r">B31.3 Para 328 + ASME Sec. IX QW-300</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">2</div>
+      <div><strong>Fit-up Hold Point:</strong> Root Gap، Hi-Lo، Bevel، تمیزی — قبل از اولین قوس<span class="cl-r">Para 328.4.3 — Hi-Lo ≤ 1.6mm</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">3</div>
+      <div><strong>Preheat Contact Pyrometer:</strong> ≥75mm از لبه — هر دو طرف — قبل از Root Pass<span class="cl-r">Para 330.1.2 + Table 330.1.1</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">4</div>
+      <div><strong>Stamp جوشکار:</strong> شناسه روی هر اتصال — ردیابی به WPQ الزامی است<span class="cl-r">Para 328.2.3 + Weld Map</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">5</div>
+      <div><strong>Interpass Temperature:</strong> قبل از هر پاس — Contact Pyrometer — ثبت در Welding Log<span class="cl-r">ASME Sec. IX QW-406.3</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">6</div>
+      <div><strong>VT بین پاس:</strong> Slag کاملاً برداشته — هر Crack یا Porosity → Stop Work<span class="cl-r">Para 341.4.1 + API RP 577 Sec. 8</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">7</div>
+      <div><strong>Back Purge SS:</strong> O₂ ≤ 0.1% با Analyzer قبل از Root — کنترل مداوم<span class="cl-r">API RP 577 Sec. 7.2</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">8</div>
+      <div><strong>VT نهایی با ≥500 Lux:</strong> Pit Gauge برای Undercut — Weld Gauge برای Reinforcement<span class="cl-r">Sec. V Art. 9 T-952 + Table 341.3.2</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">9</div>
+      <div><strong>Written NDT Procedure:</strong> قبل از اجرا تأیید شده — Operator Level II — تجهیز کالیبره<span class="cl-r">Sec. V Art. 1 T-150</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">10</div>
+      <div><strong>PWHT با Thermocouple مستقیم:</strong> Chart Recorder کالیبره — نرخ ≤ 222°C/hr<span class="cl-r">Para 331.1.3 + Table 331.1.1</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">11</div>
+      <div><strong>Hardness Survey (Sour):</strong> HAZ ≤ 248 HV10 پس از PWHT — Portable Tester<span class="cl-r">NACE MR0175 / ISO 15156-2 Table B.1</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">12</div>
+      <div><strong>NCR بسته‌شده:</strong> تمام NCR قبل از Pressure Test — Weld Map به‌روز<span class="cl-r">API RP 577 Sec. 10 + Para 346</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">13</div>
+      <div><strong>Data Book کامل:</strong> ITP + WPS/PQR + Weld Map + NDT + PWHT + NCR → قبل از MC<span class="cl-r">B31.3 Para 346.2</span></div>
+    </div>
+    <div class="cl-item">
+      <div class="cl-n">14</div>
+      <div><strong>Pressure Test Package:</strong> P_test = 1.5 × MAWP × (St/Sd) — فشارسنج کالیبره<span class="cl-r">B31.3 Para 345.4.2</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="callout danger">
+  <div class="cl-hd">🚨 پنج خط قرمز بازرس جوش — هرگز فراموش نکنید</div>
+  <p>
+    <strong>(1)</strong> هیچ جوشکاری خارج از محدوده WPQ — حتی اگر فقط یک پاس باشد.<br>
+    <strong>(2)</strong> هیچ تعمیر جوش بدون NCR صادره و Repair WPS — ثبت همه چیز.<br>
+    <strong>(3)</strong> PWHT برای P-No.4 و 5A بدون Chart Recorder و Thermocouple مستقیم — کافی نیست.<br>
+    <strong>(4)</strong> RT برای تأیید LOF — اشتباه فنی است؛ UT TOFD استفاده شود.<br>
+    <strong>(5)</strong> امضای Data Book ناقص — بازرس مسئول است؛ فقط زمانی که همه موارد کامل باشند.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CLOSING CARD
+══════════════════════════════════════════════ -->
+<div class="closing-card">
+  <h2>پایان دوره آموزشی جوشکاری</h2>
+  <p>
+    شش فصل این دوره — از WPS/PQR تا بازرسی فنی — مجموعه کاملی از دانش کاربردی برای بازرسین QC، مهندسان جوش و ناظران پروژه‌های EPC نفت، گاز و پتروشیمی است.
+  </p>
+  <div class="ch-complete">
+    <span class="ch-tag done">✓ فصل ۱ — WPS / PQR / WPQ</span>
+    <span class="ch-tag done">✓ فصل ۲ — فرآیندهای جوشکاری</span>
+    <span class="ch-tag done">✓ فصل ۳ — مراحل جوشکاری</span>
+    <span class="ch-tag done">✓ فصل ۴ — عیوب جوشکاری</span>
+    <span class="ch-tag done">✓ فصل ۵ — DT + NDT</span>
+    <span class="ch-tag done">✓ فصل ۶ — بازرسی فنی</span>
+  </div>
+  <p style="margin-top:6px;font-size:12px;color:var(--t2);">
+    مراجع اصلی: ASME B31.3 · ASME Sec. V · ASME Sec. IX · API RP 577 · AWS B1.11 · NACE MR0175/ISO 15156 · ASTM E-Series
+  </p>
+</div>
+
+<div class="nav-footer">
+  <a href="../05-tests/" class="nf-btn nf-prev">→ فصل ۵: آزمایش‌های جوش</a>
+  <a href="../../" class="nf-btn nf-home">🏠 بازگشت به صفحه اصلی</a>
+</div>
+</div>
+
+<footer>
+  <p>⚡ مراجع: ASME B31.3 Para 328–346 | API RP 577 Sec. 3–12 | ASME Sec. V Art. 9 | ASME Sec. IX QW-300 | AWS B1.11 | NACE MR0175/ISO 15156</p>
+  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio | فصل پایانی — آموزش جوشکاری</p>
+  <p style="margin-top:6px;font-size:10.5px;opacity:.4;">© 2026 Piping Studio — Welding Inspection Principles</p>
+</footer>
+
+<script>
+/* progress bar */
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  document.getElementById('pf').style.width=
+    (s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+},{passive:true});
+
+/* theme */
+function toggleTheme(){
+  const b=document.body,btn=document.getElementById('themeBtn');
+  if(b.getAttribute('data-theme')==='light'){
+    b.removeAttribute('data-theme');btn.textContent='🌙';localStorage.setItem('pst6','dark');
+  }else{
+    b.setAttribute('data-theme','light');btn.textContent='☀️';localStorage.setItem('pst6','light');
+  }
+}
+if(localStorage.getItem('pst6')==='light'){
+  document.body.setAttribute('data-theme','light');
+  document.getElementById('themeBtn').textContent='☀️';
+}
+
+/* active nav */
+const allSec=[...document.querySelectorAll('[id]')];
+const allA=[...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  let c='';
+  allSec.forEach(s=>{if(s.getBoundingClientRect().top<90)c=s.id;});
+  allA.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+c));
+},{passive:true});
+
+/* smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');if(h.length<2)return;
+    e.preventDefault();
+    const t=document.querySelector(h);
+    if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-66,behavior:'smooth'});
+  });
+});
+</script>
 </body>
 </html>
+HTMLEOF
+echo "done: $(wc -l < /home/claude/welding-ch06/index.html) lines"
+ 
