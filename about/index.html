@@ -3,644 +3,1821 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>درباره من — عیسی ماردی | Piping Studio</title>
+<title>عیسی ماردی | Piping Studio — QC Manager · Piping · Welding · NDT</title>
+<meta name="description" content="پروفایل حرفه‌ای عیسی ماردی — مدیر کنترل کیفیت با بیش از ۱۵ سال تجربه در پروژه‌های نفت، گاز و پتروشیمی">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#05080f; --bg-2:#090e1a; --bg-card:#111b2e;
-  --bg-card2:#162035; --bg-lift:#1a2740;
-  --b0:#1a2540; --b1:#243352; --b2:#2e4068;
-  --t0:#eef2fa; --t1:#8fa4c4; --t2:#4a6080;
-  --blue:#2563eb; --blue-l:#3b82f6;
-  --cyan:#06b6d4; --teal:#0d9488;
-  --amber:#f59e0b; --orange:#ea580c;
-  --green:#059669; --green-l:#10b981;
-  --red:#dc2626; --red-l:#ef4444;
-  --purple:#7c3aed; --purple-l:#a855f7;
-  --sig:linear-gradient(90deg,#2563eb 0%,#06b6d4 55%,#0d9488 100%);
-  --r:10px; --r-l:16px; --r-xl:22px;
-  --sh:0 4px 24px rgba(0,0,0,.45);
+  --primary:#E85D0F;
+  --primary-dark:#C94A00;
+  --secondary:#0066CC;
+  --accent:#0A8754;
+  --warning:#D97706;
+  --danger:#DC2626;
+  --bg:#F7F8FC;
+  --bg-2:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface-2:#F1F4F9;
+  --surface-3:#E8EDF5;
+  --glass:rgba(255,255,255,.85);
+  --glass-2:rgba(255,255,255,.95);
+  --border:rgba(15,23,42,.08);
+  --border-2:rgba(15,23,42,.15);
+  --text:#0F172A;
+  --text-sec:#475569;
+  --text-muted:#64748B;
+  --text-dim:#94A3B8;
+  
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --radius-xl:20px;
+  --radius-2xl:28px;
+  --radius-full:9999px;
+  
+  --shadow-sm:0 1px 3px rgba(15,23,42,.06),0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 4px 12px rgba(15,23,42,.08),0 2px 4px rgba(15,23,42,.04);
+  --shadow-lg:0 12px 32px rgba(15,23,42,.12),0 4px 8px rgba(15,23,42,.06);
+  --shadow-xl:0 24px 48px rgba(15,23,42,.16);
+  
+  --font-fa:'Vazirmatn',sans-serif;
+  --font-en:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --tr:all .3s cubic-bezier(.4,0,.2,1);
 }
-[data-theme="light"]{
-  --bg:#f1f5fc; --bg-2:#e8eef8; --bg-card:#fff;
-  --bg-card2:#f8faff; --bg-lift:#eef2fb;
-  --b0:#d1dbe8; --b1:#c0cfe0; --b2:#a8bed4;
-  --t0:#0b1628; --t1:#4a6080; --t2:#8fa4c4;
-  --sh:0 4px 24px rgba(0,0,0,.08);
-}
+
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+
 body{
-  font-family:'Vazirmatn','Segoe UI',sans-serif;
-  background:var(--bg);color:var(--t0);
-  line-height:1.85;min-height:100vh;
-  transition:background .3s,color .3s;
+  font-family:var(--font-fa);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  overflow-x:hidden;
+  min-height:100vh;
 }
-a{text-decoration:none;color:inherit;}
-::-webkit-scrollbar{width:7px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--b1);border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
 
-/* PROGRESS */
-.prog{position:fixed;top:0;left:0;right:0;z-index:300;height:3px;}
-.prog-fill{height:100%;width:0%;background:var(--sig);border-radius:0 2px 2px 0;transition:width .08s linear;}
-
-/* NAVBAR */
-.navbar{
-  position:sticky;top:3px;z-index:200;
-  background:rgba(5,8,15,.93);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--b0);
-}
-[data-theme="light"] .navbar{background:rgba(241,245,252,.94);}
-.nav-inner{
-  max-width:960px;margin:0 auto;padding:0 22px;height:58px;
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-}
-.nav-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:13px;color:var(--t0);}
-.nav-logo-mark{
-  width:30px;height:30px;border-radius:8px;
-  background:var(--sig);
-  display:flex;align-items:center;justify-content:center;font-size:15px;
-}
-.nav-right{display:flex;align-items:center;gap:8px;}
-.nav-back{
-  color:var(--t1);font-size:12px;padding:6px 12px;
-  border-radius:8px;border:1px solid var(--b0);transition:all .2s;
-}
-.nav-back:hover{color:var(--cyan);border-color:var(--cyan);}
-.nav-theme{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--bg-card);border:1px solid var(--b0);
-  color:var(--t0);cursor:pointer;font-size:.85rem;
-  transition:transform .25s;
-  display:flex;align-items:center;justify-content:center;
-}
-.nav-theme:hover{transform:rotate(20deg);}
-
-/* HERO */
-.hero{
-  position:relative;background:#04070e;
-  overflow:hidden;padding:56px 22px 44px;text-align:center;
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(37,99,235,.1) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(37,99,235,.1) 1px,transparent 1px),
-    linear-gradient(rgba(37,99,235,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(37,99,235,.04) 1px,transparent 1px);
-  background-size:64px 64px,64px 64px,16px 16px,16px 16px;
-}
-.hero-glow{
-  position:absolute;inset:0;
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
   background:
-    radial-gradient(ellipse 60% 55% at 50% 90%,rgba(37,99,235,.2),transparent),
-    radial-gradient(ellipse 35% 28% at 80% 15%,rgba(6,182,212,.1),transparent);
+    radial-gradient(circle at 15% 20%,rgba(232,93,15,.06) 0%,transparent 45%),
+    radial-gradient(circle at 85% 80%,rgba(0,102,204,.06) 0%,transparent 45%),
+    radial-gradient(circle at 50% 50%,rgba(10,135,84,.03) 0%,transparent 50%);
+  z-index:-1;
+  pointer-events:none;
 }
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(4,7,14,.35) 0%,rgba(4,7,14,.75) 60%,rgba(4,7,14,.97) 100%);
-}
-.hero-body{position:relative;z-index:2;}
 
-/* AVATAR با عکس واقعی */
-.avatar-wrap{
-  width:110px;height:110px;
-  border-radius:50%;
-  margin:0 auto 20px;
+.container{max-width:1400px;margin:0 auto;padding:0 2rem;position:relative;}
+
+/* ========= PROGRESS BAR ========= */
+.progress-bar{
+  position:fixed;
+  top:0;right:0;left:0;
+  height:3px;
+  background:rgba(232,93,15,.1);
+  z-index:1000;
+}
+.progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  width:0%;
+  transition:width .1s linear;
+}
+
+/* ========= NAVBAR ========= */
+nav{
+  position:fixed;
+  top:0;right:0;left:0;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  z-index:999;
+  transition:var(--tr);
+}
+nav.scrolled{
+  background:rgba(255,255,255,.95);
+  box-shadow:var(--shadow-sm);
+}
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 2rem;
+  max-width:1400px;
+  margin:0 auto;
+}
+.logo-wrap{display:flex;align-items:center;gap:.85rem;}
+.logo-mark{
+  width:44px;height:44px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;
+  font-family:var(--font-en);
+  font-size:.95rem;
+  letter-spacing:-1px;
+  box-shadow:0 4px 12px rgba(232,93,15,.25);
+}
+.logo-text{
+  font-family:var(--font-en);
+  font-size:1.15rem;font-weight:800;
+  letter-spacing:.5px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.logo-sub{
+  font-size:.65rem;
+  color:var(--text-muted);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-family:var(--font-mono);
+}
+.nav-right{display:flex;align-items:center;gap:.5rem;}
+.nav-btn{
+  padding:.55rem 1.1rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-md);
+  color:var(--text-sec);
+  font-family:var(--font-fa);
+  font-size:.85rem;font-weight:500;
+  cursor:pointer;transition:var(--tr);
+  display:inline-flex;align-items:center;gap:.4rem;
+  text-decoration:none;
+}
+.nav-btn:hover{
+  border-color:var(--primary);
+  color:var(--primary);
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-sm);
+}
+.nav-btn.primary{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  border-color:transparent;
+  color:#fff;
+  box-shadow:0 4px 12px rgba(232,93,15,.25);
+}
+.nav-btn.primary:hover{
+  box-shadow:0 6px 20px rgba(232,93,15,.4);
+  color:#fff;
+}
+
+/* ========= HERO ========= */
+.hero{
+  min-height:100vh;
+  padding:140px 0 80px;
   position:relative;
-  /* حلقه درخشان */
-  background:var(--sig);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+}
+
+.hero-visual{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
+.hero-visual svg{
+  position:absolute;
+  opacity:.25;
+  animation:floatSvg 20s ease-in-out infinite;
+}
+.hero-visual .svg-1{top:10%;right:5%;width:180px;}
+.hero-visual .svg-2{bottom:15%;left:8%;width:200px;animation-delay:-5s;}
+.hero-visual .svg-3{top:50%;left:40%;width:120px;animation-delay:-10s;}
+
+@keyframes floatSvg{
+  0%,100%{transform:translate(0,0) rotate(0deg);}
+  33%{transform:translate(20px,-30px) rotate(5deg);}
+  66%{transform:translate(-15px,20px) rotate(-3deg);}
+}
+
+.hero-glow{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 600px 600px at 20% 50%,rgba(232,93,15,.08),transparent 60%),
+    radial-gradient(ellipse 500px 500px at 80% 30%,rgba(0,102,204,.08),transparent 60%);
+  pointer-events:none;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:4rem;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.hero-content{position:relative;}
+
+.hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.5rem 1.1rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-full);
+  font-family:var(--font-mono);
+  font-size:.75rem;
+  color:var(--text-sec);
+  letter-spacing:1.5px;
+  margin-bottom:1.75rem;
+  text-transform:uppercase;
+  box-shadow:var(--shadow-sm);
+}
+.hero-eyebrow .live-dot{
+  width:7px;height:7px;
+  background:var(--accent);
+  border-radius:50%;
+  box-shadow:0 0 0 0 rgba(10,135,84,.7);
+  animation:livePulse 2s infinite;
+}
+@keyframes livePulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(10,135,84,.7);}
+  50%{box-shadow:0 0 0 10px rgba(10,135,84,0);}
+}
+
+.hero-name{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:800;
+  line-height:1.05;
+  margin-bottom:1rem;
+  letter-spacing:-1.5px;
+  color:var(--text);
+}
+.hero-name .highlight{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  display:inline-block;
+}
+
+.hero-title-bar{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1.5rem;
+  flex-wrap:wrap;
+}
+.hero-role{
+  font-family:var(--font-en);
+  font-size:1.1rem;
+  font-weight:600;
+  color:var(--primary);
+  letter-spacing:.3px;
+}
+.hero-divider{
+  width:40px;height:2px;
+  background:linear-gradient(90deg,var(--primary),transparent);
+}
+
+.hero-bio{
+  font-size:1.05rem;
+  color:var(--text-sec);
+  margin-bottom:2.25rem;
+  max-width:580px;
+}
+.hero-bio strong{color:var(--text);font-weight:700;}
+
+.hero-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-bottom:2.25rem;
+}
+.h-tag{
+  padding:.4rem .9rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-full);
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  color:var(--text-sec);
+  letter-spacing:.5px;
+  transition:var(--tr);
+  box-shadow:var(--shadow-sm);
+}
+.h-tag:hover{
+  border-color:var(--primary);
+  color:var(--primary);
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md);
+}
+.h-tag.orange{color:var(--primary);border-color:rgba(232,93,15,.3);background:rgba(232,93,15,.05);}
+.h-tag.blue{color:var(--secondary);border-color:rgba(0,102,204,.3);background:rgba(0,102,204,.05);}
+.h-tag.green{color:var(--accent);border-color:rgba(10,135,84,.3);background:rgba(10,135,84,.05);}
+
+.hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;}
+
+/* ========= VISUAL CARD ========= */
+.visual-card{
+  position:relative;
+  padding:2rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-2xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.visual-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(232,93,15,.03),rgba(0,102,204,.03));
+  pointer-events:none;
+}
+
+.avatar-frame{
+  width:240px;height:240px;
+  margin:0 auto 1.5rem;
+  position:relative;
+}
+.avatar-ring{
+  position:absolute;
+  inset:-10px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,var(--primary),var(--secondary),var(--accent),var(--primary));
+  animation:rotateRing 8s linear infinite;
   padding:3px;
-  box-shadow:
-    0 0 0 4px rgba(37,99,235,.2),
-    0 0 0 8px rgba(37,99,235,.07),
-    0 16px 40px rgba(0,0,0,.6);
+}
+@keyframes rotateRing{
+  to{transform:rotate(360deg);}
+}
+.avatar-ring::before{
+  content:'';
+  position:absolute;
+  inset:3px;
+  background:var(--surface-2);
+  border-radius:50%;
 }
 .avatar-inner{
+  position:relative;
   width:100%;height:100%;
   border-radius:50%;
+  background:linear-gradient(135deg,var(--surface-2),var(--surface-3));
+  display:flex;
+  align-items:center;
+  justify-content:center;
   overflow:hidden;
-  background:var(--bg-card);
+  z-index:1;
 }
-.avatar-inner img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center top;
+.avatar-svg{width:75%;height:75%;}
+
+.visual-stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.75rem;
+}
+.vs-item{
+  padding:1rem;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  text-align:center;
+  transition:var(--tr);
+}
+.vs-item:hover{
+  border-color:var(--primary);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-md);
+}
+.vs-value{
+  font-family:var(--font-mono);
+  font-size:1.6rem;
+  font-weight:700;
+  color:var(--primary);
   display:block;
-  transition:transform .4s ease;
+  line-height:1;
 }
-.avatar-wrap:hover .avatar-inner img{
-  transform:scale(1.05);
-}
-/* fallback اگر عکس لود نشد */
-.avatar-fallback{
-  width:100%;height:100%;
-  border-radius:50%;
-  background:var(--sig);
-  display:none;
-  align-items:center;justify-content:center;
-  color:#fff;font-size:30px;font-weight:800;
-  font-family:'Inter',sans-serif;
+.vs-label{
+  font-size:.7rem;
+  color:var(--text-muted);
+  margin-top:.4rem;
+  letter-spacing:.5px;
+  text-transform:uppercase;
 }
 
-.hero h1{font-size:26px;font-weight:800;color:#fff;margin-bottom:5px;letter-spacing:-.5px;}
-.hero-role{color:var(--t1);font-size:13px;margin-bottom:18px;font-family:'Inter',sans-serif;direction:ltr;letter-spacing:.3px;}
-.hero-badges{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
-.h-badge{
-  background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.3);
-  color:var(--cyan);font-size:11px;font-weight:600;
-  padding:4px 12px;border-radius:20px;
+/* ========= SECTION BASE ========= */
+section{padding:5rem 0;position:relative;}
+.section-head{
+  text-align:center;
+  margin-bottom:3.5rem;
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
 }
-
-/* STAT STRIP */
-.hero-stats{
+.section-eyebrow{
+  font-family:var(--font-mono);
+  font-size:.75rem;
+  color:var(--primary);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:.75rem;
   display:inline-flex;
-  border:1px solid var(--b1);border-radius:var(--r);
-  overflow:hidden;background:rgba(0,0,0,.4);
+  align-items:center;
+  gap:.5rem;
 }
-.h-stat{padding:10px 20px;border-left:1px solid var(--b1);min-width:100px;}
-.h-stat:last-child{border-left:none;}
-.h-stat-n{
-  font-family:'Inter',sans-serif;font-size:18px;font-weight:800;
-  background:var(--sig);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  display:block;line-height:1.1;
+.section-eyebrow::before,.section-eyebrow::after{
+  content:'';
+  width:20px;height:1px;
+  background:var(--primary);
 }
-.h-stat-l{font-size:10.5px;color:var(--t2);display:block;margin-top:2px;}
-
-/* CONTENT */
-.content{max-width:860px;margin:0 auto;padding:36px 22px 80px;}
-
-/* section header */
-.sh{font-size:18px;font-weight:700;margin:36px 0 14px;display:flex;align-items:center;gap:10px;}
-.sh-bar{width:4px;height:20px;border-radius:2px;background:var(--sig);flex-shrink:0;}
-p.lead{color:var(--t1);font-size:14px;line-height:2;margin-bottom:12px;}
-
-/* CALLOUT */
-.callout{
-  border-radius:var(--r);padding:14px 16px;margin:14px 0;font-size:13.5px;line-height:1.85;
-  border-right:4px solid var(--cl-c,var(--cyan));
-  background:var(--bg-card);
-  border-left:1px solid var(--b0);border-top:1px solid var(--b0);border-bottom:1px solid var(--b0);
+.section-title{
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:800;
+  letter-spacing:-1px;
+  margin-bottom:1rem;
+  line-height:1.1;
+  color:var(--text);
 }
-.cl-hd{font-weight:700;font-size:12px;color:var(--cl-c,var(--cyan));margin-bottom:5px;display:flex;align-items:center;gap:6px;}
-
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px;margin:14px 0;}
-.skill-item{
-  background:var(--bg-card);border:1px solid var(--b0);border-radius:var(--r);
-  padding:11px 14px;display:flex;align-items:center;gap:10px;
-  font-size:13px;color:var(--t1);transition:border-color .2s,transform .2s;
+.section-title .accent{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
 }
-.skill-item:hover{border-color:var(--cyan);transform:translateY(-2px);}
+.section-sub{
+  color:var(--text-sec);
+  font-size:1rem;
+  max-width:620px;
+  margin:0 auto;
+}
+
+/* ========= ABOUT ========= */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+  margin-top:2rem;
+}
+.about-card{
+  padding:2rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-xl);
+  position:relative;
+  overflow:hidden;
+  transition:var(--tr);
+  box-shadow:var(--shadow-sm);
+}
+.about-card:hover{
+  border-color:rgba(232,93,15,.3);
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+.about-card::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:4px;height:100%;
+  background:linear-gradient(180deg,var(--primary),var(--secondary));
+  opacity:.6;
+}
+.about-card:hover::before{opacity:1;}
+
+.about-icon{
+  width:56px;height:56px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  border-radius:var(--radius-md);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;
+  box-shadow:0 4px 12px rgba(232,93,15,.25);
+}
+.about-card h3{
+  font-size:1.3rem;
+  font-weight:700;
+  margin-bottom:.5rem;
+  color:var(--text);
+}
+.about-card p{
+  color:var(--text-sec);
+  font-size:.95rem;
+  line-height:1.8;
+}
+
+/* ========= INFO STRIP ========= */
+.info-strip{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem;
+  margin:3rem 0;
+}
+.info-item{
+  padding:1.25rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-md);
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  transition:var(--tr);
+  box-shadow:var(--shadow-sm);
+}
+.info-item:hover{
+  border-color:var(--primary);
+  transform:translateX(-3px);
+  box-shadow:var(--shadow-md);
+}
+.info-icon{
+  width:40px;height:40px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.info-label{
+  font-size:.7rem;
+  color:var(--text-muted);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:.2rem;
+}
+.info-value{
+  font-size:.95rem;
+  font-weight:600;
+  color:var(--text);
+}
+
+/* ========= SKILLS ========= */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1rem;
+}
+.skill-card{
+  padding:1.5rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-lg);
+  transition:var(--tr);
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.skill-card::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:0;height:3px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  transition:width .4s ease;
+}
+.skill-card:hover{
+  border-color:rgba(232,93,15,.3);
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+.skill-card:hover::before{width:100%;}
+
+.skill-head{
+  display:flex;
+  align-items:center;
+  gap:.85rem;
+  margin-bottom:.75rem;
+}
 .skill-icon{
-  width:32px;height:32px;border-radius:8px;background:var(--bg-lift);
-  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 4px 12px rgba(232,93,15,.25);
+}
+.skill-name{
+  font-weight:600;
+  font-size:.95rem;
+  flex:1;
+  color:var(--text);
+}
+.skill-bar{
+  height:6px;
+  background:var(--surface-3);
+  border-radius:var(--radius-full);
+  overflow:hidden;
+  position:relative;
+}
+.skill-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  border-radius:var(--radius-full);
+  width:0%;
+  transition:width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.skill-pct{
+  font-family:var(--font-mono);
+  font-size:.75rem;
+  color:var(--text-muted);
+  margin-top:.4rem;
+  display:flex;
+  justify-content:space-between;
 }
 
-/* STANDARDS STRIP */
-.std-strip{
-  background:var(--bg-card);border:1px solid var(--b1);
-  border-radius:var(--r);padding:14px 18px;margin:14px 0;
-  display:flex;flex-wrap:wrap;gap:7px;align-items:center;
+/* ========= STANDARDS ========= */
+.std-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:.85rem;
 }
-.std-label{font-size:11px;color:var(--t2);flex-shrink:0;margin-left:4px;}
-.std-tag{
-  font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
-  padding:4px 10px;border-radius:6px;
-  background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28);
-  color:var(--amber);letter-spacing:.3px;
+.std-chip{
+  padding:1rem 1.25rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-md);
+  display:flex;
+  align-items:center;
+  gap:.85rem;
+  transition:var(--tr);
+  cursor:default;
+  box-shadow:var(--shadow-sm);
+}
+.std-chip:hover{
+  border-color:var(--primary);
+  background:rgba(232,93,15,.03);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-md);
+}
+.std-badge{
+  font-family:var(--font-mono);
+  font-size:.85rem;
+  font-weight:700;
+  color:var(--primary);
+  letter-spacing:.3px;
+}
+.std-desc{
+  font-size:.7rem;
+  color:var(--text-muted);
+  margin-top:.2rem;
 }
 
-/* CERTS */
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:9px;margin:14px 0;}
-.cert-item{
-  background:var(--bg-card);border:1px solid var(--b1);border-radius:var(--r);
-  padding:16px 12px;text-align:center;border-top:3px solid var(--ci-c,var(--blue-l));
-  transition:transform .2s,box-shadow .2s;
+/* ========= CERTIFICATIONS ========= */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1.25rem;
 }
-.cert-item:hover{transform:translateY(-3px);box-shadow:var(--sh);}
-.cert-icon{font-size:24px;display:block;margin-bottom:7px;}
-.cert-name{font-weight:800;font-size:13px;color:var(--ci-c,var(--blue-l));font-family:'Inter',sans-serif;}
-.cert-sub{font-size:11px;color:var(--t2);margin-top:3px;}
+.cert-card{
+  padding:1.75rem 1.5rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-xl);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  transition:var(--tr);
+  box-shadow:var(--shadow-sm);
+}
+.cert-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,transparent,rgba(255,255,255,.02));
+  pointer-events:none;
+}
+.cert-card:hover{
+  border-color:var(--cert-color,var(--primary));
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-xl);
+}
+.cert-icon-wrap{
+  width:72px;height:72px;
+  margin:0 auto 1.25rem;
+  background:linear-gradient(135deg,rgba(232,93,15,.08),rgba(0,102,204,.08));
+  border:2px solid var(--cert-color,var(--primary));
+  border-radius:var(--radius-lg);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  z-index:1;
+}
+.cert-level{
+  position:absolute;
+  top:1rem;
+  left:1rem;
+  font-family:var(--font-mono);
+  font-size:.65rem;
+  color:var(--cert-color,var(--primary));
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  font-weight:700;
+  z-index:1;
+}
+.cert-name{
+  font-size:1.15rem;
+  font-weight:700;
+  margin-bottom:.35rem;
+  position:relative;
+  z-index:1;
+  color:var(--text);
+}
+.cert-full{
+  font-size:.8rem;
+  color:var(--text-sec);
+  position:relative;
+  z-index:1;
+}
 
-/* TIMELINE */
-.timeline{position:relative;padding-right:28px;margin:14px 0;}
+/* ========= TIMELINE ========= */
+.timeline{
+  position:relative;
+  padding-right:60px;
+  margin-top:2rem;
+}
 .timeline::before{
-  content:'';position:absolute;right:5px;top:0;bottom:0;width:2px;
-  background:linear-gradient(180deg,var(--blue),var(--cyan),var(--teal),var(--green-l));border-radius:2px;
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  right:29px;
+  width:2px;
+  background:linear-gradient(180deg,var(--primary),var(--secondary),var(--accent),var(--border-2));
+  border-radius:2px;
 }
 .tl-item{
-  position:relative;margin-bottom:18px;
-  background:var(--bg-card);border:1px solid var(--b0);border-radius:var(--r-l);
-  padding:18px 18px 14px;border-right:3px solid var(--ti-c,var(--blue-l));
-  transition:border-color .2s,transform .2s;
+  position:relative;
+  margin-bottom:2rem;
+  padding:1.75rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-xl);
+  transition:var(--tr);
+  box-shadow:var(--shadow-sm);
 }
-.tl-item:hover{border-color:var(--ti-c,var(--cyan));transform:translateX(-3px);}
-.tl-item::before{
-  content:'';position:absolute;right:-33px;top:19px;
-  width:14px;height:14px;border-radius:50%;
-  background:var(--ti-c,var(--blue-l));border:2px solid var(--bg);
-  box-shadow:0 0 0 2px var(--ti-c,var(--blue-l));z-index:2;
+.tl-item:hover{
+  border-color:var(--tl-color,var(--primary));
+  transform:translateX(-5px);
+  box-shadow:var(--shadow-lg);
 }
-.tl-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
-.tl-company{font-size:15px;font-weight:800;line-height:1.3;}
+.tl-dot{
+  position:absolute;
+  right:-41px;
+  top:1.75rem;
+  width:22px;height:22px;
+  background:var(--bg);
+  border:3px solid var(--tl-color,var(--primary));
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(232,93,15,.1);
+  z-index:2;
+}
+.tl-dot::after{
+  content:'';
+  position:absolute;
+  inset:5px;
+  background:var(--tl-color,var(--primary));
+  border-radius:50%;
+}
+
+.tl-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:1rem;
+  margin-bottom:1rem;
+  flex-wrap:wrap;
+}
+.tl-company{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+}
+.tl-logo{
+  width:44px;height:44px;
+  background:linear-gradient(135deg,var(--tl-color,var(--primary)),rgba(255,255,255,.1));
+  border-radius:var(--radius-md);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.tl-co-name{
+  font-size:1.15rem;
+  font-weight:700;
+  margin-bottom:.2rem;
+  color:var(--text);
+}
+.tl-location{
+  font-size:.8rem;
+  color:var(--text-muted);
+  font-family:var(--font-mono);
+}
 .tl-period{
-  font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;color:var(--t2);
-  background:var(--bg-lift);border:1px solid var(--b0);
-  padding:3px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;
+  padding:.4rem .85rem;
+  background:var(--surface-2);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-full);
+  font-family:var(--font-mono);
+  font-size:.75rem;
+  color:var(--tl-color,var(--primary));
+  font-weight:600;
+  white-space:nowrap;
+  flex-shrink:0;
 }
-.tl-role{font-size:12.5px;color:var(--ti-c,var(--cyan));font-weight:600;margin-bottom:7px;}
-.tl-project{font-size:13px;color:var(--t1);line-height:1.8;}
-.tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
+.tl-role{
+  font-size:1rem;
+  color:var(--tl-color,var(--primary));
+  font-weight:700;
+  margin-bottom:.75rem;
+  padding-bottom:.75rem;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+.tl-role svg{flex-shrink:0;}
+.tl-desc{
+  color:var(--text-sec);
+  font-size:.92rem;
+  line-height:1.8;
+  margin-bottom:1rem;
+}
+.tl-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem;
+}
 .tl-tag{
-  font-size:10.5px;font-family:'Inter',sans-serif;font-weight:600;
-  background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);
-  color:var(--blue-l);padding:2px 8px;border-radius:5px;
+  padding:.25rem .7rem;
+  background:rgba(232,93,15,.08);
+  border:1px solid rgba(232,93,15,.2);
+  border-radius:var(--radius-full);
+  font-family:var(--font-mono);
+  font-size:.7rem;
+  color:var(--primary);
+  letter-spacing:.3px;
 }
 
-/* SOCIAL */
-.social-row{display:flex;gap:10px;justify-content:center;margin-top:32px;flex-wrap:wrap;}
-.social-btn{
-  display:flex;align-items:center;gap:7px;
-  background:var(--bg-card);border:1px solid var(--b1);border-radius:var(--r);
-  padding:12px 22px;font-size:13px;font-weight:700;transition:all .2s;
+/* ========= STATS ========= */
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1.25rem;
+  margin:3rem 0;
 }
-.social-btn:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);}
-.social-btn.primary{background:var(--sig);border-color:transparent;color:#fff;box-shadow:0 6px 20px rgba(37,99,235,.35);}
-.social-btn.primary:hover{transform:translateY(-2px);color:#fff;box-shadow:0 8px 28px rgba(37,99,235,.45);}
-
-/* FOOTER */
-footer{background:var(--bg-2);border-top:1px solid var(--b0);padding:20px;text-align:center;}
-footer p{color:var(--t2);font-size:11.5px;}
-footer strong{color:var(--t1);}
-
-/* RESPONSIVE */
-@media(max-width:620px){
-  .hero h1{font-size:21px;}
-  .hero-stats{flex-wrap:wrap;width:100%;}
-  .h-stat{min-width:80px;padding:8px 12px;flex:1;}
-  .tl-item:hover{transform:none;}
+.stat-card{
+  padding:2rem 1.5rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-xl);
+  text-align:center;
+  transition:var(--tr);
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.stat-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(232,93,15,.06),transparent 60%);
+  pointer-events:none;
+}
+.stat-card:hover{
+  border-color:var(--primary);
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+.stat-value{
+  font-family:var(--font-mono);
+  font-size:3rem;
+  font-weight:800;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+  margin-bottom:.5rem;
+}
+.stat-label{
+  font-size:.85rem;
+  color:var(--text-sec);
+}
+.stat-sub{
+  font-size:.7rem;
+  color:var(--text-muted);
+  margin-top:.4rem;
+  font-family:var(--font-mono);
+  letter-spacing:1px;
+  text-transform:uppercase;
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.tl-item{animation:fadeUp .4s ease-out backwards;}
-.tl-item:nth-child(1){animation-delay:.04s}
-.tl-item:nth-child(2){animation-delay:.08s}
-.tl-item:nth-child(3){animation-delay:.12s}
-.tl-item:nth-child(4){animation-delay:.16s}
-.tl-item:nth-child(5){animation-delay:.20s}
-.tl-item:nth-child(6){animation-delay:.24s}
-.tl-item:nth-child(7){animation-delay:.28s}
-.skill-item{animation:fadeUp .35s ease-out backwards;}
-.skill-item:nth-child(1){animation-delay:.03s}.skill-item:nth-child(2){animation-delay:.06s}
-.skill-item:nth-child(3){animation-delay:.09s}.skill-item:nth-child(4){animation-delay:.12s}
-.skill-item:nth-child(5){animation-delay:.15s}.skill-item:nth-child(6){animation-delay:.18s}
+/* ========= SOCIAL / CONTACT ========= */
+.social-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.25rem;
+}
+.social-card{
+  padding:1.75rem;
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-xl);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:1.25rem;
+  transition:var(--tr);
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  color:var(--text);
+}
+.social-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,transparent,rgba(255,255,255,.5));
+  opacity:0;
+  transition:opacity .4s;
+}
+.social-card:hover{
+  border-color:var(--s-color,var(--primary));
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-xl);
+}
+.social-card:hover::before{opacity:1;}
+.social-icon{
+  width:56px;height:56px;
+  background:linear-gradient(135deg,var(--s-color,var(--primary)),rgba(255,255,255,.2));
+  border-radius:var(--radius-md);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  position:relative;
+  z-index:1;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+.social-info{flex:1;position:relative;z-index:1;}
+.social-name{
+  font-weight:700;
+  font-size:1.05rem;
+  margin-bottom:.2rem;
+  color:var(--text);
+}
+.social-desc{
+  font-size:.8rem;
+  color:var(--text-muted);
+}
+.social-arrow{
+  width:36px;height:36px;
+  background:var(--surface-2);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--tr);
+  position:relative;
+  z-index:1;
+}
+.social-card:hover .social-arrow{
+  background:var(--s-color,var(--primary));
+  transform:translate(-4px,0);
+}
+
+/* ========= FOOTER ========= */
+footer{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  padding:3rem 0 2rem;
+  margin-top:4rem;
+  position:relative;
+}
+footer::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));
+}
+.footer-content{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:2rem;
+}
+.footer-brand{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+.footer-info{
+  text-align:left;
+  font-size:.85rem;
+  color:var(--text-muted);
+}
+.footer-info strong{color:var(--text-sec);}
+.footer-copy{
+  text-align:center;
+  margin-top:2rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+  color:var(--text-muted);
+  font-size:.8rem;
+  font-family:var(--font-mono);
+}
+
+/* ========= ANIMATIONS ========= */
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+.hero-content > *{
+  animation:fadeInUp .8s ease backwards;
+}
+.hero-content > *:nth-child(1){animation-delay:.05s;}
+.hero-content > *:nth-child(2){animation-delay:.15s;}
+.hero-content > *:nth-child(3){animation-delay:.25s;}
+.hero-content > *:nth-child(4){animation-delay:.35s;}
+.hero-content > *:nth-child(5){animation-delay:.45s;}
+.hero-content > *:nth-child(6){animation-delay:.55s;}
+.visual-card{animation:fadeIn 1s ease .4s backwards;}
+
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ========= RESPONSIVE ========= */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem;}
+  .visual-card{order:-1;}
+  .about-grid{grid-template-columns:1fr;}
+  .timeline{padding-right:50px;}
+  .timeline::before{right:24px;}
+  .tl-dot{right:-36px;}
+}
+
+@media(max-width:768px){
+  .container{padding:0 1.25rem;}
+  nav .nav-inner{padding:1rem 1.25rem;}
+  .nav-right .hide-mobile{display:none;}
+  .hero{padding:110px 0 60px;}
+  .hero-name{font-size:2.2rem;}
+  section{padding:3rem 0;}
+  .timeline{padding-right:40px;}
+  .timeline::before{right:19px;}
+  .tl-dot{right:-31px;width:18px;height:18px;}
+  .tl-item{padding:1.25rem;}
+  .avatar-frame{width:180px;height:180px;}
+  .visual-stats{grid-template-columns:1fr;}
+}
+
+@media print{
+  nav,.progress-bar,.hero-glow,.hero-visual,body::before{display:none;}
+  body{background:#fff;}
+  .hero,section{padding:1rem 0;}
+}
+
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--surface-2);}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--secondary);}
 </style>
 </head>
 <body>
 
-<div class="prog"><div class="prog-fill" id="pf"></div></div>
+<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
 
 <!-- NAVBAR -->
-<nav class="navbar">
+<nav>
   <div class="nav-inner">
-    <div class="nav-logo">
-      <div class="nav-logo-mark">⚡</div>
-      <span>PIPING STUDIO</span>
+    <div class="logo-wrap">
+      <div class="logo-mark">PS</div>
+      <div>
+        <div class="logo-text">PIPING STUDIO</div>
+        <div class="logo-sub">Professional Profile</div>
+      </div>
     </div>
     <div class="nav-right">
-      <a href="../" class="nav-back">← صفحه اصلی</a>
-      <button class="nav-theme" onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <a href="#about" class="nav-btn hide-mobile">درباره من</a>
+      <a href="#skills" class="nav-btn hide-mobile">مهارت‌ها</a>
+      <a href="#timeline" class="nav-btn hide-mobile">سوابق</a>
+      <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank" rel="noopener" class="nav-btn primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-grid"></div>
+<section class="hero">
+  <div class="hero-visual">
+    <svg class="svg-1" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="70" stroke="#E85D0F" stroke-width="2" opacity=".3"/>
+      <circle cx="100" cy="100" r="50" stroke="#0066CC" stroke-width="2" opacity=".3"/>
+      <circle cx="100" cy="100" r="30" stroke="#0A8754" stroke-width="2" opacity=".3"/>
+      <line x1="100" y1="30" x2="100" y2="170" stroke="#E85D0F" stroke-width="1" opacity=".3"/>
+      <line x1="30" y1="100" x2="170" y2="100" stroke="#0066CC" stroke-width="1" opacity=".3"/>
+    </svg>
+    <svg class="svg-2" viewBox="0 0 200 200" fill="none">
+      <rect x="40" y="80" width="120" height="40" stroke="#0066CC" stroke-width="2" opacity=".4"/>
+      <circle cx="60" cy="100" r="8" stroke="#E85D0F" stroke-width="2" opacity=".5"/>
+      <circle cx="140" cy="100" r="8" stroke="#E85D0F" stroke-width="2" opacity=".5"/>
+      <path d="M80 80 Q100 60 120 80" stroke="#0A8754" stroke-width="2" fill="none" opacity=".4"/>
+    </svg>
+    <svg class="svg-3" viewBox="0 0 200 200" fill="none">
+      <path d="M60 100 L100 60 L140 100 L100 140 Z" stroke="#E85D0F" stroke-width="2" opacity=".4"/>
+      <circle cx="100" cy="100" r="15" stroke="#0066CC" stroke-width="2" opacity=".5"/>
+    </svg>
+  </div>
   <div class="hero-glow"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-body">
-
-    <!-- AVATAR با عکس واقعی -->
-    <div class="avatar-wrap">
-      <div class="avatar-inner">
-        <img
-          src="./photo.jpg"
-          alt="عیسی ماردی"
-          id="profileImg"
-          onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';"
-        >
-        <div class="avatar-fallback" id="avatarFallback">QC</div>
+  
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="live-dot"></span>
+          Available for Projects · 2026
+        </div>
+        
+        <h1 class="hero-name">
+          عیسی <span class="highlight">ماردی</span>
+        </h1>
+        
+        <div class="hero-title-bar">
+          <div class="hero-divider"></div>
+          <div class="hero-role">QC Manager · Piping · Welding · NDT</div>
+        </div>
+        
+        <p class="hero-bio">
+          متخصص کنترل کیفیت و بازرسی فنی با بیش از <strong>۱۵ سال تجربه اجرایی</strong> در پروژه‌های EPC بزرگ نفت، گاز و پتروشیمی ایران — از بازرسی پایپینگ در فازهای South Pars تا مدیریت تیم QC در Topside و Offshore Pipeline.
+        </p>
+        
+        <div class="hero-tags">
+          <span class="h-tag orange">ASME B31.3</span>
+          <span class="h-tag blue">ASME Sec. V · IX</span>
+          <span class="h-tag green">API 1104 · 570 · 650</span>
+          <span class="h-tag">AWS D1.1</span>
+          <span class="h-tag">NACE MR0175</span>
+          <span class="h-tag orange">South Pars Veteran</span>
+        </div>
+        
+        <div class="hero-cta">
+          <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank" rel="noopener" class="nav-btn primary" style="padding:.9rem 1.75rem;font-size:.95rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            ارتباط از طریق LinkedIn
+          </a>
+          <a href="#timeline" class="nav-btn" style="padding:.9rem 1.75rem;font-size:.95rem;">
+            مشاهده سوابق پروژه‌ای
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </a>
+        </div>
       </div>
-    </div>
-
-    <h1>عیسی ماردی</h1>
-    <div class="hero-role">QC Manager — Piping · Welding · NDT · Coating Inspection</div>
-    <div class="hero-badges">
-      <span class="h-badge">+۱۵ سال تجربه</span>
-      <span class="h-badge">South Pars Veteran</span>
-      <span class="h-badge">MT · PT · RT · VT Level II</span>
-      <span class="h-badge">ASME · API · NACE</span>
-    </div>
-    <div class="hero-stats">
-      <div class="h-stat">
-        <span class="h-stat-n">+۱۵</span>
-        <span class="h-stat-l">سال تجربه</span>
-      </div>
-      <div class="h-stat">
-        <span class="h-stat-n">۷+</span>
-        <span class="h-stat-l">فاز South Pars</span>
-      </div>
-      <div class="h-stat">
-        <span class="h-stat-n">QC Mgr</span>
-        <span class="h-stat-l">آخرین سمت</span>
-      </div>
-      <div class="h-stat">
-        <span class="h-stat-n">Level II</span>
-        <span class="h-stat-l">چهار روش NDT</span>
+      
+      <!-- Visual Card -->
+      <div class="visual-card">
+        <div class="avatar-frame">
+          <div class="avatar-ring"></div>
+          <div class="avatar-inner">
+            <svg class="avatar-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E85D0F"/>
+                  <stop offset="100%" stop-color="#0066CC"/>
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="75" r="35" fill="url(#grad1)" opacity=".85"/>
+              <path d="M40 180 Q40 120 100 115 Q160 120 160 180" fill="url(#grad1)" opacity=".85"/>
+              <path d="M65 70 Q100 50 135 70" stroke="#0A8754" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <circle cx="100" cy="65" r="3" fill="#0A8754"/>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="visual-stats">
+          <div class="vs-item">
+            <span class="vs-value">+15</span>
+            <span class="vs-label">سال تجربه</span>
+          </div>
+          <div class="vs-item">
+            <span class="vs-value">9</span>
+            <span class="vs-label">پروژه EPC</span>
+          </div>
+          <div class="vs-item">
+            <span class="vs-value">7+</span>
+            <span class="vs-label">فاز South Pars</span>
+          </div>
+          <div class="vs-item">
+            <span class="vs-value">LII</span>
+            <span class="vs-label">4 NDT Methods</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CONTENT -->
-<div class="content">
-
-  <!-- ABOUT -->
-  <div class="sh"><div class="sh-bar"></div>درباره من</div>
-  <p class="lead">
-    من <strong>عیسی ماردی</strong> هستم، متخصص کنترل کیفیت و بازرسی فنی با بیش از ۱۵ سال تجربه اجرایی در پروژه‌های بزرگ نفت، گاز و پتروشیمی ایران. مسیر حرفه‌ای‌ام را از بازرسی پایپینگ و رنگ در فازهای South Pars آغاز کردم و طی سال‌ها به جایگاه <strong>QC Manager</strong> در پروژه‌های EPC رسیدم.
-  </p>
-  <p class="lead">
-    تجربه‌ام شامل پروژه‌های Topside دریایی، خطوط لوله زیردریایی، مخازن LPG و پتروشیمی می‌شود. در تمام این سال‌ها با استانداردهای ASME B31.3، ASME Sec. V، ASME Sec. IX، API 570، AWS D1.1 و NACE MR0175 به‌صورت کاربردی و میدانی کار کرده‌ام.
-  </p>
-
-  <div class="callout" style="--cl-c:var(--cyan);">
-    <div class="cl-hd">🎯 هدف از Piping Studio</div>
-    این سایت را برای انتقال همان دانش عملی که در میدان آموختم ساختم. هر مطلب با ذکر دقیق شماره پاراگراف، جدول و استاندارد مربوطه تهیه شده — تا بازرس بتواند در میدان مستقیماً استناد کند.
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">About Me</div>
+      <h2 class="section-title">بازرس <span class="accent">میدان</span> و مهندس کیفیت</h2>
+      <p class="section-sub">
+        مسیر حرفه‌ای‌ام را از بازرسی پایپینگ و رنگ در فازهای South Pars آغاز کردم و طی سال‌ها به جایگاه QC Manager در پروژه‌های EPC رسیدم.
+      </p>
+    </div>
+    
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H3v10h6V11zM21 3h-6v18h6V3zM15 7H9v14h6V7z"/></svg>
+        </div>
+        <h3>پروژه‌های Topside دریایی</h3>
+        <p>تجربه گسترده در نصب و بازرسی Topside، Jacket و Deck در میادین South Pars، Froozan و Reshadat. آشنایی کامل با چالش‌های Offshore.</p>
+      </div>
+      
+      <div class="about-card reveal">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>خطوط لوله زیردریایی</h3>
+        <p>بازرسی جوشکاری Pipeline مطابق API 1104 در فازهای ۱۱B و خطوط انتقال. کنترل کیفیت Fit-up، جوشکاری و NDT در محیط دریایی.</p>
+      </div>
+      
+      <div class="about-card reveal">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>مخازن LPG و پتروشیمی</h3>
+        <p>نظارت بر ساخت مخازن تحت فشار مطابق ASME Sec. VIII، مخازن ذخیره API 650 و واحدهای پتروشیمی. تجربه PWHT و هیدروتست کامل.</p>
+      </div>
+      
+      <div class="about-card reveal">
+        <div class="about-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>انتقال دانش عملی</h3>
+        <p>Piping Studio را برای انتقال دانشی که در میدان آموختم ساختم. هر مطلب با ذکر دقیق شماره پاراگراف و استاندارد تهیه شده است.</p>
+      </div>
+    </div>
+    
+    <div class="info-strip">
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="info-label">نام کامل</div>
+          <div class="info-value">عیسی ماردی</div>
+        </div>
+      </div>
+      
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <div class="info-label">تحصیلات</div>
+          <div class="info-value">مهندسی مکانیک</div>
+        </div>
+      </div>
+      
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8754" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">زبان‌ها</div>
+          <div class="info-value">فارسی · English · العربية</div>
+        </div>
+      </div>
+      
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="info-label">محل فعالیت</div>
+          <div class="info-value">ایران · خلیج فارس</div>
+        </div>
+      </div>
+      
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="info-label">تولد</div>
+          <div class="info-value" style="font-family:var(--font-mono);">1987.08.03</div>
+        </div>
+      </div>
+      
+      <div class="info-item reveal">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="info-label">تماس</div>
+          <div class="info-value" style="font-family:var(--font-mono);font-size:.82rem;">0936 · 212 · 9194</div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- SKILLS -->
-  <div class="sh"><div class="sh-bar"></div>مهارت‌های کلیدی</div>
-  <div class="skills-grid">
-    <div class="skill-item"><div class="skill-icon">📋</div>تهیه و بررسی WPS / PQR / WPQ</div>
-    <div class="skill-item"><div class="skill-icon">🔬</div>NDT: تفسیر MT، PT، RT و VT</div>
-    <div class="skill-item"><div class="skill-icon">💧</div>هیدروتست، پنوماتیک و آزمون‌های فشاری</div>
-    <div class="skill-item"><div class="skill-icon">🎨</div>بازرسی رنگ‌آمیزی و پوشش (SSPC/NACE)</div>
-    <div class="skill-item"><div class="skill-icon">🔩</div>بازرسی پایپینگ و کنترل Fit-up</div>
-    <div class="skill-item"><div class="skill-icon">🌊</div>نصب Jacket و Topside دریایی</div>
-    <div class="skill-item"><div class="skill-icon">🌡️</div>نظارت بر PWHT و کنترل دما</div>
-    <div class="skill-item"><div class="skill-icon">📦</div>بازرسی متریال و Mill Certificate</div>
-    <div class="skill-item"><div class="skill-icon">📁</div>تهیه ITP، NCR و گزارش‌نویسی QC</div>
-    <div class="skill-item"><div class="skill-icon">⚙️</div>تکمیل مکانیکی و Pre-Commissioning</div>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Expertise</div>
+      <h2 class="section-title">مهارت‌های <span class="accent">تخصصی</span></h2>
+      <p class="section-sub">مجموعه‌ای از مهارت‌های فنی و اجرایی که طی ۱۵ سال در میدان کسب کرده‌ام</p>
+    </div>
+    
+    <div class="skills-grid" id="skillsGrid"></div>
   </div>
+</section>
 
-  <!-- STANDARDS -->
-  <div class="sh"><div class="sh-bar"></div>استانداردهای مرجع</div>
-  <div class="std-strip">
-    <span class="std-label">آشنایی کاربردی:</span>
-    <span class="std-tag">ASME B31.3</span>
-    <span class="std-tag">ASME Sec. V</span>
-    <span class="std-tag">ASME Sec. IX</span>
-    <span class="std-tag">ASME Sec. VIII</span>
-    <span class="std-tag">API 570</span>
-    <span class="std-tag">API 574</span>
-    <span class="std-tag">API 650</span>
-    <span class="std-tag">API 1104</span>
-    <span class="std-tag">AWS D1.1</span>
-    <span class="std-tag">NACE MR0175</span>
-    <span class="std-tag">SSPC</span>
-    <span class="std-tag">ASTM</span>
-    <span class="std-tag">ISO 15156</span>
-    <span class="std-tag">IPS</span>
+<!-- STANDARDS -->
+<section id="standards">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">References</div>
+      <h2 class="section-title">استانداردهای <span class="accent">مرجع</span></h2>
+      <p class="section-sub">آشنایی کاربردی و میدانی با استانداردهای بین‌المللی صنعت نفت، گاز و پتروشیمی</p>
+    </div>
+    
+    <div class="std-grid" id="stdGrid"></div>
   </div>
+</section>
 
-  <!-- CERTS -->
-  <div class="sh"><div class="sh-bar"></div>گواهینامه‌ها و دوره‌های تخصصی</div>
-  <div class="cert-grid">
-    <div class="cert-item" style="--ci-c:var(--amber);">
-      <span class="cert-icon">🧲</span>
-      <div class="cert-name">MT Level II</div>
-      <div class="cert-sub">Magnetic Particle</div>
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Certifications</div>
+      <h2 class="section-title">گواهینامه‌های <span class="accent">تخصصی</span></h2>
+      <p class="section-sub">دوره‌های تخصصی NDT و بازرسی فنی با گواهینامه Level II و Level I</p>
     </div>
-    <div class="cert-item" style="--ci-c:var(--red-l);">
-      <span class="cert-icon">🔴</span>
-      <div class="cert-name">PT Level II</div>
-      <div class="cert-sub">Liquid Penetrant</div>
-    </div>
-    <div class="cert-item" style="--ci-c:var(--purple-l);">
-      <span class="cert-icon">☢️</span>
-      <div class="cert-name">RT Level II</div>
-      <div class="cert-sub">Radiographic Testing</div>
-    </div>
-    <div class="cert-item" style="--ci-c:var(--blue-l);">
-      <span class="cert-icon">👁️</span>
-      <div class="cert-name">VT Level II</div>
-      <div class="cert-sub">Visual Examination</div>
-    </div>
-    <div class="cert-item" style="--ci-c:var(--teal);">
-      <span class="cert-icon">🎨</span>
-      <div class="cert-name">Painting L1</div>
-      <div class="cert-sub">Coating Inspection</div>
+    
+    <div class="cert-grid">
+      <div class="cert-card reveal" style="--cert-color:#DC2626;">
+        <span class="cert-level">Level II</span>
+        <div class="cert-icon-wrap" style="border-color:#DC2626;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="cert-name">Magnetic Particle</div>
+        <div class="cert-full">MT Testing · ASNT SNT-TC-1A</div>
+      </div>
+      
+      <div class="cert-card reveal" style="--cert-color:#E85D0F;">
+        <span class="cert-level">Level II</span>
+        <div class="cert-icon-wrap" style="border-color:#E85D0F;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E85D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        </div>
+        <div class="cert-name">Radiographic Testing</div>
+        <div class="cert-full">RT Interpretation · Film Reading</div>
+      </div>
+      
+      <div class="cert-card reveal" style="--cert-color:#0066CC;">
+        <span class="cert-level">Level II</span>
+        <div class="cert-icon-wrap" style="border-color:#0066CC;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0066CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg>
+        </div>
+        <div class="cert-name">Liquid Penetrant</div>
+        <div class="cert-full">PT Testing · Dye Inspection</div>
+      </div>
+      
+      <div class="cert-card reveal" style="--cert-color:#0A8754;">
+        <span class="cert-level">Level II</span>
+        <div class="cert-icon-wrap" style="border-color:#0A8754;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0A8754" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="cert-name">Visual Testing</div>
+        <div class="cert-full">VT · AWS / ASME Standards</div>
+      </div>
+      
+      <div class="cert-card reveal" style="--cert-color:#D97706;">
+        <span class="cert-level">Level I</span>
+        <div class="cert-icon-wrap" style="border-color:#D97706;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <div class="cert-name">Painting Inspection</div>
+        <div class="cert-full">Coating · SSPC / NACE</div>
+      </div>
+      
+      <div class="cert-card reveal" style="--cert-color:#7C3AED;">
+        <span class="cert-level">Office</span>
+        <div class="cert-icon-wrap" style="border-color:#7C3AED;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="cert-name">Microsoft Office</div>
+        <div class="cert-full">Expert · Documentation</div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- TIMELINE -->
-  <div class="sh"><div class="sh-bar"></div>سابقه پروژه‌ای</div>
-  <p class="lead">بیش از ۱۵ سال حضور مستمر در پروژه‌های EPC نفت، گاز و پتروشیمی ایران — از بازرس میدانی تا QC Manager</p>
-
-  <div class="timeline">
-
-    <div class="tl-item" style="--ti-c:var(--cyan);">
-      <div class="tl-head">
-        <div>
-          <div class="tl-company">TIV Energy</div>
-          <div class="tl-role">QC Mechanical &amp; Piping Inspector</div>
-        </div>
-        <span class="tl-period">۲۰۲۴ — اکنون</span>
-      </div>
-      <div class="tl-project">
-        پروژه پتروشیمی SADRA (SPC) ماهشهر — واحد تولید بنزن و گازولین از پیرولیز گازولین. بازرسی پایپینگ، جوشکاری و کنترل کیفیت مکانیکی مطابق ASME B31.3.
-      </div>
-      <div class="tl-tags">
-        <span class="tl-tag">پتروشیمی</span>
-        <span class="tl-tag">ماهشهر</span>
-        <span class="tl-tag">Piping QC</span>
-        <span class="tl-tag">ASME B31.3</span>
-      </div>
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Career Path</div>
+      <h2 class="section-title">سابقه <span class="accent">پروژه‌ای</span></h2>
+      <p class="section-sub">بیش از ۱۵ سال حضور مستمر در پروژه‌های EPC نفت، گاز و پتروشیمی ایران</p>
     </div>
-
-    <div class="tl-item" style="--ti-c:var(--blue-l);">
-      <div class="tl-head">
-        <div>
-          <div class="tl-company">LOICO</div>
-          <div class="tl-role">QC Manager</div>
-        </div>
-        <span class="tl-period">۲۰۲۳ — ۲۰۲۴</span>
-      </div>
-      <div class="tl-project">
-        پروژه توسعه میدان نفتی Reshadat — South Pars. احداث و نصب Topside دریایی. مدیریت کل تیم QC، تهیه ITP، کنترل جوشکاری، NDT و مستندات تحویل.
-      </div>
-      <div class="tl-tags">
-        <span class="tl-tag">South Pars</span>
-        <span class="tl-tag">Topside</span>
-        <span class="tl-tag">QC Manager</span>
-        <span class="tl-tag">Offshore EPC</span>
-      </div>
-    </div>
-
-    <div class="tl-item" style="--ti-c:var(--green-l);">
-      <div class="tl-head">
-        <div>
-          <div class="tl-company">Petro Sanat Arvand</div>
-          <div class="tl-role">QC Manager</div>
-        </div>
-        <span class="tl-period">۲۰۲۲ — ۲۰۲۳</span>
-      </div>
-      <div class="tl-project">
-        فاز ۱۱ توسعه میدان گازی South Pars — نصب و حذف Topside، پروژه ترمینال JASK. مدیریت کامل کنترل کیفیت در عملیات دریایی پیچیده.
-      </div>
-      <div class="tl-tags">
-        <span class="tl-tag">فاز ۱۱</span>
-        <span class="tl-tag">JASK Terminal</span>
-        <span class="tl-tag">QC Manager</span>
-        <span class="tl-tag">Topside Removal</span>
-      </div>
-    </div>
-
-    <div class="tl-item" style="--ti-c:var(--teal);">
-      <div class="tl-head">
-        <div>
-          <div class="tl-company">Arya Sanat Arvand</div>
-          <div class="tl-role">QC Manager</div>
-        </div>
-        <span class="tl-period">۲۰۲۱</span>
-      </div>
-      <div class="tl-project">
-        فاز ۱۱B خط لوله دریایی South Pars. بازرسی جوشکاری و NDT خطوط لوله زیردریایی. کنترل کیفیت جوشکاری Pipeline مطابق API 1104.
-      </div>
-      <div class="tl-tags">
-        <span class="tl-tag">فاز ۱۱B</span>
-        <span class="tl-tag">Offshore Pipeline</span>
-        <span class="tl-tag">API 1104</span>
-        <span class="tl-tag">QC Manager</span>
-      </div>
-    </div>
-
-    <div class="tl-item" style="--ti-c:var(--amber);">
-      <div class="tl-head">
-        <div>
-          <div class="tl-company">Pars Sanat Malmir</div>
-          <div class="tl-role">QC Manager</div>
-        </div>
-        <span class="tl-period">۲۰۱۹ — ۲۰۲۱</span>
-      </div>
-      <div class="tl-project">
-        میدان نفتی Froozan و ساخت مخازن LPG — فازهای ۲۲ و ۲۴ South Pars. طراحی سیستم QC، تهیه رویه‌ها و نظارت بر جوشکاری مخازن تحت فشار مطابق ASME Sec. VIII.
-      </div>
-      <div class="tl-tags">
-        <span class="tl-tag">فازهای ۲۲/۲۴</span>
-        <span class="tl-tag">مخازن LPG</span>
-        <span class="tl-tag">ASME Sec. VIII</span>
-        <span class="tl-tag">میدان Froozan</span>
-      </div>
-    </div>
-
-    <div class="tl-item" style="--ti-c:var(--orange);">
-      <div class="tl-head">
-        <div>
-          <div class="tl-company">Talash Gostar</div>
-          <div class="tl-role">Painting &amp; Coating Inspector</div>
-        </div>
-        <span class="tl-period">۲۰۱۵ — ۲۰۱۹</span>
-      </div>
-      <div class="tl-project">
-        فازهای ۱۳ و ۲۲/۲۴ South Pars — احداث Topside. بازرسی رنگ‌آمیزی و پوشش ضدخوردگی. آماده‌سازی سطح (SSPC-SP6/10)، اندازه‌گیری DFT، Holiday Detection.
-      </div>
-      <div class="tl-tags">
-        <span class="tl-tag">فازهای ۱۳ و ۲۲/۲۴</span>
-        <span class="tl-tag">Coating Inspector</span>
-        <span class="tl-tag">SSPC / NACE</span>
-        <span class="tl-tag">Topside</span>
-      </div>
-    </div>
-
-    <div class="tl-item" style="--ti-c:var(--t1);">
-      <div class="tl-head">
-        <div>
-          <div class="tl-company">Sanat Sazeh Samin &nbsp;·&nbsp; Pars Sanat Malmir &nbsp;·&nbsp; Torgheh Energy</div>
-          <div class="tl-role">Piping &amp; QC Inspector</div>
-        </div>
-        <span class="tl-period">۲۰۰۹ — ۲۰۱۴</span>
-      </div>
-      <div class="tl-project">
-        فازهای ۱۲، ۱۷/۱۸ و ۱۹ South Pars — آغاز مسیر حرفه‌ای در احداث Topside. بازرسی پایپینگ، Fit-up، جوشکاری و NDT. پایه‌گذاری تخصص میدانی در محیط‌های دریایی.
-      </div>
-      <div class="tl-tags">
-        <span class="tl-tag">فازهای ۱۲، ۱۷/۱۸، ۱۹</span>
-        <span class="tl-tag">South Pars</span>
-        <span class="tl-tag">Piping Inspector</span>
-        <span class="tl-tag">آغاز مسیر حرفه‌ای</span>
-      </div>
-    </div>
-
+    
+    <div class="timeline" id="tlContainer"></div>
   </div>
+</section>
 
-  <!-- SOCIAL -->
-  <div class="social-row">
-    <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank" rel="noopener" class="social-btn primary">
-      💼 لینکدین
-    </a>
-    <a href="https://instagram.com/piping_studio" target="_blank" rel="noopener" class="social-btn">
-      📷 اینستاگرام
-    </a>
-    <a href="mailto:eissa.maredi@gmail.com" class="social-btn">
-      ✉️ ایمیل مستقیم
-    </a>
+<!-- STATS -->
+<section>
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-card reveal">
+        <div class="stat-value" data-count="15">0</div>
+        <div class="stat-label">سال تجربه اجرایی</div>
+        <div class="stat-sub">Since 2009</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" data-count="9">0</div>
+        <div class="stat-label">پروژه EPC بزرگ</div>
+        <div class="stat-sub">Offshore · Onshore</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" data-count="7">0</div>
+        <div class="stat-label">فاز South Pars</div>
+        <div class="stat-sub">11 · 12 · 13 · 17/18 · 19 · 22/24</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" data-count="4">0</div>
+        <div class="stat-label">روش NDT Level II</div>
+        <div class="stat-sub">MT · PT · RT · VT</div>
+      </div>
+    </div>
   </div>
+</section>
 
-</div>
+<!-- SOCIAL / CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Connect</div>
+      <h2 class="section-title">راه‌های <span class="accent">ارتباطی</span></h2>
+      <p class="section-sub">برای همکاری، مشاوره یا سفارش پکیج‌های آموزشی از طریق کانال‌های زیر در ارتباط باشید</p>
+    </div>
+    
+    <div class="social-grid">
+      <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank" rel="noopener" class="social-card" style="--s-color:#0077B5;">
+        <div class="social-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="social-info">
+          <div class="social-name">LinkedIn</div>
+          <div class="social-desc">Eissa Maredi · Professional Network</div>
+        </div>
+        <div class="social-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      
+      <a href="https://www.instagram.com/piping_studio?igsh=ZHZpZDJkOHFoM3lv" target="_blank" rel="noopener" class="social-card" style="--s-color:#E4405F;">
+        <div class="social-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="social-info">
+          <div class="social-name">Instagram</div>
+          <div class="social-desc">@piping_studio · آموزش تخصصی</div>
+        </div>
+        <div class="social-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      
+      <a href="https://t.me/+WjQWDD46TMc4N2E0" target="_blank" rel="noopener" class="social-card" style="--s-color:#0088CC;">
+        <div class="social-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L2 11l7 3 3 7 9-18z"/></svg>
+        </div>
+        <div class="social-info">
+          <div class="social-name">Telegram Group</div>
+          <div class="social-desc">Piping_studio · آموزش رایگان استانداردها</div>
+        </div>
+        <div class="social-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+      
+      <a href="mailto:eissa.maredi@gmail.com" class="social-card" style="--s-color:#E85D0F;">
+        <div class="social-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="social-info">
+          <div class="social-name">Email</div>
+          <div class="social-desc">eissa.maredi@gmail.com</div>
+        </div>
+        <div class="social-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
 <footer>
-  <p>© ۱۴۰۴ <strong>عیسی ماردی</strong> — Piping Studio | آموزش تخصصی پایپینگ، جوشکاری و بازرسی فنی</p>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-mark">PS</div>
+        <div>
+          <div class="logo-text">PIPING STUDIO</div>
+          <div class="logo-sub">Eissa Maredi · QC Manager</div>
+        </div>
+      </div>
+      <div class="footer-info">
+        <div>تدوین و طراحی توسط <strong>عیسی ماردی</strong></div>
+        <div>بیش از ۱۵ سال تجربه در صنعت نفت، گاز و پتروشیمی</div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      © 2026 PIPING STUDIO — All Rights Reserved · Crafted with engineering precision
+    </div>
+  </div>
 </footer>
 
 <script>
-/* progress */
+// ======= DATA =======
+const skillsData = [
+  {name:'WPS / PQR / WPQ Documentation',pct:95,icon:'doc'},
+  {name:'NDT: MT · PT · RT · VT Interpretation',pct:95,icon:'ndt'},
+  {name:'Hydro · Pneumatic · Pressure Testing',pct:92,icon:'test'},
+  {name:'Painting & Coating (SSPC / NACE)',pct:90,icon:'paint'},
+  {name:'Piping & Fit-up Inspection',pct:95,icon:'pipe'},
+  {name:'Jacket & Topside Installation',pct:90,icon:'offshore'},
+  {name:'PWHT Supervision & Control',pct:88,icon:'heat'},
+  {name:'Material & Mill Certificate Review',pct:92,icon:'mat'},
+  {name:'ITP · NCR · QC Reporting',pct:95,icon:'report'},
+  {name:'Mechanical Completion & Pre-Comm',pct:88,icon:'mech'},
+  {name:'Welder Qualification (WQT)',pct:92,icon:'weld'},
+  {name:'AWS · ASME · API · NACE Codes',pct:95,icon:'code'}
+];
+
+const skillIcons = {
+  doc:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
+  ndt:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+  test:'<path d="M9 3h6v4l4 11H5L9 7V3z"/>',
+  paint:'<rect x="2" y="2" width="20" height="8" rx="2"/><path d="M6 10v10M18 10v10M2 14h20"/>',
+  pipe:'<path d="M3 12h18M3 12l4-4h10l4 4M3 12l4 4h10l4-4"/>',
+  offshore:'<path d="M2 22l10-10 10 10M12 12V2M8 6h8"/>',
+  heat:'<path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>',
+  mat:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
+  report:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+  mech:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/>',
+  weld:'<polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  code:'<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>'
+};
+
+// Render Skills
+const skillsGrid = document.getElementById('skillsGrid');
+skillsGrid.innerHTML = skillsData.map((s,i) => `
+  <div class="skill-card reveal" data-pct="${s.pct}" style="animation-delay:${i*0.04}s">
+    <div class="skill-head">
+      <div class="skill-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${skillIcons[s.icon]}</svg>
+      </div>
+      <div class="skill-name">${s.name}</div>
+    </div>
+    <div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div>
+    <div class="skill-pct"><span>Proficiency</span><span style="color:var(--primary)">${s.pct}%</span></div>
+  </div>
+`).join('');
+
+// Standards
+const stdData = [
+  {code:'ASME B31.3',desc:'Process Piping'},
+  {code:'ASME Sec. V',desc:'NDE Methods'},
+  {code:'ASME Sec. IX',desc:'Welding Qualification'},
+  {code:'ASME Sec. VIII',desc:'Pressure Vessels'},
+  {code:'API 570',desc:'Piping Inspection'},
+  {code:'API 574',desc:'Piping Components'},
+  {code:'API 650',desc:'Storage Tanks'},
+  {code:'API 1104',desc:'Pipeline Welding'},
+  {code:'AWS D1.1',desc:'Structural Welding'},
+  {code:'NACE MR0175',desc:'H2S Service'},
+  {code:'ISO 15156',desc:'Sour Service'},
+  {code:'SSPC',desc:'Surface Prep'},
+  {code:'ASTM',desc:'Material Specs'},
+  {code:'IPS',desc:'Iranian Petroleum'},
+  {code:'DIN',desc:'German Industrial'}
+];
+
+const stdGrid = document.getElementById('stdGrid');
+stdGrid.innerHTML = stdData.map((s,i) => `
+  <div class="std-chip reveal" style="animation-delay:${i*0.03}s">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E85D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+    </svg>
+    <div>
+      <div class="std-badge">${s.code}</div>
+      <div class="std-desc">${s.desc}</div>
+    </div>
+  </div>
+`).join('');
+
+// Timeline
+const tlData = [
+  {
+    company:'TIV Energy',
+    location:'Mahshahr · SPC Petrochemical',
+    role:'QC Mechanical & Piping Inspector',
+    period:'2024 — Present',
+    desc:'واحد تولید بنزن و گازولین از پیرولیز گازولین در پتروشیمی SADRA ماهشهر. بازرسی پایپینگ، جوشکاری و کنترل کیفیت مکانیکی مطابق ASME B31.3.',
+    tags:['پتروشیمی','ماهشهر','Piping QC','ASME B31.3','EPCC'],
+    color:'#0066CC',
+    logo:'<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>'
+  },
+  {
+    company:'LOICO',
+    location:'Boushehr · SADRA Shipyard',
+    role:'QC Manager',
+    period:'2023 — 2024',
+    desc:'پروژه توسعه میدان نفتی Reshadat — South Pars. مدیریت کامل تیم QC در احداث Topside دریایی. تهیه ITP، نظارت بر جوشکاری، NDT و مستندات تحویل.',
+    tags:['South Pars','Reshadat','Topside','QC Manager','Offshore EPC'],
+    color:'#E85D0F',
+    logo:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>'
+  },
+  {
+    company:'Petro Sanat Arvand',
+    location:'Persian Gulf · Oceanic 5000',
+    role:'QC Manager',
+    period:'2022 — 2023',
+    desc:'فاز ۱۱ South Pars — نصب و حذف Topside 12C. پروژه ترمینال JASK با PLEM، هد ۳۶ اینچی و SPM. مدیریت QC در عملیات دریایی پیچیده.',
+    tags:['Phase 11','JASK Terminal','SPM','PLEM','Topside Removal'],
+    color:'#0A8754',
+    logo:'<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>'
+  },
+  {
+    company:'Arya Sanat Arvand',
+    location:'Khorramshahr · IOEC',
+    role:'QC Manager',
+    period:'2021',
+    desc:'فاز ۱۱B پروژه خط لوله دریایی South Pars. بازرسی جوشکاری و NDT خطوط لوله زیردریایی مطابق API 1104. مدیریت کامل کیفیت Pipeline.',
+    tags:['Phase 11B','Offshore Pipeline','API 1104','Subsea'],
+    color:'#D97706',
+    logo:'<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>'
+  },
+  {
+    company:'Pars Sanat Malmir',
+    location:'Khorramshahr · IOEC',
+    role:'QC Manager',
+    period:'2019 — 2021',
+    desc:'میدان نفتی Froozan و ساخت مخازن LPG فاز ۲۲/۲۴ South Pars. طراحی سیستم QC، تهیه رویه‌ها و نظارت بر جوشکاری مخازن تحت فشار مطابق ASME Sec. VIII.',
+    tags:['Froozan Field','LPG Tanks','Phase 22/24','ASME Sec. VIII'],
+    color:'#E85D0F',
+    logo:'<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/>'
+  },
+  {
+    company:'Talash Gostar',
+    location:'Boushehr · SADRA',
+    role:'Painting & Coating Inspector',
+    period:'2015 — 2019',
+    desc:'فازهای ۱۳ و ۲۲/۲۴ South Pars — احداث Topside. بازرسی رنگ‌آمیزی و پوشش ضدخوردگی. آماده‌سازی سطح SSPC-SP6/SP10، اندازه‌گیری DFT و Holiday Detection.',
+    tags:['Phase 13','Phase 22/24','Coating','SSPC','NACE'],
+    color:'#7C3AED',
+    logo:'<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>'
+  },
+  {
+    company:'Torgheh Energy',
+    location:'Khorramshahr · IOEC',
+    role:'Piping Inspector',
+    period:'2014 — 2015',
+    desc:'فاز ۱۹ South Pars — احداث Topside. بازرسی پایپینگ، Fit-up، جوشکاری و NDT. تجربه در پروژه‌های پیچیده با متریال‌های متنوع.',
+    tags:['Phase 19','Topside','Piping','Fit-up'],
+    color:'#0066CC',
+    logo:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'
+  },
+  {
+    company:'Pars Sanat Malmir',
+    location:'Khorramshahr · IOEC',
+    role:'QC Inspector',
+    period:'2012 — 2014',
+    desc:'فاز ۱۹ South Pars — احداث Topside. بازرسی کیفیت جوشکاری و NDT. تهیه گزارش‌های روزانه QC و مستندات بازرسی.',
+    tags:['Phase 19','QC Inspector','NDT','Documentation'],
+    color:'#0A8754',
+    logo:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'
+  },
+  {
+    company:'Sanat Sazeh Samin',
+    location:'Khorramshahr · IOEC',
+    role:'Piping Inspector',
+    period:'2009 — 2012',
+    desc:'فازهای ۱۲ و ۱۷/۱۸ South Pars — آغاز مسیر حرفه‌ای در احداث Topside. بازرسی پایپینگ، Fit-up، جوشکاری و NDT. پایه‌گذاری تخصص میدانی.',
+    tags:['Phase 12','Phase 17/18','First Project','Career Start'],
+    color:'#D97706',
+    logo:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'
+  }
+];
+
+const tlContainer = document.getElementById('tlContainer');
+tlContainer.innerHTML = tlData.map((t,i) => `
+  <div class="tl-item reveal" style="--tl-color:${t.color};animation-delay:${i*0.05}s">
+    <div class="tl-dot"></div>
+    <div class="tl-head">
+      <div class="tl-company">
+        <div class="tl-logo" style="background:linear-gradient(135deg,${t.color},rgba(255,255,255,.1));">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${t.logo}</svg>
+        </div>
+        <div>
+          <div class="tl-co-name">${t.company}</div>
+          <div class="tl-location">${t.location}</div>
+        </div>
+      </div>
+      <span class="tl-period">${t.period}</span>
+    </div>
+    <div class="tl-role">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      ${t.role}
+    </div>
+    <div class="tl-desc">${t.desc}</div>
+    <div class="tl-tags">${t.tags.map(tg => `<span class="tl-tag">${tg}</span>`).join('')}</div>
+  </div>
+`).join('');
+
+// ======= SCROLL EFFECTS =======
 window.addEventListener('scroll',()=>{
   const s=document.documentElement;
-  document.getElementById('pf').style.width=
-    (s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+  const pct=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
+  document.getElementById('prog').style.width=pct+'%';
 },{passive:true});
 
-/* theme */
-function toggleTheme(){
-  const b=document.body,btn=document.getElementById('themeBtn');
-  if(b.getAttribute('data-theme')==='light'){
-    b.removeAttribute('data-theme');btn.textContent='🌙';
-    localStorage.setItem('pst_about','dark');
-  }else{
-    b.setAttribute('data-theme','light');btn.textContent='☀️';
-    localStorage.setItem('pst_about','light');
-  }
-}
-if(localStorage.getItem('pst_about')==='light'){
-  document.body.setAttribute('data-theme','light');
-  document.getElementById('themeBtn').textContent='☀️';
-}
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>50)nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+},{passive:true});
 
-/* avatar fallback */
-document.getElementById('profileImg').addEventListener('error',function(){
-  this.style.display='none';
-  document.getElementById('avatarFallback').style.display='flex';
+// Reveal Animation
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      if(e.target.classList.contains('skill-card')){
+        const fill = e.target.querySelector('.skill-fill');
+        if(fill) setTimeout(()=>{
+          fill.style.width = e.target.dataset.pct + '%';
+        },200);
+      }
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+// Counter animation
+const statObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el = e.target.querySelector('.stat-value');
+      if(el && !el.dataset.done){
+        const target = parseInt(el.dataset.count);
+        let current = 0;
+        const duration = 1500;
+        const step = target / (duration / 16);
+        const update = () => {
+          current += step;
+          if(current < target){
+            el.textContent = (target >= 10 ? '+' : '') + Math.floor(current);
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = (target >= 10 ? '+' : '') + target;
+            el.dataset.done = '1';
+          }
+        };
+        update();
+      }
+    }
+  });
+},{threshold:0.5});
+
+document.querySelectorAll('.stat-card').forEach(c=>statObserver.observe(c));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
 });
 </script>
 </body>
