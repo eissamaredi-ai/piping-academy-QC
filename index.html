@@ -1,444 +1,166 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PIPING STUDIO آکادمی پایپینگ و جوشکاری</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
-
 <style>
- 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: "Vazirmatn", "Inter", sans-serif;
-    background: #F8FAFC;
-    color: #0f172a;
-    font-weight: 400;
-    line-height: 1.8;
-}
-  a { text-decoration:none; color:inherit; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Vazirmatn","Inter",sans-serif;background:#F8FAFC;color:#0f172a;font-weight:400;line-height:1.8;}
+  a{text-decoration:none;color:inherit;}
 
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); backdrop-filter:blur(8px); border-bottom:1px solid #1e293b; }
-  .navbar-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-  .logo { display:flex; align-items:center; gap:8px; }
-  .logo-icon { width:36px; height:36px; border-radius:50%; overflow:hidden; flex-shrink:0; }
-   .logo-icon img { width:100%; height:100%; object-fit:cover; }
-  .logo-text {
-    color: white;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-}
-  .nav-links {
-    display: flex;
-    gap: 30px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #E2E8F0;
-}
-  .nav-links a:hover { color:#06B6D4; }
-  @media (max-width:768px){ .nav-links{ display:none; } }
+  /* NAVBAR */
+  .navbar{position:sticky;top:0;z-index:50;background:rgba(15,23,42,0.97);backdrop-filter:blur(8px);border-bottom:1px solid #1e293b;}
+  .navbar-inner{max-width:1280px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:8px;}
+  .logo-icon{width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+  .logo-icon img{width:100%;height:100%;object-fit:cover;}
+  .logo-text{color:white;font-size:18px;font-weight:700;letter-spacing:-0.3px;}
+  .nav-links{display:flex;gap:30px;font-size:15px;font-weight:500;color:#E2E8F0;}
+  .nav-links a:hover{color:#06B6D4;}
+  @media(max-width:768px){.nav-links{display:none;}}
 
-  .hero { position:relative; background:linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.88)), url('Commit.jpg'); background-size:cover; background-position:center; overflow:hidden; padding:90px 20px 60px; text-align:center; }
-  .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.3); border-radius:999px; padding:7px 16px; color:#06B6D4; font-size:12px; margin-bottom:24px; }
-  .hero h1 {
-    color: white;
-    font-size: 56px;
-    font-weight: 800;
-    line-height: 1.25;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-}
-  .hero p {
-    color: #CBD5E1;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 2;
-    max-width: 760px;
-    margin: 0 auto 40px;
-}
-.hero-buttons{
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
+  /* HERO */
+  .hero{position:relative;background:linear-gradient(rgba(15,23,42,0.75),rgba(15,23,42,0.88)),url('Commit.jpg');background-size:cover;background-position:center;overflow:hidden;padding:90px 20px 60px;text-align:center;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.3);border-radius:999px;padding:7px 16px;color:#06B6D4;font-size:12px;margin-bottom:24px;}
+  .hero h1{color:white;font-size:56px;font-weight:800;line-height:1.25;letter-spacing:-1px;margin-bottom:20px;}
+  .hero p{color:#CBD5E1;font-size:18px;font-weight:400;line-height:2;max-width:760px;margin:0 auto 40px;}
+  .hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;border-radius:14px;background:rgba(255,255,255,.08);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:14px;font-weight:700;transition:all .35s ease;}
+  .btn-primary:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.35);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.25);}
 
-.btn-primary{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:14px 30px;
-    border-radius:14px;
+  /* STATS */
+  .stats{background:#0F172A;border-top:1px solid #1e293b;padding:30px 20px;}
+  .stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+  .stat-num{color:#06B6D4;font-size:28px;font-weight:bold;}
+  .stat-label{color:#94a3b8;font-size:11px;margin-top:4px;}
 
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
+  /* LEARNING PATH */
+  .section{max-width:1100px;margin:0 auto;padding:60px 20px;}
+  .section-title{text-align:center;font-size:24px;font-weight:bold;margin-bottom:8px;}
+  .section-sub{text-align:center;color:#64748b;font-size:14px;margin-bottom:36px;}
 
-    border:1px solid rgba(255,255,255,.18);
+  .tabs{display:flex;gap:4px;background:#e2e8f0;border-radius:12px;padding:4px;max-width:340px;margin:0 auto 28px;}
+  .tab{flex:1;padding:10px;border-radius:8px;font-size:14px;font-weight:bold;text-align:center;cursor:pointer;color:#64748b;background:transparent;border:none;font-family:'Vazirmatn',sans-serif;transition:all .2s;}
+  .tab.active-piping{background:white;color:#2563EB;}
+  .tab.active-welding{background:white;color:#F97316;}
 
-    color:#ffffff;
-    font-size:14px;
-    font-weight:700;
+  .chapter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+  .chapter-card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;transition:0.2s;}
+  .chapter-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06);transform:translateY(-2px);}
+  .chapter-num{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:14px;flex-shrink:0;}
+  .chapter-title{font-size:14px;font-weight:500;color:#334155;}
 
-    transition:all .35s ease;
-}
+  /* POSTS */
+  .posts-section{padding:56px 20px;background:#0d1526;border-top:1px solid #1a2540;border-bottom:1px solid #1a2540;}
+  .posts-inner{max-width:1100px;margin:0 auto;}
+  .posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;}
+  .post-card{background:#111b2e;border:1px solid #1a2540;border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;}
+  .post-card:hover{transform:translateY(-5px);border-color:#06b6d4;box-shadow:0 10px 32px rgba(6,182,212,.18);}
+  .post-img{height:210px;overflow:hidden;position:relative;}
+  .post-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+  .post-card:hover .post-img img{transform:scale(1.06);}
+  .post-badge{position:absolute;top:10px;right:10px;color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;font-family:'Inter',sans-serif;}
+  .post-body{padding:15px;}
+  .post-body h3{font-size:14.5px;font-weight:800;color:#eef2fa;margin-bottom:6px;font-family:'Vazirmatn',sans-serif;line-height:1.55;}
+  .post-body p{font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:11px;}
+  .post-foot{display:flex;justify-content:space-between;align-items:center;}
+  .post-brand{font-size:11px;color:#4a6080;font-family:'Vazirmatn',sans-serif;}
+  .post-more{font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;}
 
-.btn-primary:hover{
-    background:rgba(255,255,255,.15);
-    border-color:rgba(255,255,255,.35);
-    transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(0,0,0,.25);
-}
-  .btn-secondary { color:#e2e8f0; padding:14px 28px; border-radius:12px; font-weight:bold; font-size:14px; border:1px solid #475569; }
+  /* DOWNLOADS */
+  .downloads-section{padding:56px 20px;background:#090e1a;border-top:1px solid #1a2540;border-bottom:1px solid #1a2540;}
+  .downloads-inner{max-width:1100px;margin:0 auto;}
+  .downloads-header{text-align:center;margin-bottom:36px;}
+  .dl-badge-wrap{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:#f59e0b;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;margin-bottom:13px;font-family:'Vazirmatn',sans-serif;}
+  .dl-main-title{font-size:24px;font-weight:800;color:#eef2fa;margin-bottom:7px;font-family:'Vazirmatn',sans-serif;}
+  .dl-main-sub{color:#8fa4c4;font-size:13.5px;font-family:'Vazirmatn',sans-serif;}
 
-  .stats { background:#0F172A; border-top:1px solid #1e293b; padding:30px 20px; }
-  .stats-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
-  .stat-num { color:#06B6D4; font-size:28px; font-weight:bold; }
-  .stat-label { color:#94a3b8; font-size:11px; margin-top:4px; }
+  /* DOWNLOAD TABS */
+  .dl-tabs{display:flex;gap:6px;background:#111b2e;border:1px solid #1a2540;border-radius:12px;padding:5px;max-width:360px;margin:0 auto 28px;}
+  .dl-tab{flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;color:#8fa4c4;background:transparent;border:none;font-family:'Vazirmatn',sans-serif;transition:all .25s;}
+  .dl-tab.active-p{background:#2563EB;color:#fff;box-shadow:0 4px 12px rgba(37,99,235,.3);}
+  .dl-tab.active-w{background:#F97316;color:#fff;box-shadow:0 4px 12px rgba(249,115,22,.3);}
 
-  .section { max-width:1100px; margin:0 auto; padding:60px 20px; }
-  .section-title { text-align:center; font-size:24px; font-weight:bold; margin-bottom:8px; }
-  .section-sub { text-align:center; color:#64748b; font-size:14px; margin-bottom:36px; }
+  .downloads-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;}
+  .dl-card{background:#111b2e;border:1px solid #1a2540;border-radius:14px;padding:20px;transition:all .3s;position:relative;overflow:hidden;}
+  .dl-card:hover{transform:translateY(-4px);border-color:#2563EB;box-shadow:0 10px 32px rgba(37,99,235,.18);}
+  .dl-card.weld:hover{border-color:#F97316;box-shadow:0 10px 32px rgba(249,115,22,.18);}
+  .dl-card-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .dl-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);}
+  .dl-card.weld .dl-icon{background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.25);}
+  .dl-icon svg{width:22px;height:22px;}
+  .dl-num{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:1px;margin-bottom:3px;}
+  .dl-card.weld .dl-num{color:#f59e0b;}
+  .dl-title{font-size:14.5px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;line-height:1.5;}
+  .dl-desc{font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.75;margin-bottom:14px;}
+  .dl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+  .dl-tag{font-size:10px;font-weight:600;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:3px 8px;border-radius:6px;font-family:'Vazirmatn',sans-serif;}
+  .dl-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid #1a2540;}
+  .dl-meta{display:flex;flex-direction:column;gap:2px;}
+  .dl-meta-row{display:flex;align-items:center;gap:5px;font-size:10.5px;color:#4a6080;font-family:'Vazirmatn',sans-serif;}
+  .dl-meta-row svg{width:11px;height:11px;opacity:.7;}
+  .dl-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:linear-gradient(135deg,#2563EB,#1d4ed8);color:#fff;font-size:12px;font-weight:700;border-radius:8px;font-family:'Vazirmatn',sans-serif;text-decoration:none;transition:all .25s;border:none;cursor:pointer;}
+  .dl-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,99,235,.4);}
+  .dl-card.weld .dl-btn{background:linear-gradient(135deg,#F97316,#ea580c);}
+  .dl-card.weld .dl-btn:hover{box-shadow:0 6px 18px rgba(249,115,22,.4);}
+  .dl-btn svg{width:13px;height:13px;}
 
-  .tabs { display:flex; gap:4px; background:#e2e8f0; border-radius:12px; padding:4px; max-width:340px; margin:0 auto 28px; }
-  .tab { flex:1; padding:10px; border-radius:8px; font-size:14px; font-weight:bold; text-align:center; cursor:pointer; color:#64748b; background:transparent; border:none; }
-  .tab.active-piping { background:white; color:#2563EB; }
-  .tab.active-welding { background:white; color:#F97316; }
+  /* INFO BOX */
+  .dl-info{margin-top:32px;padding:18px;background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.2);border-radius:12px;display:flex;gap:12px;align-items:flex-start;}
+  .dl-info-icon{width:36px;height:36px;background:rgba(6,182,212,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+  .dl-info-title{font-size:13px;font-weight:700;color:#06b6d4;margin-bottom:4px;font-family:'Vazirmatn',sans-serif;}
+  .dl-info-desc{font-size:11.5px;color:#8fa4c4;line-height:1.8;font-family:'Vazirmatn',sans-serif;}
 
-  .chapter-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
-  .chapter-card { background:white; border:1px solid #e2e8f0; border-radius:12px; padding:16px; display:flex; align-items:center; gap:12px; transition:0.2s; }
-  .chapter-card:hover { box-shadow:0 4px 12px rgba(0,0,0,0.06); transform:translateY(-2px); }
-  .chapter-num { width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px; flex-shrink:0; }
-  .chapter-title { font-size:14px; font-weight:500; color:#334155; }
+  /* FEATURES */
+  .features-bg{background:#F1F5F9;padding:60px 20px;}
+  .features-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .feature-card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:20px;}
+  .feature-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:20px;}
+  .feature-title{font-weight:bold;font-size:14px;margin-bottom:4px;}
+  .feature-desc{font-size:12px;color:#64748b;line-height:1.6;}
 
-  .features-bg { background:#F1F5F9; padding:60px 20px; }
-  .features-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
-  .feature-card { background:white; border:1px solid #e2e8f0; border-radius:12px; padding:20px; }
-  .feature-icon { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; font-size:20px; }
-  .feature-title { font-weight:bold; font-size:14px; margin-bottom:4px; }
-  .feature-desc { font-size:12px; color:#64748b; line-height:1.6; }
+  /* CTA */
+  .cta{background:linear-gradient(135deg,#0F172A,#1e3a5f);text-align:center;padding:70px 20px;}
+  .cta h2{color:white;font-size:26px;font-weight:bold;margin-bottom:10px;}
+  .cta p{color:#94a3b8;font-size:14px;margin-bottom:28px;}
 
-  .cta { background:linear-gradient(135deg,#0F172A,#1e3a5f); text-align:center; padding:70px 20px; }
-  .cta h2 { color:white; font-size:26px; font-weight:bold; margin-bottom:10px; }
-  .cta p { color:#94a3b8; font-size:14px; margin-bottom:28px; }
+  /* FOOTER */
+  footer{background:white;border-top:1px solid #e2e8f0;padding:28px 20px;}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;font-size:12px;color:#94a3b8;}
+  .footer-links{display:flex;gap:16px;align-items:center;}
+  .footer-links a:hover{color:#F97316;}
 
-  footer { background:white; border-top:1px solid #e2e8f0; padding:28px 20px; }
-  .footer-inner { max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; font-size:12px; color:#94a3b8; }
-  .footer-links { display:flex; gap:16px; align-items:center; }
-  .footer-links a:hover { color:#F97316; }
-
-  /* ═══════════════════════════════════════════════════
-     استایل‌های بخش جزوات و دانلود
-     ═══════════════════════════════════════════════════ */
-  .downloads-section {
-    padding: 56px 20px;
-    background: #0d1526;
-    border-top: 1px solid #1a2540;
-    border-bottom: 1px solid #1a2540;
+  @media(max-width:600px){
+    .hero h1{font-size:32px;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
   }
-  .downloads-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .downloads-header {
-    text-align: center;
-    margin-bottom: 36px;
-  }
-  .downloads-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(245, 158, 11, .12);
-    border: 1px solid rgba(245, 158, 11, .3);
-    color: #f59e0b;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 5px 16px;
-    border-radius: 20px;
-    margin-bottom: 13px;
-    font-family: 'Vazirmatn', sans-serif;
-  }
-  .downloads-title {
-    font-size: 24px;
-    font-weight: 800;
-    color: #eef2fa;
-    margin-bottom: 7px;
-    font-family: 'Vazirmatn', sans-serif;
-  }
-  .downloads-sub {
-    color: #8fa4c4;
-    font-size: 13.5px;
-    font-family: 'Vazirmatn', sans-serif;
-  }
-
-  .downloads-tabs {
-    display: flex;
-    gap: 6px;
-    background: #111b2e;
-    border: 1px solid #1a2540;
-    border-radius: 12px;
-    padding: 5px;
-    max-width: 360px;
-    margin: 0 auto 28px;
-  }
-  .dl-tab {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
-    color: #8fa4c4;
-    background: transparent;
-    border: none;
-    font-family: 'Vazirmatn', sans-serif;
-    transition: all .25s;
-  }
-  .dl-tab.active-piping-dl {
-    background: #2563EB;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, .3);
-  }
-  .dl-tab.active-welding-dl {
-    background: #F97316;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, .3);
-  }
-
-  .downloads-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
-  }
-
-  .dl-card {
-    background: #111b2e;
-    border: 1px solid #1a2540;
-    border-radius: 14px;
-    padding: 20px;
-    transition: all .3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .dl-card:hover {
-    transform: translateY(-4px);
-    border-color: #2563EB;
-    box-shadow: 0 10px 32px rgba(37, 99, 235, .18);
-  }
-  .dl-card.welding-card:hover {
-    border-color: #F97316;
-    box-shadow: 0 10px 32px rgba(249, 115, 22, .18);
-  }
-
-  .dl-card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-  .dl-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    background: rgba(37, 99, 235, .12);
-    border: 1px solid rgba(37, 99, 235, .25);
-  }
-  .welding-card .dl-icon {
-    background: rgba(249, 115, 22, .12);
-    border: 1px solid rgba(249, 115, 22, .25);
-  }
-  .dl-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-  .dl-title-wrap {
-    flex: 1;
-  }
-  .dl-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    color: #06b6d4;
-    letter-spacing: 1px;
-    margin-bottom: 3px;
-  }
-  .welding-card .dl-num {
-    color: #f59e0b;
-  }
-  .dl-title {
-    font-size: 14.5px;
-    font-weight: 700;
-    color: #eef2fa;
-    font-family: 'Vazirmatn', sans-serif;
-    line-height: 1.5;
-  }
-
-  .dl-desc {
-    font-size: 12px;
-    color: #8fa4c4;
-    font-family: 'Vazirmatn', sans-serif;
-    line-height: 1.75;
-    margin-bottom: 14px;
-  }
-
-  .dl-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 16px;
-  }
-  .dl-tag {
-    font-size: 10px;
-    font-weight: 600;
-    color: #8fa4c4;
-    background: rgba(255, 255, 255, .04);
-    border: 1px solid #1a2540;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-family: 'Vazirmatn', sans-serif;
-  }
-
-  .dl-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 14px;
-    border-top: 1px solid #1a2540;
-  }
-  .dl-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .dl-meta-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 10.5px;
-    color: #4a6080;
-    font-family: 'Vazirmatn', sans-serif;
-  }
-  .dl-meta-row svg {
-    width: 11px;
-    height: 11px;
-    opacity: .7;
-  }
-
-  .dl-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: linear-gradient(135deg, #2563EB, #1d4ed8);
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 700;
-    border-radius: 8px;
-    font-family: 'Vazirmatn', sans-serif;
-    text-decoration: none;
-    transition: all .25s;
-    border: none;
-    cursor: pointer;
-  }
-  .dl-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(37, 99, 235, .4);
-  }
-  .welding-card .dl-btn {
-    background: linear-gradient(135deg, #F97316, #ea580c);
-  }
-  .welding-card .dl-btn:hover {
-    box-shadow: 0 6px 18px rgba(249, 115, 22, .4);
-  }
-  .dl-btn svg {
-    width: 13px;
-    height: 13px;
-  }
-
-  .dl-locked {
-    background: #1a2540;
-    color: #4a6080;
-    cursor: not-allowed;
-  }
-  .dl-locked:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .downloads-info {
-    margin-top: 32px;
-    padding: 18px;
-    background: rgba(6, 182, 212, .06);
-    border: 1px solid rgba(6, 182, 212, .2);
-    border-radius: 12px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .downloads-info-icon {
-    width: 36px;
-    height: 36px;
-    background: rgba(6, 182, 212, .15);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 18px;
-  }
-  .downloads-info-text {
-    flex: 1;
-  }
-  .downloads-info-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #06b6d4;
-    margin-bottom: 4px;
-    font-family: 'Vazirmatn', sans-serif;
-  }
-  .downloads-info-desc {
-    font-size: 11.5px;
-    color: #8fa4c4;
-    line-height: 1.8;
-    font-family: 'Vazirmatn', sans-serif;
-  }
-
 </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-inner">
     <div class="logo">
-     <div class="logo-icon"><img src="%D8%A7%D8%B3%D8%AA%D9%88%D8%AF%DB%8C%D9%88%20%D9%84%D9%88%D9%84%D9%87%20%DA%A9%D8%B4%DB%8C.png" alt="Piping Studio"></div>
+      <div class="logo-icon"><img src="%D8%A7%D8%B3%D8%AA%D9%88%D8%AF%DB%8C%D9%88%20%D9%84%D9%88%D9%84%D9%87%20%DA%A9%D8%B4%DB%8C.png" alt="Piping Studio"></div>
       <span class="logo-text">آکادمی پایپینگ و جوشکاری — Piping Studio</span>
     </div>
-   <div class="nav-links">
-        <a href="#piping">آموزش پایپینگ</a>
-        <a href="#welding">آموزش جوشکاری</a>
-        <a href="standards/">استانداردها</a>
-        <a href="#downloads">دانلود جزوات</a>
-        <a href="#contact">تماس با ما</a>
-    <a href="./about/">درباره من</a>
+    <div class="nav-links">
+      <a href="#piping">آموزش پایپینگ</a>
+      <a href="#welding">آموزش جوشکاری</a>
+      <a href="standards/">استانداردها</a>
+      <a href="#downloads">دانلود جزوات</a>
+      <a href="#contact">تماس با ما</a>
+      <a href="./about/">درباره من</a>
     </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-badge">● بر اساس استانداردهای ASME، API، ASTM، AWS و IPS</div>
   <h1>مرجع تخصصی آموزش<br>پایپینگ، جوشکاری و بازرسی فنی</h1>
@@ -449,6 +171,7 @@
   </div>
 </section>
 
+<!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
     <div><div class="stat-num">13</div><div class="stat-label">فصل آموزشی</div></div>
@@ -458,6 +181,7 @@
   </div>
 </div>
 
+<!-- LEARNING PATH -->
 <section class="section" id="piping">
   <div class="section-title">مسیر یادگیری</div>
   <div class="section-sub">دو بخش اصلی، هرکدام با فصل‌بندی منظم</div>
@@ -467,489 +191,116 @@
     <button class="tab" onclick="showSection('welding')" id="tab-welding">🔥 جوشکاری</button>
   </div>
 
+  <!-- فصل‌های پایپینگ -->
   <div class="chapter-grid" id="piping-chapters">
-   <a href="piping/01-documents/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">01</div><div class="chapter-title">اسناد و مدارک پایپینگ</div></a>
-   <a href="piping/02-components/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">02</div><div class="chapter-title">اجزای پایپینگ</div></a>
-     <a href="piping/03-materials/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">03</div><div class="chapter-title">متریال‌شناسی</div></a>
+    <a href="piping/01-documents/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">01</div><div class="chapter-title">اسناد و مدارک پایپینگ</div></a>
+    <a href="piping/02-components/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">02</div><div class="chapter-title">اجزای پایپینگ</div></a>
+    <a href="piping/03-materials/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">03</div><div class="chapter-title">متریال‌شناسی</div></a>
     <a href="piping/04-isometric/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">04</div><div class="chapter-title">نقشه‌خوانی ایزومتریک</div></a>
-     <a href="piping/05-fabrication/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">05</div><div class="chapter-title">ساخت و مونتاژ</div></a>
+    <a href="piping/05-fabrication/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">05</div><div class="chapter-title">ساخت و مونتاژ</div></a>
     <a href="piping/06-inspection/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">06</div><div class="chapter-title">اصول بازرسی</div></a>
     <a href="piping/07-valves/" class="chapter-card"><div class="chapter-num" style="background:#eff6ff;color:#2563EB;">07</div><div class="chapter-title">شیرآلات</div></a>
   </div>
 
- <div class="chapter-grid" id="welding-chapters" style="display:none;">
-      <a href="welding/01-documents/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">01</div><div class="chapter-title">مدارک فنی جوشکاری</div></a>
-      <a href="welding/02-processes/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">02</div><div class="chapter-title">فرآیندهای جوشکاری</div></a>
-      <a href="welding/03-stages/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">03</div><div class="chapter-title">مراحل جوشکاری</div></a>
-      <a href="welding/04-defects/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">04</div><div class="chapter-title">عیوب جوشکاری</div></a>
-      <a href="welding/05-tests/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">05</div><div class="chapter-title">آزمایش‌های جوش</div></a>
-      <a href="welding/06-inspection/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">06</div><div class="chapter-title">اصول بازرسی فنی جوش</div></a>
-    </div>
+  <!-- فصل‌های جوشکاری — مخفی -->
+  <div class="chapter-grid" id="welding-chapters" style="display:none;" id="welding">
+    <a href="welding/01-documents/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">01</div><div class="chapter-title">مدارک فنی جوشکاری</div></a>
+    <a href="welding/02-processes/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">02</div><div class="chapter-title">فرآیندهای جوشکاری</div></a>
+    <a href="welding/03-stages/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">03</div><div class="chapter-title">مراحل جوشکاری</div></a>
+    <a href="welding/04-defects/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">04</div><div class="chapter-title">عیوب جوشکاری</div></a>
+    <a href="welding/05-tests/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">05</div><div class="chapter-title">آزمایش‌های جوش</div></a>
+    <a href="welding/06-inspection/" class="chapter-card"><div class="chapter-num" style="background:#fff7ed;color:#F97316;">06</div><div class="chapter-title">اصول بازرسی فنی جوش</div></a>
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-  بخش پست‌های آموزشی
-═══════════════════════════════════════════════════ -->
-<section id="posts" style="padding:56px 20px;background:#0d1526;border-top:1px solid #1a2540;border-bottom:1px solid #1a2540;">
-<div style="max-width:1100px;margin:0 auto;">
-
-  <div style="text-align:center;margin-bottom:36px;">
-    <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.3);color:#06b6d4;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;margin-bottom:13px;font-family:'Vazirmatn',sans-serif;">
-      📚 محتوای آموزشی
+<!-- POSTS -->
+<section class="posts-section" id="posts">
+  <div class="posts-inner">
+    <div style="text-align:center;margin-bottom:36px;">
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.3);color:#06b6d4;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;margin-bottom:13px;font-family:'Vazirmatn',sans-serif;">📚 محتوای آموزشی</div>
+      <h2 style="font-size:24px;font-weight:800;color:#eef2fa;margin-bottom:7px;font-family:'Vazirmatn',sans-serif;">پست‌های تخصصی</h2>
+      <p style="color:#8fa4c4;font-size:13.5px;font-family:'Vazirmatn',sans-serif;">آموزش تجهیزات و مفاهیم کاربردی پایپینگ صنعتی</p>
     </div>
-    <h2 style="font-size:24px;font-weight:800;color:#eef2fa;margin-bottom:7px;font-family:'Vazirmatn',sans-serif;">پست‌های تخصصی</h2>
-    <p style="color:#8fa4c4;font-size:13.5px;font-family:'Vazirmatn',sans-serif;">آموزش تجهیزات و مفاهیم کاربردی پایپینگ صنعتی</p>
+    <div class="posts-grid">
+      <div class="post-card">
+        <div class="post-img"><img src="./1.png" alt="Flexible Joint"><div class="post-badge" style="background:rgba(37,99,235,.88);">پایپینگ</div></div>
+        <div class="post-body"><h3>Flexible Joint چیست و چرا مهم است؟</h3><p>انواع فلکسیبل جونت: لاستیکی، فلزی و پارچه‌ای — کاربرد در سیستم‌های پایپینگ</p><div class="post-foot"><span class="post-brand">PIPING STUDIO</span><span class="post-more" style="color:#06b6d4;">ادامه ←</span></div></div>
+      </div>
+      <div class="post-card">
+        <div class="post-img"><img src="./2.png" alt="Flexible Joint خدمات"><div class="post-badge" style="background:rgba(220,38,38,.82);">خدمات</div></div>
+        <div class="post-body"><h3>Flexible Joint — راه‌حل مشکلات لوله‌کشی</h3><p>لرزش، تغییرات دما و انبساط لوله چگونه با فلکسیبل جونت کنترل می‌شود</p><div class="post-foot"><span class="post-brand">PIPING STUDIO</span><span class="post-more" style="color:#06b6d4;">ادامه ←</span></div></div>
+      </div>
+      <div class="post-card" style="--hover-color:#f59e0b;" onmouseover="this.style.borderColor='#f59e0b';this.style.boxShadow='0 10px 32px rgba(245,158,11,.14)'" onmouseout="this.style.borderColor='#1a2540';this.style.boxShadow='none'">
+        <div class="post-img"><img src="./3.png" alt="فلکسیبل جونت لاستیکی"><div class="post-badge" style="background:rgba(234,88,12,.85);">مشاوره</div></div>
+        <div class="post-body"><h3>فلکسیبل جونت لاستیکی</h3><p>حذف لرزش و کاهش نویز — مناسب برای سیستم‌های HVAC و خطوط آب</p><div class="post-foot"><span class="post-brand">PIPING STUDIO</span><span class="post-more" style="color:#f59e0b;">ادامه ←</span></div></div>
+      </div>
+      <div class="post-card" onmouseover="this.style.borderColor='#3b82f6';this.style.boxShadow='0 10px 32px rgba(59,130,246,.18)'" onmouseout="this.style.borderColor='#1a2540';this.style.boxShadow='none'">
+        <div class="post-img"><img src="./4.png" alt="فلکسیبل جونت فلزی"><div class="post-badge" style="background:rgba(37,99,235,.88);">دما بالا</div></div>
+        <div class="post-body"><h3>فلکسیبل جونت فلزی</h3><p>جذب انبساط و انقباض حرارتی — استفاده در خطوط بخار و سیالات دما بالا</p><div class="post-foot"><span class="post-brand">PIPING STUDIO</span><span class="post-more" style="color:#3b82f6;">ادامه ←</span></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:30px;">
+      <a href="https://instagram.com/piping_studio" target="_blank" style="display:inline-flex;align-items:center;gap:8px;border:1px solid #243352;color:#8fa4c4;font-size:13px;font-weight:700;padding:11px 24px;border-radius:10px;font-family:'Vazirmatn',sans-serif;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='#06b6d4';this.style.color='#06b6d4'" onmouseout="this.style.borderColor='#243352';this.style.color='#8fa4c4'">📷 مشاهده پست‌های بیشتر در اینستاگرام</a>
+    </div>
   </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;">
-
-    <div style="background:#111b2e;border:1px solid #1a2540;border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;"
-      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#06b6d4';this.style.boxShadow='0 10px 32px rgba(6,182,212,.18)'"
-      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
-      <div style="height:210px;overflow:hidden;position:relative;">
-        <img src="./1.png" alt="Flexible Joint چیست؟" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
-          onmouseover="this.style.transform='scale(1.06)'"
-          onmouseout="this.style.transform='scale(1)'">
-        <div style="position:absolute;top:10px;right:10px;background:rgba(37,99,235,.88);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;font-family:'Inter',sans-serif;">پایپینگ</div>
-      </div>
-      <div style="padding:15px;">
-        <h3 style="font-size:14.5px;font-weight:800;color:#eef2fa;margin-bottom:6px;font-family:'Vazirmatn',sans-serif;line-height:1.55;">Flexible Joint چیست و چرا مهم است؟</h3>
-        <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:11px;">انواع فلکسیبل جونت: لاستیکی، فلزی و پارچه‌ای — کاربرد در سیستم‌های پایپینگ</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:11px;color:#4a6080;font-family:'Vazirmatn',sans-serif;">PIPING STUDIO</span>
-          <span style="color:#06b6d4;font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;">ادامه ←</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:#111b2e;border:1px solid #1a2540;border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;"
-      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#06b6d4';this.style.boxShadow='0 10px 32px rgba(6,182,212,.18)'"
-      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
-      <div style="height:210px;overflow:hidden;position:relative;">
-        <img src="./2.png" alt="Flexible Joint خدمات" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
-          onmouseover="this.style.transform='scale(1.06)'"
-          onmouseout="this.style.transform='scale(1)'">
-        <div style="position:absolute;top:10px;right:10px;background:rgba(220,38,38,.82);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;font-family:'Inter',sans-serif;">خدمات</div>
-      </div>
-      <div style="padding:15px;">
-        <h3 style="font-size:14.5px;font-weight:800;color:#eef2fa;margin-bottom:6px;font-family:'Vazirmatn',sans-serif;line-height:1.55;">Flexible Joint — راه‌حل مشکلات لوله‌کشی</h3>
-        <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:11px;">لرزش، تغییرات دما و انبساط لوله چگونه با فلکسیبل جونت کنترل می‌شود</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:11px;color:#4a6080;font-family:'Vazirmatn',sans-serif;">PIPING STUDIO</span>
-          <span style="color:#06b6d4;font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;">ادامه ←</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:#111b2e;border:1px solid #1a2540;border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;"
-      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#f59e0b';this.style.boxShadow='0 10px 32px rgba(245,158,11,.14)'"
-      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
-      <div style="height:210px;overflow:hidden;position:relative;">
-        <img src="./3.png" alt="فلکسیبل جونت لاستیکی" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
-          onmouseover="this.style.transform='scale(1.06)'"
-          onmouseout="this.style.transform='scale(1)'">
-        <div style="position:absolute;top:10px;right:10px;background:rgba(234,88,12,.85);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;font-family:'Inter',sans-serif;">مشاوره</div>
-      </div>
-      <div style="padding:15px;">
-        <h3 style="font-size:14.5px;font-weight:800;color:#eef2fa;margin-bottom:6px;font-family:'Vazirmatn',sans-serif;line-height:1.55;">فلکسیبل جونت لاستیکی</h3>
-        <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:11px;">حذف لرزش و کاهش نویز — مناسب برای سیستم‌های HVAC و خطوط آب</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:11px;color:#4a6080;font-family:'Vazirmatn',sans-serif;">PIPING STUDIO</span>
-          <span style="color:#f59e0b;font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;">ادامه ←</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:#111b2e;border:1px solid #1a2540;border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s;"
-      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#3b82f6';this.style.boxShadow='0 10px 32px rgba(59,130,246,.18)'"
-      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
-      <div style="height:210px;overflow:hidden;position:relative;">
-        <img src="./4.png" alt="فلکسیبل جونت فلزی" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
-          onmouseover="this.style.transform='scale(1.06)'"
-          onmouseout="this.style.transform='scale(1)'">
-        <div style="position:absolute;top:10px;right:10px;background:rgba(37,99,235,.88);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;font-family:'Inter',sans-serif;">دما بالا</div>
-      </div>
-      <div style="padding:15px;">
-        <h3 style="font-size:14.5px;font-weight:800;color:#eef2fa;margin-bottom:6px;font-family:'Vazirmatn',sans-serif;line-height:1.55;">فلکسیبل جونت فلزی</h3>
-        <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:11px;">جذب انبساط و انقباض حرارتی — استفاده در خطوط بخار و سیالات دما بالا</p>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:11px;color:#4a6080;font-family:'Vazirmatn',sans-serif;">PIPING STUDIO</span>
-          <span style="color:#3b82f6;font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;">ادامه ←</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div style="text-align:center;margin-top:30px;">
-    <a href="https://instagram.com/piping_studio" target="_blank"
-      style="display:inline-flex;align-items:center;gap:8px;border:1px solid #243352;color:#8fa4c4;font-size:13px;font-weight:700;padding:11px 24px;border-radius:10px;font-family:'Vazirmatn',sans-serif;text-decoration:none;transition:all .2s;"
-      onmouseover="this.style.borderColor='#06b6d4';this.style.color='#06b6d4'"
-      onmouseout="this.style.borderColor='#243352';this.style.color='#8fa4c4'">
-      📷 مشاهده پست‌های بیشتر در اینستاگرام
-    </a>
-  </div>
-
-</div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-  بخش جزوات و منابع دانلودی
-═══════════════════════════════════════════════════ -->
-<section id="downloads" class="downloads-section">
+<!-- DOWNLOADS -->
+<section class="downloads-section" id="downloads">
   <div class="downloads-inner">
 
     <div class="downloads-header">
-      <div class="downloads-badge">📥 کتابخانه دیجیتال</div>
-      <h2 class="downloads-title">جزوات و منابع دانلودی</h2>
-      <p class="downloads-sub">دسترسی مستقیم به جزوات PDF آموزشی — تدوین شده توسط عیسی ماردی</p>
+      <div class="dl-badge-wrap">📥 کتابخانه دیجیتال</div>
+      <h2 class="dl-main-title">جزوات و منابع دانلودی</h2>
+      <p class="dl-main-sub">دسترسی مستقیم به جزوات PDF آموزشی — تدوین شده توسط عیسی مردی</p>
     </div>
 
-    <div class="downloads-tabs">
-      <button class="dl-tab active-piping-dl" onclick="showDownloads('piping')" id="dl-tab-piping">🔧 جزوات پایپینگ</button>
+    <!-- تب‌های دانلود -->
+    <div class="dl-tabs">
+      <button class="dl-tab active-p" onclick="showDownloads('piping')" id="dl-tab-piping">🔧 جزوات پایپینگ</button>
       <button class="dl-tab" onclick="showDownloads('welding')" id="dl-tab-welding">🔥 جزوات جوشکاری</button>
     </div>
 
     <!-- ═══ جزوات پایپینگ ═══ -->
     <div class="downloads-grid" id="dl-piping">
 
-      <!-- جزوه 1 -->
       <div class="dl-card">
         <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 01</div>
-            <div class="dl-title">اسناد و مدارک فنی پایپینگ</div>
-          </div>
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div><div class="dl-num">CHAPTER 01</div><div class="dl-title">اسناد و مدارک فنی پایپینگ</div></div>
         </div>
         <p class="dl-desc">معرفی کامل PFD، P&ID، نقشه‌های ایزومتریک، استانداردهای ASME، ASTM، API، IPS، AWS و MSS و فرم‌های QC</p>
-        <div class="dl-tags">
-          <span class="dl-tag">PFD</span>
-          <span class="dl-tag">P&ID</span>
-          <span class="dl-tag">QC Form</span>
-        </div>
+        <div class="dl-tags"><span class="dl-tag">PFD</span><span class="dl-tag">P&ID</span><span class="dl-tag">QC Form</span></div>
         <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۴۸ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۲.۴ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-01-documents.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
+          <div class="dl-meta"><div class="dl-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>PDF — ۴۸ صفحه</span></div></div>
+          <a href="./downloads/piping-01-documents.pdf" download class="dl-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>دانلود</a>
         </div>
       </div>
 
-      <!-- جزوه 2 -->
       <div class="dl-card">
         <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 02</div>
-            <div class="dl-title">اجزای سیستم‌های پایپینگ</div>
-          </div>
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94"/></svg></div>
+          <div><div class="dl-num">CHAPTER 02</div><div class="dl-title">اجزای سیستم‌های پایپینگ</div></div>
         </div>
         <p class="dl-desc">معرفی کامل لوله‌ها، اتصالات، فلنج‌ها، گسکت‌ها، شیرآلات و ساپورت‌ها با استانداردهای مرجع</p>
-        <div class="dl-tags">
-          <span class="dl-tag">Pipe</span>
-          <span class="dl-tag">Fittings</span>
-          <span class="dl-tag">Flanges</span>
-          <span class="dl-tag">Valves</span>
-        </div>
+        <div class="dl-tags"><span class="dl-tag">Pipe</span><span class="dl-tag">Fittings</span><span class="dl-tag">Flanges</span></div>
         <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۶۲ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۳.۸ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-02-components.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
+          <div class="dl-meta"><div class="dl-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>PDF — ۶۲ صفحه</span></div></div>
+          <a href="./downloads/piping-02-components.pdf" download class="dl-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>دانلود</a>
         </div>
       </div>
 
-      <!-- جزوه 3 -->
-      <div class="dl-card">
+      <!-- جزوه کامل پایپینگ -->
+      <div class="dl-card" style="background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(6,182,212,.05));border:1px solid rgba(37,99,235,.3);">
         <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 03</div>
-            <div class="dl-title">متریال‌شناسی پایپینگ</div>
-          </div>
+          <div class="dl-icon" style="background:rgba(6,182,212,.15);border-color:rgba(6,182,212,.4);"><svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <div><div class="dl-num" style="color:#06b6d4;">COMPLETE EDITION</div><div class="dl-title">اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش</div></div>
         </div>
-        <p class="dl-desc">شناخت فولادهای کربنی، استنلس استیل، آلیاژهای نیکل، تیتانیوم، پلاستیک‌های مهندسی و انتخاب متریال بر اساس سرویس</p>
-        <div class="dl-tags">
-          <span class="dl-tag">Carbon Steel</span>
-          <span class="dl-tag">Stainless</span>
-          <span class="dl-tag">Alloys</span>
-        </div>
+        <p class="dl-desc">جزوه جامع آموزشی — مناسب برای بازرسان QC، مهندسان پایپینگ و دانشجویان رشته‌های مرتبط با صنعت نفت و گاز</p>
+        <div class="dl-tags"><span class="dl-tag">جزوه کامل</span><span class="dl-tag">QC</span><span class="dl-tag">ASME B31.3</span><span class="dl-tag">NDT</span></div>
         <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۵۴ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۳.۱ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-03-materials.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <!-- جزوه 4 -->
-      <div class="dl-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 04</div>
-            <div class="dl-title">نقشه‌خوانی ایزومتریک پایپینگ</div>
-          </div>
-        </div>
-        <p class="dl-desc">آموزش گام‌به‌گام خواندن نقشه‌های ISO، جدول Schedule، جهات، ارتفاع، محاسبات طول لوله و Nipple طبق IPS-240</p>
-        <div class="dl-tags">
-          <span class="dl-tag">ISO Drawing</span>
-          <span class="dl-tag">Schedule</span>
-          <span class="dl-tag">IPS-240</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۴۱ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۲.۷ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-04-isometric.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <!-- جزوه 5 -->
-      <div class="dl-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 05</div>
-            <div class="dl-title">ساخت و مونتاژ پایپینگ</div>
-          </div>
-        </div>
-        <p class="dl-desc">مراحل کامل طراحی، برش، آماده‌سازی، Fit-Up، جوشکاری، نصب، عایق‌کاری، رنگ‌آمیزی و راه‌اندازی</p>
-        <div class="dl-tags">
-          <span class="dl-tag">Fabrication</span>
-          <span class="dl-tag">Fit-Up</span>
-          <span class="dl-tag">NDT</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۳۸ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۲.۲ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-05-fabrication.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <!-- جزوه 6 -->
-      <div class="dl-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 06</div>
-            <div class="dl-title">اصول بازرسی فنی پایپینگ</div>
-          </div>
-        </div>
-        <p class="dl-desc">بازرسی چشمی، هیدروتست، تست پنوماتیک، تست‌های غیرمخرب NDT و کنترل کیفیت مطابق ASME B31.3</p>
-        <div class="dl-tags">
-          <span class="dl-tag">VT</span>
-          <span class="dl-tag">Hydro</span>
-          <span class="dl-tag">NDT</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۴۵ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۲.۹ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-06-inspection.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <!-- جزوه 7 -->
-      <div class="dl-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 07</div>
-            <div class="dl-title">شیرآلات صنعتی پایپینگ</div>
-          </div>
-        </div>
-        <p class="dl-desc">معرفی انواع ولوهای Gate، Ball، Butterfly، Check، Needle، Relief، Diaphragm با اجزا، مزایا، معایب و استانداردها</p>
-        <div class="dl-tags">
-          <span class="dl-tag">Gate</span>
-          <span class="dl-tag">Ball</span>
-          <span class="dl-tag">Butterfly</span>
-          <span class="dl-tag">API 6D</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۵۶ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۳.۵ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-07-valves.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <!-- جزوه کامل -->
-      <div class="dl-card" style="background: linear-gradient(135deg, rgba(37,99,235,.08), rgba(6,182,212,.05)); border: 1px solid rgba(37,99,235,.3);">
-        <div class="dl-card-header">
-          <div class="dl-icon" style="background: rgba(6,182,212,.15); border-color: rgba(6,182,212,.4);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num" style="color:#06b6d4;">COMPLETE EDITION</div>
-            <div class="dl-title">پکیج کامل اصول کنترل کیفیت پایپینگ</div>
-          </div>
-        </div>
-        <p class="dl-desc">تمامی ۷ فصل آموزشی به‌همراه جداول، نمودارها، مثال‌های عملی و مراجع استاندارد در یک فایل جامع PDF</p>
-        <div class="dl-tags">
-          <span class="dl-tag">۷ فصل</span>
-          <span class="dl-tag">۳۴۴ صفحه</span>
-          <span class="dl-tag">PDF جامع</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۳۴۴ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۱۸.۶ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/piping-complete.pdf" download class="dl-btn" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود کامل
-          </a>
+          <div class="dl-meta"><div class="dl-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>PDF — جزوه جامع</span></div></div>
+          <a href="./%D9%BE%D8%A7%DB%8C%D9%BE%DB%8C%D9%86%DA%AF%20%D9%88%20%D8%AC%D9%88%D8%B4%DA%A9%D8%A7%D8%B1%DB%8C%20%D9%81%D9%86%DB%8C%20%D9%88%20%D8%A8%D8%A7%D8%B2%D8%B1%D8%B3%DB%8C_compressed.pdf" target="_blank" class="dl-btn" style="background:linear-gradient(135deg,#06b6d4,#0891b2);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>مشاهده و دانلود</a>
         </div>
       </div>
 
@@ -958,312 +309,138 @@
     <!-- ═══ جزوات جوشکاری ═══ -->
     <div class="downloads-grid" id="dl-welding" style="display:none;">
 
-      <div class="dl-card welding-card">
+      <div class="dl-card weld">
         <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 01</div>
-            <div class="dl-title">مدارک فنی جوشکاری</div>
-          </div>
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div><div class="dl-num">CHAPTER 01</div><div class="dl-title">مدارک فنی جوشکاری</div></div>
         </div>
         <p class="dl-desc">معرفی WPS، PQR، WPQ و سایر اسناد فنی جوشکاری مطابق ASME Sec. IX و AWS D1.1</p>
-        <div class="dl-tags">
-          <span class="dl-tag">WPS</span>
-          <span class="dl-tag">PQR</span>
-          <span class="dl-tag">WPQ</span>
-        </div>
+        <div class="dl-tags"><span class="dl-tag">WPS</span><span class="dl-tag">PQR</span><span class="dl-tag">WPQ</span></div>
         <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۵۲ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۳.۲ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/welding-01-documents.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
+          <div class="dl-meta"><div class="dl-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>PDF — ۵۲ صفحه</span></div></div>
+          <a href="./downloads/welding-01-documents.pdf" download class="dl-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>دانلود</a>
         </div>
       </div>
 
-      <div class="dl-card welding-card">
+      <div class="dl-card weld">
         <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 02</div>
-            <div class="dl-title">فرآیندهای جوشکاری</div>
-          </div>
+          <div class="dl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div><div class="dl-num">CHAPTER 02</div><div class="dl-title">فرآیندهای جوشکاری</div></div>
         </div>
-        <p class="dl-desc">معرفی فرآیندهای SMAW، GTAW (TIG)، GMAW (MIG)، SAW، FCAW و کاربرد هر کدام در صنعت</p>
-        <div class="dl-tags">
-          <span class="dl-tag">SMAW</span>
-          <span class="dl-tag">GTAW</span>
-          <span class="dl-tag">SAW</span>
-        </div>
+        <p class="dl-desc">معرفی فرآیندهای SMAW، GTAW، GMAW، SAW، FCAW و کاربرد هر کدام در صنعت</p>
+        <div class="dl-tags"><span class="dl-tag">SMAW</span><span class="dl-tag">GTAW</span><span class="dl-tag">SAW</span></div>
         <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۴۶ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۲.۸ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/welding-02-processes.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <div class="dl-card welding-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="6" y1="3" x2="6" y2="15"/>
-              <circle cx="18" cy="6" r="3"/>
-              <circle cx="6" cy="18" r="3"/>
-              <path d="M18 9a9 9 0 0 1-9 9"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 03</div>
-            <div class="dl-title">مراحل و موقعیت‌های جوشکاری</div>
-          </div>
-        </div>
-        <p class="dl-desc">مراحل ۵ گانه جوشکاری و موقعیت‌های 1G، 2G، 5G، 6G طبق ASME Sec. IX با جداول مقایسه‌ای</p>
-        <div class="dl-tags">
-          <span class="dl-tag">1G-6G</span>
-          <span class="dl-tag">ASME IX</span>
-          <span class="dl-tag">Preheat</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۵۸ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۳.۶ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/welding-03-stages.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <div class="dl-card welding-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-              <line x1="12" y1="9" x2="12" y2="13"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 04</div>
-            <div class="dl-title">عیوب جوشکاری</div>
-          </div>
-        </div>
-        <p class="dl-desc">شناخت کامل ۱۲ عیب رایج جوش (ترک، تخلخل، Undercut، LOF، LOP و ...) با علت، پیشگیری و اصلاح</p>
-        <div class="dl-tags">
-          <span class="dl-tag">Crack</span>
-          <span class="dl-tag">Porosity</span>
-          <span class="dl-tag">Undercut</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۶۴ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۴.۱ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/welding-04-defects.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <div class="dl-card welding-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 11H3v10h6V11zM21 3h-6v18h6V3zM15 7H9v14h6V7z"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 05</div>
-            <div class="dl-title">آزمایش‌های جوش</div>
-          </div>
-        </div>
-        <p class="dl-desc">تست‌های مخرب (کشش، خمش، ضربه، ماکرو اچ) و غیرمخرب NDT (RT، UT، MT، PT، VT) طبق ASME Sec. V</p>
-        <div class="dl-tags">
-          <span class="dl-tag">RT</span>
-          <span class="dl-tag">UT</span>
-          <span class="dl-tag">MT</span>
-          <span class="dl-tag">PT</span>
-          <span class="dl-tag">VT</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۷۲ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۴.۵ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/welding-05-tests.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
-        </div>
-      </div>
-
-      <div class="dl-card welding-card">
-        <div class="dl-card-header">
-          <div class="dl-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num">CHAPTER 06</div>
-            <div class="dl-title">اصول بازرسی فنی جوش</div>
-          </div>
-        </div>
-        <p class="dl-desc">وظایف بازرس جوش، ITP، NCR، چک‌لیست‌های بازرسی و مستندسازی حرفه‌ای طبق AWS QC1 و ASME Sec. V</p>
-        <div class="dl-tags">
-          <span class="dl-tag">CWI</span>
-          <span class="dl-tag">ITP</span>
-          <span class="dl-tag">NCR</span>
-        </div>
-        <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۴۸ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۳.۰ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/welding-06-inspection.pdf" download class="dl-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود
-          </a>
+          <div class="dl-meta"><div class="dl-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>PDF — ۴۶ صفحه</span></div></div>
+          <a href="./downloads/welding-02-processes.pdf" download class="dl-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>دانلود</a>
         </div>
       </div>
 
       <!-- پکیج کامل جوشکاری -->
-      <div class="dl-card welding-card" style="background: linear-gradient(135deg, rgba(249,115,22,.08), rgba(234,88,12,.05)); border: 1px solid rgba(249,115,22,.3);">
+      <div class="dl-card weld" style="background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(234,88,12,.05));border:1px solid rgba(249,115,22,.3);">
         <div class="dl-card-header">
-          <div class="dl-icon" style="background: rgba(245,158,11,.15); border-color: rgba(245,158,11,.4);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-          </div>
-          <div class="dl-title-wrap">
-            <div class="dl-num" style="color:#f59e0b;">COMPLETE EDITION</div>
-            <div class="dl-title">پکیج کامل آموزش جوشکاری صنعتی</div>
-          </div>
+          <div class="dl-icon" style="background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.4);"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <div><div class="dl-num" style="color:#f59e0b;">COMPLETE EDITION</div><div class="dl-title">پکیج کامل آموزش جوشکاری صنعتی</div></div>
         </div>
-        <p class="dl-desc">تمامی ۶ فصل آموزشی جوشکاری به‌همراه تصاویر، جداول مقایسه‌ای و آزمون‌های ۳۵۰ سوالی استاندارد</p>
-        <div class="dl-tags">
-          <span class="dl-tag">۶ فصل</span>
-          <span class="dl-tag">۳۴۰ صفحه</span>
-          <span class="dl-tag">+ ۳۵۰ تست</span>
-        </div>
+        <p class="dl-desc">تمامی ۶ فصل آموزشی جوشکاری با تصاویر، جداول مقایسه‌ای و مراجع استاندارد</p>
+        <div class="dl-tags"><span class="dl-tag">۶ فصل</span><span class="dl-tag">ASME Sec. IX</span><span class="dl-tag">NDT</span></div>
         <div class="dl-footer">
-          <div class="dl-meta">
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>PDF — ۳۴۰ صفحه</span>
-            </div>
-            <div class="dl-meta-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>حجم: ۲۲.۳ MB</span>
-            </div>
-          </div>
-          <a href="./downloads/welding-complete.pdf" download class="dl-btn" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            دانلود کامل
-          </a>
+          <div class="dl-meta"><div class="dl-meta-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>PDF — جزوه جامع</span></div></div>
+          <a href="./%D9%BE%D8%A7%DB%8C%D9%BE%DB%8C%D9%86%DA%AF%20%D9%88%20%D8%AC%D9%88%D8%B4%DA%A9%D8%A7%D8%B1%DB%8C%20%D9%81%D9%86%DB%8C%20%D9%88%20%D8%A8%D8%A7%D8%B2%D8%B1%D8%B3%DB%8C_compressed.pdf" target="_blank" class="dl-btn" style="background:linear-gradient(135deg,#f59e0b,#d97706);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>مشاهده و دانلود</a>
         </div>
       </div>
 
     </div>
 
-    <!-- ═══ کادر اطلاع‌رسانی ═══ -->
-    <div class="downloads-info">
-      <div class="downloads-info-icon">💡</div>
-      <div class="downloads-info-text">
-        <div class="downloads-info-title">راهنمای دانلود و استفاده</div>
-        <div class="downloads-info-desc">
-          تمامی جزوات به‌صورت رایگان برای استفاده آموزشی در دسترس هستند. برای دریافت نسخه چاپی با کیفیت بالا یا پکیج‌های اختصاصی، از طریق لینکدین با مهندس ماردی در ارتباط باشید. محتوای این جزوات بر اساس تجربه ۱۵ ساله در پروژه‌های South Pars و استانداردهای روز ASME و API تدوین شده است.
-        </div>
+    <!-- اطلاع‌رسانی -->
+    <div class="dl-info">
+      <div class="dl-info-icon">💡</div>
+      <div>
+        <div class="dl-info-title">راهنمای دانلود و استفاده</div>
+        <div class="dl-info-desc">تمامی جزوات به‌صورت رایگان برای استفاده آموزشی در دسترس هستند. محتوا بر اساس تجربه ۱۵ ساله در پروژه‌های South Pars و استانداردهای ASME و API تدوین شده است. برای ارتباط با مهندس مردی از طریق لینکدین اقدام کنید.</div>
       </div>
     </div>
 
   </div>
 </section>
 
+<!-- FEATURES -->
+<div class="features-bg" id="features">
+  <div style="text-align:center;margin-bottom:36px;">
+    <div style="font-size:24px;font-weight:bold;margin-bottom:8px;">امکانات آکادمی</div>
+    <div style="color:#64748b;font-size:14px;">آنچه در این پلتفرم می‌یابید</div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon" style="background:#eff6ff;">📚</div><div class="feature-title">آموزش استاندارد‌محور</div><div class="feature-desc">هر درس با ذکر دقیق پاراگراف و جدول استاندارد مرجع</div></div>
+    <div class="feature-card"><div class="feature-icon" style="background:#f0fdf4;">🔧</div><div class="feature-title">کاربردی و عملی</div><div class="feature-desc">تجربه ۱۵ سال کار میدانی در پروژه‌های South Pars</div></div>
+    <div class="feature-card"><div class="feature-icon" style="background:#fff7ed;">📥</div><div class="feature-title">جزوات رایگان</div><div class="feature-desc">دانلود مستقیم جزوات PDF بدون نیاز به ثبت‌نام</div></div>
+    <div class="feature-card"><div class="feature-icon" style="background:#fdf4ff;">🔬</div><div class="feature-title">پوشش کامل NDT</div><div class="feature-desc">RT، UT، MT، PT، VT — همه با معیار پذیرش دقیق</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="contact">
+  <h2>آماده یادگیری هستید؟</h2>
+  <p>از فصل اول شروع کنید — رایگان و بدون ثبت‌نام</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="#piping" style="background:#2563EB;color:#fff;padding:13px 28px;border-radius:12px;font-weight:700;font-size:14px;font-family:'Vazirmatn',sans-serif;">🔧 شروع پایپینگ</a>
+    <a href="#welding" onclick="showSection('welding')" style="background:#F97316;color:#fff;padding:13px 28px;border-radius:12px;font-weight:700;font-size:14px;font-family:'Vazirmatn',sans-serif;">🔥 شروع جوشکاری</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div style="font-weight:bold;">⚡ Piping Studio — آکادمی پایپینگ و جوشکاری</div>
+    <div class="footer-links">
+      <a href="./about/">درباره من</a>
+      <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank">لینکدین</a>
+      <a href="https://instagram.com/piping_studio" target="_blank">اینستاگرام</a>
+      <a href="mailto:eissa.maredi@gmail.com">ایمیل</a>
+    </div>
+    <div>© ۱۴۰۴ عیسی مردی — تمامی حقوق محفوظ است</div>
+  </div>
+</footer>
+
+<script>
+/* ═══ تب‌های مسیر یادگیری ═══ */
+function showSection(type){
+  var pChapters=document.getElementById('piping-chapters');
+  var wChapters=document.getElementById('welding-chapters');
+  var tPiping=document.getElementById('tab-piping');
+  var tWelding=document.getElementById('tab-welding');
+
+  if(type==='piping'){
+    pChapters.style.display='grid';
+    wChapters.style.display='none';
+    tPiping.className='tab active-piping';
+    tWelding.className='tab';
+  } else {
+    pChapters.style.display='none';
+    wChapters.style.display='grid';
+    tPiping.className='tab';
+    tWelding.className='tab active-welding';
+  }
+}
+
+/* ═══ تب‌های دانلود ═══ */
+function showDownloads(type){
+  var dlPiping=document.getElementById('dl-piping');
+  var dlWelding=document.getElementById('dl-welding');
+  var tP=document.getElementById('dl-tab-piping');
+  var tW=document.getElementById('dl-tab-welding');
+
+  if(type==='piping'){
+    dlPiping.style.display='grid';
+    dlWelding.style.display='none';
+    tP.className='dl-tab active-p';
+    tW.className='dl-tab';
+  } else {
+    dlPiping.style.display='none';
+    dlWelding.style.display='grid';
+    tP.className='dl-tab';
+    tW.className='dl-tab active-w';
+  }
+}
+</script>
 </body>
 </html>
