@@ -4,75 +4,824 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>دانلود مدارک — آکادمی پایپینگ و جوشکاری</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.css" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: Tahoma, 'Segoe UI', sans-serif; background:#F8FAFC; color:#0F172A; }
-  a { text-decoration:none; color:inherit; }
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:900px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:bold; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; }
-  .back-link { color:#94a3b8; font-size:13px; }
-  .back-link:hover { color:#06B6D4; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg-primary:#04070d;
+    --bg-secondary:#0a1128;
+    --bg-card:#0d1526;
+    --border-subtle:rgba(255,255,255,.06);
+    --border-hover:rgba(255,255,255,.12);
+    --text-primary:#f0f4fc;
+    --text-secondary:#8a9bbd;
+    --text-muted:#4a5f82;
+    --blue:#3b82f6;
+    --cyan:#06b6d4;
+    --amber:#f59e0b;
+    --green:#10b981;
+    --orange:#f97316;
+    --purple:#8b5cf6;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Vazirmatn','Inter','Segoe UI',sans-serif;
+    background:var(--bg-primary);
+    color:var(--text-primary);
+    line-height:1.8;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+  a{text-decoration:none;color:inherit;}
 
-  .content { max-width:760px; margin:0 auto; padding:40px 20px 60px; }
-  h1 { font-size:28px; font-weight:bold; text-align:center; margin-bottom:8px; }
-  .subtitle { color:#64748b; font-size:14px; text-align:center; max-width:520px; margin:0 auto 36px; }
+  /* ═══ ANIMATED BACKGROUND ═══ */
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+    background-size:60px 60px;
+  }
+  .bg-glow{
+    position:fixed;z-index:0;pointer-events:none;
+    width:600px;height:600px;border-radius:50%;
+    filter:blur(120px);opacity:.12;
+    animation:floatGlow 20s ease-in-out infinite;
+  }
+  .bg-glow-1{top:-200px;right:-100px;background:var(--blue);}
+  .bg-glow-2{bottom:-200px;left:-100px;background:var(--cyan);animation-delay:-10s;}
+  .bg-glow-3{top:40%;left:50%;transform:translateX(-50%);background:var(--purple);animation-delay:-5s;width:400px;height:400px;opacity:.06;}
+  @keyframes floatGlow{
+    0%,100%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(30px,-20px) scale(1.05);}
+    66%{transform:translate(-20px,30px) scale(.95);}
+  }
 
-  .doc-card { background:white; border:1px solid #e2e8f0; border-radius:14px; padding:16px 20px; margin-bottom:12px; display:flex; align-items:center; gap:14px; }
-  .doc-icon { width:46px; height:46px; border-radius:10px; background:#f0fdf4; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
-  .doc-info { flex:1; }
-  .doc-name { font-weight:bold; font-size:14px; margin-bottom:2px; }
-  .doc-meta { font-size:11px; color:#94a3b8; }
-  .doc-btn { background:#2563EB; color:white; font-size:12px; font-weight:bold; padding:9px 18px; border-radius:8px; white-space:nowrap; }
+  /* ═══ NAVBAR ═══ */
+  .navbar{
+    position:sticky;top:0;z-index:100;
+    background:rgba(4,7,13,.8);
+    backdrop-filter:blur(20px) saturate(1.5);
+    border-bottom:1px solid var(--border-subtle);
+    transition:all .3s;
+  }
+  .navbar.scrolled{
+    background:rgba(4,7,13,.95);
+    box-shadow:0 4px 30px rgba(0,0,0,.4);
+  }
+  .navbar-inner{
+    max-width:1000px;margin:0 auto;
+    padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:-.2px;}
+  .logo-mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+    box-shadow:0 0 20px rgba(37,99,235,.3);
+    position:relative;
+    overflow:hidden;
+  }
+  .logo-mark::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.2));
+    border-radius:inherit;
+  }
+  .nav-links{display:flex;align-items:center;gap:8px;}
+  .back-link{
+    color:var(--text-secondary);font-size:12px;
+    padding:7px 14px;border-radius:10px;
+    border:1px solid var(--border-subtle);
+    transition:all .25s;
+    display:flex;align-items:center;gap:6px;
+  }
+  .back-link:hover{color:var(--cyan);border-color:rgba(6,182,212,.3);background:rgba(6,182,212,.06);}
+  .nav-counter{
+    font-size:11px;color:var(--text-muted);
+    padding:7px 14px;border-radius:10px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border-subtle);
+    font-family:'Inter',sans-serif;
+    display:flex;align-items:center;gap:6px;
+  }
+  .nav-counter .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 
-  .notice { background:#fffbeb; border-right:4px solid #fbbf24; border-radius:10px; padding:14px 16px; font-size:12px; color:#92400e; line-height:1.8; margin-top:30px; }
+  /* ═══ HERO ═══ */
+  .hero{
+    position:relative;
+    padding:64px 24px 52px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(37,99,235,.08) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(245,158,11,.08);
+    border:1px solid rgba(245,158,11,.2);
+    color:#fbbf24;font-size:12px;font-weight:700;
+    padding:6px 18px;border-radius:24px;
+    margin-bottom:18px;
+    animation:fadeInUp .6s ease;
+  }
+  .hero h1{
+    font-size:clamp(24px,5vw,34px);
+    font-weight:900;
+    background:linear-gradient(135deg,#f0f4fc 0%,#8a9bbd 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:12px;
+    animation:fadeInUp .6s ease .1s both;
+  }
+  .hero p{
+    color:var(--text-secondary);font-size:14px;
+    max-width:540px;margin:0 auto;
+    animation:fadeInUp .6s ease .2s both;
+  }
+
+  /* Stats Row */
+  .hero-stats{
+    display:flex;justify-content:center;gap:32px;
+    margin-top:32px;
+    animation:fadeInUp .6s ease .3s both;
+  }
+  .hero-stat{text-align:center;}
+  .hero-stat-num{
+    font-size:28px;font-weight:900;
+    font-family:'Inter','Vazirmatn',sans-serif;
+    background:linear-gradient(135deg,var(--blue),var(--cyan));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1.2;
+  }
+  .hero-stat-label{font-size:11px;color:var(--text-muted);margin-top:2px;}
+
+  @keyframes fadeInUp{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* ═══ CONTENT ═══ */
+  .content{
+    max-width:900px;margin:0 auto;
+    padding:20px 24px 80px;
+    position:relative;z-index:1;
+  }
+
+  /* ═══ SECTION HEADER ═══ */
+  .sec-h{
+    font-size:18px;font-weight:800;
+    margin:40px 0 18px;
+    display:flex;align-items:center;gap:12px;
+    color:var(--text-primary);
+    opacity:0;transform:translateY(12px);
+    transition:all .5s ease;
+  }
+  .sec-h.visible{opacity:1;transform:translateY(0);}
+  .sec-bar{
+    width:4px;height:24px;border-radius:3px;flex-shrink:0;
+    position:relative;
+  }
+  .sec-bar::after{
+    content:'';position:absolute;inset:-2px;border-radius:4px;
+    background:inherit;filter:blur(8px);opacity:.5;
+  }
+  .sec-count{
+    font-size:11px;font-weight:600;
+    color:var(--text-muted);
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border-subtle);
+    padding:3px 10px;border-radius:8px;
+    margin-right:auto;
+    font-family:'Inter',sans-serif;
+  }
+
+  /* ═══ DOWNLOAD CARD ═══ */
+  .dl-card{
+    background:var(--bg-card);
+    border:1px solid var(--border-subtle);
+    border-radius:18px;
+    overflow:hidden;margin-bottom:14px;
+    transition:all .35s cubic-bezier(.4,0,.2,1);
+    display:flex;align-items:stretch;
+    position:relative;
+    opacity:0;transform:translateY(16px);
+  }
+  .dl-card.visible{opacity:1;transform:translateY(0);}
+  .dl-card::before{
+    content:'';position:absolute;inset:0;border-radius:inherit;
+    background:linear-gradient(135deg,rgba(255,255,255,.02),transparent);
+    pointer-events:none;
+  }
+  .dl-card:hover{
+    border-color:var(--border-hover);
+    box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);
+    transform:translateY(-3px);
+  }
+  .dl-card.welding:hover{
+    border-color:rgba(249,115,22,.3);
+    box-shadow:0 12px 40px rgba(249,115,22,.08),0 0 0 1px rgba(249,115,22,.1);
+  }
+  .dl-card.featured{
+    background:linear-gradient(135deg,rgba(37,99,235,.05),rgba(6,182,212,.03),var(--bg-card));
+    border-color:rgba(37,99,235,.15);
+  }
+  .dl-card.featured:hover{
+    border-color:rgba(245,158,11,.3);
+    box-shadow:0 12px 40px rgba(245,158,11,.08),0 0 0 1px rgba(245,158,11,.1);
+  }
+
+  .dl-stripe{width:4px;flex-shrink:0;position:relative;}
+  .dl-stripe::after{
+    content:'';position:absolute;inset:0;
+    background:inherit;filter:blur(6px);opacity:.4;
+  }
+
+  .dl-body{padding:20px 22px;display:flex;align-items:center;gap:18px;flex:1;}
+  .dl-icon{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;flex-shrink:0;
+    border:1px solid;
+    position:relative;
+    transition:all .3s;
+  }
+  .dl-card:hover .dl-icon{transform:scale(1.05);}
+  .dl-info{flex:1;min-width:0;}
+  .dl-chapter{
+    font-family:'Inter',sans-serif;
+    font-size:10px;font-weight:700;
+    letter-spacing:1px;text-transform:uppercase;
+    margin-bottom:5px;
+  }
+  .dl-title{
+    font-size:15px;font-weight:800;
+    color:var(--text-primary);
+    margin-bottom:6px;line-height:1.5;
+  }
+  .dl-desc{
+    font-size:12.5px;color:var(--text-secondary);
+    line-height:1.8;margin-bottom:10px;
+  }
+  .dl-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .dl-tag{
+    font-size:10px;font-weight:600;
+    color:var(--text-muted);
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border-subtle);
+    padding:3px 9px;border-radius:6px;
+    font-family:'Inter',sans-serif;
+    transition:all .2s;
+  }
+  .dl-card:hover .dl-tag{
+    border-color:var(--border-hover);
+    color:var(--text-secondary);
+  }
+
+  .dl-action{
+    padding:20px;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;
+    border-right:1px solid var(--border-subtle);
+    min-width:130px;flex-shrink:0;
+    background:rgba(255,255,255,.01);
+  }
+  .dl-format{
+    font-size:10px;color:var(--text-muted);
+    font-family:'Inter',sans-serif;
+    display:flex;align-items:center;gap:5px;
+    padding:4px 10px;border-radius:6px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border-subtle);
+  }
+  .dl-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:10px 20px;border-radius:11px;
+    font-size:12.5px;font-weight:700;
+    font-family:'Vazirmatn',sans-serif;
+    color:#fff;transition:all .3s;
+    white-space:nowrap;
+    position:relative;overflow:hidden;
+  }
+  .dl-btn::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .dl-btn:hover::before{opacity:1;}
+  .dl-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3);}
+  .dl-btn:active{transform:translateY(0);}
+  .dl-btn svg{width:14px;height:14px;}
+
+  /* ═══ EXCEL CARDS ═══ */
+  .xl-card{
+    background:var(--bg-card);
+    border:1px solid var(--border-subtle);
+    border-radius:16px;
+    padding:18px 20px;margin-bottom:12px;
+    display:flex;align-items:center;gap:16px;
+    transition:all .35s cubic-bezier(.4,0,.2,1);
+    position:relative;
+    opacity:0;transform:translateY(16px);
+  }
+  .xl-card.visible{opacity:1;transform:translateY(0);}
+  .xl-card::before{
+    content:'';position:absolute;inset:0;border-radius:inherit;
+    background:linear-gradient(135deg,rgba(255,255,255,.02),transparent);
+    pointer-events:none;
+  }
+  .xl-card:hover{
+    border-color:rgba(16,185,129,.25);
+    box-shadow:0 12px 40px rgba(16,185,129,.06),0 0 0 1px rgba(16,185,129,.08);
+    transform:translateY(-3px);
+  }
+  .xl-icon{
+    width:48px;height:48px;border-radius:12px;
+    background:rgba(16,185,129,.08);
+    border:1px solid rgba(16,185,129,.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;flex-shrink:0;
+    transition:all .3s;
+  }
+  .xl-card:hover .xl-icon{transform:scale(1.05);background:rgba(16,185,129,.12);}
+  .xl-info{flex:1;}
+  .xl-name{font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:4px;}
+  .xl-meta{
+    font-size:11px;color:var(--text-muted);
+    font-family:'Inter',sans-serif;
+    display:flex;align-items:center;gap:8px;
+  }
+  .xl-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--text-muted);}
+  .xl-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:10px 18px;
+    background:linear-gradient(135deg,#059669,#0d9488);
+    color:#fff;font-size:12px;font-weight:700;
+    border-radius:10px;
+    font-family:'Vazirmatn',sans-serif;
+    transition:all .3s;white-space:nowrap;
+    position:relative;overflow:hidden;
+  }
+  .xl-btn::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .xl-btn:hover::before{opacity:1;}
+  .xl-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(5,150,105,.3);
+  }
+  .xl-btn:active{transform:translateY(0);}
+  .xl-btn svg{width:13px;height:13px;}
+
+  /* ═══ NOTICE ═══ */
+  .notice{
+    background:rgba(6,182,212,.04);
+    border:1px solid rgba(6,182,212,.12);
+    border-radius:16px;
+    padding:20px 22px;
+    font-size:13px;color:var(--text-secondary);
+    line-height:2;margin-top:36px;
+    display:flex;gap:14px;align-items:flex-start;
+    position:relative;
+    overflow:hidden;
+    opacity:0;transform:translateY(16px);
+    transition:all .5s ease;
+  }
+  .notice.visible{opacity:1;transform:translateY(0);}
+  .notice::before{
+    content:'';position:absolute;top:0;right:0;
+    width:200px;height:200px;
+    background:radial-gradient(circle,rgba(6,182,212,.06),transparent);
+    pointer-events:none;
+  }
+  .notice-icon{
+    width:40px;height:40px;border-radius:12px;
+    background:rgba(6,182,212,.1);
+    border:1px solid rgba(6,182,212,.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;flex-shrink:0;
+  }
+  .notice strong{color:var(--cyan);}
+  .notice a{color:var(--cyan);border-bottom:1px dashed rgba(6,182,212,.3);transition:all .2s;}
+  .notice a:hover{border-bottom-color:var(--cyan);}
+
+  /* ═══ FOOTER ═══ */
+  footer{
+    background:var(--bg-secondary);
+    border-top:1px solid var(--border-subtle);
+    padding:28px 24px;text-align:center;
+    position:relative;z-index:1;
+  }
+  .footer-brand{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    margin-bottom:10px;
+  }
+  .footer-brand-icon{
+    width:24px;height:24px;border-radius:6px;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;
+  }
+  .footer-brand-name{font-size:13px;font-weight:700;color:var(--text-secondary);}
+  footer p{color:var(--text-muted);font-size:11.5px;line-height:1.8;}
+  .footer-links{
+    display:flex;justify-content:center;gap:16px;
+    margin-top:12px;
+  }
+  .footer-links a{
+    font-size:11px;color:var(--text-muted);
+    padding:4px 10px;border-radius:6px;
+    transition:all .2s;
+  }
+  .footer-links a:hover{color:var(--cyan);background:rgba(6,182,212,.06);}
+
+  /* ═══ SCROLL TO TOP ═══ */
+  .scroll-top{
+    position:fixed;bottom:24px;left:24px;z-index:90;
+    width:42px;height:42px;border-radius:12px;
+    background:rgba(37,99,235,.15);
+    border:1px solid rgba(37,99,235,.25);
+    backdrop-filter:blur(12px);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--blue);cursor:pointer;
+    transition:all .3s;
+    opacity:0;transform:translateY(10px);
+    pointer-events:none;
+  }
+  .scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .scroll-top:hover{
+    background:rgba(37,99,235,.25);
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(37,99,235,.2);
+  }
+  .scroll-top svg{width:18px;height:18px;}
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:640px){
+    .dl-card{flex-direction:column;}
+    .dl-action{
+      border-right:none;border-top:1px solid var(--border-subtle);
+      flex-direction:row;justify-content:space-between;
+      min-width:auto;padding:14px 18px;
+    }
+    .dl-stripe{width:100%;height:3px;}
+    .dl-body{padding:16px 18px;gap:14px;}
+    .dl-icon{width:44px;height:44px;border-radius:12px;}
+    .dl-title{font-size:14px;}
+    .hero{padding:44px 20px 40px;}
+    .hero-stats{gap:20px;}
+    .hero-stat-num{font-size:22px;}
+    .nav-counter{display:none;}
+    .xl-card{flex-wrap:wrap;}
+    .xl-btn{width:100%;justify-content:center;margin-top:4px;}
+    .sec-count{display:none;}
+  }
+
+  /* ═══ ANIMATED GRADIENT BORDER (featured card) ═══ */
+  .dl-card.featured::after{
+    content:'';position:absolute;inset:-1px;border-radius:inherit;
+    background:conic-gradient(from 0deg,transparent,rgba(245,158,11,.15),transparent,rgba(37,99,235,.15),transparent);
+    animation:rotateBorder 8s linear infinite;
+    z-index:-1;
+    opacity:0;transition:opacity .5s;
+  }
+  .dl-card.featured:hover::after{opacity:1;}
+  @keyframes rotateBorder{
+    to{transform:rotate(360deg);}
+  }
+
+  /* ═══ TOOLTIP ═══ */
+  .dl-format-tip{position:relative;cursor:help;}
+  .dl-format-tip::after{
+    content:attr(data-tip);
+    position:absolute;bottom:calc(100% + 8px);
+    left:50%;transform:translateX(-50%) scale(.9);
+    background:var(--bg-card);
+    border:1px solid var(--border-hover);
+    color:var(--text-secondary);
+    font-size:10px;padding:5px 10px;border-radius:7px;
+    white-space:nowrap;
+    opacity:0;pointer-events:none;
+    transition:all .2s;
+    box-shadow:0 4px 12px rgba(0,0,0,.4);
+  }
+  .dl-format-tip:hover::after{opacity:1;transform:translateX(-50%) scale(1);}
 </style>
 </head>
 <body>
 
-<nav class="navbar">
+<!-- Background Effects -->
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+<div class="bg-glow bg-glow-3"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
   <div class="navbar-inner">
-    <div class="logo"><div class="logo-icon">⬡</div> آکادمی پایپینگ و جوشکاری</div>
-    <a href="../" class="back-link">← بازگشت به صفحه اصلی</a>
+    <div class="logo">
+      <div class="logo-mark">⚡</div>
+      <span>PIPING STUDIO</span>
+    </div>
+    <div class="nav-links">
+      <div class="nav-counter">
+        <span class="dot"></span>
+        <span>۶ فایل موجود</span>
+      </div>
+      <a href="../" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+        صفحه اصلی
+      </a>
+    </div>
   </div>
 </nav>
 
-<div class="content">
-  <h1>دانلود مدارک</h1>
-  <div class="subtitle">فرم‌های QC و چک‌لیست‌های نمونه — قابل استفاده به‌عنوان مرجع آموزشی</div>
-
-  <div class="doc-card">
-    <div class="doc-icon">📊</div>
-    <div class="doc-info">
-      <div class="doc-name">Fit-up and Dimension Inspection Report</div>
-      <div class="doc-meta">Excel (.xlsx)</div>
-    </div>
-    <a href="../Fit-up%20and%20Dimention%20Inspection%20Report%20(UG%20PIPING).xlsx" class="doc-btn" download>دانلود</a>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    کتابخانه دیجیتال
   </div>
-
-  <div class="doc-card">
-    <div class="doc-icon">📊</div>
-    <div class="doc-info">
-      <div class="doc-name">Weld Visual Inspection Report</div>
-      <div class="doc-meta">Excel (.xlsx)</div>
+  <h1>جزوات و مستندات آموزشی</h1>
+  <p>دانلود رایگان — جزوات PDF آموزشی و فرم‌های QC تهیه‌شده توسط عیسی مردی</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="3">۳</div>
+      <div class="hero-stat-label">جزوه PDF</div>
     </div>
-    <a href="../Weld%20Visual%20Inspection%20Report%20(UG%20PIPING).xlsx" class="doc-btn" download>دانلود</a>
-  </div>
-
-  <div class="doc-card">
-    <div class="doc-icon">📊</div>
-    <div class="doc-info">
-      <div class="doc-name">Radiography Test Report</div>
-      <div class="doc-meta">Excel (.xlsx)</div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="3">۳</div>
+      <div class="hero-stat-label">فرم QC</div>
     </div>
-    <a href="../RADIOGRAPHY%20TEST%20REPORT.xlsx" class="doc-btn" download>دانلود</a>
-  </div>
-
-  <div class="notice">
-    <strong>توجه:</strong> این فایل‌ها قالب‌های آموزشی عمومی هستند، بدون اطلاعات اختصاصی پروژه. همیشه قبل از استفاده در یک پروژه‌ی واقعی، این فرم‌ها را با ITP و مشخصات فنی همان پروژه تطبیق و در صورت نیاز اصلاح کن.
+    <div class="hero-stat">
+      <div class="hero-stat-num">۱۵+</div>
+      <div class="hero-stat-label">سال تجربه</div>
+    </div>
   </div>
 </div>
+
+<div class="content">
+
+  <!-- ══ جزوات PDF پایپینگ ══ -->
+  <div class="sec-h" data-animate>
+    <div class="sec-bar" style="background:linear-gradient(180deg,#2563eb,#06b6d4);"></div>
+    جزوات آموزشی پایپینگ
+    <span class="sec-count">۳ فایل</span>
+  </div>
+
+  <!-- جزوه ۱ -->
+  <div class="dl-card" data-animate>
+    <div class="dl-stripe" style="background:linear-gradient(180deg,#2563eb,#06b6d4);"></div>
+    <div class="dl-body">
+      <div class="dl-icon" style="background:rgba(37,99,235,.08);border-color:rgba(37,99,235,.2);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="dl-info">
+        <div class="dl-chapter" style="color:#3b82f6;">CHAPTER 01 — پایپینگ</div>
+        <div class="dl-title">اسناد و مدارک فنی مهندسی</div>
+        <div class="dl-desc">معرفی کامل PFD، P&ID، نقشه‌های ایزومتریک، استانداردهای ASME، ASTM، API، IPS، AWS و فرم‌های QC</div>
+        <div class="dl-tags">
+          <span class="dl-tag">PFD</span>
+          <span class="dl-tag">P&ID</span>
+          <span class="dl-tag">ISO Drawing</span>
+          <span class="dl-tag">QC Form</span>
+          <span class="dl-tag">ASME</span>
+        </div>
+      </div>
+    </div>
+    <div class="dl-action">
+      <div class="dl-format dl-format-tip" data-tip="فایل PDF قابل دانلود">📄 PDF</div>
+      <a href="./اسناد و مدارک فنی مهندسی.pdf"
+         target="_blank"
+         class="dl-btn"
+         style="background:linear-gradient(135deg,#2563eb,#1d4ed8);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        دانلود
+      </a>
+    </div>
+  </div>
+
+  <!-- جزوه ۲ -->
+  <div class="dl-card" data-animate>
+    <div class="dl-stripe" style="background:linear-gradient(180deg,#06b6d4,#0891b2);"></div>
+    <div class="dl-body">
+      <div class="dl-icon" style="background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.2);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+      </div>
+      <div class="dl-info">
+        <div class="dl-chapter" style="color:#06b6d4;">CHAPTER 02 — پایپینگ</div>
+        <div class="dl-title">اجزای سیستم‌های پایپینگ</div>
+        <div class="dl-desc">معرفی کامل لوله‌ها، اتصالات، فلنج‌ها، گسکت‌ها، شیرآلات و ساپورت‌ها با استانداردهای مرجع</div>
+        <div class="dl-tags">
+          <span class="dl-tag">Pipe</span>
+          <span class="dl-tag">Fittings</span>
+          <span class="dl-tag">Flanges</span>
+          <span class="dl-tag">Valves</span>
+          <span class="dl-tag">Gaskets</span>
+        </div>
+      </div>
+    </div>
+    <div class="dl-action">
+      <div class="dl-format dl-format-tip" data-tip="فایل PDF قابل دانلود">📄 PDF</div>
+      <a href="./اجزای سیستم‌های پایپینگ.pdf"
+         target="_blank"
+         class="dl-btn"
+         style="background:linear-gradient(135deg,#06b6d4,#0891b2);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        دانلود
+      </a>
+    </div>
+  </div>
+
+  <!-- جزوه کامل (Featured) -->
+  <div class="dl-card featured" data-animate>
+    <div class="dl-stripe" style="background:linear-gradient(180deg,#f59e0b,#ea580c);"></div>
+    <div class="dl-body">
+      <div class="dl-icon" style="background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+      <div class="dl-info">
+        <div class="dl-chapter" style="color:#f59e0b;">COMPLETE EDITION — جزوه جامع</div>
+        <div class="dl-title">اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش</div>
+        <div class="dl-desc">جزوه جامع آموزشی — مناسب برای بازرسان QC، مهندسان پایپینگ و دانشجویان رشته‌های مرتبط</div>
+        <div class="dl-tags">
+          <span class="dl-tag">ASME B31.3</span>
+          <span class="dl-tag">NDT</span>
+          <span class="dl-tag">QC</span>
+          <span class="dl-tag">جوشکاری</span>
+          <span class="dl-tag">جزوه کامل</span>
+        </div>
+      </div>
+    </div>
+    <div class="dl-action">
+      <div class="dl-format dl-format-tip" data-tip="فایل PDF فشرده">📄 PDF</div>
+      <a href="../پایپینگ و جوشکاری فنی و بازرسی_compressed.pdf"
+         target="_blank"
+         class="dl-btn"
+         style="background:linear-gradient(135deg,#f59e0b,#ea580c);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        دانلود
+      </a>
+    </div>
+  </div>
+
+  <!-- ══ فرم‌های QC ══ -->
+  <div class="sec-h" data-animate>
+    <div class="sec-bar" style="background:linear-gradient(180deg,#059669,#0d9488);"></div>
+    فرم‌های QC و گزارش‌های بازرسی
+    <span class="sec-count">۳ فایل</span>
+  </div>
+
+  <div class="xl-card" data-animate>
+    <div class="xl-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+    </div>
+    <div class="xl-info">
+      <div class="xl-name">Fit-up and Dimension Inspection Report</div>
+      <div class="xl-meta">
+        <span>Excel (.xlsx)</span>
+        <span class="xl-meta-dot"></span>
+        <span>UG PIPING</span>
+      </div>
+    </div>
+    <a href="../Fit-up%20and%20Dimention%20Inspection%20Report%20(UG%20PIPING).xlsx" download class="xl-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      دانلود
+    </a>
+  </div>
+
+  <div class="xl-card" data-animate>
+    <div class="xl-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+    </div>
+    <div class="xl-info">
+      <div class="xl-name">Weld Visual Inspection Report</div>
+      <div class="xl-meta">
+        <span>Excel (.xlsx)</span>
+        <span class="xl-meta-dot"></span>
+        <span>UG PIPING</span>
+      </div>
+    </div>
+    <a href="../Weld%20Visual%20Inspection%20Report%20(UG%20PIPING).xlsx" download class="xl-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      دانلود
+    </a>
+  </div>
+
+  <div class="xl-card" data-animate>
+    <div class="xl-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+    </div>
+    <div class="xl-info">
+      <div class="xl-name">Radiography Test Report</div>
+      <div class="xl-meta">
+        <span>Excel (.xlsx)</span>
+        <span class="xl-meta-dot"></span>
+        <span>RT Report</span>
+      </div>
+    </div>
+    <a href="../RADIOGRAPHY%20TEST%20REPORT.xlsx" download class="xl-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      دانلود
+    </a>
+  </div>
+
+  <!-- NOTICE -->
+  <div class="notice" data-animate>
+    <div class="notice-icon">💡</div>
+    <div>
+      <strong>راهنمای استفاده:</strong> تمامی جزوات و فرم‌ها به‌صورت رایگان برای استفاده آموزشی در دسترس هستند. محتوا بر اساس تجربه ۱۵ ساله در پروژه‌های South Pars و استانداردهای ASME و API تدوین شده. قبل از استفاده در پروژه واقعی، با ITP و مشخصات فنی همان پروژه تطبیق دهید.
+      <br>برای ارتباط: <a href="mailto:eissa.maredi@gmail.com">eissa.maredi@gmail.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- SCROLL TO TOP -->
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-brand-icon">⚡</div>
+    <span class="footer-brand-name">PIPING STUDIO</span>
+  </div>
+  <p>© ۱۴۰۴ عیسی مردی — آموزش تخصصی پایپینگ، جوشکاری و بازرسی فنی</p>
+  <div class="footer-links">
+    <a href="../">صفحه اصلی</a>
+    <a href="mailto:eissa.maredi@gmail.com">تماس</a>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+  scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+});
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.hero-stat-num').forEach(el => {
+    const text = el.textContent;
+    if (text.includes('+')) return;
+    const target = parseInt(text.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)));
+    if (isNaN(target)) return;
+    let current = 0;
+    const step = Math.ceil(target / 20);
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(interval);
+      }
+      el.textContent = toPersianNum(current);
+    }, 50);
+  });
+}
+
+function toPersianNum(num) {
+  return num.toString().replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+}
+
+// Run counter animation when hero is visible
+const heroObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    animateCounters();
+    heroObserver.disconnect();
+  }
+}, { threshold: 0.5 });
+
+heroObserver.observe(document.querySelector('.hero-stats'));
+</script>
 
 </body>
 </html>
