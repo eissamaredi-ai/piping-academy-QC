@@ -9,73 +9,40 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Vazirmatn','Inter','Segoe UI',sans-serif;background:#05080f;color:#eef2fa;line-height:1.8;}
   a{text-decoration:none;color:inherit;}
-
-  /* NAVBAR */
   .navbar{position:sticky;top:0;z-index:50;background:rgba(5,8,15,.95);backdrop-filter:blur(12px);border-bottom:1px solid #1a2540;}
   .navbar-inner{max-width:960px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;}
   .logo{display:flex;align-items:center;gap:9px;color:#eef2fa;font-weight:800;font-size:14px;}
   .logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(90deg,#2563eb,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:15px;}
   .back-link{color:#8fa4c4;font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid #1a2540;transition:all .2s;}
   .back-link:hover{color:#06b6d4;border-color:#06b6d4;}
-
-  /* HERO */
   .hero{padding:48px 22px 36px;text-align:center;background:#090e1a;border-bottom:1px solid #1a2540;}
   .hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:#f59e0b;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;margin-bottom:14px;}
   .hero h1{font-size:26px;font-weight:800;color:#eef2fa;margin-bottom:8px;}
   .hero p{color:#8fa4c4;font-size:13.5px;max-width:520px;margin:0 auto;}
-
-  /* CONTENT */
   .content{max-width:860px;margin:0 auto;padding:36px 22px 80px;}
-
-  /* SECTION HEADER */
   .sec-h{font-size:17px;font-weight:700;margin:32px 0 14px;display:flex;align-items:center;gap:10px;color:#eef2fa;}
   .sec-bar{width:4px;height:20px;border-radius:2px;flex-shrink:0;}
 
-  /* DOWNLOAD CARD */
-  .dl-card{
-    background:#111b2e;border:1px solid #1a2540;border-radius:16px;
-    overflow:hidden;margin-bottom:12px;
-    transition:all .25s;
-    display:flex;align-items:stretch;
-  }
-  .dl-card:hover{border-color:#2563eb;box-shadow:0 8px 28px rgba(37,99,235,.18);transform:translateY(-2px);}
-  .dl-card.welding:hover{border-color:#f97316;box-shadow:0 8px 28px rgba(249,115,22,.15);}
-
-  /* رنگ کنار کارت */
+  /* کارت PDF */
+  .dl-card{background:#111b2e;border:1px solid #1a2540;border-radius:16px;overflow:hidden;margin-bottom:12px;display:flex;align-items:stretch;transition:all .25s;}
+  .dl-card:hover{border-color:#2563eb;box-shadow:0 8px 28px rgba(37,99,235,.2);transform:translateY(-2px);}
   .dl-stripe{width:5px;flex-shrink:0;}
-
   .dl-body{padding:18px 20px;display:flex;align-items:center;gap:16px;flex:1;}
-  .dl-icon{
-    width:50px;height:50px;border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:22px;flex-shrink:0;
-    border:1px solid;
-  }
+  .dl-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;border:1px solid;}
   .dl-info{flex:1;}
   .dl-chapter{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.8px;margin-bottom:4px;}
   .dl-title{font-size:14.5px;font-weight:800;color:#eef2fa;margin-bottom:5px;line-height:1.4;}
   .dl-desc{font-size:12px;color:#8fa4c4;line-height:1.7;margin-bottom:8px;}
   .dl-tags{display:flex;flex-wrap:wrap;gap:5px;}
-  .dl-tag{font-size:10px;font-weight:600;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 8px;border-radius:5px;font-family:'Inter',sans-serif;}
-
+  .dl-tag{font-size:10px;font-weight:600;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 8px;border-radius:5px;}
   .dl-action{padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-right:1px solid #1a2540;min-width:120px;flex-shrink:0;}
   .dl-size{font-size:10.5px;color:#4a6080;text-align:center;font-family:'Inter',sans-serif;}
-  .dl-btn{
-    display:inline-flex;align-items:center;gap:6px;
-    padding:9px 16px;border-radius:9px;
-    font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;
-    color:#fff;transition:all .25s;white-space:nowrap;
-  }
-  .dl-btn:hover{transform:translateY(-2px);}
+  .dl-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:9px;font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;color:#fff;transition:all .25s;white-space:nowrap;}
+  .dl-btn:hover{transform:translateY(-2px);opacity:.9;}
   .dl-btn svg{width:13px;height:13px;}
 
-  /* EXCEL CARDS */
-  .xl-card{
-    background:#111b2e;border:1px solid #1a2540;border-radius:14px;
-    padding:16px 18px;margin-bottom:10px;
-    display:flex;align-items:center;gap:14px;
-    transition:all .25s;
-  }
+  /* کارت Excel */
+  .xl-card{background:#111b2e;border:1px solid #1a2540;border-radius:14px;padding:16px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;transition:all .25s;}
   .xl-card:hover{border-color:#059669;box-shadow:0 6px 20px rgba(5,150,105,.15);transform:translateY(-2px);}
   .xl-icon{width:44px;height:44px;border-radius:10px;background:rgba(5,150,105,.12);border:1px solid rgba(5,150,105,.3);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
   .xl-info{flex:1;}
@@ -85,17 +52,11 @@
   .xl-btn:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(5,150,105,.35);}
   .xl-btn svg{width:13px;height:13px;}
 
-  /* NOTICE */
   .notice{background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:16px 18px;font-size:12.5px;color:#8fa4c4;line-height:1.85;margin-top:28px;display:flex;gap:12px;align-items:flex-start;}
   .notice-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
   .notice strong{color:#06b6d4;}
-
-  /* FOOTER */
   footer{background:#090e1a;border-top:1px solid #1a2540;padding:20px;text-align:center;}
   footer p{color:#4a6080;font-size:11.5px;}
-
-  /* SVG ICON */
-  .svg-dl{display:block;}
 
   @media(max-width:600px){
     .dl-card{flex-direction:column;}
@@ -106,33 +67,28 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="logo">
-      <div class="logo-mark">⚡</div>
-      <span>PIPING STUDIO</span>
-    </div>
+    <div class="logo"><div class="logo-mark"></div><span>PIPING STUDIO</span></div>
     <a href="../" class="back-link">← صفحه اصلی</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-badge">📥 کتابخانه دیجیتال</div>
   <h1>جزوات و مستندات آموزشی</h1>
-  <p>دانلود رایگان — جزوات PDF آموزشی و فرم‌های QC تهیه‌شده توسط عیسی مردی</p>
+  <p>دانلود رایگان — جزوات PDF و فرم‌های QC تهیه‌شده توسط عیسی ماردی</p>
 </div>
 
 <div class="content">
 
-  <!-- ══ جزوات PDF پایپینگ ══ -->
+  <!-- جزوات PDF -->
   <div class="sec-h">
     <div class="sec-bar" style="background:linear-gradient(180deg,#2563eb,#06b6d4);"></div>
     📘 جزوات آموزشی پایپینگ
   </div>
 
-  <!-- جزوه ۱: اسناد و مدارک -->
+  <!-- فایل ۱ -->
   <div class="dl-card">
     <div class="dl-stripe" style="background:linear-gradient(180deg,#2563eb,#06b6d4);"></div>
     <div class="dl-body">
@@ -140,64 +96,58 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
       <div class="dl-info">
-        <div class="dl-chapter" style="color:#3b82f6;">CHAPTER 01 — پایپینگ</div>
-        <div class="dl-title">اسناد و مدارک فنی مهندسی</div>
-        <div class="dl-desc">معرفی کامل PFD، P&ID، نقشه‌های ایزومتریک، استانداردهای ASME، ASTM، API، IPS، AWS و فرم‌های QC</div>
+        <div class="dl-chapter" style="color:#3b82f6;">CHAPTER 01 — PIPING</div>
+        <div class="dl-title">اسناد و مدارک فنی پایپینگ</div>
+        <div class="dl-desc">PFD، P&ID، نقشه‌های ایزومتریک، استانداردهای ASME، ASTM، API، IPS، AWS و فرم‌های QC</div>
         <div class="dl-tags">
           <span class="dl-tag">PFD</span>
           <span class="dl-tag">P&ID</span>
           <span class="dl-tag">ISO Drawing</span>
           <span class="dl-tag">QC Form</span>
-          <span class="dl-tag">ASME</span>
         </div>
       </div>
     </div>
     <div class="dl-action">
       <div class="dl-size">📄 PDF</div>
-      <a href="./اسناد و مدارک فنی مهندسی.pdf"
-         target="_blank"
-         class="dl-btn"
-         style="background:linear-gradient(135deg,#2563eb,#1d4ed8);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="svg-dl"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <a href="./piping-01-components.pdf" target="_blank"
+         class="dl-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         دانلود
       </a>
     </div>
   </div>
 
-  <!-- جزوه ۲: اجزای سیستم‌ها -->
+  <!-- فایل ۲ -->
   <div class="dl-card">
     <div class="dl-stripe" style="background:linear-gradient(180deg,#06b6d4,#0891b2);"></div>
     <div class="dl-body">
       <div class="dl-icon" style="background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.3);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94"/></svg>
       </div>
       <div class="dl-info">
-        <div class="dl-chapter" style="color:#06b6d4;">CHAPTER 02 — پایپینگ</div>
+        <div class="dl-chapter" style="color:#06b6d4;">CHAPTER 02 — PIPING</div>
         <div class="dl-title">اجزای سیستم‌های پایپینگ</div>
-        <div class="dl-desc">معرفی کامل لوله‌ها، اتصالات، فلنج‌ها، گسکت‌ها، شیرآلات و ساپورت‌ها با استانداردهای مرجع</div>
+        <div class="dl-desc">لوله‌ها، اتصالات، فلنج‌ها، گسکت‌ها، شیرآلات و ساپورت‌ها با استانداردهای مرجع</div>
         <div class="dl-tags">
           <span class="dl-tag">Pipe</span>
           <span class="dl-tag">Fittings</span>
           <span class="dl-tag">Flanges</span>
           <span class="dl-tag">Valves</span>
-          <span class="dl-tag">Gaskets</span>
         </div>
       </div>
     </div>
     <div class="dl-action">
       <div class="dl-size">📄 PDF</div>
-      <a href="./اجزای سیستم‌های پایپینگ.pdf"
-         target="_blank"
-         class="dl-btn"
-         style="background:linear-gradient(135deg,#06b6d4,#0891b2);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="svg-dl"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <a href="./piping-02-components.pdf" target="_blank"
+         class="dl-btn" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         دانلود
       </a>
     </div>
   </div>
 
   <!-- جزوه کامل -->
-  <div class="dl-card" style="background:linear-gradient(135deg,rgba(37,99,235,.07),rgba(6,182,212,.04));border-color:rgba(37,99,235,.3);">
+  <div class="dl-card" style="background:linear-gradient(135deg,rgba(245,158,11,.06),rgba(234,88,12,.03));border-color:rgba(245,158,11,.28);">
     <div class="dl-stripe" style="background:linear-gradient(180deg,#f59e0b,#ea580c);"></div>
     <div class="dl-body">
       <div class="dl-icon" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.35);">
@@ -206,29 +156,27 @@
       <div class="dl-info">
         <div class="dl-chapter" style="color:#f59e0b;">COMPLETE EDITION — جزوه جامع</div>
         <div class="dl-title">اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش</div>
-        <div class="dl-desc">جزوه جامع آموزشی — مناسب برای بازرسان QC، مهندسان پایپینگ و دانشجویان رشته‌های مرتبط</div>
+        <div class="dl-desc">جزوه جامع — مناسب برای بازرسان QC، مهندسان پایپینگ و دانشجویان</div>
         <div class="dl-tags">
           <span class="dl-tag">ASME B31.3</span>
           <span class="dl-tag">NDT</span>
           <span class="dl-tag">QC</span>
           <span class="dl-tag">جوشکاری</span>
-          <span class="dl-tag">جزوه کامل</span>
         </div>
       </div>
     </div>
     <div class="dl-action">
       <div class="dl-size">📄 PDF</div>
-      <a href="../پایپینگ و جوشکاری فنی و بازرسی_compressed.pdf"
+      <a href="../%D9%BE%D8%A7%DB%8C%D9%BE%DB%8C%D9%86%DA%AF%20%D9%88%20%D8%AC%D9%88%D8%B4%DA%A9%D8%A7%D8%B1%DB%8C%20%D9%81%D9%86%DB%8C%20%D9%88%20%D8%A8%D8%A7%D8%B2%D8%B1%D8%B3%DB%8C_compressed.pdf"
          target="_blank"
-         class="dl-btn"
-         style="background:linear-gradient(135deg,#f59e0b,#ea580c);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="svg-dl"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+         class="dl-btn" style="background:linear-gradient(135deg,#f59e0b,#ea580c);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         دانلود
       </a>
     </div>
   </div>
 
-  <!-- ══ فرم‌های QC ══ -->
+  <!-- فرم‌های Excel -->
   <div class="sec-h" style="margin-top:40px;">
     <div class="sec-bar" style="background:linear-gradient(180deg,#059669,#0d9488);"></div>
     📊 فرم‌های QC و گزارش‌های بازرسی
@@ -270,11 +218,10 @@
     </a>
   </div>
 
-  <!-- NOTICE -->
   <div class="notice">
     <div class="notice-icon">💡</div>
     <div>
-      <strong>راهنمای استفاده:</strong> تمامی جزوات و فرم‌ها به‌صورت رایگان برای استفاده آموزشی در دسترس هستند. محتوا بر اساس تجربه ۱۵ ساله در پروژه‌های South Pars و استانداردهای ASME و API تدوین شده. قبل از استفاده در پروژه واقعی، با ITP و مشخصات فنی همان پروژه تطبیق دهید. برای ارتباط: <strong>eissa.maredi@gmail.com</strong>
+      <strong>راهنمای استفاده:</strong> تمامی جزوات رایگان و برای استفاده آموزشی هستند. محتوا بر اساس ۱۵ سال تجربه در پروژه‌های South Pars و استانداردهای ASME و API تدوین شده. برای ارتباط: <strong>eissa.maredi@gmail.com</strong>
     </div>
   </div>
 
@@ -283,6 +230,9 @@
 <footer>
   <p>© 2026 عیسی ماردی — Piping Studio | آموزش تخصصی پایپینگ، جوشکاری و بازرسی فنی</p>
 </footer>
+
+</body>
+</html>
 
 </body>
 </html>
