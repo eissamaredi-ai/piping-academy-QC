@@ -71,56 +71,376 @@
   .post-brand{font-size:11px;color:#4a6080;font-family:'Vazirmatn',sans-serif;}
   .post-more{font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;}
 
-/* DOWNLOADS */
-  .downloads-section{padding:56px 20px;background:#090e1a;border-top:1px solid #1a2540;border-bottom:1px solid #1a2540;}
-  .downloads-inner{max-width:1100px;margin:0 auto;}
-  .downloads-header{text-align:center;margin-bottom:36px;}
-  .dl-badge-wrap{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:#f59e0b;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;margin-bottom:13px;font-family:'Vazirmatn',sans-serif;}
-  .dl-main-title{font-size:24px;font-weight:800;color:#eef2fa;margin-bottom:7px;font-family:'Vazirmatn',sans-serif;}
-  .dl-main-sub{color:#8fa4c4;font-size:13.5px;font-family:'Vazirmatn',sans-serif;}
+<section id="downloads" style="
+  position:relative;
+  padding:70px 20px;
+  overflow:hidden;
+  border-top:1px solid #1a2540;
+  border-bottom:1px solid #1a2540;
+">
 
-  /* DOWNLOAD TABS */
-  .dl-tabs{display:flex;gap:6px;background:#111b2e;border:1px solid #1a2540;border-radius:12px;padding:5px;max-width:360px;margin:0 auto 28px;}
-  .dl-tab{flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;color:#8fa4c4;background:transparent;border:none;font-family:'Vazirmatn',sans-serif;transition:all .25s;}
-  .dl-tab.active-p{background:#2563EB;color:#fff;box-shadow:0 4px 12px rgba(37,99,235,.3);}
-  .dl-tab.active-w{background:#F97316;color:#fff;box-shadow:0 4px 12px rgba(249,115,22,.3);}
+  <!-- ── Background: کتابخانه تاریک ── -->
+  <div style="
+    position:absolute;inset:0;z-index:0;
+    background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1600&q=80');
+    background-size:cover;
+    background-position:center 30%;
+    background-attachment:fixed;
+  "></div>
 
-  .downloads-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;}
-  .dl-card{background:#111b2e;border:1px solid #1a2540;border-radius:14px;padding:20px;transition:all .3s;position:relative;overflow:hidden;}
-  .dl-card:hover{transform:translateY(-4px);border-color:#2563EB;box-shadow:0 10px 32px rgba(37,99,235,.18);}
-  .dl-card.weld:hover{border-color:#F97316;box-shadow:0 10px 32px rgba(249,115,22,.18);}
-  .dl-card-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
-  .dl-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);}
-  .dl-card.weld .dl-icon{background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.25);}
-  .dl-icon svg{width:22px;height:22px;}
-  .dl-num{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:1px;margin-bottom:3px;}
-  .dl-card.weld .dl-num{color:#f59e0b;}
-  .dl-title{font-size:14.5px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;line-height:1.5;}
-  .dl-desc{font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.75;margin-bottom:14px;}
-  .dl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
-  .dl-tag{font-size:10px;font-weight:600;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:3px 8px;border-radius:6px;font-family:'Vazirmatn',sans-serif;}
-  .dl-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid #1a2540;}
-  .dl-meta{display:flex;flex-direction:column;gap:2px;}
-  .dl-meta-row{display:flex;align-items:center;gap:5px;font-size:10.5px;color:#4a6080;font-family:'Vazirmatn',sans-serif;}
-  .dl-meta-row svg{width:11px;height:11px;opacity:.7;}
-  .dl-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:linear-gradient(135deg,#2563EB,#1d4ed8);color:#fff;font-size:12px;font-weight:700;border-radius:8px;font-family:'Vazirmatn',sans-serif;text-decoration:none;transition:all .25s;border:none;cursor:pointer;}
-  .dl-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,99,235,.4);}
-  .dl-card.weld .dl-btn{background:linear-gradient(135deg,#F97316,#ea580c);}
-  .dl-card.weld .dl-btn:hover{box-shadow:0 6px 18px rgba(249,115,22,.4);}
-  .dl-btn svg{width:13px;height:13px;}
+  <!-- ── Overlay تاریک با گرادیان ── -->
+  <div style="
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(
+      135deg,
+      rgba(5,8,15,.92) 0%,
+      rgba(9,14,26,.88) 40%,
+      rgba(17,27,46,.85) 70%,
+      rgba(5,8,15,.92) 100%
+    );
+  "></div>
 
-  /* INFO BOX */
-  .dl-info{margin-top:32px;padding:18px;background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.2);border-radius:12px;display:flex;gap:12px;align-items:flex-start;}
-  .dl-info-icon{width:36px;height:36px;background:rgba(6,182,212,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
-  .dl-info-title{font-size:13px;font-weight:700;color:#06b6d4;margin-bottom:4px;font-family:'Vazirmatn',sans-serif;}
-  .dl-info-desc{font-size:11.5px;color:#8fa4c4;line-height:1.8;font-family:'Vazirmatn',sans-serif;}
+  <!-- ── گرادیان آبی از پایین ── -->
+  <div style="
+    position:absolute;bottom:0;left:0;right:0;height:200px;z-index:1;
+    background:linear-gradient(0deg,rgba(5,8,15,1) 0%,transparent 100%);
+  "></div>
 
-  /* FEATURES */
-  .features-bg{background:#F1F5F9;padding:60px 20px;}
-  .features-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
-  .feature-card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:20px;}
-  .feature-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:20px;}
+  <!-- ── محتوا ── -->
+  <div style="position:relative;z-index:2;max-width:1100px;margin:0 auto;">
 
+    <!-- هدر -->
+    <div style="text-align:center;margin-bottom:44px;">
+
+      <!-- آیکون کتابخانه -->
+      <div style="
+        width:64px;height:64px;border-radius:18px;
+        background:linear-gradient(135deg,rgba(37,99,235,.3),rgba(6,182,212,.2));
+        border:1px solid rgba(6,182,212,.3);
+        display:flex;align-items:center;justify-content:center;
+        font-size:28px;margin:0 auto 16px;
+        box-shadow:0 8px 32px rgba(37,99,235,.25);
+        backdrop-filter:blur(8px);
+      ">📚</div>
+
+      <div style="
+        display:inline-flex;align-items:center;gap:7px;
+        background:rgba(245,158,11,.12);
+        border:1px solid rgba(245,158,11,.3);
+        color:#f59e0b;font-size:12px;font-weight:700;
+        padding:5px 16px;border-radius:20px;
+        margin-bottom:14px;font-family:'Vazirmatn',sans-serif;
+        backdrop-filter:blur(8px);
+      ">📥 کتابخانه دیجیتال</div>
+
+      <h2 style="
+        font-size:28px;font-weight:800;
+        color:#eef2fa;margin-bottom:10px;
+        font-family:'Vazirmatn',sans-serif;
+        text-shadow:0 2px 20px rgba(0,0,0,.5);
+      ">جزوات و منابع دانلودی</h2>
+
+      <p style="
+        color:#8fa4c4;font-size:13.5px;
+        font-family:'Vazirmatn',sans-serif;
+        max-width:500px;margin:0 auto;
+        line-height:1.8;
+      ">دسترسی مستقیم به جزوات PDF آموزشی<br>تدوین‌شده توسط <strong style="color:#eef2fa;">عیسی مردی</strong> — Piping Studio</p>
+    </div>
+
+    <!-- تب‌ها -->
+    <div style="
+      display:flex;gap:6px;
+      background:rgba(17,27,46,.8);
+      border:1px solid #1a2540;
+      border-radius:12px;padding:5px;
+      max-width:360px;margin:0 auto 32px;
+      backdrop-filter:blur(12px);
+    ">
+      <button class="dl-tab active-p" onclick="showDownloads('piping')" id="dl-tab-piping" style="
+        flex:1;padding:10px;border-radius:8px;
+        font-size:13px;font-weight:700;text-align:center;
+        cursor:pointer;background:#2563EB;color:#fff;border:none;
+        font-family:'Vazirmatn',sans-serif;
+        box-shadow:0 4px 12px rgba(37,99,235,.4);
+        transition:all .25s;
+      ">🔧 جزوات پایپینگ</button>
+      <button class="dl-tab" onclick="showDownloads('welding')" id="dl-tab-welding" style="
+        flex:1;padding:10px;border-radius:8px;
+        font-size:13px;font-weight:700;text-align:center;
+        cursor:pointer;background:transparent;
+        color:#8fa4c4;border:none;
+        font-family:'Vazirmatn',sans-serif;
+        transition:all .25s;
+      ">🔥 جزوات جوشکاری</button>
+    </div>
+
+    <!-- گرید پایپینگ -->
+    <div id="dl-piping" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+
+      <!-- کارت ۱ -->
+      <div style="
+        background:rgba(17,27,46,.85);
+        border:1px solid #1a2540;border-radius:14px;
+        overflow:hidden;transition:all .3s;
+        backdrop-filter:blur(12px);
+      "
+      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#2563eb';this.style.boxShadow='0 12px 36px rgba(37,99,235,.25)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#2563eb,#06b6d4);"></div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📄</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:.5px;margin-bottom:3px;">CHAPTER 01</div>
+              <div style="font-size:14px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;">اسناد و مدارک فنی پایپینگ</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:12px;">PFD، P&ID، نقشه‌های ایزومتریک، استانداردهای ASME، API، IPS و فرم‌های QC</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;">
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">PFD</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">P&ID</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">QC Form</span>
+          </div>
+          <a href="./downloads/piping-01-components.pdf" target="_blank" style="
+            display:flex;align-items:center;justify-content:center;gap:6px;
+            background:linear-gradient(135deg,#2563eb,#1d4ed8);
+            color:#fff;font-size:12px;font-weight:700;
+            padding:9px;border-radius:9px;
+            font-family:'Vazirmatn',sans-serif;
+            text-decoration:none;transition:all .2s;
+          "
+          onmouseover="this.style.opacity='.85'"
+          onmouseout="this.style.opacity='1'">
+            ↓ دانلود PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- کارت ۲ -->
+      <div style="
+        background:rgba(17,27,46,.85);
+        border:1px solid #1a2540;border-radius:14px;
+        overflow:hidden;transition:all .3s;
+        backdrop-filter:blur(12px);
+      "
+      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#06b6d4';this.style.boxShadow='0 12px 36px rgba(6,182,212,.2)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#06b6d4,#0891b2);"></div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🔩</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:.5px;margin-bottom:3px;">CHAPTER 02</div>
+              <div style="font-size:14px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;">اجزای سیستم‌های پایپینگ</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:12px;">لوله‌ها، اتصالات، فلنج‌ها، گسکت‌ها، شیرآلات و ساپورت‌ها با استانداردهای مرجع</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;">
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">Pipe</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">Fittings</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">Flanges</span>
+          </div>
+          <a href="./downloads/piping-02-components.pdf" target="_blank" style="
+            display:flex;align-items:center;justify-content:center;gap:6px;
+            background:linear-gradient(135deg,#06b6d4,#0891b2);
+            color:#fff;font-size:12px;font-weight:700;
+            padding:9px;border-radius:9px;
+            font-family:'Vazirmatn',sans-serif;
+            text-decoration:none;transition:all .2s;
+          "
+          onmouseover="this.style.opacity='.85'"
+          onmouseout="this.style.opacity='1'">
+            ↓ دانلود PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- کارت جزوه کامل -->
+      <div style="
+        background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(6,182,212,.06));
+        border:1px solid rgba(37,99,235,.3);border-radius:14px;
+        overflow:hidden;transition:all .3s;
+        backdrop-filter:blur(12px);
+      "
+      onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(245,158,11,.2)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#f59e0b,#ea580c);"></div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">⭐</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#f59e0b;letter-spacing:.5px;margin-bottom:3px;">COMPLETE EDITION</div>
+              <div style="font-size:14px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;">اصول کنترل کیفیت و بازرسی فنی</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:12px;">جزوه جامع پایپینگ و جوشکاری — مناسب برای بازرسان QC و مهندسان</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;">
+            <span style="font-size:10px;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);padding:2px 7px;border-radius:5px;">ASME B31.3</span>
+            <span style="font-size:10px;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);padding:2px 7px;border-radius:5px;">NDT</span>
+            <span style="font-size:10px;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);padding:2px 7px;border-radius:5px;">جامع</span>
+          </div>
+          <a href="./%D9%BE%D8%A7%DB%8C%D9%BE%DB%8C%D9%86%DA%AF%20%D9%88%20%D8%AC%D9%88%D8%B4%DA%A9%D8%A7%D8%B1%DB%8C%20%D9%81%D9%86%DB%8C%20%D9%88%20%D8%A8%D8%A7%D8%B2%D8%B1%D8%B3%DB%8C_compressed.pdf" target="_blank" style="
+            display:flex;align-items:center;justify-content:center;gap:6px;
+            background:linear-gradient(135deg,#f59e0b,#ea580c);
+            color:#fff;font-size:12px;font-weight:700;
+            padding:9px;border-radius:9px;
+            font-family:'Vazirmatn',sans-serif;
+            text-decoration:none;transition:all .2s;
+          "
+          onmouseover="this.style.opacity='.85'"
+          onmouseout="this.style.opacity='1'">
+            ↓ دانلود PDF — جزوه کامل
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /dl-piping -->
+
+    <!-- گرید جوشکاری -->
+    <div id="dl-welding" style="display:none;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+
+      <div style="
+        background:rgba(17,27,46,.85);border:1px solid #1a2540;border-radius:14px;
+        overflow:hidden;transition:all .3s;backdrop-filter:blur(12px);
+      "
+      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#f97316';this.style.boxShadow='0 12px 36px rgba(249,115,22,.2)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#f97316,#ea580c);"></div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📄</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#f59e0b;letter-spacing:.5px;margin-bottom:3px;">CHAPTER 01</div>
+              <div style="font-size:14px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;">مدارک فنی جوشکاری</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:12px;">WPS، PQR، WPQ — مشخصات و صلاحیت‌های جوشکاری مطابق ASME Sec.IX</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;">
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">WPS</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">PQR</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">WPQ</span>
+          </div>
+          <a href="./downloads/welding-01-documents.pdf" target="_blank" style="
+            display:flex;align-items:center;justify-content:center;gap:6px;
+            background:linear-gradient(135deg,#f97316,#ea580c);
+            color:#fff;font-size:12px;font-weight:700;
+            padding:9px;border-radius:9px;font-family:'Vazirmatn',sans-serif;
+            text-decoration:none;transition:all .2s;
+          "
+          onmouseover="this.style.opacity='.85'"
+          onmouseout="this.style.opacity='1'">↓ دانلود PDF</a>
+        </div>
+      </div>
+
+      <div style="
+        background:rgba(17,27,46,.85);border:1px solid #1a2540;border-radius:14px;
+        overflow:hidden;transition:all .3s;backdrop-filter:blur(12px);
+      "
+      onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='#f97316';this.style.boxShadow='0 12px 36px rgba(249,115,22,.2)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.borderColor='#1a2540';this.style.boxShadow='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#ea580c,#dc2626);"></div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">⚡</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#f59e0b;letter-spacing:.5px;margin-bottom:3px;">CHAPTER 02</div>
+              <div style="font-size:14px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;">فرآیندهای جوشکاری</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:12px;">SMAW، GTAW، GMAW، FCAW، SAW — پارامترها، الکترودها و کاربردها</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;">
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">SMAW</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">GTAW</span>
+            <span style="font-size:10px;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:2px 7px;border-radius:5px;">SAW</span>
+          </div>
+          <a href="./downloads/welding-02-processes.pdf" target="_blank" style="
+            display:flex;align-items:center;justify-content:center;gap:6px;
+            background:linear-gradient(135deg,#ea580c,#dc2626);
+            color:#fff;font-size:12px;font-weight:700;
+            padding:9px;border-radius:9px;font-family:'Vazirmatn',sans-serif;
+            text-decoration:none;transition:all .2s;
+          "
+          onmouseover="this.style.opacity='.85'"
+          onmouseout="this.style.opacity='1'">↓ دانلود PDF</a>
+        </div>
+      </div>
+
+      <!-- پکیج کامل جوشکاری -->
+      <div style="
+        background:linear-gradient(135deg,rgba(249,115,22,.1),rgba(234,88,12,.06));
+        border:1px solid rgba(249,115,22,.3);border-radius:14px;
+        overflow:hidden;transition:all .3s;backdrop-filter:blur(12px);
+      "
+      onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 36px rgba(245,158,11,.2)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="height:4px;background:linear-gradient(90deg,#f59e0b,#f97316);"></div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">⭐</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#f59e0b;letter-spacing:.5px;margin-bottom:3px;">COMPLETE EDITION</div>
+              <div style="font-size:14px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;">پکیج کامل جوشکاری صنعتی</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.7;margin-bottom:12px;">تمام ۶ فصل جوشکاری با جداول مقایسه‌ای و مراجع استاندارد</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;">
+            <span style="font-size:10px;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);padding:2px 7px;border-radius:5px;">۶ فصل</span>
+            <span style="font-size:10px;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);padding:2px 7px;border-radius:5px;">ASME Sec.IX</span>
+          </div>
+          <a href="./downloads/welding-complete.pdf" target="_blank" style="
+            display:flex;align-items:center;justify-content:center;gap:6px;
+            background:linear-gradient(135deg,#f59e0b,#d97706);
+            color:#fff;font-size:12px;font-weight:700;
+            padding:9px;border-radius:9px;font-family:'Vazirmatn',sans-serif;
+            text-decoration:none;transition:all .2s;
+          "
+          onmouseover="this.style.opacity='.85'"
+          onmouseout="this.style.opacity='1'">↓ دانلود PDF — پکیج کامل</a>
+        </div>
+      </div>
+
+    </div><!-- /dl-welding -->
+
+    <!-- اطلاع‌رسانی -->
+    <div style="
+      margin-top:32px;padding:16px 18px;
+      background:rgba(6,182,212,.06);
+      border:1px solid rgba(6,182,212,.18);
+      border-radius:12px;
+      display:flex;gap:12px;align-items:flex-start;
+      backdrop-filter:blur(8px);
+    ">
+      <div style="font-size:20px;flex-shrink:0;">💡</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#06b6d4;margin-bottom:4px;font-family:'Vazirmatn',sans-serif;">راهنمای استفاده</div>
+        <div style="font-size:11.5px;color:#8fa4c4;line-height:1.8;font-family:'Vazirmatn',sans-serif;">تمامی جزوات رایگان و برای استفاده آموزشی هستند. محتوا بر اساس ۱۵ سال تجربه در پروژه‌های South Pars و استانداردهای ASME و API تدوین شده.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══ پایان بخش دانلود ═══ -->
+
+<script>
+function showDownloads(type){
+  var dlP=document.getElementById('dl-piping');
+  var dlW=document.getElementById('dl-welding');
+  var tP=document.getElementById('dl-tab-piping');
+  var tW=document.getElementById('dl-tab-welding');
+  if(type==='piping'){
+    dlP.style.display='grid';dlW.style.display='none';
+    tP.style.cssText='flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;background:#2563EB;color:#fff;border:none;font-family:Vazirmatn,sans-serif;box-shadow:0 4px 12px rgba(37,99,235,.4);transition:all .25s;';
+    tW.style.cssText='flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;background:transparent;color:#8fa4c4;border:none;font-family:Vazirmatn,sans-serif;transition:all .25s;';
+  }else{
+    dlP.style.display='none';dlW.style.display='grid';
+    tW.style.cssText='flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;background:#F97316;color:#fff;border:none;font-family:Vazirmatn,sans-serif;box-shadow:0 4px 12px rgba(249,115,22,.4);transition:all .25s;';
+    tP.style.cssText='flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;background:transparent;color:#8fa4c4;border:none;font-family:Vazirmatn,sans-serif;transition:all .25s;';
+  }
+}
+</script>
+HTMLEOF
+echo "done: $(wc -l < /mnt/user-data/outputs/downloads-section-bg.html) lines"
   .feature-title{font-weight:bold;font-size:14px;margin-bottom:4px;}
   .feature-desc{font-size:12px;color:#64748b;line-height:1.6;}
 
