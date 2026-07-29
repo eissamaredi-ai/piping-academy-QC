@@ -71,350 +71,56 @@
   .post-brand{font-size:11px;color:#4a6080;font-family:'Vazirmatn',sans-serif;}
   .post-more{font-size:12px;font-weight:700;font-family:'Vazirmatn',sans-serif;}
 
-/* DOWNLOADS — DARK TECHNICAL LIBRARY */
+/* DOWNLOADS */
+  .downloads-section{padding:56px 20px;background:#090e1a;border-top:1px solid #1a2540;border-bottom:1px solid #1a2540;}
+  .downloads-inner{max-width:1100px;margin:0 auto;}
+  .downloads-header{text-align:center;margin-bottom:36px;}
+  .dl-badge-wrap{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:#f59e0b;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;margin-bottom:13px;font-family:'Vazirmatn',sans-serif;}
+  .dl-main-title{font-size:24px;font-weight:800;color:#eef2fa;margin-bottom:7px;font-family:'Vazirmatn',sans-serif;}
+  .dl-main-sub{color:#8fa4c4;font-size:13.5px;font-family:'Vazirmatn',sans-serif;}
 
-.downloads-section{
-  padding:70px 20px 75px;
-  background:
-    radial-gradient(circle at 15% 20%,rgba(37,99,235,.10),transparent 30%),
-    radial-gradient(circle at 85% 80%,rgba(6,182,212,.08),transparent 30%),
-    #070d18;
-  border-top:1px solid #1e293b;
-  border-bottom:1px solid #1e293b;
-  position:relative;
-  overflow:hidden;
-}
+  /* DOWNLOAD TABS */
+  .dl-tabs{display:flex;gap:6px;background:#111b2e;border:1px solid #1a2540;border-radius:12px;padding:5px;max-width:360px;margin:0 auto 28px;}
+  .dl-tab{flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;cursor:pointer;color:#8fa4c4;background:transparent;border:none;font-family:'Vazirmatn',sans-serif;transition:all .25s;}
+  .dl-tab.active-p{background:#2563EB;color:#fff;box-shadow:0 4px 12px rgba(37,99,235,.3);}
+  .dl-tab.active-w{background:#F97316;color:#fff;box-shadow:0 4px 12px rgba(249,115,22,.3);}
 
-.downloads-section:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(100,116,139,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(100,116,139,.06) 1px,transparent 1px);
-  background-size:40px 40px;
-  pointer-events:none;
-}
+  .downloads-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;}
+  .dl-card{background:#111b2e;border:1px solid #1a2540;border-radius:14px;padding:20px;transition:all .3s;position:relative;overflow:hidden;}
+  .dl-card:hover{transform:translateY(-4px);border-color:#2563EB;box-shadow:0 10px 32px rgba(37,99,235,.18);}
+  .dl-card.weld:hover{border-color:#F97316;box-shadow:0 10px 32px rgba(249,115,22,.18);}
+  .dl-card-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .dl-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);}
+  .dl-card.weld .dl-icon{background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.25);}
+  .dl-icon svg{width:22px;height:22px;}
+  .dl-num{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:1px;margin-bottom:3px;}
+  .dl-card.weld .dl-num{color:#f59e0b;}
+  .dl-title{font-size:14.5px;font-weight:700;color:#eef2fa;font-family:'Vazirmatn',sans-serif;line-height:1.5;}
+  .dl-desc{font-size:12px;color:#8fa4c4;font-family:'Vazirmatn',sans-serif;line-height:1.75;margin-bottom:14px;}
+  .dl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+  .dl-tag{font-size:10px;font-weight:600;color:#8fa4c4;background:rgba(255,255,255,.04);border:1px solid #1a2540;padding:3px 8px;border-radius:6px;font-family:'Vazirmatn',sans-serif;}
+  .dl-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid #1a2540;}
+  .dl-meta{display:flex;flex-direction:column;gap:2px;}
+  .dl-meta-row{display:flex;align-items:center;gap:5px;font-size:10.5px;color:#4a6080;font-family:'Vazirmatn',sans-serif;}
+  .dl-meta-row svg{width:11px;height:11px;opacity:.7;}
+  .dl-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:linear-gradient(135deg,#2563EB,#1d4ed8);color:#fff;font-size:12px;font-weight:700;border-radius:8px;font-family:'Vazirmatn',sans-serif;text-decoration:none;transition:all .25s;border:none;cursor:pointer;}
+  .dl-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,99,235,.4);}
+  .dl-card.weld .dl-btn{background:linear-gradient(135deg,#F97316,#ea580c);}
+  .dl-card.weld .dl-btn:hover{box-shadow:0 6px 18px rgba(249,115,22,.4);}
+  .dl-btn svg{width:13px;height:13px;}
 
-.downloads-inner{
-  max-width:1100px;
-  margin:0 auto;
-  position:relative;
-  z-index:1;
-}
+  /* INFO BOX */
+  .dl-info{margin-top:32px;padding:18px;background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.2);border-radius:12px;display:flex;gap:12px;align-items:flex-start;}
+  .dl-info-icon{width:36px;height:36px;background:rgba(6,182,212,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+  .dl-info-title{font-size:13px;font-weight:700;color:#06b6d4;margin-bottom:4px;font-family:'Vazirmatn',sans-serif;}
+  .dl-info-desc{font-size:11.5px;color:#8fa4c4;line-height:1.8;font-family:'Vazirmatn',sans-serif;}
 
-.downloads-header{
-  text-align:center;
-  margin-bottom:38px;
-}
+  /* FEATURES */
+  .features-bg{background:#F1F5F9;padding:60px 20px;}
+  .features-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .feature-card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:20px;}
+  .feature-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:20px;}
 
-.dl-badge-wrap{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  background:rgba(6,182,212,.08);
-  border:1px solid rgba(6,182,212,.35);
-  color:#22d3ee;
-  font-size:12px;
-  font-weight:700;
-  padding:7px 17px;
-  border-radius:8px;
-  margin-bottom:14px;
-  font-family:'Vazirmatn',sans-serif;
-}
-
-.dl-main-title{
-  font-size:28px;
-  font-weight:800;
-  color:#f8fafc;
-  margin-bottom:8px;
-  font-family:'Vazirmatn',sans-serif;
-}
-
-.dl-main-sub{
-  color:#94a3b8;
-  font-size:13px;
-  font-family:'Vazirmatn',sans-serif;
-}
-
-.dl-tabs{
-  display:flex;
-  gap:5px;
-  background:#0d1728;
-  border:1px solid #263449;
-  border-radius:10px;
-  padding:5px;
-  max-width:360px;
-  margin:0 auto 30px;
-}
-
-.dl-tab{
-  flex:1;
-  padding:10px;
-  border-radius:7px;
-  font-size:13px;
-  font-weight:700;
-  text-align:center;
-  cursor:pointer;
-  color:#94a3b8;
-  background:transparent;
-  border:none;
-  font-family:'Vazirmatn',sans-serif;
-  transition:all .25s ease;
-}
-
-.dl-tab.active-p{
-  background:#2563eb;
-  color:#fff;
-  box-shadow:0 5px 18px rgba(37,99,235,.28);
-}
-
-.dl-tab.active-w{
-  background:#f97316;
-  color:#fff;
-  box-shadow:0 5px 18px rgba(249,115,22,.25);
-}
-
-.downloads-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:16px;
-}
-
-.dl-card{
-  background:linear-gradient(145deg,#111d30,#0d1727);
-  border:1px solid #263449;
-  border-radius:12px;
-  padding:21px;
-  transition:all .3s ease;
-  position:relative;
-  overflow:hidden;
-}
-
-.dl-card:before{
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  left:0;
-  height:2px;
-  background:linear-gradient(90deg,transparent,#2563eb,transparent);
-  opacity:.55;
-}
-
-.dl-card:hover{
-  transform:translateY(-5px);
-  border-color:#2563eb;
-  box-shadow:0 15px 35px rgba(0,0,0,.30);
-}
-
-.dl-card.weld:hover{
-  border-color:#f97316;
-}
-
-.dl-card-header{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  margin-bottom:15px;
-}
-
-.dl-icon{
-  width:46px;
-  height:46px;
-  border-radius:9px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  background:rgba(37,99,235,.10);
-  border:1px solid rgba(37,99,235,.30);
-}
-
-.dl-card.weld .dl-icon{
-  background:rgba(249,115,22,.10);
-  border-color:rgba(249,115,22,.30);
-}
-
-.dl-icon svg{
-  width:22px;
-  height:22px;
-}
-
-.dl-num{
-  font-family:'Inter',sans-serif;
-  font-size:9px;
-  font-weight:800;
-  color:#22d3ee;
-  letter-spacing:1px;
-  margin-bottom:4px;
-}
-
-.dl-card.weld .dl-num{
-  color:#fb923c;
-}
-
-.dl-title{
-  font-size:14px;
-  font-weight:700;
-  color:#f1f5f9;
-  font-family:'Vazirmatn',sans-serif;
-  line-height:1.65;
-}
-
-.dl-desc{
-  font-size:11.5px;
-  color:#94a3b8;
-  font-family:'Vazirmatn',sans-serif;
-  line-height:1.85;
-  margin-bottom:16px;
-}
-
-.dl-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin-bottom:17px;
-}
-
-.dl-tag{
-  font-size:9.5px;
-  font-weight:600;
-  color:#a5b4fc;
-  background:rgba(99,102,241,.06);
-  border:1px solid #29384d;
-  padding:3px 8px;
-  border-radius:5px;
-  font-family:'Vazirmatn',sans-serif;
-}
-
-.dl-footer{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding-top:14px;
-  border-top:1px solid #263449;
-}
-
-.dl-meta{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-}
-
-.dl-meta-row{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  font-size:10px;
-  color:#64748b;
-  font-family:'Vazirmatn',sans-serif;
-}
-
-.dl-meta-row svg{
-  width:11px;
-  height:11px;
-}
-
-.dl-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:8px 14px;
-  background:linear-gradient(135deg,#2563eb,#1d4ed8);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
-  border-radius:7px;
-  font-family:'Vazirmatn',sans-serif;
-  text-decoration:none;
-  transition:all .25s ease;
-}
-
-.dl-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 7px 20px rgba(37,99,235,.35);
-}
-
-.dl-card.weld .dl-btn{
-  background:linear-gradient(135deg,#f97316,#ea580c);
-}
-
-.dl-card.weld .dl-btn:hover{
-  box-shadow:0 7px 20px rgba(249,115,22,.30);
-}
-
-.dl-btn svg{
-  width:13px;
-  height:13px;
-}
-
-.dl-info{
-  margin-top:34px;
-  padding:18px 20px;
-  background:linear-gradient(135deg,rgba(6,182,212,.06),rgba(37,99,235,.04));
-  border:1px solid rgba(6,182,212,.22);
-  border-radius:10px;
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-}
-
-.dl-info-icon{
-  width:36px;
-  height:36px;
-  background:rgba(6,182,212,.12);
-  border:1px solid rgba(6,182,212,.18);
-  border-radius:8px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  font-size:18px;
-}
-
-.dl-info-title{
-  font-size:13px;
-  font-weight:700;
-  color:#22d3ee;
-  margin-bottom:4px;
-  font-family:'Vazirmatn',sans-serif;
-}
-
-.dl-info-desc{
-  font-size:11px;
-  color:#8fa4c4;
-  line-height:1.9;
-  font-family:'Vazirmatn',sans-serif;
-}
-
-@media(max-width:600px){
-  .downloads-section{
-    padding:55px 15px 60px;
-  }
-
-  .dl-main-title{
-    font-size:23px;
-  }
-
-  .dl-main-sub{
-    font-size:12px;
-    line-height:1.8;
-  }
-
-  .downloads-grid{
-    grid-template-columns:1fr;
-  }
-
-  .dl-tabs{
-    width:100%;
-  }
-
-  .dl-card{
-    padding:18px;
-  }
-}
   .feature-title{font-weight:bold;font-size:14px;margin-bottom:4px;}
   .feature-desc{font-size:12px;color:#64748b;line-height:1.6;}
 
