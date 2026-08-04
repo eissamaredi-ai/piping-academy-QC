@@ -3,910 +3,916 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>آزمون پایپینگ | Piping Studio</title>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>مجموعه کامل آزمون‌های غیرمخرب جوش | Piping Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#05080f;--bg2:#090e1a;--card:#111b2e;--lift:#1a2740;
-  --b0:#1a2540;--b1:#243352;
-  --t0:#eef2fa;--t1:#8fa4c4;--t2:#4a6080;
-  --blue:#2563eb;--blue-l:#3b82f6;--cyan:#06b6d4;
-  --green:#059669;--green-l:#10b981;
-  --red:#dc2626;--red-l:#ef4444;
-  --amber:#f59e0b;
-  --sig:linear-gradient(90deg,#2563eb,#06b6d4,#0d9488);
+  --bg:#f8fafc;
+  --bg-grad:linear-gradient(135deg,#e0f2fe 0%,#f0f9ff 40%,#fef3c7 100%);
+  --card:#ffffff;
+  --border:#e2e8f0;
+  --border-light:#f1f5f9;
+  --text:#0f172a;
+  --text-sec:#475569;
+  --text-muted:#94a3b8;
+  --blue:#2563eb;--blue-bg:#eff6ff;--blue-border:#bfdbfe;
+  --cyan:#06b6d4;--cyan-bg:#ecfeff;
+  --green:#10b981;--green-bg:#ecfdf5;--green-border:#a7f3d0;
+  --red:#ef4444;--red-bg:#fef2f2;--red-border:#fecaca;
+  --amber:#f59e0b;--amber-bg:#fffbeb;--amber-border:#fde68a;
+  --orange:#f97316;--orange-bg:#fff7ed;--orange-border:#fed7aa;
+  --purple:#8b5cf6;--purple-bg:#f5f3ff;--purple-border:#ddd6fe;
+  --pink:#ec4899;--pink-bg:#fdf2f8;--pink-border:#fbcfe8;
+  --sig:linear-gradient(135deg,#2563eb 0%,#06b6d4 100%);
+  --shadow:0 4px 12px rgba(15,23,42,0.06);
+  --shadow-lg:0 12px 32px rgba(15,23,42,0.1);
+  --shadow-xl:0 20px 48px rgba(37,99,235,0.15);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--t0);line-height:1.8;min-height:100vh;}
+body{
+  font-family:'Vazirmatn','Inter',sans-serif;
+  background:var(--bg-grad);
+  background-attachment:fixed;
+  color:var(--text);
+  line-height:1.8;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
 a{text-decoration:none;color:inherit;}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(5,8,15,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--b0);}
-.nav-i{max-width:900px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between;}
-.nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:13px;}
-.nav-mark{width:28px;height:28px;border-radius:7px;background:var(--sig);display:flex;align-items:center;justify-content:center;font-size:14px;}
-.nav-back{color:var(--t1);font-size:12px;padding:5px 11px;border-radius:7px;border:1px solid var(--b0);transition:all .2s;}
-.nav-back:hover{color:var(--cyan);border-color:var(--cyan);}
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-i{
+  max-width:1200px;margin:0 auto;padding:0 24px;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:15px;color:var(--text);}
+.nav-mark{
+  width:38px;height:38px;border-radius:12px;
+  background:var(--sig);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:white;
+  box-shadow:0 4px 12px rgba(37,99,235,0.3);
+}
+.nav-sub{font-size:11px;color:var(--text-muted);font-weight:500;margin-top:-2px;}
+.nav-links{display:flex;gap:8px;align-items:center;}
+.nav-link{
+  color:var(--text-sec);font-size:13px;font-weight:600;
+  padding:8px 14px;border-radius:9px;
+  transition:all .25s;
+}
+.nav-link:hover{color:var(--blue);background:var(--blue-bg);}
+.nav-back{
+  color:var(--text-sec);font-size:12.5px;font-weight:600;
+  padding:8px 16px;border-radius:10px;
+  border:1px solid var(--border);
+  background:white;
+  transition:all .25s;
+}
+.nav-back:hover{color:var(--blue);border-color:var(--blue);background:var(--blue-bg);transform:translateY(-1px);}
 
 /* HERO */
-.hero{background:#04070e;padding:40px 20px 32px;text-align:center;border-bottom:1px solid var(--b0);}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.3);color:var(--blue-l);font-size:11.5px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:12px;}
-.hero h1{font-size:22px;font-weight:800;margin-bottom:6px;}
-.hero-sub{color:var(--t1);font-size:13px;margin-bottom:18px;}
-.hero-stats{display:inline-flex;border:1px solid var(--b1);border-radius:10px;overflow:hidden;background:rgba(0,0,0,.3);}
-.hs{padding:9px 16px;border-left:1px solid var(--b1);text-align:center;min-width:80px;}
+.hero{
+  position:relative;
+  background:var(--sig);
+  padding:60px 24px 50px;text-align:center;
+  overflow:hidden;
+  border-radius:0 0 36px 36px;
+  box-shadow:var(--shadow-xl);
+}
+.hero::before{
+  content:'';position:absolute;
+  top:-50%;right:-20%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,255,255,0.15),transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;
+  bottom:-40%;left:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(236,72,153,0.2),transparent 70%);
+  border-radius:50%;
+}
+.hero-pattern{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+.hero>*{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.3);
+  color:white;font-size:12.5px;font-weight:700;
+  padding:7px 18px;border-radius:24px;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-size:36px;font-weight:900;
+  color:white;margin-bottom:10px;
+  letter-spacing:-0.5px;
+  line-height:1.3;
+}
+.hero-sub{
+  color:rgba(255,255,255,0.92);
+  font-size:15px;margin-bottom:28px;
+  font-weight:400;max-width:700px;margin-left:auto;margin-right:auto;
+  line-height:1.9;
+}
+.hero-stats{
+  display:inline-flex;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:18px;overflow:hidden;
+  flex-wrap:wrap;
+}
+.hs{padding:14px 22px;border-left:1px solid rgba(255,255,255,0.2);text-align:center;min-width:100px;}
 .hs:last-child{border-left:none;}
-.hs-n{font-family:'Inter',sans-serif;font-size:17px;font-weight:800;background:var(--sig);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;}
-.hs-l{font-size:10px;color:var(--t2);}
+.hs-n{
+  font-family:'Inter',sans-serif;
+  font-size:24px;font-weight:900;
+  color:white;display:block;
+}
+.hs-l{font-size:11.5px;color:rgba(255,255,255,0.85);font-weight:500;}
 
-/* PROGRESS */
-.prog-wrap{max-width:760px;margin:20px auto 0;padding:0 20px;}
-.prog-info{display:flex;justify-content:space-between;font-size:12px;color:var(--t1);margin-bottom:5px;}
-.prog-bar{height:5px;background:var(--b0);border-radius:3px;overflow:hidden;}
-.prog-fill{height:100%;background:var(--sig);border-radius:3px;transition:width .4s ease;}
+/* DISCIPLINES GRID */
+.disc-wrap{max-width:1200px;margin:-30px auto 0;padding:0 24px;position:relative;z-index:10;}
+.disc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
+}
+.disc-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.disc-card::before{
+  content:'';position:absolute;
+  top:0;right:0;width:4px;height:100%;
+  background:var(--card-color,var(--sig));
+}
+.disc-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+  border-color:transparent;
+}
+.disc-card.active{
+  border-color:var(--card-color,var(--blue));
+  box-shadow:0 0 0 3px var(--card-color-light,rgba(37,99,235,0.15)),var(--shadow-lg);
+}
+.disc-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--card-bg,var(--blue-bg));
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;margin-bottom:14px;
+}
+.disc-num{
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:800;
+  color:var(--card-color,var(--blue));
+  background:var(--card-bg,var(--blue-bg));
+  padding:3px 10px;border-radius:6px;
+  display:inline-block;margin-bottom:10px;
+  border:1px solid var(--card-border,var(--blue-border));
+}
+.disc-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.disc-title-en{font-size:12px;color:var(--text-muted);font-weight:500;margin-bottom:10px;font-family:'Inter',sans-serif;}
+.desc-desc{font-size:12.5px;color:var(--text-sec);line-height:1.7;margin-bottom:14px;}
+.disc-meta{
+  display:flex;justify-content:space-between;
+  padding-top:12px;border-top:1px solid var(--border-light);
+  font-size:11.5px;color:var(--text-muted);font-weight:600;
+}
+.disc-meta span{display:flex;align-items:center;gap:5px;}
 
-/* CONTENT */
-.content{max-width:760px;margin:0 auto;padding:20px 20px 80px;}
+/* MAIN CONTENT */
+.main{max-width:1200px;margin:32px auto;padding:0 24px;display:grid;grid-template-columns:280px 1fr;gap:24px;}
+@media(max-width:900px){.main{grid-template-columns:1fr;}}
 
-/* CHAPTER DIVIDER */
-.ch-div{display:flex;align-items:center;gap:12px;padding:11px 15px;border-radius:11px;background:linear-gradient(135deg,rgba(37,99,235,.07),rgba(6,182,212,.04));border:1px solid rgba(37,99,235,.2);margin:28px 0 13px;}
-.ch-icon{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#2563eb,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.ch-text h4{font-size:13px;font-weight:700;margin:0;}
-.ch-text p{font-size:11px;color:var(--t1);}
-.ch-ref{font-family:'Inter',sans-serif;font-size:10px;color:var(--cyan);background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);padding:3px 8px;border-radius:5px;flex-shrink:0;margin-right:auto;}
+/* SIDEBAR */
+.sidebar{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  height:fit-content;
+  position:sticky;top:80px;
+}
+.sb-title{font-size:14px;font-weight:800;margin-bottom:14px;color:var(--text);}
+.sb-progress{margin-bottom:18px;}
+.sb-prog-info{display:flex;justify-content:space-between;font-size:12px;color:var(--text-sec);margin-bottom:6px;font-weight:600;}
+.sb-prog-info span:last-child{color:var(--blue);font-family:'Inter',sans-serif;font-weight:800;}
+.sb-prog-bar{height:8px;background:var(--border-light);border-radius:999px;overflow:hidden;}
+.sb-prog-fill{height:100%;background:var(--sig);border-radius:999px;transition:width .5s cubic-bezier(0.4,0,0.2,1);}
+.sb-score{
+  background:var(--blue-bg);
+  border:1px solid var(--blue-border);
+  border-radius:12px;
+  padding:14px;
+  text-align:center;
+  margin-bottom:16px;
+}
+.sb-score-n{
+  font-family:'Inter',sans-serif;
+  font-size:32px;font-weight:900;
+  background:var(--sig);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+}
+.sb-score-l{font-size:11px;color:var(--text-sec);margin-top:4px;}
+.sb-nav{display:flex;flex-direction:column;gap:6px;max-height:400px;overflow-y:auto;}
+.sb-nav-item{
+  padding:9px 12px;
+  border-radius:9px;
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--text-sec);
+  cursor:pointer;
+  transition:all .2s;
+  border:1px solid transparent;
+  display:flex;align-items:center;gap:8px;
+}
+.sb-nav-item:hover{background:var(--border-light);color:var(--text);}
+.sb-nav-item.correct{background:var(--green-bg);color:#065f46;border-color:var(--green-border);}
+.sb-nav-item.wrong{background:var(--red-bg);color:#991b1b;border-color:var(--red-border);}
+.sb-nav-item.current{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);}
+.sb-nav-ic{width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;font-family:'Inter',sans-serif;}
+.sb-nav-item.correct .sb-nav-ic{background:var(--green);color:white;}
+.sb-nav-item.wrong .sb-nav-ic{background:var(--red);color:white;}
+.sb-nav-item.current .sb-nav-ic{background:var(--blue);color:white;}
+.sb-nav-item:not(.correct):not(.wrong):not(.current) .sb-nav-ic{background:var(--border-light);color:var(--text-muted);}
 
-/* QUESTION */
-.qcard{background:var(--card);border:1px solid var(--b0);border-radius:14px;overflow:hidden;margin-bottom:14px;transition:border-color .2s;}
-.qcard.done{border-color:var(--b1);}
-.qhead{padding:16px 18px 12px;border-bottom:1px solid var(--b0);display:flex;align-items:flex-start;gap:10px;}
-.qnum{min-width:32px;height:32px;border-radius:8px;background:var(--lift);border:1px solid var(--b1);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:800;color:var(--blue-l);flex-shrink:0;}
+/* QUESTIONS AREA */
+.q-area{min-height:600px;}
+.q-header{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px 24px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;
+}
+.q-header-title{font-size:18px;font-weight:800;color:var(--text);}
+.q-header-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.q-counter{
+  font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:700;
+  color:var(--blue);
+  background:var(--blue-bg);
+  border:1px solid var(--blue-border);
+  padding:6px 14px;border-radius:9px;
+}
+
+/* QUESTION CARD */
+.qcard{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:18px;
+  transition:all .3s;
+  box-shadow:var(--shadow);
+  animation:fadeIn .4s ease;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.qcard.done{border-color:#bfdbfe;}
+.qhead{
+  padding:20px 22px 16px;
+  border-bottom:1px solid var(--border-light);
+  display:flex;align-items:flex-start;gap:14px;
+  background:linear-gradient(180deg,#fafbfc,white);
+}
+.qnum{
+  min-width:42px;height:42px;
+  border-radius:12px;
+  background:var(--blue-bg);
+  border:1px solid var(--blue-border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Inter',sans-serif;
+  font-size:14px;font-weight:900;
+  color:var(--blue);
+  flex-shrink:0;
+}
 .qmeta{flex:1;}
-.qch{font-size:9.5px;font-weight:700;color:var(--cyan);font-family:'Inter',sans-serif;letter-spacing:.5px;margin-bottom:3px;}
-.qref{font-size:9.5px;color:var(--t2);font-family:'Inter',sans-serif;margin-bottom:4px;}
-.qtext{font-size:13.5px;font-weight:600;color:var(--t0);line-height:1.65;}
+.qch{
+  font-size:10.5px;font-weight:700;
+  color:var(--cyan);
+  font-family:'Inter',sans-serif;
+  letter-spacing:.5px;
+  margin-bottom:4px;
+  text-transform:uppercase;
+}
+.qref{font-size:10.5px;color:var(--text-muted);font-family:'Inter',sans-serif;margin-bottom:6px;}
+.qtext{font-size:15px;font-weight:700;color:var(--text);line-height:1.7;}
 
 /* OPTIONS */
-.qopts{padding:12px 16px;}
-.opt{display:flex;align-items:center;gap:9px;padding:10px 13px;margin-bottom:6px;border-radius:9px;border:1px solid var(--b0);cursor:pointer;transition:all .2s;font-size:12.5px;color:var(--t1);background:var(--bg2);}
+.qopts{padding:16px 20px;}
+.opt{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 15px;
+  margin-bottom:9px;
+  border-radius:12px;
+  border:1.5px solid var(--border);
+  cursor:pointer;
+  transition:all .25s;
+  font-size:14px;
+  color:var(--text-sec);
+  background:white;
+  font-weight:500;
+}
 .opt:last-child{margin-bottom:0;}
-.opt:hover:not(.dis){border-color:var(--blue-l);color:var(--t0);background:var(--lift);}
-.opt.ok{border-color:var(--green-l);background:rgba(5,150,105,.12);color:var(--green-l);}
-.opt.no{border-color:var(--red-l);background:rgba(220,38,38,.1);color:var(--red-l);}
+.opt:hover:not(.dis){
+  border-color:var(--blue-light);
+  color:var(--text);
+  background:var(--blue-bg);
+  transform:translateX(-2px);
+  box-shadow:0 4px 12px rgba(37,99,235,0.1);
+}
+.opt.ok{
+  border-color:var(--green);
+  background:var(--green-bg);
+  color:#065f46;
+  font-weight:600;
+}
+.opt.no{
+  border-color:var(--red);
+  background:var(--red-bg);
+  color:#991b1b;
+  font-weight:600;
+}
 .opt.dis{cursor:default;}
-.opt-ic{width:20px;height:20px;border-radius:50%;border:2px solid var(--b1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:800;transition:all .2s;}
-.opt.ok .opt-ic{border-color:var(--green-l);background:var(--green-l);color:#fff;}
-.opt.no .opt-ic{border-color:var(--red-l);background:var(--red-l);color:#fff;}
-.opt-lbl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;color:var(--t2);flex-shrink:0;}
+.opt-ic{
+  width:26px;height:26px;
+  border-radius:8px;
+  border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-size:11px;font-weight:800;
+  transition:all .25s;
+  background:white;
+  font-family:'Inter',sans-serif;
+  color:var(--text-muted);
+}
+.opt:hover:not(.dis) .opt-ic{border-color:var(--blue);color:var(--blue);}
+.opt.ok .opt-ic{border-color:var(--green);background:var(--green);color:white;}
+.opt.no .opt-ic{border-color:var(--red);background:var(--red);color:white;}
+.opt-lbl{
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:700;
+  color:var(--text-muted);
+  flex-shrink:0;
+  min-width:20px;
+}
+.opt.ok .opt-lbl{color:#065f46;}
+.opt.no .opt-lbl{color:#991b1b;}
 
 /* EXPLANATION */
-.exp{margin:0 16px 14px;padding:11px 13px;border-radius:9px;font-size:12px;line-height:1.8;display:none;}
-.exp.show{display:block;}
-.exp.ok{background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.25);color:var(--green-l);}
-.exp.no{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);color:var(--red-l);}
-.exp-hd{font-weight:700;font-size:11px;margin-bottom:3px;}
-.exp-body{color:var(--t1);}
-.exp-body strong{color:var(--t0);}
+.exp{
+  margin:0 20px 18px;
+  padding:16px 18px;
+  border-radius:12px;
+  font-size:13px;
+  line-height:1.9;
+  display:none;
+  border:1px solid;
+}
+.exp.show{display:block;animation:fadeIn .3s ease;}
+.exp.ok{background:var(--green-bg);border-color:var(--green-border);color:#065f46;}
+.exp.no{background:var(--red-bg);border-color:var(--red-border);color:#991b1b;}
+.exp-hd{font-weight:800;font-size:12.5px;margin-bottom:6px;}
+.exp-body{color:inherit;opacity:0.92;}
+.exp-body strong{color:inherit;font-weight:700;}
 
-/* SUBMIT */
-.sub-wrap{text-align:center;margin:24px 0;}
-.btn-sub{display:inline-flex;align-items:center;gap:8px;background:var(--sig);color:#fff;font-weight:700;font-size:13.5px;padding:12px 28px;border-radius:11px;border:none;cursor:pointer;font-family:'Vazirmatn',sans-serif;box-shadow:0 6px 20px rgba(37,99,235,.35);transition:all .25s;}
-.btn-sub:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.45);}
-.btn-sub:disabled{opacity:.5;cursor:default;transform:none;}
+/* NAV BUTTONS */
+.q-nav{
+  display:flex;justify-content:space-between;gap:12px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+.nav-btn{
+  font-size:14px;font-weight:700;
+  padding:12px 22px;border-radius:12px;
+  transition:all .25s;
+  display:inline-flex;align-items:center;gap:8px;
+  cursor:pointer;
+  border:none;
+  font-family:'Vazirmatn',sans-serif;
+}
+.nav-prev{
+  color:var(--text-sec);
+  background:white;
+  border:1.5px solid var(--border);
+}
+.nav-prev:hover:not(:disabled){color:var(--blue);border-color:var(--blue);background:var(--blue-bg);}
+.nav-prev:disabled{opacity:.4;cursor:not-allowed;}
+.nav-next{
+  background:var(--sig);
+  color:white;
+  box-shadow:0 6px 16px rgba(37,99,235,0.3);
+}
+.nav-next:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,99,235,0.4);}
+.nav-next:disabled{opacity:.4;cursor:not-allowed;transform:none;}
 
 /* RESULT */
-.result{display:none;background:var(--card);border:1px solid var(--b1);border-radius:18px;padding:32px;text-align:center;margin:20px 0;}
-.result.show{display:block;animation:fadeUp .4s ease-out;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.res-score{font-size:64px;font-weight:900;background:var(--sig);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:'Inter',sans-serif;line-height:1;margin-bottom:6px;}
-.res-label{font-size:18px;font-weight:700;margin-bottom:14px;}
-.res-grade{display:inline-block;padding:5px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:18px;}
-.res-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0;}
-.rd{background:var(--lift);border-radius:9px;padding:12px;}
-.rd-n{font-size:20px;font-weight:800;font-family:'Inter',sans-serif;display:block;margin-bottom:2px;}
-.rd-l{font-size:10px;color:var(--t2);}
-.btn-retry{display:inline-flex;align-items:center;gap:7px;background:var(--lift);border:1px solid var(--b1);color:var(--t0);font-weight:700;font-size:12.5px;padding:10px 22px;border-radius:9px;cursor:pointer;font-family:'Vazirmatn',sans-serif;transition:all .2s;margin-top:8px;}
-.btn-retry:hover{border-color:var(--cyan);color:var(--cyan);}
+.result{
+  display:none;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:40px 28px;
+  text-align:center;
+  margin:24px 0;
+  box-shadow:var(--shadow-lg);
+  position:relative;
+  overflow:hidden;
+}
+.result::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:5px;
+  background:var(--sig);
+}
+.result.show{display:block;animation:fadeUp .5s ease-out;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.res-score{
+  font-size:80px;font-weight:900;
+  background:var(--sig);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  font-family:'Inter',sans-serif;
+  line-height:1;margin-bottom:10px;
+}
+.res-label{font-size:22px;font-weight:800;margin-bottom:18px;color:var(--text);}
+.res-grade{
+  display:inline-block;
+  padding:8px 20px;
+  border-radius:24px;
+  font-size:14px;font-weight:700;
+  margin-bottom:24px;
+  background:var(--blue-bg);
+  border:1px solid var(--blue-border);
+  color:var(--blue);
+}
+.res-detail{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:24px 0;
+}
+.rd{
+  background:var(--border-light);
+  border-radius:14px;
+  padding:16px;
+  border:1px solid var(--border);
+}
+.rd-n{
+  font-size:28px;font-weight:900;
+  font-family:'Inter',sans-serif;
+  display:block;margin-bottom:4px;
+}
+.rd-l{font-size:12px;color:var(--text-muted);font-weight:500;}
+.btn-retry{
+  display:inline-flex;align-items:center;gap:8px;
+  background:white;
+  border:1.5px solid var(--border);
+  color:var(--text);
+  font-weight:700;font-size:13.5px;
+  padding:12px 26px;
+  border-radius:12px;
+  cursor:pointer;
+  font-family:'Vazirmatn',sans-serif;
+  transition:all .25s;
+  margin-top:12px;
+}
+.btn-retry:hover{
+  border-color:var(--blue);
+  color:var(--blue);
+  background:var(--blue-bg);
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(37,99,235,0.15);
+}
 
-footer{background:var(--bg2);border-top:1px solid var(--b0);padding:16px;text-align:center;}
-footer p{color:var(--t2);font-size:11px;}
+/* FOOTER */
+footer{
+  background:white;
+  border-top:1px solid var(--border);
+  padding:24px;text-align:center;
+  margin-top:40px;
+}
+footer p{color:var(--text-muted);font-size:12px;font-weight:500;line-height:1.8;}
+footer a{color:var(--blue);font-weight:600;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{padding:40px 20px 36px;border-radius:0 0 24px 24px;}
+  .hero h1{font-size:26px;}
+  .hero-sub{font-size:13.5px;}
+  .hero-stats{flex-wrap:wrap;}
+  .hs{min-width:80px;padding:12px 16px;}
+  .nav-links{display:none;}
+  .main{padding:0 16px;gap:16px;}
+  .sidebar{position:static;}
+  .qhead{padding:16px;}
+  .qopts{padding:14px;}
+  .exp{margin:0 14px 16px;}
+  .res-score{font-size:60px;}
+  .res-detail{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="nav-i">
-    <div class="nav-logo"><div class="nav-mark"> </div>آزمون پایپینگ</div>
-    <a href="../../" class="nav-back">← صفحه اصلی</a>
+    <div class="nav-logo">
+      <div class="nav-mark">🔍</div>
+      <div>
+        <div>Piping Studio</div>
+        <div class="nav-sub">Welding Inspection Library · Vol. II</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link">درباره</a>
+      <a href="#" class="nav-link">استانداردها</a>
+      <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank" class="nav-link">لینکدین</a>
+    </div>
+    <a href="../../" class="nav-back">← بازگشت</a>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-badge"> آزمون پایپینگ</div>
-  <h1>آزمون جامع پایپینگ صنعتی</h1>
-  <div class="hero-sub">۳۵ سوال از ۷ فصل | مرجع: ASME B31.3 · B16.5 · B36.10M · API · NACE</div>
+  <div class="hero-pattern"></div>
+  <div class="hero-badge">📘 Vol. II — Edition 2026</div>
+  <h1>مجموعه کامل آزمون‌های<br>غیرمخرب جوش (NDT)</h1>
+  <div class="hero-sub">۳۵۰ سوال دقیق و استاندارد در ۷ رشته بازرسی جوش — مرجع AWS، ASME، API و ISO — تهیه‌شده توسط عیسی مردی</div>
   <div class="hero-stats">
-    <div class="hs"><span class="hs-n">35</span><span class="hs-l">سوال</span></div>
-    <div class="hs"><span class="hs-n">7</span><span class="hs-l">فصل</span></div>
-    <div class="hs"><span class="hs-n">B31.3</span><span class="hs-l">مرجع اصلی</span></div>
+    <div class="hs"><span class="hs-n">350</span><span class="hs-l">سوال</span></div>
+    <div class="hs"><span class="hs-n">7</span><span class="hs-l">رشته</span></div>
+    <div class="hs"><span class="hs-n">2026</span><span class="hs-l">Edition</span></div>
+    <div class="hs"><span class="hs-n">80%</span><span class="hs-l">Pass Mark</span></div>
   </div>
 </div>
 
-<div class="prog-wrap">
-  <div class="prog-info"><span id="pt">پیشرفت: ۰ از ۳۵ سوال</span><span id="pp">۰٪</span></div>
-  <div class="prog-bar"><div class="prog-fill" id="pf" style="width:0%"></div></div>
-</div>
-
-<div class="content">
-
-<!-- ═══ فصل ۱ ═══ -->
-<div class="ch-div">
-  <div class="ch-icon">📋</div>
-  <div class="ch-text"><h4>فصل ۱ — اسناد و مدارک فنی</h4><p>PFD · P&ID · ISO Drawing · Line List · Spool</p></div>
-  <span class="ch-ref">ASME B31.3 Para 300</span>
-</div>
-
-<div class="qcard" id="q1">
-  <div class="qhead"><div class="qnum">1</div><div class="qmeta">
-    <div class="qch">فصل ۱ — اسناد و مدارک</div>
-    <div class="qref">ASME B31.3 Para 300.2 | IPS-E-PR-310</div>
-    <div class="qtext">PFD (Process Flow Diagram) چه اطلاعاتی را نشان می‌دهد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(1,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>موقعیت دقیق شیرها و ابزار دقیق</div>
-    <div class="opt" onclick="ans(1,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>جریان فرآیند، تجهیزات اصلی، دما و فشار عملیاتی</div>
-    <div class="opt" onclick="ans(1,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>شماره جوش و مسیر دقیق لوله‌کشی</div>
-    <div class="opt" onclick="ans(1,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>ضخامت دیواره لوله و Schedule</div>
-  </div>
-  <div class="exp" id="e1">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>PFD</strong> مرحله اول طراحی است و شامل: جریان اصلی فرآیند، تجهیزات اصلی (پمپ، مخزن، مبدل)، دما و فشار و دبی عملیاتی. شیرها و ابزار دقیق در <strong>P&ID</strong> نشان داده می‌شوند. مرجع: <strong>IPS-E-PR-310</strong></div>
+<!-- DISCIPLINES -->
+<div class="disc-wrap">
+  <div class="disc-grid" id="discGrid">
+    <!-- Generated by JS -->
   </div>
 </div>
 
-<div class="qcard" id="q2">
-  <div class="qhead"><div class="qnum">2</div><div class="qmeta">
-    <div class="qch">فصل ۱ — اسناد و مدارک</div>
-    <div class="qref">ISA S5.1 | IPS-E-PR-310</div>
-    <div class="qtext">در P&ID، نماد دایره کوچک روی یک خط لوله چه معنایی دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(2,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>محل شیر Gate</div>
-    <div class="opt" onclick="ans(2,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>محل اتصال به خط دیگر (Connection Point)</div>
-    <div class="opt" onclick="ans(2,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>محل نصب ابزار دقیق یا نقطه اندازه‌گیری</div>
-    <div class="opt" onclick="ans(2,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>محل جوش Field Weld</div>
-  </div>
-  <div class="exp" id="e2">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body">در <strong>P&ID مطابق ISA S5.1</strong>، دایره نشان‌دهنده ابزار دقیق (Instrument) یا نقطه اندازه‌گیری است. دایره با حرف داخل آن نوع ابزار را مشخص می‌کند: FI = Flow Indicator، PI = Pressure Indicator، TI = Temperature Indicator</div>
-  </div>
-</div>
+<!-- MAIN -->
+<div class="main" id="mainArea" style="display:none;">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-title"> پیشرفت آزمون</div>
+    <div class="sb-progress">
+      <div class="sb-prog-info"><span id="sbPt">۰ از ۵۰ سوال</span><span id="sbPp">۰٪</span></div>
+      <div class="sb-prog-bar"><div class="sb-prog-fill" id="sbPf" style="width:0%"></div></div>
+    </div>
+    <div class="sb-score">
+      <div class="sb-score-n" id="sbScore">0%</div>
+      <div class="sb-score-l">دقت پاسخ‌ها</div>
+    </div>
+    <div class="sb-title" style="margin-top:16px;"> ناوبری سوالات</div>
+    <div class="sb-nav" id="sbNav"></div>
+  </aside>
 
-<div class="qcard" id="q3">
-  <div class="qhead"><div class="qnum">3</div><div class="qmeta">
-    <div class="qch">فصل ۱ — اسناد و مدارک</div>
-    <div class="qref">ASME B31.3 Para 328.2.3</div>
-    <div class="qtext">در نقشه ایزومتریک، علامت مثلث پر (▲) کنار یک جوش نشانه چیست؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(3,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>جوش کارگاهی (Shop Weld)</div>
-    <div class="opt" onclick="ans(3,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>محل نصب شیر</div>
-    <div class="opt" onclick="ans(3,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>جوش سایتی (Field Weld)</div>
-    <div class="opt" onclick="ans(3,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>محل اجرای NDT</div>
-  </div>
-  <div class="exp" id="e3">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body">در نقشه ایزومتریک، <strong>▲ (مثلث پر = Field Weld)</strong> نشان‌دهنده جوشی است که در محل نصب (سایت) انجام می‌شود، نه در کارگاه ساخت. جوش‌های کارگاهی معمولاً بدون علامت خاص یا با دایره نشان داده می‌شوند. مرجع: <strong>IPS-E-PR-240</strong></div>
-  </div>
-</div>
-
-<div class="qcard" id="q4">
-  <div class="qhead"><div class="qnum">4</div><div class="qmeta">
-    <div class="qch">فصل ۱ — اسناد و مدارک</div>
-    <div class="qref">ASME B31.3 Para 301.2</div>
-    <div class="qtext">در Line List پایپینگ، Design Pressure چه تعریفی دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(4,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>فشار واقعی عملیاتی سیستم در شرایط نرمال</div>
-    <div class="opt" onclick="ans(4,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>فشاری که پایه محاسبات ضخامت دیواره لوله است و باید ≥ حداکثر فشار قابل وقوع باشد</div>
-    <div class="opt" onclick="ans(4,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>فشار آزمون هیدروتست</div>
-    <div class="opt" onclick="ans(4,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>فشار Relief Valve</div>
-  </div>
-  <div class="exp" id="e4">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 301.2</strong>، Design Pressure باید حداقل برابر حداکثر فشاری باشد که در هر نقطه از سیستم ممکن است رخ دهد. این فشار پایه محاسبات ضخامت دیواره مطابق <strong>Para 304.1.2</strong> است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q5">
-  <div class="qhead"><div class="qnum">5</div><div class="qmeta">
-    <div class="qch">فصل ۱ — اسناد و مدارک</div>
-    <div class="qref">IPS-M-PI-190</div>
-    <div class="qtext">Spool Sheet (Fabrication Drawing) برای چه هدفی استفاده می‌شود؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(5,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>نمایش جریان فرآیند در پلان</div>
-    <div class="opt" onclick="ans(5,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>تهیه اطلاعات ساخت قطعات لوله‌کشی برای کارگاه شامل طول، زاویه و شماره جوش</div>
-    <div class="opt" onclick="ans(5,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>محاسبه تنش حرارتی</div>
-    <div class="opt" onclick="ans(5,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>تعیین نوع گسکت</div>
-  </div>
-  <div class="exp" id="e5">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>Spool Sheet</strong> نقشه ساخت هر Spool است که شامل: طول دقیق هر قطعه، زاویه اتصالات، شماره جوش، نوع End Connection و متریال است. این نقشه مرجع کارگاه ساخت (Fabrication Shop) است.</div>
-  </div>
-</div>
-
-<!-- ═══ فصل ۲ ═══ -->
-<div class="ch-div">
-  <div class="ch-icon">🔩</div>
-  <div class="ch-text"><h4>فصل ۲ — اجزای سیستم‌های پایپینگ</h4><p>لوله · اتصالات · فلنج · گسکت · شیرآلات · ساپورت</p></div>
-  <span class="ch-ref">ASME B16.5 · B16.9 · B36.10M</span>
-</div>
-
-<div class="qcard" id="q6">
-  <div class="qhead"><div class="qnum">6</div><div class="qmeta">
-    <div class="qch">فصل ۲ — اجزای پایپینگ</div>
-    <div class="qref">ASME B36.10M Table</div>
-    <div class="qtext">لوله 6 اینچ Schedule 40 چه ضخامت دیواره‌ای دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(6,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>5.54 mm</div>
-    <div class="opt" onclick="ans(6,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>7.11 mm</div>
-    <div class="opt" onclick="ans(6,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>9.53 mm</div>
-    <div class="opt" onclick="ans(6,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>11.13 mm</div>
-  </div>
-  <div class="exp" id="e6">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B36.10M</strong>، لوله 6 اینچ (OD = 168.3mm) در Schedule 40 دارای ضخامت دیواره <strong>7.11 mm</strong> است. SCH 80: 10.97mm | SCH 160: 18.26mm. دانستن این جدول برای بازرس QC الزامی است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q7">
-  <div class="qhead"><div class="qnum">7</div><div class="qmeta">
-    <div class="qch">فصل ۲ — اجزای پایپینگ</div>
-    <div class="qref">ASME B16.5 Table 2-1.1</div>
-    <div class="qtext">فلنج Class 150 برای ASTM A105 در دمای محیط (100°F) چه حداکثر فشار مجازی دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(7,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>10.2 bar (148 psi)</div>
-    <div class="opt" onclick="ans(7,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>19.6 bar (285 psi)</div>
-    <div class="opt" onclick="ans(7,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>51.1 bar (741 psi)</div>
-    <div class="opt" onclick="ans(7,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>138 bar (2000 psi)</div>
-  </div>
-  <div class="exp" id="e7">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B16.5 Table 2-1.1</strong>، فلنج Class 150 برای Group 1.1 (A105) در 100°F = <strong>285 psi (19.6 bar)</strong>. Class 300 = 741 psi | Class 600 = 1480 psi. این مقادیر با افزایش دما کاهش می‌یابند.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q8">
-  <div class="qhead"><div class="qnum">8</div><div class="qmeta">
-    <div class="qch">فصل ۲ — اجزای پایپینگ</div>
-    <div class="qref">ASME B16.20</div>
-    <div class="qtext">گسکت Spiral Wound (SWG) برای چه شرایطی مناسب است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(8,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>فشار پایین و دمای کم مثل آب سرد</div>
-    <div class="opt" onclick="ans(8,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>سرویس‌های با فشار و دمای بالا در نفت و گاز (Class 300 به بالا)</div>
-    <div class="opt" onclick="ans(8,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>فقط سرویس‌های Vacuum</div>
-    <div class="opt" onclick="ans(8,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>فقط Class 150</div>
-  </div>
-  <div class="exp" id="e8">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>Spiral Wound Gasket (SWG)</strong> طبق <strong>ASME B16.20</strong> برای سرویس‌های Class 300 به بالا ایده‌آل است. ساختار پیچشی فولاد ضدزنگ + فیلر گرافیت یا PTFE مقاومت عالی در برابر دما و فشار متناوب دارد. برای Class 150 معمولاً Flat Ring Gasket کافی است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q9">
-  <div class="qhead"><div class="qnum">9</div><div class="qmeta">
-    <div class="qch">فصل ۲ — اجزای پایپینگ</div>
-    <div class="qref">ASME B16.9 | MSS SP-75</div>
-    <div class="qtext">اتصال Butt Weld (BW) در مقایسه با Socket Weld (SW) چه مزیتی دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(9,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>ارزان‌تر و سریع‌تر برای نصب</div>
-    <div class="opt" onclick="ans(9,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>مناسب‌تر برای سایزهای کوچک زیر 2 اینچ</div>
-    <div class="opt" onclick="ans(9,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>نفوذ کامل جوش، بدون فضای مرده، مناسب سرویس‌های خورنده و فشار بالا</div>
-    <div class="opt" onclick="ans(9,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>نیاز به مهارت کمتر برای جوشکاری</div>
-  </div>
-  <div class="exp" id="e9">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body"><strong>Butt Weld</strong> اتصال لب‌به‌لب با نفوذ کامل است — بدون فضای مرده (Crevice) که محل تجمع خوردگی باشد. مناسب سرویس‌های Sour، خورنده و فشار/دمای بالا. <strong>Socket Weld</strong> برای سایزهای ≤ 2" و سرویس‌های عادی استفاده می‌شود.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q10">
-  <div class="qhead"><div class="qnum">10</div><div class="qmeta">
-    <div class="qch">فصل ۲ — اجزای پایپینگ</div>
-    <div class="qref">ASME B31.3 Para 321.1.1</div>
-    <div class="qtext">ساپورت نوع Anchor در پایپینگ چه کاری انجام می‌دهد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(10,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>اجازه حرکت آزاد لوله در تمام جهات</div>
-    <div class="opt" onclick="ans(10,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>محدود کردن حرکت لوله در تمام جهات — نقطه ثابت برای کنترل انبساط حرارتی</div>
-    <div class="opt" onclick="ans(10,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>اجازه حرکت در یک جهت و قفل در سایر جهات</div>
-    <div class="opt" onclick="ans(10,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>فقط تحمل وزن لوله</div>
-  </div>
-  <div class="exp" id="e10">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>Anchor</strong> حرکت لوله را در تمام جهات (Axial، Lateral، Vertical) و چرخش‌ها محدود می‌کند. نقطه ثابتی ایجاد می‌کند که انبساط حرارتی سیستم را هدایت می‌کند. <strong>Guide</strong> فقط حرکت جانبی را محدود می‌کند. <strong>Shoe/Rest</strong> فقط وزن را تحمل می‌کند.</div>
-  </div>
-</div>
-
-<!-- ═══ فصل ۳ ═══ -->
-<div class="ch-div">
-  <div class="ch-icon">⚗️</div>
-  <div class="ch-text"><h4>فصل ۳ — متریال‌شناسی پایپینگ</h4><p>P-Number · ASTM · Carbon Equivalent · Sour Service</p></div>
-  <span class="ch-ref">ASME B31.3 Para 323 · NACE MR0175</span>
-</div>
-
-<div class="qcard" id="q11">
-  <div class="qhead"><div class="qnum">11</div><div class="qmeta">
-    <div class="qch">فصل ۳ — متریال‌شناسی</div>
-    <div class="qref">ASME Sec. IX QW/QB-422</div>
-    <div class="qtext">لوله ASTM A106 Grade B به کدام P-Number تعلق دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(11,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>P-No. 1</div>
-    <div class="opt" onclick="ans(11,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>P-No. 4</div>
-    <div class="opt" onclick="ans(11,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>P-No. 8</div>
-    <div class="opt" onclick="ans(11,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>P-No. 5A</div>
-  </div>
-  <div class="exp" id="e11">
-    <div class="exp-hd">✅ جواب صحیح: الف</div>
-    <div class="exp-body">ASTM A106 Gr.B (Carbon Steel Seamless) به <strong>P-No.1</strong> تعلق دارد. P-No.1 = Carbon Steel | P-No.4 = 1Cr-0.5Mo | P-No.5A = 2.25Cr-1Mo | P-No.8 = Austenitic SS. مرجع: <strong>ASME Sec. IX QW/QB-422</strong></div>
-  </div>
-</div>
-
-<div class="qcard" id="q12">
-  <div class="qhead"><div class="qnum">12</div><div class="qmeta">
-    <div class="qch">فصل ۳ — متریال‌شناسی</div>
-    <div class="qref">NACE MR0175 / ISO 15156-2 Table B.1</div>
-    <div class="qtext">حداکثر سختی مجاز برای Carbon Steel در سرویس Sour (H₂S) مطابق NACE MR0175 چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(12,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>200 HV (93 HRB)</div>
-    <div class="opt" onclick="ans(12,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>220 HV</div>
-    <div class="opt" onclick="ans(12,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>248 HV (22 HRC)</div>
-    <div class="opt" onclick="ans(12,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>300 HV</div>
-  </div>
-  <div class="exp" id="e12">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body">طبق <strong>NACE MR0175 / ISO 15156-2</strong>، حداکثر سختی مجاز برای Carbon Steel در Sour Service = <strong>248 HV10 (22 HRC = 237 HBW)</strong>. این برای جوش و HAZ هم اعمال می‌شود. بالاتر از این → خطر Sulfide Stress Cracking (SSC).</div>
-  </div>
-</div>
-
-<div class="qcard" id="q13">
-  <div class="qhead"><div class="qnum">13</div><div class="qmeta">
-    <div class="qch">فصل ۳ — متریال‌شناسی</div>
-    <div class="qref">ASME B31.3 Para 323.2.2 | ASTM A333</div>
-    <div class="qtext">برای لوله‌کشی در سرویس دمای پایین تا -46°C، کدام متریال مناسب است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(13,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>ASTM A106 Grade B</div>
-    <div class="opt" onclick="ans(13,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>ASTM A53 Grade B</div>
-    <div class="opt" onclick="ans(13,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>ASTM A333 Grade 6</div>
-    <div class="opt" onclick="ans(13,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>ASTM A335 Grade P11</div>
-  </div>
-  <div class="exp" id="e13">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body"><strong>ASTM A333 Grade 6</strong> برای سرویس Low Temperature تا <strong>-46°C (-50°F)</strong> مناسب است و Charpy Impact Test الزامی دارد. A106 Gr.B حداقل -29°C | A335 P11 برای High Temperature Cr-Mo است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q14">
-  <div class="qhead"><div class="qnum">14</div><div class="qmeta">
-    <div class="qch">فصل ۳ — متریال‌شناسی</div>
-    <div class="qref">ASTM A312 | ASME B31.3 Para 323.1</div>
-    <div class="qtext">لوله ASTM A312 TP316L برای کدام سرویس مناسب‌تر از A312 TP304L است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(14,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>دمای بسیار پایین (Cryogenic)</div>
-    <div class="opt" onclick="ans(14,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>محیط‌های خورنده با Chloride و اسید (مثل آب دریا)</div>
-    <div class="opt" onclick="ans(14,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>دمای بالای 800°C</div>
-    <div class="opt" onclick="ans(14,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>فشار بسیار بالا</div>
-  </div>
-  <div class="exp" id="e14">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>316L</strong> دارای 2-3% Molybdenum است که مقاومت در برابر <strong>Pitting Corrosion</strong> و حمله Chloride را بسیار افزایش می‌دهد. مناسب: آب دریا، محیط‌های اسیدی، صنایع غذایی و دارویی. 304L فاقد Mo است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q15">
-  <div class="qhead"><div class="qnum">15</div><div class="qmeta">
-    <div class="qch">فصل ۳ — متریال‌شناسی</div>
-    <div class="qref">ASTM A335 | ASME B31.3 Table A-1</div>
-    <div class="qtext">لوله ASTM A335 Grade P91 برای چه کاربردی طراحی شده است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(15,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>سرویس Sour با H₂S بالا</div>
-    <div class="opt" onclick="ans(15,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>دمای پایین تا -100°C</div>
-    <div class="opt" onclick="ans(15,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>دمای بالا تا 650°C — نیروگاه و پتروشیمی (Creep Resistant)</div>
-    <div class="opt" onclick="ans(15,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>فشار بسیار بالا در دمای اتاق</div>
-  </div>
-  <div class="exp" id="e15">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body"><strong>A335 P91 (9Cr-1Mo-V)</strong> برای سرویس دمای بالا تا <strong>650°C</strong> طراحی شده — مقاومت Creep عالی. PWHT آن بسیار حساس است: <strong>730-780°C</strong> اجباری. بیرون از این محدوده → Type IV Cracking در سرویس.</div>
-  </div>
-</div>
-
-<!-- ═══ فصل ۴ ═══ -->
-<div class="ch-div">
-  <div class="ch-icon">📐</div>
-  <div class="ch-text"><h4>فصل ۴ — نقشه‌خوانی ایزومتریک</h4><p>ISO Drawing · BOM · MTO · Weld Map</p></div>
-  <span class="ch-ref">IPS-E-PR-240 · ASME B31.3</span>
-</div>
-
-<div class="qcard" id="q16">
-  <div class="qhead"><div class="qnum">16</div><div class="qmeta">
-    <div class="qch">فصل ۴ — نقشه‌خوانی</div>
-    <div class="qref">IPS-E-PR-240</div>
-    <div class="qtext">در نقشه ایزومتریک، BW مخفف چیست؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(16,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>Branch Weld</div>
-    <div class="opt" onclick="ans(16,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>Butt Weld</div>
-    <div class="opt" onclick="ans(16,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>Back Weld</div>
-    <div class="opt" onclick="ans(16,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>Ball Weld</div>
-  </div>
-  <div class="exp" id="e16">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>BW = Butt Weld</strong> — اتصال لب‌به‌لب که لبه‌های دو قطعه با آماده‌سازی Bevel به هم جوش می‌خورند. در BOM ایزومتریک: SW = Socket Weld | TW = Threaded (Screwed) | FW = Fillet Weld. مرجع: ASME B16.9 (BW Fittings)</div>
-  </div>
-</div>
-
-<div class="qcard" id="q17">
-  <div class="qhead"><div class="qnum">17</div><div class="qmeta">
-    <div class="qch">فصل ۴ — نقشه‌خوانی</div>
-    <div class="qref">ASME B31.3 Para 304.1.2</div>
-    <div class="qtext">فرمول محاسبه حداقل ضخامت دیواره لوله (t) مطابق ASME B31.3 کدام است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(17,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>t = P × D / (4 × S)</div>
-    <div class="opt" onclick="ans(17,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>t = P × D / (2 × S × E + 2 × Y × P)</div>
-    <div class="opt" onclick="ans(17,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>t = P × D / (S × E)</div>
-    <div class="opt" onclick="ans(17,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>t = P × OD / (2 × S)</div>
-  </div>
-  <div class="exp" id="e17">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 304.1.2</strong>: <strong>t = P×D / (2×S×E + 2×Y×P)</strong> که در آن: P=فشار طراحی، D=قطر خارجی، S=تنش مجاز، E=ضریب جوش (Weld Quality Factor)، Y=ضریب دمایی. به این t باید Mill Tolerance (12.5%) اضافه شود.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q18">
-  <div class="qhead"><div class="qnum">18</div><div class="qmeta">
-    <div class="qch">فصل ۴ — نقشه‌خوانی</div>
-    <div class="qref">IPS-E-PR-240</div>
-    <div class="qtext">در نقشه ایزومتریک، Weld Number (شماره جوش) به چه منظوری استفاده می‌شود؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(18,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>نشان دادن نوع جوش (BW یا SW)</div>
-    <div class="opt" onclick="ans(18,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>شناسایی منحصربه‌فرد هر اتصال برای ردیابی در Weld Map، WPS و گزارش NDT</div>
-    <div class="opt" onclick="ans(18,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>تعیین قطر جوش</div>
-    <div class="opt" onclick="ans(18,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>نشان دادن جوشکار مجاز</div>
-  </div>
-  <div class="exp" id="e18">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>Weld Number</strong> شناسه منحصربه‌فرد هر اتصال جوش است که در تمام مدارک پروژه (Weld Map، Weld Log، NDT Report، PWHT Chart) یکسان استفاده می‌شود. این ردیابی برای QC Data Book الزامی است. مرجع: <strong>ASME B31.3 Para 328.2.3</strong></div>
-  </div>
-</div>
-
-<div class="qcard" id="q19">
-  <div class="qhead"><div class="qnum">19</div><div class="qmeta">
-    <div class="qch">فصل ۴ — نقشه‌خوانی</div>
-    <div class="qref">IPS-M-PI-190</div>
-    <div class="qtext">MTO (Material Take Off) در پروژه پایپینگ چه کاربردی دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(19,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>نقشه مسیر لوله‌کشی</div>
-    <div class="opt" onclick="ans(19,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>لیست کامل کمیت و نوع متریال مورد نیاز برای خرید و تدارکات</div>
-    <div class="opt" onclick="ans(19,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>برنامه زمانبندی نصب</div>
-    <div class="opt" onclick="ans(19,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>طرح آزمون هیدروتست</div>
-  </div>
-  <div class="exp" id="e19">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>MTO (Material Take Off)</strong> لیست کاملی از تمام متریال‌های مورد نیاز برای یک سیستم لوله‌کشی است: لوله (به متر)، اتصالات (به عدد)، فلنج، گسکت، بست و پیچ‌ومهره. مبنای خرید (Procurement) است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q20">
-  <div class="qhead"><div class="qnum">20</div><div class="qmeta">
-    <div class="qch">فصل ۴ — نقشه‌خوانی</div>
-    <div class="qref">ASME B31.3 Para 301.3</div>
-    <div class="qtext">Design Temperature در لوله‌کشی چگونه تعریف می‌شود؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(20,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>دمای محیط در زمان نصب</div>
-    <div class="opt" onclick="ans(20,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>دمای سیال در شرایط نرمال</div>
-    <div class="opt" onclick="ans(20,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>حداکثر یا حداقل دمایی که دیواره لوله ممکن است تجربه کند — پایه انتخاب متریال</div>
-    <div class="opt" onclick="ans(20,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>دمای آزمون هیدروتست</div>
-  </div>
-  <div class="exp" id="e20">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 301.3</strong>، Design Temperature دمایی است که دیواره لوله در بدترین شرایط عملیاتی ممکن است به آن برسد. پایه انتخاب متریال و تنش مجاز (Allowable Stress) است. مرجع تنش: <strong>ASME Sec. II Part D</strong></div>
-  </div>
-</div>
-
-<!-- ═══ فصل ۵ ═══ -->
-<div class="ch-div">
-  <div class="ch-icon">🔧</div>
-  <div class="ch-text"><h4>فصل ۵ — ساخت و مونتاژ پایپینگ</h4><p>Fit-up · Preheat · PWHT · Bevel · Alignment</p></div>
-  <span class="ch-ref">ASME B31.3 Para 328 · 330 · 331</span>
-</div>
-
-<div class="qcard" id="q21">
-  <div class="qhead"><div class="qnum">21</div><div class="qmeta">
-    <div class="qch">فصل ۵ — ساخت و مونتاژ</div>
-    <div class="qref">ASME B31.3 Para 328.4.3(a)</div>
-    <div class="qtext">حداکثر Mismatch (Hi-Lo) مجاز برای Butt Weld در لوله‌کشی مطابق B31.3 چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(21,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>3.2 mm</div>
-    <div class="opt" onclick="ans(21,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>1.6 mm یا t/16 — هر کدام کمتر بود</div>
-    <div class="opt" onclick="ans(21,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>10% ضخامت دیواره</div>
-    <div class="opt" onclick="ans(21,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>2.4 mm بدون استثنا</div>
-  </div>
-  <div class="exp" id="e21">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 328.4.3(a)</strong>، حداکثر Hi-Lo مجاز = <strong>1.6mm یا t/16</strong> — هر کدام کمتر باشد. این یکی از رایج‌ترین دلایل Reject در بازرسی Fit-up است. بازرس باید با Pit Gauge اندازه بگیرد، نه با چشم تخمین بزند.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q22">
-  <div class="qhead"><div class="qnum">22</div><div class="qmeta">
-    <div class="qch">فصل ۵ — ساخت و مونتاژ</div>
-    <div class="qref">ASME B31.3 Para 330.1.1 | Table 330.1.1</div>
-    <div class="qtext">Preheat برای لوله Carbon Steel P-No.1 با ضخامت بیشتر از 25mm چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(22,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>بدون نیاز به Preheat</div>
-    <div class="opt" onclick="ans(22,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>حداقل 79°C (175°F)</div>
-    <div class="opt" onclick="ans(22,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>حداقل 200°C</div>
-    <div class="opt" onclick="ans(22,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>حداقل 300°C</div>
-  </div>
-  <div class="exp" id="e22">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Table 330.1.1</strong>، برای P-No.1 با ضخامت بیشتر از 25mm (1 in.)، حداقل Preheat = <strong>79°C (175°F)</strong>. برای ضخامت ≤25mm: 10°C کافی است. Preheat باید در فاصله ≥75mm از لبه جوش اندازه‌گیری شود.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q23">
-  <div class="qhead"><div class="qnum">23</div><div class="qmeta">
-    <div class="qch">فصل ۵ — ساخت و مونتاژ</div>
-    <div class="qref">ASME B31.3 Para 331.1.1 | Table 331.1.1</div>
-    <div class="qtext">دمای PWHT برای P-No.1 (Carbon Steel) مطابق ASME B31.3 چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(23,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>480°C</div>
-    <div class="opt" onclick="ans(23,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>595°C (1100°F)</div>
-    <div class="opt" onclick="ans(23,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>730°C</div>
-    <div class="opt" onclick="ans(23,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>900°C</div>
-  </div>
-  <div class="exp" id="e23">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Table 331.1.1</strong>، دمای PWHT برای P-No.1 = حداقل <strong>595°C (1100°F)</strong>. مدت: 1 ساعت به ازای هر 25mm ضخامت (حداقل 15 دقیقه). P-No.4 = 705°C | P-No.5A = 730°C | P91 = 730-780°C.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q24">
-  <div class="qhead"><div class="qnum">24</div><div class="qmeta">
-    <div class="qch">فصل ۵ — ساخت و مونتاژ</div>
-    <div class="qref">ASME B31.3 Para 328.3.2</div>
-    <div class="qtext">زاویه استاندارد Bevel برای آماده‌سازی لبه جوش Butt Weld چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(24,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>30° ± 2.5°</div>
-    <div class="opt" onclick="ans(24,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>37.5° ± 2.5°</div>
-    <div class="opt" onclick="ans(24,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>45° ± 5°</div>
-    <div class="opt" onclick="ans(24,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>60° ± 5°</div>
-  </div>
-  <div class="exp" id="e24">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">زاویه استاندارد Bevel برای Single V Groove = <strong>37.5° ± 2.5°</strong> (جمعاً 75° ± 5° برای هر دو طرف). Root Gap معمول: 1.6-3.2mm. Root Face (Land): 0.8-1.6mm. این مقادیر باید در WPS مشخص باشند.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q25">
-  <div class="qhead"><div class="qnum">25</div><div class="qmeta">
-    <div class="qch">فصل ۵ — ساخت و مونتاژ</div>
-    <div class="qref">ASME B31.3 Para 328.5.4</div>
-    <div class="qtext">در Socket Weld، چه فاصله‌ای باید بین انتهای لوله و ته Socket باقی بماند؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(25,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>صفر — لوله باید کاملاً به انتها برسد</div>
-    <div class="opt" onclick="ans(25,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>حداقل 1.6mm (1/16 in.)</div>
-    <div class="opt" onclick="ans(25,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>حداقل 5mm</div>
-    <div class="opt" onclick="ans(25,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>حداقل 10mm</div>
-  </div>
-  <div class="exp" id="e25">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 328.5.4</strong>، لوله باید حداقل <strong>1.6mm (1/16 in.)</strong> از ته Socket فاصله داشته باشد. این فاصله برای انبساط حرارتی لوله است. اگر لوله کاملاً به ته برسد → انبساط حرارتی → تنش و ترک در جوش Fillet.</div>
-  </div>
-</div>
-
-<!-- ═══ فصل ۶ ═══ -->
-<div class="ch-div">
-  <div class="ch-icon">🔍</div>
-  <div class="ch-text"><h4>فصل ۶ — اصول بازرسی فنی پایپینگ</h4><p>VT · Hydrotest · NDT % · Acceptance Criteria · ITP</p></div>
-  <span class="ch-ref">ASME B31.3 Para 341 · 344 · 345</span>
-</div>
-
-<div class="qcard" id="q26">
-  <div class="qhead"><div class="qnum">26</div><div class="qmeta">
-    <div class="qch">فصل ۶ — بازرسی</div>
-    <div class="qref">ASME B31.3 Para 345.4.2</div>
-    <div class="qtext">فشار هیدروتست برای Normal Fluid Service مطابق B31.3 چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(26,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>1.1 × Design Pressure</div>
-    <div class="opt" onclick="ans(26,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>1.5 × Design Pressure × (St/Sd)</div>
-    <div class="opt" onclick="ans(26,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>2.0 × Design Pressure</div>
-    <div class="opt" onclick="ans(26,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>1.25 × MAWP</div>
-  </div>
-  <div class="exp" id="e26">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 345.4.2</strong>: <strong>P_test = 1.5 × P_design × (St/Sd)</strong>. St = تنش مجاز در دمای تست | Sd = تنش مجاز در دمای طراحی. دمای آب هیدروتست: ≥16°C. مدت نگهداری فشار: حداقل 10 دقیقه.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q27">
-  <div class="qhead"><div class="qnum">27</div><div class="qmeta">
-    <div class="qch">فصل ۶ — بازرسی</div>
-    <div class="qref">ASME B31.3 Para 341.4.1 | Table 341.3.2</div>
-    <div class="qtext">برای Category M Fluid Service (سیالات Toxic)، درصد NDT الزامی چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(27,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>5% Random</div>
-    <div class="opt" onclick="ans(27,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>20%</div>
-    <div class="opt" onclick="ans(27,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>50%</div>
-    <div class="opt" onclick="ans(27,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>100%</div>
-  </div>
-  <div class="exp" id="e27">
-    <div class="exp-hd">✅ جواب صحیح: د</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 341.4.1(b)</strong>، Category M (سیالات Toxic/Lethal) نیاز به <strong>100% RT یا UT</strong> برای تمام جوش‌های Butt Weld دارد. Normal = 5% | Severe Cyclic = 100% | Category D = اختیاری. مرجع: Appendix M.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q28">
-  <div class="qhead"><div class="qnum">28</div><div class="qmeta">
-    <div class="qch">فصل ۶ — بازرسی</div>
-    <div class="qref">ASME Sec. V Art. 9 T-952</div>
-    <div class="qtext">حداقل روشنایی سطح برای بازرسی چشمی (VT) مطابق ASME Sec. V Art. 9 چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(28,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>100 Lux</div>
-    <div class="opt" onclick="ans(28,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>200 Lux</div>
-    <div class="opt" onclick="ans(28,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>500 Lux (50 fc)</div>
-    <div class="opt" onclick="ans(28,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>1000 Lux</div>
-  </div>
-  <div class="exp" id="e28">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body">طبق <strong>ASME Sec. V Art. 9 T-952</strong>، حداقل روشنایی برای VT = <strong>500 Lux (50 foot-candles)</strong>. فاصله چشم تا سطح: ≤600mm. زاویه دید: ≥30° از سطح. Vision Test بازرس: سالانه الزامی است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q29">
-  <div class="qhead"><div class="qnum">29</div><div class="qmeta">
-    <div class="qch">فصل ۶ — بازرسی</div>
-    <div class="qref">ASME B31.3 Para 341.4.2</div>
-    <div class="qtext">در Random 5% NDT، اگر یک جوش رد شود چه اقدامی الزامی است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(29,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>فقط همان جوش تعمیر و تست مجدد شود</div>
-    <div class="opt" onclick="ans(29,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>دو جوش اضافه از همان جوشکار تست شود؛ اگر هر دو قبول → ادامه؛ اگر یکی رد → 100% تست همه جوش‌های آن جوشکار</div>
-    <div class="opt" onclick="ans(29,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>فقط 10% بیشتر تست شود</div>
-    <div class="opt" onclick="ans(29,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>جوشکار باید WPQ مجدد بگیرد</div>
-  </div>
-  <div class="exp" id="e29">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Para 341.4.2</strong>: اگر یک جوش Reject شد → <strong>دو جوش اضافه از همان جوشکار</strong> آزمایش شود. هر دو قبول → ادامه. حتی یکی Reject → <strong>100% تمام جوش‌های آن جوشکار</strong>. این مکانیزم فشار کیفی روی جوشکار ایجاد می‌کند.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q30">
-  <div class="qhead"><div class="qnum">30</div><div class="qmeta">
-    <div class="qch">فصل ۶ — بازرسی</div>
-    <div class="qref">ASME B31.3 Table 341.3.2</div>
-    <div class="qtext">مطابق B31.3 Table 341.3.2، حداکثر Undercut مجاز برای Normal Service چقدر است؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(30,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>صفر — هیچ Undercut قابل قبول نیست</div>
-    <div class="opt" onclick="ans(30,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>حداکثر 1.6mm</div>
-    <div class="opt" onclick="ans(30,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>حداکثر 0.8mm یا 1/32 اینچ در طول ≤50mm از هر 150mm جوش</div>
-    <div class="opt" onclick="ans(30,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>حداکثر 10% ضخامت دیواره</div>
-  </div>
-  <div class="exp" id="e30">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body">طبق <strong>ASME B31.3 Table 341.3.2</strong>، Undercut مجاز برای Normal Service: <strong>≤ 0.8mm (1/32 in.)</strong> و در طول ≤50mm از هر 150mm جوش. برای Severe Cyclic Service: صفر. Undercut باید با Pit Gauge اندازه‌گیری شود.</div>
-  </div>
-</div>
-
-<!-- ═══ فصل ۷ ═══ -->
-<div class="ch-div">
-  <div class="ch-icon">🔴</div>
-  <div class="ch-text"><h4>فصل ۷ — شیرآلات صنعتی</h4><p>Gate · Ball · Check · Globe · Butterfly · Relief · API 6D</p></div>
-  <span class="ch-ref">API 6D · ASME B16.34 · API 598</span>
-</div>
-
-<div class="qcard" id="q31">
-  <div class="qhead"><div class="qnum">31</div><div class="qmeta">
-    <div class="qch">فصل ۷ — شیرآلات</div>
-    <div class="qref">API 6D Section 10.2 | API 598</div>
-    <div class="qtext">Shell Test (Body Hydrostatic Test) برای شیرآلات مطابق API 6D با چه فشاری انجام می‌شود؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(31,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>1.1 × Rated Pressure</div>
-    <div class="opt" onclick="ans(31,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>1.25 × Rated Pressure</div>
-    <div class="opt" onclick="ans(31,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>1.5 × Rated Pressure</div>
-    <div class="opt" onclick="ans(31,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>2.0 × Rated Pressure</div>
-  </div>
-  <div class="exp" id="e31">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body">طبق <strong>API 6D Section 10.2</strong>، Shell Test با فشار <strong>1.5 × Rated Pressure</strong> انجام می‌شود. Seat Test (Low Pressure): 1.1 × Rated. مدت Shell Test: 15 ثانیه تا 60 ثانیه بسته به سایز شیر. مرجع تکمیلی: <strong>API 598</strong></div>
-  </div>
-</div>
-
-<div class="qcard" id="q32">
-  <div class="qhead"><div class="qnum">32</div><div class="qmeta">
-    <div class="qch">فصل ۷ — شیرآلات</div>
-    <div class="qref">API 520 Part I | API 521</div>
-    <div class="qtext">Set Pressure شیر اطمینان (PSV) چه رابطه‌ای با MAWP باید داشته باشد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(32,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>Set Pressure باید بیشتر از MAWP باشد</div>
-    <div class="opt" onclick="ans(32,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>Set Pressure باید مساوی یا کمتر از MAWP باشد</div>
-    <div class="opt" onclick="ans(32,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>Set Pressure = 1.1 × MAWP</div>
-    <div class="opt" onclick="ans(32,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>Set Pressure = 0.9 × Design Pressure</div>
-  </div>
-  <div class="exp" id="e32">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body">طبق <strong>API 520 Part I و ASME Sec. VIII UG-134</strong>، Set Pressure ≤ MAWP. Overpressure مجاز: +10% برای شرایط عادی. Blowdown (فشار بسته شدن): معمولاً 10% زیر Set Pressure. اگر Set > MAWP → سیستم قبل از باز شدن PSV به فشار خطرناک می‌رسد.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q33">
-  <div class="qhead"><div class="qnum">33</div><div class="qmeta">
-    <div class="qch">فصل ۷ — شیرآلات</div>
-    <div class="qref">API 6D | ASME B16.34</div>
-    <div class="qtext">DBB (Double Block and Bleed) چه مزیتی نسبت به یک شیر ایزولاسیون معمولی دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(33,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>کنترل دقیق‌تر دبی</div>
-    <div class="opt" onclick="ans(33,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>ایزولاسیون ایمن با دو نقطه بند و یک نقطه تخلیه — اثبات Leak-Free بودن ایزولاسیون</div>
-    <div class="opt" onclick="ans(33,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>جلوگیری از جریان برگشتی</div>
-    <div class="opt" onclick="ans(33,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>کاهش افت فشار</div>
-  </div>
-  <div class="exp" id="e33">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>DBB</strong> دارای دو Seat (Block) و یک Bleed بین آنهاست. اگر Block اول نشتی داشت، Bleed فشار را تخلیه می‌کند و تأیید می‌کند که ایزولاسیون کامل است. برای تعمیرات ایمن در سرویس‌های خطرناک الزامی است.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q34">
-  <div class="qhead"><div class="qnum">34</div><div class="qmeta">
-    <div class="qch">فصل ۷ — شیرآلات</div>
-    <div class="qref">ASME B16.34 | API 6D</div>
-    <div class="qtext">شیر Globe (کروی) در مقایسه با Gate Valve چه مزیتی دارد؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(34,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>افت فشار کمتر</div>
-    <div class="opt" onclick="ans(34,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>مناسب‌تر برای ایزولاسیون کامل</div>
-    <div class="opt" onclick="ans(34,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>کنترل دقیق دبی (Throttling) و تنظیم جریان</div>
-    <div class="opt" onclick="ans(34,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>مناسب‌تر برای سایزهای بزرگ</div>
-  </div>
-  <div class="exp" id="e34">
-    <div class="exp-hd">✅ جواب صحیح: ج</div>
-    <div class="exp-body"><strong>Globe Valve</strong> برای <strong>Throttling (کنترل دبی)</strong> طراحی شده — می‌توان جریان را دقیق تنظیم کرد. <strong>Gate Valve</strong> فقط برای On/Off (قطع و وصل کامل) مناسب است. استفاده از Gate در حالت نیمه‌باز → Vibration و سایش سریع Seat.</div>
-  </div>
-</div>
-
-<div class="qcard" id="q35">
-  <div class="qhead"><div class="qnum">35</div><div class="qmeta">
-    <div class="qch">فصل ۷ — شیرآلات</div>
-    <div class="qref">API 594 | ASME B16.34</div>
-    <div class="qtext">Check Valve (شیر یک‌طرفه) برای چه هدفی استفاده می‌شود؟</div>
-  </div></div>
-  <div class="qopts">
-    <div class="opt" onclick="ans(35,0)"><span class="opt-ic">A</span><span class="opt-lbl">الف</span>کنترل دقیق دبی جریان</div>
-    <div class="opt" onclick="ans(35,1)"><span class="opt-ic">B</span><span class="opt-lbl">ب</span>جلوگیری از جریان برگشتی (Reverse Flow) و حفاظت پمپ</div>
-    <div class="opt" onclick="ans(35,2)"><span class="opt-ic">C</span><span class="opt-lbl">ج</span>ایزولاسیون بخشی از سیستم برای تعمیرات</div>
-    <div class="opt" onclick="ans(35,3)"><span class="opt-ic">D</span><span class="opt-lbl">د</span>کنترل فشار خروجی</div>
-  </div>
-  <div class="exp" id="e35">
-    <div class="exp-hd">✅ جواب صحیح: ب</div>
-    <div class="exp-body"><strong>Check Valve</strong> اجازه جریان فقط در یک جهت می‌دهد و از <strong>Reverse Flow</strong> جلوگیری می‌کند. کاربرد اصلی: حفاظت پمپ از Water Hammer هنگام خاموش شدن، جلوگیری از تخلیه مخزن بالادست. انواع: Swing، Lift، Dual Plate.</div>
-  </div>
-</div>
-
-<!-- SUBMIT -->
-<div class="sub-wrap">
-  <button class="btn-sub" id="subBtn" onclick="submit()">📊 مشاهده نتیجه نهایی</button>
+  <!-- QUESTIONS -->
+  <div class="q-area" id="qArea"></div>
 </div>
 
 <!-- RESULT -->
-<div class="result" id="result">
-  <div class="res-score" id="rscore">0/35</div>
+<div class="result" id="result" style="max-width:700px;margin:40px auto;">
+  <div class="res-score" id="rscore">0/50</div>
   <div class="res-label" id="rlabel">-</div>
   <div class="res-grade" id="rgrade">-</div>
   <div class="res-detail">
-    <div class="rd"><span class="rd-n" id="rcor" style="color:var(--green-l)">0</span><span class="rd-l">✅ صحیح</span></div>
-    <div class="rd"><span class="rd-n" id="rwrg" style="color:var(--red-l)">0</span><span class="rd-l">❌ غلط</span></div>
+    <div class="rd"><span class="rd-n" id="rcor" style="color:var(--green)">0</span><span class="rd-l">✅ صحیح</span></div>
+    <div class="rd"><span class="rd-n" id="rwrg" style="color:var(--red)">0</span><span class="rd-l">❌ غلط</span></div>
     <div class="rd"><span class="rd-n" id="rskp" style="color:var(--amber)">0</span><span class="rd-l">⏭ بدون پاسخ</span></div>
   </div>
-  <p style="font-size:12.5px;color:var(--t1);margin-bottom:14px;">توضیح هر سوال را در بالا مطالعه کنید</p>
-  <button class="btn-retry" onclick="retry()">🔄 تلاش مجدد</button>
+  <p style="font-size:13px;color:var(--text-sec);margin-bottom:18px;">توضیح هر سوال را در بالا مطالعه کنید</p>
+  <button class="btn-retry" onclick="retryDisc()">🔄 شروع مجدد این رشته</button>
+  <button class="btn-retry" onclick="backToDisc()" style="margin-right:10px;">📚 بازگشت به رشته‌ها</button>
 </div>
 
-</div>
-<footer><p>مرجع: ASME B31.3 · B16.5 · B36.10M · Sec.V · API 6D · NACE MR0175 | تهیه: عیسی ماردی — Piping Studio</p></footer>
+<footer>
+  <p>مرجع: AWS D1.1 · ASME Sec. V · ASME Sec. IX · API 1104 · ISO 9712 · ISO 17637<br>
+  تهیه و تدوین: <a href="https://www.linkedin.com/in/eissa-maredi-61937136a" target="_blank">عیسی مردی</a> · Piping Studio · © 2026 All Rights Reserved</p>
+</footer>
 
 <script>
-const ANS={1:1,2:2,3:2,4:1,5:1,6:1,7:1,8:1,9:2,10:1,11:0,12:2,13:2,14:1,15:2,16:1,17:1,18:1,19:1,20:2,21:1,22:1,23:1,24:1,25:1,26:1,27:3,28:2,29:1,30:2,31:2,32:1,33:1,34:2,35:1};
-const UA={};let done=0;
-function ans(q,i){
-  if(UA[q]!==undefined)return;
-  UA[q]=i;done++;
-  const card=document.getElementById('q'+q);
-  const opts=card.querySelectorAll('.opt');
-  const cor=ANS[q];
-  const exp=document.getElementById('e'+q);
-  opts.forEach((o,idx)=>{
-    o.classList.add('dis');
-    if(idx===cor){o.classList.add('ok');o.querySelector('.opt-ic').textContent='✓';}
-    if(idx===i&&i!==cor){o.classList.add('no');o.querySelector('.opt-ic').textContent='✗';}
-  });
-  exp.classList.add('show');
-  exp.classList.add(i===cor?'ok':'no');
-  card.classList.add('done');
-  const p=Math.round(done/35*100);
-  document.getElementById('pf').style.width=p+'%';
-  document.getElementById('pt').textContent='پیشرفت: '+done+' از ۳۵ سوال';
-  document.getElementById('pp').textContent=p+'٪';
-  if(done===35)document.getElementById('subBtn').style.boxShadow='0 0 0 3px rgba(16,185,129,.5),0 6px 20px rgba(37,99,235,.35)';
+// ============ DATA ============
+const DISCIPLINES = [
+  {
+    id:'vt', num:'01', title:'بازرسی چشمی', titleEn:'Visual Testing (VT)',
+    icon:'️', color:'#2563eb', bg:'#eff6ff', border:'#bfdbfe',
+    desc:'بازرسی سطحی و معیارهای پذیرش جوش',
+    std:'AWS D1.1 · ASME Sec. V Art. 9 · ISO 17637',
+    questions:[
+      {q:'حداقل روشنایی سطح برای بازرسی چشمی (VT) مطابق ASME Sec. V Art. 9 چقدر است؟',ref:'ASME Sec. V Art. 9 T-952',opts:['100 Lux','200 Lux','500 Lux (50 fc)','1000 Lux'],ans:2,exp:'طبق ASME Sec. V Art. 9 T-952، حداقل روشنایی برای VT = 500 Lux (50 foot-candles). فاصله چشم تا سطح: ≤600mm. زاویه دید: ≥30° از سطح.'},
+      {q:'فاصله استاندارد چشم بازرس از سطح مورد بازرسی در VT چقدر است؟',ref:'ASME Sec. V Art. 9',opts:['حداکثر 300mm','حداکثر 600mm (24 inch)','حداکثر 1000mm','فاصله مهم نیست'],ans:1,exp:'حداکثر فاصله چشم بازرس از سطح = 600mm (24 inch) مطابق ASME Sec. V Art. 9. زاویه دید نیز باید حداقل 30 درجه باشد.'},
+      {q:'کدام عیب جوش در بازرسی چشمی قابل تشخیص نیست؟',ref:'AWS D1.1',opts:['Undercut','Porosity سطحی','Slag Inclusion داخلی','Overlap'],ans:2,exp:'Slag Inclusion داخلی (Internal) فقط با روش‌های حجمی مثل RT یا UT قابل تشخیص است. VT فقط عیوب سطحی را نشان می‌دهد.'},
+      {q:'حداکثر Undercut مجاز برای جوش‌های سازه‌ای مطابق AWS D1.1 چقدر است؟',ref:'AWS D1.1 Table 6.1',opts:['0.5 mm','1 mm','1.6 mm (1/16 in)','3 mm'],ans:1,exp:'طبق AWS D1.1 Table 6.1، حداکثر Undercut مجاز = 1mm (1/32 in) برای جوش‌های معمولی. برای جوش‌های CJP در سازه‌های خاص محدودتر است.'},
+      {q:'Vision Test بازرس VT باید هر چند وقت یکبار انجام شود؟',ref:'ASME Sec. V Art. 9',opts:['هر 6 ماه','سالانه','هر 2 سال','فقط هنگام استخدام'],ans:1,exp:'Vision Test بازرس باید سالانه انجام شود. شامل: Jaeger J-1 برای نزدیک و Snellen برای دور. بازرس باید بتواند کارت Jaeger J-1 را در فاصله 30cm بخواند.'}
+    ]
+  },
+  {
+    id:'rt', num:'02', title:'رادیوگرافی', titleEn:'Radiographic Testing (RT)',
+    icon:'️', color:'#8b5cf6', bg:'#f5f3ff', border:'#ddd6fe',
+    desc:'تفسیر فیلم اشعه ایکس و گاما',
+    std:'ASME Sec. V Art. 2 · API 1104 · ISO 17636',
+    questions:[
+      {q:'کدام نوع عیب در رادیوگرافی به صورت خطوط تیره و مستقیم دیده می‌شود؟',ref:'ASME Sec. V Art. 2',opts:['Porosity','Slag Inclusion','Crack','Undercut'],ans:2,exp:'Crack (ترک) در فیلم رادیوگرافی به صورت خط تیره، باریک و معمولاً مستقیم یا منحنی دیده می‌شود. Porosity به صورت دایره‌های تیره و Slag به صورت خطوط نامنظم.'},
+      {q:'حساسیت رادیوگرافی با کدام ابزار اندازه‌گیری می‌شود؟',ref:'ASME Sec. V Art. 2 T-276',opts:['Densitometer','IQI (Image Quality Indicator)','Step Wedge','Collimator'],ans:1,exp:'IQI (Image Quality Indicator) یا Penetrameter برای اندازه‌گیری حساسیت رادیوگرافی استفاده می‌شود. معمولاً از نوع Wire IQI یا Hole-type مطابق ASME Sec. V Art. 2.'},
+      {q:'حداقل چگالی نوری (Optical Density) فیلم رادیوگرافی مطابق ASME Sec. V چقدر است؟',ref:'ASME Sec. V Art. 2 T-282',opts:['1.0','1.8','2.0 تا 4.0','5.0'],ans:2,exp:'طبق ASME Sec. V Art. 2 T-282، چگالی نوری فیلم باید بین 1.8 تا 4.0 باشد. برای فیلم‌های دو طرفه (Composite) مجموع چگالی‌ها باید در این محدوده باشد.'},
+      {q:'کدام ایزوتوپ برای رادیوگرافی لوله‌های با ضخامت بالا مناسب‌تر است؟',ref:'ASME Sec. V Art. 2',opts:['Ir-192','Co-60','Se-75','Tm-170'],ans:1,exp:'Co-60 (کبالت-60) انرژی بالاتری (1.17 و 1.33 MeV) دارد و برای ضخامت‌های بالای فولاد (تا 200mm) مناسب است. Ir-192 برای ضخامت‌های متوسط (تا 75mm) استفاده می‌شود.'},
+      {q:'علامت "B" در پشت کاست فیلم رادیوگرافی چه کاربردی دارد؟',ref:'ASME Sec. V Art. 2 T-285',opts:['نشان‌دهنده جهت پرتو','تشخیص Backscatter (پراکندگی پشتی)','تعیین فاصله کانونی','نشان‌دهنده نوع فیلم'],ans:1,exp:'علامت "B" (سربی) در پشت کاست برای تشخیص Backscatter radiation استفاده می‌شود. اگر تصویر "B" روی فیلم ظاهر شود، یعنی پراکندگی پشتی وجود دارد و فیلم Reject می‌شود.'}
+    ]
+  },
+  {
+    id:'ut', num:'03', title:'التراسونیک', titleEn:'Ultrasonic Testing (UT)',
+    icon:'', color:'#10b981', bg:'#ecfdf5', border:'#a7f3d0',
+    desc:'اسکن حجمی و اندازه‌گیری عیوب',
+    std:'ASME Sec. V Art. 4 · AWS D1.1 · ISO 17640',
+    questions:[
+      {q:'فرکانس معمول پروب UT برای بازرسی جوش فولاد چقدر است؟',ref:'ASME Sec. V Art. 4',opts:['0.5 - 1 MHz','2 - 5 MHz','10 - 15 MHz','20 - 25 MHz'],ans:1,exp:'فرکانس معمول پروب UT برای بازرسی جوش فولاد = 2 تا 5 MHz. فرکانس بالاتر = حساسیت بیشتر اما نفوذ کمتر. فرکانس پایین‌تر = نفوذ بیشتر اما رزولوشن کمتر.'},
+      {q:'Velocity (سرعت صوت) در فولاد کربنی چقدر است؟',ref:'ASME Sec. V Art. 4',opts:['1500 m/s','3200 m/s','5900 m/s (Longitudinal)','7500 m/s'],ans:2,exp:'سرعت صوت Longitudinal در فولاد کربنی ≈ 5900 m/s (5.9 mm/μs). سرعت Shear Wave ≈ 3200 m/s. این مقادیر برای کالیبراسیون دستگاه UT ضروری است.'},
+      {q:'DAC Curve در UT برای چه منظوری استفاده می‌شود؟',ref:'ASME Sec. V Art. 4 T-434',opts:['تعیین ضخامت','تعیین اندازه عیب و سطح Reference','کالیبراسیون سرعت','تعیین زاویه پروب'],ans:1,exp:'DAC (Distance Amplitude Correction) Curve برای تصحیح افت سیگنال با فاصله و تعیین اندازه عیب استفاده می‌شود. معمولاً با استفاده از سوراخ‌های SDH (Side Drilled Hole) در بلوک Reference رسم می‌شود.'},
+      {q:'کدام نوع موج UT برای تشخیص عیوب سطحی مناسب‌تر است؟',ref:'ASME Sec. V Art. 4',opts:['Longitudinal Wave','Shear Wave','Surface (Rayleigh) Wave','Plate Wave'],ans:2,exp:'Surface Wave یا Rayleigh Wave فقط در سطح منتشر می‌شود و برای تشخیص عیوب سطحی (Surface Cracks) بسیار حساس است. نفوذ آن ≈ یک طول موج است.'},
+      {q:'Angle Probe با زاویه 60° در فولاد چه نوع موجی تولید می‌کند؟',ref:'ASME Sec. V Art. 4',opts:['Longitudinal','Shear (Transverse)','Surface','Lamb'],ans:1,exp:'Angle Probe با زاویه 60° در فولاد، موج Shear (Transverse) تولید می‌کند. این زاویه رایج‌ترین زاویه برای بازرسی جوش‌های Butt Weld است.'}
+    ]
+  },
+  {
+    id:'cwi', num:'04', title:'بازرس جوش AWS', titleEn:'CWI - AWS Certified Inspector',
+    icon:'', color:'#f97316', bg:'#fff7ed', border:'#fed7aa',
+    desc:'مبانی بازرسی جوش مطابق AWS',
+    std:'AWS QC1 · AWS D1.1 · AWS B5.1',
+    questions:[
+      {q:'CWI مخفف چیست؟',ref:'AWS QC1',opts:['Certified Welding Instructor','Certified Welding Inspector','Certified Welding Engineer','Certified Welding Investigator'],ans:1,exp:'CWI = Certified Welding Inspector (بازرس جوش دارای گواهینامه AWS). این گواهینامه توسط AWS (American Welding Society) صادر می‌شود و یکی از معتبرترین مدارک بازرسی جوش در جهان است.'},
+      {q:'سه بخش اصلی آزمون CWI کدامند؟',ref:'AWS B5.1',opts:['Fundamentals, Practical, Performance','Fundamentals, Code, Practical','Theory, Lab, Field','Written, Oral, Practical'],ans:1,exp:'آزمون CWI شامل سه بخش است: Part A - Fundamentals (مبانی), Part B - Code (کد انتخابی مثل AWS D1.1), Part C - Practical (عملی بازرسی جوش).'},
+      {q:'اعتبار گواهینامه CWI چند سال است؟',ref:'AWS QC1',opts:['2 سال','3 سال','5 سال','مادام‌العمر'],ans:1,exp:'گواهینامه CWI هر 3 سال باید Renew شود. برای Renewal نیاز به اثبات فعالیت حرفه‌ای و گذراندن دوره‌های آموزشی است. بعد از 9 سال متوالی، آزمون Renewal لازم است.'},
+      {q:'WPS مخفف چیست؟',ref:'AWS D1.1 · ASME Sec. IX',opts:['Welding Procedure Specification','Weld Process Standard','Welder Performance Sheet','Welding Position System'],ans:0,exp:'WPS = Welding Procedure Specification (دستورالعمل روش جوشکاری). این سند تمام پارامترهای جوشکاری (جریان، ولتاژ، سرعت، نوع الکترود، Preheat و...) را مشخص می‌کند.'},
+      {q:'PQR برای چه منظوری استفاده می‌شود؟',ref:'ASME Sec. IX',opts:['تأیید صلاحیت جوشکار','ثبت نتایج تست‌های مکانیکی برای تأیید WPS','بازرسی نهایی جوش','تست غیرمخرب'],ans:1,exp:'PQR = Procedure Qualification Record. نتایج تست‌های مکانیکی (Tensile, Bend, Impact) روی نمونه Test Coupon را ثبت می‌کند و مبنای تأیید WPS است.'}
+    ]
+  },
+  {
+    id:'mt', num:'05', title:'ذرات مغناطیسی', titleEn:'Magnetic Particle Testing (MT)',
+    icon:'🧲', color:'#ef4444', bg:'#fef2f2', border:'#fecaca',
+    desc:'تشخیص عیوب سطحی و زیرسطحی',
+    std:'ASME Sec. V Art. 7 · ASTM E1444 · ISO 17638',
+    questions:[
+      {q:'MT فقط برای کدام نوع مواد قابل استفاده است؟',ref:'ASME Sec. V Art. 7',opts:['تمام فلزات','فقط مواد فرومغناطیس (آهن، نیکل، کبالت)','فقط استنلس استیل','فقط آلومینیوم'],ans:1,exp:'MT فقط برای مواد فرومغناطیس (Ferromagnetic) قابل استفاده است: آهن، نیکل، کبالت و آلیاژهای آنها. استنلس استیل آستنیتی (304, 316) و آلومینیوم فرومغناطیس نیستند.'},
+      {q:'کدام نوع عیب با MT بهتر تشخیص داده می‌شود؟',ref:'ASME Sec. V Art. 7',opts:['Porosity داخلی','Crack سطحی و زیرسطحی','Slag Inclusion عمیق','Lack of Fusion مرکزی'],ans:1,exp:'MT بهترین روش برای تشخیص Crackهای سطحی و زیرسطحی (تا عمق 6mm) در مواد فرومغناطیس است. عیوب باید عمود یا با زاویه نسبت به میدان مغناطیسی باشند.'},
+      {q:'Continuous Method در MT چه زمانی استفاده می‌شود؟',ref:'ASTM E1444',opts:['برای عیوب زیرسطحی','برای عیوب سطحی - جریان هنگام پاشش ذرات قطع نمی‌شود','برای مواد غیرفرومغناطیس','فقط برای DC'],ans:1,exp:'Continuous Method: جریان مغناطیسی هنگام پاشش ذرات قطع نمی‌شود. حساسیت بالاتر برای عیوب سطحی. Residual Method: جریان قطع شده و فقط میدان باقیمانده استفاده می‌شود - برای عیوب زیرسطحی.'},
+      {q:'حداقل شدت میدان مغناطیسی برای MT چقدر است؟',ref:'ASTM E1444',opts:['10 Gauss','30 Gauss','50 Gauss','100 Gauss'],ans:1,exp:'حداقل شدت میدان مغناطیسی برای MT = 30 Gauss (2400 A/m) مطابق ASTM E1444. شدت میدان باید با Hall Effect Meter یا Pie Gauge اندازه‌گیری شود.'},
+      {q:'کدام نوع جریان در MT نفوذ بیشتری دارد؟',ref:'ASME Sec. V Art. 7',opts:['AC (Alternating Current)','DC (Direct Current)','HWAC (Half-Wave AC)','هیچکدام'],ans:1,exp:'DC (Direct Current) نفوذ بیشتری در ماده دارد و برای تشخیص عیوب زیرسطحی بهتر است. AC فقط عیوب سطحی را نشان می‌دهد (Skin Effect). HWAC بین این دو است.'}
+    ]
+  },
+  {
+    id:'pt', num:'06', title:'مایعات نافذ', titleEn:'Penetrant Testing (PT)',
+    icon:'💧', color:'#06b6d4', bg:'#ecfeff', border:'#a5f3fc',
+    desc:'تشخیص عیوب سطحی باز',
+    std:'ASME Sec. V Art. 6 · ASTM E165 · ISO 3452',
+    questions:[
+      {q:'PT برای تشخیص کدام نوع عیوب استفاده می‌شود؟',ref:'ASME Sec. V Art. 6',opts:['عیوب زیرسطحی','عیوب سطحی باز (Open to Surface)','عیوب داخلی','عیوب حجمی'],ans:1,exp:'PT فقط عیوب سطحی که راه به سطح دارند (Open to Surface) را تشخیص می‌دهد: Crack سطحی، Porosity باز، Lack of Fusion سطحی. عیوب بسته یا زیرسطحی قابل تشخیص نیستند.'},
+      {q:'کدام مرحله در PT مهم‌ترین مرحله است؟',ref:'ASTM E165',opts:['اعمال Developer','اعمال Penetrant','تمیزکاری اولیه (Pre-cleaning)','شستشو'],ans:2,exp:'Pre-cleaning (تمیزکاری اولیه) مهم‌ترین مرحله PT است. اگر سطح تمیز نباشد، Penetrant نمی‌تواند وارد عیب شود. آلودگی‌ها: روغن، گریس، زنگ، رنگ، Scale.'},
+      {q:'Dwell Time در PT به چه معناست؟',ref:'ASME Sec. V Art. 6 T-672',opts:['زمان شستشو','زمان تماس Penetrant با سطح','زمان خشک شدن Developer','زمان بازرسی'],ans:1,exp:'Dwell Time = زمان تماس Penetrant با سطح (Penetration Time). معمولاً 5 تا 30 دقیقه بسته به نوع Penetrant، متریال و دما. دمای استاندارد: 10-50°C.'},
+      {q:'کدام نوع Penetrant حساسیت بالاتری دارد؟',ref:'ASTM E165',opts:['Water Washable (Type 1)','Post Emulsifiable - Lipophilic (Type 2)','Post Emulsifiable - Hydrophilic (Type 3)','Solvent Removable (Type 4)'],ans:2,exp:'Post Emulsifiable - Hydrophilic (Type 3) حساسیت بالاتری دارد و برای عیوب بسیار ریز (Tight Cracks) مناسب است. Type 1 (Water Washable) ساده‌تر اما حساسیت کمتر.'},
+      {q:'دمای استاندارد برای انجام PT چقدر است؟',ref:'ASME Sec. V Art. 6 T-672',opts:['0-10°C','10-50°C (50-125°F)','50-100°C','100-150°C'],ans:1,exp:'دمای استاندارد PT = 10-50°C (50-125°F) مطابق ASME Sec. V Art. 6. خارج از این محدوده نیاز به Qualification دارد. دمای بسیار پایین = ویسکوزیته بالا، دمای بالا = تبخیر سریع.'}
+    ]
+  },
+  {
+    id:'et', num:'07', title:'جریان گردابی', titleEn:'Eddy Current Testing (ET)',
+    icon:'⚡', color:'#eab308', bg:'#fefce8', border:'#fde047',
+    desc:'تشخیص عیوب سطحی و اندازه‌گیری ضخامت',
+    std:'ASME Sec. V Art. 8 · ASTM E309 · ISO 15549',
+    questions:[
+      {q:'ET برای کدام نوع مواد قابل استفاده است؟',ref:'ASME Sec. V Art. 8',opts:['فقط فرومغناطیس','فقط مواد رسانای الکتریسیته','فقط غیررسانا','همه مواد'],ans:1,exp:'ET فقط برای مواد رسانای الکتریسیته (Conductive Materials) قابل استفاده است: تمام فلزات (آلومینیوم، مس، فولاد، تیتانیوم). مواد غیررسانا مثل پلاستیک و سرامیک قابل تست نیستند.'},
+      {q:'Skin Effect در ET به چه معناست؟',ref:'ASME Sec. V Art. 8',opts:['اثر سطحی - جریان فقط در سطح نفوذ می‌کند','اثر دما','اثر فرکانس','اثر ضخامت'],ans:0,exp:'Skin Effect: جریان گردابی فقط در لایه سطحی ماده نفوذ می‌کند. عمق نفوذ (Standard Depth of Penetration) با افزایش فرکانس کاهش می‌یابد. δ = 1/√(π×f×μ×σ)'},
+      {q:'کدام پارامتر عمق نفوذ ET را افزایش می‌دهد؟',ref:'ASME Sec. V Art. 8',opts:['افزایش فرکانس','کاهش فرکانس','افزایش رسانایی','کاهش نفوذپذیری'],ans:1,exp:'کاهش فرکانس = افزایش عمق نفوذ. فرکانس پایین برای عیوب زیرسطحی و ضخامت‌های بالا. فرکانس بالا برای عیوب سطحی و رزولوشن بهتر.'},
+      {q:'ET برای کدام کاربرد مناسب نیست؟',ref:'ASME Sec. V Art. 8',opts:['تشخیص Crack سطحی','اندازه‌گیری ضخامت پوشش','تشخیص عیوب داخلی عمیق','جداسازی آلیاژها (Sorting)'],ans:2,exp:'ET برای عیوب داخلی عمیق مناسب نیست (محدودیت Skin Effect). کاربردهای اصلی ET: Crack سطحی، Thickness measurement، Coating thickness، Material sorting، Heat treatment verification.'},
+      {q:'Impedance Plane Diagram در ET چه کاربردی دارد؟',ref:'ASME Sec. V Art. 8',opts:['نمایش عمق نفوذ','تحلیل سیگنال و تشخیص نوع عیب','کالیبراسیون دستگاه','تعیین فرکانس'],ans:1,exp:'Impedance Plane Diagram برای تحلیل سیگنال ET استفاده می‌شود. تغییرات Impedance ناشی از عیوب، ضخامت، رسانایی و نفوذپذیری را نشان می‌دهد و به تفکیک این عوامل کمک می‌کند.'}
+    ]
+  }
+];
+
+// ============ STATE ============
+let currentDisc = null;
+let currentQ = 0;
+let UA = {}; // user answers {qIndex: selectedOption}
+
+// ============ INIT ============
+function init(){
+  renderDisciplines();
 }
-function submit(){
+
+function renderDisciplines(){
+  const grid = document.getElementById('discGrid');
+  grid.innerHTML = DISCIPLINES.map((d,i)=>`
+    <div class="disc-card" style="--card-color:${d.color};--card-bg:${d.bg};--card-border:${d.border};--card-color-light:${d.bg};" onclick="selectDisc(${i})">
+      <div class="disc-icon" style="background:${d.bg};">${d.icon}</div>
+      <div class="disc-num" style="color:${d.color};background:${d.bg};border-color:${d.border};">DISCIPLINE ${d.num}</div>
+      <div class="disc-title">${d.title}</div>
+      <div class="disc-title-en">${d.titleEn}</div>
+      <div class="desc-desc">${d.desc}</div>
+      <div class="disc-meta">
+        <span>📝 ${d.questions.length} سوال</span>
+        <span>📚 ${d.std.split('·')[0]}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectDisc(idx){
+  currentDisc = idx;
+  currentQ = 0;
+  UA = {};
+  document.querySelectorAll('.disc-card').forEach((c,i)=>{
+    c.classList.toggle('active', i===idx);
+  });
+  document.getElementById('mainArea').style.display = 'grid';
+  document.getElementById('result').classList.remove('show');
+  document.getElementById('result').style.display = 'none';
+  renderQuestion();
+  renderSidebar();
+  window.scrollTo({top:document.getElementById('mainArea').offsetTop-80,behavior:'smooth'});
+}
+
+function renderQuestion(){
+  const d = DISCIPLINES[currentDisc];
+  const q = d.questions[currentQ];
+  const area = document.getElementById('qArea');
+  const isAnswered = UA[currentQ] !== undefined;
+  const cor = q.ans;
+  
+  area.innerHTML = `
+    <div class="q-header">
+      <div>
+        <div class="q-header-title">${d.icon} ${d.title} — ${d.titleEn}</div>
+        <div class="q-header-sub">${d.std}</div>
+      </div>
+      <div class="q-counter">سوال ${currentQ+1} از ${d.questions.length}</div>
+    </div>
+    
+    <div class="qcard ${isAnswered?'done':''}">
+      <div class="qhead">
+        <div class="qnum" style="background:${d.bg};border-color:${d.border};color:${d.color};">${currentQ+1}</div>
+        <div class="qmeta">
+          <div class="qch" style="color:${d.color};">${d.titleEn}</div>
+          <div class="qref">${q.ref}</div>
+          <div class="qtext">${q.q}</div>
+        </div>
+      </div>
+      <div class="qopts">
+        ${q.opts.map((opt,i)=>{
+          let cls = 'opt';
+          let ic = String.fromCharCode(65+i);
+          if(isAnswered){
+            cls += ' dis';
+            if(i===cor){cls+=' ok';ic='✓';}
+            if(i===UA[currentQ] && i!==cor){cls+=' no';ic='✗';}
+          }
+          return `<div class="${cls}" onclick="answer(${i})"><span class="opt-ic">${ic}</span><span class="opt-lbl">${['الف','ب','ج','د'][i]}</span>${opt}</div>`;
+        }).join('')}
+      </div>
+      ${isAnswered?`
+        <div class="exp show ${UA[currentQ]===cor?'ok':'no'}">
+          <div class="exp-hd">${UA[currentQ]===cor?'✅ پاسخ صحیح':'❌ پاسخ نادرست'} — گزینه ${['الف','ب','ج','د'][cor]}</div>
+          <div class="exp-body">${q.exp}</div>
+        </div>
+      `:''}
+    </div>
+    
+    <div class="q-nav">
+      <button class="nav-btn nav-prev" onclick="prevQ()" ${currentQ===0?'disabled':''}>→ سوال قبلی</button>
+      ${currentQ===d.questions.length-1?
+        `<button class="nav-btn nav-next" onclick="showResult()" ${Object.keys(UA).length<d.questions.length?'disabled':''}>📊 مشاهده نتیجه</button>`:
+        `<button class="nav-btn nav-next" onclick="nextQ()">سوال بعدی ←</button>`
+      }
+    </div>
+  `;
+  updateSidebar();
+}
+
+function answer(i){
+  if(UA[currentQ]!==undefined)return;
+  UA[currentQ]=i;
+  renderQuestion();
+}
+
+function nextQ(){
+  const d = DISCIPLINES[currentDisc];
+  if(currentQ<d.questions.length-1){currentQ++;renderQuestion();}
+}
+function prevQ(){
+  if(currentQ>0){currentQ--;renderQuestion();}
+}
+
+function renderSidebar(){
+  const d = DISCIPLINES[currentDisc];
+  const nav = document.getElementById('sbNav');
+  nav.innerHTML = d.questions.map((q,i)=>{
+    let cls='sb-nav-item';
+    let ic = i+1;
+    if(UA[i]!==undefined){
+      cls += UA[i]===q.ans?' correct':' wrong';
+      ic = UA[i]===q.ans?'✓':'✗';
+    }
+    if(i===currentQ)cls+=' current';
+    return `<div class="${cls}" onclick="jumpTo(${i})"><span class="sb-nav-ic">${ic}</span>سوال ${i+1}</div>`;
+  }).join('');
+  updateSidebar();
+}
+
+function updateSidebar(){
+  const d = DISCIPLINES[currentDisc];
+  const total = d.questions.length;
+  const done = Object.keys(UA).length;
+  const p = Math.round(done/total*100);
+  document.getElementById('sbPf').style.width = p+'%';
+  document.getElementById('sbPt').textContent = `${done} از ${total} سوال`;
+  document.getElementById('sbPp').textContent = p+'٪';
+  
+  let cor=0;
+  for(let i in UA){if(UA[i]===d.questions[i].ans)cor++;}
+  const acc = done>0?Math.round(cor/done*100):0;
+  document.getElementById('sbScore').textContent = acc+'%';
+}
+
+function jumpTo(i){currentQ=i;renderQuestion();}
+
+function showResult(){
+  const d = DISCIPLINES[currentDisc];
+  const total = d.questions.length;
   let cor=0,wrg=0,skp=0;
-  for(let i=1;i<=35;i++){
+  for(let i=0;i<total;i++){
     if(UA[i]===undefined)skp++;
-    else if(UA[i]===ANS[i])cor++;
+    else if(UA[i]===d.questions[i].ans)cor++;
     else wrg++;
   }
-  const p=Math.round(cor/35*100);
-  document.getElementById('rscore').textContent=cor+'/35';
-  document.getElementById('rcor').textContent=cor;
-  document.getElementById('rwrg').textContent=wrg;
-  document.getElementById('rskp').textContent=skp;
-  let lbl,gr,clr;
-  if(p>=90){lbl='عالی — آمادگی کامل';gr='A — ممتاز';clr='var(--green-l)';}
-  else if(p>=75){lbl='خوب — قبول با مرتبه';gr='B — خوب';clr='var(--cyan)';}
-  else if(p>=60){lbl='قابل قبول — مرور کنید';gr='C — متوسط';clr='var(--amber)';}
-  else{lbl='نیاز به مطالعه بیشتر';gr='D — تلاش بیشتر';clr='var(--red-l)';}
-  document.getElementById('rlabel').textContent=lbl;
-  const g=document.getElementById('rgrade');
-  g.textContent=gr;g.style.cssText=`background:rgba(0,0,0,.2);border:1px solid ${clr};color:${clr};`;
-  const r=document.getElementById('result');
-  r.classList.add('show');
-  r.scrollIntoView({behavior:'smooth',block:'center'});
-  document.getElementById('subBtn').disabled=true;
+  const p = Math.round(cor/total*100);
+  document.getElementById('rscore').textContent = cor+'/'+total;
+  document.getElementById('rcor').textContent = cor;
+  document.getElementById('rwrg').textContent = wrg;
+  document.getElementById('rskp').textContent = skp;
+  
+  let lbl,gr;
+  if(p>=80){lbl='تبریک! شما قبول شدید 🎉';gr='PASS — ممتاز';}
+  else if(p>=60){lbl='قابل قبول — نیاز به مرور';gr='BORDERLINE';}
+  else{lbl='نیاز به مطالعه بیشتر';gr='FAIL — تلاش مجدد';}
+  document.getElementById('rlabel').textContent = lbl;
+  document.getElementById('rgrade').textContent = gr;
+  
+  document.getElementById('result').style.display = 'block';
+  setTimeout(()=>document.getElementById('result').classList.add('show'),10);
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
 }
-function retry(){
-  Object.keys(UA).forEach(k=>delete UA[k]);done=0;
-  document.querySelectorAll('.opt').forEach((o,i)=>{
-    o.classList.remove('ok','no','dis');
-    const labels=['A','B','C','D'];
-    o.querySelector('.opt-ic').textContent=labels[i%4];
-  });
-  document.querySelectorAll('.exp').forEach(e=>e.classList.remove('show','ok','no'));
-  document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('done'));
-  document.getElementById('pf').style.width='0%';
-  document.getElementById('pt').textContent='پیشرفت: ۰ از ۳۵ سوال';
-  document.getElementById('pp').textContent='۰٪';
+
+function retryDisc(){
+  UA = {};
+  currentQ = 0;
   document.getElementById('result').classList.remove('show');
-  document.getElementById('subBtn').disabled=false;
-  document.getElementById('subBtn').style.boxShadow='0 6px 20px rgba(37,99,235,.35)';
+  document.getElementById('result').style.display = 'none';
+  renderQuestion();
+  window.scrollTo({top:document.getElementById('mainArea').offsetTop-80,behavior:'smooth'});
+}
+
+function backToDisc(){
+  document.getElementById('mainArea').style.display = 'none';
+  document.getElementById('result').style.display = 'none';
+  document.querySelectorAll('.disc-card').forEach(c=>c.classList.remove('active'));
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+init();
 </script>
 </body>
 </html>
