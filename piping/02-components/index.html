@@ -4,77 +4,166 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اجزای پایپینگ — آکادمی پایپینگ و جوشکاری</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/300.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/500.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/700.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/800.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/700.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/800.css" rel="stylesheet">
 <style>
+  :root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --primary-light: #EFF6FF;
+    --slate-900: #0F172A;
+    --slate-800: #1E293B;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748B;
+    --slate-200: #E2E8F0;
+    --slate-100: #F1F5F9;
+    --slate-50: #F8FAFC;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --radius-sm: 6px;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:"Vazirmatn","Inter",sans-serif; background:#F8FAFC; color:#0F172A; line-height:1.8; }
+  html { scroll-behavior:smooth; }
+  body { font-family:"Vazirmatn","Inter",sans-serif; background:#F1F5F9; color:var(--slate-800); line-height:1.8; -webkit-font-smoothing:antialiased; }
   a { text-decoration:none; color:inherit; }
 
-  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.97); border-bottom:1px solid #1e293b; }
-  .navbar-inner { max-width:1000px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; }
-  .logo { display:flex; align-items:center; gap:8px; color:white; font-weight:700; font-size:14px; }
-  .logo-icon { width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:800; }
-  .back-link { color:#94a3b8; font-size:13px; }
+  /* Progress bar */
+  #progressBar { position:fixed; top:0; right:0; height:3px; width:0%; background:linear-gradient(270deg,#2563EB,#06B6D4); z-index:100; }
+
+  /* Navbar */
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.95); backdrop-filter:blur(8px); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1280px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:10px; color:white; font-weight:700; font-size:15px; }
+  .logo-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:800; box-shadow:0 2px 8px rgba(37,99,235,0.4); font-family:"Inter",sans-serif; }
+  .back-link { color:#94a3b8; font-size:13px; font-family:"Vazirmatn",sans-serif; transition:color 0.2s; display:flex; align-items:center; gap:6px; }
   .back-link:hover { color:#06B6D4; }
 
-  .breadcrumb { max-width:760px; margin:24px auto 0; padding:0 20px; font-size:12px; color:#64748b; }
-  .breadcrumb span { color:#2563EB; font-weight:700; }
+  /* Hero & Container */
+  .main-wrapper { max-width:1280px; margin:0 auto; padding:32px 24px 80px; }
 
-  .content { max-width:760px; margin:0 auto; padding:16px 20px 60px; }
-  h1 { font-size:26px; font-weight:800; margin-bottom:6px; }
-  .subtitle { color:#64748b; font-size:14px; margin-bottom:30px; }
-  p.lead { line-height:1.9; margin-bottom:20px; color:#334155; font-size:14px; }
-  h2 { font-size:19px; font-weight:800; margin:36px 0 14px; color:#0F172A; border-bottom:2px solid #e2e8f0; padding-bottom:8px; }
-  h3 { font-size:15px; font-weight:700; margin:18px 0 10px; color:#1e293b; }
+  .page-header { background:white; border-radius:var(--radius-lg); padding:32px; margin-bottom:28px; border:1px solid var(--slate-200); box-shadow:var(--shadow-sm); }
 
-  .callout { border-radius:10px; padding:14px 16px; margin:18px 0; font-size:13px; line-height:1.8; border-right:4px solid; }
-  .callout-def { background:#eff6ff; border-color:#2563EB; }
-  .callout-warn { background:#fff7ed; border-color:#F97316; }
-  .callout-tip { background:#ecfeff; border-color:#06B6D4; }
-  .callout-danger { background:#fef2f2; border-color:#dc2626; }
-  .callout-label { font-weight:800; font-size:11px; margin-bottom:6px; display:block; text-transform:uppercase; letter-spacing:0.5px; font-family:"Inter",sans-serif; }
-  .callout-def .callout-label { color:#2563EB; }
-  .callout-warn .callout-label { color:#F97316; }
-  .callout-tip .callout-label { color:#06B6D4; }
-  .callout-danger .callout-label { color:#dc2626; }
+  .header-image-container { position:relative; width:100%; height:260px; border-radius:var(--radius-md); overflow:hidden; margin-bottom:24px; box-shadow:var(--shadow-sm); }
+  .header-image { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+  .image-overlay { position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(to top, rgba(15,23,42,0.85), transparent); display:flex; align-items:flex-end; }
+  .image-tag { background:rgba(37,99,235,0.9); color:white; font-size:12px; font-weight:700; font-family:"Inter",sans-serif; padding:5px 12px; border-radius:6px; backdrop-filter:blur(4px); }
 
-  .comp-card { background:white; border:1px solid #e2e8f0; border-radius:14px; padding:22px; margin-bottom:20px; }
-  .comp-card-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
-  .comp-badge { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; font-size:13px; font-weight:800; flex-shrink:0; font-family:"Inter",sans-serif; }
-  .comp-title { font-size:17px; font-weight:800; color:#0F172A; }
-  .comp-title span { font-family:"Inter","Vazirmatn",sans-serif; font-size:13px; font-weight:500; color:#64748b; margin-right:8px; }
+  .breadcrumb { font-size:13px; color:var(--slate-500); margin-bottom:12px; display:flex; align-items:center; gap:6px; }
+  .breadcrumb span { color:var(--primary); font-weight:700; }
 
-  .props-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px; margin-bottom:16px; }
-  .prop-item { background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; font-size:12px; line-height:1.6; }
-  .prop-label { font-size:10px; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; display:block; margin-bottom:3px; font-family:"Inter",sans-serif; }
+  h1 { font-size:28px; font-weight:800; color:var(--slate-900); margin-bottom:8px; }
+  .subtitle { color:var(--slate-500); font-size:15px; margin-bottom:20px; }
+  p.lead { line-height:1.9; color:var(--slate-700); font-size:15px; margin:0; }
 
-  .items-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin:14px 0; }
-  .item-card { background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px; }
-  .item-name { font-size:13px; font-weight:700; color:#0F172A; margin-bottom:4px; font-family:"Inter","Vazirmatn",sans-serif; }
-  .item-name-fa { font-size:12px; font-weight:600; color:#475569; margin-bottom:4px; }
-  .item-desc { font-size:12px; color:#64748b; line-height:1.6; }
-  .item-std { font-size:10px; font-weight:700; color:#2563EB; font-family:"Inter",sans-serif; margin-top:6px; display:block; }
+  /* Section Title */
+  .section-header { display:flex; align-items:center; gap:12px; margin:40px 0 20px; border-bottom:2px solid var(--slate-200); padding-bottom:12px; }
+  .section-header h2 { font-size:22px; font-weight:800; color:var(--slate-900); }
+  .section-number { background:var(--slate-900); color:white; font-weight:800; font-size:14px; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:"Vazirmatn",sans-serif; flex-shrink:0; }
 
-  .std-section { background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px 16px; margin-top:14px; }
-  .std-section-title { font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px; font-family:"Inter",sans-serif; }
-  .std-row { display:flex; align-items:baseline; gap:8px; margin-bottom:6px; font-size:12px; }
-  .std-row:last-child { margin-bottom:0; }
-  .std-code { font-family:"Inter",sans-serif; font-weight:700; color:#2563EB; flex-shrink:0; font-size:11px; min-width:130px; }
+  /* Callouts */
+  .callout { border-radius:var(--radius-md); padding:18px 20px; margin:20px 0; font-size:13.5px; line-height:1.8; border-right:4px solid; position:relative; box-shadow:var(--shadow-sm); }
+  .callout-def { background:#eff6ff; border-color:#2563EB; color:#1e40af; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; color:#9a3412; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; color:#155e75; }
+  .callout-danger { background:#fef2f2; border-color:#dc2626; color:#991b1b; }
+  .callout-label { font-weight:800; font-size:12px; margin-bottom:4px; display:inline-block; text-transform:uppercase; letter-spacing:0.5px; font-family:"Inter","Vazirmatn",sans-serif; }
 
-  table.main-table { width:100%; border-collapse:collapse; margin:16px 0; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); font-size:12px; }
-  table.main-table th { background:#0F172A; color:white; padding:10px 12px; text-align:right; font-weight:700; }
-  table.main-table td { padding:10px 12px; border-top:1px solid #f1f5f9; vertical-align:top; line-height:1.6; }
-  table.main-table tr:nth-child(even) td { background:#f8fafc; }
-  .en { font-family:"Inter","Vazirmatn",sans-serif; }
-  .pill { display:inline-flex; font-size:10px; font-weight:700; font-family:"Inter",sans-serif; background:#f1f5f9; color:#475569; padding:2px 7px; border-radius:4px; margin-left:3px; border:1px solid #e2e8f0; }
+  /* Material Cards */
+  .mat-card { background:white; border:1px solid var(--slate-200); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:32px; transition:box-shadow 0.2s; }
+  .mat-card:hover { box-shadow:var(--shadow-md); }
+  .mat-card-header { padding:20px 24px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--slate-200); }
+  .mat-card-header-left { display:flex; align-items:center; gap:14px; }
+  .mat-badge { font-size:14px; font-weight:800; padding:6px 14px; border-radius:var(--radius-sm); font-family:"Inter",sans-serif; letter-spacing:1px; flex-shrink:0; }
+  .mat-title { font-size:18px; font-weight:800; color:var(--slate-900); }
+  .mat-title span { font-size:13px; font-weight:400; color:var(--slate-500); display:block; margin-top:2px; }
+  .mat-card-body { padding:24px; }
 
-  .nav-footer { display:flex; justify-content:space-between; margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0; }
-  .nav-btn { font-size:13px; font-weight:700; padding:10px 18px; border-radius:10px; }
-  .nav-prev { color:#64748b; }
-  .nav-next { background:#2563EB; color:white; }
+  /* Grid layouts */
+  .props-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin:20px 0; }
+  .prop-item { background:var(--slate-50); border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:12px 16px; }
+  .prop-label { font-size:11px; font-weight:700; color:var(--slate-500); text-transform:uppercase; letter-spacing:0.5px; display:block; margin-bottom:4px; font-family:"Inter","Vazirmatn",sans-serif; }
+  .prop-value { font-size:13px; font-weight:600; color:var(--slate-800); }
+
+  /* Tables */
+  .table-responsive { width:100%; overflow-x:auto; margin:20px 0; border:1px solid var(--slate-200); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); }
+  .grade-table { width:100%; border-collapse:collapse; font-size:13px; text-align:right; white-space:nowrap; }
+  .grade-table th { background:var(--slate-900); color:white; padding:12px 16px; font-weight:700; }
+  .grade-table td { padding:12px 16px; border-bottom:1px solid var(--slate-200); background:white; color:var(--slate-700); vertical-align:middle; white-space:normal; min-width:110px; }
+  .grade-table tr:last-child td { border-bottom:none; }
+  .grade-table tr:hover td { background:var(--slate-50); }
+
+  .grade-name { font-family:"Inter",sans-serif; font-weight:700; color:var(--slate-900); font-size:14px; }
+  .std-pill { display:inline-flex; font-size:11px; font-weight:700; font-family:"Inter",sans-serif; background:var(--slate-100); color:var(--slate-700); padding:3px 8px; border-radius:var(--radius-sm); border:1px solid var(--slate-200); margin:2px; }
+
+  /* Interactive component selector */
+  .doc-flow { display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 14px; }
+  .flow-step { flex:1; min-width:140px; background:white; border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:16px 12px 12px; cursor:pointer; text-align:center; transition:all .2s; position:relative; }
+  .flow-step:hover { border-color:#bfdbfe; box-shadow:var(--shadow-md); transform:translateY(-2px); }
+  .flow-step.active { border-color:var(--primary); background:var(--primary-light); box-shadow:0 4px 12px rgba(37,99,235,.18); }
+  .flow-step-code { font-family:"Inter",sans-serif; font-weight:800; font-size:15px; color:var(--slate-900); display:block; }
+  .flow-step.active .flow-step-code { color:var(--primary-dark); }
+  .flow-step-name { font-size:11px; color:var(--slate-500); display:block; margin-top:2px; }
+  .flow-step-num { position:absolute; top:6px; right:10px; font-family:"Inter",sans-serif; font-size:10px; font-weight:800; color:#94a3b8; }
+  .flow-detail { background:white; border:1px solid var(--slate-200); border-right:4px solid var(--primary); border-radius:var(--radius-md); padding:18px 20px; font-size:13.5px; margin-bottom:20px; box-shadow:var(--shadow-sm); animation:fadeIn .35s ease; }
+  .flow-detail h4 { font-size:14.5px; font-weight:800; color:var(--slate-900); margin-bottom:6px; }
+  .flow-detail p { color:var(--slate-700); line-height:1.9; }
+  .flow-detail-meta { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+  .flow-meta-pill { font-size:11px; font-weight:700; background:var(--primary-light); color:var(--primary-dark); padding:4px 10px; border-radius:var(--radius-sm); border:1px solid #bfdbfe; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+
+  /* References Section */
+  .std-section { background:var(--slate-50); border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:18px 20px; margin-top:20px; }
+  .std-section-title { font-size:12px; font-weight:800; color:var(--slate-500); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px; font-family:"Inter","Vazirmatn",sans-serif; }
+  .std-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:10px; }
+  .std-row { display:flex; align-items:flex-start; gap:10px; font-size:12.5px; background:white; padding:10px 12px; border-radius:var(--radius-sm); border:1px solid var(--slate-200); }
+  .std-code { font-family:"Inter",sans-serif; font-weight:800; color:var(--primary); flex-shrink:0; font-size:11.5px; background:var(--primary-light); padding:2px 6px; border-radius:4px; }
+
+  /* Footer Navigation */
+  .nav-footer { display:flex; justify-content:space-between; gap:16px; margin-top:40px; padding-top:24px; border-top:1px solid var(--slate-200); }
+  .nav-btn { font-size:14px; font-weight:700; padding:12px 24px; border-radius:var(--radius-md); transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+  .nav-prev { background:white; color:var(--slate-700); border:1px solid var(--slate-200); }
+  .nav-prev:hover { background:var(--slate-100); border-color:#cbd5e1; }
+  .nav-next { background:var(--primary); color:white; box-shadow:0 2px 8px rgba(37,99,235,0.3); }
+  .nav-next:hover { background:var(--primary-dark); }
+
+  /* Back to top */
+  #toTop { position:fixed; bottom:24px; left:24px; width:44px; height:44px; border-radius:12px; background:var(--slate-900); color:white; border:none; cursor:pointer; opacity:0; pointer-events:none; transition:all .3s; box-shadow:var(--shadow-lg); font-size:18px; z-index:60; }
+  #toTop.show { opacity:1; pointer-events:auto; }
+  #toTop:hover { background:var(--primary); transform:translateY(-3px); }
+
+  /* Reveal animation */
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+  @media (max-width: 768px) {
+    .main-wrapper { padding:16px 12px; }
+    .page-header { padding:20px; }
+    .header-image-container { height:180px; }
+    .mat-card-header { flex-direction:column; align-items:flex-start; gap:12px; }
+    .std-grid { grid-template-columns:1fr; }
+    .nav-footer { flex-direction:column; }
+    .nav-btn { justify-content:center; width:100%; }
+    .flow-step { min-width:calc(50% - 6px); }
+  }
 </style>
 </head>
 <body>
+
+<div id="progressBar"></div>
 
 <nav class="navbar">
   <div class="navbar-inner">
@@ -86,422 +175,656 @@
   </div>
 </nav>
 
-<div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۲ — اجزای پایپینگ</span></div>
+<div class="main-wrapper">
 
-<div class="content">
-  <h1>اجزای پایپینگ</h1>
-  <div class="subtitle">شناخت کامل اجزای سیستم لوله‌کشی صنعتی — از لوله تا فلنج، شیر و اتصالات</div>
+  <header class="page-header reveal">
+    <div class="header-image-container">
+      <img src="https://image.qwenlm.ai/public_source/f2c9300f-0c2e-4062-8d18-84c20491682a/1fe324092-7dab-4fb8-8389-e19a316e8c7f.png" alt="اجزای پایپینگ" class="header-image">
+      <div class="image-overlay">
+        <span class="image-tag">Piping Components &amp; Line Assembly</span>
+      </div>
+    </div>
 
-  <p class="lead">یک سیستم پایپینگ صنعتی از مجموعه‌ای از اجزای استاندارد تشکیل شده که هر کدام وظیفه مشخصی دارند. شناخت دقیق این اجزا، استانداردهای حاکم بر آن‌ها و معیارهای انتخاب صحیح، پایه‌ی هر بازرسی و هر تصمیم فنی در پروژه است.</p>
+    <div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۲ — اجزای پایپینگ</span></div>
+    <h1>اجزای پایپینگ</h1>
+    <div class="subtitle">شناخت کامل لوله، فلنج، اتصالات، شیرها، گسکت و بولتینگ — با مرجع استانداردهای ASME، API و MSS</div>
+    <p class="lead">یک خط لوله (Piping Line) از مجموعه‌ای از اجزای استاندارد تشکیل شده: لوله به‌عنوان بدنه اصلی، اتصالات برای تغییر مسیر و انشعاب، فلنج برای نقاط قابل بازشو، گسکت و بولتینگ برای آب‌بندی، و شیر برای قطع و تنظیم جریان. هر جزء استاندارد ابعادی، کلاس فشاری و الزامات متریال خاص خود را دارد — و همه باید با Pipe Class خط سازگار باشند.</p>
 
-  <div class="callout callout-warn">
-    <span class="callout-label">نکته بحرانی — تطبیق Rating</span>
-    تمام اجزای یک سیستم پایپینگ باید از نظر <strong>Pressure Rating، Temperature Rating و Material Class</strong> با یکدیگر سازگار باشند. طبق <strong>ASME B31.3 Para. 305</strong>، اتصال اجزا با Rating‌های ناسازگار یک نقص طراحی بحرانی است.
+    <div class="callout callout-warn" style="margin-bottom:0; margin-top:20px;">
+      <span class="callout-label">نکته بحرانی</span><br>
+      طبق <strong>ASME B31.3, Chapter III (Para. 304–314)</strong>، رتینگ هر جزء باید با شرایط طراحی خط سازگار باشد. در عمل، کلاس تمام اجزا از <strong>PMS (Pipe Class)</strong> گرفته می‌شود — نصب فلنج Class 150 روی خط Class 300 ممنوع است، حتی اگر از نظر ظاهری «کافی» به نظر برسد.
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۱</div>
+    <h2>اجزای تشکیل‌دهنده یک خط لوله</h2>
   </div>
 
-  <!-- ══════════════════════════════════════════ -->
-  <h2>۱. لوله (Pipe)</h2>
-
-  <div class="comp-card">
-    <div class="comp-card-header">
-      <div class="comp-badge" style="background:#eff6ff;color:#2563EB;">P</div>
-      <div class="comp-title">Pipe <span>عنصر اصلی انتقال سیال</span></div>
-    </div>
-
-    <p class="lead" style="margin-bottom:14px;">لوله قطعه اصلی هر سیستم پایپینگ است. اندازه آن با دو پارامتر تعریف می‌شود: <strong>NPS (Nominal Pipe Size)</strong> برای قطر اسمی و <strong>Schedule</strong> برای ضخامت دیواره. این دو پارامتر با هم Wall Thickness و در نتیجه Pressure Rating خط را تعیین می‌کنند.</p>
-
-    <div class="props-grid">
-      <div class="prop-item"><span class="prop-label">تعریف اندازه</span>NPS + Schedule → Wall Thickness (ASME B36.10M)</div>
-      <div class="prop-item"><span class="prop-label">محدوده NPS</span>از NPS ½" تا NPS 80"</div>
-      <div class="prop-item"><span class="prop-label">Schedule‌های رایج</span>SCH 40، SCH 80، SCH 160، XXS</div>
-      <div class="prop-item"><span class="prop-label">نوع ساخت</span>Seamless (بدون درز) یا ERW/EFW (درزدار)</div>
-    </div>
-
-    <div class="callout callout-tip" style="margin:14px 0 0;">
-      <span class="callout-label">نکته — Seamless vs Welded</span>
-      طبق <strong>ASME B31.3 Table A-1B</strong>، لوله‌های درزدار (ERW/EFW) دارای <strong>Quality Factor (Ej)</strong> کمتر از ۱.۰ هستند. برای سرویس‌های بحرانی یا فشار بالا، لوله Seamless الزامی است.
-    </div>
-
-    <h3>جنس و استاندارد لوله بر اساس سرویس</h3>
-    <table class="main-table">
-      <tr><th>جنس</th><th>گرید رایج</th><th>استاندارد</th><th>محدوده سرویس</th></tr>
-      <tr>
-        <td>Carbon Steel</td>
-        <td class="en">A106 Gr.B / API 5L Gr.B</td>
-        <td><span class="pill">ASTM A106</span><span class="pill">API 5L</span></td>
-        <td>فشار و دمای متوسط — −۲۹ تا +۴۲۵ °C</td>
-      </tr>
-      <tr>
-        <td>Low Temp CS</td>
-        <td class="en">A333 Gr.6</td>
-        <td><span class="pill">ASTM A333</span></td>
-        <td>دمای پایین تا −۴۵ °C — نیاز به CVN Impact Test</td>
-      </tr>
-      <tr>
-        <td>Stainless Steel</td>
-        <td class="en">TP304L / TP316L</td>
-        <td><span class="pill">ASTM A312</span></td>
-        <td>محیط‌های خورنده — تا +۸۱۵ °C</td>
-      </tr>
-      <tr>
-        <td>Alloy Steel</td>
-        <td class="en">P11 (1¼Cr-½Mo) / P22</td>
-        <td><span class="pill">ASTM A335</span></td>
-        <td>دمای بالا (Creep Range) — نیاز به PWHT</td>
-      </tr>
-      <tr>
-        <td>Nickel Alloy</td>
-        <td class="en">Inconel 625 / Hastelloy C-276</td>
-        <td><span class="pill">ASTM B444</span><span class="pill">ASTM B622</span></td>
-        <td>محیط‌های تهاجمی شدید — اسیدهای قوی</td>
-      </tr>
-      <tr>
-        <td>Non-Metallic</td>
-        <td class="en">PVC / CPVC / GRP</td>
-        <td><span class="pill">ASTM D1785</span></td>
-        <td>سیالات خنثی — دما و فشار پایین</td>
-      </tr>
-    </table>
-
-    <div class="std-section">
-      <div class="std-section-title">استانداردهای مرجع — لوله</div>
-      <div class="std-row"><span class="std-code">ASME B36.10M</span>ابعاد لوله‌های فولادی — جدول Wall Thickness</div>
-      <div class="std-row"><span class="std-code">ASME B36.19M</span>ابعاد لوله‌های Stainless Steel</div>
-      <div class="std-row"><span class="std-code">ASME B31.3 Para. 304</span>محاسبه حداقل ضخامت دیواره (t = PD/2SE+PY)</div>
-      <div class="std-row"><span class="std-code">ASTM A106</span>لوله CS بدون درز برای سرویس دما-فشار بالا</div>
-      <div class="std-row"><span class="std-code">ASTM A333</span>لوله CS برای سرویس دمای پایین (با CVN Impact)</div>
-      <div class="std-row"><span class="std-code">ASTM A335</span>لوله Alloy Steel فریتی برای سرویس دمای بالا</div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════ -->
-  <h2>۲. اتصالات (Fittings)</h2>
-
-  <div class="comp-card">
-    <div class="comp-card-header">
-      <div class="comp-badge" style="background:#f0fdf4;color:#16a34a;">F</div>
-      <div class="comp-title">Fittings <span>تغییر مسیر، انشعاب و تغییر اندازه</span></div>
-    </div>
-
-    <p class="lead" style="margin-bottom:14px;">اتصالات قطعاتی هستند که مسیر، اندازه یا انشعاب خط لوله را تغییر می‌دهند. تمام Fittings باید با لوله از نظر Material، Rating و End Connection سازگار باشند. استاندارد ابعادی اصلی <strong>ASME B16.9</strong> برای BW Fittings و <strong>ASME B16.11</strong> برای SW/Threaded Fittings است.</p>
-
-    <h3>زانو (Elbow)</h3>
-    <div class="items-grid">
-      <div class="item-card">
-        <div class="item-name">90° Long Radius Elbow</div>
-        <div class="item-name-fa">زانو ۹۰ درجه — شعاع بلند</div>
-        <div class="item-desc">شعاع خم = 1.5D — رایج‌ترین نوع. افت فشار کمتر نسبت به SR.</div>
-        <span class="item-std">ASME B16.9</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">90° Short Radius Elbow</div>
-        <div class="item-name-fa">زانو ۹۰ درجه — شعاع کوتاه</div>
-        <div class="item-desc">شعاع خم = 1.0D — فقط وقتی فضا محدود است. افت فشار بالاتر.</div>
-        <span class="item-std">ASME B16.9 / ASME B16.28</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">45° Elbow</div>
-        <div class="item-name-fa">زانو ۴۵ درجه</div>
-        <div class="item-desc">تغییر مسیر ملایم — برای اجتناب از تداخل با سازه یا تجهیز.</div>
-        <span class="item-std">ASME B16.9</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Return Bend (180°)</div>
-        <div class="item-name-fa">زانو ۱۸۰ درجه — برگشتی</div>
-        <div class="item-desc">در Coil‌های حرارتی و Hairpin‌ها استفاده می‌شود.</div>
-        <span class="item-std">ASME B16.9</span>
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#eff6ff; color:#2563EB; border:1px solid #bfdbfe;">LINE</div>
+        <div class="mat-title">
+          Piping Line Anatomy
+          <span>روی هر جزء کلیک کنید تا نقش آن در خط لوله نمایش داده شود</span>
+        </div>
       </div>
     </div>
 
-    <h3>انشعاب (Branch Connections)</h3>
-    <div class="items-grid">
-      <div class="item-card">
-        <div class="item-name">Equal Tee</div>
-        <div class="item-name-fa">سه‌راهی مساوی</div>
-        <div class="item-desc">انشعاب با همان قطر هدر — Run و Branch یکسان.</div>
-        <span class="item-std">ASME B16.9</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Reducing Tee</div>
-        <div class="item-name-fa">سه‌راهی کاهنده</div>
-        <div class="item-desc">قطر Branch کوچکتر از Run — مثلاً ۶"×۶"×۴".</div>
-        <span class="item-std">ASME B16.9</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Weldolet / Sockolet</div>
-        <div class="item-name-fa">اولت — انشعاب تقویت‌شده</div>
-        <div class="item-desc">جایگزین Tee برای انشعاب‌های کوچک — تقویت ذاتی در محل برش هدر.</div>
-        <span class="item-std">MSS SP-97</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Threadolet / Elbolet</div>
-        <div class="item-name-fa">انشعاب‌های خاص</div>
-        <div class="item-desc">Threadolet برای انشعاب رزوه‌ای — Elbolet روی Elbow.</div>
-        <span class="item-std">MSS SP-97</span>
-      </div>
-    </div>
+    <div class="mat-card-body">
+      <p class="lead">قبل از ورود به جزئیات، تصویر کلی را ببینید. یک خط فرآیندی ساده حداقل شش خانواده جزء دارد. روی هر کدام کلیک کنید:</p>
 
-    <h3>کاهنده (Reducer)</h3>
-    <div class="items-grid">
-      <div class="item-card">
-        <div class="item-name">Concentric Reducer</div>
-        <div class="item-name-fa">رده‌کننده هم‌محور</div>
-        <div class="item-desc">محور لوله تغییر نمی‌کند — برای خطوط عمودی یا گاز.</div>
-        <span class="item-std">ASME B16.9</span>
+      <div class="doc-flow" id="docFlow">
+        <button class="flow-step active" data-step="pipe">
+          <span class="flow-step-num">01</span>
+          <span class="flow-step-code">Pipe</span>
+          <span class="flow-step-name">لوله</span>
+        </button>
+        <button class="flow-step" data-step="fitting">
+          <span class="flow-step-num">02</span>
+          <span class="flow-step-code">Fitting</span>
+          <span class="flow-step-name">اتصالات</span>
+        </button>
+        <button class="flow-step" data-step="flange">
+          <span class="flow-step-num">03</span>
+          <span class="flow-step-code">Flange</span>
+          <span class="flow-step-name">فلنج</span>
+        </button>
+        <button class="flow-step" data-step="gasket">
+          <span class="flow-step-num">04</span>
+          <span class="flow-step-code">Gasket</span>
+          <span class="flow-step-name">گسکت</span>
+        </button>
+        <button class="flow-step" data-step="bolt">
+          <span class="flow-step-num">05</span>
+          <span class="flow-step-code">Bolting</span>
+          <span class="flow-step-name">پیچ و مهره</span>
+        </button>
+        <button class="flow-step" data-step="valve">
+          <span class="flow-step-num">06</span>
+          <span class="flow-step-code">Valve</span>
+          <span class="flow-step-name">شیر</span>
+        </button>
       </div>
-      <div class="item-card">
-        <div class="item-name">Eccentric Reducer</div>
-        <div class="item-name-fa">رده‌کننده خارج‌از‌محور</div>
-        <div class="item-desc">FSU برای خطوط مایع — جلوگیری از تجمع گاز. FSD برای Pump Suction.</div>
-        <span class="item-std">ASME B16.9</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Cap</div>
-        <div class="item-name-fa">درپوش انتهای لوله</div>
-        <div class="item-desc">مسدودکردن انتهای خط — جایگزین Blind Flange در خطوط جوشی دائمی.</div>
-        <span class="item-std">ASME B16.9</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Coupling / Half Coupling</div>
-        <div class="item-name-fa">کوپلینگ اتصال</div>
-        <div class="item-desc">Half Coupling برای انشعاب کوچک روی هدر بدون Olet — محدود به فشار پایین.</div>
-        <span class="item-std">ASME B16.11</span>
-      </div>
-    </div>
 
-    <div class="callout callout-warn" style="margin-top:14px;">
-      <span class="callout-label">اشتباه رایج — Pump Suction</span>
-      نصب <strong>Concentric Reducer روی Pump Suction</strong> یکی از رایج‌ترین خطاهای اجرایی است — تجمع هوا در مکش پمپ و Cavitation. طبق <strong>API 686</strong>، مکش پمپ همیشه با <strong>Eccentric Reducer — Flat Side Down</strong> اجرا می‌شود.
-    </div>
-
-    <div class="std-section">
-      <div class="std-section-title">استانداردهای مرجع — Fittings</div>
-      <div class="std-row"><span class="std-code">ASME B16.9</span>ابعاد Butt Weld Fittings — Elbow، Tee، Reducer، Cap</div>
-      <div class="std-row"><span class="std-code">ASME B16.11</span>ابعاد Socket Weld و Threaded Fittings</div>
-      <div class="std-row"><span class="std-code">ASME B16.28</span>Short Radius Elbow و Return Bend</div>
-      <div class="std-row"><span class="std-code">MSS SP-97</span>Integrally Reinforced Fittings — Weldolet، Sockolet، Threadolet</div>
-      <div class="std-row"><span class="std-code">ASME B31.3 Para. 304.3</span>الزامات تقویت انشعاب — Branch Reinforcement Calculation</div>
-      <div class="std-row"><span class="std-code">API 686</span>الزامات نصب مکانیکی — Pump Suction Reducer</div>
+      <div class="flow-detail" id="flowDetail">
+        <h4>Pipe — لوله</h4>
+        <p>بدنه اصلی حامل سیال. سایز با NPS (اینچ) و ضخامت با Schedule مشخص می‌شود. در سرویس‌های فرآیندی معمولاً بدون درز (SMLS) یا درزجوش با کیفیت بالا استفاده می‌شود.</p>
+        <div class="flow-detail-meta">
+          <span class="flow-meta-pill">ASME B36.10M / B36.19M</span>
+          <span class="flow-meta-pill">SMLS / ERW / SAW</span>
+          <span class="flow-meta-pill">بیشترین سهم MTO</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════ -->
-  <h2>۳. فلنج‌ها (Flanges)</h2>
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۲</div>
+    <h2>لوله (Pipe)</h2>
+  </div>
 
-  <div class="comp-card">
-    <div class="comp-card-header">
-      <div class="comp-badge" style="background:#fff7ed;color:#EA580C;">FL</div>
-      <div class="comp-title">Flanges <span>اتصال جداشدنی — برای تعمیر و نگهداری</span></div>
-    </div>
-
-    <p class="lead" style="margin-bottom:14px;">فلنج اتصال Demountable سیستم پایپینگ است. انتخاب نوع فلنج بر اساس <strong>فشار، دما، سیال و نوع جوشکاری مجاز</strong> است. استاندارد اصلی <strong>ASME B16.5</strong> برای NPS ½" تا NPS 24" و <strong>ASME B16.47</strong> برای سایزهای بزرگتر است.</p>
-
-    <div class="items-grid">
-      <div class="item-card">
-        <div class="item-name">Weld Neck Flange (WN)</div>
-        <div class="item-name-fa">فلنج گردن جوشی</div>
-        <div class="item-desc">بهترین انتخاب برای High Pressure، High Temp و Cyclic. جوش BW با لوله — توزیع تنش عالی.</div>
-        <span class="item-std">ASME B16.5 — پیشنهادی Class 600 به بالا</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Slip-On Flange (SO)</div>
-        <div class="item-name-fa">فلنج اسلیپ‌اون</div>
-        <div class="item-desc">دو جوش Fillet داخل و خارج. ارزان‌تر از WN — Rating پایین‌تر. مناسب سرویس‌های کم‌فشار.</div>
-        <span class="item-std">ASME B16.5 — محدود در سرویس‌های بحرانی</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Socket Weld Flange (SW)</div>
-        <div class="item-name-fa">فلنج سوکت‌ولد</div>
-        <div class="item-desc">برای NPS ≤ 2". Gap 1.6mm قبل از جوش الزامی — ASME B31.3 Para. 328.5.2.</div>
-        <span class="item-std">ASME B16.5 — NPS ≤ 2" فقط</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Blind Flange (BL)</div>
-        <div class="item-name-fa">فلنج کور</div>
-        <div class="item-desc">مسدودکردن انتهای خط یا نازل تجهیز. در Hydrotest و Line Blinding استفاده می‌شود.</div>
-        <span class="item-std">ASME B16.5</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Lap Joint Flange</div>
-        <div class="item-name-fa">فلنج لپ‌جوینت</div>
-        <div class="item-desc">با Stub End استفاده می‌شود. فلنج Loose می‌چرخد — تنظیم سوراخ‌های Bolt آسان. برای SS در کنار CS.</div>
-        <span class="item-std">ASME B16.5 + ASME B16.9 (Stub End)</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Threaded Flange</div>
-        <div class="item-name-fa">فلنج رزوه‌ای</div>
-        <div class="item-desc">اتصال بدون جوش — فقط Non-Hazardous، فشار و دمای پایین.</div>
-        <span class="item-std">ASME B16.5 — محدودیت سرویس در B31.3</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Orifice Flange</div>
-        <div class="item-name-fa">فلنج اریفیس</div>
-        <div class="item-desc">دارای Tapping برای اندازه‌گیری جریان. معمولاً در جفت (Pair) نصب می‌شود.</div>
-        <span class="item-std">ASME B16.36</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Ring Type Joint (RTJ)</div>
-        <div class="item-name-fa">فلنج RTJ — فشار بالا</div>
-        <div class="item-desc">Metallic Ring Gasket (Oval یا Octagonal). برای Class 900 به بالا و Subsea.</div>
-        <span class="item-std">ASME B16.5 / ASME B16.20</span>
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0;">PIPE</div>
+        <div class="mat-title">
+          Pipe
+          <span>سایز، Schedule و روش ساخت — پایه تمام محاسبات خط</span>
+        </div>
       </div>
     </div>
 
-    <h3>نوع Face فلنج</h3>
-    <table class="main-table">
-      <tr><th>نوع Face</th><th>کاربرد</th><th>نوع Gasket</th><th>نکته</th></tr>
-      <tr>
-        <td class="en">Raised Face (RF)</td>
-        <td>رایج‌ترین — اکثر سرویس‌ها</td>
-        <td>Spiral Wound / Sheet</td>
-        <td>ارتفاع RF: 1.6mm (Class≤600) یا 6.4mm (Class≥900)</td>
-      </tr>
-      <tr>
-        <td class="en">Flat Face (FF)</td>
-        <td>اتصال به تجهیزات Cast Iron</td>
-        <td>Full Face Gasket</td>
-        <td>نباید RF با FF جفت شود — خطر شکست Cast Iron</td>
-      </tr>
-      <tr>
-        <td class="en">Ring Type Joint (RTJ)</td>
-        <td>Class 900 به بالا</td>
-        <td>Metallic Ring (Oval/Octagonal)</td>
-        <td>ASME B16.20 — Ring باید نرم‌تر از فلنج باشد</td>
-      </tr>
-      <tr>
-        <td class="en">Tongue & Groove</td>
-        <td>سرویس‌های خاص</td>
-        <td>Ring Gasket</td>
-        <td>یک فلنج Tongue — دیگری Groove — باید جفت باشند</td>
-      </tr>
-    </table>
+    <div class="mat-card-body">
+      <p class="lead">لوله با سه پارامتر تعریف می‌شود: سایز اسمی (NPS)، ضخامت دیواره (Schedule) و روش ساخت. نکته کلیدی این است که OD لوله برای هر NPS ثابت است و با تغییر Schedule فقط ضخامت دیواره عوض می‌شود — یعنی اتصالات یک سایز، با همه Schedule ها جفت می‌شوند.</p>
 
-    <div class="callout callout-danger" style="margin-top:14px;">
-      <span class="callout-label">خطا رایج — Flange Assembly</span>
-      طبق <strong>ASME B16.5 و ASME PCC-1</strong>، جفت‌کردن دو فلنج با Face Type متفاوت (RF با FF) مجاز نیست. Gasket باید دقیقاً با سایز، Rating و Face Type فلنج مطابقت داشته باشد.
-    </div>
+      <div class="props-grid">
+        <div class="prop-item">
+          <span class="prop-label">NPS / DN</span>
+          <span class="prop-value">سایز اسمی — اینچ (NPS) و میلی‌متر (DN)</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">OD</span>
+          <span class="prop-value">قطر بیرونی ثابت برای هر NPS (B36.10M)</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Schedule</span>
+          <span class="prop-value">STD, XS, XXS یا Sch 40/80/160 — ضخامت دیواره</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">طول تجاری</span>
+          <span class="prop-value">SRL ≈ 6m / DRL ≈ 12m</span>
+        </div>
+      </div>
 
-    <div class="std-section">
-      <div class="std-section-title">استانداردهای مرجع — Flanges</div>
-      <div class="std-row"><span class="std-code">ASME B16.5</span>ابعاد و Rating فلنج NPS ½" تا NPS 24" — Class 150 تا 2500</div>
-      <div class="std-row"><span class="std-code">ASME B16.47</span>فلنج‌های بزرگ NPS 26" تا NPS 60"</div>
-      <div class="std-row"><span class="std-code">ASME B16.20</span>Metallic Gasket — Spiral Wound و RTJ</div>
-      <div class="std-row"><span class="std-code">ASME B16.21</span>ابعاد Gasket غیرفلزی برای فلنج‌های Pipe</div>
-      <div class="std-row"><span class="std-code">ASME B16.36</span>Orifice Flange</div>
-      <div class="std-row"><span class="std-code">ASME PCC-1</span>دستورالعمل Bolted Flange Joint Assembly — Bolt Torque</div>
-      <div class="std-row"><span class="std-code">ASME B31.3 Para. 328.5</span>Gap اجباری ۱.۶mm در Socket Weld</div>
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>NPS (inch)</th>
+              <th>DN (mm)</th>
+              <th>OD (mm)</th>
+              <th>Sch 40 ضخامت (mm)</th>
+              <th>Sch 80 ضخامت (mm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="grade-name">1/2"</span></td><td>15</td><td>21.3</td><td>2.77</td><td>3.73</td></tr>
+            <tr><td><span class="grade-name">1"</span></td><td>25</td><td>33.4</td><td>3.38</td><td>4.55</td></tr>
+            <tr><td><span class="grade-name">2"</span></td><td>50</td><td>60.3</td><td>3.91</td><td>5.54</td></tr>
+            <tr><td><span class="grade-name">4"</span></td><td>100</td><td>114.3</td><td>6.02</td><td>8.56</td></tr>
+            <tr><td><span class="grade-name">6"</span></td><td>150</td><td>168.3</td><td>7.11</td><td>10.97</td></tr>
+            <tr><td><span class="grade-name">8"</span></td><td>200</td><td>219.1</td><td>8.18</td><td>12.70</td></tr>
+            <tr><td><span class="grade-name">12"</span></td><td>300</td><td>323.9</td><td>9.53</td><td>17.48</td></tr>
+            <tr><td><span class="grade-name">24"</span></td><td>600</td><td>610.0</td><td>13.49</td><td>24.61</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">نکته ابعادی</span><br>
+        تا NPS 12، عدد NPS با قطر واقعی برابر نیست (مثلاً NPS 12 یعنی OD ≈ 323.9mm)؛ از NPS 14 به بالا، OD دقیقاً برابر NPS×25.4 می‌شود. همچنین برای سایزهای ≤ 12"، Sch 40 همان <strong>STD</strong> و Sch 80 همان <strong>XS</strong> است — اما از 14" به بالا دیگر STD/XS معنی ندارد و فقط ضخامت ذکر می‌شود.
+      </div>
+
+      <div class="std-section">
+        <div class="std-section-title">استانداردهای مرجع لوله</div>
+        <div class="std-grid">
+          <div class="std-row"><span class="std-code">ASME B36.10M</span><span>ابعاد لوله‌های فولاد کربنی و آلیاژی</span></div>
+          <div class="std-row"><span class="std-code">ASME B36.19M</span><span>ابعاد لوله‌های استنلس استیل</span></div>
+          <div class="std-row"><span class="std-code">ASTM A106 / A53</span><span>متریال لوله CS بدون درز و درزدار</span></div>
+          <div class="std-row"><span class="std-code">API 5L</span><span>لوله خطوط انتقال</span></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════ -->
-  <h2>۴. شیرآلات (Valves)</h2>
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۳</div>
+    <h2>فلنج‌ها (Flanges)</h2>
+  </div>
 
-  <div class="comp-card">
-    <div class="comp-card-header">
-      <div class="comp-badge" style="background:#faf5ff;color:#7C3AED;">V</div>
-      <div class="comp-title">Valves <span>کنترل جریان، ایزولاسیون و تنظیم فشار</span></div>
-    </div>
-
-    <p class="lead" style="margin-bottom:14px;">شیرآلات برای کنترل، ایزولاسیون یا تنظیم جریان سیال در سیستم پایپینگ استفاده می‌شوند. انتخاب نوع شیر بر اساس <strong>عملکرد مورد نیاز (On/Off یا Control)، سیال، فشار، دما و فرکانس عملکرد</strong> است.</p>
-
-    <div class="items-grid">
-      <div class="item-card">
-        <div class="item-name">Gate Valve</div>
-        <div class="item-name-fa">شیر دروازه‌ای</div>
-        <div class="item-desc">فقط برای On/Off — نه Throttling. افت فشار بسیار پایین در حالت کاملاً باز. برای ایزولاسیون خطوط.</div>
-        <span class="item-std">API 600 / API 603 / ASME B16.34</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Globe Valve</div>
-        <div class="item-name-fa">شیر کروی</div>
-        <div class="item-desc">برای Throttling و تنظیم جریان. افت فشار بالا. مناسب سرویس‌های Steam و بخار.</div>
-        <span class="item-std">ASME B16.34</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Ball Valve</div>
-        <div class="item-name-fa">شیر توپی</div>
-        <div class="item-desc">On/Off سریع با چرخش ۹۰ درجه. Bore کامل (Full Bore) یا کاهش‌یافته (Reduced Bore). رایج در پایپینگ فرآیندی.</div>
-        <span class="item-std">API 6D / ASME B16.34</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Butterfly Valve</div>
-        <div class="item-name-fa">شیر پروانه‌ای</div>
-        <div class="item-desc">سبک و ارزان — برای قطرهای بزرگ. Triple Offset برای سرویس‌های بحرانی و High Temp.</div>
-        <span class="item-std">API 609 / ASME B16.34</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Check Valve</div>
-        <div class="item-name-fa">شیر یک‌طرفه</div>
-        <div class="item-desc">جلوگیری از برگشت جریان. Swing، Tilting Disc یا Piston نوع — انتخاب بر اساس سرویس.</div>
-        <span class="item-std">API 594 / ASME B16.34</span>
-      </div>
-      <div class="item-card">
-        <div class="item-name">Safety / Relief Valve</div>
-        <div class="item-name-fa">شیر اطمینان</div>
-        <div class="item-desc">حفاظت در برابر فشار بیش از حد. Set Pressure طبق طراحی. تست و تنظیم دوره‌ای الزامی.</div>
-        <span class="item-std">ASME Section VIII / API 520 / API 526</span>
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#faf5ff; color:#7C3AED; border:1px solid #e9d5ff;">FLG</div>
+        <div class="mat-title">
+          Flanges
+          <span>اتصال قابل بازشو — تایپ، Face و کلاس فشاری</span>
+        </div>
       </div>
     </div>
 
-    <div class="std-section">
-      <div class="std-section-title">استانداردهای مرجع — Valves</div>
-      <div class="std-row"><span class="std-code">ASME B16.34</span>Valves — Flanged، Threaded و BW — Rating و ابعاد</div>
-      <div class="std-row"><span class="std-code">API 600</span>Gate Valve فولادی Bolted Bonnet</div>
-      <div class="std-row"><span class="std-code">API 6D</span>Pipeline Valves — Ball، Gate، Check، Plug</div>
-      <div class="std-row"><span class="std-code">API 609</span>Butterfly Valve — Double و Triple Offset</div>
-      <div class="std-row"><span class="std-code">API 594</span>Check Valve — Wafer، Wafer-Lug و Double Flanged</div>
-      <div class="std-row"><span class="std-code">API 520 / API 526</span>Sizing و Selection شیر اطمینان (PSV/PRV)</div>
+    <div class="mat-card-body">
+      <p class="lead">فلنج جایی استفاده می‌شود که اتصال باید قابل باز شدن باشد: اتصال به تجهیزات، شیرها و نقاط نیازمند تعمیرات. انتخاب فلنج سه بعد دارد: تایپ اتصال به لوله (WN، SO، …)، نوع سطح آب‌بندی (RF، RTJ، FF) و کلاس فشاری (150 تا 2500).</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>تایپ فلنج</th>
+              <th>اختصار</th>
+              <th>اتصال به لوله</th>
+              <th>کاربرد</th>
+              <th>نکته فنی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Weld Neck</span></td>
+              <td><span class="std-pill">WN</span></td>
+              <td>جوش شیاری (BW)</td>
+              <td>سرویس‌های فرآیندی، دما/فشار بالا، بار سیکلی</td>
+              <td>بهترین توزیع تنش — پرکاربردترین در پایپینگ فرآیندی</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Slip-On</span></td>
+              <td><span class="std-pill">SO</span></td>
+              <td>دو جوش فیللت</td>
+              <td>فشار پایین، سرویس غیربحرانی (Utility)</td>
+              <td>مقاومت خستگی کمتر از WN — ارزان‌تر</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Blind</span></td>
+              <td><span class="std-pill">BL</span></td>
+              <td>—</td>
+              <td>بستن انتهای خط، ایزولاسیون برای تست</td>
+              <td>بیشترین تنش خمشی — بولتینگ کامل</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Socket Weld</span></td>
+              <td><span class="std-pill">SW</span></td>
+              <td>سوکت + جوش فیللت</td>
+              <td>سایز کوچک ≤ 2"</td>
+              <td>گپ 1.5mm قبل از جوش الزامی</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Threaded</span></td>
+              <td><span class="std-pill">THD</span></td>
+              <td>رزوه NPT</td>
+              <td>جاهایی که جوشکاری مجاز نیست</td>
+              <td>نه برای دما/فشار بالا یا سرویس سیکلی</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Lap Joint</span></td>
+              <td><span class="std-pill">LJ</span></td>
+              <td>همراه Stub End</td>
+              <td>سرویس‌های نیازمند بازشدن مکرر، متریال گران</td>
+              <td>فلنج آزاد می‌چرخد — الاینمنت سوراخ‌ها آسان</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="props-grid">
+        <div class="prop-item">
+          <span class="prop-label">Raised Face (RF)</span>
+          <span class="prop-value">رایج‌ترین Face — با گسکت Spiral Wound یا Sheet</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Ring Type Joint (RTJ)</span>
+          <span class="prop-value">سرویس فشار بالا — گسکت حلقه فلزی (Class ≥ 600)</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Flat Face (FF)</span>
+          <span class="prop-value">اتصال به تجهیزات چدنی — جلوگیری از شکست</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">کلاس‌های فشاری</span>
+          <span class="prop-value">150 / 300 / 600 / 900 / 1500 / 2500</span>
+        </div>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">خطر — تطابق Face و گسکت</span><br>
+        فلنج RTJ فقط با گسکت Ring Type Joint و فلنج RF فقط با گسکت RF جفت می‌شود — این دو هرگز قابل تعویض نیستند. همچنین «کلاس» به تنهایی فشار مجاز را نمی‌دهد: فشار مجاز هر کلاس تابع متریال و دماست (جداول <strong>ASME B16.5 Table 2</strong> برای گروه‌های متریال).
+      </div>
+
+      <div class="std-section">
+        <div class="std-section-title">استانداردهای مرجع فلنج</div>
+        <div class="std-grid">
+          <div class="std-row"><span class="std-code">ASME B16.5</span><span>فلنج‌ها تا سایز 24" — ابعاد، کلاس، Face</span></div>
+          <div class="std-row"><span class="std-code">ASME B16.47</span><span>فلنج‌های بزرگ 26" تا 60" — Series A و B</span></div>
+          <div class="std-row"><span class="std-code">ASME B16.36</span><span>فلنج‌های Orifice</span></div>
+          <div class="std-row"><span class="std-code">MSS SP-44</span><span>فلنج‌های خطوط انتقال</span></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════ -->
-  <h2>مقایسه کلی اجزا</h2>
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۴</div>
+    <h2>شیرها (Valves)</h2>
+  </div>
 
-  <table class="main-table">
-    <tr><th>جزء</th><th>استاندارد ابعادی</th><th>استاندارد متریال</th><th>نکته انتخاب</th></tr>
-    <tr>
-      <td>لوله CS</td>
-      <td class="en">ASME B36.10M</td>
-      <td class="en">ASTM A106 / API 5L</td>
-      <td>NPS و Schedule از Piping Spec پروژه</td>
-    </tr>
-    <tr>
-      <td>BW Fittings</td>
-      <td class="en">ASME B16.9</td>
-      <td class="en">ASTM A234 (CS)</td>
-      <td>باید هم‌Schedule با لوله باشد</td>
-    </tr>
-    <tr>
-      <td>SW Fittings</td>
-      <td class="en">ASME B16.11</td>
-      <td class="en">ASTM A105 (CS)</td>
-      <td>فقط NPS ≤ 2" — Gap 1.6mm الزامی</td>
-    </tr>
-    <tr>
-      <td>Flange</td>
-      <td class="en">ASME B16.5 / B16.47</td>
-      <td class="en">ASTM A105 / A182</td>
-      <td>Class Rating با P-T Table تطبیق شود</td>
-    </tr>
-    <tr>
-      <td>Olet Fittings</td>
-      <td class="en">MSS SP-97</td>
-      <td class="en">ASTM A105 / A182</td>
-      <td>محاسبه تقویت طبق B31.3 Para. 304.3</td>
-    </tr>
-    <tr>
-      <td>Valve</td>
-      <td class="en">ASME B16.34</td>
-      <td>بر اساس سرویس</td>
-      <td>API بر اساس نوع شیر انتخاب شود</td>
-    </tr>
-  </table>
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#fff7ed; color:#ea580c; border:1px solid #fed7aa;">VLV</div>
+        <div class="mat-title">
+          Valves
+          <span>قطع، تنظیم و حفاظت جریان — انتخاب بر اساس وظیفه</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="nav-footer">
-    <a href="../01-documents/" class="nav-btn nav-prev">→ فصل قبل: اسناد و مدارک</a>
+    <div class="mat-card-body">
+      <p class="lead">شیر بر اساس «وظیفه» انتخاب می‌شود: قطع و وصل (On/Off)، تنظیم جریان (Throttling) یا جلوگیری از برگشت جریان (Non-Return). انتخاب شیر اشتباه — مثلاً Gate برای تنظیم جریان — باعث سایش، کاویتاسیون و خرابی زودرس می‌شود.</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>شیر</th>
+              <th>وظیفه</th>
+              <th>استاندارد اصلی</th>
+              <th>کاربرد / نکته</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Gate</span></td>
+              <td>On/Off</td>
+              <td><span class="std-pill">API 600</span><span class="std-pill">API 602</span></td>
+              <td>افت فشار کم در حالت باز — هرگز برای Throttling</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Globe</span></td>
+              <td>On/Off + Throttling</td>
+              <td><span class="std-pill">BS 1873</span><span class="std-pill">API 602</span></td>
+              <td>کنترل دقیق جریان — افت فشار بالا</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Ball</span></td>
+              <td>On/Off سریع</td>
+              <td><span class="std-pill">API 6D</span><span class="std-pill">API 608</span></td>
+              <td>Full-Bore برای خطوط Pig-رو — Trunnion برای سایز/فشار بالا</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Check (Swing / Dual Plate)</span></td>
+              <td>ضدبرگشت جریان</td>
+              <td><span class="std-pill">API 594</span><span class="std-pill">BS 1868</span></td>
+              <td>بعد از پمپ و کمپرسور — جهت نصب طبق فلش بدنه</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Butterfly</span></td>
+              <td>On/Off + Throttling سایز بزرگ</td>
+              <td><span class="std-pill">API 609</span></td>
+              <td>سبک و اقتصادی برای آب و سایزهای بزرگ</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Plug</span></td>
+              <td>On/Off، سیالات لجنی</td>
+              <td><span class="std-pill">API 599</span></td>
+              <td>سرویس‌های با ذرات جامد — قابلیت چندپورته</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">نکته انتخاب</span><br>
+        در خطوط کوچک (≤ 2") معمولاً شیرهای Compact با استاندارد <strong>API 602</strong> (اتصال SW یا رزوه‌ای) استفاده می‌شود؛ در خطوط فرآیندی بزرگ‌تر، <strong>API 600</strong> (Gate فولادی) و <strong>API 6D</strong> (Ball خطوط انتقال). نوع اتصال (Flanged / BW / SW) همیشه از Pipe Class گرفته می‌شود.
+      </div>
+
+      <div class="callout callout-warn" style="margin-bottom:0;">
+        <span class="callout-label">هشدار نصب</span><br>
+        شیر Check باید طوری نصب شود که مکانیزم آن با گرانش و جهت جریان سازگار باشد (Swing Check افقی یا صعودی). نصب Gate Valve به‌جای Globe برای تنظیم جریان، باعث وایبریشن دیسک و خرابی Seat می‌شود.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۵</div>
+    <h2>اتصالات و انشعاب‌ها (Fittings &amp; Branch)</h2>
+  </div>
+
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#ecfeff; color:#0891b2; border:1px solid #a5f3fc;">FIT</div>
+        <div class="mat-title">
+          Fittings
+          <span>تغییر مسیر، تغییر سایز و انشعاب — BW، SW و رزوه‌ای</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">اتصالات بر اساس نوع اتصال به سه خانواده تقسیم می‌شوند: جوش شیاری (Butt-Weld، پرکاربردترین در فرآیند)، ساکت‌ولد و رزوه‌ای (سایز کوچک و Utility). در سایزهای بزرگ و سرویس‌های بحرانی، فقط Butt-Weld مجاز است.</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>جزء</th>
+              <th>استاندارد</th>
+              <th>انواع</th>
+              <th>نکته فنی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Elbow</span></td>
+              <td><span class="std-pill">ASME B16.9</span></td>
+              <td>90° / 45° — LR (1.5D) / SR (1D)</td>
+              <td>LR رایج‌ترین — SR فقط در فضای تنگ</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Tee</span></td>
+              <td><span class="std-pill">ASME B16.9</span></td>
+              <td>Straight / Reducing</td>
+              <td>برای انشعاب‌های بزرگ — تقویت Branch طبق B31.3</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Reducer</span></td>
+              <td><span class="std-pill">ASME B16.9</span></td>
+              <td>Concentric / Eccentric</td>
+              <td>Eccentric در مکش پمپ — جلوگیری از حبس هوا</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Cap</span></td>
+              <td><span class="std-pill">ASME B16.9</span></td>
+              <td>—</td>
+              <td>بستن انتهای خط (موقت یا دائم)</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Olet (Weldolet / Sockolet)</span></td>
+              <td><span class="std-pill">MSS SP-97</span></td>
+              <td>Weldolet, Sockolet, Threadolet, Elbolet</td>
+              <td>انشعاب تقویت‌شده سایز کوچک — جایگزین اقتصادی Tee</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">اتصالات SW / رزوه‌ای</span></td>
+              <td><span class="std-pill">ASME B16.11</span></td>
+              <td>Elbow, Tee, Coupling, Union — Class 3000/6000/9000</td>
+              <td>فقط سایز ≤ 2" و سرویس غیربحرانی</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip" style="margin-bottom:0;">
+        <span class="callout-label">نکته کلاسیک میدانی</span><br>
+        در خط مکش پمپ (افقی)، Reducer باید <strong>Eccentric با سمت تخت رو به بالا (Flat Side Up)</strong> نصب شود تا حباب هوا زیر سقف Reducer جمع نشود و از کاویتاسیون جلوگیری شود. در خطوط عمودی یا خروجی پمپ معمولاً Concentric استفاده می‌شود.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۶</div>
+    <h2>گسکت‌ها و بولتینگ (Gaskets &amp; Bolting)</h2>
+  </div>
+
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#fef2f2; color:#dc2626; border:1px solid #fecaca;">GSK</div>
+        <div class="mat-title">
+          Gaskets &amp; Bolting
+          <span>قلب آب‌بندی اتصال فلنجی — گسکت + بار بولت</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">آب‌بندی اتصال فلنجی حاصل سه عامل است: سطح Face سالم، گسکت مناسب و بار یکنواخت بولتینگ. گسکت با فشار بولت فشرده (Seating) و در سرویس باید در برابر فشار داخلی و دما مقاومت کند. انتخاب گسکت از جداول Pipe Class و بر اساس سیال/دما انجام می‌شود.</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>گسکت</th>
+              <th>استاندارد</th>
+              <th>Face فلنج</th>
+              <th>کاربرد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Spiral Wound (با Inner/Outer Ring)</span></td>
+              <td><span class="std-pill">ASME B16.20</span></td>
+              <td>RF</td>
+              <td>رایج‌ترین در فرآیند — کلاس 150 تا 2500</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Ring Type Joint (RTJ)</span></td>
+              <td><span class="std-pill">ASME B16.20</span></td>
+              <td>RTJ</td>
+              <td>فشار/دمای بالا — حلقه فلزی Oval یا Octagonal</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Non-Asbestos Sheet</span></td>
+              <td><span class="std-pill">ASME B16.21</span></td>
+              <td>FF / RF کلاس پایین</td>
+              <td>آب، Utility و سرویس‌های کم‌فشار</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Camprofile / Kammprofile</span></td>
+              <td><span class="std-pill">ASME B16.20</span></td>
+              <td>RF</td>
+              <td>سرویس سیکلی دمایی — مبدل‌ها و خطوط بخار</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>بولتینگ</th>
+              <th>استاندارد</th>
+              <th>کاربرد</th>
+              <th>نکته</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Stud Bolt B7 + Nut 2H</span></td>
+              <td><span class="std-pill">ASTM A193 / A194</span></td>
+              <td>سرویس CS تا حدود +425 °C</td>
+              <td>رایج‌ترین ترکیب در پایپینگ فرآیندی</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">B8 / B8M + Nut 8 / 8M</span></td>
+              <td><span class="std-pill">ASTM A193 / A194</span></td>
+              <td>فلنج‌های SS و سرویس خورنده</td>
+              <td>Anti-seize الزامی — گریپاژ SS</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">L7 / 4L</span></td>
+              <td><span class="std-pill">ASTM A320 / A194</span></td>
+              <td>سرویس دمای پایین (Cryogenic)</td>
+              <td>تست ضربه در دمای سرویس</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">خطر — استفاده مجدد ممنوع</span><br>
+        گسکت استفاده‌شده <strong>هرگز</strong> دوباره نصب نمی‌شود (اسپیرال پس از کمپرس شدن خاصیت ارتجاعی خود را از دست می‌دهد). بولتینگ باید طبق رویه گشتاور (Torque Procedure) و به‌صورت الگوی ستاره‌ای/متقاطع و در چند Pass کشیده شود؛ انتهای Stud باید حداقل دو رزوه از مهره بیرون بزند.
+      </div>
+
+      <div class="std-section" style="margin-bottom:0;">
+        <div class="std-section-title">مرجع سریع — استانداردهای اجزای پایپینگ</div>
+        <div class="std-grid">
+          <div class="std-row"><span class="std-code">ASME B36.10M / B36.19M</span><span>ابعاد لوله CS / SS</span></div>
+          <div class="std-row"><span class="std-code">ASME B16.5 / B16.47</span><span>فلنج‌ها تا 24" / بزرگ‌تر</span></div>
+          <div class="std-row"><span class="std-code">ASME B16.9 / B16.11</span><span>اتصالات BW / SW و رزوه‌ای</span></div>
+          <div class="std-row"><span class="std-code">ASME B16.20 / B16.21</span><span>گسکت‌های فلزی / غیرفلزی</span></div>
+          <div class="std-row"><span class="std-code">MSS SP-97</span><span>اتصالات انشعاب تقویت‌شده (Olet)</span></div>
+          <div class="std-row"><span class="std-code">API 600 / 602 / 6D / 608 / 609 / 594 / 599</span><span>خانواده استانداردهای شیرها</span></div>
+          <div class="std-row"><span class="std-code">ASTM A193 / A194 / A320</span><span>بولتینگ دما بالا / SS / دما پایین</span></div>
+          <div class="std-row"><span class="std-code">ASME B31.3 Ch. III</span><span>الزامات طراحی و پذیرش اجزا</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="nav-footer reveal">
+    <a href="../01-documents/" class="nav-btn nav-prev">→ فصل قبل: اسناد و مدارک پایپینگ</a>
     <a href="../03-materials/" class="nav-btn nav-next">فصل بعد: متریال‌شناسی ←</a>
-  </div>
+  </footer>
+
 </div>
+
+<button id="toTop" title="بازگشت به بالا" aria-label="بازگشت به بالا">↑</button>
+
+<script>
+  /* ── Reading progress bar + back-to-top ── */
+  var progressBar = document.getElementById('progressBar');
+  var toTopBtn = document.getElementById('toTop');
+  window.addEventListener('scroll', function () {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    progressBar.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+    if (doc.scrollTop > 600) { toTopBtn.classList.add('show'); } else { toTopBtn.classList.remove('show'); }
+  }, { passive: true });
+  toTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ── Interactive line components selector ── */
+  var flowData = {
+    pipe: {
+      title: 'Pipe — لوله',
+      body: 'بدنه اصلی حامل سیال. سایز با NPS (اینچ) و ضخامت با Schedule مشخص می‌شود. در سرویس‌های فرآیندی معمولاً بدون درز (SMLS) یا درزجوش با کیفیت بالا استفاده می‌شود.',
+      pills: ['ASME B36.10M / B36.19M', 'SMLS / ERW / SAW', 'بیشترین سهم MTO']
+    },
+    fitting: {
+      title: 'Fitting — اتصالات',
+      body: 'برای تغییر مسیر (Elbow)، انشعاب (Tee/Olet)، تغییر سایز (Reducer) و بستن انتها (Cap). در سرویس فرآیندی عمدتاً Butt-Weld طبق ASME B16.9؛ در سایز کوچک و Utility از B16.11.',
+      pills: ['ASME B16.9 / B16.11', 'MSS SP-97 برای Olet', 'Eccentric در مکش پمپ']
+    },
+    flange: {
+      title: 'Flange — فلنج',
+      body: 'اتصال قابل بازشو برای شیرها، تجهیزات و نقاط ایزولاسیون. تایپ WN پرکاربردترین در فرآیند است؛ Face فلنج (RF/RTJ/FF) باید دقیقاً با گسکت هم‌خانواده باشد.',
+      pills: ['ASME B16.5 / B16.47', 'کلاس 150 تا 2500', 'WN برای سرویس بحرانی']
+    },
+    gasket: {
+      title: 'Gasket — گسکت',
+      body: 'المان آب‌بندی بین دو فلنج. Spiral Wound رایج‌ترین انتخاب فرآیندی و RTJ برای فشار بالا. گسکت یک‌بارمصرف است و انتخاب آن تابع سیال، دما و کلاس فلنج است.',
+      pills: ['ASME B16.20 / B16.21', 'یک‌بارمصرف', 'تطبیب با Face فلنج']
+    },
+    bolt: {
+      title: 'Bolting — پیچ و مهره',
+      body: 'Stud Bolt و مهره، بار آب‌بندی گسکت را تأمین می‌کنند. ترکیب رایج A193 B7 + A194 2H برای CS و B8/8M برای SS. کشیدن بولت‌ها باید با گشتاور مستند و الگوی متقاطع انجام شود.',
+      pills: ['ASTM A193 / A194', 'Torque Procedure الزامی', 'حداقل دو رزوه بیرون‌زدگی']
+    },
+    valve: {
+      title: 'Valve — شیر',
+      body: 'برای قطع و وصل (Gate/Ball)، تنظیم (Globe/Butterfly) و جلوگیری از برگشت (Check). انتخاب بر اساس وظیفه، سایز، کلاس و Pipe Class — دیتاشیت شیر مبنای خرید است.',
+      pills: ['API 600 / 602 / 6D', 'Gate ≠ Throttling', 'جهت نصب Check مهم']
+    }
+  };
+
+  var flowSteps = document.querySelectorAll('.flow-step');
+  var flowDetail = document.getElementById('flowDetail');
+
+  function renderFlow(key) {
+    var d = flowData[key];
+    if (!d) return;
+    flowDetail.style.animation = 'none';
+    void flowDetail.offsetWidth; /* reflow to restart animation */
+    flowDetail.style.animation = '';
+    var pillsHtml = d.pills.map(function (p) {
+      return '<span class="flow-meta-pill">' + p + '</span>';
+    }).join('');
+    flowDetail.innerHTML = '<h4>' + d.title + '</h4><p>' + d.body + '</p><div class="flow-detail-meta">' + pillsHtml + '</div>';
+  }
+
+  flowSteps.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      flowSteps.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderFlow(btn.getAttribute('data-step'));
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+</script>
 
 </body>
 </html>
