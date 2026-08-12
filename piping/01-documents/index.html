@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اسناد و مدارک پایپینگ — آکادمی پایپینگ و جوشکاری</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/300.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/500.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/700.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/800.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/700.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/800.css" rel="stylesheet">
 <style>
   :root {
     --primary: #2563EB;
@@ -27,66 +36,34 @@
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
   body { font-family:"Vazirmatn","Inter",sans-serif; background:#F1F5F9; color:var(--slate-800); line-height:1.8; -webkit-font-smoothing:antialiased; }
   a { text-decoration:none; color:inherit; }
+
+  /* Progress bar */
+  #progressBar { position:fixed; top:0; right:0; height:3px; width:0%; background:linear-gradient(270deg,#2563EB,#06B6D4); z-index:100; }
 
   /* Navbar */
   .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.95); backdrop-filter:blur(8px); border-bottom:1px solid #1e293b; }
   .navbar-inner { max-width:1280px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
   .logo { display:flex; align-items:center; gap:10px; color:white; font-weight:700; font-size:15px; }
-  .logo-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:800; box-shadow:0 2px 8px rgba(37,99,235,0.4); }
+  .logo-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:800; box-shadow:0 2px 8px rgba(37,99,235,0.4); font-family:"Inter",sans-serif; }
   .back-link { color:#94a3b8; font-size:13px; font-family:"Vazirmatn",sans-serif; transition:color 0.2s; display:flex; align-items:center; gap:6px; }
   .back-link:hover { color:#06B6D4; }
 
   /* Hero & Container */
   .main-wrapper { max-width:1280px; margin:0 auto; padding:32px 24px 80px; }
-  
+
   .page-header { background:white; border-radius:var(--radius-lg); padding:32px; margin-bottom:28px; border:1px solid var(--slate-200); box-shadow:var(--shadow-sm); }
-  
-  /* Header Image Styling */
-  .header-image-container {
-    position: relative;
-    width: 100%;
-    height: 260px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow-sm);
-  }
 
-  .header-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  .image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.85), transparent);
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .image-tag {
-    background: rgba(37, 99, 235, 0.9);
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-    font-family: "Inter", sans-serif;
-    padding: 5px 12px;
-    border-radius: 6px;
-    backdrop-filter: blur(4px);
-  }
+  .header-image-container { position:relative; width:100%; height:260px; border-radius:var(--radius-md); overflow:hidden; margin-bottom:24px; box-shadow:var(--shadow-sm); }
+  .header-image { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+  .image-overlay { position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(to top, rgba(15,23,42,0.85), transparent); display:flex; align-items:flex-end; }
+  .image-tag { background:rgba(37,99,235,0.9); color:white; font-size:12px; font-weight:700; font-family:"Inter",sans-serif; padding:5px 12px; border-radius:6px; backdrop-filter:blur(4px); }
 
   .breadcrumb { font-size:13px; color:var(--slate-500); margin-bottom:12px; display:flex; align-items:center; gap:6px; }
   .breadcrumb span { color:var(--primary); font-weight:700; }
-  
+
   h1 { font-size:28px; font-weight:800; color:var(--slate-900); margin-bottom:8px; }
   .subtitle { color:var(--slate-500); font-size:15px; margin-bottom:20px; }
   p.lead { line-height:1.9; color:var(--slate-700); font-size:15px; margin:0; }
@@ -94,7 +71,7 @@
   /* Section Title */
   .section-header { display:flex; align-items:center; gap:12px; margin:40px 0 20px; border-bottom:2px solid var(--slate-200); padding-bottom:12px; }
   .section-header h2 { font-size:22px; font-weight:800; color:var(--slate-900); }
-  .section-number { background:var(--slate-900); color:white; font-weight:800; font-size:14px; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:"Inter",sans-serif; }
+  .section-number { background:var(--slate-900); color:white; font-weight:800; font-size:14px; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:"Vazirmatn",sans-serif; flex-shrink:0; }
 
   /* Callouts */
   .callout { border-radius:var(--radius-md); padding:18px 20px; margin:20px 0; font-size:13.5px; line-height:1.8; border-right:4px solid; position:relative; box-shadow:var(--shadow-sm); }
@@ -107,13 +84,11 @@
   /* Material Cards */
   .mat-card { background:white; border:1px solid var(--slate-200); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:32px; transition:box-shadow 0.2s; }
   .mat-card:hover { box-shadow:var(--shadow-md); }
-  
   .mat-card-header { padding:20px 24px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--slate-200); }
   .mat-card-header-left { display:flex; align-items:center; gap:14px; }
-  .mat-badge { font-size:14px; font-weight:800; padding:6px 14px; border-radius:var(--radius-sm); font-family:"Inter",sans-serif; letter-spacing:1px; }
+  .mat-badge { font-size:14px; font-weight:800; padding:6px 14px; border-radius:var(--radius-sm); font-family:"Inter",sans-serif; letter-spacing:1px; flex-shrink:0; }
   .mat-title { font-size:18px; font-weight:800; color:var(--slate-900); }
   .mat-title span { font-size:13px; font-weight:400; color:var(--slate-500); display:block; margin-top:2px; }
-
   .mat-card-body { padding:24px; }
 
   /* Grid layouts */
@@ -126,12 +101,31 @@
   .table-responsive { width:100%; overflow-x:auto; margin:20px 0; border:1px solid var(--slate-200); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); }
   .grade-table { width:100%; border-collapse:collapse; font-size:13px; text-align:right; white-space:nowrap; }
   .grade-table th { background:var(--slate-900); color:white; padding:12px 16px; font-weight:700; }
-  .grade-table td { padding:12px 16px; border-bottom:1px solid var(--slate-200); background:white; color:var(--slate-700); vertical-align:middle; }
+  .grade-table td { padding:12px 16px; border-bottom:1px solid var(--slate-200); background:white; color:var(--slate-700); vertical-align:middle; white-space:normal; min-width:120px; }
   .grade-table tr:last-child td { border-bottom:none; }
   .grade-table tr:hover td { background:var(--slate-50); }
-  
+
   .grade-name { font-family:"Inter",sans-serif; font-weight:700; color:var(--slate-900); font-size:14px; }
   .std-pill { display:inline-flex; font-size:11px; font-weight:700; font-family:"Inter",sans-serif; background:var(--slate-100); color:var(--slate-700); padding:3px 8px; border-radius:var(--radius-sm); border:1px solid var(--slate-200); margin:2px; }
+  .pill-yes { background:#f0fdf4; color:#15803d; border-color:#bbf7d0; }
+  .pill-no { background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
+
+  /* Document flow (interactive) */
+  .doc-flow { display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 14px; }
+  .flow-step { flex:1; min-width:150px; background:white; border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:16px 12px 12px; cursor:pointer; text-align:center; transition:all .2s; position:relative; }
+  .flow-step:hover { border-color:#bfdbfe; box-shadow:var(--shadow-md); transform:translateY(-2px); }
+  .flow-step.active { border-color:var(--primary); background:var(--primary-light); box-shadow:0 4px 12px rgba(37,99,235,.18); }
+  .flow-step-code { font-family:"Inter",sans-serif; font-weight:800; font-size:16px; color:var(--slate-900); display:block; }
+  .flow-step.active .flow-step-code { color:var(--primary-dark); }
+  .flow-step-name { font-size:11px; color:var(--slate-500); display:block; margin-top:2px; }
+  .flow-step-num { position:absolute; top:6px; right:10px; font-family:"Inter",sans-serif; font-size:10px; font-weight:800; color:#94a3b8; }
+  .flow-arrow { align-self:center; color:#94a3b8; font-size:18px; font-weight:800; user-select:none; }
+  .flow-detail { background:white; border:1px solid var(--slate-200); border-right:4px solid var(--primary); border-radius:var(--radius-md); padding:18px 20px; font-size:13.5px; margin-bottom:20px; box-shadow:var(--shadow-sm); animation:fadeIn .35s ease; }
+  .flow-detail h4 { font-size:14.5px; font-weight:800; color:var(--slate-900); margin-bottom:6px; }
+  .flow-detail p { color:var(--slate-700); line-height:1.9; }
+  .flow-detail-meta { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+  .flow-meta-pill { font-size:11px; font-weight:700; background:var(--primary-light); color:var(--primary-dark); padding:4px 10px; border-radius:var(--radius-sm); border:1px solid #bfdbfe; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 
   /* References Section */
   .std-section { background:var(--slate-50); border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:18px 20px; margin-top:20px; }
@@ -141,25 +135,39 @@
   .std-code { font-family:"Inter",sans-serif; font-weight:800; color:var(--primary); flex-shrink:0; font-size:11.5px; background:var(--primary-light); padding:2px 6px; border-radius:4px; }
 
   /* Footer Navigation */
-  .nav-footer { display:flex; justify-content:space-between; gap:16px; margin-top:40px; padding-top:24px; border-top:1px solid var(--slate-200); }
+  .nav-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-top:40px; padding-top:24px; border-top:1px solid var(--slate-200); }
   .nav-btn { font-size:14px; font-weight:700; padding:12px 24px; border-radius:var(--radius-md); transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
-  .nav-prev { background:white; color:var(--slate-700); border:1px solid var(--slate-200); }
-  .nav-prev:hover { background:var(--slate-100); border-color:var(--slate-300); }
   .nav-next { background:var(--primary); color:white; box-shadow:0 2px 8px rgba(37,99,235,0.3); }
   .nav-next:hover { background:var(--primary-dark); }
+  .chapter-start-note { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--slate-500); background:var(--slate-50); border:1px dashed var(--slate-200); border-radius:var(--radius-md); padding:12px 20px; }
+
+  /* Back to top */
+  #toTop { position:fixed; bottom:24px; left:24px; width:44px; height:44px; border-radius:12px; background:var(--slate-900); color:white; border:none; cursor:pointer; opacity:0; pointer-events:none; transition:all .3s; box-shadow:var(--shadow-lg); font-size:18px; z-index:60; }
+  #toTop.show { opacity:1; pointer-events:auto; }
+  #toTop:hover { background:var(--primary); transform:translateY(-3px); }
+
+  /* Reveal animation */
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
 
   @media (max-width: 768px) {
     .main-wrapper { padding:16px 12px; }
     .page-header { padding:20px; }
-    .header-image-container { height: 180px; }
+    .header-image-container { height:180px; }
     .mat-card-header { flex-direction:column; align-items:flex-start; gap:12px; }
     .std-grid { grid-template-columns:1fr; }
     .nav-footer { flex-direction:column; }
     .nav-btn { justify-content:center; width:100%; }
+    .chapter-start-note { justify-content:center; width:100%; }
+    .flow-arrow { display:none; }
+    .flow-step { min-width:calc(50% - 6px); }
   }
 </style>
 </head>
 <body>
+
+<div id="progressBar"></div>
 
 <nav class="navbar">
   <div class="navbar-inner">
@@ -173,61 +181,78 @@
 
 <div class="main-wrapper">
 
-  <header class="page-header">
+  <header class="page-header reveal">
     <div class="header-image-container">
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop" alt="اسناد و مدارک پایپینگ" class="header-image">
+      <img src="https://image.qwenlm.ai/public_source/f2c9300f-0c2e-4062-8d18-84c20491682a/1f660c07f-0cc3-49d3-bef8-63076a6a8605.png" alt="اسناد و مدارک پایپینگ" class="header-image">
       <div class="image-overlay">
-        <span class="image-tag">Piping Documentation & Standards</span>
+        <span class="image-tag">Piping Documentation &amp; Deliverables</span>
       </div>
     </div>
 
-    <div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۳ — متریال‌شناسی</span></div>
-    <h1>متریال‌شناسی پایپینگ</h1>
-    <div class="subtitle">شناخت فلزات و آلیاژهای رایج در سیستم‌های لوله‌کشی صنعتی — با تمرکز بر استانداردهای ASTM و ASME</div>
-    <p class="lead">انتخاب متریال صحیح در پایپینگ صنعتی یکی از حساس‌ترین تصمیم‌های مهندسی است. متریال باید با سیال فرآیندی، دما، فشار، شرایط محیطی و الزامات استاندارد پروژه سازگار باشد. هر اشتباه در انتخاب یا تطبیق گرید می‌تواند به خوردگی، ترک، یا خرابی فاجعه‌بار منجر شود.</p>
-    
+    <div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۱ — اسناد و مدارک</span></div>
+    <h1>اسناد و مدارک پایپینگ</h1>
+    <div class="subtitle">راهنمای کامل مدارک مهندسی، متریال و کیفیت در پروژه‌های لوله‌کشی صنعتی — از P&amp;ID تا Final Book</div>
+    <p class="lead">در پروژه‌های EPC، سیستم پایپینگ فقط لوله و اتصالات نیست؛ مجموعه‌ای موازی از مدارک — از دیاگرام‌های فرآیندی تا گواهی‌های تست — «شناسنامه» هر خط را می‌سازد. هر جوش، هر شیر و هر ساپورت باید به یک نقشه، یک مشخصات فنی و یک گواهی معتبر قابل ردیابی باشد. خطای سندسازی از گران‌ترین خطاهای پروژه است؛ چون در ساخت، پیش‌راه‌اندازی یا حتی سال‌ها بعد در بهره‌برداری خود را نشان می‌دهد.</p>
+
     <div class="callout callout-warn" style="margin-bottom:0; margin-top:20px;">
       <span class="callout-label">نکته بحرانی</span><br>
-      در پروژه‌های EPC، تمام متریال‌ها باید با <strong>MTC (Mill Test Certificate)</strong> ردیابی‌پذیر باشند. طبق <strong>ASME B31.3, Para. 306</strong>، استفاده از متریال بدون شناسنامه‌ی معتبر مجاز نیست — حتی اگر ظاهراً مطابق گرید درست باشد.
+      طبق <strong>ASME B31.3, Para. 344</strong> و الزامات QC پروژه، ساخت بر اساس هر نسخه‌ای غیر از <strong>IFC (Issued for Construction)</strong> ممنوع است. هر تغییر میدانی باید ابتدا از فرآیند <strong>MOC (Management of Change)</strong> عبور کند و سپس به‌صورت Red-Mark روی نقشه ثبت و در نسخه <strong>As-Built</strong> نهایی شود.
     </div>
   </header>
 
   <!-- ═══════════════════════════════════════════ -->
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-number">۱</div>
-    <h2>فولاد کربنی (Carbon Steel)</h2>
+    <h2>چرخه حیات سند و وضعیت‌ها (Document Status)</h2>
   </div>
 
-  <div class="mat-card">
+  <div class="mat-card reveal">
     <div class="mat-card-header" style="background:#f8fafc;">
       <div class="mat-card-header-left">
-        <div class="mat-badge" style="background:#eff6ff; color:#2563EB; border:1px solid #bfdbfe;">CS</div>
+        <div class="mat-badge" style="background:#eff6ff; color:#2563EB; border:1px solid #bfdbfe;">DOC</div>
         <div class="mat-title">
-          Carbon Steel
-          <span>پرکاربردترین متریال در پایپینگ صنعتی</span>
+          Document Life Cycle
+          <span>از اولین صدور تا بایگانی نهایی — روی هر وضعیت کلیک کنید</span>
         </div>
       </div>
     </div>
 
     <div class="mat-card-body">
-      <p class="lead">فولاد کربنی ارزان‌ترین و در دسترس‌ترین گزینه برای سیستم‌های لوله‌کشی است. بیش از ۷۰٪ پایپینگ پروژه‌های نفت، گاز و پتروشیمی از CS ساخته می‌شود — اما محدودیت دما و مقاومت به خوردگی پایین آن باید همیشه در نظر گرفته شود.</p>
+      <p class="lead">هر سند مهندسی یک «شماره سند» یکتا، یک «Rev» و یک «Status» دارد. ترکیب این سه، تعیین می‌کند سند در کدام فاز پروژه قابل استفاده است. روی هر مرحله کلیک کنید تا جزئیات آن نمایش داده شود:</p>
 
-      <div class="props-grid">
-        <div class="prop-item">
-          <span class="prop-label">محدوده دما</span>
-          <span class="prop-value">−۲۹ تا +۴۲۵ °C (طبق ASME B31.3)</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">مقاومت به خوردگی</span>
-          <span class="prop-value">ضعیف — نیاز به پوشش یا Inhibitor</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">جوش‌پذیری</span>
-          <span class="prop-value">عالی — WPS بر اساس ASME IX</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">هزینه نسبی</span>
-          <span class="prop-value">پایین — مرجع قیمت‌گذاری متریال</span>
+      <div class="doc-flow" id="docFlow">
+        <button class="flow-step active" data-step="ifr">
+          <span class="flow-step-num">01</span>
+          <span class="flow-step-code">IFR</span>
+          <span class="flow-step-name">صدور برای بررسی</span>
+        </button>
+        <span class="flow-arrow">←</span>
+        <button class="flow-step" data-step="ifc">
+          <span class="flow-step-num">02</span>
+          <span class="flow-step-code">IFC</span>
+          <span class="flow-step-name">صدور برای ساخت</span>
+        </button>
+        <span class="flow-arrow">←</span>
+        <button class="flow-step" data-step="asbuilt">
+          <span class="flow-step-num">03</span>
+          <span class="flow-step-code">As-Built</span>
+          <span class="flow-step-name">چون‌ساخت</span>
+        </button>
+        <span class="flow-arrow">←</span>
+        <button class="flow-step" data-step="final">
+          <span class="flow-step-num">04</span>
+          <span class="flow-step-code">Final Book</span>
+          <span class="flow-step-name">مدارک نهایی (MDR)</span>
+        </button>
+      </div>
+
+      <div class="flow-detail" id="flowDetail">
+        <h4>IFR — Issued for Review</h4>
+        <p>اولین نسخه رسمی سند که برای بررسی کارفرما، مشاور و سایر دیسیپلین‌ها صادر می‌شود. هیچ خرید یا ساختی بر اساس نسخه IFR مجاز نیست؛ نظرات دریافت‌شده باید در Rev بعدی اعمال و سند دوباره صادر شود.</p>
+        <div class="flow-detail-meta">
+          <span class="flow-meta-pill">مجاز برای ساخت: خیر</span>
+          <span class="flow-meta-pill">معمولاً Rev 0 / Rev A</span>
+          <span class="flow-meta-pill">خروجی: لیست کامنت کارفرما</span>
         </div>
       </div>
 
@@ -235,332 +260,515 @@
         <table class="grade-table">
           <thead>
             <tr>
-              <th>گرید</th>
-              <th>استاندارد</th>
-              <th>کاربرد اصلی</th>
-              <th>نکته فنی</th>
+              <th>وضعیت</th>
+              <th>عنوان کامل</th>
+              <th>معنی</th>
+              <th>مجاز برای ساخت؟</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="grade-name">A106 Gr.B</span></td>
-              <td><span class="std-pill">ASTM A106</span></td>
-              <td>لوله‌های دما-فشار بالا، بدون درز</td>
-              <td>رایج‌ترین گرید در پایپینگ فرآیندی</td>
+              <td><span class="grade-name">IFR</span></td>
+              <td>Issued for Review</td>
+              <td>صدور برای بررسی و دریافت نظرات</td>
+              <td><span class="std-pill pill-no">خیر</span></td>
             </tr>
             <tr>
-              <td><span class="grade-name">A53 Gr.B</span></td>
-              <td><span class="std-pill">ASTM A53</span></td>
-              <td>خطوط آب، بخار و گاز کم‌فشار</td>
-              <td>درزدار یا بدون‌درز — نه برای سرویس بحرانی</td>
+              <td><span class="grade-name">IFI</span></td>
+              <td>Issued for Information</td>
+              <td>فقط برای اطلاع — مبنای هیچ اقدامی نیست</td>
+              <td><span class="std-pill pill-no">خیر</span></td>
             </tr>
             <tr>
-              <td><span class="grade-name">API 5L Gr.X52</span></td>
-              <td><span class="std-pill">API 5L</span></td>
-              <td>خطوط انتقال نفت و گاز</td>
-              <td>PSL1 و PSL2 — الزامات تست متفاوت</td>
+              <td><span class="grade-name">IFC</span></td>
+              <td>Issued for Construction</td>
+              <td>نسخه تصویب‌شده ساخت — مبنای خرید و کارگاه</td>
+              <td><span class="std-pill pill-yes">بله</span></td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">IFU</span></td>
+              <td>Issued for Use</td>
+              <td>نسخه مورد استفاده نهایی (جایگزین IFC در برخی قراردادها)</td>
+              <td><span class="std-pill pill-yes">بله</span></td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">As-Built</span></td>
+              <td>As-Built / Red-Mark</td>
+              <td>منطبق با اجرای واقعی میدان — مبنای بهره‌برداری و تعمیرات</td>
+              <td><span class="std-pill" style="background:#ecfeff;color:#155e75;border-color:#a5f3fc;">بایگانی</span></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="std-section">
-        <div class="std-section-title">استانداردهای مرجع</div>
-        <div class="std-grid">
-          <div class="std-row"><span class="std-code">ASTM A106</span><span>لوله‌های بدون درز CS برای سرویس دما-فشار بالا</span></div>
-          <div class="std-row"><span class="std-code">ASTM A53</span><span>لوله‌های CS درزدار و بدون‌درز — سرویس عمومی</span></div>
-          <div class="std-row"><span class="std-code">API 5L</span><span>لوله‌های خطوط انتقال نفت و گاز</span></div>
-          <div class="std-row"><span class="std-code">ASME B31.3 Para. 323</span><span>محدودیت‌های دمایی و الزامات CVN برای دمای پایین</span></div>
+      <div class="props-grid">
+        <div class="prop-item">
+          <span class="prop-label">شماره سند (Doc No.)</span>
+          <span class="prop-value">یکتا، بر اساس سیستم شماره‌گذاری پروژه</span>
         </div>
+        <div class="prop-item">
+          <span class="prop-label">Rev</span>
+          <span class="prop-value">Rev 0 ← A ← B … هر تغییر = Rev جدید</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Transmittal</span>
+          <span class="prop-value">روش رسمی تبادل سند بین کارفرما و پیمانکار</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Revision History</span>
+          <span class="prop-value">جدول تاریخچه تغییرات در هر سند — الزامی</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip" style="margin-bottom:0;">
+        <span class="callout-label">نکته کنترل مداریک</span><br>
+        همیشه از <strong>آخرین Rev</strong> موجود در سیستم کنترل مدارک (DCC) استفاده کنید — نه کپی‌های قدیمی داخل لپ‌تاپ یا کارگاه. کار با Rev منسوخ‌شده یکی از رایج‌ترین ریشه‌های دوباره‌کاری (Rework) در پروژه‌های صنعتی است.
       </div>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════ -->
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-number">۲</div>
-    <h2>فولاد ضدزنگ (Stainless Steel)</h2>
+    <h2>نقشه‌ها و مدارک مهندسی (Engineering Deliverables)</h2>
   </div>
 
-  <div class="mat-card">
+  <div class="mat-card reveal">
     <div class="mat-card-header" style="background:#f8fafc;">
       <div class="mat-card-header-left">
-        <div class="mat-badge" style="background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0;">SS</div>
+        <div class="mat-badge" style="background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0;">ENG</div>
         <div class="mat-title">
-          Stainless Steel
-          <span>مقاوم در برابر خوردگی عمومی</span>
+          Engineering Drawings
+          <span>از دیاگرام فرآیند تا نقشه کارگاهی اسپول</span>
         </div>
       </div>
     </div>
 
     <div class="mat-card-body">
-      <p class="lead">محتوای کروم حداقل ۱۰.۵٪ (طبق تعریف ASTM) لایه‌ی اکسید پایدار (Passive Layer) روی سطح ایجاد می‌کند که مانع خوردگی می‌شود. انتخاب گرید اشتباه SS می‌تواند به خوردگی حفره‌ای (Pitting) یا ترک خوردگی تنشی (SCC) منجر شود.</p>
+      <p class="lead">مدارک مهندسی پایپینگ به‌صورت سلسله‌مراتبی تولید می‌شوند: ابتدا PFD و P&amp;ID منطق فرآیند را تثبیت می‌کنند، سپس Layout و GAD مسیر فیزیکی را تعیین می‌کنند و در نهایت ایزومتریک‌ها به نقشه‌های ساخت کارگاهی تبدیل می‌شوند. هر سطح، جزئیات بیشتری دارد و مبنای سند بعدی است.</p>
 
-      <div class="props-grid">
-        <div class="prop-item">
-          <span class="prop-label">محدوده دما</span>
-          <span class="prop-value">تا +۸۱۵ °C برای گریدهای آستنیتی</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">مقاومت به خوردگی</span>
-          <span class="prop-value">بالا — وابسته به گرید و محیط</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">خطر بحرانی</span>
-          <span class="prop-value">Sensitization در ۴۲۷–۸۱۵ °C</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">هزینه نسبی</span>
-          <span class="prop-value">۳–۵ برابر CS</span>
-        </div>
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>سند</th>
+              <th>اختصار</th>
+              <th>محتوای اصلی</th>
+              <th>مبنای استاندارد</th>
+              <th>ابزار رایج</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Process Flow Diagram</span></td>
+              <td><span class="std-pill">PFD</span></td>
+              <td>شماتیک فرآیند، تجهیزات اصلی، بیلانس جرم و انرژی</td>
+              <td>ISO 10628-1</td>
+              <td>HYSYS / Visio</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Piping &amp; Instrumentation Diagram</span></td>
+              <td><span class="std-pill">P&amp;ID</span></td>
+              <td>تمام خطوط، سایز، کلاس، شیرها، ابزار دقیق و Utility ها</td>
+              <td>ISA-5.1 / ISO 10628-2</td>
+              <td>SmartPlant P&amp;ID / AutoCAD</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Plot Plan / Equipment Layout</span></td>
+              <td><span class="std-pill">PPL</span></td>
+              <td>جانمایی تجهیزات و ابعاد کلی واحد</td>
+              <td>استاندارد شرکتی</td>
+              <td>PDMS / E3D</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Piping General Arrangement</span></td>
+              <td><span class="std-pill">GAD</span></td>
+              <td>مسیر لوله‌ها در پلان و مقطع، ابعاد کلیدی، Rack ها</td>
+              <td>ASME Y14.2M</td>
+              <td>PDMS / E3D / AutoCAD</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Isometric Drawing</span></td>
+              <td><span class="std-pill">ISO</span></td>
+              <td>نقشه ساخت هر اسپول + BOM متریال + محل جوش‌ها</td>
+              <td>ASME Y14.41 (مدل ۳بعدی)</td>
+              <td>ISOGEN / Spoolgen</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Pipe Support Drawing</span></td>
+              <td><span class="std-pill">PSD</span></td>
+              <td>جزئیات ساپورت‌های استاندارد و خاص (Special)</td>
+              <td>MSS SP-58 / SP-69</td>
+              <td>CAD + خروجی تحلیل تنش</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Stress Analysis Report</span></td>
+              <td><span class="std-pill">SAR</span></td>
+              <td>نتایج تحلیل تنش، نیروهای نازل، جابجایی‌ها</td>
+              <td>ASME B31.3 Chapter II</td>
+              <td>CAESAR II</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="callout callout-danger">
-        <span class="callout-label">خطر — Chloride SCC</span><br>
-        گریدهای آستنیتی مثل ۳۰۴ و ۳۱۶ در محیط‌های کلریدی (آب دریا، بخار حاوی کلر) در معرض <strong>Stress Corrosion Cracking</strong> هستند. طبق <strong>NACE MR0175 / ISO 15156</strong>، برای سرویس‌های Sour با H₂S از SS آستنیتی باید با احتیاط استفاده شود.
-      </div>
-
-      <div class="table-responsive">
-        <table class="grade-table">
-          <thead>
-            <tr>
-              <th>گرید</th>
-              <th>استاندارد</th>
-              <th>کاربرد اصلی</th>
-              <th>نکته فنی</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="grade-name">304 / 304L</span></td>
-              <td><span class="std-pill">ASTM A312</span></td>
-              <td>سرویس عمومی — غیرخورنده</td>
-              <td>L = کربن پایین، مناسب جوشکاری بدون PWHT</td>
-            </tr>
-            <tr>
-              <td><span class="grade-name">316 / 316L</span></td>
-              <td><span class="std-pill">ASTM A312</span></td>
-              <td>محیط‌های خورنده‌تر، مولیبدن‌دار</td>
-              <td>مقاوم‌تر در برابر Pitting نسبت به ۳۰۴</td>
-            </tr>
-            <tr>
-              <td><span class="grade-name">321</span></td>
-              <td><span class="std-pill">ASTM A312</span></td>
-              <td>دمای بالا — ۴۲۷ تا ۸۱۵ °C</td>
-              <td>تیتانیوم‌دار — ضدحساس‌سازی (Anti-sensitization)</td>
-            </tr>
-            <tr>
-              <td><span class="grade-name">Duplex 2205</span></td>
-              <td><span class="std-pill">ASTM A790</span></td>
-              <td>آب دریا، کلرید، فشار بالا</td>
-              <td>PRE > 35 — مقاوم در برابر Pitting و SCC</td>
-            </tr>
-          </tbody>
-        </table>
+        <span class="callout-label">خطر — تغییر بدون MOC</span><br>
+        <strong>P&amp;ID سند مادر (Master Document)</strong> است؛ Line List، ایزومتریک‌ها، MTO و حتی لوپ‌های ابزار دقیق همه از آن نشأت می‌گیرند. هر تغییری در P&amp;ID بدون فرآیند MOC و بدون اطلاع به تمام دیسیپلین‌ها، ریشه بسیاری از حوادث عملیاتی و Clash های ساخت است.
       </div>
 
       <div class="std-section">
-        <div class="std-section-title">استانداردهای مرجع</div>
+        <div class="std-section-title">استانداردهای مرجع نقشه‌کشی</div>
         <div class="std-grid">
-          <div class="std-row"><span class="std-code">ASTM A312</span><span>لوله‌های SS بدون درز و درزجوش آستنیتی</span></div>
-          <div class="std-row"><span class="std-code">ASTM A790</span><span>لوله‌های Duplex و Super Duplex</span></div>
-          <div class="std-row"><span class="std-code">ASME B31.3 Table A-1</span><span>تنش‌های مجاز گریدهای SS</span></div>
-          <div class="std-row"><span class="std-code">NACE MR0175 / ISO 15156</span><span>محدودیت‌های SS در سرویس Sour</span></div>
+          <div class="std-row"><span class="std-code">ISA-5.1</span><span>سیمبول‌ها و علائم استاندارد برای P&amp;ID</span></div>
+          <div class="std-row"><span class="std-code">ISO 10628</span><span>دیاگرام‌های فرآیند برای صنایع شیمیایی و پتروشیمی</span></div>
+          <div class="std-row"><span class="std-code">ISO 14617</span><span>سیمبول‌های گرافیکی برای دیاگرام‌های مدار سیال</span></div>
+          <div class="std-row"><span class="std-code">ASME Y14.41</span><span>ارائه ابعاد و تلرانس‌ها در مدل‌سازی سه‌بعدی</span></div>
+          <div class="std-row"><span class="std-code">MSS SP-58 / SP-69</span><span>طراحی و انتخاب ساپورت‌های لوله</span></div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════ -->
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-number">۳</div>
-    <h2>آلیاژهای نیکل (Nickel Alloys)</h2>
+    <h2>مدارک متریال و مشخصات فنی (Material Documents)</h2>
   </div>
 
-  <div class="mat-card">
+  <div class="mat-card reveal">
     <div class="mat-card-header" style="background:#f8fafc;">
       <div class="mat-card-header-left">
-        <div class="mat-badge" style="background:#faf5ff; color:#7C3AED; border:1px solid #e9d5ff;">Ni</div>
+        <div class="mat-badge" style="background:#faf5ff; color:#7C3AED; border:1px solid #e9d5ff;">MAT</div>
         <div class="mat-title">
-          Nickel Alloys
-          <span>برای شرایط اکسترم — اسید، دمای بالا، محیط‌های تهاجمی</span>
+          Specifications &amp; Lists
+          <span>PMS، Line List، MTO و دیتاشیت‌ها — پل مهندسی به خرید</span>
         </div>
       </div>
     </div>
 
     <div class="mat-card-body">
-      <p class="lead">آلیاژهای نیکل وقتی فولاد کربنی و SS دیگر جواب نمی‌دهند انتخاب می‌شوند — محیط‌های اسیدی قوی، دماهای شدید بالا یا پایین، یا ترکیب چند عامل خوردنده به‌صورت همزمان. هزینه بسیار بالاست (۱۰ تا ۳۰ برابر CS)، پس انتخاب دقیق گرید بر اساس تحلیل خوردگی الزامی است.</p>
-
-      <div class="props-grid">
-        <div class="prop-item">
-          <span class="prop-label">محدوده دما</span>
-          <span class="prop-value">−۲۵۳ °C تا +۱۰۰۰ °C بسته به گرید</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">مقاومت خوردگی</span>
-          <span class="prop-value">بسیار بالا — اسید، قلیا، کلرید</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">Creep Resistance</span>
-          <span class="prop-value">عالی در دماهای بالا (>۵۵۰ °C)</span>
-        </div>
-        <div class="prop-item">
-          <span class="prop-label">هزینه نسبی</span>
-          <span class="prop-value">۱۰ تا ۳۰ برابر CS — گران‌ترین گروه</span>
-        </div>
-      </div>
+      <p class="lead">این گروه مدارک، «چه چیزی خریداری شود» را تعریف می‌کنند. PMS برای هر کلاس لوله، متریال، ریتینگ و الزامات تست را مشخص می‌کند؛ MTO مقدار را از ایزومتریک استخراج می‌کند و Line List همه خطوط را با پارامترهای طراحی فهرست می‌کند. ناسازگاری بین این سه سند = خرید اشتباه = تأخیر پروژه.</p>
 
       <div class="table-responsive">
         <table class="grade-table">
           <thead>
             <tr>
-              <th>گرید</th>
-              <th>ترکیب اصلی</th>
-              <th>استاندارد</th>
-              <th>کاربرد اصلی</th>
-              <th>نقطه قوت کلیدی</th>
+              <th>سند</th>
+              <th>اختصار</th>
+              <th>محتوا</th>
+              <th>فاز تولید</th>
+              <th>مسئول</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="grade-name">Inconel 600</span><br><small style="color:var(--slate-500);font-family:Inter">UNS N06600</small></td>
-              <td>Ni 72%, Cr 15%, Fe 8%</td>
-              <td><span class="std-pill">ASTM B167</span><span class="std-pill">ASTM B163</span></td>
-              <td>نیروگاه هسته‌ای، کوره‌ها، سیستم‌های دما بالا</td>
-              <td>مقاومت به اکسیداسیون تا ۱۰۰۰ °C و ترک خوردگی تنشی (SCC)</td>
+              <td><span class="grade-name">Piping Material Specification</span></td>
+              <td><span class="std-pill">PMS</span></td>
+              <td>متریال لوله/اتصالات/فلنج برای هر Pipe Class + الزامات تست</td>
+              <td>FEED ← Detail</td>
+              <td>مهندس متریال</td>
             </tr>
             <tr>
-              <td><span class="grade-name">Inconel 625</span><br><small style="color:var(--slate-500);font-family:Inter">UNS N06625</small></td>
-              <td>Ni 62%, Cr 22%, Mo 9%, Nb 3.5%</td>
-              <td><span class="std-pill">ASTM B444</span><span class="std-pill">ASTM B446</span></td>
-              <td>آب دریا، سیستم‌های دریایی، محیط‌های اسیدی شدید</td>
-              <td>PRE بسیار بالا — مقاوم Pitting، SCC و خوردگی شکافی</td>
+              <td><span class="grade-name">Valve Material Specification</span></td>
+              <td><span class="std-pill">VMS</span></td>
+              <td>مشخصات فنی شیرها بر اساس سایز، کلاس و سرویس</td>
+              <td>FEED ← Detail</td>
+              <td>مهندس متریال / مکانیک</td>
             </tr>
             <tr>
-              <td><span class="grade-name">Hastelloy C-276</span><br><small style="color:var(--slate-500);font-family:Inter">UNS N10276</small></td>
-              <td>Ni 57%, Mo 16%, Cr 16%, W 4%</td>
-              <td><span class="std-pill">ASTM B622</span><span class="std-pill">ASTM B619</span></td>
-              <td>اسیدهای قوی HCl، H₂SO₄، محیط‌های اکسیدکننده</td>
-              <td>گسترده‌ترین مقاومت شیمیایی در میان تمام آلیاژهای تجاری</td>
+              <td><span class="grade-name">Line List</span></td>
+              <td><span class="std-pill">LL</span></td>
+              <td>فهرست تمام خطوط: سایز، سرویس، P/T طراحی، کلاس، تست</td>
+              <td>FEED ← به‌روزرسانی مستمر</td>
+              <td>پایپینگ / فرآیند</td>
             </tr>
             <tr>
-              <td><span class="grade-name">Hastelloy C-22</span><br><small style="color:var(--slate-500);font-family:Inter">UNS N06022</small></td>
-              <td>Ni 56%, Cr 22%, Mo 13%, W 3%</td>
-              <td><span class="std-pill">ASTM B622</span></td>
-              <td>محیط‌های اکسیدکننده و احیاکننده همزمان</td>
-              <td>مقاومت بهتر از C-276 در محیط‌های اکسیدکننده (HNO₃)</td>
+              <td><span class="grade-name">Material Take Off</span></td>
+              <td><span class="std-pill">MTO</span></td>
+              <td>مقادیر متریال (لوله، اتصالات، گسکت، پیچ‌ومهره) از ایزومتریک</td>
+              <td>Detail ← Procurement (مراحل ۳۰/۶۰/۹۰٪)</td>
+              <td>برآوردگر پایپینگ</td>
             </tr>
             <tr>
-              <td><span class="grade-name">Monel 400</span><br><small style="color:var(--slate-500);font-family:Inter">UNS N04400</small></td>
-              <td>Ni 67%, Cu 31%</td>
-              <td><span class="std-pill">ASTM B165</span><span class="std-pill">ASTM B163</span></td>
-              <td>آب دریا، سیستم‌های نمکی، HF رقیق</td>
-              <td>تنها آلیاژ مقاوم در برابر HF (اسید هیدروفلوئوریک) در دماهای پایین</td>
+              <td><span class="grade-name">Datasheet</span></td>
+              <td><span class="std-pill">DS</span></td>
+              <td>مشخصات خرید شیرها، صافی‌ها، تجهیزات خاص</td>
+              <td>Detail ← Procurement</td>
+              <td>مکانیک / ابزار دقیق</td>
             </tr>
             <tr>
-              <td><span class="grade-name">Incoloy 825</span><br><small style="color:var(--slate-500);font-family:Inter">UNS N08825</small></td>
-              <td>Ni 42%, Fe 30%, Cr 22%, Mo 3%</td>
-              <td><span class="std-pill">ASTM B423</span><span class="std-pill">ASTM B163</span></td>
-              <td>H₂SO₄، H₃PO₄، محیط‌های کاهنده و اکسیدکننده</td>
-              <td>گزینه اقتصادی‌تر نسبت به C-276 برای اسیدهای فسفریک و سولفوریک</td>
-            </tr>
-            <tr>
-              <td><span class="grade-name">Alloy 20</span><br><small style="color:var(--slate-500);font-family:Inter">UNS N08020</small></td>
-              <td>Ni 35%, Fe 37%, Cr 20%, Cu 3.5%</td>
-              <td><span class="std-pill">ASTM B464</span><span class="std-pill">ASTM B729</span></td>
-              <td>صنایع دارویی، H₂SO₄ غلیظ، تولید اسید</td>
-              <td>طراحی‌شده مخصوص سرویس H₂SO₄ — ارزان‌تر از Hastelloy</td>
+              <td><span class="grade-name">Mill Test Certificate</span></td>
+              <td><span class="std-pill">MTC</span></td>
+              <td>گواهی کارخانه با نتایج تست شیمیایی/مکانیکی + Heat No.</td>
+              <td>Procurement ← Construction</td>
+              <td>تأمین‌کننده (EN 10204 Type 3.1)</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="callout callout-tip">
-        <span class="callout-label">نکته انتخاب گرید</span><br>
-        Hastelloy C-276 و C-22 اغلب با هم مقایسه می‌شوند. قانون ساده: اگر محیط <strong>احیاکننده</strong> (Reducing) مثل HCl یا H₂SO₄ رقیق است ← C-276. اگر محیط <strong>اکسیدکننده</strong> (Oxidizing) مثل HNO₃ یا محیط مختلط است ← C-22. این تفاوت ناشی از درصد بالاتر کروم در C-22 است.
+      <div class="callout callout-warn">
+        <span class="callout-label">هشدار — MTO و Rev ایزومتریک</span><br>
+        MTO باید همیشه از <strong>آخرین Rev ایزومتریک‌های IFC</strong> استخراج شود. استخراج از نسخه‌های IFR یا Rev منسوخ، به کمبود متریال در میانه ساخت یا مازاد انبار منجر می‌شود. برای آیتم‌های Long-Lead (مثل شیرهای خاص یا آلیاژها)، MTO مرحله ۳۰٪ یا ۶۰٪ با ضریب اطمینان مهندسی صادر می‌شود.
       </div>
 
-      <div class="std-section">
-        <div class="std-section-title">استانداردهای ASTM مرجع — آلیاژهای نیکل</div>
-        <div class="std-grid">
-          <div class="std-row"><span class="std-code">ASTM B163</span><span>لوله‌های Condenser و Heat Exchanger از نیکل و آلیاژهای نیکل-آهنی (شامل Inconel 600، Monel 400، Incoloy 825)</span></div>
-          <div class="std-row"><span class="std-code">ASTM B165</span><span>لوله‌های بدون درز Monel 400 (UNS N04400) برای سرویس عمومی</span></div>
-          <div class="std-row"><span class="std-code">ASTM B167</span><span>لوله‌های بدون درز Inconel 600 (UNS N06600)</span></div>
-          <div class="std-row"><span class="std-code">ASTM B423</span><span>لوله‌های بدون درز Incoloy 825 (UNS N08825)</span></div>
-          <div class="std-row"><span class="std-code">ASTM B444</span><span>لوله‌های بدون درز Inconel 625 (UNS N06625)</span></div>
-          <div class="std-row"><span class="std-code">ASTM B619</span><span>لوله‌های درزجوش Hastelloy (C-276، C-22 و سایر آلیاژهای Ni-Mo-Cr)</span></div>
-          <div class="std-row"><span class="std-code">ASTM B622</span><span>لوله‌های بدون درز Hastelloy (C-276، C-22، B-2، B-3)</span></div>
-          <div class="std-row"><span class="std-code">ASTM B464</span><span>لوله‌های درزجوش Alloy 20 (UNS N08020)</span></div>
-          <div class="std-row"><span class="std-code">ASTM B729</span><span>لوله‌های بدون درز Alloy 20 (UNS N08020)</span></div>
-          <div class="std-row"><span class="std-code">ASME B31.3 Table A-1</span><span>تنش‌های مجاز آلیاژهای نیکل در دماهای مختلف</span></div>
-          <div class="std-row"><span class="std-code">NACE MR0175 / ISO 15156-3</span><span>الزامات آلیاژهای نیکل در سرویس‌های Sour (H₂S)</span></div>
-        </div>
+      <div class="callout callout-tip" style="margin-bottom:0;">
+        <span class="callout-label">نکته خرید</span><br>
+        در RFQ حتماً به <strong>Rev فعلی PMS/VMS</strong> و الزام <strong>MTC Type 3.1</strong> (طبق EN 10204) اشاره کنید. آیتمی که بدون MTC معتبر به سایت برسد، طبق رویه QC قرنطینه (Quarantine) می‌شود — حتی اگر از تأمین‌کننده معتبر باشد.
       </div>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════ -->
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-number">۴</div>
-    <h2>مقایسه کلی گروه‌های متریال</h2>
+    <h2>مدارک کیفیت، جوشکاری و تست (Quality Records)</h2>
   </div>
 
-  <div class="table-responsive">
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#fff7ed; color:#ea580c; border:1px solid #fed7aa;">QC</div>
+        <div class="mat-title">
+          Quality &amp; Test Records
+          <span>WPS/PQR، MTC، NDT و پکیج تست — سند ردیابی هر جوش</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">مدارک کیفیت، «مدرک اثبات» هستند: اثبات اینکه هر جوش با رویه تأییدشده، توسط جوشکار صلاحیت‌دار، با متریال ردیابی‌پذیر و با بازرسی مستند انجام شده است. این مدارک در Test Package هر خط جمع‌آوری و در Final Book بایگانی می‌شوند.</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>سند</th>
+              <th>اختصار</th>
+              <th>محتوا</th>
+              <th>مرجع استاندارد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Welding Procedure Specification</span></td>
+              <td><span class="std-pill">WPS</span></td>
+              <td>پارامترهای مجاز جوشکاری هر متریال/ضخامت/پروسه</td>
+              <td>ASME IX (QW-250 تا QW-280)</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Procedure Qualification Record</span></td>
+              <td><span class="std-pill">PQR</span></td>
+              <td>سابقه تست مکانیکی کوپن — مدرک تأیید WPS</td>
+              <td>ASME IX (QW-200)</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Welder Performance Qualification</span></td>
+              <td><span class="std-pill">WPQ</span></td>
+              <td>صلاحیت فردی جوشکار با کد و تاریخ انقضا</td>
+              <td>ASME IX (QW-300)</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Weld Map / Joint Register</span></td>
+              <td><span class="std-pill">WM</span></td>
+              <td>محل هر جوش روی ایزومتریک + کد جوشکار + وضعیت NDT</td>
+              <td>رویه QC پروژه</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">NDT Reports (RT / UT / MT / PT)</span></td>
+              <td><span class="std-pill">NDT</span></td>
+              <td>گزارش بازرسی غیرمخرب جوش‌ها با درصد نمونه‌گیری</td>
+              <td>ASME V / ASME B31.3 §341</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Hydro / Pneumatic Test Package</span></td>
+              <td><span class="std-pill">TP</span></td>
+              <td>مرزهای تست، فشار، مدت، چک‌لیست و گواهی امضاشده</td>
+              <td>ASME B31.3 §345</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Punch List</span></td>
+              <td><span class="std-pill">PL</span></td>
+              <td>موارد نواقص (Category A/B) تا تحویل نهایی</td>
+              <td>رویه پیش‌راه‌اندازی</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Manufacturer Data Report / Final Book</span></td>
+              <td><span class="std-pill">MDR</span></td>
+              <td>فایل نهایی همه مدارک، فهرست‌شده و Index شده</td>
+              <td>الزام قراردادی / ISO 9001</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">خطر — جوش بدون مدرک</span><br>
+        هیچ جوشی بدون <strong>WPS مؤثر</strong> و <strong>جوشکار دارای WPQ معتبر</strong> مجاز نیست. کد جوشکار باید کنار هر جوش Stamp شود و در Weld Map ثبت گردد؛ جوشی که قابل ردیابی به جوشکار و NDT نباشد، طبق ASME B31.3 §344 مردود و نیازمند ارزیابی مجدد است.
+      </div>
+
+      <div class="callout callout-tip" style="margin-bottom:0;">
+        <span class="callout-label">نکته ردیابی متریال</span><br>
+        <strong>Heat Number</strong> حک‌شده روی لوله باید با Heat No. داخل MTC و با خط مربوطه در Weld Map تطابق داشته باشد. زنجیره ردیابی کامل: <strong>Line No → Isometric → Weld No → MTC / NDT / WPS</strong>. این زنجیره همان چیزی است که ممیز و کارفرما در پیش‌راه‌اندازی چک می‌کنند.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۵</div>
+    <h2>ماتریس مدارک در فازهای پروژه</h2>
+  </div>
+
+  <div class="table-responsive reveal">
     <table class="grade-table">
       <thead>
         <tr>
-          <th>پارامتر</th>
-          <th>Carbon Steel</th>
-          <th>Stainless Steel</th>
-          <th>Nickel Alloys</th>
+          <th>فاز پروژه</th>
+          <th>مدارک کلیدی</th>
+          <th>مسئول اصلی</th>
+          <th>خروجی / تأییدیه</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>مقاومت خوردگی</strong></td>
-          <td>ضعیف</td>
-          <td>متوسط تا خوب</td>
-          <td>عالی</td>
+          <td><strong>FEED / طراحی پایه</strong></td>
+          <td>PFD، P&amp;ID اولیه، Line List، PMS، MTO اولیه</td>
+          <td>فرآیند + پایپینگ</td>
+          <td>تأیید کارفرما (IFR)</td>
         </tr>
         <tr>
-          <td><strong>محدوده دما</strong></td>
-          <td>−۲۹ تا +۴۲۵ °C</td>
-          <td>−۲۵۴ تا +۸۱۵ °C</td>
-          <td>−۲۵۳ تا +۱۰۰۰ °C</td>
+          <td><strong>مهندسی تفصیلی</strong></td>
+          <td>P&amp;ID نهایی، GAD، ایزومتریک IFC، Stress، ساپورت‌ها، MTO ۹۰٪</td>
+          <td>پایپینگ</td>
+          <td>صدور IFC</td>
         </tr>
         <tr>
-          <td><strong>هزینه نسبی</strong></td>
-          <td>۱× (مرجع)</td>
-          <td>۳–۵×</td>
-          <td>۱۰–۳۰×</td>
+          <td><strong>خرید (Procurement)</strong></td>
+          <td>RFQ بر اساس PMS/VMS، دیتاشیت‌ها، بررسی MTC، PMI</td>
+          <td>تدارکات + QC</td>
+          <td>ورود متریال با مدارک کامل</td>
         </tr>
         <tr>
-          <td><strong>استاندارد اصلی لوله</strong></td>
-          <td>ASTM A106 / API 5L</td>
-          <td>ASTM A312 / A790</td>
-          <td>ASTM B622 / B163</td>
+          <td><strong>ساخت و نصب</strong></td>
+          <td>WPS/PQR/WPQ، Weld Map، گزارش NDT، Test Package</td>
+          <td>QC + ساخت</td>
+          <td>تست هیدرو / پنوماتیک</td>
         </tr>
         <tr>
-          <td><strong>خطر اصلی</strong></td>
-          <td>خوردگی عمومی</td>
-          <td>SCC در کلرید</td>
-          <td>هزینه — انتخاب گرید اشتباه</td>
+          <td><strong>تحویل (Handover)</strong></td>
+          <td>As-Built، بستن Punch List، Final Book / MDR</td>
+          <td>DCC + همه دیسیپلین‌ها</td>
+          <td>قبولی کارفرما ← پرداخت نهایی</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="callout callout-warn">
-    <span class="callout-label">هشدار — PMI در پروژه</span><br>
-    آلیاژهای نیکل از نظر ظاهری شبیه SS هستند. طبق <strong>API RP 578</strong>، برای تمام متریال‌های آلیاژی (Alloy Material) انجام <strong>PMI (Positive Material Identification)</strong> با XRF یا OES الزامی است — هیچ‌وقت تنها به شکل ظاهری یا رنگ متکی نشو.
+  <div class="callout callout-warn reveal">
+    <span class="callout-label">هشدار — تأخیر در Final Book</span><br>
+    جمع‌آوری Final Book را به پایان پروژه موکول نکنید؛ تأخیر در مدارک نهایی یکی از رایج‌ترین علت تأخیر در تحویل موقت و آزاد نشدن ضمانت‌نامه‌هاست. سندسازی را از روز اول موازی با ساخت پیش ببرید: هر خط که تست شد، Test Package آن همان هفته بسته شود.
   </div>
 
-  <footer class="nav-footer">
-    <a href="../02-components/" class="nav-btn nav-prev">→ فصل قبل: اجزای پایپینگ</a>
-    <a href="../04-isometric/" class="nav-btn nav-next">فصل بعد: نقشه‌خوانی ایزومتریک ←</a>
+  <div class="std-section reveal">
+    <div class="std-section-title">مرجع سریع — استانداردهای سندسازی پایپینگ</div>
+    <div class="std-grid">
+      <div class="std-row"><span class="std-code">ASME B31.3 §344</span><span>الزامات ثبت و نگهداری مدارک بازرسی و تست</span></div>
+      <div class="std-row"><span class="std-code">ASME B31.3 §345</span><span>مستندات آزمون فشاری (تست هیدرو/پنوماتیک)</span></div>
+      <div class="std-row"><span class="std-code">ASME IX</span><span>صلاحیت رویه و جوشکار (WPS/PQR/WPQ)</span></div>
+      <div class="std-row"><span class="std-code">EN 10204</span><span>انواع گواهی بازرسی — Type 3.1 برای متریال فشاری</span></div>
+      <div class="std-row"><span class="std-code">ISA-5.1</span><span>علائم و سیمبول‌های P&amp;ID</span></div>
+      <div class="std-row"><span class="std-code">ISO 9001</span><span>کنترل مدارک و سوابق در سیستم مدیریت کیفیت</span></div>
+    </div>
+  </div>
+
+  <footer class="nav-footer reveal">
+    <span class="chapter-start-note">شروع دوره — این فصل اول است</span>
+    <a href="../02-components/" class="nav-btn nav-next">فصل بعد: اجزای پایپینگ ←</a>
   </footer>
 
 </div>
+
+<button id="toTop" title="بازگشت به بالا" aria-label="بازگشت به بالا">↑</button>
+
+<script>
+  /* ── Reading progress bar + back-to-top ── */
+  var progressBar = document.getElementById('progressBar');
+  var toTopBtn = document.getElementById('toTop');
+  window.addEventListener('scroll', function () {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    progressBar.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+    if (doc.scrollTop > 600) { toTopBtn.classList.add('show'); } else { toTopBtn.classList.remove('show'); }
+  }, { passive: true });
+  toTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ── Interactive document life-cycle flow ── */
+  var flowData = {
+    ifr: {
+      title: 'IFR — Issued for Review',
+      body: 'اولین نسخه رسمی سند که برای بررسی کارفرما، مشاور و سایر دیسیپلین‌ها صادر می‌شود. هیچ خرید یا ساختی بر اساس نسخه IFR مجاز نیست؛ نظرات دریافت‌شده باید در Rev بعدی اعمال و سند دوباره صادر شود.',
+      pills: ['مجاز برای ساخت: خیر', 'معمولاً Rev 0 / Rev A', 'خروجی: لیست کامنت کارفرما']
+    },
+    ifc: {
+      title: 'IFC — Issued for Construction',
+      body: 'نسخه تصویب‌شده ساخت. پس از اعمال کامنت‌ها و دریافت تأیید کارفرما، سند IFC می‌شود و فقط همین نسخه به کارگاه و تدارکات ارسال می‌گردد. هر تغییر بعد از این مرحله فقط از مسیر MOC مجاز است.',
+      pills: ['مجاز برای ساخت: بله', 'مبنای خرید و ساخت کارگاه', 'تغییر فقط با MOC']
+    },
+    asbuilt: {
+      title: 'As-Built — نقشه چون‌ساخت',
+      body: 'پس از پایان ساخت، تمام تغییرات میدانی (Field Changes) به‌صورت Red-Mark روی نقشه ثبت و پس از تأیید مهندسی، نسخه As-Built صادر می‌شود — مهم‌ترین مرجع برای تیم بهره‌برداری و تعمیرات در طول عمر واحد.',
+      pills: ['منطبق با اجرای واقعی', 'مبنای بهره‌برداری و تعمیرات', 'ورودی Final Book']
+    },
+    final: {
+      title: 'Final Book / MDR — مدارک نهایی',
+      body: 'فایل کامل و Index شده تمام مدارک پروژه: نقشه‌های As-Built، گواهی‌های متریال، گزارش‌های تست، Punch List بسته‌شده و سوابق کیفیت. تحویل و تأیید آن معمولاً شرط پرداخت نهایی و صدور گواهی تحویل موقت است.',
+      pills: ['تحویل‌پذیر نهایی', 'شرط پرداخت نهایی قرارداد', 'بایگانی مادام‌العمر واحد']
+    }
+  };
+
+  var flowSteps = document.querySelectorAll('.flow-step');
+  var flowDetail = document.getElementById('flowDetail');
+
+  function renderFlow(key) {
+    var d = flowData[key];
+    if (!d) return;
+    flowDetail.style.animation = 'none';
+    void flowDetail.offsetWidth; /* reflow to restart animation */
+    flowDetail.style.animation = '';
+    var pillsHtml = d.pills.map(function (p) {
+      return '<span class="flow-meta-pill">' + p + '</span>';
+    }).join('');
+    flowDetail.innerHTML = '<h4>' + d.title + '</h4><p>' + d.body + '</p><div class="flow-detail-meta">' + pillsHtml + '</div>';
+  }
+
+  flowSteps.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      flowSteps.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderFlow(btn.getAttribute('data-step'));
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+</script>
 
 </body>
 </html>
