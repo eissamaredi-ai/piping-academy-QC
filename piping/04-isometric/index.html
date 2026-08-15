@@ -3,1348 +3,873 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نقشه‌خوانی ایزومتریک — آکادمی پایپینگ و جوشکاری</title>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>نقشه‌خوانی و ایزومتریک پایپینگ — آکادمی پایپینگ و جوشکاری</title>
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/300.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/500.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/700.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/vazirmatn@latest/800.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/700.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@latest/800.css" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0e1a;
-    --bg-soft: #111827;
-    --bg-card: #171f34;
-    --border: #2a3350;
-    --text: #e8ecf5;
-    --text-muted: #8b94ad;
-    --primary: #06b6d4;
-    --primary-dark: #0891b2;
-    --accent: #f59e0b;
-    --danger: #ef4444;
-    --purple: #a855f7;
-    --indigo: #6366f1;
-    --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
-    --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
-  }
-  [data-theme="light"] {
-    --bg: #f8fafc;
-    --bg-soft: #ffffff;
-    --bg-card: #ffffff;
-    --border: #e2e8f0;
-    --text: #0f172a;
-    --text-muted: #64748b;
-    --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 20px rgba(0,0,0,0.05);
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --primary-light: #EFF6FF;
+    --slate-900: #0F172A;
+    --slate-800: #1E293B;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748B;
+    --slate-200: #E2E8F0;
+    --slate-100: #F1F5F9;
+    --slate-50: #F8FAFC;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --radius-sm: 6px;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:"Vazirmatn","Inter",sans-serif; background:#F1F5F9; color:var(--slate-800); line-height:1.8; -webkit-font-smoothing:antialiased; }
+  a { text-decoration:none; color:inherit; }
 
-  body {
-    font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.9;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
+  /* Progress bar */
+  #progressBar { position:fixed; top:0; right:0; height:3px; width:0%; background:linear-gradient(270deg,#2563EB,#06B6D4); z-index:100; }
 
-  a { text-decoration: none; color: inherit; }
+  /* Navbar */
+  .navbar { position:sticky; top:0; z-index:50; background:rgba(15,23,42,0.95); backdrop-filter:blur(8px); border-bottom:1px solid #1e293b; }
+  .navbar-inner { max-width:1280px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { display:flex; align-items:center; gap:10px; color:white; font-weight:700; font-size:15px; }
+  .logo-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#2563EB,#06B6D4); display:flex; align-items:center; justify-content:center; color:white; font-size:12px; font-weight:800; box-shadow:0 2px 8px rgba(37,99,235,0.4); font-family:"Inter",sans-serif; }
+  .back-link { color:#94a3b8; font-size:13px; font-family:"Vazirmatn",sans-serif; transition:color 0.2s; display:flex; align-items:center; gap:6px; }
+  .back-link:hover { color:#06B6D4; }
 
-  .en, code, .num {
-    font-family: 'Inter', monospace;
-    direction: ltr;
-    unicode-bidi: embed;
-    display: inline-block;
-  }
+  /* Hero & Container */
+  .main-wrapper { max-width:1280px; margin:0 auto; padding:32px 24px 80px; }
 
-  /* ===== Navbar ===== */
-  .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10, 14, 26, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  [data-theme="light"] .navbar { background: rgba(248, 250, 252, 0.92); }
+  .page-header { background:white; border-radius:var(--radius-lg); padding:32px; margin-bottom:28px; border:1px solid var(--slate-200); box-shadow:var(--shadow-sm); }
 
-  .navbar-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
+  .header-image-container { position:relative; width:100%; height:260px; border-radius:var(--radius-md); overflow:hidden; margin-bottom:24px; box-shadow:var(--shadow-sm); }
+  .header-image { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+  .image-overlay { position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(to top, rgba(15,23,42,0.85), transparent); display:flex; align-items:flex-end; }
+  .image-tag { background:rgba(37,99,235,0.9); color:white; font-size:12px; font-weight:700; font-family:"Inter",sans-serif; padding:5px 12px; border-radius:6px; backdrop-filter:blur(4px); }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text);
-    font-weight: 700;
-    font-size: 14px;
-  }
-  .logo-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #2563EB, #06B6D4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 18px;
-    box-shadow: 0 4px 14px rgba(6,182,212,0.35);
-  }
+  .breadcrumb { font-size:13px; color:var(--slate-500); margin-bottom:12px; display:flex; align-items:center; gap:6px; }
+  .breadcrumb span { color:var(--primary); font-weight:700; }
 
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-  .nav-links a {
-    color: var(--text-muted);
-    font-size: 13px;
-    font-weight: 500;
-    transition: color 0.2s;
-    position: relative;
-  }
-  .nav-links a:hover { color: var(--primary); }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    right: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: width 0.3s;
-  }
-  .nav-links a:hover::after { width: 100%; }
+  h1 { font-size:28px; font-weight:800; color:var(--slate-900); margin-bottom:8px; }
+  .subtitle { color:var(--slate-500); font-size:15px; margin-bottom:20px; }
+  p.lead { line-height:1.9; color:var(--slate-700); font-size:15px; margin:0; }
 
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  /* Section Title */
+  .section-header { display:flex; align-items:center; gap:12px; margin:40px 0 20px; border-bottom:2px solid var(--slate-200); padding-bottom:12px; }
+  .section-header h2 { font-size:22px; font-weight:800; color:var(--slate-900); }
+  .section-number { background:var(--slate-900); color:white; font-weight:800; font-size:14px; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:"Vazirmatn",sans-serif; flex-shrink:0; }
 
-  .back-link {
-    color: var(--text-muted);
-    font-size: 13px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    transition: all 0.2s;
-  }
-  .back-link:hover {
-    color: var(--primary);
-    border-color: var(--primary);
-  }
+  /* Callouts */
+  .callout { border-radius:var(--radius-md); padding:18px 20px; margin:20px 0; font-size:13.5px; line-height:1.8; border-right:4px solid; position:relative; box-shadow:var(--shadow-sm); }
+  .callout-def { background:#eff6ff; border-color:#2563EB; color:#1e40af; }
+  .callout-warn { background:#fff7ed; border-color:#F97316; color:#9a3412; }
+  .callout-tip { background:#ecfeff; border-color:#06B6D4; color:#155e75; }
+  .callout-danger { background:#fef2f2; border-color:#dc2626; color:#991b1b; }
+  .callout-label { font-weight:800; font-size:12px; margin-bottom:4px; display:inline-block; text-transform:uppercase; letter-spacing:0.5px; font-family:"Inter","Vazirmatn",sans-serif; }
 
-  .theme-toggle {
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.2s;
-  }
-  .theme-toggle:hover { transform: rotate(15deg); }
+  /* Material Cards */
+  .mat-card { background:white; border:1px solid var(--slate-200); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:32px; transition:box-shadow 0.2s; }
+  .mat-card:hover { box-shadow:var(--shadow-md); }
+  .mat-card-header { padding:20px 24px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--slate-200); }
+  .mat-card-header-left { display:flex; align-items:center; gap:14px; }
+  .mat-badge { font-size:14px; font-weight:800; padding:6px 14px; border-radius:var(--radius-sm); font-family:"Inter",sans-serif; letter-spacing:1px; flex-shrink:0; }
+  .mat-title { font-size:18px; font-weight:800; color:var(--slate-900); }
+  .mat-title span { font-size:13px; font-weight:400; color:var(--slate-500); display:block; margin-top:2px; }
+  .mat-card-body { padding:24px; }
 
-  /* ===== Breadcrumb ===== */
-  .breadcrumb {
-    max-width: 960px;
-    margin: 24px auto 0;
-    padding: 0 24px;
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .breadcrumb span {
-    color: var(--primary);
-    font-weight: 700;
-  }
+  /* Grid layouts */
+  .props-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin:20px 0; }
+  .prop-item { background:var(--slate-50); border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:12px 16px; }
+  .prop-label { font-size:11px; font-weight:700; color:var(--slate-500); text-transform:uppercase; letter-spacing:0.5px; display:block; margin-bottom:4px; font-family:"Inter","Vazirmatn",sans-serif; }
+  .prop-value { font-size:13px; font-weight:600; color:var(--slate-800); }
 
-  /* ===== Content ===== */
-  .content {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px 24px 80px;
-  }
+  /* Tables */
+  .table-responsive { width:100%; overflow-x:auto; margin:20px 0; border:1px solid var(--slate-200); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); }
+  .grade-table { width:100%; border-collapse:collapse; font-size:13px; text-align:right; white-space:nowrap; }
+  .grade-table th { background:var(--slate-900); color:white; padding:12px 16px; font-weight:700; }
+  .grade-table td { padding:12px 16px; border-bottom:1px solid var(--slate-200); background:white; color:var(--slate-700); vertical-align:middle; white-space:normal; min-width:110px; }
+  .grade-table tr:last-child td { border-bottom:none; }
+  .grade-table tr:hover td { background:var(--slate-50); }
 
-  /* ===== Hero ===== */
-  .hero {
-    position: relative;
-    margin-bottom: 32px;
-    border-radius: 20px;
-    overflow: hidden;
-    min-height: 280px;
-    display: flex;
-    align-items: flex-end;
-    background: #0a0e1a;
-  }
-  .hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.55;
-  }
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(10,14,26,0.3) 0%, rgba(10,14,26,0.95) 100%);
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 30px;
-    width: 100%;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(6,182,212,0.15);
-    border: 1px solid rgba(6,182,212,0.4);
-    color: var(--primary);
-    padding: 5px 12px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-  .hero h1 {
-    font-size: 30px;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-  .hero .subtitle {
-    color: #cbd5e1;
-    font-size: 14px;
-    margin-bottom: 0;
-  }
-  .hero-stats {
-    display: flex;
-    gap: 24px;
-    margin-top: 18px;
-    flex-wrap: wrap;
-  }
-  .hero-stat {
-    display: flex;
-    flex-direction: column;
-  }
-  .hero-stat-num {
-    font-size: 22px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #22d3ee, #818cf8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: 'Inter', sans-serif;
-  }
-  .hero-stat-label {
-    font-size: 11px;
-    color: #94a3b8;
-  }
+  .grade-name { font-family:"Inter",sans-serif; font-weight:700; color:var(--slate-900); font-size:14px; }
+  .std-pill { display:inline-flex; font-size:11px; font-weight:700; font-family:"Inter",sans-serif; background:var(--slate-100); color:var(--slate-700); padding:3px 8px; border-radius:var(--radius-sm); border:1px solid var(--slate-200); margin:2px; }
 
-  /* ===== Section Title ===== */
-  h2 {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 36px 0 14px;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  h2::before {
-    content: '';
-    width: 5px;
-    height: 26px;
-    background: linear-gradient(180deg, #06b6d4, #6366f1);
-    border-radius: 3px;
-  }
+  /* Interactive component selector */
+  .doc-flow { display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 14px; }
+  .flow-step { flex:1; min-width:140px; background:white; border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:16px 12px 12px; cursor:pointer; text-align:center; transition:all .2s; position:relative; }
+  .flow-step:hover { border-color:#bfdbfe; box-shadow:var(--shadow-md); transform:translateY(-2px); }
+  .flow-step.active { border-color:var(--primary); background:var(--primary-light); box-shadow:0 4px 12px rgba(37,99,235,.18); }
+  .flow-step-code { font-family:"Inter",sans-serif; font-weight:800; font-size:15px; color:var(--slate-900); display:block; }
+  .flow-step.active .flow-step-code { color:var(--primary-dark); }
+  .flow-step-name { font-size:11px; color:var(--slate-500); display:block; margin-top:2px; }
+  .flow-step-num { position:absolute; top:6px; right:10px; font-family:"Inter",sans-serif; font-size:10px; font-weight:800; color:#94a3b8; }
+  .flow-detail { background:white; border:1px solid var(--slate-200); border-right:4px solid var(--primary); border-radius:var(--radius-md); padding:18px 20px; font-size:13.5px; margin-bottom:20px; box-shadow:var(--shadow-sm); animation:fadeIn .35s ease; }
+  .flow-detail h4 { font-size:14.5px; font-weight:800; color:var(--slate-900); margin-bottom:6px; }
+  .flow-detail p { color:var(--slate-700); line-height:1.9; }
+  .flow-detail-meta { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+  .flow-meta-pill { font-size:11px; font-weight:700; background:var(--primary-light); color:var(--primary-dark); padding:4px 10px; border-radius:var(--radius-sm); border:1px solid #bfdbfe; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 
-  h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 18px 0 10px;
-    color: var(--text);
-  }
+  /* References Section */
+  .std-section { background:var(--slate-50); border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:18px 20px; margin-top:20px; }
+  .std-section-title { font-size:12px; font-weight:800; color:var(--slate-500); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px; font-family:"Inter","Vazirmatn",sans-serif; }
+  .std-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:10px; }
+  .std-row { display:flex; align-items:flex-start; gap:10px; font-size:12.5px; background:white; padding:10px 12px; border-radius:var(--radius-sm); border:1px solid var(--slate-200); }
+  .std-code { font-family:"Inter",sans-serif; font-weight:800; color:var(--primary); flex-shrink:0; font-size:11.5px; background:var(--primary-light); padding:2px 6px; border-radius:4px; }
 
-  p.lead {
-    line-height: 2;
-    margin-bottom: 18px;
-    color: var(--text-muted);
-    font-size: 15px;
-  }
+  /* Footer Navigation */
+  .nav-footer { display:flex; justify-content:space-between; gap:16px; margin-top:40px; padding-top:24px; border-top:1px solid var(--slate-200); }
+  .nav-btn { font-size:14px; font-weight:700; padding:12px 24px; border-radius:var(--radius-md); transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+  .nav-prev { background:white; color:var(--slate-700); border:1px solid var(--slate-200); }
+  .nav-prev:hover { background:var(--slate-100); border-color:#cbd5e1; }
+  .nav-next { background:var(--primary); color:white; box-shadow:0 2px 8px rgba(37,99,235,0.3); }
+  .nav-next:hover { background:var(--primary-dark); }
 
-  /* ===== Callouts ===== */
-  .callout {
-    border-radius: 12px;
-    padding: 16px 18px;
-    margin: 20px 0;
-    font-size: 13.5px;
-    line-height: 1.9;
-    border-right: 4px solid;
-    background: var(--bg-card);
-    border-left: 1px solid var(--border);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .callout-def { border-right-color: var(--primary); }
-  .callout-warn { border-right-color: var(--accent); }
-  .callout-tip { border-right-color: #10b981; }
-  .callout-danger { border-right-color: var(--danger); }
+  /* Back to top */
+  #toTop { position:fixed; bottom:24px; left:24px; width:44px; height:44px; border-radius:12px; background:var(--slate-900); color:white; border:none; cursor:pointer; opacity:0; pointer-events:none; transition:all .3s; box-shadow:var(--shadow-lg); font-size:18px; z-index:60; }
+  #toTop.show { opacity:1; pointer-events:auto; }
+  #toTop:hover { background:var(--primary); transform:translateY(-3px); }
 
-  .callout-label {
-    font-weight: 700;
-    font-size: 12px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .callout-def .callout-label { color: var(--primary); }
-  .callout-warn .callout-label { color: var(--accent); }
-  .callout-tip .callout-label { color: #10b981; }
-  .callout-danger .callout-label { color: var(--danger); }
+  /* Reveal animation */
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
 
-  /* ===== Direction Section ===== */
-  .directions-wrap {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 28px;
-    margin: 20px 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .directions-wrap::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    left: -80px;
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%);
-    border-radius: 50%;
-  }
-  .directions-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 32px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-  .directions-img {
-    width: 100%;
-    border-radius: 14px;
-    background: #0a0e1a;
-    padding: 10px;
-  }
-  .directions-img img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-  }
-  .directions-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .dir-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    transition: transform 0.2s;
-  }
-  .dir-item:hover { transform: translateX(-4px); }
-  .dir-badge {
-    width: 44px;
-    height: 44px;
-    border-radius: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    flex-shrink: 0;
-  }
-  .dir-n { background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 4px 12px rgba(6,182,212,0.4); }
-  .dir-e { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 4px 12px rgba(245,158,11,0.4); }
-  .dir-el { background: linear-gradient(135deg, #a855f7, #7c3aed); box-shadow: 0 4px 12px rgba(168,85,247,0.4); }
-  .dir-content strong {
-    display: block;
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-  .dir-content span {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* ===== Table ===== */
-  .table-wrapper {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    margin: 18px 0;
-  }
-  .table-scroll { overflow-x: auto; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 720px;
-  }
-  thead { background: var(--bg-soft); }
-  th {
-    padding: 14px 16px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 12px;
-    color: var(--text-muted);
-    border-bottom: 1px solid var(--border);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-  }
-  td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    font-size: 13.5px;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-  }
-  tbody tr { transition: background 0.2s; }
-  tbody tr:hover { background: var(--bg-soft); }
-  tbody tr:last-child td { border-bottom: none; }
-
-  .pipe-size {
-    font-weight: 700;
-    color: var(--primary);
-    font-size: 14px;
-  }
-  .pipe-od {
-    font-weight: 600;
-    background: rgba(6,182,212,0.1);
-    border-radius: 6px;
-    padding: 3px 8px;
-  }
-  .highlight-sch {
-    background: rgba(6,182,212,0.15);
-    color: var(--primary);
-    font-weight: 700;
-    border-radius: 6px;
-    padding: 3px 8px;
-  }
-
-  /* ===== Symbols ===== */
-  .symbol-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-    margin: 18px 0;
-  }
-  .symbol-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-  .symbol-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--primary);
-  }
-  .symbol-icon {
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
-  .symbol-name {
-    font-weight: 700;
-    font-size: 13px;
-    margin-bottom: 5px;
-    color: var(--text);
-  }
-  .symbol-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* ===== Symbols Image ===== */
-  .symbols-image {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 14px;
-    margin: 18px 0;
-  }
-  .symbols-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-  }
-
-  /* ===== Components ===== */
-  .comp-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 14px;
-    margin: 18px 0;
-  }
-  .comp-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s;
-  }
-  .comp-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--card-color);
-  }
-  .comp-card::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--card-color);
-  }
-  .comp-icon {
-    font-size: 26px;
-    margin-bottom: 10px;
-  }
-  .comp-title {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .comp-en {
-    font-family: 'Inter', sans-serif;
-    font-size: 11.5px;
-    color: var(--primary);
-    margin-bottom: 12px;
-    direction: ltr;
-    text-align: right;
-  }
-  .comp-list {
-    list-style: none;
-  }
-  .comp-list li {
-    padding: 4px 0;
-    padding-right: 16px;
-    position: relative;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-  .comp-list li::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 12px;
-    width: 6px;
-    height: 6px;
-    background: var(--card-color);
-    border-radius: 50%;
-  }
-  .comp-list li strong { color: var(--text); }
-
-  /* ===== Steps ===== */
-  .steps-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-    margin: 18px 0;
-  }
-  .step-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 18px;
-    position: relative;
-    transition: transform 0.3s;
-  }
-  .step-card:hover { transform: translateY(-3px); }
-  .step-num {
-    width: 42px;
-    height: 42px;
-    border-radius: 11px;
-    background: linear-gradient(135deg, #06b6d4, #6366f1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    color: white;
-    font-size: 16px;
-    margin-bottom: 12px;
-    font-family: 'Inter', sans-serif;
-    box-shadow: 0 6px 16px rgba(6,182,212,0.3);
-  }
-  .step-card h4 {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
-  .step-card p {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  /* ===== Engineering Info ===== */
-  .eng-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 12px;
-    margin: 18px 0;
-  }
-  .eng-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    position: relative;
-    transition: all 0.3s;
-  }
-  .eng-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--card-color);
-  }
-  .eng-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 11px;
-    background: var(--card-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  .eng-label {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 3px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif;
-  }
-  .eng-value {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .eng-example {
-    font-size: 11.5px;
-    color: var(--text-muted);
-    font-family: 'Inter', sans-serif;
-    direction: ltr;
-    text-align: right;
-    padding: 6px 10px;
-    background: var(--bg-soft);
-    border-radius: 7px;
-    border: 1px dashed var(--border);
-  }
-
-  /* ===== IPS Box ===== */
-  .ips-box {
-    background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(249,115,22,0.04));
-    border: 1px solid rgba(245,158,11,0.3);
-    border-radius: 18px;
-    padding: 24px;
-    margin: 24px 0;
-  }
-  .ips-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 18px;
-  }
-  .ips-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 13px;
-    background: linear-gradient(135deg, #f59e0b, #f97316);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 6px 18px rgba(245,158,11,0.35);
-  }
-  .ips-header h3 {
-    font-size: 17px;
-    font-weight: 700;
-    margin: 0;
-  }
-  .ips-header p {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-  .ips-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-  }
-  .ips-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-  }
-  .ips-item-title {
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 8px;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .ips-item p {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-  .ips-num {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    color: var(--accent);
-    padding: 2px 7px;
-    background: rgba(245,158,11,0.15);
-    border-radius: 5px;
-  }
-
-  /* ===== BOM Image ===== */
-  .bom-image {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 14px;
-    margin: 18px 0;
-  }
-  .bom-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-  }
-
-  /* ===== Nav Footer ===== */
-  .nav-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .nav-btn {
-    font-size: 13px;
-    font-weight: 700;
-    padding: 12px 20px;
-    border-radius: 11px;
-    border: 1px solid var(--border);
-    background: var(--bg-card);
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nav-prev {
-    color: var(--text-muted);
-  }
-  .nav-prev:hover {
-    color: var(--text);
-    border-color: var(--primary);
-  }
-  .nav-next {
-    background: linear-gradient(135deg, #06b6d4, #6366f1);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 6px 18px rgba(6,182,212,0.3);
-  }
-  .nav-next:hover { transform: translateY(-2px); }
-
-  /* ===== Footer ===== */
-  footer {
-    background: var(--bg-soft);
-    border-top: 1px solid var(--border);
-    padding: 28px 24px;
-    text-align: center;
-    margin-top: 0;
-  }
-  footer p {
-    color: var(--text-muted);
-    font-size: 12.5px;
-    margin-bottom: 4px;
-  }
-
-  /* ===== Responsive ===== */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero h1 { font-size: 22px; }
-    .directions-grid { grid-template-columns: 1fr; }
-    h2 { font-size: 18px; }
-    .navbar-inner { padding: 12px 16px; }
-    .content { padding: 16px 16px 60px; }
-    .directions-wrap { padding: 20px; }
+    .main-wrapper { padding:16px 12px; }
+    .page-header { padding:20px; }
+    .header-image-container { height:180px; }
+    .mat-card-header { flex-direction:column; align-items:flex-start; gap:12px; }
+    .std-grid { grid-template-columns:1fr; }
+    .nav-footer { flex-direction:column; }
+    .nav-btn { justify-content:center; width:100%; }
+    .flow-step { min-width:calc(50% - 6px); }
   }
-
-  /* ===== Animations ===== */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .callout, .symbol-card, .comp-card, .step-card, .eng-card {
-    animation: fadeInUp 0.5s ease-out backwards;
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
+<div id="progressBar"></div>
+
 <nav class="navbar">
   <div class="navbar-inner">
     <div class="logo">
-      <div class="logo-icon">⬡</div>
-      <span>آکادمی پایپینگ و جوشکاری</span>
+      <div class="logo-icon">PS</div>
+      آکادمی پایپینگ و جوشکاری
     </div>
-    <ul class="nav-links">
-      <li><a href="#directions">جهت‌ها</a></li>
-      <li><a href="#dimensions">ابعاد لوله</a></li>
-      <li><a href="#symbols">نمادها</a></li>
-      <li><a href="#components">اجزا</a></li>
-      <li><a href="#steps">مراحل خواندن</a></li>
-      <li><a href="#center">C-to-C</a></li>
-    </ul>
-    <div class="nav-actions">
-      <a href="../03-materials/" class="back-link">← فصل قبل</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="تغییر تم">🌙</button>
-    </div>
+    <a href="../../" class="back-link">← بازگشت به صفحه اصلی</a>
   </div>
 </nav>
 
-<!-- Breadcrumb -->
-<div class="breadcrumb">
-  آموزش پایپینگ ← <span>فصل ۴ — نقشه‌خوانی ایزومتریک</span>
-</div>
+<div class="main-wrapper">
 
-<!-- Content -->
-<div class="content">
+  <header class="page-header reveal">
+    <div class="header-image-container">
+      <img src="https://image.qwenlm.ai/public_source/f2c9300f-0c2e-4062-8d18-84c20491682a/134d1efad-299a-44a9-9895-fafef837d09a.png" alt="نقشه‌خوانی و ایزومتریک پایپینگ" class="header-image">
+      <div class="image-overlay">
+        <span class="image-tag">Piping Isometric Reading &amp; Drawing</span>
+      </div>
+    </div>
 
-  <!-- Hero -->
-  <div class="hero">
-    <img class="hero-img" src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/170f9d32c-2d66-4b51-b256-f370e12f05c1.png" alt="Isometric Drawing">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge">📐 فصل چهارم — جزوه بازرسی فنی پایپینگ</div>
-      <h1>نقشه‌خوانی ایزومتریک پایپینگ</h1>
-      <div class="subtitle">خوانش نمادها، استخراج اطلاعات و کاربرد در بازرسی میدانی</div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">3D</div>
-          <div class="hero-stat-label">نمایش سه‌بعدی</div>
+    <div class="breadcrumb">آموزش پایپینگ ← <span>فصل ۴ — نقشه‌خوانی و ایزومتریک</span></div>
+    <h1>نقشه‌خوانی و ایزومتریک پایپینگ</h1>
+    <div class="subtitle">اصول ترسیم، خواندن و تفسیر نقشه‌های ایزومتریک — از P&amp;ID تا نقشه ساخت اسپول</div>
+    <p class="lead">نقشه ایزومتریک، «زبان مشترک» مهندس پایپینگ، سازنده و بازرس است. این نقشه سه‌بعدی، مسیر لوله، سایز، متریال، محل جوش‌ها، شیرها و ساپورت‌ها را در یک صفحه دوبعدی نشان می‌دهد. توانایی خواندن صحیح ایزومتریک، یکی از مهارت‌های پایه‌ای هر مهندس یا تکنسین پایپینگ است — چه در دفتر مهندسی، چه در کارگاه ساخت و چه در بازرسی میدانی.</p>
+
+    <div class="callout callout-warn" style="margin-bottom:0; margin-top:20px;">
+      <span class="callout-label">نکته بحرانی</span><br>
+      طبق <strong>ASME B31.3, Para. 344</strong>، هر جوش و هر قطعه باید قابل ردیابی به یک سند مهندسی باشد. ایزومتریک IFC سند مبنای ساخت است — هر تغییری باید به‌صورت Red-Mark ثبت و در نسخه As-Built نهایی شود. کار با نسخه منسوخ یا بدون تأیید، ریشه بسیاری از دوباره‌کاری‌ها و حوادث است.
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۱</div>
+    <h2>اصول ترسیم ایزومتریک</h2>
+  </div>
+
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#eff6ff; color:#2563EB; border:1px solid #bfdbfe;">ISO</div>
+        <div class="mat-title">
+          Isometric Principles
+          <span>محورهای X, Y, Z و قانون ۳۰ درجه</span>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">4</div>
-          <div class="hero-stat-label">بخش اصلی نقشه</div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">نقشه ایزومتریک یک نمایش سه‌بعدی روی صفحه دوبعدی است. سه محور اصلی با زوایای ۳۰ درجه نسبت به افق ترسیم می‌شوند: محور X (افقی)، محور Y (عمودی) و محور Z (عمق). لوله‌ها فقط در امتداد این سه محور یا ترکیب آن‌ها حرکت می‌کنند — یعنی تمام تغییرات مسیر مضربی از ۳۰، ۴۵، ۶۰ یا ۹۰ درجه است.</p>
+
+      <div class="props-grid">
+        <div class="prop-item">
+          <span class="prop-label">محور Y</span>
+          <span class="prop-value">عمودی — بالا و پایین (Elevation)</span>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">6</div>
-          <div class="hero-stat-label">مرحله خواندن</div>
+        <div class="prop-item">
+          <span class="prop-label">محور X</span>
+          <span class="prop-value">افقی — چپ و راست (Plan)</span>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">30°</div>
-          <div class="hero-stat-label">زاویه ایزومتریک</div>
+        <div class="prop-item">
+          <span class="prop-label">محور Z</span>
+          <span class="prop-value">عمق — جلو و عقب (Depth)</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">زوایای مجاز</span>
+          <span class="prop-value">۳۰°، ۴۵°، ۶۰°، ۹۰° — فقط در امتداد محور</span>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">قانون طلایی</span><br>
+        در ایزومتریک، <strong>اندازه‌های عمودی (Y) واقعی</strong> هستند، اما اندازه‌های افقی (X و Z) با ضریب <strong>cos(30°) ≈ 0.866</strong> کوتاه‌تر نمایش داده می‌شوند. به همین دلیل، ابعاد روی نقشه ایزومتریک «اندازه واقعی» نیستند — مگر اینکه صراحتاً标注 شده باشند.
+      </div>
+
+      <div class="std-section">
+        <div class="std-section-title">استانداردهای مرجع ترسیم</div>
+        <div class="std-grid">
+          <div class="std-row"><span class="std-code">ISO 5456-3</span><span>نمایش‌های تکنیکی — پروجکشن ایزومتریک</span></div>
+          <div class="std-row"><span class="std-code">ASME Y14.41</span><span>مدل‌سازی سه‌بعدی و ابعاد</span></div>
+          <div class="std-row"><span class="std-code">ISO 128-30</span><span>نماهای استاندارد در نقشه‌کشی</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Intro -->
-  <p class="lead">نقشه‌ی ایزومتریک (Isometric Drawing) یک نمایش سه‌بعدی ساده‌شده از یک خط لوله است که بدون نیاز به مقیاس دقیق، مسیر کامل خط را از ابتدا تا انتها — همراه با تمام اجزا، نقاط جوش، و اطلاعات نصب — نشان می‌دهد. این مهم‌ترین مدرک مرجع بازرس در حین اجرای فیلد است.</p>
-
-  <div class="callout callout-def">
-    <span class="callout-label">📘 تعریف</span>
-    هر نقشه‌ی ایزومتریک معمولاً شامل یک <strong>Bill of Material</strong> (لیست متریال با کد آیتم و تعداد) در کنار خود شکل گرافیکی است — بازرس باید این دو بخش را همیشه با هم تطبیق دهد.
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۲</div>
+    <h2>انواع نقشه‌های پایپینگ</h2>
   </div>
 
-  <!-- Isometric Directions -->
-  <h2 id="directions">جهت‌های ایزومتریک</h2>
-  <p class="lead">در نقشه ایزومتریک، خطوط لوله در سه جهت اصلی نمایش داده می‌شوند تا درک سه‌بعدی سیستم برای پیمانکار و مهندس فراهم شود. زاویه خطوط نسبت به افق معمولاً <span class="num">30°</span> است.</p>
-
-  <div class="directions-wrap">
-    <div class="directions-grid">
-      <div class="directions-img">
-        <img src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/1ba7a2876-8dfc-4555-9e7a-99d7bd49b440.png" alt="Isometric Cube">
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0;">DWG</div>
+        <div class="mat-title">
+          Drawing Types
+          <span>از دیاگرام فرآیند تا نقشه ساخت — روی هر نوع کلیک کنید</span>
+        </div>
       </div>
-      <ul class="directions-list">
-        <li class="dir-item">
-          <div class="dir-badge dir-n">N</div>
-          <div class="dir-content">
-            <strong>NORTH — شمال</strong>
-            <span>جهت شمال سایت، مطابق با جهت شمال نقشه P&ID و Plot Plan</span>
-          </div>
-        </li>
-        <li class="dir-item">
-          <div class="dir-badge dir-e">E</div>
-          <div class="dir-content">
-            <strong>EAST — شرق</strong>
-            <span>جهت شرق عمود بر شمال. WEST و SOUTH مخالف آن هستند</span>
-          </div>
-        </li>
-        <li class="dir-item">
-          <div class="dir-badge dir-el">EL</div>
-          <div class="dir-content">
-            <strong>ELEVATION — ارتفاع</strong>
-            <span>ارتفاع نسبت به سطح مرجع (معمولاً سطح زمین یا سطح دریا) — واحد: mm یا ft</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="callout callout-warn">
-    <span class="callout-label">⚠️ هشدار</span>
-    مختصات (<span class="en">E/N Coordinates</span>) و <span class="en">Elevation</span> روی نقشه‌ی ایزومتریک باید همیشه با مدارک <span class="en">Plot Plan</span> و <span class="en">Civil Survey</span> تطبیق داده شود — تفاوت در این اعداد می‌تواند نشانه‌ی خطای <span class="en">As-Built</span> نسبت به طراحی باشد.
-  </div>
-
-  <!-- Pipe Dimensions -->
-  <h2 id="dimensions">جدول ابعاد لوله ANSI</h2>
-  <p class="lead">مشخصات لوله‌های فولادی بر اساس استاندارد ANSI — شامل O.D و ضخامت دیواره برای Schedule‌های مختلف. Schedule بالاتر = ضخامت بیشتر = تحمل فشار و دمای بالاتر.</p>
-
-  <div class="table-wrapper">
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr>
-            <th>Pipe Size</th>
-            <th>O.D (mm)</th>
-            <th>SCH 10</th>
-            <th>SCH 20</th>
-            <th>SCH 40</th>
-            <th>SCH 80</th>
-            <th>SCH 160</th>
-            <th>XXS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="pipe-size">1/2"</td><td class="pipe-od">21.34</td><td>1.65</td><td>-</td><td class="highlight-sch">2.77</td><td>3.73</td><td>4.78</td><td>7.47</td></tr>
-          <tr><td class="pipe-size">3/4"</td><td class="pipe-od">26.67</td><td>1.65</td><td>-</td><td class="highlight-sch">2.87</td><td>3.91</td><td>5.56</td><td>7.82</td></tr>
-          <tr><td class="pipe-size">1"</td><td class="pipe-od">33.40</td><td>1.65</td><td>-</td><td class="highlight-sch">3.38</td><td>4.55</td><td>6.35</td><td>9.09</td></tr>
-          <tr><td class="pipe-size">1 1/4"</td><td class="pipe-od">42.16</td><td>1.65</td><td>-</td><td class="highlight-sch">3.56</td><td>4.85</td><td>6.35</td><td>9.70</td></tr>
-          <tr><td class="pipe-size">1 1/2"</td><td class="pipe-od">48.26</td><td>1.65</td><td>-</td><td class="highlight-sch">3.68</td><td>5.08</td><td>7.14</td><td>10.15</td></tr>
-          <tr><td class="pipe-size">2"</td><td class="pipe-od">60.33</td><td>1.65</td><td>-</td><td class="highlight-sch">3.91</td><td>5.54</td><td>8.74</td><td>11.07</td></tr>
-          <tr><td class="pipe-size">3"</td><td class="pipe-od">88.90</td><td>2.11</td><td>-</td><td class="highlight-sch">5.49</td><td>7.62</td><td>11.13</td><td>15.24</td></tr>
-          <tr><td class="pipe-size">4"</td><td class="pipe-od">114.30</td><td>2.11</td><td>-</td><td class="highlight-sch">6.02</td><td>8.56</td><td>13.49</td><td>17.12</td></tr>
-          <tr><td class="pipe-size">6"</td><td class="pipe-od">168.28</td><td>2.77</td><td>3.40</td><td class="highlight-sch">7.11</td><td>10.97</td><td>18.26</td><td>21.95</td></tr>
-          <tr><td class="pipe-size">8"</td><td class="pipe-od">219.08</td><td>2.77</td><td>3.76</td><td class="highlight-sch">8.18</td><td>12.70</td><td>23.01</td><td>22.23</td></tr>
-          <tr><td class="pipe-size">10"</td><td class="pipe-od">273.05</td><td>3.40</td><td>4.19</td><td class="highlight-sch">9.27</td><td>15.09</td><td>28.58</td><td>25.40</td></tr>
-          <tr><td class="pipe-size">12"</td><td class="pipe-od">323.85</td><td>3.96</td><td>4.57</td><td class="highlight-sch">10.31</td><td>17.48</td><td>33.32</td><td>25.40</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="callout callout-tip">
-    <span class="callout-label">💡 مثال کاربردی</span>
-    برای لوله <span class="num">1/2"</span>: قطر خارجی <span class="ips-num">21.34 mm</span> ثابت است، ولی ضخامت SCH40 برابر <span class="ips-num">2.77 mm</span> و SCH80 برابر <span class="ips-num">3.73 mm</span> می‌شود. طراح بر اساس فشار و دمای کاری، Schedule مناسب را انتخاب می‌کند.
-  </div>
-
-  <!-- Symbols -->
-  <h2 id="symbols">راهنمای نمادهای رایج</h2>
-  <p class="lead">هر نقشه ایزومتریک از مجموعه‌ای از نمادهای استاندارد برای نمایش اجزا استفاده می‌کند. بازرس باید این نمادها را به خوبی بشناسد.</p>
-
-  <div class="symbols-image">
-    <img src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/155bdd1be-8a29-4db5-ac8d-affba317fc2e.png" alt="Isometric Symbols">
-  </div>
-
-  <div class="symbol-grid">
-    <div class="symbol-card">
-      <div class="symbol-icon">🔧</div>
-      <div class="symbol-name">Elbow (زانو)</div>
-      <div class="symbol-desc">تغییر جهت مسیر لوله — در دو نوع <span class="num">90°</span> و <span class="num">45°</span></div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-icon">➕</div>
-      <div class="symbol-name">Tee (سه‌راهی)</div>
-      <div class="symbol-desc">ایجاد انشعاب در سیستم به شکل T</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-icon">⭕</div>
-      <div class="symbol-name">فلنج</div>
-      <div class="symbol-desc">دو خط موازی عمود بر مسیر لوله، نشان‌دهنده اتصال فلنجی</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-icon">🦋</div>
-      <div class="symbol-name">شیر (Valve)</div>
-      <div class="symbol-desc">نماد پروانه‌ای روی مسیر خط با کد نوع شیر</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-icon">⚡</div>
-      <div class="symbol-name">جوش (Weld)</div>
-      <div class="symbol-desc">نقطه اتصال جوشی بین دو قطعه با شماره داخل دایره</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-icon">🔻</div>
-      <div class="symbol-name">Reducer (کاهنده)</div>
-      <div class="symbol-desc">کاهش قطر لوله — به صورت هم‌مرکز یا غیرهم‌مرکز</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-icon">📍</div>
-      <div class="symbol-name">Support (تکیه‌گاه)</div>
-      <div class="symbol-desc">نماد مثلثی زیر خط، محل ساپورت برای تحمل وزن</div>
-    </div>
-    <div class="symbol-card">
-      <div class="symbol-icon">➡️</div>
-      <div class="symbol-name">Continuation</div>
-      <div class="symbol-desc">ادامه خط در نقشه دیگر با کادر <span class="en">CONT. ON</span></div>
-    </div>
-  </div>
-
-  <div class="callout callout-tip">
-    <span class="callout-label">💡 نکته</span>
-    عبارت <strong>"CONT. ON"</strong> روی لبه‌ی نقشه یعنی خط در نقشه‌ی دیگری ادامه دارد — قبل از تأیید کامل بودن یک اسپول، همیشه نقشه‌ی مقصد را هم چک کن تا از قطع‌نشدن خط مطمئن شوی.
-  </div>
-
-  <!-- Components -->
-  <h2 id="components">اجزای اصلی نقشه ایزومتریک</h2>
-  <p class="lead">چهار بخش کلیدی که در هر نقشه ایزومتریک باید تحلیل شوند.</p>
-
-  <div class="bom-image">
-    <img src="https://image.qwenlm.ai/public_source/e4f5d48c-cd65-483b-9e60-df7e1088981c/177490460-4cbd-41a4-8cd9-cb7334b4661b.png" alt="BOM Table">
-  </div>
-
-  <div class="comp-grid">
-    <div class="comp-card" style="--card-color: #06b6d4;">
-      <div class="comp-icon">📋</div>
-      <h3 class="comp-title">اطلاعات کلی</h3>
-      <p class="comp-en">General Information</p>
-      <ul class="comp-list">
-        <li><strong>Project Title</strong> — عنوان پروژه</li>
-        <li><strong>Drawing No</strong> — شماره نقشه منحصر به فرد</li>
-        <li><strong>Scale</strong> — مقیاس (در ISO معمولاً ذکر نمی‌شود)</li>
-        <li><strong>North Arrow</strong> — جهت شمال سایت</li>
-      </ul>
     </div>
 
-    <div class="comp-card" style="--card-color: #6366f1;">
-      <div class="comp-icon">🔧</div>
-      <h3 class="comp-title">اجزای سیستم</h3>
-      <p class="comp-en">Piping System Components</p>
-      <ul class="comp-list">
-        <li><strong>Pipes</strong> — خطوط ضخیم نمایش‌دهنده لوله‌ها</li>
-        <li><strong>Fittings</strong> — Elbow, Tee, Reducer</li>
-        <li><strong>Flanges</strong> — نقاط اتصال فلنجی</li>
-        <li><strong>Valves</strong> — شیرآلات به صورت شماتیک</li>
-      </ul>
-    </div>
+    <div class="mat-card-body">
+      <p class="lead">در یک پروژه پایپینگ، چندین نوع نقشه تولید می‌شود که هر کدام هدف و سطح جزئیات متفاوتی دارند. از شماتیک فرآیند تا نقشه سه‌بعدی ساخت، هر سند لایه‌ای از اطلاعات را اضافه می‌کند. روی هر نوع کلیک کنید:</p>
 
-    <div class="comp-card" style="--card-color: #f59e0b;">
-      <div class="comp-icon">📊</div>
-      <h3 class="comp-title">جدول مشخصات (BOM)</h3>
-      <p class="comp-en">Bill of Materials</p>
-      <ul class="comp-list">
-        <li><strong>Fabrication Materials</strong> — لوله و اتصالات</li>
-        <li><strong>Erection Materials</strong> — فلنج، واشر، پیچ</li>
-        <li>نوع، سایز، Schedule، متریال، کلاس، تعداد</li>
-        <li>دارای <strong>Item Code</strong> برای خرید و کنترل</li>
-      </ul>
-    </div>
-
-    <div class="comp-card" style="--card-color: #10b981;">
-      <div class="comp-icon">📐</div>
-      <h3 class="comp-title">اطلاعات هندسی</h3>
-      <p class="comp-en">Geometric Information</p>
-      <ul class="comp-list">
-        <li><strong>Elevation (EL)</strong> — ارتفاع نقاط کلیدی</li>
-        <li><strong>Offset</strong> — جابجایی افقی لوله‌ها</li>
-        <li><strong>Lengths</strong> — طول قطعات بین اتصالات</li>
-        <li><strong>Slope</strong> — شیب خط لوله</li>
-      </ul>
-    </div>
-
-    <div class="comp-card" style="--card-color: #a855f7;">
-      <div class="comp-icon">⚙️</div>
-      <h3 class="comp-title">اطلاعات مهندسی</h3>
-      <p class="comp-en">Engineering Information</p>
-      <ul class="comp-list">
-        <li><strong>Design & Operating Pressure</strong></li>
-        <li><strong>Design & Operating Temperature</strong></li>
-        <li><strong>Insulation Type</strong> — نوع عایق</li>
-        <li><strong>Test Type</strong> — نوع تست (هیدرو/پنوماتیک)</li>
-      </ul>
-    </div>
-
-    <div class="comp-card" style="--card-color: #ec4899;">
-      <div class="comp-icon">🔖</div>
-      <h3 class="comp-title">شماره‌گذاری قطعات</h3>
-      <p class="comp-en">Part Numbering</p>
-      <ul class="comp-list">
-        <li>هر قطعه دارای <strong>شماره منحصر به فرد</strong></li>
-        <li>ارتباط مستقیم با جدول BOM</li>
-        <li>امکان ردیابی دقیق هر قطعه</li>
-        <li>ضروری برای <strong>ساخت و بازرسی</strong></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Engineering Info -->
-  <h2>بخش اطلاعات مهندسی (Condition)</h2>
-  <p class="lead">پارامترهای طراحی و بهره‌برداری که در قسمت Condition نقشه ثبت می‌شوند.</p>
-
-  <div class="eng-grid">
-    <div class="eng-card" style="--card-color: #ef4444;">
-      <div class="eng-icon" style="background: #ef4444;">🔥</div>
-      <div class="eng-label">PRESS (Pressure)</div>
-      <div class="eng-value">فشار کاری و طراحی</div>
-      <div class="eng-example">Design: 25 bar | Oper: 18 bar</div>
-    </div>
-    <div class="eng-card" style="--card-color: #f59e0b;">
-      <div class="eng-icon" style="background: #f59e0b;">🌡️</div>
-      <div class="eng-label">TEMP (Temperature)</div>
-      <div class="eng-value">دمای کاری و طراحی</div>
-      <div class="eng-example">Design: 250°C | Oper: 180°C</div>
-    </div>
-    <div class="eng-card" style="--card-color: #10b981;">
-      <div class="eng-icon" style="background: #10b981;">🧊</div>
-      <div class="eng-label">INSULATION TYPE</div>
-      <div class="eng-value">نوع عایق</div>
-      <div class="eng-example">Hot Insulation - Mineral Wool</div>
-    </div>
-    <div class="eng-card" style="--card-color: #06b6d4;">
-      <div class="eng-icon" style="background: #06b6d4;">🧪</div>
-      <div class="eng-label">TEST</div>
-      <div class="eng-value">نوع تست و پارامترها</div>
-      <div class="eng-example">Hydro Test @ 37.5 bar</div>
-    </div>
-    <div class="eng-card" style="--card-color: #a855f7;">
-      <div class="eng-icon" style="background: #a855f7;">📏</div>
-      <div class="eng-label">EL (Elevation)</div>
-      <div class="eng-value">ارتفاع از سطح مرجع</div>
-      <div class="eng-example">EL +4500 mm (from grade)</div>
-    </div>
-    <div class="eng-card" style="--card-color: #6366f1;">
-      <div class="eng-icon" style="background: #6366f1;">↔️</div>
-      <div class="eng-label">OFFSET</div>
-      <div class="eng-value">جابجایی افقی لوله</div>
-      <div class="eng-example">OFFSET 350 mm</div>
-    </div>
-  </div>
-
-  <!-- Steps -->
-  <h2 id="steps">مراحل خواندن نقشه ایزومتریک</h2>
-  <p class="lead">گام به گام از اطلاعات کلی تا تحلیل کامل سیستم.</p>
-
-  <div class="steps-container">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <h4>مطالعه جدول BOM</h4>
-      <p>ابتدا به جدول مشخصات نگاه کنید تا نوع و مقدار هر قطعه (لوله، اتصالات، شیرآلات) را بشناسید.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <h4>تطبیق شماره‌گذاری</h4>
-      <p>با استفاده از شماره‌گذاری روی نقشه و جدول، هر جزء را روی نقشه پیدا کنید.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <h4>بررسی ارتفاع و ابعاد</h4>
-      <p>از EL و OFFSET‌های ذکر شده برای تعیین موقعیت مکانی هر جزء استفاده کنید.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">4</div>
-      <h4>اندازه‌گیری طول لوله‌ها</h4>
-      <p>طول لوله‌ها را از روی نقشه یا اعداد روی خطوط استخراج و جمع‌بندی کنید.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">5</div>
-      <h4>درک هندسه سه‌بعدی</h4>
-      <p>با استفاده از اطلاعات هندسی و جهت‌ها، وضعیت سه‌بعدی سیستم را درک کنید.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">6</div>
-      <h4>ارزیابی ایمنی و عملکرد</h4>
-      <p>اطلاعات مهندسی (فشار، دما، عایق، تست) را بررسی و ایمنی سیستم را ارزیابی کنید.</p>
-    </div>
-  </div>
-
-  <!-- C-to-C Tables -->
-  <h2 id="center">جداول مرکز تا مرکز (C-to-C)</h2>
-  <p class="lead">ابعاد استاندارد برای محاسبه دقیق طول لوله‌ها و اتصالات.</p>
-
-  <div class="comp-grid">
-    <div class="table-wrapper">
-      <div style="padding: 16px; background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(99,102,241,0.05)); border-bottom: 1px solid var(--border);">
-        <h3 style="margin: 0; display: flex; align-items: center; gap: 8px;">↗️ Elbow 90° و 45°</h3>
+      <div class="doc-flow" id="docFlow">
+        <button class="flow-step active" data-step="pfd">
+          <span class="flow-step-num">01</span>
+          <span class="flow-step-code">PFD</span>
+          <span class="flow-step-name">دیاگرام فرآیند</span>
+        </button>
+        <button class="flow-step" data-step="pid">
+          <span class="flow-step-num">02</span>
+          <span class="flow-step-code">P&amp;ID</span>
+          <span class="flow-step-name">دیاگرام لوله‌کشی</span>
+        </button>
+        <button class="flow-step" data-step="gad">
+          <span class="flow-step-num">03</span>
+          <span class="flow-step-code">GAD</span>
+          <span class="flow-step-name">نقشه عمومی</span>
+        </button>
+        <button class="flow-step" data-step="iso">
+          <span class="flow-step-num">04</span>
+          <span class="flow-step-code">ISO</span>
+          <span class="flow-step-name">ایزومتریک</span>
+        </button>
       </div>
-      <div class="table-scroll">
-        <table>
+
+      <div class="flow-detail" id="flowDetail">
+        <h4>PFD — Process Flow Diagram</h4>
+        <p>شماتیک فرآیند که تجهیزات اصلی، جریان سیال و بیلانس جرم/انرژی را نشان می‌دهد. سایز لوله و جزئیات ساخت در این نقشه نیست — فقط منطق فرآیند.</p>
+        <div class="flow-detail-meta">
+          <span class="flow-meta-pill">سطح جزئیات: کم</span>
+          <span class="flow-meta-pill">استاندارد: ISO 10628-1</span>
+          <span class="flow-meta-pill">فاز: FEED</span>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="grade-table">
           <thead>
-            <tr><th>Size (inch)</th><th>90° (mm)</th><th>45° (mm)</th></tr>
+            <tr>
+              <th>نوع نقشه</th>
+              <th>سطح جزئیات</th>
+              <th>محتوای اصلی</th>
+              <th>کاربرد</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td class="pipe-size">1/2"</td><td>38</td><td>22</td></tr>
-            <tr><td class="pipe-size">3/4"</td><td>38</td><td>22</td></tr>
-            <tr><td class="pipe-size">1"</td><td>44</td><td>25</td></tr>
-            <tr><td class="pipe-size">1 1/2"</td><td>57</td><td>32</td></tr>
-            <tr><td class="pipe-size">2"</td><td>70</td><td>41</td></tr>
-            <tr><td class="pipe-size">3"</td><td>95</td><td>54</td></tr>
-            <tr><td class="pipe-size">4"</td><td>121</td><td>70</td></tr>
-            <tr><td class="pipe-size">6"</td><td>165</td><td>95</td></tr>
-            <tr><td class="pipe-size">8"</td><td>216</td><td>127</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="table-wrapper">
-      <div style="padding: 16px; background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(236,72,153,0.05)); border-bottom: 1px solid var(--border);">
-        <h3 style="margin: 0; display: flex; align-items: center; gap: 8px;">➕ Cross و Tee</h3>
-      </div>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Size (inch)</th><th>Tee (mm)</th><th>Cross (mm)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="pipe-size">1/2"</td><td>38</td><td>38</td></tr>
-            <tr><td class="pipe-size">3/4"</td><td>44</td><td>44</td></tr>
-            <tr><td class="pipe-size">1"</td><td>51</td><td>51</td></tr>
-            <tr><td class="pipe-size">1 1/2"</td><td>64</td><td>64</td></tr>
-            <tr><td class="pipe-size">2"</td><td>76</td><td>76</td></tr>
-            <tr><td class="pipe-size">3"</td><td>102</td><td>102</td></tr>
-            <tr><td class="pipe-size">4"</td><td>127</td><td>127</td></tr>
-            <tr><td class="pipe-size">6"</td><td>171</td><td>171</td></tr>
-            <tr><td class="pipe-size">8"</td><td>219</td><td>219</td></tr>
+            <tr>
+              <td><span class="grade-name">PFD</span></td>
+              <td>پایین</td>
+              <td>تجهیزات اصلی، جریان سیال، بیلانس</td>
+              <td>طراحی فرآیند، محاسبات اولیه</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">P&amp;ID</span></td>
+              <td>متوسط</td>
+              <td>تمام خطوط، شیرها، ابزار دقیق، کلاس لوله</td>
+              <td>مهندسی تفصیلی، مبنای Line List</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">GAD</span></td>
+              <td>بالا</td>
+              <td>مسیر لوله در پلان و مقطع، ابعاد کلی</td>
+              <td>جانمایی، Clash Detection، ساپورت</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Isometric</span></td>
+              <td>بسیار بالا</td>
+              <td>مسیر سه‌بعدی، BOM، جوش، ساپورت، متریال</td>
+              <td>ساخت، نصب، بازرسی، MTO</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- IPS-240 Standard -->
-  <div class="ips-box">
-    <div class="ips-header">
-      <div class="ips-icon">⚠️</div>
-      <div>
-        <h3>استاندارد IPS-240 — طول دقیق Nipple</h3>
-        <p>تلرانس‌های ابعادی استاندارد نفت ایران برای برش و تولید Nipple</p>
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۳</div>
+    <h2>نمادها و علائم استاندارد</h2>
+  </div>
+
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#faf5ff; color:#7C3AED; border:1px solid #e9d5ff;">SYM</div>
+        <div class="mat-title">
+          Symbols &amp; Abbreviations
+          <span>زبان گرافیکی نقشه — شیرها، اتصالات و ابزار دقیق</span>
+        </div>
       </div>
     </div>
-    <div class="ips-content">
-      <div class="ips-item">
-        <div class="ips-item-title">📌 حداکثر خطای انسانی</div>
-        <p>در برش لوله و تولید Nipple طبق استاندارد IPS-240 حداکثر خطای مجاز <span class="ips-num">1.5 تا 3 mm</span> است.</p>
+
+    <div class="mat-card-body">
+      <p class="lead">هر جزء در نقشه ایزومتریک با یک نماد استاندارد نمایش داده می‌شود. این نمادها بر اساس <strong>ISA-5.1</strong> (برای P&amp;ID) و <strong>ASME Y14.41</strong> (برای ایزومتریک) تعریف شده‌اند. شناخت این نمادها، کلید خواندن صحیح نقشه است.</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>جزء</th>
+              <th>نماد رایج</th>
+              <th>توضیح</th>
+              <th>استاندارد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Gate Valve</span></td>
+              <td><span class="std-pill">GV</span></td>
+              <td>دو مثلث متقابل با خط وسط</td>
+              <td>ISA-5.1</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Globe Valve</span></td>
+              <td><span class="std-pill">GLV</span></td>
+              <td>دایره با خط وسط</td>
+              <td>ISA-5.1</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Ball Valve</span></td>
+              <td><span class="std-pill">BV</span></td>
+              <td>دایره با نقطه مرکزی</td>
+              <td>ISA-5.1</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Check Valve</span></td>
+              <td><span class="std-pill">CV</span></td>
+              <td>مثلث با فلش جهت جریان</td>
+              <td>ISA-5.1</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Butterfly Valve</span></td>
+              <td><span class="std-pill">BFV</span></td>
+              <td>دایره با خط مورب</td>
+              <td>ISA-5.1</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Flange</span></td>
+              <td><span class="std-pill">FLG</span></td>
+              <td>دو خط موازی عمود بر لوله</td>
+              <td>ASME B16.5</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Elbow 90°</span></td>
+              <td><span class="std-pill">90E</span></td>
+              <td>تغییر مسیر ۹۰ درجه</td>
+              <td>ASME B16.9</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Tee</span></td>
+              <td><span class="std-pill">T</span></td>
+              <td>انشعاب سه‌راهی</td>
+              <td>ASME B16.9</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Reducer</span></td>
+              <td><span class="std-pill">RED</span></td>
+              <td>تغییر سایز (Concentric/Eccentric)</td>
+              <td>ASME B16.9</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Weld</span></td>
+              <td><span class="std-pill">W</span></td>
+              <td>نقطه جوش (با شماره جوش)</td>
+              <td>ASME IX</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="ips-item">
-        <div class="ips-item-title">📌 اهمیت محاسبه دقیق</div>
-        <p>با توجه به خطای ابزار و خطای انسانی در برش، بازرس پایپینگ باید از محاسبه طول با دقت بیش از حد خودداری کند.</p>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">نکته خواندن</span><br>
+        در ایزومتریک، <strong>جهت جریان</strong> معمولاً با فلش روی لوله نشان داده می‌شود. اگر فلش نباشد، از P&amp;ID یا Line List باید جهت را استخراج کنید. همچنین، <strong>شماره جوش (Weld No.)</strong> کنار هر نقطه جوش نوشته می‌شود و در Weld Map ثبت می‌گردد.
       </div>
-      <div class="ips-item">
-        <div class="ips-item-title">📌 مرحله Fit-up</div>
-        <p>اگر Nipple تولیدی خارج از محدوده مجاز باشد، باید در مرحله <strong>Fit-up</strong> از اسپول جدا و Nipple دقیق‌تری جایگزین شود.</p>
+
+      <div class="callout callout-warn" style="margin-bottom:0;">
+        <span class="callout-label">هشدار — نمادهای پروژه‌ای</span><br>
+        برخی پروژه‌ها نمادهای خاص خود را در <strong>Legend Sheet</strong> تعریف می‌کنند. همیشه قبل از خواندن نقشه، Legend را بررسی کنید — نمادهای غیراستاندارد ممکن است معانی متفاوتی داشته باشند.
       </div>
     </div>
   </div>
 
-  <div class="callout callout-danger">
-    <span class="callout-label">🚨 هشدار بازرسی</span>
-    یک بازرس یا کارشناس پایپینگ با علم به خطای انسانی و ابزار، <strong>نباید در بازرسی و محاسبه طول لوله‌های بریده‌شده دقت بیش از حد مشخصی را مطالبه کند</strong> — این موضوع می‌تواند منجر به تأخیر غیرضروری در پروژه شود.
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۴</div>
+    <h2>اطلاعات روی نقشه ایزومتریک</h2>
   </div>
 
-  <!-- Nav Footer -->
-  <div class="nav-footer">
-    <a href="../03-materials/" class="nav-btn nav-prev">
-      → فصل قبل: متریال‌شناسی
-    </a>
-    <a href="../05-fabrication/" class="nav-btn nav-next">
-      فصل بعد: ساخت و مونتاژ ←
-    </a>
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#fff7ed; color:#ea580c; border:1px solid #fed7aa;">INFO</div>
+        <div class="mat-title">
+          Isometric Information
+          <span>Title Block، BOM، Weld List و جهت شمال</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">یک نقشه ایزومتریک کامل، علاوه بر مسیر لوله، حاوی اطلاعات حیاتی دیگری است: Title Block (شناسنامه نقشه)، Bill of Materials (فهرست متریال)، Weld List (لیست جوش‌ها)، جهت شمال (North Arrow) و مختصات. این اطلاعات برای ساخت، خرید و بازرسی ضروری هستند.</p>
+
+      <div class="props-grid">
+        <div class="prop-item">
+          <span class="prop-label">Title Block</span>
+          <span class="prop-value">شماره نقشه، Rev، پروژه، Line No، Pipe Class</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Bill of Materials (BOM)</span>
+          <span class="prop-value">فهرست تمام قطعات: لوله، اتصالات، شیر، گسکت، بولت</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Weld List</span>
+          <span class="prop-value">شماره جوش، نوع جوش، NDT مورد نیاز</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">North Arrow</span>
+          <span class="prop-value">جهت شمال — برای تطابق با GAD و P&amp;ID</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Coordinates</span>
+          <span class="prop-value">مختصات نقاط کلیدی (Easting, Northing, Elevation)</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-label">Revision History</span>
+          <span class="prop-value">تاریخچه تغییرات نقشه</span>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>بخش</th>
+              <th>محتوا</th>
+              <th>مکان روی نقشه</th>
+              <th>کاربرد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Title Block</span></td>
+              <td>Doc No, Rev, Project, Line No, Class, Scale</td>
+              <td>گوشه پایین راست</td>
+              <td>شناسایی و کنترل نسخه</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">BOM Table</span></td>
+              <td>Item No, Description, Qty, Material, Size</td>
+              <td>معمولاً سمت راست یا پایین</td>
+              <td>خرید و MTO</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Weld Table</span></td>
+              <td>Weld No, Type, NDT %, Inspector</td>
+              <td>کنار Title Block</td>
+              <td>Weld Map و QC</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">North Arrow</span></td>
+              <td>جهت شمال جغرافیایی</td>
+              <td>گوشه بالا</td>
+              <td>تطابق با P&amp;ID و GAD</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Continuation Mark</span></td>
+              <td>ارجاع به نقشه بعدی (اگر خط ادامه دارد)</td>
+              <td>انتهای خط</td>
+              <td>ردیابی خط در چند نقشه</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-danger">
+        <span class="callout-label">خطر — Rev اشتباه</span><br>
+        همیشه <strong>آخرین Rev</strong> نقشه را استفاده کنید. کار با Rev منسوخ = ساخت اشتباه = دوباره‌کاری. Rev نقشه باید با Rev Line List و P&amp;ID سازگار باشد — ناسازگاری بین این سه سند، ریشه بسیاری از Clash ها و خطاهای ساخت است.
+      </div>
+    </div>
   </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۵</div>
+    <h2>انواع ایزومتریک بر اساس کاربرد</h2>
+  </div>
+
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#ecfeff; color:#0891b2; border:1px solid #a5f3fc;">TYPE</div>
+        <div class="mat-title">
+          Isometric Types
+          <span>Fabrication، Erection و As-Built — هر کدام هدف متفاوتی دارند</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">ایزومتریک بر اساس مرحله پروژه و هدف استفاده، به سه نوع اصلی تقسیم می‌شود: Fabrication (برای ساخت در کارگاه)، Erection (برای نصب در سایت) و As-Built (مستندسازی اجرای واقعی). هر نوع، سطح جزئیات و اطلاعات متفاوتی دارد.</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>نوع</th>
+              <th>مرحله</th>
+              <th>محتوای کلیدی</th>
+              <th>مسئول</th>
+              <th>خروجی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">Fabrication ISO</span></td>
+              <td>ساخت در کارگاه</td>
+              <td>ابعاد برش، Prep جوش، BOM کامل، Weld No</td>
+              <td>مهندس پایپینگ</td>
+              <td>اسپول‌های آماده نصب</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Erection ISO</span></td>
+              <td>نصب در سایت</td>
+              <td>مختصات نصب، ساپورت‌ها، Field Weld</td>
+              <td>مهندس نصب</td>
+              <td>خط نصب‌شده</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">As-Built ISO</span></td>
+              <td>پس از نصب</td>
+              <td>تغییرات میدانی، ابعاد واقعی، Red-Mark</td>
+              <td>مهندس QC / DCC</td>
+              <td>مستند بهره‌برداری</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-label">نکته میدانی</span><br>
+        در پروژه‌های بزرگ، یک خط ممکن است در <strong>چندین ایزومتریک</strong> تقسیم شود (به دلیل محدودیت صفحه یا پیچیدگی مسیر). در این حالت، <strong>Continuation Mark</strong> (علامه ادامه) در انتهای هر نقشه، ارجاع به نقشه بعدی را نشان می‌دهد. همیشه تمام نقشه‌های یک خط را قبل از ساخت بررسی کنید.
+      </div>
+
+      <div class="callout callout-warn" style="margin-bottom:0;">
+        <span class="callout-label">هشدار — Field Weld</span><br>
+        جوش‌های میدانی (Field Weld) در ایزومتریک با نماد خاص (معمولاً دایره توپر) مشخص می‌شوند. این جوش‌ها در سایت انجام می‌شوند و نیازمند NDT و تأیید بازرس هستند. اشتباه در تشخیص Field Weld از Shop Weld = برنامه‌ریزی غلط = تأخیر پروژه.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۶</div>
+    <h2>مراحل خواندن یک نقشه ایزومتریک</h2>
+  </div>
+
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#fef2f2; color:#dc2626; border:1px solid #fecaca;">READ</div>
+        <div class="mat-title">
+          Reading Steps
+          <span>گام‌به‌گام از Title Block تا BOM — چک‌لیست خواندن</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">خواندن صحیح ایزومتریک نیازمند یک رویه سیستماتیک است. این چک‌لیست ۷ مرحله‌ای، ترتیب منطقی بررسی نقشه را نشان می‌دهد — از شناسایی سند تا استخراج MTO. این رویه را همیشه دنبال کنید:</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>مرحله</th>
+              <th>اقدام</th>
+              <th>هدف</th>
+              <th>نکته</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">۱</span></td>
+              <td>بررسی Title Block</td>
+              <td>تأیید Line No، Rev، Pipe Class</td>
+              <td>Rev باید IFC باشد</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">۲</span></td>
+              <td>بررسی North Arrow</td>
+              <td>تطابق جهت با P&amp;ID و GAD</td>
+              <td>اشتباه جهت = نصب غلط</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">۳</span></td>
+              <td>ردیابی مسیر لوله</td>
+              <td>فهم مسیر سه‌بعدی از شروع تا پایان</td>
+              <td>از نقطه شروع (Start Point) آغاز کنید</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">۴</span></td>
+              <td>شناسایی اجزا</td>
+              <td>شیرها، فلنج‌ها، اتصالات، ساپورت‌ها</td>
+              <td>با Legend تطابق دهید</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">۵</span></td>
+              <td>بررسی Weld List</td>
+              <td>تعداد و نوع جوش‌ها، NDT</td>
+              <td>Field Weld را مشخص کنید</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">۶</span></td>
+              <td>بررسی BOM</td>
+              <td>فهرست متریال و مقادیر</td>
+              <td>با MTO پروژه تطابق دهید</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">۷</span></td>
+              <td>بررسی Coordinates</td>
+              <td>مختصات نقاط کلیدی</td>
+              <td>برای نصب و Survey</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip" style="margin-bottom:0;">
+        <span class="callout-label">تمرین پیشنهادی</span><br>
+        یک ایزومتریک ساده (مثلاً یک خط ۶ اینچ با چند شیر) را چاپ کنید و این ۷ مرحله را روی آن تمرین کنید. سپس با P&amp;ID و Line List همان خط تطابق دهید. این تمرین را با ۱ نقشه مختلف تکرار کنید تا سرعت و دقت شما افزایش یابد.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section-header reveal">
+    <div class="section-number">۷</div>
+    <h2>نرم‌افزارهای تولید ایزومتریک</h2>
+  </div>
+
+  <div class="mat-card reveal">
+    <div class="mat-card-header" style="background:#f8fafc;">
+      <div class="mat-card-header-left">
+        <div class="mat-badge" style="background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0;">SW</div>
+        <div class="mat-title">
+          Isometric Software
+          <span>ابزارهای مهندسی برای تولید ایزومتریک از مدل سه‌بعدی</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mat-card-body">
+      <p class="lead">در پروژه‌های مدرن، ایزومتریک به‌صورت دستی ترسیم نمی‌شود — بلکه از مدل سه‌بعدی پایپینگ (در نرم‌افزارهایی مثل PDMS یا E3D) به‌صورت خودکار استخراج می‌گردد. این نرم‌افزارها BOM، Weld List و ابعاد را به‌صورت خودکار تولید می‌کنند.</p>
+
+      <div class="table-responsive">
+        <table class="grade-table">
+          <thead>
+            <tr>
+              <th>نرم‌افزار</th>
+              <th>تولیدکننده</th>
+              <th>کاربرد اصلی</th>
+              <th>ویژگی کلیدی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="grade-name">ISOGEN</span></td>
+              <td>Intergraph / Hexagon</td>
+              <td>تولید ایزومتریک از PDMS/E3D</td>
+              <td>استاندارد صنعت — قابل تنظیم</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">Spoolgen</span></td>
+              <td>Hexagon</td>
+              <td>تولید ایزومتریک ساخت (Spool)</td>
+              <td>بهینه‌سازی برش و جوش</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">AutoCAD Plant 3D</span></td>
+              <td>Autodesk</td>
+              <td>مدل‌سازی و ایزومتریک</td>
+              <td>یکپارچه با AutoCAD</td>
+            </tr>
+            <tr>
+              <td><span class="grade-name">SmartPlant Review</span></td>
+              <td>Hexagon</td>
+              <td>بازبینی مدل سه‌بعدی</td>
+              <td>Clash Detection</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip" style="margin-bottom:0;">
+        <span class="callout-label">نکته مهندسی</span><br>
+        حتی با وجود نرم‌افزارهای خودکار، مهندس پایپینگ باید توانایی <strong>خواندن دستی</strong> ایزومتریک را داشته باشد — برای بازرسی میدانی، تأیید ساخت و حل مشکلات کارگاهی. نرم‌افزار ابزار است، نه جایگزین دانش مهندسی.
+      </div>
+    </div>
+  </div>
+
+  <div class="std-section reveal">
+    <div class="std-section-title">مرجع سریع — استانداردهای نقشه‌خوانی پایپینگ</div>
+    <div class="std-grid">
+      <div class="std-row"><span class="std-code">ISA-5.1</span><span>نمادها و علائم P&amp;ID</span></div>
+      <div class="std-row"><span class="std-code">ISO 10628</span><span>دیاگرام‌های فرآیند</span></div>
+      <div class="std-row"><span class="std-code">ASME Y14.41</span><span>مدل‌سازی سه‌بعدی و ابعاد</span></div>
+      <div class="std-row"><span class="std-code">ISO 5456-3</span><span>پروجکشن ایزومتریک</span></div>
+      <div class="std-row"><span class="std-code">ASME B31.3 §344</span><span>الزامات مستندسازی</span></div>
+      <div class="std-row"><span class="std-code">ASME B16.5 / B16.9</span><span>فلنج‌ها و اتصالات</span></div>
+    </div>
+  </div>
+
+  <footer class="nav-footer reveal">
+    <a href="../03-materials/" class="nav-btn nav-prev">→ فصل قبل: متریال‌شناسی</a>
+    <a href="../05-welding/" class="nav-btn nav-next">فصل بعد: جوشکاری و بازرسی ←</a>
+  </footer>
 
 </div>
 
-<!-- Footer -->
-<footer>
-  <p>📐 برگرفته از جزوه «اصول کنترل کیفیت و بازرسی فنی پایپینگ و جوش» — فصل چهارم</p>
-  <p>تهیه و تنظیم: <strong>PIPING STUDIO</strong> | @piping_studio</p>
-  <p style="margin-top: 10px; font-size: 11px; opacity: 0.6;">© <span class="num">2026</span> Piping Isometric Guide — Open Source</p>
-</footer>
+<button id="toTop" title="بازگشت به بالا" aria-label="بازگشت به بالا">↑</button>
 
 <script>
-function toggleTheme() {
-  const body = document.body;
-  const btn = document.querySelector('.theme-toggle');
-  if (body.getAttribute('data-theme') === 'light') {
-    body.removeAttribute('data-theme');
-    btn.textContent = '🌙';
-    localStorage.setItem('theme', 'dark');
-  } else {
-    body.setAttribute('data-theme', 'light');
-    btn.textContent = '☀️';
-    localStorage.setItem('theme', 'light');
-  }
-}
-
-const saved = localStorage.getItem('theme');
-if (saved === 'light') {
-  document.body.setAttribute('data-theme', 'light');
-  document.querySelector('.theme-toggle').textContent = '☀️';
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href === '#' || href.length < 2) return;
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      const offset = 80;
-      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: pos, behavior: 'smooth' });
-    }
+  /* ── Reading progress bar + back-to-top ── */
+  var progressBar = document.getElementById('progressBar');
+  var toTopBtn = document.getElementById('toTop');
+  window.addEventListener('scroll', function () {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    progressBar.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+    if (doc.scrollTop > 600) { toTopBtn.classList.add('show'); } else { toTopBtn.classList.remove('show'); }
+  }, { passive: true });
+  toTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-});
+
+  /* ── Interactive drawing types selector ── */
+  var flowData = {
+    pfd: {
+      title: 'PFD — Process Flow Diagram',
+      body: 'شماتیک فرآیند که تجهیزات اصلی، جریان سیال و بیلانس جرم/انرژی را نشان می‌دهد. سایز لوله و جزئیات ساخت در این نقشه نیست — فقط منطق فرآیند.',
+      pills: ['سطح جزئیات: کم', 'استاندارد: ISO 10628-1', 'فاز: FEED']
+    },
+    pid: {
+      title: 'P&ID — Piping & Instrumentation Diagram',
+      body: 'سند مادر پایپینگ — تمام خطوط، شیرها، ابزار دقیق، کلاس لوله و Utility ها را نشان می‌دهد. مبنای Line List، ایزومتریک و MTO است.',
+      pills: ['سطح جزئیات: متوسط', 'استاندارد: ISA-5.1', 'فاز: Detail Engineering']
+    },
+    gad: {
+      title: 'GAD — General Arrangement Drawing',
+      body: 'نقشه دوبعدی (پلان و مقطع) که مسیر لوله، جانمایی تجهیزات و ابعاد کلی را نشان می‌دهد. برای Clash Detection و طراحی ساپورت استفاده می‌شود.',
+      pills: ['سطح جزئیات: بالا', 'استاندارد: ASME Y14.2M', 'فاز: Detail Engineering']
+    },
+    iso: {
+      title: 'Isometric Drawing',
+      body: 'نقشه سه‌بعدی هر خط با تمام جزئیات: مسیر لوله، BOM، Weld List، ساپورت‌ها و مختصات. مبنای ساخت، نصب و بازرسی است.',
+      pills: ['سطح جزئیات: بسیار بالا', 'استاندارد: ASME Y14.41', 'فاز: Construction']
+    }
+  };
+
+  var flowSteps = document.querySelectorAll('.flow-step');
+  var flowDetail = document.getElementById('flowDetail');
+
+  function renderFlow(key) {
+    var d = flowData[key];
+    if (!d) return;
+    flowDetail.style.animation = 'none';
+    void flowDetail.offsetWidth; /* reflow to restart animation */
+    flowDetail.style.animation = '';
+    var pillsHtml = d.pills.map(function (p) {
+      return '<span class="flow-meta-pill">' + p + '</span>';
+    }).join('');
+    flowDetail.innerHTML = '<h4>' + d.title + '</h4><p>' + d.body + '</p><div class="flow-detail-meta">' + pillsHtml + '</div>';
+  }
+
+  flowSteps.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      flowSteps.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderFlow(btn.getAttribute('data-step'));
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
 </script>
 
 </body>
 </html>
+
 
